@@ -28,7 +28,7 @@ public class Person {
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Remark remark) {
+    public Person(Name name, Phone phone, Email email, Address address, Remark remark, Set<Tag> tags) {
         requireAllNonNull(name, phone, email, address, tags);
         this.name = name;
         this.phone = phone;
@@ -53,7 +53,7 @@ public class Person {
     public Address getAddress() {
         return address;
     }
-    
+
     public Remark getRemark() { return remark; }
 
     /**
@@ -116,9 +116,9 @@ public class Person {
                 .append(getEmail())
                 .append(" Address: ")
                 .append(getAddress())
-                .append(" Tags: ")
-                .append(" Remarks: ")
-                .append(getRemark());
+                .append(" Remark: ")
+                .append(getRemark())
+                .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
     }
