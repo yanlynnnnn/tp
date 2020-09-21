@@ -262,16 +262,43 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `GrAB3` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+#### Task Schedule
+
+**UC01: Add a task to task list**
+
+**Preconditions: A task list must exist**
+ 
+**Guarantees: A new task will be added to the task list** 
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+1.  User requests to add a new task into existing task list
+2.  GrAB3 adds the task to the task list
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Task description is empty.
+
+    * 1a1. GrAB3 shows an error message
+    
+        Use case resumes at step 2.
+
+**UC02: Delete a task**
+
+**Preconditions: A task list must exist**
+
+**Guarantees: The task specified by the user will be deleted**
+
+**MSS**
+
+1.  User requests to list all tasks
+2.  GrAB3 shows a list of tasks
+3.  User requests to delete a specific task in the list
+4.  GrAB3 deletes the task
 
     Use case ends.
 
@@ -283,9 +310,145 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. GrAB3 shows an error message.
 
       Use case resumes at step 2.
+
+**UC03: Edit a task**
+
+**Preconditions: Task exists in task list**
+
+**Guarantees: Task specified by user gets edited**
+
+**MSS**
+
+1.  User requests to list all tasks
+2.  GrAB3 shows a list of tasks
+3.  User requests to edit a specific task in the list
+4.  GrAB3 edits the description of the task
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. GrAB3 shows an error message.
+
+    Use case resumes at step 2.
+    
+**UC04: View preset tasks**
+
+**Preconditions: Preset tasks exist**
+
+**Guarantees: List of all presets available**
+
+**MSS**
+
+1. User request to list preset tasks
+2. GrAB3 shows a list of available preset tasks
+Use case ends
+
+**UC05: Add preset tasks**
+
+**Preconditions: Preset tasks exist**
+
+**Guarantees: Task list with preset tasks generated for the user**
+
+**MSS**
+1. User request to list preset modules (UC04)
+2. Program shows a list of available modules
+3. User selects preset to add to task list
+4. Program adds preset tasks into task list
+Use case ends
+
+### Module Schedule
+
+**UC06: Add a module**
+
+**Preconditions: A module list must exist**
+
+**Guarantees: A new module will be added to the module list**
+
+**MSS**
+
+1.  User requests to add a new module into existing module list
+2.  GrAB3 adds the module to the module list
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Module description is empty.
+
+    * 1a1. GrAB3 shows an error message
+    
+        Use case resumes at step 2.
+
+**UC07: Delete a module**
+
+**Preconditions: A module list must exist**
+
+**Guarantees: The module specified by the user will be deleted**
+
+**MSS**
+
+1.  User requests to list all modules
+2.  GrAB3 shows a list of modules
+3.  User requests to delete a specific module in the list
+4.  GrAB3 deletes the module
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. GrAB3 shows an error message.
+
+    Use case resumes at step 2.
+
+
+**UC08: View preset modules**
+
+**Preconditions: preset modules exist**
+
+**Guarantees: List of all presets available**
+
+**MSS**
+
+1. User request to list preset modules
+2. GrAB3 shows a list of available preset modules
+Use case ends
+
+**UC09: Add preset modules to module list**
+
+**Preconditions: Preset modules exist**
+
+**Guarantees: Module list with preset modules generated for the user**
+
+**MSS**
+
+1. User request to list preset modules(UC08)
+2. Program shows a list of available modules
+3. User selects module preset to add to module list
+4. Program add module items to module schedule
+Use case ends
+
+* 4a. modules in preset selected conflict with existing modules in module list
+
+    * 4a1. program show an error message
+       
+    Use case resumes at step 2
+
 
 *{More to be added}*
 
