@@ -57,3 +57,17 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Developer
 * Responsibilities: UI
+
+### Tan Yan Lyn
+
+<img src="images/yanlynnnnn.png" width="200px">
+
+[[github](https://github.com/yanlynnnnn)]
+[[portfolio](team/yanlynnnnn.md)]
+
+* Role: Developer
+* Responsibilities: UI
+
+
+
+
