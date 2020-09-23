@@ -19,15 +19,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 * Role: Project Advisor
 
-### Jane Doe
+### Galvin Leow Wen Yuan
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/galvinleow.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/galvinleow)]
+[[portfolio](team/galvinleow.md)]
 
 * Role: Team Lead
-* Responsibilities: UI
+* Responsibilities: UG, Scheduling
 
 ### Johnny Doe
 
@@ -38,22 +38,36 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Developer
 * Responsibilities: Data
 
-### Jean Doe
+### Chang Rui Feng
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/ruifengg.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/RuiFengg)]
+[[portfolio](team/ruifengg.md)]
 
 * Role: Developer
-* Responsibilities: Dev Ops + Threading
+* Responsibilities: Code quality
 
-### James Doe
+### Hans Sebastian Tirtaputra
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/hansebastian.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/hansebastian)]
+[[portfolio](team/hansebastian.md)]
 
 * Role: Developer
 * Responsibilities: UI
+
+### Tan Yan Lyn
+
+<img src="images/yanlynnnnn.png" width="200px">
+
+[[github](https://github.com/yanlynnnnn)]
+[[portfolio](team/yanlynnnnn.md)]
+
+* Role: Developer
+* Responsibilities: UI
+
+
+
+
