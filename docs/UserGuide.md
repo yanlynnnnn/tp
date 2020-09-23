@@ -66,6 +66,118 @@ Shows a message explaning how to access the help page.
 
 Format: `help`
 
+### Delete a Task : `delete` 
+
+Delete a Task together with all its data, specified by its index.
+
+Format : `deletetask i/INDEX`
+
+- The index must be a **positive integer** and must be **valid**
+
+Example : 
+*  `deletetask i/1`
+
+### Create a Preset Task Template : `maketemplate`
+
+Create a template for recurring weekly tasks (Preset Tasks). It is initialized
+with no Preset Tasks.
+
+Format : `maketemplate n/TEMPLATENAME`
+
+### Add a Preset Task to a Template : `addpresettask` 
+
+Add a Preset Task to a Task Template, specified by its index.
+
+Format: `addpresettask i/INDEX n/TASKNAME sd/DATE d/DURATION`
+
+- `DURATION` is measured in hours
+- Addition of a Preset Task to a specific day will be **rejected** if the total tasks
+  for that day exceed 24 hours
+- The index of the template must be a **positive integer** and must be **valid**
+
+Example: 
+* `addpresettask i/1 n/Read Book sd/29-09-2020 d/2`
+
+### List Preset Task Templates : `listtemplates`
+
+List all Preset Task Templates.
+
+Format : `listtemplates`
+
+### List Preset Tasks : `listpresettasks`
+
+List all items in a Task Template, specified by its index.
+
+Format :  `listpresettasks i/INDEX`
+- The index must be a **positive integer** and must be **valid**
+
+Example
+* `listpresettasks i/1`
+
+### Load Template into Task Schedule : `loadtemplate` 
+
+Load a Preset Task Template into the Task Schedule, specified by its index.
+
+Format : `loadtemplate i/INDEX`
+
+- The combined duration of all tasks in a day cannot be more than 24 hours
+- The index must be a **positive integer** and must be **valid**
+
+Example: 
+* `loadtemplate i/1`
+
+### Delete Template : `deletetemplate`
+
+Delete a Task Template together with all its Preset Tasks, specified by its index.
+
+Format : `deletetemplate i/INDEX`
+
+Example:
+* `deletetemplate i/1`
+
+### Delete Preset Task : `deletepresettask`
+
+Delete a Preset Task from its Template.
+
+Format : `deletepresettask it/TEMPLATEINDEX ip/PRESETINDEX`
+
+Example:
+* `deletepresettask it/1 ip/3`
+
+### List Preset Modules : `listpresetmodules`
+
+List all available Preset Modules.
+
+Format : `listpresetmodules`
+
+### List all Modules Taken : "listallmodules"
+
+List all Preset Modules taken by the user.
+
+Format : `listallmodules`
+
+### Load Preset Module : `loadmodule`
+
+Load a Preset Module into the Module Schedule, specified by its index.
+
+Format : `loadmodule i/INDEX`
+
+- New Module Tasks must not clash with existing Module Tasks in the Module Schedule
+- The index of the Preset Module is its index in the Preset Module List 
+
+Example: 
+* `loadmodule i/100`
+
+### Remove a Module : `removemodule`
+
+Remove a Module and its Module Tasks from the Module Schedule, specified by its index.
+
+Format: `removemodule i/INDEX`
+
+- The index of the Preset Module is its index in the Preset Module List
+
+Example:
+* `removemodule i/59`
 
 ### Adding a person: `add`
 
