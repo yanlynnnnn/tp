@@ -270,16 +270,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 #### Task Schedule
 
-**UC01: Add a task to task list**
+**UC01: Add a task to TaskSchedule**
 
-**Preconditions: A task list must exist**
+**Preconditions: A TaskSchedule must exist**
  
-**Guarantees: A new task will be added to the task list** 
+**Guarantees: A new task will be added to the TaskSchedule** 
 
 **MSS**
 
-1.  User requests to add a new task into existing task list
-2.  GrAB3 adds the task to the task list
+1.  User requests to add a new task into existing TaskSchedule.
+2.  GrAB3 adds the task to the TaskSchedule.
 
     Use case ends.
 
@@ -287,32 +287,32 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. Task description is empty.
 
-    * 1a1. GrAB3 shows an error message
+    * 1a1. GrAB3 shows an error message.
     
         Use case resumes at step 2.
 
 **UC02: Delete a task**
 
-**Preconditions: A task list must exist**
+**Preconditions: TaskSchedule must exist**
 
 **Guarantees: The task specified by the user will be deleted**
 
 **MSS**
 
-1.  User requests to list all tasks
-2.  GrAB3 shows a list of tasks
-3.  User requests to delete a specific task in the list
-4.  GrAB3 deletes the task
+1.  User requests to list all tasks.
+2.  GrAB3 shows a list of tasks from the TaskSchedule.
+3.  User requests to delete a specific task in the TaskSchedule.
+4.  GrAB3 deletes the task.
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 2a. The TaskSchedule is empty.
 
   Use case ends.
 
-* 3a. The given index is invalid.
+* 3a. The specified task does not exist.
 
     * 3a1. GrAB3 shows an error message.
 
@@ -320,22 +320,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **UC03: Edit a task**
 
-**Preconditions: Task exists in task list**
+**Preconditions: Task exists in TaskSchedule**
 
 **Guarantees: Task specified by user gets edited**
 
 **MSS**
 
-1.  User requests to list all tasks
-2.  GrAB3 shows a list of tasks
-3.  User requests to edit a specific task in the list
-4.  GrAB3 edits the description of the task
+1.  User requests to list all tasks.
+2.  GrAB3 shows a list of tasks from TaskSchedule.
+3.  User requests to edit a specific task in TaskSchedule.
+4.  GrAB3 edits the description of the task.
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 2a. The TaskSchedule is empty.
 
   Use case ends.
 
@@ -345,114 +345,116 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 2.
     
-**UC04: View preset tasks**
+**UC04: View TaskTemplateList**
 
-**Preconditions: Preset tasks exist**
+**Preconditions: TaskTemplates in TaskTemplateList exists**
 
-**Guarantees: List of all presets available**
+**Guarantees: List of all TaskTemplates available**
 
 **MSS**
 
-1. User request to list preset tasks
-2. GrAB3 shows a list of available preset tasks
+1. User request to list TaskTemplateList.
+2. GrAB3 shows a list of TaskTemplates.
 Use case ends
 
-**UC05: Add preset tasks**
+**UC05: Load TaskTemplate**
 
-**Preconditions: Preset tasks exist**
+**Preconditions: Tasks exist in TaskTemplate**
 
-**Guarantees: Task list with preset tasks generated for the user**
+**Guarantees: TaskSchedule with tasks from the TaskTemplate get added for the user**
 
 **MSS**
-1. User request to list preset modules (UC04)
-2. Program shows a list of available modules
-3. User selects preset to add to task list
-4. Program adds preset tasks into task list
+1. User requests to view TaskTemplateList (UC04)
+2. Program shows a list of TaskTemplate 
+3. User selects TaskTemplate to load into TaskSchedule
+4. Program adds all tasks from selected TaskTemplate into TaskSchedule
 Use case ends
 
 ### Module Schedule
 
 **UC06: Add a module**
 
-**Preconditions: A module list must exist**
+**Preconditions: ModuleList must exist**
 
-**Guarantees: A new module will be added to the module list**
+**Guarantees: A new module will be added to MyModules**
 
 **MSS**
 
-1.  User requests to add a new module into existing module list
-2.  GrAB3 adds the module to the module list
+1.  User requests to add a new module into MyModules
+2.  GrAB3 adds the selected module to MyModules
 
     Use case ends.
 
 **Extensions**
 
-* 1a. Module description is empty.
+**UC07: Remove a module**
 
-    * 1a1. GrAB3 shows an error message
-    
-        Use case resumes at step 2.
+**Preconditions: Selected module must exist in MyModules** 
 
-**UC07: Delete a module**
-
-**Preconditions: A module list must exist**
-
-**Guarantees: The module specified by the user will be deleted**
+**Guarantees: The module specified by the user will be removed from MyModules and ModuleSchedule**
 
 **MSS**
 
 1.  User requests to list all modules
 2.  GrAB3 shows a list of modules
-3.  User requests to delete a specific module in the list
-4.  GrAB3 deletes the module
+3.  User requests to remove a specific module from ModuleSchedule
+4.  GrAB3 remove the module from MyModules and ModelSchedule
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
-
-  Use case ends.
-
-* 3a. The given index is invalid.
+* 3a. The given module code is invalid.
 
     * 3a1. GrAB3 shows an error message.
 
     Use case resumes at step 2.
 
 
-**UC08: View preset modules**
+**UC08: View ModuleList**
 
-**Preconditions: preset modules exist**
+**Preconditions: Modules exist in database**
 
-**Guarantees: List of all presets available**
-
-**MSS**
-
-1. User request to list preset modules
-2. GrAB3 shows a list of available preset modules
-Use case ends
-
-**UC09: Add preset modules to module list**
-
-**Preconditions: Preset modules exist**
-
-**Guarantees: Module list with preset modules generated for the user**
+**Guarantees: List of all modules available**
 
 **MSS**
 
-1. User request to list preset modules(UC08)
-2. Program shows a list of available modules
-3. User selects module preset to add to module list
-4. Program add module items to module schedule
+1. User request to list all modules
+2. GrAB3 shows a list of all modules
 Use case ends
 
-* 4a. modules in preset selected conflict with existing modules in module list
+**UC09: View MyModules**
 
-    * 4a1. program show an error message
+**Preconditions: User added some modules into MyModules**
+
+**Guarantees: Lists all modules added into MyModules**
+
+**MSS**
+
+1. User request to list MyModules
+2. GrAB3 shows a list of modules from MyModules
+Use case ends
+
+**UC10: Load MyModules into ModuleSchedule**
+
+**Preconditions: MyModules exist**
+
+**Guarantees: A ModuleSchedule with modules from MyModules added into for the user**
+
+**MSS**
+
+1. User requests to list MyModules (UC09)
+2. GrAB3 shows a list of all modules from MyModules
+3. User loads MyModules into ModuleSchedule
+4. GrAB3 adds all modules from MyModule to ModuleSchedule
+Use case ends
+
+* 4a. modules in MyModules conflict with existing modules in ModuleSchedule
+
+    * 4a1. GrAB3 show an error message
+    * 4a2. User removes conflicting modules
        
     Use case resumes at step 2
-
 
 *{More to be added}*
 
