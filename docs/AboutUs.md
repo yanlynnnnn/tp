@@ -9,16 +9,6 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 ## Project team
 
-### John Doe
-
-<img src="images/johndoe.png" width="200px">
-
-[[homepage](http://www.comp.nus.edu.sg/~damithch)]
-[[github](https://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
-
-* Role: Project Advisor
-
 ### Galvin Leow Wen Yuan
 
 <img src="images/galvinleow.png" width="200px">
@@ -29,14 +19,15 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 * Role: Team Lead
 * Responsibilities: UG, Scheduling
 
-### Johnny Doe
+### Wei Kit Khoong
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/khoongwk.png" width="200px">
 
-[[github](http://github.com/johndoe)] [[portfolio](team/johndoe.md)]
+[[github](http://github.com/khoongwk)] 
+[[portfolio](team/khoongwk.md)]
 
 * Role: Developer
-* Responsibilities: Data
+* Responsibilities: Code Quality
 
 ### Chang Rui Feng
 
