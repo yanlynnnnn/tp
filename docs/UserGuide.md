@@ -100,9 +100,9 @@ Delete all setup details in GrAB3.
 
 Format: `deletesetup` 
 
-### Add a Task to Task List: `addtask`
+### Add a Task to Task Schedule: `addtask`
 
-Add a task to the task list in GrAB3.
+Add a task to the task schedule in GrAB3.
 
 Format: `addtask n/NAME sd/DATE d/DURATION [t/TAG]`
 
