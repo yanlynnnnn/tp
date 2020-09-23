@@ -2,9 +2,12 @@
 layout: page
 title: Developer Guide
 ---
-* Table of Contents
-{:toc}
-
+ Table of Contents:
+ * [Setting up, getting started](#setting-up-getting-started)
+ * [Design](#design)
+ * [Implementation](#implementation)
+ * [Appendix: Requirements](#appendix-requirements)
+ * [Appendix: Instructions for manual testing](#appendix-instructions-for-manual-testing)
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
