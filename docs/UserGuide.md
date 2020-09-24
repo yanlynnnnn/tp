@@ -245,7 +245,7 @@ Example:
 * `editpresettask tti/1 pti/2 tn/CCA lunch du/3 da/5`
 * `editpresettask tti/1 pti/2 tn/CCA lunch du/3 da/5 t/CCA`
 
-### Clear all Preset Task from Task Template : `cleartemplate`
+### Clear all Preset Tasks from Task Template : `cleartemplate`
 
 Clear all preset tasks in the selected task template.
 
@@ -292,7 +292,7 @@ Example:
 
 ### Select Module : `selectmodule` 
 
-Select a module and load all the module task into the module schedule.
+Select a module and load all the module tasks into the module schedule.
 
 Format: `selectmodule mc/MODULECODE`
 
@@ -303,7 +303,7 @@ Example:
 
 ### Delete Module: `deletemodule`
 
-Remove and Delete a module and all its module task from the module schedule.
+Delete a module and all its module tasks from the module schedule.
 
 Format: `deletemodule mc/MODULECODE`
 
