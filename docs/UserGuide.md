@@ -112,12 +112,12 @@ Format: `addusertask tn/TASKNAME dur/DURATION day/DAY w/WEEK [t/TAG]`
     e.g. If the semester is from 01 to 25/09/2020 <br/>
             * Total week in the semester : 4 <br/>
             * Week 1 will be from 01/09/2020 to 06/09/2020 <br/>
-    `addtask tn/CCA lunch meeting dur/4 day/2 w/1` will add user task to Tuesday of Week 1 (01/09/2020)
+    `addusertask tn/CCA lunch meeting dur/4 day/2 w/1` will add user task to Tuesday of Week 1 (01/09/2020)
 - Addition of a user task to a specific day will be **rejected** if the total tasks for that day exceed 24 hours
 
 Examples:
-* `addtask tn/CCA lunch meeting dur/4 day/2 w/1`
-* `addtask tn/CCA lunch meeting dur/4 day/2 w/2 t/CCA`
+* `addusertask tn/CCA lunch meeting dur/4 day/2 w/1`
+* `addusertask tn/CCA lunch meeting dur/4 day/2 w/2 t/CCA`
 
 ### Edit User Task Details: `editusertask` ******** NOT DONE ********
 
@@ -137,7 +137,7 @@ Items in square brackets are optional, but please input at least 1 value to chan
     e.g. If the semester is from 01 to 25/09/2020 <br/>
             * Total week in the semester : 4 <br/>
             * Week 1 will be from 01 to 06/09/2020 <br/>
-    `addtask tn/CCA lunch meeting dur/4 day/2 w/1` will add user task to Tuesday of Week 1 (01/09/2020)
+    `editusertask tn/CCA lunch meeting dur/4 day/2 w/1` will add user task to Tuesday of Week 1 (01/09/2020)
 - Addition of a user task to a specific day will be **rejected** if the total tasks for that day exceed 24 hours
 
 Example:
@@ -283,6 +283,19 @@ Format: `deletemodule mi/MODULEINDEX`
 Example: 
 * `deletemodule mi/1`
 
+### List Module List : `listmodulelist`
+
+List all the module that is offered by the university.
+
+Format: `listmodulelist`
+ 
+ ### List All my Modules : `listmymodule`
+ 
+ List all the module that the user have selected.
+ 
+ Format: `listmymodule`
+ 
+ 
 ### Exit GrAB3 : `exit`
 
 Exits the program.
@@ -307,12 +320,25 @@ GrAB3 data are saved in the hard disk automatically after any command that chang
 Action | Format, Examples
 --------|------------------
 **Help** | `help`
-**Setup** | `setup n/USERNAME sd/STARTDURATION ed/ENDDURATION fy/ACADEMICYEAR` <br/> e.g. `setup n/John Doe sd/22-09-2020 ed/29-11-2020 fy/AY20/21 Sem 1`
-**EditSetup** | 
-
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
+**Setup** | `setup n/USERNAME sd/STARTDURATION ed/ENDDURATION fy/ACADEMICYEAR` <br/>e.g. `setup n/John Doe sd/22-09-2020 ed/29-11-2020 fy/AY20/21 Sem 1`
+**EditSetup** |  `editsetup [n/USERNAME] [sd/STARTDURATION] [ed/ENDDURATION] [fy/ACADEMICYEAR]` <br/>e.g. `editsetup n/Jane Doe sd/23-02-2020 ed/29-06-2020 fy/AY19/20 Sem 2`
+**DeleteSetup** | `deletesetup`
+**AddUserTask** | `addusertask tn/TASKNAME dur/DURATION day/DAY w/WEEK [t/TAG]` <br/> e.g. `addusertask tn/CCA lunch meeting dur/4 day/2 w/2 t/CCA`
+**EditUserTask** | 
+**DoneUserTask** |
+**DeleteUserTask** |
+**ListTaskSchedule** | `listtaskschedule w/WEEK`  <br/> e.g. `listtaskschedule w/1`
+**CreateTaskTemplate** | `createtemplate n/TEMPLATENAME` <br/> e.g. `createtemplate n/CCA Meeting`
+**EditTaskTemplateName** | 
+**DeleteTaskTemplate** |
+**ListTaskTemplate** | `listtasktemplate` 
+**AddPresetTask** | 
+**EditPresetTask** |
+**DeletePresetTask**|
+**LoadTaskTemplate** |
+**ListPresetTask** |
+**SelectModule** |
+**DeleteModule** |
+**ListModuleList** | `listmodulelist`
+**ListModuleTaken** | `listmymodule`
 
