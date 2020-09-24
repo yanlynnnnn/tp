@@ -9,11 +9,16 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.Days;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.task.Duration;
+import seedu.address.model.task.FixedDay;
+import seedu.address.model.task.TaskName;
+
 
 /**
  * Contains utility methods used for parsing strings in the various *Parser classes.
@@ -21,6 +26,8 @@ import seedu.address.model.tag.Tag;
 public class ParserUtil {
 
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
+    public static final String MESSAGE_INVALID_DAY_FORMAT = "Day should contain only the first 3 letters of the day.";
+    public static final String MESSAGE_INVALID_DURATION = "Duration should be a number in hours.";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -120,5 +127,50 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses {@code String Duration} into a {@code Duration}.
+     */
+    public static Duration parseDuration(String duration) throws ParseException {
+        requireNonNull(duration);
+        try {
+            Double trimmedDuration = Double.parseDouble(duration.trim());
+            if (!Duration.isValidDuration(trimmedDuration)) {
+                throw new ParseException(Duration.MESSAGE_CONSTRAINTS);
+            }
+            return new Duration(trimmedDuration);
+        } catch (NumberFormatException e) {
+            throw new ParseException(MESSAGE_INVALID_DURATION);
+        }
+    }
+
+    /**
+     * Parses {@code String fixedDay} into a {@code FixedDay}.
+     */
+    public static FixedDay parseFixedDay(String fixedDay) throws ParseException {
+        requireNonNull(fixedDay);
+        String trimmedFixedDay = fixedDay.trim();
+        try {
+            Days day = Days.valueOf(trimmedFixedDay);
+            if (!FixedDay.isValidDay(day)) {
+                throw new ParseException(FixedDay.MESSAGE_CONSTRAINTS);
+            }
+            return new FixedDay(day);
+        } catch (IllegalArgumentException e) {
+            throw new ParseException(MESSAGE_INVALID_DAY_FORMAT);
+        }
+    }
+
+    /**
+     * Parses {@code String taskName} into a {@code TaskName}.
+     */
+    public static TaskName parseTaskName(String taskName) throws ParseException {
+        requireNonNull(taskName);
+        String trimmedTaskName = taskName.trim();
+        if (!TaskName.isValidTaskName(trimmedTaskName)) {
+            throw new ParseException(TaskName.MESSAGE_CONSTRAINTS);
+        }
+        return new TaskName(trimmedTaskName);
     }
 }
