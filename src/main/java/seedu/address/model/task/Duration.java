@@ -1,4 +1,4 @@
-package seedu.address.model.task;
+package seedu.address.model.person;
 
 public class Duration {
 }
