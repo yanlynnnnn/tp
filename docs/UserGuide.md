@@ -25,9 +25,9 @@ busy schedules. The student interacts with the application using a command-line 
 1.Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-  * **`ListModuleList`** : Lists all module provided by the university.
+  * **`listmodules`** : Lists all module provided by the university.
 
-  * **`setup`**`un/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1` : Adds a user named `John Doe` and academic year `AY20/21 Sem` that spans from `22-09-2020` to `29-11-2020`.
+  * **`setup`**`n/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1` : Adds a user named `John Doe` and academic year `AY20/21 Sem 1` that spans from `22-09-2020` to `29-11-2020`.
   
   * **`listtaskschedule`**`2` : List all the user tasks in task schedule for Week 2.
 
@@ -44,7 +44,7 @@ busy schedules. The student interacts with the application using a command-line 
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `setup un/USERNAME`, `USERNAME` is a parameter which can be used as `setup un/John Doe`.
+  e.g. in `setup n/USERNAME`, `USERNAME` is a parameter which can be used as `setup n/John Doe`.
 
 * Items in square brackets are optional.<br>
   e.g `tn/TASKNAME [t/TAG]` can be used as `tn/CCA lunch meeting t/CCA` or as `tn/CCA lunch meeting`.
@@ -59,150 +59,37 @@ busy schedules. The student interacts with the application using a command-line 
 
 ### Viewing help : `help`
 
-Shows a message explaning how to access the help page.
+Shows a message explaining how to access the help page.
 
 ![help message](images/helpMessage.png)
 
 Format: `help`
 
-### Delete a Task : `delete` 
-
-Delete a Task together with all its data, specified by its index.
-
-Format : `deletetask i/INDEX`
-
-- The index must be a **positive integer** and must be **valid**
-
-Example : 
-*  `deletetask i/1`
-
-### Create a Preset Task Template : `maketemplate`
-
-Create a template for recurring weekly tasks (Preset Tasks). It is initialized
-with no Preset Tasks.
-
-Format : `maketemplate n/TEMPLATENAME`
-
-### Add a Preset Task to a Template : `addpresettask` 
-
-Add a Preset Task to a Task Template, specified by its index.
-
-Format: `addpresettask i/INDEX n/TASKNAME sd/DATE d/DURATION`
-
-- `DURATION` is measured in hours
-- Addition of a Preset Task to a specific day will be **rejected** if the total tasks
-  for that day exceed 24 hours
-- The index of the template must be a **positive integer** and must be **valid**
-
-Example: 
-* `addpresettask i/1 n/Read Book sd/29-09-2020 d/2`
-
-### List Preset Task Templates : `listtemplates`
-
-List all Preset Task Templates.
-
-Format : `listtemplates`
-
-### List Preset Tasks : `listpresettasks`
-
-List all items in a Task Template, specified by its index.
-
-Format :  `listpresettasks i/INDEX`
-- The index must be a **positive integer** and must be **valid**
-
-Example
-* `listpresettasks i/1`
-
-### Load Template into Task Schedule : `loadtemplate` 
-
-Load a Preset Task Template into the Task Schedule, specified by its index.
-
-Format : `loadtemplate i/INDEX`
-
-- The combined duration of all tasks in a day cannot be more than 24 hours
-- The index must be a **positive integer** and must be **valid**
-
-Example: 
-* `loadtemplate i/1`
-
-### Delete Template : `deletetemplate`
-
-Delete a Task Template together with all its Preset Tasks, specified by its index.
-
-Format : `deletetemplate i/INDEX`
-
-Example:
-* `deletetemplate i/1`
-
-### Delete Preset Task : `deletepresettask`
-
-Delete a Preset Task from its Template.
-
-Format : `deletepresettask it/TEMPLATEINDEX ip/PRESETINDEX`
-
-Example:
-* `deletepresettask it/1 ip/3`
-
-### List Preset Modules : `listpresetmodules`
-
-List all available Preset Modules.
-
-Format : `listpresetmodules`
-
-### List all Modules Taken : "listallmodules"
-
-List all Preset Modules taken by the user.
-
-Format : `listallmodules`
-
-### Load Preset Module : `loadmodule`
-
-Load a Preset Module into the Module Schedule, specified by its index.
-
-Format : `loadmodule i/INDEX`
-
-- New Module Tasks must not clash with existing Module Tasks in the Module Schedule
-- The index of the Preset Module is its index in the Preset Module List 
-
-Example: 
-* `loadmodule i/100`
-
-### Remove a Module : `removemodule`
-
-Remove a Module and its Module Tasks from the Module Schedule, specified by its index.
-
-Format: `removemodule i/INDEX`
-
-- The index of the Preset Module is its index in the Preset Module List
-
-Example:
-* `removemodule i/59`
-
 ### Initialize User and Semester Information : `setup`
 
 Setup User and Semester data, including username, semester term and academic year.
 
-Format: `setup un/USERNAME sd/STARTDURATION ed/ENDDURATION ay/ACADEMICYEAR`
+Format: `setup n/USERNAME sd/STARTDURATION ed/ENDDURATION ay/ACADEMICYEAR`
 
 - The `STARTDURATION` has to be **before** `ENDDURATION`
 
 Examples:
-* `setup un/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1`
-* `setup ay/AY20/21 Sem 1 ed/29-11-2020 un/Betsy Crowe sd/22-09-2020`
+* `setup n/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1`
+* `setup ay/AY20/21 Sem 1 ed/29-11-2020 n/Betsy Crowe sd/22-09-2020`
 
 ### Edit Setup Details : `editsetup`
 
 Edit Setup details for GrAB3, including username, semester term and academic year.
 
-Format: `editsetup [un/USERNAME] [sd/STARTDURATION] [ed/ENDDURATION] [ay/ACADEMICYEAR]`
+Format: `editsetup [n/USERNAME] [sd/STARTDURATION] [ed/END] [ay/ACADEMICYEAR]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 Items in square brackets are optional, but please input at least 1 value to change.
 </div>
 
 Examples:
-*  `editsetup un/Jane Doe sd/23-02-2020 ed/29-06-2020 ay/AY19/20 Sem 2`
-*  `editsetup un/Jenny Doe ay/AY19/20 Sem 2`
+*  `editsetup n/Jane Doe sd/23-02-2020 ed/29-06-2020 ay/AY19/20 Sem 2`
+*  `editsetup n/Jenny Doe ay/AY19/20 Sem 2`
 
 ### Delete Setup Details: `deletesetup`
 
@@ -216,14 +103,14 @@ Add a user task to the task schedule in GrAB3.
 
 Format: `addusertask tn/TASKNAME du/DURATION da/DAY w/WEEK [t/TAG]`
 
-- `DURATION` will be in hours and less than 24 hours
-- `DAY` have to be an integer within 1-7, with 1 being monday and 7 being sunday
-- `WEEEK` have to be a valid positive integer. Total number of week calculate from semester start and end date. <br/>
+- `DURATION` is measured in hours and must not exceed 24 hours
+- `DAY` has to be an integer within 1-7, with 1 being Monday and 7 being Sunday
+- `WEEEK` has to be a valid positive integer. Total number of weeks are calculated using start and end date of the semester. <br/>
     e.g. If the semester is from 01 to 25/09/2020 <br/>
-            * Total week in the semester : 4 <br/>
+            * Total weeks in the semester : 4 <br/>
             * Week 1 will be from 01/09/2020 to 06/09/2020 <br/>
     `addusertask tn/CCA lunch meeting dur/4 day/2 w/1` will add user task to Tuesday of Week 1 (01/09/2020)
-- Addition of a user task to a specific day will be **rejected** if the total tasks for that day exceed 24 hours
+- Addition of a user task to a specific day will be **rejected** if the total tasks for that day exceeds 24 hours
 
 Examples:
 * `addusertask tn/CCA lunch meeting du/4 da/2 w/1`
@@ -239,23 +126,23 @@ Format: `editusertask id/TASKID [tn/TASKNAME] [du/DURATION] [da/DAY] [w/WEEK] [t
 Items in square brackets are optional, but please input at least 1 value to change.
 </div>
 
-- `DURATION` will be in hours and less than 24 hours
-- `DAY` have to be an integer within 1-7, with 1 being monday and 7 being sunday
-- `WEEEK` have to be a valid positive integer. Total number of week calculate from semester start and end date. <br/>
+- `DURATION` is measured in hours and must not exceed 24 hours
+- `DAY` has to be an integer within 1-7, with 1 being Monday and 7 being Sunday
+- `WEEEK` has to be a valid positive integer. Total number of weeks are calculated using start and end date of the semester. <br/>
     e.g. If the semester is from 01 to 25/09/2020 <br/>
-            * Total week in the semester : 4 <br/>
+            * Total weeks in the semester : 4 <br/>
             * Week 1 will be from 01 to 06/09/2020 <br/>
     `editusertask id/usrta001 da/2 w/1` will edit user task to Tuesday of Week 1. 
-- Addition of a user task to a specific day will be **rejected** if the total tasks for that day exceed 24 hours
+- Addition of a user task to a specific day will be **rejected** if the total tasks for that day exceeds 24 hours
 
 Example:
-* `editusertask id/2 tn/Complete 2103 Project sd/20-09-2020 dy/3`
-* `edituseretask id/2 sd/20-09-2020`
-* `editusertask id/2 tn/Complete 2103 Project da/4`
+* `editusertask id/usrta001 tn/Complete 2103 Project sd/20-09-2020 da/3`
+* `editusertask id/usrta001 sd/20-09-2020`
+* `editusertask id/usrta001 tn/Complete 2103 Project da/4`
 
 ### Indicate that User Task is Completed : `doneusertask`
 
-Indicate that the user task have been completed.
+Indicate that the user task has been completed.
 
 Format: `doneusertask id/TASKID`
 
@@ -273,13 +160,13 @@ Example:
 
 ### List the Task Schedule : `listtaskschedule`
 
-Display items within the Task Schedule.
+Displays all tasks in the week that is specified by the user.
 
 Format: `listtaskschedule w/WEEK`
 
-- `WEEEK` have to be a valid positive integer. Total number of week calculate from semester start and end date. <br/>
+- `WEEEK` has to be a valid positive integer. The total number of weeks are calculated using the start and end date of the semester. <br/>
     e.g. If the semester is from 01 to 25/09/2020 <br/>
-            * Total week in the semester : 4 <br/>
+            * Total weeks in the semester : 4 <br/>
             * Week 1 will be from 01 to 06/09/2020 <br/>
             
 Example: 
@@ -287,7 +174,7 @@ Example:
 
 ### Create a Task Template: `createtemplate`
 
-Create a template so that user can reuse it weekly. <br/>
+Creates a template of tasks for the user to reuse weekly to quickly add into his/her schedule <br/>
 An empty template with no task will be initialized.
 
 Format: `createtemplate ten/TEMPLATENAME`
@@ -295,16 +182,16 @@ Format: `createtemplate ten/TEMPLATENAME`
 Example: 
 * `createtemplate ten/CCA Meeting`
 
-### Edit a Task Template Name: `edittemplate`
+### Edit a Task Template Name: `edittemplatename`
 
-Edit a selected Task Template name for GrAB3
+Edit a selected task template name for GrAB3.
 
-Format: `edittemplate tti/TASKTEMPLATEINDEX ten/TEMPLATENAME`
+Format: `edittemplatename tti/TASKTEMPLATEINDEX ten/TEMPLATENAME`
 
 - The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
 
 Example: 
-* `edittemplate tti/1 ten/Task for CCA` 
+* `edittemplatename tti/1 ten/Task for CCA` 
 
 ### Delete a Task Template: `deletetemplate`
 
@@ -317,22 +204,22 @@ Format `deletetemplate tti/TASKTEMPLATEINDEX`
 Example:
 * `deletetemplate tti/1`
 
-### List Task Template :  `listtasktemplate` 
+### List Task Template :  `listtemplate` 
 
-List all the Task Template that was created.
+List all task templates that were created.
 
-Format `listtasktemplate`
+Format `listtemplate`
 
 ### Add Preset Task in Task Template : `addpresettask`
 
-Create and Add a Preset Task to be store in selected Task Template.
+Creates and adds a preset task in the selected task template.
 
 Format: `addpresettask tti/TASKTEMPLATEINDEX tn/TASKNAME du/DURATION da/DAY [t/TAG]`
 
 - The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
-- `DAY` have to be an integer within 1-7, with 1 being monday and 7 being sunday
-- `DURATION` will be in hours and less than 24 hours
-- Addition of a preset task to a specific day in the same template will be **rejected** if the total tasks for that day exceed 24 hours
+- `DAY` has to be an integer within 1-7, with 1 being Monday and 7 being Sunday
+- `DURATION` is measured in hours and must not exceed 24 hours
+- Addition of a preset task to a specific day in the same template will be **rejected** if the total tasks for that day exceeds 24 hours
 
 Example:
 * `addpresettask tti/1 tn/Revise for Lab du/3 da/2 t/LSM1301`
@@ -340,7 +227,7 @@ Example:
 
 ### Edit Preset Task in Task Template : `editpresettask`
 
-Edit a selected Preset Task in a selected Task Template.
+Edit a selected preset task in a selected task template.
 
 Format: `editpresettask tti/TASKTEMPLATEINDEX pti/PRESETTASKINDEX [tn/TASKNAME] [du/DURATION] [da/DAY] [t/TAG]`
 
@@ -350,9 +237,9 @@ Items in square brackets are optional, but please input at least 1 value to chan
 
 - The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
 - The `PRESETTASKINDEX` must be a **positive integer** and must be **valid**
-- `DAY` have to be an integer within 1-7, with 1 being monday and 7 being sunday
-- `DURATION` will be in hours and less than 24 hours
-- Addition of a preset task to a specific day in the same template will be **rejected** if the total tasks for that day exceed 24 hours
+- `DAY` has to be an integer within 1-7, with 1 being Monday and 7 being Sunday
+- `DURATION` is measured in hours and must not exceed 24 hours
+- Addition of a preset task to a specific day in the same template will be **rejected** if the total tasks for that day exceeds 24 hours
 
 Example: 
 * `editpresettask tti/1 pti/2 tn/CCA lunch du/3 da/5`
@@ -360,18 +247,18 @@ Example:
 
 ### Clear all Preset Task from Task Template : `cleartemplate`
 
-Clear all Preset Task in the selected Task Template.
+Clear all preset tasks in the selected task template.
 
 Format: `cleartemplate tti/TASKTEMPLATEINDEX`
 
 - The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
 
 Example: 
-* `cleartemplate tti/1 pti/1`
+* `cleartemplate tti/1`
 
 ### Delete a Preset Task from Task Template : `deletepresettask`
 
-Remove and Delete a Preset Task from the Task Template.
+Remove and Delete a preset task from the task template.
 
 Format: `deletepresettask tti/TASKTEMPLATEINDEX pti/PRESETTASKINDEX`
 
@@ -392,50 +279,50 @@ Format:  `loadtemplate tti/TASKTEMPLATEINDEX`
 Example:
 *  `loadtemplate tti/1`
 
-### List Preset Task in Task Template : `listpresettask`
+### List Preset Task in Task Template : `listtemplatetask`
 
-List all Preset Task in Task Template.
+List all preset tasks in task template.
 
-Format: `listpresettask tti/TASKTEMPLATEINDEX`
+Format: `listtemplatetask tti/TASKTEMPLATEINDEX`
 
 - The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
 
 Example: 
-* `listpresettask tti/1`
+* `listtemplatetask tti/1`
 
 ### Select Module : `selectmodule` 
 
-Select a Module and load all the ModuleTask into the Module Schedule.
+Select a module and load all the module task into the module schedule.
 
-Format: `selectmodule mi/MODULEINDEX`
+Format: `selectmodule mc/MODULECODE`
 
-- The `MODULEINDEX` must be a **positive integer** and must be **valid**
+- The `MODULECODE` must be a **positive integer** and must be **valid**
 
 Example: 
-* `selectmodule mi/1`
+* `selectmodule mc/1`
 
 ### Delete Module: `deletemodule`
 
-Remove and Delete a Module and all its Module Task from the Module Schedule.
+Remove and Delete a module and all its module task from the module schedule.
 
-Format: `deletemodule mi/MODULEINDEX`
+Format: `deletemodule mc/MODULECODE`
 
-- The `MODULEINDEX` must be a **positive integer** and must be **valid**
+- The `MODULECODE` must be a **positive integer** and must be **valid**
 
 Example: 
-* `deletemodule mi/1`
+* `deletemodule mc/1`
 
-### List Module List : `listmodulelist`
+### List Module List : `listmodule`
 
 List all the module that is offered by the university.
 
-Format: `listmodulelist`
+Format: `listmodules`
  
-### List All my Modules : `listmymodule`
+### List All my Modules : `listmymodules`
  
 List all the module that the user have selected.
  
-Format: `listmymodule`
+Format: `listmymodules`
  
  
 ### Exit GrAB3 : `exit`
@@ -462,27 +349,26 @@ GrAB3 data are saved in the hard disk automatically after any command that chang
 Action | Format, Examples
 --------|------------------
 **Help** | `help`
-**Setup** | `setup un/USERNAME sd/STARTDURATION ed/ENDDURATION ay/ACADEMICYEAR` <br/>e.g. `setup un/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1`
-**EditSetup** |  `editsetup [un/USERNAME] [sd/STARTDURATION] [ed/ENDDURATION] [ay/ACADEMICYEAR]` <br/>e.g. `editsetup un/Jane Doe sd/23-02-2020 ed/29-06-2020 ay/AY19/20 Sem 2`
+**Setup** | `setup n/USERNAME sd/STARTDURATION ed/ENDDURATION ay/ACADEMICYEAR` <br/>e.g. `setup n/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1`
+**EditSetup** |  `editsetup [n/USERNAME] [sd/STARTDURATION] [ed/ENDDURATION] [ay/ACADEMICYEAR]` <br/>e.g. `editsetup n/Jane Doe sd/23-02-2020 ed/29-06-2020 ay/AY19/20 Sem 2`
 **DeleteSetup** | `deletesetup`
 **AddUserTask** | `addusertask tn/TASKNAME du/DURATION da/DAY w/WEEK [t/TAG]` <br/> e.g. `addusertask tn/CCA lunch meeting du/4 da/2 w/2 t/CCA`
-**EditUserTask** | `editusertask id/TASKID [tn/TASKNAME] [du/DURATION] [da/DAY] [w/WEEK] [t/TAG]` <br/> e.g. `editusertask id/2 tn/Complete 2103 Project sd/20-09-2020 dy/3`
+**EditUserTask** | `editusertask id/TASKID [tn/TASKNAME] [du/DURATION] [da/DAY] [w/WEEK] [t/TAG]` <br/> e.g. `editusertask id/usrta001 tn/Complete 2103 Project sd/20-09-2020 da/3`
 **DoneUserTask** | `doneusertask id/TASKID` <br/> e.g. `doneusertask id/usrta001`
 **DeleteUserTask** | `deleteusertask id/TASKID` <br/> e.g. `deleteusertask id/usrta001`
 **ListTaskSchedule** | `listtaskschedule w/WEEK`  <br/> e.g. `listtaskschedule w/1`
 **CreateTaskTemplate** | `createtemplate ten/TEMPLATENAME` <br/> e.g. `createtemplate ten/CCA Meeting`
-**EditTaskTemplateName** | `edittemplate tti/TASKTEMPLATEINDEX ten/TEMPLATENAME` <br/> e.g. `edittemplate tti/1 ten/Task for CCA`
-**DeleteTaskTemplate** | `deletetemplate` <br/> e.g. `deletetemplate tti/1` 
-**ListTaskTemplate** | `listtasktemplate` 
+**EditTaskTemplateName** | `edittemplatename tti/TASKTEMPLATEINDEX ten/TEMPLATENAME` <br/> e.g. `edittemplatename tti/1 ten/Task for CCA`
+**DeleteTaskTemplate** | `deletetemplate tti/TASKTEMPLATEINDEX` <br/> e.g. `deletetemplate tti/1` 
+**ListTaskTemplate** | `listtemplate` 
 **AddPresetTask** | `addpresettask tti/TASKTEMPLATEINDEX tn/TASKNAME du/DURATION da/DAY [t/TAG]` <br/> e.g. `addpresettask tti/1 tn/Revise for Lab du/3 da/2 t/LSM1301`
 **EditPresetTask** | `editpresettask tti/TASKTEMPLATEINDEX pti/PRESETTASKINDEX [tn/TASKNAME] [du/DURATION] [da/DAY] [t/TAG]` <br/> e.g. `editpresettask tti/1 pti/2 tn/CCA lunch du/3 da/5 t/CCA`
-**ClearPresetTask** | `cleartemplate tti/TASKTEMPLATEINDEX` <br/> e.g. `cleartemplate tti/1 pti/1`
+**ClearPresetTask** | `cleartemplate tti/TASKTEMPLATEINDEX` <br/> e.g. `cleartemplate tti/1`
 **DeletePresetTask**| `deletepresettask tti/TASKTEMPLATEINDEX pti/PRESETTASKINDEX` <br/> e.g. `deletepresettask tti/1 pti/1`
 **LoadTaskTemplate** | `loadtemplate tti/TASKTEMPLATEINDEX` <br/> e.g. `loadtemplate tti/1`
-**ListPresetTask** | `listpresettask tti/TASKTEMPLATEINDEX` <br/> e.g. `listpresettask tti/1`
-**SelectModule** | `selectmodule mi/MODULEINDEX` <br/> e.g. `selectmodule mi/1`
-**DeleteModule** | `deletemodule mi/MODULEINDEX` <br/> e.g. `deletemodule mi/1`
-**ListModuleList** | `listmodulelist`
-**ListMyModule** | `listmymodule`
+**ListTemplateTask** | `listtemplatetask tti/TASKTEMPLATEINDEX` <br/> e.g. `listtemplatetask tti/1`
+**SelectModule** | `selectmodule mc/MODULECODE` <br/> e.g. `selectmodule mc/1`
+**DeleteModule** | `deletemodule mc/MODULECODE` <br/> e.g. `deletemodule mc/1`
+**ListModules** | `listmodules`
+**ListMyModules** | `listmymodules`
 **Exit** | `exit`
-
