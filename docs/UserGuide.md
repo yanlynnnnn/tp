@@ -15,25 +15,23 @@ busy schedules. The student interacts with the application using a command-line 
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+~~1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).~~
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Copy the file to the folder you want to use as the _home folder_ for your GrAB3.
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+1.Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * **`list`** : Lists all contacts.
+  * **`ListModuleList`** : Lists all module provided by the university.
 
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+  * **`setup`**`un/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1` : Adds a user named `John Doe` and academic year `AY20/21 Sem` that spans from `22-09-2020` to `29-11-2020`.
+  
+  * **`listtaskschedule`**`2` : List all the user tasks in task schedule for Week 2.
 
-   * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
-
-   * **`clear`** : Deletes all contacts.
-
-   * **`exit`** : Exits the app.
+  * **`exit`** : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -46,16 +44,16 @@ busy schedules. The student interacts with the application using a command-line 
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `setup n/NAME`, `NAME` is a parameter which can be used as `setup n/John Doe`.
+  e.g. in `setup un/USERNAME`, `USERNAME` is a parameter which can be used as `setup un/John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g `tn/TASKNAME [t/TAG]` can be used as `tn/CCA lunch meeting t/CCA` or as `tn/CCA lunch meeting`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* Items with `…​` after them can be used multiple times including zero times.<br>
+  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/CCA`, `t/CCA t/Fintech Society` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. if the command specifies `tn/TASKNAME du/DURATION`, `du/DURATION tn/TASKNAME` is also acceptable.
 
 </div>
 
@@ -182,29 +180,29 @@ Example:
 
 ### Initialize User and Semester Information : `setup`
 
-Setup User and Semester data, including username, semester term and fiscal year.
+Setup User and Semester data, including username, semester term and academic year.
 
-Format: `setup n/USERNAME sd/STARTDURATION ed/ENDDURATION fy/FISCALYEAR`
+Format: `setup un/USERNAME sd/STARTDURATION ed/ENDDURATION ay/ACADEMICYEAR`
 
 - The `STARTDURATION` has to be **before** `ENDDURATION`
 
 Examples:
-* `setup n/John Doe sd/22-09-2020 ed/29-11-2020 fy/AY20/21 Sem 1`
-* `setup fy/AY20/21 Sem 1 ed/29-11-2020 n/Betsy Crowe sd/22-09-2020`
+* `setup un/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1`
+* `setup ay/AY20/21 Sem 1 ed/29-11-2020 un/Betsy Crowe sd/22-09-2020`
 
 ### Edit Setup Details : `editsetup`
 
-Edit Setup details for GrAB3, including username, semester term and fiscal year.
+Edit Setup details for GrAB3, including username, semester term and academic year.
 
-Format: `editsetup [n/USERNAME] [sd/STARTDURATION] [ed/ENDDURATION] [fy/FISCALYEAR]`
+Format: `editsetup [un/USERNAME] [sd/STARTDURATION] [ed/ENDDURATION] [ay/ACADEMICYEAR]`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Edit the duration of the semester with either start duration or end duration or both
+Items in square brackets are optional, but please input at least 1 value to change.
 </div>
 
 Examples:
-*  `editsetup n/Jane Doe sd/23-02-2020 ed/29-06-2020 fy/AY19/20 Sem 2`
-*  `editsetup n/Jenny Doe sd/23-02-2020 fy/AY19/20 Sem 2`
+*  `editsetup un/Jane Doe sd/23-02-2020 ed/29-06-2020 ay/AY19/20 Sem 2`
+*  `editsetup un/Jenny Doe ay/AY19/20 Sem 2`
 
 ### Delete Setup Details: `deletesetup`
 
@@ -212,113 +210,250 @@ Delete all setup details in GrAB3.
 
 Format: `deletesetup` 
 
-### Add a Task to Task Schedule: `addtask`
+### Add a User Task to Task Schedule: `addusertask`
 
-Add a task to the task schedule in GrAB3.
+Add a user task to the task schedule in GrAB3.
 
-Format: `addtask n/NAME sd/DATE d/DURATION [t/TAG]`
+Format: `addusertask tn/TASKNAME du/DURATION da/DAY w/WEEK [t/TAG]`
 
-- Addition of a task to a specific day will be **rejected** if the total tasks for that day exceed 24 hours.
+- `DURATION` will be in hours and less than 24 hours
+- `DAY` have to be an integer within 1-7, with 1 being monday and 7 being sunday
+- `WEEEK` have to be a valid positive integer. Total number of week calculate from semester start and end date. <br/>
+    e.g. If the semester is from 01 to 25/09/2020 <br/>
+            * Total week in the semester : 4 <br/>
+            * Week 1 will be from 01/09/2020 to 06/09/2020 <br/>
+    `addusertask tn/CCA lunch meeting dur/4 day/2 w/1` will add user task to Tuesday of Week 1 (01/09/2020)
+- Addition of a user task to a specific day will be **rejected** if the total tasks for that day exceed 24 hours
 
 Examples:
-* `addtask n/John Doe sd/20-09-2020 d/2`
-* `addtask n/John Doe sd/20-09-2020 d/2 t/CS2101`
+* `addusertask tn/CCA lunch meeting du/4 da/2 w/1`
+* `addusertask tn/CCA lunch meeting du/4 da/2 w/2 t/CCA`
 
-### Edit Task Details: `edittask`
+### Edit User Task Details: `editusertask`
 
-Edit task details for GrAB3, including task name, date, duration and tag.
+Edit user task details for GrAB3, including task name, duration, day, week and tag.
 
-Format: `edittask i/INDEX n/TASKNAME sd/DATE d/DURATION`
+Format: `editusertask id/TASKID [tn/TASKNAME] [du/DURATION] [da/DAY] [w/WEEK] [t/TAG]`
 
-- The index must be a **positive integer** and must be **valid**
-- `DURATION` must be in hours
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Items in square brackets are optional, but please input at least 1 value to change.
+</div>
+
+- `DURATION` will be in hours and less than 24 hours
+- `DAY` have to be an integer within 1-7, with 1 being monday and 7 being sunday
+- `WEEEK` have to be a valid positive integer. Total number of week calculate from semester start and end date. <br/>
+    e.g. If the semester is from 01 to 25/09/2020 <br/>
+            * Total week in the semester : 4 <br/>
+            * Week 1 will be from 01 to 06/09/2020 <br/>
+    `editusertask id/usrta001 da/2 w/1` will edit user task to Tuesday of Week 1. 
+- Addition of a user task to a specific day will be **rejected** if the total tasks for that day exceed 24 hours
 
 Example:
-* `edittask i/2 n/Complete 2103 Project sd/20-09-2020 d/3`
-* `edittask i/2 sd/20-09-2020`
-* `edittask i/2 n/Complete 2103 Project d/4`
+* `editusertask id/2 tn/Complete 2103 Project sd/20-09-2020 dy/3`
+* `edituseretask id/2 sd/20-09-2020`
+* `editusertask id/2 tn/Complete 2103 Project da/4`
 
-### Listing All Persons : `list`
+### Indicate that User Task is Completed : `doneusertask`
 
-Shows a list of all persons in the address book.
+Indicate that the user task have been completed.
 
-Format: `list`
+Format: `doneusertask id/TASKID`
 
-### Editing a Person : `edit`
+Example:
+* `doneusertask id/usrta001`
 
-Edits an existing person in the address book.
+### Delete User Task from Task Schedule : `deleteusertask`
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
+Remove and delete user task from task schedule.
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+Format: `deleteusertask id/TASKID`
 
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+Example:
+* `deleteusertask id/usrta001`
 
-### Locating persons by name: `find`
+### List the Task Schedule : `listtaskschedule`
 
-Finds persons whose names contain any of the given keywords.
+Display items within the Task Schedule.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `listtaskschedule w/WEEK`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+- `WEEEK` have to be a valid positive integer. Total number of week calculate from semester start and end date. <br/>
+    e.g. If the semester is from 01 to 25/09/2020 <br/>
+            * Total week in the semester : 4 <br/>
+            * Week 1 will be from 01 to 06/09/2020 <br/>
+            
+Example: 
+* `listtaskschedule w/1`
 
-Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
+### Create a Task Template: `createtemplate`
 
-### Deleting a person : `delete`
+Create a template so that user can reuse it weekly. <br/>
+An empty template with no task will be initialized.
 
-Deletes the specified person from the address book.
+Format: `createtemplate ten/TEMPLATENAME`
 
-Format: `delete INDEX`
+Example: 
+* `createtemplate ten/CCA Meeting`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
+### Edit a Task Template Name: `edittemplate`
 
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+Edit a selected Task Template name for GrAB3
 
-### Clearing all entries : `clear`
+Format: `edittemplate tti/TASKTEMPLATEINDEX ten/TEMPLATENAME`
 
-Clears all entries from the address book.
+- The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
 
-Format: `clear`
+Example: 
+* `edittemplate tti/1 ten/Task for CCA` 
 
-### Exiting the program : `exit`
+### Delete a Task Template: `deletetemplate`
+
+Delete a task template and its data.
+
+Format `deletetemplate tti/TASKTEMPLATEINDEX`
+
+- The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
+
+Example:
+* `deletetemplate tti/1`
+
+### List Task Template :  `listtasktemplate` 
+
+List all the Task Template that was created.
+
+Format `listtasktemplate`
+
+### Add Preset Task in Task Template : `addpresettask`
+
+Create and Add a Preset Task to be store in selected Task Template.
+
+Format: `addpresettask tti/TASKTEMPLATEINDEX tn/TASKNAME du/DURATION da/DAY [t/TAG]`
+
+- The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
+- `DAY` have to be an integer within 1-7, with 1 being monday and 7 being sunday
+- `DURATION` will be in hours and less than 24 hours
+- Addition of a preset task to a specific day in the same template will be **rejected** if the total tasks for that day exceed 24 hours
+
+Example:
+* `addpresettask tti/1 tn/Revise for Lab du/3 da/2 t/LSM1301`
+* `addpresettask tti/1 tn/Revise for Lab du/3 da/2`
+
+### Edit Preset Task in Task Template : `editpresettask`
+
+Edit a selected Preset Task in a selected Task Template.
+
+Format: `editpresettask tti/TASKTEMPLATEINDEX pti/PRESETTASKINDEX [tn/TASKNAME] [du/DURATION] [da/DAY] [t/TAG]`
+
+<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+Items in square brackets are optional, but please input at least 1 value to change.
+</div>
+
+- The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
+- The `PRESETTASKINDEX` must be a **positive integer** and must be **valid**
+- `DAY` have to be an integer within 1-7, with 1 being monday and 7 being sunday
+- `DURATION` will be in hours and less than 24 hours
+- Addition of a preset task to a specific day in the same template will be **rejected** if the total tasks for that day exceed 24 hours
+
+Example: 
+* `editpresettask tti/1 pti/2 tn/CCA lunch du/3 da/5`
+* `editpresettask tti/1 pti/2 tn/CCA lunch du/3 da/5 t/CCA`
+
+### Clear all Preset Task from Task Template : `cleartemplate`
+
+Clear all Preset Task in the selected Task Template.
+
+Format: `cleartemplate tti/TASKTEMPLATEINDEX`
+
+- The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
+
+Example: 
+* `cleartemplate tti/1 pti/1`
+
+### Delete a Preset Task from Task Template : `deletepresettask`
+
+Remove and Delete a Preset Task from the Task Template.
+
+Format: `deletepresettask tti/TASKTEMPLATEINDEX pti/PRESETTASKINDEX`
+
+- The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
+- The `PRESETTASKINDEX` must be a **positive integer** and must be **valid**
+
+Example: 
+* `deletepresettask tti/1 pti/1`
+
+### Load Task Template into Task Schedule : `loadtemplate`
+
+Load all the Preset Task listed in Task Template into the Task Schedule.
+
+Format:  `loadtemplate tti/TASKTEMPLATEINDEX`
+
+- The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
+
+Example:
+*  `loadtemplate tti/1`
+
+### List Preset Task in Task Template : `listpresettask`
+
+List all Preset Task in Task Template.
+
+Format: `listpresettask tti/TASKTEMPLATEINDEX`
+
+- The `TASKTEMPLATEINDEX` must be a **positive integer** and must be **valid**
+
+Example: 
+* `listpresettask tti/1`
+
+### Select Module : `selectmodule` 
+
+Select a Module and load all the ModuleTask into the Module Schedule.
+
+Format: `selectmodule mi/MODULEINDEX`
+
+- The `MODULEINDEX` must be a **positive integer** and must be **valid**
+
+Example: 
+* `selectmodule mi/1`
+
+### Delete Module: `deletemodule`
+
+Remove and Delete a Module and all its Module Task from the Module Schedule.
+
+Format: `deletemodule mi/MODULEINDEX`
+
+- The `MODULEINDEX` must be a **positive integer** and must be **valid**
+
+Example: 
+* `deletemodule mi/1`
+
+### List Module List : `listmodulelist`
+
+List all the module that is offered by the university.
+
+Format: `listmodulelist`
+ 
+### List All my Modules : `listmymodule`
+ 
+List all the module that the user have selected.
+ 
+Format: `listmymodule`
+ 
+ 
+### Exit GrAB3 : `exit`
 
 Exits the program.
 
 Format: `exit`
 
-### Saving the data
+### Saving the Data
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
-
-### Archiving data files `[coming in v2.0]`
-
-_{explain the feature here}_
+GrAB3 data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GrAB3 home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -326,10 +461,28 @@ _{explain the feature here}_
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
 **Help** | `help`
+**Setup** | `setup un/USERNAME sd/STARTDURATION ed/ENDDURATION ay/ACADEMICYEAR` <br/>e.g. `setup un/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1`
+**EditSetup** |  `editsetup [un/USERNAME] [sd/STARTDURATION] [ed/ENDDURATION] [ay/ACADEMICYEAR]` <br/>e.g. `editsetup un/Jane Doe sd/23-02-2020 ed/29-06-2020 ay/AY19/20 Sem 2`
+**DeleteSetup** | `deletesetup`
+**AddUserTask** | `addusertask tn/TASKNAME du/DURATION da/DAY w/WEEK [t/TAG]` <br/> e.g. `addusertask tn/CCA lunch meeting du/4 da/2 w/2 t/CCA`
+**EditUserTask** | `editusertask id/TASKID [tn/TASKNAME] [du/DURATION] [da/DAY] [w/WEEK] [t/TAG]` <br/> e.g. `editusertask id/2 tn/Complete 2103 Project sd/20-09-2020 dy/3`
+**DoneUserTask** | `doneusertask id/TASKID` <br/> e.g. `doneusertask id/usrta001`
+**DeleteUserTask** | `deleteusertask id/TASKID` <br/> e.g. `deleteusertask id/usrta001`
+**ListTaskSchedule** | `listtaskschedule w/WEEK`  <br/> e.g. `listtaskschedule w/1`
+**CreateTaskTemplate** | `createtemplate ten/TEMPLATENAME` <br/> e.g. `createtemplate ten/CCA Meeting`
+**EditTaskTemplateName** | `edittemplate tti/TASKTEMPLATEINDEX ten/TEMPLATENAME` <br/> e.g. `edittemplate tti/1 ten/Task for CCA`
+**DeleteTaskTemplate** | `deletetemplate` <br/> e.g. `deletetemplate tti/1` 
+**ListTaskTemplate** | `listtasktemplate` 
+**AddPresetTask** | `addpresettask tti/TASKTEMPLATEINDEX tn/TASKNAME du/DURATION da/DAY [t/TAG]` <br/> e.g. `addpresettask tti/1 tn/Revise for Lab du/3 da/2 t/LSM1301`
+**EditPresetTask** | `editpresettask tti/TASKTEMPLATEINDEX pti/PRESETTASKINDEX [tn/TASKNAME] [du/DURATION] [da/DAY] [t/TAG]` <br/> e.g. `editpresettask tti/1 pti/2 tn/CCA lunch du/3 da/5 t/CCA`
+**ClearPresetTask** | `cleartemplate tti/TASKTEMPLATEINDEX` <br/> e.g. `cleartemplate tti/1 pti/1`
+**DeletePresetTask**| `deletepresettask tti/TASKTEMPLATEINDEX pti/PRESETTASKINDEX` <br/> e.g. `deletepresettask tti/1 pti/1`
+**LoadTaskTemplate** | `loadtemplate tti/TASKTEMPLATEINDEX` <br/> e.g. `loadtemplate tti/1`
+**ListPresetTask** | `listpresettask tti/TASKTEMPLATEINDEX` <br/> e.g. `listpresettask tti/1`
+**SelectModule** | `selectmodule mi/MODULEINDEX` <br/> e.g. `selectmodule mi/1`
+**DeleteModule** | `deletemodule mi/MODULEINDEX` <br/> e.g. `deletemodule mi/1`
+**ListModuleList** | `listmodulelist`
+**ListMyModule** | `listmymodule`
+**Exit** | `exit`
+
