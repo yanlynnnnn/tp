@@ -2,9 +2,12 @@
 layout: page
 title: Developer Guide
 ---
-* Table of Contents
-{:toc}
-
+ Table of Contents:
+ * [Setting up, getting started](#setting-up-getting-started)
+ * [Design](#design)
+ * [Implementation](#implementation)
+ * [Appendix: Requirements](#appendix-requirements)
+ * [Appendix: Instructions for manual testing](#appendix-instructions-for-manual-testing)
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
@@ -295,17 +298,29 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
-
+* System Requirements:
+    * GrAB3 should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+    * GrAB3 should be optimized for keyboard input and can function without the use of a mouse.
+      However, a mouse would improve the user experience tremendously.
+    * The computer running the Java Virtual Machine (JVM) should have sufficient disk space to
+      accommodate the user's data stored in the system. It should also have sufficient RAM
+      and CPU power to run the JVM smoothly.
+* Performance Requirements:
+    * GrAB3 should be able to start up and load existing the user's stored data sufficiently fast (< 10s). 
+    * Context switching / menu navigation through the use of button clicks should be sufficiently fast (< 10s). 
+* Usability:
+    * GrAB3 should be user-friendly for any person who can use a computer and does not require prior technical knowledge.
+    * The user interface of GrAB3 should look intuitive and simple to navigate. It should not look cluttered with too many panels.
+* Reliability:
+    * GrAB3 should not crash in the event of incorrect user input- this should be handled safely with exceptions.  
+* Scalability:
+    * GrAB3 should be able to handle hundreds of tasks by a user for the entire period of the semester. No expansion of 
+      hardware capabilities or software modifications should be required.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
-
+* **JVM**: Java Virtual Machine - Java code that is compiled is run in the virtual machine.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
