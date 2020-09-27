@@ -236,15 +236,14 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* Busy university student
-* Likes to plan every detail of the week
-* Likes to keep everything in one place
+* Independent home based buisness owner
+* Prefers to have relevant buisness components in a single application
 * Is a fast typist
 * Prefers typing over using mouse input
 
 **Value proposition**:
-* A one stop solution for university students to manage their weekly tasks and module requirements.
-
+* Consolidates everything a home-based buisness needs such as appointments, clients, expenses, revenue and services into one place
+* Displays expenses and revenue in a simple format for users to view
 
 ### User stories
 
@@ -252,15 +251,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                 | I want to …​                                   | So that I can…​                                                     |
 | -------- | ------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | Organized student                          | Keep track of all my tasks in my weekly schedule  | Have all necessary details for a full-time student in one place        |
-| `* * *`  | Organized student                          | Set priority levels for my tasks                  | See which of my tasks are the most urgent to complete                  |
-| `* * *`  | Forgetful student                          | Create task lists                                 | Keep track of the tasks that I need to do                              |
-| `* * *`  | Forgetful student                          | Add reminders to a task                           | Be reminded to complete the task before its deadline                   |
-| `* * *`  | Lazy student                               | Have built-in information about modules           | Easily include them in my module schedule without missing any detail   |
-| `* * *`  | Lazy student                               | Create custom templates for my weeks              | Minimize the amount of repeated tasks I need to input per week         |
-| `* *`    | New student                                | Have a built-in help guide                        | Familiarize myself with teh application quickly                        |
-| `* *`    | Meticulous student                         | Have a categorical breakdown of my tasks          | Manage my time better                                                  |
-| `*`      | Lazy student                               | Load task schedule templates created by others    | Avoid creating everything from scratch on my own                       |
+| `* * *`  | Home based buisness                        | Keep track of all my appointments in a simple view| Easily keep track of my appointments                                   |
+| `* * *`  | Home based buisness                        | Edit the services I provide                       | Adjust the pricing of my services accordingly                          |
+| `* * *`  | Home based buisness                        | Create tags for my clients                        | Categorise my clients better                                           |
+| `* * *`  | Home based buisness                        | View all my expenses                              | Easily keep track of how much I spend                                  |
+| `* * *`  | Home based buisness                        | View all my revenues                              |                                                                        |
 
 *{More to be added}*
 
@@ -268,167 +263,157 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `GrAB3` and the **Actor** is the `user`, unless specified otherwise)
 
-#### Task Schedule
+### Appointment List
 
-**UC01: Add a task to the task schedule**
+**UC01: Add an appointment into the appointment list**
 
-**Preconditions: A task schedule must exist**
+**Preconditions: Appointment list must exist**
 
-**Guarantees: A new task will be added to the task schedule** 
+**Guarantees: A new appointment will be added to the appointment list**
 
 **MSS**
 
-1.  User requests to add a new task into the existing task schedule.
-2.  GrAB3 shows the updated task schedule.
+0.  User adds appointment into appointment list.
+1.  GrAB3 shows the updated list of appointments.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. Task description is empty.
+* 2a. The specified module code is invalid.
+
+    * 2a1. GrAB3 shows an error message.
+
+    Use case resumes at step 1.
+
+#### Client List
+
+**UC02: Add a client to client list**
+
+**Preconditions: A client must exist**
+
+**Guarantees: A new client will added to the client list** 
+
+**MSS**
+
+1.  User requests to add a new client into the client list.
+2.  GrAB3 shows the updated client list
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Client description is empty.
 
     * 1a1. GrAB3 shows an error message.
     
         Use case resumes at step 2.
 
-**UC02: Delete a task**
+**UC03: Delete a client**
 
-**Preconditions: task schedule must exist**
+**Preconditions: client schedule must exist**
 
-**Guarantees: The task specified by the user will be deleted**
+**Guarantees: The client specified by the user will be deleted**
 
 **MSS**
 
-1.  User requests to list all tasks for the specified week.
-2.  GrAB3 displays a list of tasks for that week.
-3.  User requests to delete a specific task from the list generated.
-4.  GrAB3 shows the updated list after deletion of the task.
+1.  User requests to list all clients.
+2.  GrAB3 displays a list of clients.
+3.  User requests to delete a specific client from the list generated.
+4.  GrAB3 shows the updated list after deletion of the client.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. The week specified by the user is invalid
-    * 1a1. GrAB3 shows an error message. 
-    
-       Use case resumes at step 1.
-
-* 2a. The TaskSchedule is empty.
-
-  Use case ends.
-
-* 3a. The specified task does not exist.
+* 3a. The specified client does not exist.
 
     * 3a1. GrAB3 shows an error message.
 
       Use case resumes at step 2.
 
-**UC03: Edit a task**
+**UC04: Edit a client**
 
-**Preconditions: Task exists in TaskSchedule**
+**Preconditions: Client exists in TaskSchedule**
 
-**Guarantees: Task specified by user gets edited**
+**Guarantees: Client specified by user gets edited**
 
 **MSS**
 
-1.  User requests to list all tasks for a specific week.
-2.  GrAB3 shows a list of tasks for that week.
-3.  User requests to edit the description of a specific task from that list.
-4.  GrAB3 shows the updated task.
+1.  User requests to list all clients.
+2.  GrAB3 shows a list of clients.
+3.  User requests to edit the description of a specific client from that list.
+4.  GrAB3 shows the updated client.
 
     Use case ends.
 
 **Extensions**
-
-* 1a. The week specified by the user is invalid
-    * 1a1. GrAB3 shows an error message. 
-    
-       Use case resumes at step 1.
-
-* 2a. The TaskSchedule is empty.
-
-    Use case ends.
 
 * 3a. The given index is invalid.
 
     * 3a1. GrAB3 shows an error message.
 
         Use case resumes at step 2.
-    
-**UC04: Add a preset task into a task template**
 
-**Preconditions: Task templates in the list of templates exists**
 
-**Guarantees: A new preset task will be added into the specified task template**
+### Expense List
 
-**MSS**
+**UC04: Sort expenses by ascending/descending order**
 
-1. User request to list all task templates available.
-2. GrAB3 shows a list of task templates.
-3. User adds a preset task to a task template selected from the list generated.
-4. GrAB3 shows the updated task template.
+**Preconditions: Expenses exist in expense list**
 
-    Use case ends.
-
-**UC05: Load task template into task schedule**
-
-**Preconditions: There are existing tasks in the task template**
-
-**Guarantees: Task schedule with tasks from the template get added for the user**
-
-**MSS**
-1. User requests to view the list of task templates.
-2. GrAB3 shows a list of task templates.
-3. User selects a task template to load into the task schedule.
-4. GrAB3 shows the updated task schedule.
-
-    Use case ends
-
-### Module Schedule
-
-**UC06: Add a module into the module schedule**
-
-**Preconditions: Module list must exist**
-
-**Guarantees: A new module will be added to the module schedule**
+**Guarantees: View of expenses sorted in order specified by user **
 
 **MSS**
 
-1.  User requests to view all modules available.
-2.  GrAB3 shows the module list.
-3.  User adds module into module schedule using module code.
-4.  GrAB3 shows the updated module schedule
+1.  User requests to list all expenses.
+2.  GrAB3 shows a list of expenses.
+3.  User requests to sort the expenses by ascending order.
+4.  GrAB3 shows the sorted list view.
 
     Use case ends.
 
 **Extensions**
 
-* 3a. The specified module code is invalid.
+### Revenue List
 
-    * 3a1. GrAB3 shows an error message.
+**UC05: Clear the revenue list**
 
-    Use case resumes at step 2.
+**Preconditions: Revenues exist in revenue list**
 
-**UC07: Remove a module**
-
-**Preconditions: Selected module must exist in the module schedule** 
-
-**Guarantees: The module specified by the user will be removed from the module schedule**
+**Guarantees: An empty revenue list **
 
 **MSS**
 
-1.  User requests to remove a specific module from the module schedule.
-2.  GrAB3 shows the updated module schedule.
+1.  User requests to list all revenues.
+2.  GrAB3 shows a list of revenues.
+3.  User requests to clear the list.
+4.  GrAB3 shows the updated list.
 
     Use case ends.
 
 **Extensions**
 
-* 3a. The module code is invalid.
+### Service List
 
-    * 3a1. GrAB3 shows an error message.
+**UC06: Delete a service **
 
-    Use case resumes at step 2.
+**Preconditions: Service exists in service list**
+
+**Guarantees: Updated list with service specified by user deleted **
+
+**MSS**
+
+1.  User requests to list all services.
+2.  GrAB3 shows a list of services.
+3.  User delete a service.
+4.  GrAB3 shows the updated list view.
+
+    Use case ends.
+
+**Extensions**
+
+### Others
 
 *{More to be added}*
 
