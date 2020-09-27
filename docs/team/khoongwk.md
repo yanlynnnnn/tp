@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Galvin's Project Portfolio
+title: Wei Kit Khoong's Project Portfolio Page
 ---
 
 ## Project: GrAB3

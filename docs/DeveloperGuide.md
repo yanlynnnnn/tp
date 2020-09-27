@@ -2,9 +2,12 @@
 layout: page
 title: Developer Guide
 ---
-* Table of Contents
-{:toc}
-
+ Table of Contents:
+ * [Setting up, getting started](#setting-up-getting-started)
+ * [Design](#design)
+ * [Implementation](#implementation)
+ * [Appendix: Requirements](#appendix-requirements)
+ * [Appendix: Instructions for manual testing](#appendix-instructions-for-manual-testing)
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
@@ -236,15 +239,14 @@ _{Explain here how the data archiving feature will be implemented}_
 
 **Target user profile**:
 
-* Busy university student
-* Likes to plan every detail of the week
-* Likes to keep everything in one place
+* Independent home based buisness owner
+* Prefers to have relevant buisness components in a single application
 * Is a fast typist
 * Prefers typing over using mouse input
 
 **Value proposition**:
-* A one stop solution for university students to manage their weekly tasks and module requirements.
-
+* Consolidates everything a home-based buisness needs such as appointments, clients, expenses, revenue and services into one place
+* Displays expenses and revenue in a simple format for users to view
 
 ### User stories
 
@@ -252,60 +254,197 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 | Priority | As a …​                                 | I want to …​                                   | So that I can…​                                                     |
 | -------- | ------------------------------------------ | ------------------------------------------------- | ---------------------------------------------------------------------- |
-| `* * *`  | Organized student                          | Keep track of all my tasks in my weekly schedule  | Have all necessary details for a full-time student in one place        |
-| `* * *`  | Organized student                          | Set priority levels for my tasks                  | See which of my tasks are the most urgent to complete                  |
-| `* * *`  | Forgetful student                          | Create task lists                                 | Keep track of the tasks that I need to do                              |
-| `* * *`  | Forgetful student                          | Add reminders to a task                           | Be reminded to complete the task before its deadline                   |
-| `* * *`  | Lazy student                               | Have built-in information about modules           | Easily include them in my module schedule without missing any detail   |
-| `* * *`  | Lazy student                               | Create custom templates for my weeks              | Minimize the amount of repeated tasks I need to input per week         |
-| `* *`    | New student                                | Have a built-in help guide                        | Familiarize myself with teh application quickly                        |
-| `* *`    | Meticulous student                         | Have a categorical breakdown of my tasks          | Manage my time better                                                  |
-| `*`      | Lazy student                               | Load task schedule templates created by others    | Avoid creating everything from scratch on my own                       |
+| `* * *`  | Home based buisness                        | Keep track of all my appointments in a simple view| Easily keep track of my appointments                                   |
+| `* * *`  | Home based buisness                        | Edit the services I provide                       | Adjust the pricing of my services accordingly                          |
+| `* * *`  | Home based buisness                        | Create tags for my clients                        | Categorise my clients better                                           |
+| `* * *`  | Home based buisness                        | View all my expenses                              | Easily keep track of how much I spend                                  |
+| `* * *`  | Home based buisness                        | View all my revenues                              |                                                                        |
 
 *{More to be added}*
 
 ### Use cases
 
-(For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `GrAB3` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+### Appointment List
+
+**UC01: Add an appointment into the appointment list**
+
+**Preconditions: Appointment list must exist**
+
+**Guarantees: A new appointment will be added to the appointment list**
 
 **MSS**
 
-1.  User requests to list persons
-2.  AddressBook shows a list of persons
-3.  User requests to delete a specific person in the list
-4.  AddressBook deletes the person
+0.  User adds appointment into appointment list.
+1.  GrAB3 shows the updated list of appointments.
 
     Use case ends.
 
 **Extensions**
 
-* 2a. The list is empty.
+* 2a. The specified module code is invalid.
 
-  Use case ends.
+    * 2a1. GrAB3 shows an error message.
+
+    Use case resumes at step 1.
+
+#### Client List
+
+**UC02: Add a client to client list**
+
+**Preconditions: A client must exist**
+
+**Guarantees: A new client will added to the client list** 
+
+**MSS**
+
+1.  User requests to add a new client into the client list.
+2.  GrAB3 shows the updated client list
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Client description is empty.
+
+    * 1a1. GrAB3 shows an error message.
+    
+        Use case resumes at step 2.
+
+**UC03: Delete a client**
+
+**Preconditions: client schedule must exist**
+
+**Guarantees: The client specified by the user will be deleted**
+
+**MSS**
+
+1.  User requests to list all clients.
+2.  GrAB3 displays a list of clients.
+3.  User requests to delete a specific client from the list generated.
+4.  GrAB3 shows the updated list after deletion of the client.
+
+    Use case ends.
+
+**Extensions**
+
+* 3a. The specified client does not exist.
+
+    * 3a1. GrAB3 shows an error message.
+
+      Use case resumes at step 2.
+
+**UC04: Edit a client**
+
+**Preconditions: Client exists in TaskSchedule**
+
+**Guarantees: Client specified by user gets edited**
+
+**MSS**
+
+1.  User requests to list all clients.
+2.  GrAB3 shows a list of clients.
+3.  User requests to edit the description of a specific client from that list.
+4.  GrAB3 shows the updated client.
+
+    Use case ends.
+
+**Extensions**
 
 * 3a. The given index is invalid.
 
-    * 3a1. AddressBook shows an error message.
+    * 3a1. GrAB3 shows an error message.
 
-      Use case resumes at step 2.
+        Use case resumes at step 2.
+
+
+### Expense List
+
+**UC04: Sort expenses by ascending/descending order**
+
+**Preconditions: Expenses exist in expense list**
+
+**Guarantees: View of expenses sorted in order specified by user **
+
+**MSS**
+
+1.  User requests to list all expenses.
+2.  GrAB3 shows a list of expenses.
+3.  User requests to sort the expenses by ascending order.
+4.  GrAB3 shows the sorted list view.
+
+    Use case ends.
+
+**Extensions**
+
+### Revenue List
+
+**UC05: Clear the revenue list**
+
+**Preconditions: Revenues exist in revenue list**
+
+**Guarantees: An empty revenue list **
+
+**MSS**
+
+1.  User requests to list all revenues.
+2.  GrAB3 shows a list of revenues.
+3.  User requests to clear the list.
+4.  GrAB3 shows the updated list.
+
+    Use case ends.
+
+**Extensions**
+
+### Service List
+
+**UC06: Delete a service **
+
+**Preconditions: Service exists in service list**
+
+**Guarantees: Updated list with service specified by user deleted **
+
+**MSS**
+
+1.  User requests to list all services.
+2.  GrAB3 shows a list of services.
+3.  User delete a service.
+4.  GrAB3 shows the updated list view.
+
+    Use case ends.
+
+**Extensions**
+
+### Others
 
 *{More to be added}*
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-
-*{More to be added}*
-
+* System Requirements:
+    * GrAB3 should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+    * GrAB3 should be optimized for keyboard input and can function without the use of a mouse.
+      However, a mouse would improve the user experience tremendously.
+    * The computer running the Java Virtual Machine (JVM) should have sufficient disk space to
+      accommodate the user's data stored in the system. It should also have sufficient RAM
+      and CPU power to run the JVM smoothly.
+* Performance Requirements:
+    * GrAB3 should be able to start up and load existing the user's stored data sufficiently fast (< 10s). 
+    * Context switching / menu navigation through the use of button clicks should be sufficiently fast (< 10s). 
+* Usability:
+    * GrAB3 should be user-friendly for any person who can use a computer and does not require prior technical knowledge.
+    * The user interface of GrAB3 should look intuitive and simple to navigate. It should not look cluttered with too many panels.
+* Reliability:
+    * GrAB3 should not crash in the event of incorrect user input- this should be handled safely with exceptions.  
+* Scalability:
+    * GrAB3 should be able to handle hundreds of tasks by a user for the entire period of the semester. No expansion of 
+      hardware capabilities or software modifications should be required.
 ### Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
-
+* **JVM**: Java Virtual Machine - Java code that is compiled is run in the virtual machine.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**

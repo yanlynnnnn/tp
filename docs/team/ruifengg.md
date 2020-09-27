@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Galvin's Project Portfolio
+title: Chang Rui Feng's Project Portfolio
 ---
 
 ## Project: GrAB3
