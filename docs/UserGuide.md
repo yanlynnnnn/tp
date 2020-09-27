@@ -3,8 +3,13 @@ layout: page
 title: User Guide
 ---
 
-GrAB3 is an **all in one planner application** that provides a simple way for university students to stay ahead of their
-busy schedules. The student interacts with the application using a command-line interface (CLI).
+Are you an independent home-based beauty salon owner, scrambling between your calendar, client contacts, 
+and notebook to keep track of all your appointments, revenue and expenses? 
+Do you spend hours tabulating all your revenue and expenses just to get an idea of how your business is doing?
+Fret not, our application, GrAB3, will reduce the hassle of managing your business and saves your valuable time. 
+GrAB3 is an all-in-one application that helps home-based beauty salon owners consolidate their business details - 
+such as their appointments, revenue and expenses - into a single application. 
+The application uses a Command Line Interface (CLI)...
 
 * Table of Contents
 {:toc}
@@ -15,321 +20,188 @@ busy schedules. The student interacts with the application using a command-line 
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).
+~~1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).~~
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+1. Copy the file to the folder you want to use as the _home folder_ for your GrAB3.
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+1.Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * **`list`** : Lists all contacts.
+  ~~* **`listmodules`** : Lists all module provided by the university.~~
 
-   * **`add`**`n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+  ~~* **`setup`**`n/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1` : Adds a user named `John Doe` and academic year `AY20/21 Sem 1` that spans from `22-09-2020` to `29-11-2020`.~~
+  
+  ~~* **`listtaskschedule`**`2` : List all the user tasks in task schedule for Week 2.~~
 
-   * **`delete`**`3` : Deletes the 3rd contact shown in the current list.
-
-   * **`clear`** : Deletes all contacts.
-
-   * **`exit`** : Exits the app.
+  ~~* **`exit`** : Exits the app.~~
 
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
+## About
 
-## Features
+### Structure of this document
+
+
+### Reading this document
+
+#### Terminology related to the GUI
+
+#### General Symbols and Syntax 
+
+#### Command Syntax and Usage
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Notes about the command format:**<br>
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `setup n/NAME`, `NAME` is a parameter which can be used as `setup n/John Doe`.
+  e.g. in `setup n/USERNAME`, `USERNAME` is a parameter which can be used as `setup n/John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g `tn/TASKNAME [t/TAG]` can be used as `tn/CCA lunch meeting t/CCA` or as `tn/CCA lunch meeting`.
 
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+* Items with `…​` after them can be used multiple times including zero times.<br>
+  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/CCA`, `t/CCA t/Fintech Society` etc.
 
 * Parameters can be in any order.<br>
-  e.g. if the command specifies `n/NAME p/PHONE_NUMBER`, `p/PHONE_NUMBER n/NAME` is also acceptable.
+  e.g. if the command specifies `tn/TASKNAME du/DURATION`, `du/DURATION tn/TASKNAME` is also acceptable.
 
 </div>
 
-### Viewing help : `help`
+## Features
 
-Shows a message explaning how to access the help page.
+{Description} 
+
+### Feature 1
+
+{Description}
+
+#### Feature 1 parameter
+
+{Description}
+
+{Command parameter explanation}
+
+##### Feature command 1 `Feature command 1`
+
+{Description}
+
+Format : `Format`
+
+{Format explanation / limitation}
+
+Example:
+
+{Example description/ case scenario}
+
+{Example action}
+
+{Example Outcome details}
+
+{Example outcome screenshot}
+
+## Others
+
+{Description}
+
+### Others Command Parameter
+
+{Description}
+
+{Command parameter explanation}
+
+#### Viewing help : `help`
+
+Show a message explaining how to access the help page.
+
+Format : `help [COMMAND]`
+
+{Format explanation / limitation}
+
+Example:
+
+If you are unsure of the commands that GrAB3 offered. You can follow the steps below to get a full list of all the commands.
+
+Steps: 
+1. Type `help` into the command box.
+1. Press `Enter` to execute.
+
+Outcome: 
+
+1. GrAb3 will switch to the *Help* tab.
 
 ![help message](images/helpMessage.png)
 
-Format: `help`
-
-### Delete a Task : `delete` 
-
-Delete a Task together with all its data, specified by its index.
-
-Format : `deletetask i/INDEX`
-
-- The index must be a **positive integer** and must be **valid**
-
-Example : 
-*  `deletetask i/1`
-
-### Create a Preset Task Template : `maketemplate`
-
-Create a template for recurring weekly tasks (Preset Tasks). It is initialized
-with no Preset Tasks.
-
-Format : `maketemplate n/TEMPLATENAME`
-
-### Add a Preset Task to a Template : `addpresettask` 
-
-Add a Preset Task to a Task Template, specified by its index.
-
-Format: `addpresettask i/INDEX n/TASKNAME sd/DATE d/DURATION`
-
-- `DURATION` is measured in hours
-- Addition of a Preset Task to a specific day will be **rejected** if the total tasks
-  for that day exceed 24 hours
-- The index of the template must be a **positive integer** and must be **valid**
-
-Example: 
-* `addpresettask i/1 n/Read Book sd/29-09-2020 d/2`
-
-### List Preset Task Templates : `listtemplates`
-
-List all Preset Task Templates.
-
-Format : `listtemplates`
-
-### List Preset Tasks : `listpresettasks`
-
-List all items in a Task Template, specified by its index.
-
-Format :  `listpresettasks i/INDEX`
-- The index must be a **positive integer** and must be **valid**
-
-Example
-* `listpresettasks i/1`
-
-### Load Template into Task Schedule : `loadtemplate` 
-
-Load a Preset Task Template into the Task Schedule, specified by its index.
-
-Format : `loadtemplate i/INDEX`
-
-- The combined duration of all tasks in a day cannot be more than 24 hours
-- The index must be a **positive integer** and must be **valid**
-
-Example: 
-* `loadtemplate i/1`
-
-### Delete Template : `deletetemplate`
-
-Delete a Task Template together with all its Preset Tasks, specified by its index.
-
-Format : `deletetemplate i/INDEX`
-
-Example:
-* `deletetemplate i/1`
-
-### Delete Preset Task : `deletepresettask`
-
-Delete a Preset Task from its Template.
-
-Format : `deletepresettask it/TEMPLATEINDEX ip/PRESETINDEX`
-
-Example:
-* `deletepresettask it/1 ip/3`
-
-### List Preset Modules : `listpresetmodules`
-
-List all available Preset Modules.
-
-Format : `listpresetmodules`
-
-### List all Modules Taken : "listallmodules"
-
-List all Preset Modules taken by the user.
-
-Format : `listallmodules`
-
-### Load Preset Module : `loadmodule`
-
-Load a Preset Module into the Module Schedule, specified by its index.
-
-Format : `loadmodule i/INDEX`
-
-- New Module Tasks must not clash with existing Module Tasks in the Module Schedule
-- The index of the Preset Module is its index in the Preset Module List 
-
-Example: 
-* `loadmodule i/100`
-
-### Remove a Module : `removemodule`
-
-Remove a Module and its Module Tasks from the Module Schedule, specified by its index.
-
-Format: `removemodule i/INDEX`
-
-- The index of the Preset Module is its index in the Preset Module List
-
-Example:
-* `removemodule i/59`
-
-### Initialize User and Semester Information : `setup`
-
-Setup User and Semester data, including username, semester term and fiscal year.
-
-Format: `setup n/USERNAME sd/STARTDURATION ed/ENDDURATION fy/FISCALYEAR`
-
-- The `STARTDURATION` has to be **before** `ENDDURATION`
-
-Examples:
-* `setup n/John Doe sd/22-09-2020 ed/29-11-2020 fy/AY20/21 Sem 1`
-* `setup fy/AY20/21 Sem 1 ed/29-11-2020 n/Betsy Crowe sd/22-09-2020`
-
-### Edit Setup Details : `editsetup`
-
-Edit Setup details for GrAB3, including username, semester term and fiscal year.
-
-Format: `editsetup [n/USERNAME] [sd/STARTDURATION] [ed/ENDDURATION] [fy/FISCALYEAR]`
-
-<div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Edit the duration of the semester with either start duration or end duration or both
-</div>
-
-Examples:
-*  `editsetup n/Jane Doe sd/23-02-2020 ed/29-06-2020 fy/AY19/20 Sem 2`
-*  `editsetup n/Jenny Doe sd/23-02-2020 fy/AY19/20 Sem 2`
-
-### Delete Setup Details: `deletesetup`
-
-Delete all setup details in GrAB3.
-
-Format: `deletesetup` 
-
-### Add a Task to Task Schedule: `addtask`
-
-Add a task to the task schedule in GrAB3.
-
-Format: `addtask n/NAME sd/DATE d/DURATION [t/TAG]`
-
-- Addition of a task to a specific day will be **rejected** if the total tasks for that day exceed 24 hours.
-
-Examples:
-* `addtask n/John Doe sd/20-09-2020 d/2`
-* `addtask n/John Doe sd/20-09-2020 d/2 t/CS2101`
-
-### Edit Task Details: `edittask`
-
-Edit task details for GrAB3, including task name, date, duration and tag.
-
-Format: `edittask i/INDEX n/TASKNAME sd/DATE d/DURATION`
-
-- The index must be a **positive integer** and must be **valid**
-- `DURATION` must be in hours
-
-Example:
-* `edittask i/2 n/Complete 2103 Project sd/20-09-2020 d/3`
-* `edittask i/2 sd/20-09-2020`
-* `edittask i/2 n/Complete 2103 Project d/4`
-
-### Listing All Persons : `list`
-
-Shows a list of all persons in the address book.
-
-Format: `list`
-
-### Editing a Person : `edit`
-
-Edits an existing person in the address book.
-
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
-
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
-* At least one of the optional fields must be provided.
-* Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
-
-Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
-
-### Locating persons by name: `find`
-
-Finds persons whose names contain any of the given keywords.
-
-Format: `find KEYWORD [MORE_KEYWORDS]`
-
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
-
-Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
-  ![result for 'find alex david'](images/findAlexDavidResult.png)
-
-### Deleting a person : `delete`
-
-Deletes the specified person from the address book.
-
-Format: `delete INDEX`
-
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
-
-### Clearing all entries : `clear`
-
-Clears all entries from the address book.
-
-Format: `clear`
-
-### Exiting the program : `exit`
+#### Exit GrAB3 : `exit`
 
 Exits the program.
 
-Format: `exit`
+Format : `exit`
 
-### Saving the data
+Example:
 
-AddressBook data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+If you wish to exit GrAb3. 
 
-### Archiving data files `[coming in v2.0]`
+Steps: 
+1. Type `exit` into the command box.
+1. Press `Enter` to execute.
 
-_{explain the feature here}_
+Outcome: 
+
+1. GrAb3 will close its window.
+
+{Example outcome screenshot}
+
+### Saving the Data - Can consider moving to about.
+
+GrAB3 data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+
+## Future Feature Enhancement v2.0
+
+{Description} 
+
+### Feature 1
+
+{Description}
+
+#### Feature command 1 `Feature command 1`
+
+{Description}
+
+Format : `Format`
+
+{Format explanation / limitation}
+
+Example:
+
+{Example description/ case scenario}
+
+{Example action}
+
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GrAB3 home folder.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**Add** | `add n/NAME p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/friend t/colleague`
-**Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
-**Help** | `help`
+### Feature
+
+{Feature command table} 
+
+### Others
+
+Action | Format | Examples
+--------|--------|----------
+**Help** | `help [COMMAND]` | `help`
+**Exit** | `exit` | `exit`
+
