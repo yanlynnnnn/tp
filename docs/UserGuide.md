@@ -128,7 +128,7 @@ You can use this command to find revenue by date or service code.
 
 Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Revenue Tracker Command Parameters](#Revenue-Tracker-Command-Parameters) for more details about each parameter.
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
 |---------|---------
 <br> 
 Example :
@@ -243,6 +243,11 @@ Example:
 ### Feature
 
 {Feature command table} 
+
+### Revenue Tracker
+|Action | Format | Examples
+|---------|---------|---------
+|**Find** | `findrev [dt/DATE]* [sc/SERVICE_CODE]*` | `findrev dt\28-09-2020`
 
 ### Others
 
