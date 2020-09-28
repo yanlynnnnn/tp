@@ -5,13 +5,17 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.commons.util.AppUtil;
 
 public class Amount {
-    public static final String MESSAGE_CONSTRAINTS = "Amount must be a valid number less than 1000 with " +
-            "2 decimal places";
+    public static final String MESSAGE_CONSTRAINTS = "Amount must be a valid number less than 1000 with "
+            + "2 decimal places";
 
-    // Allows 10 digits, and at most 2 decimal places.
+    // Allows value less than 1000, and at most 2 decimal places.
     public static final String VALIDATION_REGEX = "^([\\d]{1,3})(\\.[\\d]{2})?$";
     public final String value;
 
+    /**
+     * Represents the monetary amount for any model object.
+     * @param amount
+     */
     public Amount(String amount) {
         requireNonNull(amount);
         AppUtil.checkArgument(isValidAmount(amount), MESSAGE_CONSTRAINTS);

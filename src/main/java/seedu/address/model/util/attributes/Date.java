@@ -1,8 +1,7 @@
 package seedu.address.model.util.attributes;
 
-import static seedu.address.commons.util.AppUtil.checkArgument;
-
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -16,6 +15,10 @@ public class Date {
 
     protected final LocalDate date;
 
+    /**
+     * Represents the date stored for any model object.
+     * @param dateString
+     */
     public Date(String dateString) {
         requireNonNull(dateString);
         checkArgument(isValidDate(dateString), MESSAGE_CONSTRAINTS);

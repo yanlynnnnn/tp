@@ -6,6 +6,10 @@ public class Description {
 
     public final String value;
 
+    /**
+     * Represents the description of any model object
+     * @param description
+     */
     public Description(String description) {
         requireNonNull(description);
         value = description;
@@ -27,5 +31,4 @@ public class Description {
     public int hashCode() {
         return value.hashCode();
     }
-
 }
