@@ -20,14 +20,14 @@ The application uses a Command Line Interface (CLI)...
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-~~1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).~~
+1. Download the latest `GrAB3.jar` from [here](https://github.com/AY2021S1-CS2103T-W13-3/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your GrAB3.
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1.Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
   ~~* **`listmodules`** : Lists all module provided by the university.~~
@@ -80,13 +80,13 @@ The application uses a Command Line Interface (CLI)...
 
 {Description}
 
-#### Feature 1 parameter
+#### Feature 1 Command Parameters
 
 {Description}
 
 {Command parameter explanation}
 
-##### Feature command 1 `Feature command 1`
+##### Feature command 1 : `Feature command 1`
 
 {Description}
 
@@ -94,7 +94,7 @@ Format : `Format`
 
 {Format explanation / limitation}
 
-Example:
+Example :
 
 {Example description/ case scenario}
 
@@ -104,11 +104,55 @@ Example:
 
 {Example outcome screenshot}
 
+
+### Revenue Tracker
+
+GrAB3 knows that revenue tracking is very important for your business.
+Thus, this feature allows you to track the revenue that you have generated effortlessly.
+Revenue will be automatically recorded when an appointment is indicated as done.
+
+#### Revenue Tracker Command Parameters
+
+Before you dive into using the feature, you may want to have a look at the common parameter used in this feature.
+The table below shows a list of command parameters that will be used in this feature.
+
+| Parameter Name | Description | Example
+|---------|---------|---------
+|`DATE`  | The revenue earned date. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
+|`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into GrAB3 and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
+|`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
+
+##### Find Revenue : `findrev`
+
+You can use this command to find revenue by date or service code.
+
+Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
+
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Revenue Tracker Command Parameters](#Revenue-Tracker-Command-Parameters) for more details about each parameter.
+|---------|---------
+<br> 
+Example :
+
+You have just stop operation for the day, and you wish to view all the revenues generated for today (29-09-2020).
+
+You can follow the steps below to get the list of revenues for the day.
+
+Steps :
+1. Type `findrev dt/29-09-2020` into the command box.
+1. Press `Enter` to execute. 
+
+Outcome : 
+1. It will display a successful message ~~in the *Dashboard*.~~
+1. GrAB3 will list out all the revenue for 29-09-2020 ~~in the *Revenue* tab.~~  
+1. You will be able to see all the revenue for 29-09-2020.
+
+{Example outcome screenshot}
+
 ## Others
 
 {Description}
 
-### Others Command Parameter
+### Others Command Parameters
 
 {Description}
 
@@ -122,15 +166,17 @@ Format : `help [COMMAND]`
 
 {Format explanation / limitation}
 
-Example:
+Example :
 
-If you are unsure of the commands that GrAB3 offered. You can follow the steps below to get a full list of all the commands.
+If you are unsure of the commands that GrAB3 offered. 
 
-Steps: 
+You can follow the steps below to get a full list of all the commands.
+
+Steps : 
 1. Type `help` into the command box.
 1. Press `Enter` to execute.
 
-Outcome: 
+Outcome : 
 
 1. GrAb3 will switch to the *Help* tab.
 
@@ -142,15 +188,15 @@ Exits the program.
 
 Format : `exit`
 
-Example:
+Example :
 
 If you wish to exit GrAb3. 
 
-Steps: 
+Steps : 
 1. Type `exit` into the command box.
 1. Press `Enter` to execute.
 
-Outcome: 
+Outcome : 
 
 1. GrAb3 will close its window.
 
@@ -200,8 +246,8 @@ Example:
 
 ### Others
 
-Action | Format | Examples
---------|--------|----------
-**Help** | `help [COMMAND]` | `help`
-**Exit** | `exit` | `exit`
+|Action | Format | Examples
+|---------|---------|---------
+|**Help** | `help [COMMAND]` | `help`
+|**Exit** | `exit` | `exit`
 
