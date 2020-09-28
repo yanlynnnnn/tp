@@ -13,7 +13,7 @@ public class AmountTest {
     }
 
     @Test
-    public void constructor_invalidAddress_throwsIllegalArgumentException() {
+    public void constructor_invalidAmount_throwsIllegalArgumentException() {
         String invalidAmount = "";
         assertThrows(IllegalArgumentException.class, () -> new Amount(invalidAmount));
     }
