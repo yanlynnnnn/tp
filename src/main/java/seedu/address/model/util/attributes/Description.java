@@ -2,8 +2,6 @@ package seedu.address.model.util.attributes;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.commons.util.AppUtil;
-
 public class Description {
 
     public final String value;
