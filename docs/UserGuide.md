@@ -20,14 +20,14 @@ The application uses a Command Line Interface (CLI)...
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-1. Download the latest `GrAB3.jar` from [here](https://github.com/AY2021S1-CS2103T-W13-3/tp/releases).
+~~1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).~~
 
 1. Copy the file to the folder you want to use as the _home folder_ for your GrAB3.
 
 1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/Ui.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+1.Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
   ~~* **`listmodules`** : Lists all module provided by the university.~~
@@ -80,13 +80,13 @@ The application uses a Command Line Interface (CLI)...
 
 {Description}
 
-#### Feature 1 Command Parameters
+#### Feature 1 parameter
 
 {Description}
 
 {Command parameter explanation}
 
-##### Feature command 1 : `Feature command 1`
+##### Feature command 1 `Feature command 1`
 
 {Description}
 
@@ -94,7 +94,7 @@ Format : `Format`
 
 {Format explanation / limitation}
 
-Example :
+Example:
 
 {Example description/ case scenario}
 
@@ -152,7 +152,7 @@ Outcome :
 
 {Description}
 
-### Others Command Parameters
+### Others Command Parameter
 
 {Description}
 
@@ -166,17 +166,15 @@ Format : `help [COMMAND]`
 
 {Format explanation / limitation}
 
-Example :
+Example:
 
-If you are unsure of the commands that GrAB3 offered. 
+If you are unsure of the commands that GrAB3 offered. You can follow the steps below to get a full list of all the commands.
 
-You can follow the steps below to get a full list of all the commands.
-
-Steps : 
+Steps: 
 1. Type `help` into the command box.
 1. Press `Enter` to execute.
 
-Outcome : 
+Outcome: 
 
 1. GrAb3 will switch to the *Help* tab.
 
@@ -188,15 +186,15 @@ Exits the program.
 
 Format : `exit`
 
-Example :
+Example:
 
 If you wish to exit GrAb3. 
 
-Steps : 
+Steps: 
 1. Type `exit` into the command box.
 1. Press `Enter` to execute.
 
-Outcome : 
+Outcome: 
 
 1. GrAb3 will close its window.
 
@@ -251,8 +249,8 @@ Example:
 
 ### Others
 
-|Action | Format | Examples
-|---------|---------|---------
-|**Help** | `help [COMMAND]` | `help`
-|**Exit** | `exit` | `exit`
+Action | Format | Examples
+--------|--------|----------
+**Help** | `help [COMMAND]` | `help`
+**Exit** | `exit` | `exit`
 
