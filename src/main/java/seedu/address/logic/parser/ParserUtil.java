@@ -9,15 +9,12 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.Days;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
-import seedu.address.model.tag.Tag;
-import seedu.address.model.task.Duration;
-import seedu.address.model.task.FixedDay;
-import seedu.address.model.task.TaskName;
+
+import seedu.address.model.util.attributes.Tag;
 
 
 /**
@@ -129,48 +126,4 @@ public class ParserUtil {
         return tagSet;
     }
 
-    /**
-     * Parses {@code String Duration} into a {@code Duration}.
-     */
-    public static Duration parseDuration(String duration) throws ParseException {
-        requireNonNull(duration);
-        try {
-            Double trimmedDuration = Double.parseDouble(duration.trim());
-            if (!Duration.isValidDuration(trimmedDuration)) {
-                throw new ParseException(Duration.MESSAGE_CONSTRAINTS);
-            }
-            return new Duration(trimmedDuration);
-        } catch (NumberFormatException e) {
-            throw new ParseException(MESSAGE_INVALID_DURATION);
-        }
-    }
-
-    /**
-     * Parses {@code String fixedDay} into a {@code FixedDay}.
-     */
-    public static FixedDay parseFixedDay(String fixedDay) throws ParseException {
-        requireNonNull(fixedDay);
-        String trimmedFixedDay = fixedDay.trim();
-        try {
-            Days day = Days.valueOf(trimmedFixedDay);
-            if (!FixedDay.isValidDay(day)) {
-                throw new ParseException(FixedDay.MESSAGE_CONSTRAINTS);
-            }
-            return new FixedDay(day);
-        } catch (IllegalArgumentException e) {
-            throw new ParseException(MESSAGE_INVALID_DAY_FORMAT);
-        }
-    }
-
-    /**
-     * Parses {@code String taskName} into a {@code TaskName}.
-     */
-    public static TaskName parseTaskName(String taskName) throws ParseException {
-        requireNonNull(taskName);
-        String trimmedTaskName = taskName.trim();
-        if (!TaskName.isValidTaskName(trimmedTaskName)) {
-            throw new ParseException(TaskName.MESSAGE_CONSTRAINTS);
-        }
-        return new TaskName(trimmedTaskName);
-    }
-}
+    
