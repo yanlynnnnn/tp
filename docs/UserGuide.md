@@ -20,7 +20,7 @@ The application uses a Command Line Interface (CLI)...
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
-~~1. Download the latest `addressbook.jar` from [here](https://github.com/se-edu/addressbook-level3/releases).~~
+1. Download the latest `GrAB3.jar` from [here](https://github.com/AY2021S1-CS2103T-W13-3/tp/releases).
 
 1. Copy the file to the folder you want to use as the _home folder_ for your GrAB3.
 
@@ -101,6 +101,50 @@ Example:
 {Example action}
 
 {Example Outcome details}
+
+{Example outcome screenshot}
+
+
+### Revenue Tracker
+
+GrAB3 knows that revenue tracking is very important for your business.
+Thus, this feature allows you to track the revenue that you have generated effortlessly.
+Revenue will be automatically recorded when an appointment is indicated as done.
+
+#### Revenue Tracker Command Parameters
+
+Before you dive into using the feature, you may want to have a look at the common parameter used in this feature.
+The table below shows a list of command parameters that will be used in this feature.
+
+| Parameter Name | Description | Example
+|---------|---------|---------
+|`DATE`  | The revenue earned date. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
+|`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into GrAB3 and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
+|`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
+
+##### Find Revenue : `findrev`
+
+You can use this command to find revenue by date or service code.
+
+Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
+
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
+|---------|---------
+<br> 
+Example :
+
+You have just stop operation for the day, and you wish to view all the revenues generated for today (29-09-2020).
+
+You can follow the steps below to get the list of revenues for the day.
+
+Steps :
+1. Type `findrev dt/29-09-2020` into the command box.
+1. Press `Enter` to execute. 
+
+Outcome : 
+1. It will display a successful message ~~in the *Dashboard*.~~
+1. GrAB3 will list out all the revenue for 29-09-2020 ~~in the *Revenue* tab.~~  
+1. You will be able to see all the revenue for 29-09-2020.
 
 {Example outcome screenshot}
 
@@ -197,6 +241,11 @@ Example:
 ### Feature
 
 {Feature command table} 
+
+### Revenue Tracker
+|Action | Format | Examples
+|---------|---------|---------
+|**Find** | `findrev [dt/DATE]* [sc/SERVICE_CODE]*` | `findrev dt\28-09-2020`
 
 ### Others
 
