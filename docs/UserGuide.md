@@ -52,6 +52,14 @@ The application uses a Command Line Interface (CLI)...
 
 #### General Symbols and Syntax 
 
+The table below explains the general syntax used throughout the user guide.
+
+| Syntax |  What it means |
+|----------|-------------|
+| `command` |  A grey highlighted block specifies a executable command that can be entered into the command box.  |
+| 💡 | The light bulb indicates that the enclosed text is a tip. |
+
+
 #### Command Syntax and Usage
 
 <div markdown="block" class="alert alert-info">
@@ -74,7 +82,8 @@ The application uses a Command Line Interface (CLI)...
 
 ## Features
 
-{Description} 
+This section contains all the information about the features of *GrAB3*. 
+Enter the command into the _Command Box_ to use each feature or sub-feature.
 
 ### Feature 1
 
@@ -133,7 +142,7 @@ Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
 <br> 
 Example :
 
-You have just stop operation for the day, and you wish to view all the revenues generated for today (29-09-2020).
+You have just stopped operations for the day, and you wish to view all the revenues generated for today (29-09-2020).
 
 You can follow the steps below to get the list of revenues for the day.
 
@@ -142,11 +151,232 @@ Steps :
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message ~~in the *Dashboard*.~~
+1. It will display a success message ~~in the *Dashboard*.~~
 1. GrAB3 will list out all the revenue for 29-09-2020 ~~in the *Revenue* tab.~~  
 1. You will be able to see all the revenue for 29-09-2020.
 
 {Example outcome screenshot}
+
+### Expense Tracker
+
+GrAB3 knows that expense tracking in important in managing business expenditure.
+Thus, this feature allows you to track all the expenses you may incur during your business operations.
+
+#### Expense Tracker Command Parameters
+
+Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
+The table below shows a list of command parameters that will be used.
+
+| Parameter Name | Description | Example
+|---------|---------|---------
+|`DESCRIPTION`  | The description of the expense. <br><br> It must be alphanumeric words not more than 50 characters long. | E.g. Typing `conditioner` would mean an expense on a bottle of conditioner.
+|`IS_FIXED`| The indication of whether an expense is a fixed or variable expense. <br> <br> It must be in the format of `t` or `f` | E.g. Typing `t` would mean the expense is fixed <br> <br> E.g. Typing `f` would mean the expense is variable.
+|`VALUE` | The value refers to the monetary value of the expense. <br> <br> It must consist only of numeric characters and a decimal point, and must have exactly two decimal places. | E.g. Typing `10.00` would mean the expense costs $10.00.
+|`DATE` | The date of the expense. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
+|`TAG` | The tag you want to attach to the expense. <br> <br> It must be a single alphanumeric word not more than 30 characters long. | E.g. Typing `equipment` would mean that the expense is tagged as an equipment.
+|`INDEX` | The index of the expense in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the expense with index-2 in the displayed list.
+|`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
+
+##### Add an expense `addexp`
+
+You can use this command to add a new expense to GrAB3.
+
+Format : `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`
+
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+|---------|---------
+<br> 
+Example :
+
+You just purchased a bottle of conditioner for your client's hair treatment today for $15 (28-10-2020).
+
+You can follow the steps below to add the expense to GrAB3.
+
+Steps :
+1. Type `addexp d/conditioner f/f v/15.00 dt/28-10-2020 t/hair supplies`.
+2. Press `Enter` to execute.
+
+Outcome :
+1. GrAB3 will display a success message.
+
+{Example outcome screenshot}
+
+##### Edit an expense `editexp`
+
+You can use this command to edit an expense in GrAB3.
+
+Format : `editexp INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]`
+
+Note :
+* You must enter at least one optional parameter
+* The new value entered will overwrite the existing value
+
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+|---------|---------
+<br> 
+
+Example :
+
+You misspelled the description of an expense when adding it into GrAB3 and wish to change it to "Eyelash Curler".
+
+You can follow the steps below to edit the expense.
+
+Steps :
+1. Type `editexp 2 d/Eyelash Curler` into the command box.
+2. Press `Enter` to execute.
+
+Outcome :
+1. GrAB3 will display a success message.
+
+{Example outcome screenshot}
+
+##### Delete an expense `deleteexp`
+
+You can use this command to delete an expense in GrAB3.
+
+Format : `deleteexp INDEX`
+
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+|---------|---------
+<br> 
+
+Example :
+
+You mistakenly entered the same expense twice and wish to delete one of the entries. 
+
+You can follow the steps below to delete the expense.
+
+Steps :
+1. Type `deleteexp 3` into the command box.
+2. Press `Enter` to execute.
+
+Outcome :
+1. GrAB3 will display a success message.
+
+{Example outcome screenshot}
+
+##### Find an expense `findexp`
+
+You can use this command to find an expense in GrAB3.
+
+Format : `findexp [d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*`
+
+Note :
+* You must enter at least one optional paramter
+
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+|---------|---------
+<br> 
+
+Example :
+
+You have just stopped operations for the day, and wish to check the total expenses incurred today (08-09-2020).
+
+You can follow the steps below to get a list of expenses for the day.
+
+Steps :
+1. Type `findexp dt/08-09-2020` into the command box.
+2. Press `Enter` to execute.
+
+Outcome :
+1. It will display a success message. 
+1. GrAB3 will list out all the expenses for 08-09-2020.
+1. You will be able to see all the expenses for 08-09-2020.
+
+##### Sort expenses `sortexp`
+
+You can use this command to sort expenses in GrAB3.
+
+Format : `sortexp ORDER`
+
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+|---------|---------
+<br> 
+
+Example :
+
+You wish to view your expenses from highest to lowest cost to determine which expenses are contributing most to your total expenditure.
+
+You can follow the steps below to sort your list of expenses.
+
+Steps :
+1. Type `sortexp desc` into the command box.
+2. Press `Enter` to execute.
+
+Outcome :
+1. It will display a success message.
+1. GrAB3 will list out all the expenses sorted from highest to lowest cost.
+
+##### List expenses `listexp`
+
+You can use this command to list all your expenses in GrAB3.
+
+Format : `listexp`
+
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+|---------|---------
+<br> 
+
+Example :
+
+You wish to list your expenses to view all the expense entries that you currently have.
+
+You can follow the steps below to list your expenses.
+
+Steps :
+1. Type `listexp` into the command box.
+2. Press `Enter` to execute.
+
+Outcome :
+1. It will display a success message.
+1. GrAB3 will list out all your expenses.
+
+##### Clear expenses `clearexp`
+
+You can use this command to clear all expenses in GrAB3.
+
+Format : `sortexp ORDER`
+
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+|---------|---------
+<br> 
+
+Example :
+
+You wish to remove all expense entries in GrAB3 and restart your expense management from scratch.
+
+You can follow the steps below to clear all your expenses.
+
+Steps :
+1. Type `clearexp` into the command box.
+2. Press `Enter` to execute.
+
+Outcome :
+1. It will display a success message.
+
+##### Breakdown Expenses `breakdownexp`
+
+You can use this command to breakdown expenses into their relevant categories, based on their tags.
+
+Format : `breakdownexp`
+
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+|---------|---------
+<br> 
+
+Example :
+
+You wish to see which types of expenses incur the most cost to your business, to minimize future expenditure.
+
+You can follow the steps below to view a breakdown of your expenses.
+
+Steps :
+1. Type `breakdownexp` into the command box.
+2. Press `Enter` to execute.
+
+Outcome :
+1. It will display a success message.
+1. GrAB3 will display a Pie Chart that categorizes expenses based on their 'tags', along with the total cost of all expenses in each category.
 
 ## Others
 
@@ -246,6 +476,18 @@ Example:
 |Action | Format | Examples
 |---------|---------|---------
 |**Find** | `findrev [dt/DATE]* [sc/SERVICE_CODE]*` | `findrev dt\28-09-2020`
+
+### Expense Tracker
+|Action | Format | Examples
+|---------------|------------------------------------------------------------------|------------------------------------------------------------------
+|**Add**        | `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`        | `addexp d/conditioner f/f v/15.00 dt/28-10-2020 t/hair supplies`
+|**Edit**       | `INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]` | `editexp 2 d/Eyelash Curler`
+|**Delete**     | `deleteexp INDEX`                                                | `deleteexp 3`
+|**Find**       | `[d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*`             | `findexp dt/08-09-2020`
+|**Sort**       | `sortexp ORDER`                                                  | `sortexp desc`
+|**List**       | `listexp`                                                        | 
+|**Clear**      | `clearexp`                                                       | 
+|**Breakdown**  | `breakdownexp`                                                   | 
 
 ### Others
 
