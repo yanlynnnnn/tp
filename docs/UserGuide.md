@@ -161,6 +161,101 @@ Outcome :
 
 {Example outcome screenshot}
 
+##### Sort Revenue by Value: `sortrev`
+
+You can use this command to sort the list of revenue in ascending or descending order by value.
+
+Format : `sortrev ORDER`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note: **<br>
+* Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+You wish to view your revenue from highest to lowest cost to determine which revenue contributes most to your profits.
+
+You can follow the steps below to sort your list of revenues.
+
+Steps :
+1. Type `sortrev desc` into the command box.
+1. Press `Enter` to execute. 
+
+Outcome : 
+1. It will display a successful message ~~in the *Dashboard*.~~
+1. GrAB3 will list out all the revenue entries sorted from highest to lowest cost in the *Revenue* tab.
+
+{Example outcome screenshot}
+
+##### List All Revenue Entries : `listrev`
+
+You can use this command to list all your revenues in GrAB3.
+
+Format : `listrev`
+
+Example :
+
+You wish to list your revenues to view all the earnings that you currently have.
+
+You can follow the steps below to list your all your expense entries.
+
+Steps :
+1. Type `listrev` into the command box.
+1. Press `Enter` to execute. 
+
+Outcome : 
+1. It will display a successful message ~~in the *Dashboard*.~~
+1. GrAB3 will list out all your revenue entries in the *Revenue* tab.
+
+{Example outcome screenshot}
+
+##### Clear All Revenue Entries : `clearrev`
+
+You can use this command to clear all revenues in GrAB3.
+
+Format : `clearrev`
+
+Example :
+
+You wish to remove all revenues entries in GrAB3 and restart your revenue management from scratch.
+
+You can follow the steps below to get the list of revenues for the day.
+
+Steps :
+1. Type `clearrev` into the command box.
+1. Press `Enter` to execute. 
+
+Outcome : 
+1. It will display a successful message ~~in the *Dashboard*.~~
+1. GrAB3 will clear all the revenue data.
+
+{Example outcome screenshot}
+
+##### Breakdown Revenue : `breakdownrev`
+
+You can use this command to breakdown revenue into their relevant categories, based on their 'service code'.
+
+Format : `breakdownrev`
+
+Example :
+
+You wish to see which type of service generated the most revenue for your business and possibly determine the business direction for there. 
+
+You can follow the steps below to view a breakdown of your revenue.
+
+Steps :
+1. Type `breakdownrev` into the command box.
+1. Press `Enter` to execute. 
+
+Outcome : 
+1. It will display a successful message ~~in the *Dashboard*.~~
+1. GrAB3 will display a Pie Chart that categorizes revenues based on their 'service code', along with the total cost of all expenses in each category.
+
+{Example outcome screenshot}
+
 ### Expense Tracker
 
 GrAB3 knows that expense tracking in important in managing business expenditure.
@@ -386,100 +481,6 @@ Outcome :
 1. It will display a success message.
 2. GrAB3 will display a Pie Chart that categorizes expenses based on their 'tags', along with the total cost of all expenses in each category.
 
-##### Sort Revenue by Value: `sortrev`
-
-You can use this command to sort the list of revenue in ascending or descending order by value.
-
-Format : `sortrev ORDER`
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note: **<br>
-* Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
-
-</div>
-
-Example :
-
-You wish to view your revenue from highest to lowest cost to determine which revenue contributes most to your profits.
-
-You can follow the steps below to sort your list of revenues.
-
-Steps :
-1. Type `sortrev desc` into the command box.
-1. Press `Enter` to execute. 
-
-Outcome : 
-1. It will display a successful message ~~in the *Dashboard*.~~
-1. GrAB3 will list out all the revenue entries sorted from highest to lowest cost in the *Revenue* tab.
-
-{Example outcome screenshot}
-
-##### List All Revenue Entries : `listrev`
-
-You can use this command to list all your revenues in GrAB3.
-
-Format : `listrev`
-
-Example :
-
-You wish to list your revenues to view all the earnings that you currently have.
-
-You can follow the steps below to list your all your expense entries.
-
-Steps :
-1. Type `listrev` into the command box.
-1. Press `Enter` to execute. 
-
-Outcome : 
-1. It will display a successful message ~~in the *Dashboard*.~~
-1. GrAB3 will list out all your revenue entries in the *Revenue* tab.
-
-{Example outcome screenshot}
-
-##### Clear All Revenue Entries : `clearrev`
-
-You can use this command to clear all revenues in GrAB3.
-
-Format : `clearrev`
-
-Example :
-
-You wish to remove all revenues entries in GrAB3 and restart your revenue management from scratch.
-
-You can follow the steps below to get the list of revenues for the day.
-
-Steps :
-1. Type `clearrev` into the command box.
-1. Press `Enter` to execute. 
-
-Outcome : 
-1. It will display a successful message ~~in the *Dashboard*.~~
-1. GrAB3 will clear all the revenue data.
-
-{Example outcome screenshot}
-
-##### Breakdown Revenue : `breakdownrev`
-
-You can use this command to breakdown revenue into their relevant categories, based on their 'service code'.
-
-Format : `breakdownrev`
-
-Example :
-
-You wish to see which type of service generated the most revenue for your business and possibly determine the business direction for there. 
-
-You can follow the steps below to view a breakdown of your revenue.
-
-Steps :
-1. Type `breakdownrev` into the command box.
-1. Press `Enter` to execute. 
-
-Outcome : 
-1. It will display a successful message ~~in the *Dashboard*.~~
-1. GrAB3 will display a Pie Chart that categorizes revenues based on their 'service code', along with the total cost of all expenses in each category.
-
-{Example outcome screenshot}
 
 ## Others
 
