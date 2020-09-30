@@ -63,10 +63,6 @@ The table below explains the general syntax used throughout the user guide.
 
 #### Command Syntax and Usage
 
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Notes about the command format:**<br>
-
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `setup n/USERNAME`, `USERNAME` is a parameter which can be used as `setup n/John Doe`.
 
@@ -79,7 +75,6 @@ The table below explains the general syntax used throughout the user guide.
 * Parameters can be in any order.<br>
   e.g. if the command specifies `tn/TASKNAME du/DURATION`, `du/DURATION tn/TASKNAME` is also acceptable.
 
-</div>
 
 ## Features
 
@@ -140,7 +135,7 @@ Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note**<br>
+**:information_source: Note:**<br>
 * Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
 
 </div>
