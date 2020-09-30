@@ -183,9 +183,14 @@ You can use this command to add a new expense to GrAB3.
 
 Format : `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br> 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+
+</div>
+
 Example :
 
 You just purchased a bottle of conditioner for your client's hair treatment today for $15 (28-10-2020).
@@ -207,13 +212,15 @@ You can use this command to edit an expense in GrAB3.
 
 Format : `editexp INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]`
 
-Note :
-* You must enter at least one optional parameter
-* The new value entered will overwrite the existing value
+<div markdown="block" class="alert alert-info">
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br> 
+**:information_source: Notes:**<br>
+ 
+* You must enter at least one optional parameter.
+* The new value entered will overwrite the existing value.
+* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+
+</div>
 
 Example :
 
@@ -236,9 +243,13 @@ You can use this command to delete an expense in GrAB3.
 
 Format : `deleteexp INDEX`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br> 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+
+</div>
 
 Example :
 
@@ -261,12 +272,14 @@ You can use this command to find an expense in GrAB3.
 
 Format : `findexp [d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*`
 
-Note :
-* You must enter at least one optional paramter
+<div markdown="block" class="alert alert-info">
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br> 
+**:information_source: Notes:**<br>
+
+* You must enter at least one optional parameter.
+* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+
+</div>
 
 Example :
 
@@ -289,9 +302,13 @@ You can use this command to sort expenses in GrAB3.
 
 Format : `sortexp ORDER`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br> 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+
+</div>
 
 Example :
 
@@ -313,9 +330,13 @@ You can use this command to list all your expenses in GrAB3.
 
 Format : `listexp`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br> 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+
+</div>
 
 Example :
 
@@ -337,9 +358,13 @@ You can use this command to clear all expenses in GrAB3.
 
 Format : `sortexp ORDER`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br> 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+
+</div>
 
 Example :
 
@@ -360,9 +385,13 @@ You can use this command to breakdown expenses into their relevant categories, b
 
 Format : `breakdownexp`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br> 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+
+</div>
 
 Example :
 
