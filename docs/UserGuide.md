@@ -104,6 +104,34 @@ Example:
 
 {Example outcome screenshot}
 
+## 4.1 Services Management
+
+This feature allows you to manage the services that your home-based beauty salon provides. You can record the 
+following information about your services: `DESCRIPTION`, `DURATION` and `PRICE`.
+
+### 4.1.1 Service Management Command Parameters
+
+Before you dive into using the feature, you may want to have a look at the common parameter used in this feature.
+The table below shows a list of command parameters that will be used in this feature.
+
+| Parameter Name | Description | Example
+|---------|---------|---------
+|`DESCRIPTION`| | 
+|`DURATION`| |
+|`PRICE`| |
+
+#### 4.1.1.1 Add a new service
+
+#### 4.1.1.2 Edit an existing service
+
+#### 4.1.1.3 Delete an existing service
+
+#### 4.1.1.4 Find a service by keyword
+
+#### 4.1.1.5 List all existing services
+
+#### 4.1.1.6 Clear all existing services
+
 
 ### Revenue Tracker
 
