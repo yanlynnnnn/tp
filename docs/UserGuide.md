@@ -2,6 +2,7 @@
 layout: page
 title: User Guide
 ---
+## 1. Introduction
 
 Are you an independent home-based beauty salon owner, scrambling between your calendar, client contacts, 
 and notebook to keep track of all your appointments, revenue and expenses? 
@@ -16,7 +17,7 @@ The application uses a Command Line Interface (CLI)...
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## 2. Quick start
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -41,18 +42,17 @@ The application uses a Command Line Interface (CLI)...
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
-## About
+## 3. About
 
-### Structure of this document
+### 3.1 Structure of this document
 
+### 3.2 Reading this document
 
-### Reading this document
+#### 3.2.1 Terminology related to the GUI
 
-#### Terminology related to the GUI
+#### 3.2.2 General Symbols and Syntax 
 
-#### General Symbols and Syntax 
-
-#### Command Syntax and Usage
+#### 3.2.3 Command Syntax and Usage
 
 <div markdown="block" class="alert alert-info">
 
@@ -72,7 +72,7 @@ The application uses a Command Line Interface (CLI)...
 
 </div>
 
-## Features
+## 4. Features
 
 {Description} 
 
@@ -107,7 +107,7 @@ Example:
 ## 4.1 Services Management
 
 This feature allows you to manage the services that your home-based beauty salon provides. You can record the 
-following information about your services: `DESCRIPTION`, `DURATION` and `PRICE`.
+following information about your services: `TITLE`, `DURATION` and `PRICE`.
 
 ### 4.1.1 Service Management Command Parameters
 
@@ -116,21 +116,21 @@ The table below shows a list of command parameters that will be used in this fea
 
 | Parameter Name | Description | Example
 |---------|---------|---------
-|`DESCRIPTION`| | 
-|`DURATION`| |
-|`PRICE`| |
+|`TITLE`| The title of the service you are providing.|E.g
+|`DURATION`| The amount of time it takes to provide the service. <br> <br> It must be in|
+|`PRICE`| The revenue received from the service. <br> <br> It must be dollars.|
 
-#### 4.1.1.1 Add a new service
+#### 4.1.2 Add a new service: `addsvc`
 
-#### 4.1.1.2 Edit an existing service
+#### 4.1.3 Edit an existing service: `editsvc`
 
-#### 4.1.1.3 Delete an existing service
+#### 4.1.4 Delete an existing service: `deletesvc`
 
-#### 4.1.1.4 Find a service by keyword
+#### 4.1.5 Find a service by keyword: `findsvc`
 
-#### 4.1.1.5 List all existing services
+#### 4.1.6 List all existing services: `listsvc`
 
-#### 4.1.1.6 Clear all existing services
+#### 4.1.7 Clear all existing services: `clearsvc`
 
 
 ### Revenue Tracker
