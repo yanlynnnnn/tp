@@ -34,9 +34,9 @@ The application uses a Command Line Interface (CLI)...
 
   ~~* **`setup`**`n/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1` : Adds a user named `John Doe` and academic year `AY20/21 Sem 1` that spans from `22-09-2020` to `29-11-2020`.~~
   
-  ~~* **`listtaskschedule`**`2` : List all the user tasks in task schedule for Week 2.~~
+  * **`addexp`**`d/conditioner f/f v/15.00 dt/28-10-2020 t/hair supplies` : Add a non-fixed expense for a `conditioner` that cost `$15` on `28-10-2020` under the tag `hair supplies`.
 
-  ~~* **`exit`** : Exits the app.~~
+  * **`exit`** : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -58,6 +58,7 @@ The table below explains the general syntax used throughout the user guide.
 |----------|-------------|
 | `command` |  A grey highlighted block specifies a executable command that can be entered into the command box.  |
 | 💡 | The light bulb indicates that the enclosed text is a tip. |
+|<div markdown="block" class="alert alert-info"> :information_source: </div>  | An exclamation mark indicates that the following text is important. |
 
 
 #### Command Syntax and Usage
@@ -133,13 +134,13 @@ The table below shows a list of command parameters that will be used in this fea
 
 ##### Find Revenue : `findrev`
 
-You can use this command to find revenues by date or service code in GrAB3.
+You can use this command to find revenues by 'date' or 'service code' in GrAB3.
 
 Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source:**<br>
+**:information_source: Note **<br>
 * Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
 
 </div>
@@ -151,19 +152,18 @@ You have just stopped operations for the day, and you wish to view all the reven
 You can follow the steps below to get the list of revenues for the day.
 
 Steps :
-1. Type `findrev dt/29-09-2020` into the command box.
+1. Type `findrev dt/29-09-2020` into the _Command Box_.
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a success message ~~in the *Dashboard*.~~
-1. GrAB3 will list out all the revenue for 29-09-2020 ~~in the *Revenue* tab.~~  
-1. You will be able to see all the revenue for 29-09-2020.
+1. It will display a success message ~~in the _Dashboard_.~~
+1. GrAB3 will list out all the revenue for 29-09-2020 in the _Revenue_ tab.  
 
 {Example outcome screenshot}
 
-##### Sort Revenue by Value: `sortrev`
+##### Sort Revenues: `sortrev`
 
-You can use this command to sort the list of revenue in ascending or descending order by value.
+You can use this command to sort the list of revenue in ascending or descending order by value in GrAB3.
 
 Format : `sortrev ORDER`
 
@@ -181,18 +181,18 @@ You wish to view your revenue from highest to lowest cost to determine which rev
 You can follow the steps below to sort your list of revenues.
 
 Steps :
-1. Type `sortrev desc` into the command box.
+1. Type `sortrev desc` into the _Command Box_.
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message ~~in the *Dashboard*.~~
-1. GrAB3 will list out all the revenue entries sorted from highest to lowest cost in the *Revenue* tab.
+1. It will display a successful message ~~in the _Dashboard_.~~
+1. GrAB3 will list out all the revenue entries sorted from highest to lowest cost in the _Revenue_ tab.
 
 {Example outcome screenshot}
 
-##### List All Revenue Entries : `listrev`
+##### List Revenues : `listrev`
 
-You can use this command to list all your revenues in GrAB3.
+You can use this command to list all your revenue entries in GrAB3.
 
 Format : `listrev`
 
@@ -200,21 +200,21 @@ Example :
 
 You wish to list your revenues to view all the earnings that you currently have.
 
-You can follow the steps below to list your all your expense entries.
+You can follow the steps below to list your all your revenue entries.
 
 Steps :
-1. Type `listrev` into the command box.
+1. Type `listrev` into the _Command Box_.
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message ~~in the *Dashboard*.~~
-1. GrAB3 will list out all your revenue entries in the *Revenue* tab.
+1. It will display a successful message ~~in the _Dashboard_.~~
+1. GrAB3 will list out all your revenue entries in the _Revenue_ tab.
 
 {Example outcome screenshot}
 
-##### Clear All Revenue Entries : `clearrev`
+##### Clear Expenses : `clearrev`
 
-You can use this command to clear all revenues in GrAB3.
+You can use this command to clear all revenue entries in GrAB3.
 
 Format : `clearrev`
 
@@ -222,14 +222,14 @@ Example :
 
 You wish to remove all revenues entries in GrAB3 and restart your revenue management from scratch.
 
-You can follow the steps below to get the list of revenues for the day.
+You can follow the steps below to clear all your revenue entries.
 
 Steps :
-1. Type `clearrev` into the command box.
+1. Type `clearrev` into the _Command Box_.
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message ~~in the *Dashboard*.~~
+1. It will display a successful message ~~in the _Dashboard_.~~
 1. GrAB3 will clear all the revenue data.
 
 {Example outcome screenshot}
@@ -242,16 +242,16 @@ Format : `breakdownrev`
 
 Example :
 
-You wish to see which type of service generated the most revenue for your business and possibly determine the business direction for there. 
+You wish to see which type of service generated the most revenue for your business, to possibly determine the business direction for there. 
 
-You can follow the steps below to view a breakdown of your revenue.
+You can follow the steps below to view a breakdown of your revenues.
 
 Steps :
-1. Type `breakdownrev` into the command box.
+1. Type `breakdownrev` into the _Command Box_.
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message ~~in the *Dashboard*.~~
+1. It will display a successful message ~~in the _Dashboard_.~~
 1. GrAB3 will display a Pie Chart that categorizes revenues based on their 'service code', along with the total cost of all expenses in each category.
 
 {Example outcome screenshot}
@@ -276,7 +276,7 @@ The table below shows a list of command parameters that will be used.
 |`INDEX` | The index of the expense in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the expense with index-2 in the displayed list.
 |`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
 
-##### Add an expense `addexp`
+##### Add an Expense `addexp`
 
 You can use this command to add a new expense to GrAB3.
 
@@ -297,7 +297,7 @@ You just purchased a bottle of conditioner for your client's hair treatment toda
 You can follow the steps below to add the expense to GrAB3.
 
 Steps :
-1. Type `addexp d/conditioner f/f v/15.00 dt/28-10-2020 t/hair supplies`.
+1. Type `addexp d/conditioner f/f v/15.00 dt/28-10-2020 t/hair supplies` in to _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
@@ -305,7 +305,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-##### Edit an expense `editexp`
+##### Edit an Expense `editexp`
 
 You can use this command to edit an expense in GrAB3.
 
@@ -328,7 +328,7 @@ You misspelled the description of an expense when adding it into GrAB3 and wish 
 You can follow the steps below to edit the expense.
 
 Steps :
-1. Type `editexp 2 d/Eyelash Curler` into the command box.
+1. Type `editexp 2 d/Eyelash Curler` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
@@ -336,7 +336,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-##### Delete an expense `deleteexp`
+##### Delete an Expense `deleteexp`
 
 You can use this command to delete an expense in GrAB3.
 
@@ -357,7 +357,7 @@ You mistakenly entered the same expense twice and wish to delete one of the entr
 You can follow the steps below to delete the expense.
 
 Steps :
-1. Type `deleteexp 3` into the command box.
+1. Type `deleteexp 3` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
@@ -365,7 +365,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-##### Find an expense `findexp`
+##### Find an Expense `findexp`
 
 You can use this command to find an expense in GrAB3.
 
@@ -387,14 +387,14 @@ You have just stopped operations for the day, and wish to check the total expens
 You can follow the steps below to get a list of expenses for the day.
 
 Steps :
-1. Type `findexp dt/08-09-2020` into the command box.
+1. Type `findexp dt/08-09-2020` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
 1. It will display a success message. 
 2. GrAB3 will list out all the expenses for 08-09-2020.
 
-##### Sort expenses `sortexp`
+##### Sort Expenses `sortexp`
 
 You can use this command to sort expenses in GrAB3.
 
@@ -415,14 +415,14 @@ You wish to view your expenses from highest to lowest cost to determine which ex
 You can follow the steps below to sort your list of expenses.
 
 Steps :
-1. Type `sortexp desc` into the command box.
+1. Type `sortexp desc` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
 1. It will display a success message.
 2. GrAB3 will list out all the expenses sorted from highest to lowest cost.
 
-##### List expenses `listexp`
+##### List Expenses `listexp`
 
 You can use this command to list all your expenses in GrAB3.
 
@@ -435,14 +435,14 @@ You wish to list your expenses to view all the expense entries that you currentl
 You can follow the steps below to list your expenses.
 
 Steps :
-1. Type `listexp` into the command box.
+1. Type `listexp` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
 1. It will display a success message.
 2. GrAB3 will list out all your expenses.
 
-##### Clear expenses `clearexp`
+##### Clear Expenses `clearexp`
 
 You can use this command to clear all expenses in GrAB3.
 
@@ -455,7 +455,7 @@ You wish to remove all expense entries in GrAB3 and restart your expense managem
 You can follow the steps below to clear all your expenses.
 
 Steps :
-1. Type `clearexp` into the command box.
+1. Type `clearexp` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
@@ -474,7 +474,7 @@ You wish to see which types of expenses incur the most cost to your business, to
 You can follow the steps below to view a breakdown of your expenses.
 
 Steps :
-1. Type `breakdownexp` into the command box.
+1. Type `breakdownexp` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
@@ -505,12 +505,12 @@ Example:
 If you are unsure of the commands that GrAB3 offered. You can follow the steps below to get a full list of all the commands.
 
 Steps: 
-1. Type `help` into the command box.
+1. Type `help` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome: 
 
-1. GrAb3 will switch to the *Help* tab.
+1. GrAb3 will switch to the _Help_ tab.
 
 ![help message](images/helpMessage.png)
 
@@ -525,7 +525,7 @@ Example:
 If you wish to exit GrAb3. 
 
 Steps: 
-1. Type `exit` into the command box.
+1. Type `exit` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome: 
@@ -580,6 +580,10 @@ Example:
 |Action | Format | Examples
 |---------|---------|---------
 |**Find** | `findrev [dt/DATE]* [sc/SERVICE_CODE]*` | `findrev dt\28-09-2020`
+|**Sort**       | `sortrev ORDER`                                                  | `sortexp desc`
+|**List**       | `listrev`                                                        | 
+|**Clear**      | `clearrev`                                                       | 
+|**Breakdown**  | `breakdownrev`                                                   | 
 
 ### Expense Tracker
 |Action | Format | Examples
@@ -598,5 +602,5 @@ Example:
 Action | Format | Examples
 --------|--------|----------
 **Help** | `help [COMMAND]` | `help`
-**Exit** | `exit` | `exit`
+**Exit** | `exit` | 
 
