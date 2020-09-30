@@ -293,8 +293,7 @@ Steps :
 
 Outcome :
 1. It will display a success message. 
-1. GrAB3 will list out all the expenses for 08-09-2020.
-1. You will be able to see all the expenses for 08-09-2020.
+2. GrAB3 will list out all the expenses for 08-09-2020.
 
 ##### Sort expenses `sortexp`
 
@@ -322,21 +321,13 @@ Steps :
 
 Outcome :
 1. It will display a success message.
-1. GrAB3 will list out all the expenses sorted from highest to lowest cost.
+2. GrAB3 will list out all the expenses sorted from highest to lowest cost.
 
 ##### List expenses `listexp`
 
 You can use this command to list all your expenses in GrAB3.
 
 Format : `listexp`
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note:**<br>
- 
-* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-
-</div>
 
 Example :
 
@@ -350,21 +341,13 @@ Steps :
 
 Outcome :
 1. It will display a success message.
-1. GrAB3 will list out all your expenses.
+2. GrAB3 will list out all your expenses.
 
 ##### Clear expenses `clearexp`
 
 You can use this command to clear all expenses in GrAB3.
 
-Format : `sortexp ORDER`
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note:**<br>
- 
-* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-
-</div>
+Format : `clearexp`
 
 Example :
 
@@ -381,17 +364,9 @@ Outcome :
 
 ##### Breakdown Expenses `breakdownexp`
 
-You can use this command to breakdown expenses into their relevant categories, based on their tags.
+You can use this command to breakdown expenses into their relevant categories, based on their 'tags'.
 
 Format : `breakdownexp`
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note:**<br>
- 
-* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-
-</div>
 
 Example :
 
@@ -405,7 +380,7 @@ Steps :
 
 Outcome :
 1. It will display a success message.
-1. GrAB3 will display a Pie Chart that categorizes expenses based on their 'tags', along with the total cost of all expenses in each category.
+2. GrAB3 will display a Pie Chart that categorizes expenses based on their 'tags', along with the total cost of all expenses in each category.
 
 ## Others
 
@@ -431,7 +406,7 @@ If you are unsure of the commands that GrAB3 offered. You can follow the steps b
 
 Steps: 
 1. Type `help` into the command box.
-1. Press `Enter` to execute.
+2. Press `Enter` to execute.
 
 Outcome: 
 
@@ -451,7 +426,7 @@ If you wish to exit GrAb3.
 
 Steps: 
 1. Type `exit` into the command box.
-1. Press `Enter` to execute.
+2. Press `Enter` to execute.
 
 Outcome: 
 
