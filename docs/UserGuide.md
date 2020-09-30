@@ -16,7 +16,7 @@ The application uses a Command Line Interface (CLI)...
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick start
+## Quick Start
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -43,12 +43,12 @@ The application uses a Command Line Interface (CLI)...
 --------------------------------------------------------------------------------------------------------------------
 ## About
 
-### Structure of this document
+### Structure of this Document
 
 
-### Reading this document
+### Reading this Document
 
-#### Terminology related to the GUI
+#### Terminology Related to the GUI
 
 #### General Symbols and Syntax 
 
@@ -124,16 +124,20 @@ The table below shows a list of command parameters that will be used in this fea
 
 ##### Find Revenue : `findrev`
 
-You can use this command to find revenue by date or service code.
+You can use this command to find revenues by date or service code in GrAB3.
 
 Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br> 
+<div markdown="block" class="alert alert-info">
+
+**:information_source:**<br>
+* Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
+
+</div>
+
 Example :
 
-You have just stop operation for the day, and you wish to view all the revenues generated for today (29-09-2020).
+You have just stopped operations for the day, and you wish to view all the revenues generated for today (29-09-2020).
 
 You can follow the steps below to get the list of revenues for the day.
 
@@ -143,8 +147,102 @@ Steps :
 
 Outcome : 
 1. It will display a successful message ~~in the *Dashboard*.~~
-1. GrAB3 will list out all the revenue for 29-09-2020 ~~in the *Revenue* tab.~~  
-1. You will be able to see all the revenue for 29-09-2020.
+1. GrAB3 will list out all the revenue for 29-09-2020 in the *Revenue* tab.
+
+{Example outcome screenshot}
+
+##### Sort Revenue by Value: `sortrev`
+
+You can use this command to sort the list of revenue in ascending or descending order by value.
+
+Format : `sortrev ORDER`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note: **<br>
+* Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+You wish to view your revenue from highest to lowest cost to determine which revenue contributes most to your profits.
+
+You can follow the steps below to sort your list of revenues.
+
+Steps :
+1. Type `sortrev desc` into the command box.
+1. Press `Enter` to execute. 
+
+Outcome : 
+1. It will display a successful message ~~in the *Dashboard*.~~
+1. GrAB3 will list out all the revenue entries sorted from highest to lowest cost in the *Revenue* tab.
+
+{Example outcome screenshot}
+
+##### List All Revenue Entries : `listrev`
+
+You can use this command to list all your revenues in GrAB3.
+
+Format : `listrev`
+
+Example :
+
+You wish to list your revenues to view all the earnings that you currently have.
+
+You can follow the steps below to list your all your expense entries.
+
+Steps :
+1. Type `listrev` into the command box.
+1. Press `Enter` to execute. 
+
+Outcome : 
+1. It will display a successful message ~~in the *Dashboard*.~~
+1. GrAB3 will list out all your revenue entries in the *Revenue* tab.
+
+{Example outcome screenshot}
+
+##### Clear All Revenue Entries : `clearrev`
+
+You can use this command to clear all revenues in GrAB3.
+
+Format : `clearrev`
+
+Example :
+
+You wish to remove all revenues entries in GrAB3 and restart your revenue management from scratch.
+
+You can follow the steps below to get the list of revenues for the day.
+
+Steps :
+1. Type `clearrev` into the command box.
+1. Press `Enter` to execute. 
+
+Outcome : 
+1. It will display a successful message ~~in the *Dashboard*.~~
+1. GrAB3 will clear all the revenue data.
+
+{Example outcome screenshot}
+
+##### Breakdown Revenue : `breakdownrev`
+
+You can use this command to breakdown revenue into their relevant categories, based on their 'service code'.
+
+Format : `breakdownrev`
+
+Example :
+
+You wish to see which type of service generated the most revenue for your business and possibly determine the business direction for there. 
+
+You can follow the steps below to view a breakdown of your revenue.
+
+Steps :
+1. Type `breakdownrev` into the command box.
+1. Press `Enter` to execute. 
+
+Outcome : 
+1. It will display a successful message ~~in the *Dashboard*.~~
+1. GrAB3 will display a Pie Chart that categorizes revenues based on their 'service code', along with the total cost of all expenses in each category.
 
 {Example outcome screenshot}
 
