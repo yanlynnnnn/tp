@@ -116,22 +116,139 @@ The table below shows a list of command parameters that will be used in this fea
 
 | Parameter Name | Description | Example
 |---------|---------|---------
-|`TITLE`| The title of the service you are providing.|E.g
-|`DURATION`| The amount of time it takes to provide the service. <br> <br> It must be in|
-|`PRICE`| The revenue received from the service. <br> <br> It must be dollars.|
+|`TITLE`| The title of the service you are providing. It must be alphanumeric words not more than 50 characters long.|E.g `Lash Lift`
+|`DURATION`| The duration of the service in hours. <br> <br> It be in half hour intervals.| E.g `1.5`
+|`PRICE`| The revenue received from the service. <br> <br> It must be in dollars.| E.g `5.50`
 
 #### 4.1.2 Add a new service: `addsvc`
 
+You can use this command to add a new service GrAB3.
+
+Format: `addsvc t/TITLE d/DURATION p/PRICE`
+
+Example:
+Let's say you have a service with the following information you want to add into GrAB3. You can follow these instructions.
+
+| Service | |
+|---------|--------- |
+|`TITLE`| Lash Lift |
+|`DURATION`| 0.5 |
+|`PRICE`| 38 |
+
+Adding the above service:
+1. Type `addsvc t/Lash Lift d/0.5 p/38' into the *Command Box*.
+2. Press `Enter` to execute.
+
+Outcome:
+1. The Result Display will show success message.
+2. GrAB3 will switch to the Services Tab.
+3. You can now see all your services including the newly added service.
+
+{Example outcome screenshot}
+
 #### 4.1.3 Edit an existing service: `editsvc`
+
+You can use this command to edit an existing service in GrAB3.
+
+Format: `editsvc s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*`
+
+Example:
+Let's say you have entered the wrong duration for an added service and want to change it to 0.5 hours instead
+of 1 hour. You can follow these instructions.
+
+Editing an existing service:
+1. Type `editsvc s/SC001 d/0.5` into the *Command Box*.
+2. Press `Enter` to execute.
+
+Outcome:
+1. The Result Display will show a success message.
+2. GrAB3 will switch to the Services Tab.
+3. You can now see all your services including the edited service.
+
+{Example outcome screenshot}
 
 #### 4.1.4 Delete an existing service: `deletesvc`
 
+You can use this command to delete an existing service in GrAB3.
+
+Format: `deletesvc s/SERVICE_CODE`
+
+Example:
+Let's say you are no longer providing a particular service and want to delete it from GrAB3. You can follow these
+instructions.
+
+Deleting an existing service:
+1. Type `deletesvc s/SC001` into the *Command Box*.
+2. Press `Enter` to execute.
+
+Outcome:
+1. The Result Display will show a success message.
+2. GrAB3 will switch to the Services Tab.
+3. You can now see that the service with service code SC001 has been deleted from GrAB3.
+
+{Example outcome screenshot}
+
 #### 4.1.5 Find a service by keyword: `findsvc`
+
+You can use this command to find services by keywords. GrAB3 will search for your services using the service title.
+
+Format: `findsvc KEYWORD`
+
+Example: 
+Let's say you want to find all the services that contain nail in its title from the list of services. You can
+follow these instructions.
+
+Finding a service:
+1. Type `findsvc nail` into the *Command Box*.
+2. Press `Enter` to execute.
+
+Outcome:
+1. The Result Display will show a success message.
+2. GrAB3 will switch to the Services Tab.
+3. You can now see the services in your list of services that contain nail in its title.
+
+{Example outcome screenshot}
 
 #### 4.1.6 List all existing services: `listsvc`
 
+You can use this command to navigate to the Services Tab and display all your added services in GrAB3.
+
+Format: `listsvc`
+
+Example:
+Let's say you are in another tab and want to look at the list of all services. You can follow these instructions.
+
+Listing all services:
+1. Type `listsvc` into the *Command Box*.
+2. Press `Enter` to execute.
+
+Outcome:
+1. The Result Display will show a success message.
+2. GrAB3 will switch to the Services Tab.
+3. You can now see all your services.
+
+{Example outcome screenshot}
+
 #### 4.1.7 Clear all existing services: `clearsvc`
 
+You can use this command to clear and delete the all the services in GrAB3.
+
+Format: `clearsvc`
+
+Example:
+Let's say you want to delete all the services from your list of services and start from an empty list of services. You can
+follow these instructions.
+
+Clearing all services:
+1. Type `clearsvc` into the *Command Box*.
+2. Press `Enter` to execute.
+
+Outcome:
+1. The Result Display will show a success message.
+2. GrAB3 will switch to the Services Tab.
+3. You can see that the list of services is now empty.
+
+{Example outcome screenshot}
 
 ### Revenue Tracker
 
