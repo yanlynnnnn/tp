@@ -132,7 +132,7 @@ The table below shows a list of command parameters that will be used in this fea
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into GrAB3 and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
 
-##### Find Revenue : `findrev`
+##### Find a Revenue : `findrev`
 
 You can use this command to find revenues by 'date' or 'service code' in GrAB3.
 
@@ -140,7 +140,7 @@ Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note **<br>
+**:information_source: Note**<br>
 * Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
 
 </div>
@@ -169,7 +169,7 @@ Format : `sortrev ORDER`
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Note: **<br>
+**:information_source: Note:**<br>
 * Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
 
 </div>
