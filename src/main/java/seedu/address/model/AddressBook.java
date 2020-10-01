@@ -3,8 +3,11 @@ package seedu.address.model;
 import static java.util.Objects.requireNonNull;
 
 import java.util.List;
+import java.util.Objects;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.expense.Expense;
+import seedu.address.model.expense.ExpenseList;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.UniquePersonList;
 
@@ -15,6 +18,7 @@ import seedu.address.model.person.UniquePersonList;
 public class AddressBook implements ReadOnlyAddressBook {
 
     private final UniquePersonList persons;
+    private final ExpenseList expenses;
 
     /*
      * The 'unusual' code block below is a non-static initialization block, sometimes used to avoid duplication
@@ -25,6 +29,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
+        expenses = new ExpenseList();
     }
 
     public AddressBook() {}
@@ -40,11 +45,18 @@ public class AddressBook implements ReadOnlyAddressBook {
     //// list overwrite operations
 
     /**
-     * Replaces the contents of the person list with {@code persons}.
-     * {@code persons} must not contain duplicate persons.
+            * Replaces the contents of the person list with {@code persons}.
+            * {@code persons} must not contain duplicate persons.
      */
     public void setPersons(List<Person> persons) {
         this.persons.setPersons(persons);
+    }
+
+    /**
+     * Replaces the contents of the expense list with {@code expenses}.
+     */
+    public void setExpenses(List<Expense> expenses) {
+        this.expenses.setExpenses(expenses);
     }
 
     /**
@@ -75,6 +87,13 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Adds an expense to GrAB3.
+     */
+    public void addExpense(Expense e) {
+        expenses.add(e);
+    }
+
+    /**
      * Replaces the given person {@code target} in the list with {@code editedPerson}.
      * {@code target} must exist in the address book.
      * The person identity of {@code editedPerson} must not be the same as another existing person in the address book.
@@ -86,6 +105,16 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Replaces the given expense {@code target} in the list with {@code editedExpense}.
+     * {@code target} must exist in the address book.
+     */
+    public void setExpense(Expense target, Expense editedExpense) {
+        requireNonNull(editedExpense);
+
+        expenses.setExpense(target, editedExpense);
+    }
+
+    /**
      * Removes {@code key} from this {@code AddressBook}.
      * {@code key} must exist in the address book.
      */
@@ -93,12 +122,20 @@ public class AddressBook implements ReadOnlyAddressBook {
         persons.remove(key);
     }
 
+    /**
+     * Removes {@code key} from this {@code AddressBook}.
+     * {@code key} must exist in the address book.
+     */
+    public void removeExpense(Expense key) {
+        expenses.remove(key);
+    }
+
     //// util methods
 
     @Override
     public String toString() {
-        return persons.asUnmodifiableObservableList().size() + " persons";
-        // TODO: refine later
+        return persons.asUnmodifiableObservableList().size() + " persons"
+                + "/n" + expenses.asUnmodifiableObservableList().size() + " expenses";
     }
 
     @Override
@@ -106,15 +143,26 @@ public class AddressBook implements ReadOnlyAddressBook {
         return persons.asUnmodifiableObservableList();
     }
 
+    //@Override
+    public ObservableList<Expense> getExpenseList() {
+        return expenses.asUnmodifiableObservableList();
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AddressBook // instanceof handles nulls
-                && persons.equals(((AddressBook) other).persons));
+                && persons.equals(((AddressBook) other).persons)
+                && expenses.equals(((AddressBook) other).expenses));
     }
+
+    //    @Override
+    //    public int hashCode() {
+    //        return persons.hashCode();
+    //    }
 
     @Override
     public int hashCode() {
-        return persons.hashCode();
+        return Objects.hash(persons, expenses);
     }
 }
