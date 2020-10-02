@@ -114,6 +114,182 @@ Example:
 {Example outcome screenshot}
 
 
+### 6.1 Appointments Tracker
+
+Scheduling appointments is an essential part of your beauty salon and
+GrAB3 makes it easy to keep track of your upcoming appointments with
+your customers. You can add appointments for a particular service and
+client, mark it as done, and GrAB3 will automatically credit the revenue
+into the revenue tracker.
+
+#### 6.1.1 Appointment Tracker Command Parameters
+
+This feature uses a number of parameters, which are detailed below.
+
+| Parameter Name | Description | Example
+|---------|---------|---------
+|`DATE`  | The date of the appointment. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
+|`TIME` | The time of the appointment. <br> <br> It must be in the format of `HH:MM` | E.g. Typing `17:30` would mean 5:30 PM.  <br> <br> E.g. Typing `0900` would mean 9:00 AM.
+|`MONTH` | The month of the appointment. <br> <br> It must be in the format of a 3 letter phrase representing the month. | E.g. Typing `Jan` would mean January.  <br> <br> E.g. Typing `Dec` would mean December.
+|`SERVICE_CODE`| The service code is the code that identifies the type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into GrAB3 and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
+|`PHONE_NUMBER` | The phone number of the client. <br> <br> It must be a 8-digit number starting with 6, 8, or 9.| E.g. Typing `81281234` or `91235678` is a valid phone number.  <br> <br> E.g. Typing `999`or `800012345` would not be a recognised number.
+|`NAME` | The name of the client booking the appointment. <br> <br> It must consist alphanumeric characters not more than 100 characters long. | E.g. If a client with the name `Hartin Menz` called to book an appointment, the same name `Hartin Menz` would be used as the parameter for `NAME`.
+|`INDEX` | The index of the appointment in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the appointment with index-2 in the displayed list.
+
+##### 6.1.2 Add an appointment: `addapt`
+
+When a new or existing client calls to make a booking for your services, use this
+command to add details of the appointment into the appointment tracker.
+
+Format : `addapt dt/DATE t/TIME s/SERVICE_CODE p/PHONE_NUMBER`
+
+{Format explanation / limitation}
+
+Example:
+
+{Example description/ case scenario}
+
+{Example action}
+
+{Example Outcome details}
+
+{Example outcome screenshot}
+
+##### 6.1.3 List all appointment: `listapt`
+
+Use this command to see your list of all your upcoming appointments.
+
+Format : `listapt`
+
+{Format explanation / limitation}
+
+Example:
+
+{Example description/ case scenario}
+
+{Example action}
+
+{Example Outcome details}
+
+{Example outcome screenshot}
+
+##### 6.1.4 Find an appointment: `findapt`
+
+Use this command to find a specific appointment which matches the description you provide
+to GrAB3.
+
+Format : `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]* [m/MONTH]*`
+
+{Format explanation / limitation}
+
+Example:
+
+{Example description/ case scenario}
+
+{Example action}
+
+{Example Outcome details}
+
+{Example outcome screenshot}
+
+##### 6.1.5 Edit an appointment: `editapt`
+
+When a new or existing client calls to edit a booking he or she had made, use this
+command to edit details of the appointment.
+
+Format : `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER]`
+
+{Format explanation / limitation}
+
+Example:
+
+{Example description/ case scenario}
+
+{Example action}
+
+{Example Outcome details}
+
+{Example outcome screenshot}
+
+##### 6.1.6 Mark an appointment as done: `done`
+
+After an appointment with a client has been completed, use this
+command to credit the revenue from the service and remove the appointment
+from the list of upcoming appointments.
+
+Format : `done INDEX`
+
+{Format explanation / limitation}
+
+Example:
+
+{Example description/ case scenario}
+
+{Example action}
+
+{Example Outcome details}
+
+{Example outcome screenshot}
+
+##### 6.1.7 Mark an appointment as not done: `undone`
+
+In the event that an appointment was marked as done by accident, you can
+use this command to revert this and ensure your appointment is still
+scheduled to take place.
+
+Format : `undone INDEX`
+
+{Format explanation / limitation}
+
+Example:
+
+{Example description/ case scenario}
+
+{Example action}
+
+{Example Outcome details}
+
+{Example outcome screenshot}
+
+##### 6.1.8 Delete an existing appointment: `deleteapt`
+
+If a client informs you that he or she wants to cancel an appointment, you can
+use this command to delete that particular command from the appointment tracker.
+
+Format : `deleteapt INDEX`
+
+{Format explanation / limitation}
+
+Example:
+
+{Example description/ case scenario}
+
+{Example action}
+
+{Example Outcome details}
+
+{Example outcome screenshot}
+
+##### 6.1.9 Clear all appointments: `clearapt`
+
+In the event that you want to reset the entire list of appointments
+in GrAB3, you may use this command to delete all prior and upcoming
+appointments with your clients.
+
+Format : `clearapt`
+
+{Format explanation / limitation}
+
+Example:
+
+{Example description/ case scenario}
+
+{Example action}
+
+{Example Outcome details}
+
+{Example outcome screenshot}
+
 ### Revenue Tracker
 
 GrAB3 knows that revenue tracking is very important for your business.
