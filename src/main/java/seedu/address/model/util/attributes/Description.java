@@ -1,8 +1,11 @@
 package seedu.address.model.util.attributes;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 public class Description {
+
+    public static final String MESSAGE_CONSTRAINTS = "Description should not be empty.";
 
     public final String value;
 
@@ -12,7 +15,12 @@ public class Description {
      */
     public Description(String description) {
         requireNonNull(description);
+        checkArgument(isValidDescription(description), MESSAGE_CONSTRAINTS);
         value = description;
+    }
+
+    public static boolean isValidDescription(String test) {
+        return (test.trim().equals("")) ? false : true;
     }
 
     @Override
