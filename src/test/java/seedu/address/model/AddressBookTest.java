@@ -19,6 +19,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.client.Client;
 import seedu.address.model.client.exceptions.DuplicateClientException;
+import seedu.address.model.expense.Expense;
 import seedu.address.testutil.ClientBuilder;
 
 public class AddressBookTest {
@@ -48,7 +49,7 @@ public class AddressBookTest {
         Client editedAlice = new ClientBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Client> newClients = Arrays.asList(ALICE, editedAlice);
-        AddressBookStub newData = new AddressBookStub(newClients);
+        AddressBookStub newData = new AddressBookStub(newClients, FXCollections.observableArrayList());
 
         assertThrows(DuplicateClientException.class, () -> addressBook.resetData(newData));
     }
@@ -82,19 +83,31 @@ public class AddressBookTest {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getClientList().remove(0));
     }
 
+    @Test
+    public void getExpenseList_modifyList_throwsUnsupportedOperationException() {
+        assertThrows(UnsupportedOperationException.class, () -> addressBook.getExpenseList().remove(0));
+    }
+
     /**
      * A stub ReadOnlyAddressBook whose clients list can violate interface constraints.
      */
     private static class AddressBookStub implements ReadOnlyAddressBook {
         private final ObservableList<Client> clients = FXCollections.observableArrayList();
+        private final ObservableList<Expense> expenses = FXCollections.observableArrayList();
 
-        AddressBookStub(Collection<Client> clients) {
+        AddressBookStub(Collection<Client> clients, Collection<Expense> expenses) {
             this.clients.setAll(clients);
+            this.expenses.setAll(expenses);
         }
 
         @Override
         public ObservableList<Client> getClientList() {
             return clients;
+        }
+
+        @Override
+        public ObservableList<Expense> getExpenseList() {
+            return expenses;
         }
     }
 

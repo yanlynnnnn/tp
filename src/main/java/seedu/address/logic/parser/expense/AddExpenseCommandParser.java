@@ -23,6 +23,9 @@ import seedu.address.model.util.attributes.Date;
 import seedu.address.model.util.attributes.Description;
 import seedu.address.model.util.attributes.Tag;
 
+/**
+ * Parses input arguments and creates a new AddExpenseCommand object
+ */
 public class AddExpenseCommandParser implements Parser<AddExpenseCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the AddExpenseCommand

@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
@@ -105,6 +106,11 @@ public interface Model {
      * {@code target} must exist in the GrAB3.
      */
     void setExpense(Expense target, Expense editedExpense);
+
+    /**
+     * Replaces the contents of the expense list with {@code expenses}.
+     */
+    public void setExpenses(List<Expense> expenses);
 
     /** Returns an unmodifiable view of the filtered expense list */
     ObservableList<Expense> getFilteredExpenseList();
