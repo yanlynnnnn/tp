@@ -2,23 +2,50 @@
 layout: page
 title: Developer Guide
 ---
- Table of Contents:
- * [Setting up, getting started](#setting-up-getting-started)
- * [Design](#design)
- * [Implementation](#implementation)
- * [Appendix: Requirements](#appendix-requirements)
- * [Appendix: Instructions for manual testing](#appendix-instructions-for-manual-testing)
---------------------------------------------------------------------------------------------------------------------
+# GrAB3 Developer Guide
 
-## **Setting up, getting started**
+## Table of Contents:
+ * [1. Introduction](#1-introduction)
+ * [2. Setting up, getting started](#2-setting-up-getting-started)
+ * [3. Design](#3-design)
+ * [4. Implementation](#4-implementation)
+ * [5. Documentation](#5-documentation)
+ * [6. Logging](#6-logging)
+ * [7. Testing](#7-testing)
+ * [8. Configuration](#8-configuration)
+ * [9. DevOps](#9-dev-ops)
+ * [Appendix A: Product Scope](#appendix-a-product-scope)
+ * [Appendix B: User Stories](#appendix-b-user-stories)
+ * [Appendix C: Use Cases](#appendix-c-use-cases)
+ * [Appendix D: Non Functional Requirements](#appendix-d-non-functional-requirements)
+ * [Appendix E: Glossary](#appendix-e-glossary)
+ * [Appendix F: Instructions for Manual Testing](#appendix-f-instructions-for-manual-testing)
+ * [Appendix G: Effort](#appendix-g-effort)
+
+## 1. **Introduction**
+
+**GrAB3** is a desktop business management application meant for home-based beauty salon owners who want to consolidate all
+the information related to their business, such as upcoming appointments, their list of clients, as well as profits recorded. 
+It focuses on the Command Line Interface (CLI) while providing users with a simple and clean Graphical User Interface (GUI).
+Thus, the main interaction with **GrAB3**. will be done through commands.
+
+The features of GrAB3 include:
+* Keeping track of existing/new clients.
+* Scheduling of upcoming appointments with clients.
+* Recording of revenue from services provided.
+* Recording of business-related expenses.
+* Calculation of business profit.
+
+The purpose of this Developer Guide is to help you understand the design and implementation of **GrAB3**, 
+so that you can get started on your contributions to **GrAB3**.
+
+## 2. **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
---------------------------------------------------------------------------------------------------------------------
+## 3. **Design**
 
-## **Design**
-
-### Architecture
+### 3.1 Architecture
 
 <img src="images/ArchitectureDiagram.png" width="450" />
 
@@ -60,7 +87,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 The sections below give more details of each component.
 
-### UI component
+### 3.2 UI component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -76,7 +103,7 @@ The `UI` component,
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
-### Logic component
+### 3.3 Logic component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
@@ -96,7 +123,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
-### Model component
+### 3.4 Model component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
@@ -116,7 +143,7 @@ The `Model`,
 </div>
 
 
-### Storage component
+### 3.5 Storage component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
@@ -126,13 +153,13 @@ The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the address book data in json format and read it back.
 
-### Common classes
+### 3.6 Common classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Implementation**
+## 4. **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
 
@@ -220,35 +247,38 @@ _{more aspects and alternatives to be added}_
 
 _{Explain here how the data archiving feature will be implemented}_
 
+## 5. **Documentation**
 
---------------------------------------------------------------------------------------------------------------------
+Refer to the guide [here](Documentation.md).
 
-## **Documentation, logging, testing, configuration, dev-ops**
+## 6. **Logging**
+Refer to the guide [here](Logging.md).
 
-* [Documentation guide](Documentation.md)
-* [Testing guide](Testing.md)
-* [Logging guide](Logging.md)
-* [Configuration guide](Configuration.md)
-* [DevOps guide](DevOps.md)
+## 7. **Testing**
+Refer to the guide [here](Testing.md).
 
---------------------------------------------------------------------------------------------------------------------
+## 8. **Configuration**
+Refer to the guide [here](Configuration.md).
 
-## **Appendix: Requirements**
+## 9. **Dev-ops**
+Refer to the guide [here](DevOps.md).
 
-### Product scope
+## **Appendix A: Product Scope**
 
 **Target user profile**:
-
-* Independent home based buisness owner
-* Prefers to have relevant buisness components in a single application
-* Is a fast typist
-* Prefers typing over using mouse input
+* Independent home-based business owner.
+* Has little knowledge of business management software.
+* Prefers to have relevant business components in a single application.
+* Is a fast typist.
+* Prefers typing over using mouse input.
 
 **Value proposition**:
-* Consolidates everything a home-based buisness needs such as appointments, clients, expenses, revenue and services into one place
-* Displays expenses and revenue in a simple format for users to view
+* Consolidates everything a home-based business needs such as appointments, clients, expenses, revenue and services into one place
+* Saves significant time for the business owner, who previously had to manage details across his/her contacts, excel sheets, and inventory notebooks.
+* Does not require extensive technical knowledge compared to other business management software.
+* Displays expenses and revenue in a simple format for users to view.
 
-### User stories
+## **Appendix B: User Stories**
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -286,7 +316,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*    `  | Resourceful home-based beauty salon owner       | Have a breakdown of my total monthly revenue based on the type of service provided                                      | Have an idea of which services generate more revenue and adjust the services I provide accordingly                  |
 
 
-### Use cases
+## **Appendix C: Use Cases**
 
 (For all use cases below, the **System** is `GrAB3` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -313,7 +343,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case resumes at step 1.
 
-#### Client List
+### Client List
 
 **UC02: Add a client to client list**
 
@@ -444,34 +474,34 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
-### Non-Functional Requirements
+## **Appendix D: Non-Functional Requirements**
 
 * System Requirements:
     * GrAB3 should work on any _mainstream OS_ as long as it has Java `11` or above installed.
     * GrAB3 should be optimized for keyboard input and can function without the use of a mouse.
-      However, a mouse would improve the user experience tremendously.
+      However, a mouse would improve the user experience.
     * The computer running the Java Virtual Machine (JVM) should have sufficient disk space to
       accommodate the user's data stored in the system. It should also have sufficient RAM
       and CPU power to run the JVM smoothly.
 * Performance Requirements:
     * GrAB3 should be able to start up and load existing the user's stored data sufficiently fast (< 10s). 
-    * Context switching / menu navigation through the use of button clicks should be sufficiently fast (< 10s). 
+    * Context switching / menu navigation through the use of either text commands or button clicks should be sufficiently fast (< 10s). 
 * Usability:
     * GrAB3 should be user-friendly for any client who can use a computer and does not require prior technical knowledge.
     * The user interface of GrAB3 should look intuitive and simple to navigate. It should not look cluttered with too many panels.
 * Reliability:
-    * GrAB3 should not crash in the event of incorrect user input- this should be handled safely with exceptions.  
+    * GrAB3 should not crash in the event of incorrect user input - this should be handled safely with exceptions.  
 * Scalability:
-    * GrAB3 should be able to handle hundreds of tasks by a user for the entire period of the semester. No expansion of 
-      hardware capabilities or software modifications should be required.
-### Glossary
+    * GrAB3 should be able to handle thousands of appointments, clients, expenses and all other recorded entries by a user.
+     No expansion of hardware capabilities or software modifications should be required.
+
+## **Appendix E: Glossary**
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **JVM**: Java Virtual Machine - Java code that is compiled is run in the virtual machine.
---------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## **Appendix F: Instructions for manual testing**
 
 Given below are instructions to test the app manually.
 
@@ -521,3 +551,7 @@ testers are expected to do more *exploratory* testing.
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
 
 1. _{ more test cases …​ }_
+
+## Appendix G: Effort
+
+{to be added...}
