@@ -16,6 +16,12 @@ public class Service {
     /** How long the service takes */
     private Duration duration;
 
+    /**
+     * Constructor for Service.
+     * @param description The description of the service.
+     * @param price The price of the service.
+     * @param duration The duration of the service.
+     */
     public Service(Description description, Amount price, Duration duration) {
         this.description = description;
         this.price = price;
