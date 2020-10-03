@@ -6,6 +6,7 @@ import java.util.Objects;
 
 import seedu.address.model.client.Client;
 import seedu.address.model.service.Service;
+import seedu.address.model.util.attributes.Date;
 
 /**
  * Represents an Appointment in the address book.

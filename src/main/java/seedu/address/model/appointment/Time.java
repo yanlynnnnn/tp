@@ -29,7 +29,7 @@ public class Time {
     }
 
     /**
-     * Returns true if a given string is a valid Date format.
+     * Returns true if a given string is a valid Time format.
      */
     public static boolean isValidTime(String test) {
         try {
