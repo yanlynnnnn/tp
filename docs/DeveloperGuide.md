@@ -30,11 +30,11 @@ It focuses on the Command Line Interface (CLI) while providing users with a simp
 Thus, the main interaction with **GrAB3**. will be done through commands.
 
 The features of GrAB3 include:
-* Keeping track of existing/new clients 
-* Scheduling of upcoming appointments with clients
-* Recording of revenue from services provided
-* Recording of business-related expenses
-* Calculation of business profit
+* Keeping track of existing/new clients.
+* Scheduling of upcoming appointments with clients.
+* Recording of revenue from services provided.
+* Recording of business-related expenses.
+* Calculation of business profit.
 
 The purpose of this Developer Guide is to help you understand the design and implementation of **GrAB3**, 
 so that you can get started on your contributions to **GrAB3**.
@@ -266,17 +266,17 @@ Refer to the guide [here](DevOps.md).
 ## **Appendix A: Product Scope**
 
 **Target user profile**:
-* Independent home-based business owner
-* Has little knowledge of business management software
-* Prefers to have relevant business components in a single application
-* Is a fast typist
-* Prefers typing over using mouse input
+* Independent home-based business owner.
+* Has little knowledge of business management software.
+* Prefers to have relevant business components in a single application.
+* Is a fast typist.
+* Prefers typing over using mouse input.
 
 **Value proposition**:
-* Consolidates everything a home-based business needs such as appointments, clients, expenses, revenue and services into one place.
+* Consolidates everything a home-based business needs such as appointments, clients, expenses, revenue and services into one place
 * Saves significant time for the business owner, who previously had to manage details across his/her contacts, excel sheets, and inventory notebooks.
 * Does not require extensive technical knowledge compared to other business management software.
-* Displays expenses and revenue in a simple format for users to view
+* Displays expenses and revenue in a simple format for users to view.
 
 ## **Appendix B: User Stories**
 
