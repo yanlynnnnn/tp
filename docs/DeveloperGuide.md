@@ -34,7 +34,7 @@ The features of GrAB3 include:
 * Scheduling of upcoming appointments with clients
 * Recording of revenue from services provided
 * Recording of business-related expenses
-* Calculation of business profit.
+* Calculation of business profit
 
 The purpose of this Developer Guide is to help you understand the design and implementation of **GrAB3**, 
 so that you can get started on your contributions to **GrAB3**.
