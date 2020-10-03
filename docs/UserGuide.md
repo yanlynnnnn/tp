@@ -2,6 +2,7 @@
 layout: page
 title: User Guide
 ---
+## 1. Introduction
 
 Are you an independent home-based beauty salon owner, scrambling between your calendar, client contacts, 
 and notebook to keep track of all your appointments, revenue and expenses? 
@@ -16,7 +17,7 @@ The application uses a Command Line Interface (CLI)...
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Quick Start
+## 2. Quick start
 
 1. Ensure you have Java `11` or above installed in your Computer.
 
@@ -34,23 +35,22 @@ The application uses a Command Line Interface (CLI)...
 
   ~~* **`setup`**`n/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1` : Adds a user named `John Doe` and academic year `AY20/21 Sem 1` that spans from `22-09-2020` to `29-11-2020`.~~
   
-  * **`addexp`**`d/conditioner f/f v/15.00 dt/28-10-2020 t/hair supplies` : Add a non-fixed expense for a `conditioner` that cost `$15` on `28-10-2020` under the tag `hair supplies`.
+  ~~* **`listtaskschedule`**`2` : List all the user tasks in task schedule for Week 2.~~
 
-  * **`exit`** : Exits the app.
+  ~~* **`exit`** : Exits the app.~~
 
 1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
-## About
+## 3. About
 
-### Structure of this Document
+### 3.1 Structure of this document
 
+### 3.2 Reading this document
 
-### Reading this Document
+#### 3.2.1 Terminology related to the GUI
 
-#### Terminology Related to the GUI
-
-#### General Symbols and Syntax 
+#### 3.2.2 General Symbols and Syntax 
 
 The table below explains the general syntax used throughout the user guide.
 
@@ -60,8 +60,7 @@ The table below explains the general syntax used throughout the user guide.
 | 💡 | The light bulb indicates that the enclosed text is a tip. |
 |<div markdown="block" class="alert alert-info"> :information_source: </div>  | An exclamation mark indicates that the following text is important. |
 
-
-#### Command Syntax and Usage
+#### 3.2.3 Command Syntax and Usage
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `setup n/USERNAME`, `USERNAME` is a parameter which can be used as `setup n/John Doe`.
@@ -76,7 +75,7 @@ The table below explains the general syntax used throughout the user guide.
   e.g. if the command specifies `tn/TASKNAME du/DURATION`, `du/DURATION tn/TASKNAME` is also acceptable.
 
 
-## Features
+## 4. Features
 
 This section contains all the information about the features of *GrAB3*. 
 Enter the command into the _Command Box_ to use each feature or sub-feature.
@@ -109,6 +108,200 @@ Example:
 
 {Example outcome screenshot}
 
+## 4.1 Services Management
+
+This feature allows you to manage the services that your home-based beauty salon provides. You can record the 
+following information about your services: `TITLE`, `DURATION` and `PRICE`.
+
+#### 4.1.1 Service Management Command Parameters
+
+Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
+The table below shows a list of command parameters that will be used in this feature.
+
+| Parameter Name | Description | Example
+|---------|---------|---------
+|`TITLE`| The title of the service you are providing. It must be alphanumeric words not more than 50 characters long.|E.g `Lash Lift`
+|`DURATION`| The duration of the service in hours. <br> <br> It be in half hour intervals.| E.g `1.5`
+|`PRICE`| The revenue received from the service. <br> <br> It must be in dollars.| E.g `5.50`
+|`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long. | E.g. If you have added an eyelash extension service into GrAB3 and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
+
+#### 4.1.2 Add a new service: `addsvc`
+
+You can use this command to add a new service GrAB3.
+
+Format: `addsvc t/TITLE d/DURATION p/PRICE`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+
+</div>
+
+Example:
+Let's say you have a service with the following information you want to add into GrAB3. You can follow these instructions.
+
+| Service | |
+|---------|--------- |
+|`TITLE`| Lash Lift |
+|`DURATION`| 0.5 |
+|`PRICE`| 38 |
+
+Adding the above service:
+1. Type `addsvc t/Lash Lift d/0.5 p/38` into the *Command Box*.
+2. Press `Enter` to execute.
+
+Outcome:
+1. The Result Display will show success message.
+2. GrAB3 will switch to the Services Tab.
+3. You can now see all your services including the newly added service.
+
+{Example outcome screenshot}
+
+#### 4.1.3 Edit an existing service: `editsvc`
+
+You can use this command to edit an existing service in GrAB3.
+
+Format: `editsvc s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+
+</div>
+
+Example:
+Let's say you have entered the wrong duration for an added service and want to change it to 0.5 hours instead
+of 1 hour. You can follow these instructions.
+
+Editing an existing service:
+1. Type `editsvc s/SC001 d/0.5` into the *Command Box*.
+2. Press `Enter` to execute.
+
+Outcome:
+1. The Result Display will show a success message.
+2. GrAB3 will switch to the Services Tab.
+3. You can now see all your services including the edited service.
+
+{Example outcome screenshot}
+
+#### 4.1.4 Delete an existing service: `deletesvc`
+
+You can use this command to delete an existing service in GrAB3.
+
+Format: `deletesvc s/SERVICE_CODE`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+
+</div>
+
+Example:
+Let's say you are no longer providing a particular service and want to delete it from GrAB3. You can follow these
+instructions.
+
+Deleting an existing service:
+1. Type `deletesvc s/SC001` into the *Command Box*.
+2. Press `Enter` to execute.
+
+Outcome:
+1. The Result Display will show a success message.
+2. GrAB3 will switch to the Services Tab.
+3. You can now see that the service with service code SC001 has been deleted from GrAB3.
+
+{Example outcome screenshot}
+
+#### 4.1.5 Find a service by keyword: `findsvc`
+
+You can use this command to find services by keywords. GrAB3 will search for your services using the service title.
+
+Format: `findsvc KEYWORD`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+
+</div>
+
+Example: 
+Let's say you want to find all the services that contain nail in its title from the list of services. You can
+follow these instructions.
+
+Finding a service:
+1. Type `findsvc nail` into the *Command Box*.
+2. Press `Enter` to execute.
+
+Outcome:
+1. The Result Display will show a success message.
+2. GrAB3 will switch to the Services Tab.
+3. You can now see the services in your list of services that contain nail in its title.
+
+{Example outcome screenshot}
+
+#### 4.1.6 List all existing services: `listsvc`
+
+You can use this command to navigate to the Services Tab and display all your added services in GrAB3.
+
+Format: `listsvc`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+
+</div>
+
+Example:
+Let's say you are in another tab and want to look at the list of all services. You can follow these instructions.
+
+Listing all services:
+1. Type `listsvc` into the *Command Box*.
+2. Press `Enter` to execute.
+
+Outcome:
+1. The Result Display will show a success message.
+2. GrAB3 will switch to the Services Tab.
+3. You can now see all your services.
+
+{Example outcome screenshot}
+
+#### 4.1.7 Clear all existing services: `clearsvc`
+
+You can use this command to clear and delete the all the services in GrAB3.
+
+Format: `clearsvc`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+
+</div>
+
+Example:
+Let's say you want to delete all the services from your list of services and start from an empty list of services. You can
+follow these instructions.
+
+Clearing all services:
+1. Type `clearsvc` into the *Command Box*.
+2. Press `Enter` to execute.
+
+Outcome:
+1. The Result Display will show a success message.
+2. GrAB3 will switch to the Services Tab.
+3. You can see that the list of services is now empty.
+
+{Example outcome screenshot}
 
 ## 6.1 Appointment Tracker
 
@@ -750,7 +943,6 @@ Outcome :
 1. It will display a success message.
 2. GrAB3 will display a Pie Chart that categorizes expenses based on their 'tags', along with the total cost of all expenses in each category.
 
-
 ## Others
 
 {Description}
@@ -844,6 +1036,16 @@ Example:
 ### Feature
 
 {Feature command table} 
+
+### Service Management 
+|Action | Format | Examples
+|---------|---------|---------
+|**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Lash Lift d/0.5 p/38`
+|**Edit** | `editsvc s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc s/SC001 d/0.5`
+|**Delete** | `deletesvc s/SERVICE_CODE` | `deletesvc s/SC001`
+|**Find** | `findsvc KEYWORD` | `findsvc nail`
+|**List** | `listsvc` | 
+|**Clear** | `clearexp` | 
 
 ### Revenue Tracker
 |Action | Format | Examples
