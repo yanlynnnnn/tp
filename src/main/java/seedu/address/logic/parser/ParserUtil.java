@@ -12,6 +12,10 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
 import seedu.address.model.client.Phone;
+import seedu.address.model.expense.IsFixed;
+import seedu.address.model.util.attributes.Amount;
+import seedu.address.model.util.attributes.Date;
+import seedu.address.model.util.attributes.Description;
 import seedu.address.model.util.attributes.Tag;
 
 
@@ -107,6 +111,54 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses {@code String amount} into a {@code Amount}.
+     */
+    public static Amount parseAmount(String amount) throws ParseException {
+        requireNonNull(amount);
+        String trimmedAmount = amount.trim();
+        if (!Amount.isValidAmount(amount)) {
+            throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
+        }
+        return new Amount(trimmedAmount);
+    }
+
+    /**
+     * Parses {@code String date} into a {@code Date}.
+     */
+    public static Date parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!Date.isValidDate(date)) {
+            throw new ParseException(Date.MESSAGE_CONSTRAINTS);
+        }
+        return new Date(trimmedDate);
+    }
+
+    /**
+     * Parses {@code String description} into a {@code Description}.
+     */
+    public static Description parseDescription(String description) throws ParseException {
+        requireNonNull(description);
+        String trimmedDescription = description.trim();
+        if (!Description.isValidDescription(description)) {
+            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
+        }
+        return new Description(trimmedDescription);
+    }
+
+    /**
+     * Parses {@code String isFixed} into a {@code IsFixed}.
+     */
+    public static IsFixed parseIsFixed(String isFixed) throws ParseException {
+        requireNonNull(isFixed);
+        String trimmedIsFixed = isFixed.trim();
+        if (!IsFixed.isValidIsFixed(isFixed)) {
+            throw new ParseException(IsFixed.MESSAGE_CONSTRAINTS);
+        }
+        return new IsFixed(trimmedIsFixed);
     }
 }
 
