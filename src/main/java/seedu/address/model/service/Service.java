@@ -16,7 +16,7 @@ public class Service {
     /** How long the service takes */
     private Duration duration;
 
-    Service(Description description, Amount price, Duration duration) {
+    public Service(Description description, Amount price, Duration duration) {
         this.description = description;
         this.price = price;
         this.duration = duration;
