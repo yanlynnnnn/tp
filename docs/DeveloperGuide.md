@@ -274,6 +274,7 @@ Refer to the guide [here](DevOps.md).
 
 **Value proposition**:
 * Consolidates everything a home-based business needs such as appointments, clients, expenses, revenue and services into one place.
+* Saves significant time for the business owner, who previously had to manage details across his/her contacts, excel sheets, and inventory notebooks.
 * Does not require extensive technical knowledge compared to other business management software.
 * Displays expenses and revenue in a simple format for users to view
 
@@ -478,21 +479,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * System Requirements:
     * GrAB3 should work on any _mainstream OS_ as long as it has Java `11` or above installed.
     * GrAB3 should be optimized for keyboard input and can function without the use of a mouse.
-      However, a mouse would improve the user experience tremendously.
+      However, a mouse would improve the user experience.
     * The computer running the Java Virtual Machine (JVM) should have sufficient disk space to
       accommodate the user's data stored in the system. It should also have sufficient RAM
       and CPU power to run the JVM smoothly.
 * Performance Requirements:
     * GrAB3 should be able to start up and load existing the user's stored data sufficiently fast (< 10s). 
-    * Context switching / menu navigation through the use of button clicks should be sufficiently fast (< 10s). 
+    * Context switching / menu navigation through the use of either text commands or button clicks should be sufficiently fast (< 10s). 
 * Usability:
     * GrAB3 should be user-friendly for any client who can use a computer and does not require prior technical knowledge.
     * The user interface of GrAB3 should look intuitive and simple to navigate. It should not look cluttered with too many panels.
 * Reliability:
-    * GrAB3 should not crash in the event of incorrect user input- this should be handled safely with exceptions.  
+    * GrAB3 should not crash in the event of incorrect user input - this should be handled safely with exceptions.  
 * Scalability:
-    * GrAB3 should be able to handle hundreds of tasks by a user for the entire period of the semester. No expansion of 
-      hardware capabilities or software modifications should be required.
+    * GrAB3 should be able to handle thousands of appointments, clients, expenses and all other recorded entries by a user.
+     No expansion of hardware capabilities or software modifications should be required.
 
 ## **Appendix E: Glossary**
 
