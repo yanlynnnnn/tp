@@ -117,9 +117,9 @@ Example:
 This feature allows you to manage the services that your home-based beauty salon provides. You can record the 
 following information about your services: `TITLE`, `DURATION` and `PRICE`.
 
-### 4.1.1 Service Management Command Parameters
+#### 4.1.1 Service Management Command Parameters
 
-Before you dive into using the feature, you may want to have a look at the common parameter used in this feature.
+Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used in this feature.
 
 | Parameter Name | Description | Example
@@ -127,12 +127,21 @@ The table below shows a list of command parameters that will be used in this fea
 |`TITLE`| The title of the service you are providing. It must be alphanumeric words not more than 50 characters long.|E.g `Lash Lift`
 |`DURATION`| The duration of the service in hours. <br> <br> It be in half hour intervals.| E.g `1.5`
 |`PRICE`| The revenue received from the service. <br> <br> It must be in dollars.| E.g `5.50`
+|`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long. | E.g. If you have added an eyelash extension service into GrAB3 and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 
 #### 4.1.2 Add a new service: `addsvc`
 
 You can use this command to add a new service GrAB3.
 
 Format: `addsvc t/TITLE d/DURATION p/PRICE`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+
+</div>
 
 Example:
 Let's say you have a service with the following information you want to add into GrAB3. You can follow these instructions.
@@ -144,7 +153,7 @@ Let's say you have a service with the following information you want to add into
 |`PRICE`| 38 |
 
 Adding the above service:
-1. Type `addsvc t/Lash Lift d/0.5 p/38' into the *Command Box*.
+1. Type `addsvc t/Lash Lift d/0.5 p/38` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -159,6 +168,14 @@ Outcome:
 You can use this command to edit an existing service in GrAB3.
 
 Format: `editsvc s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+
+</div>
 
 Example:
 Let's say you have entered the wrong duration for an added service and want to change it to 0.5 hours instead
@@ -181,6 +198,14 @@ You can use this command to delete an existing service in GrAB3.
 
 Format: `deletesvc s/SERVICE_CODE`
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+
+</div>
+
 Example:
 Let's say you are no longer providing a particular service and want to delete it from GrAB3. You can follow these
 instructions.
@@ -201,6 +226,14 @@ Outcome:
 You can use this command to find services by keywords. GrAB3 will search for your services using the service title.
 
 Format: `findsvc KEYWORD`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+
+</div>
 
 Example: 
 Let's say you want to find all the services that contain nail in its title from the list of services. You can
@@ -223,6 +256,14 @@ You can use this command to navigate to the Services Tab and display all your ad
 
 Format: `listsvc`
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+
+</div>
+
 Example:
 Let's say you are in another tab and want to look at the list of all services. You can follow these instructions.
 
@@ -242,6 +283,14 @@ Outcome:
 You can use this command to clear and delete the all the services in GrAB3.
 
 Format: `clearsvc`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+
+</div>
 
 Example:
 Let's say you want to delete all the services from your list of services and start from an empty list of services. You can
