@@ -2,6 +2,7 @@ package seedu.address.model.service;
 
 import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Description;
+import seedu.address.model.util.attributes.Title;
 
 public class Service {
     /** The name of the service */
