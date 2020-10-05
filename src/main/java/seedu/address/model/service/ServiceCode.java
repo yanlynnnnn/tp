@@ -40,8 +40,8 @@ public class ServiceCode {
         return new ServiceCode(builder.toString());
     }
 
-    public static boolean isValidServiceCode(ServiceCode test) {
-        return VALIDATION_PREDICATE.test(test);
+    public static boolean isValidServiceCode(String test) {
+        return VALIDATION_PREDICATE.test(new ServiceCode(test));
     }
 
     /**

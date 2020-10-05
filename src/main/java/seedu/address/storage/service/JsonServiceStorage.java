@@ -46,14 +46,14 @@ public class JsonServiceStorage implements ServiceStorage {
     public Optional<ReadOnlyServiceManager> readServiceManager(Path filePath) throws DataConversionException, IOException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableServiceManager> jsonAddressBook = JsonUtil.readJsonFile(
+        Optional<JsonSerializableServiceManager> jsonServiceManager= JsonUtil.readJsonFile(
                 filePath, JsonSerializableServiceManager.class);
-        if (!jsonAddressBook.isPresent()) {
+        if (!jsonServiceManager.isPresent()) {
             return Optional.empty();
         }
 
         try {
-            return Optional.of(jsonAddressBook.get().toModelType());
+            return Optional.of(jsonServiceManager.get().toModelType());
         } catch (IllegalValueException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataConversionException(ive);

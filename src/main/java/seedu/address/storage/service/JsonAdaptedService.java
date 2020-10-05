@@ -24,14 +24,14 @@ public class JsonAdaptedService {
     private final String title;
     private final BigDecimal price;
     private final Double duration;
-    private final ServiceCode serviceCode;
+    private final String serviceCode;
 
     /**
      * Constructs a {@code JsonAdaptedService} with the given Service details.
      */
     @JsonCreator
     public JsonAdaptedService(@JsonProperty("title") String title, @JsonProperty("price") Double price,
-                             @JsonProperty("duration") Double duration, @JsonProperty("serviceCode") ServiceCode serviceCode) {
+                             @JsonProperty("duration") Double duration, @JsonProperty("serviceCode") String serviceCode) {
         this.title = title;
         this.price = new BigDecimal(price);
         this.duration = duration;
@@ -45,7 +45,7 @@ public class JsonAdaptedService {
         title = source.getTitle().value;
         price = source.getPrice().value;
         duration = source.getDuration().value;
-        serviceCode = source.getServiceCode();
+        serviceCode = source.getServiceCode().value;
 
     }
 
@@ -85,7 +85,7 @@ public class JsonAdaptedService {
         if (!ServiceCode.isValidServiceCode(serviceCode)) {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
         }
-        final ServiceCode modelServiceCode = new ServiceCode(serviceCode.value);
+        final ServiceCode modelServiceCode = new ServiceCode(serviceCode);
 
         return new Service(modelTitle, modelDuration, modelPrice, modelServiceCode);
     }

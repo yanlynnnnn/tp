@@ -214,6 +214,15 @@ public class ModelManager implements Model {
         filteredServices.setPredicate(predicate);
     }
 
+    /**
+     * Returns an unmodifiable view of the list of {@code Client} backed by the internal list of
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Service> getFilteredServiceList() {
+        return filteredServices;
+    }
+
     @Override
     public ReadOnlyServiceManager getServiceManager() {
         return this.serviceManager;

@@ -18,7 +18,7 @@ public class ServiceListPanel extends UiPart<Region> {
     private static final String FXML = "ServiceListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ServiceListPanel.class);
 
-    @javafx.fxml.FXML
+    @FXML
     private ListView<Service> serviceListView;
 
     /**

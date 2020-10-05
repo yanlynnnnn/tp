@@ -134,5 +134,8 @@ public interface Model {
 
     void updateFilteredServiceList(Predicate<Service> predicate);
 
+    ObservableList<Service> getFilteredServiceList();
+
     ReadOnlyServiceManager getServiceManager();
+
 }
