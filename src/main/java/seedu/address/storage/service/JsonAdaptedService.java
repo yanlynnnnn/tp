@@ -1,20 +1,18 @@
 package seedu.address.storage.service;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
+import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.client.Client;
 import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
 import seedu.address.model.client.Phone;
+import seedu.address.model.service.Duration;
 import seedu.address.model.service.Service;
-import seedu.address.model.util.attributes.Tag;
+import seedu.address.model.service.ServiceCode;
+import seedu.address.model.util.attributes.Price;
+import seedu.address.model.util.attributes.Title;
 
 /**
  * Jackson-friendly version of {@link Service}.
@@ -24,18 +22,20 @@ public class JsonAdaptedService {
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Service's %s field is missing!";
 
     private final String title;
-    private final Double price;
+    private final BigDecimal price;
     private final Double duration;
+    private final ServiceCode serviceCode;
 
     /**
      * Constructs a {@code JsonAdaptedService} with the given Service details.
      */
     @JsonCreator
     public JsonAdaptedService(@JsonProperty("title") String title, @JsonProperty("price") Double price,
-                             @JsonProperty("duration") Double duration) {
+                             @JsonProperty("duration") Double duration, @JsonProperty("serviceCode") ServiceCode serviceCode) {
         this.title = title;
-        this.price = price;
+        this.price = new BigDecimal(price);
         this.duration = duration;
+        this.serviceCode = serviceCode;
     }
 
     /**
@@ -45,45 +45,48 @@ public class JsonAdaptedService {
         title = source.getTitle().value;
         price = source.getPrice().value;
         duration = source.getDuration().value;
+        serviceCode = source.getServiceCode();
 
     }
 
     /**
-     * Converts this Jackson-friendly adapted client object into the model's {@code Client} object.
+     * Converts this Jackson-friendly adapted service object into the model's {@code Service} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted client.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted service.
      */
-    public Client toModelType() throws IllegalValueException {
-        final List<Tag> clientTags = new ArrayList<>();
-        for (JsonAdaptedTag tag : tagged) {
-            clientTags.add(tag.toModelType());
+    public Service toModelType() throws IllegalValueException {
+        if (title == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
         }
-
-        if (name == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Name.class.getSimpleName()));
-        }
-        if (!Name.isValidName(name)) {
+        if (!Title.isValidTitle(title)) {
             throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
         }
-        final Name modelName = new Name(name);
+        final Title modelTitle = new Title(title);
 
-        if (phone == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Phone.class.getSimpleName()));
+        if (duration == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Duration.class.getSimpleName()));
         }
-        if (!Phone.isValidPhone(phone)) {
+        if (!Duration.isValidDuration(duration)) {
             throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
         }
-        final Phone modelPhone = new Phone(phone);
+        final Duration modelDuration = new Duration(duration);
 
-        if (email == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Email.class.getSimpleName()));
+        if (price == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Price.class.getSimpleName()));
         }
-        if (!Email.isValidEmail(email)) {
+        if (!Price.isValidPrice(price.doubleValue())) {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
         }
-        final Email modelEmail = new Email(email);
+        final Price modelPrice= new Price(price.doubleValue());
 
-        final Set<Tag> modelTags = new HashSet<>(clientTags);
-        return new Client(modelName, modelPhone, modelEmail, modelTags);
+        if (serviceCode == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ServiceCode.class.getSimpleName()));
+        }
+        if (!ServiceCode.isValidServiceCode(serviceCode)) {
+            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        }
+        final ServiceCode modelServiceCode = new ServiceCode(serviceCode.value);
+
+        return new Service(modelTitle, modelDuration, modelPrice, modelServiceCode);
     }
 }

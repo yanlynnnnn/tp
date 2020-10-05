@@ -3,8 +3,6 @@ package seedu.address.model.service;
 import java.util.Objects;
 
 import seedu.address.model.client.Client;
-import seedu.address.model.util.attributes.Amount;
-import seedu.address.model.util.attributes.Description;
 import seedu.address.model.util.attributes.Price;
 import seedu.address.model.util.attributes.Title;
 
@@ -26,12 +24,13 @@ public class Service {
      * @param title The title of the service.
      * @param duration The duration of the service.
      * @param price The price of the service.
+     * @param serviceCode The unique identification code for the service object.
      */
-    public Service(Title title, Duration duration, Price price) {
+    public Service(Title title, Duration duration, Price price, ServiceCode serviceCode) {
         this.title = title;
         this.duration = duration;
         this.price = price;
-        this.serviceCode = ServiceCode.generateServiceCode();
+        this.serviceCode = serviceCode;
     }
 
     public Title getTitle() {
@@ -88,5 +87,4 @@ public class Service {
                 .append(getServiceCode());
         return builder.toString();
     }
-
 }

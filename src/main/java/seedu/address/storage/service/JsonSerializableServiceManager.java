@@ -8,10 +8,9 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
-import seedu.address.model.client.Client;
-import seedu.address.storage.JsonAdaptedClient;
+import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.model.manager.ServiceManager;
+import seedu.address.model.service.Service;
 
 /**
  * An Immutable serviceManager that is serializable to JSON format.
@@ -19,42 +18,42 @@ import seedu.address.storage.JsonAdaptedClient;
 @JsonRootName(value = "serviceManager")
 public class JsonSerializableServiceManager {
 
-    public static final String MESSAGE_DUPLICATE_CLIENT = "Clients list contains duplicate client(s).";
+    public static final String MESSAGE_DUPLICATE_SERVICE= "Service list contains duplicate service(s).";
 
-    private final List<JsonAdaptedClient> clients = new ArrayList<>();
+    private final List<JsonAdaptedService> services = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given clients.
+     * Constructs a {@code JsonSerializableServiceManager } with the given services.
      */
     @JsonCreator
-    public JsonSerializableAddressBook(@JsonProperty("clients") List<JsonAdaptedClient> clients) {
-        this.clients.addAll(clients);
+    public JsonSerializableServiceManager(@JsonProperty("services") List<JsonAdaptedService> services) {
+        this.services.addAll(services);
     }
 
     /**
-     * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyServiceManager} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
+     * @param source future changes to this will not affect the created {@code JsonSerializableServiceManager}.
      */
-    public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
-        clients.addAll(source.getClientList().stream().map(JsonAdaptedClient::new).collect(Collectors.toList()));
+    public JsonSerializableServiceManager(ReadOnlyServiceManager source) {
+        services.addAll(source.getServiceList().stream().map(JsonAdaptedService::new).collect(Collectors.toList()));
     }
 
     /**
-     * Converts this address book into the model's {@code AddressBook} object.
+     * Converts this serviceManager into the model's {@code ServiceManager} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
-    public AddressBook toModelType() throws IllegalValueException {
-        AddressBook addressBook = new AddressBook();
-        for (JsonAdaptedClient jsonAdaptedClient : clients) {
-            Client client = jsonAdaptedClient.toModelType();
-            if (addressBook.hasClient(client)) {
-                throw new IllegalValueException(MESSAGE_DUPLICATE_CLIENT);
+    public ServiceManager toModelType() throws IllegalValueException {
+        ServiceManager serviceManager = new ServiceManager();
+        for (JsonAdaptedService jsonAdaptedService : services) {
+            Service service = jsonAdaptedService.toModelType();
+            if (serviceManager.hasService(service)) {
+                throw new IllegalValueException(MESSAGE_DUPLICATE_SERVICE);
             }
-            addressBook.addClient(client);
+            serviceManager.addService(service);
         }
-        return addressBook;
+        return serviceManager;
     }
 
 }
