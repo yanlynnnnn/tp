@@ -7,6 +7,9 @@ import java.util.function.Predicate;
 
 import seedu.address.commons.util.AppUtil;
 
+/**
+ * The price of a service provided by SuperSalon.
+ */
 public class Price {
     public static final String MESSAGE_CONSTRAINTS = "Price (in dollars and cents - eg: 15.00) "
             + "must be a valid double greater than 0";
