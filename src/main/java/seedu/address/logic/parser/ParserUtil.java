@@ -16,6 +16,7 @@ import seedu.address.model.expense.IsFixed;
 import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Date;
 import seedu.address.model.util.attributes.Description;
+import seedu.address.model.util.attributes.Price;
 import seedu.address.model.util.attributes.Tag;
 import seedu.address.model.util.attributes.Title;
 
@@ -175,6 +176,26 @@ public class ParserUtil {
             throw new ParseException(Title.MESSAGE_CONSTRAINTS);
         }
         return new Title(trimmedTitle);
+    }
+
+    /**
+     * Parses a {@code String Price} into a {@code {Price}}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code price} is invalid.
+     */
+    public static Price parsePrice(String price) throws ParseException {
+        requireNonNull(price);
+        price = price.trim();
+        try {
+            Double doublePrice = Double.parseDouble(price);
+            if (!Price.isValidPrice(doublePrice)) {
+                throw new ParseException(Price.MESSAGE_CONSTRAINTS);
+            }
+            return new Price(doublePrice);
+        } catch (NumberFormatException e) {
+            throw new ParseException(Price.MESSAGE_CONSTRAINTS);
+        }
     }
 }
 
