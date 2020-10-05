@@ -13,6 +13,7 @@ import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
 import seedu.address.model.client.Phone;
 import seedu.address.model.expense.IsFixed;
+import seedu.address.model.service.Duration;
 import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Date;
 import seedu.address.model.util.attributes.Description;
@@ -195,6 +196,26 @@ public class ParserUtil {
             return new Price(doublePrice);
         } catch (NumberFormatException e) {
             throw new ParseException(Price.MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    /**
+     * Parses a {@code String Duration} into a {@code {Duration}}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code duration} is invalid.
+     */
+    public static Duration parseDuration(String duration) throws ParseException {
+        requireNonNull(duration);
+        duration = duration.trim();
+        try {
+            Double doubleDuration = Double.parseDouble(duration);
+            if (!Duration.isValidDuration(doubleDuration)) {
+                throw new ParseException(Duration.MESSAGE_CONSTRAINTS);
+            }
+            return new Duration(doubleDuration);
+        } catch (NumberFormatException e) {
+            throw new ParseException(Duration.MESSAGE_CONSTRAINTS);
         }
     }
 }

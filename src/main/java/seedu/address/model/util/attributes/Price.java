@@ -11,7 +11,7 @@ public class Price {
     public static final String MESSAGE_CONSTRAINTS = "Price (in dollars and cents - eg: 15.00) "
             + "must be a valid double greater than 0";
 
-    private static final double MIN_VALUE = 0;
+    private static final double MIN_VALUE = 0.0;
     private static final double MAX_VALUE = Double.MAX_VALUE;
     public static final Predicate<Double> VALIDATION_PREDICATE = i -> i > MIN_VALUE && i <= MAX_VALUE;
 
@@ -28,8 +28,8 @@ public class Price {
     /**
      * Returns true if a given string is a valid duration.
      */
-    public static boolean isValidPrice(Double amount) {
-        return VALIDATION_PREDICATE.test(amount);
+    public static boolean isValidPrice(Double test) {
+        return VALIDATION_PREDICATE.test(test);
     }
 
     @Override
