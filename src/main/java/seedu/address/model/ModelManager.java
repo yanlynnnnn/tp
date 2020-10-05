@@ -14,6 +14,8 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.model.manager.ServiceManager;
 import seedu.address.model.service.Service;
 
 /**
@@ -23,27 +25,31 @@ public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
+    private final ServiceManager serviceManager;
     private final UserPrefs userPrefs;
+
     private final FilteredList<Client> filteredClients;
     private final FilteredList<Expense> filteredExpenses;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs) {
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlyServiceManager serviceManager) {
         super();
-        requireAllNonNull(addressBook, userPrefs);
+        requireAllNonNull(addressBook, userPrefs, serviceManager);
 
-        logger.fine("Initializing with address book: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with SuperSalon: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
+        this.serviceManager = new ServiceManager(serviceManager);
+
         filteredClients = new FilteredList<>(this.addressBook.getClientList());
         filteredExpenses = new FilteredList<>(this.addressBook.getExpenseList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs());
+        this(new AddressBook(), new UserPrefs(), new ServiceManager());
     }
 
     //=========== UserPrefs ==================================================================================
