@@ -1,15 +1,18 @@
-package seedu.address.model.service.uniquelist;
+package seedu.address.model.util.uniquelist;
 
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.service.uniquelist.exceptions.DuplicateItemException;
-import seedu.address.model.service.uniquelist.exceptions.ItemNotFoundException;
+import seedu.address.model.client.Client;
+import seedu.address.model.util.uniquelist.exceptions.DuplicateItemException;
+import seedu.address.model.util.uniquelist.exceptions.ItemNotFoundException;
 
 /**
  * A list that enforces uniqueness between its elements and does not allow nulls.
@@ -131,5 +134,23 @@ public class UniqueList<T extends UniqueListItem> implements Iterable<T> {
             }
         }
         return true;
+    }
+
+    /**
+     * Gets number of items in the UniqueList.
+     *
+     * @return size of the UniqueList.
+     */
+    public int size() {
+        return internalList.size();
+    }
+
+    /**
+     * Gets a stream of all the items in the UniqueList.
+     *
+     * @return stream of all items in the UniqueList.
+     */
+    public Stream<T> stream() {
+        return internalList.stream();
     }
 }

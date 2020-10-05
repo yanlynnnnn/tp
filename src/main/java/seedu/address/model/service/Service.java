@@ -3,10 +3,11 @@ package seedu.address.model.service;
 import java.util.Objects;
 
 import seedu.address.model.client.Client;
+import seedu.address.model.util.uniquelist.UniqueListItem;
 import seedu.address.model.util.attributes.Price;
 import seedu.address.model.util.attributes.Title;
 
-public class Service {
+public class Service implements UniqueListItem {
     /** The name of the service */
     private Title title;
 
@@ -86,5 +87,28 @@ public class Service {
                 .append(" Service Code: ")
                 .append(getServiceCode());
         return builder.toString();
+    }
+
+    /**
+     * Checks if both services being compared have the same attributes.
+     *
+     * @param other the second service being compared.
+     * @return true if both services have the same attributes.
+     */
+    @Override
+    public boolean isSame(UniqueListItem other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Service)) {
+            return false;
+        }
+
+        Service otherService = (Service) other;
+        return title.equals(otherService.title)
+                && duration.equals(otherService.duration)
+                && price.equals(otherService.price)
+                && serviceCode.equals(otherService.serviceCode);
     }
 }

@@ -3,6 +3,7 @@ package seedu.address.model.service;
 import java.util.function.Predicate;
 
 import seedu.address.model.service.exceptions.MaximumServiceException;
+import seedu.address.model.util.attributes.Price;
 
 /**
  * A unique identification code for each Service object.
@@ -51,5 +52,12 @@ public class ServiceCode {
      */
     private static int getIntFromServiceCode(ServiceCode serviceCode) {
         return Integer.valueOf(serviceCode.value.substring(2).replaceFirst(leadingZerosRegex, ""));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof ServiceCode// instanceof handles nulls
+                && value.equals(((ServiceCode) other).value)); // state check
     }
 }

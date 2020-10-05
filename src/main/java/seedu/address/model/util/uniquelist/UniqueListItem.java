@@ -1,4 +1,4 @@
-package seedu.address.model.service.uniquelist;
+package seedu.address.model.util.uniquelist;
 
 /**
  * API of an item in a UniqueList.

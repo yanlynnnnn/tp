@@ -1,4 +1,4 @@
-package seedu.address.model.service.uniquelist.exceptions;
+package seedu.address.model.util.uniquelist.exceptions;
 
 /**
  * Signals that the operation will result in duplicate items(items are considered duplicates if they have the same

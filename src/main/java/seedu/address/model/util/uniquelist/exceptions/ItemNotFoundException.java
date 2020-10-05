@@ -1,4 +1,4 @@
-package seedu.address.model.service.uniquelist.exceptions;
+package seedu.address.model.util.uniquelist.exceptions;
 
 /**
  * Signals that the operation is unable to find the specified client.

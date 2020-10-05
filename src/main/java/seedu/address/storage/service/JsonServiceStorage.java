@@ -12,8 +12,6 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.manager.ReadOnlyServiceManager;
-import seedu.address.storage.JsonAddressBookStorage;
-import seedu.address.storage.JsonSerializableAddressBook;
 
 /**
  * A class to access ServiceManager data stored as a json file on the hard disk.
@@ -48,7 +46,7 @@ public class JsonServiceStorage implements ServiceStorage {
         requireNonNull(filePath);
 
         Optional<JsonSerializableServiceManager> jsonAddressBook = JsonUtil.readJsonFile(
-                filePath, JsonSerializableAddressBook.class);
+                filePath, JsonSerializableServiceManager.class);
         if (!jsonAddressBook.isPresent()) {
             return Optional.empty();
         }
