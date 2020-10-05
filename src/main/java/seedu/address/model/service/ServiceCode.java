@@ -33,8 +33,7 @@ public class ServiceCode {
         }
 
         StringBuilder serviceCode = new StringBuilder("SC");
-        serviceCode.append("0".repeat(3 - length));
-        serviceCode.append(String.valueOf(count));
+        serviceCode.append("0".repeat(3 - length)).append(String.valueOf(count));
         count++;
         return new ServiceCode(serviceCode.toString());
     }
