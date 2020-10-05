@@ -4,8 +4,8 @@ import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Description;
 
 public class Service {
-    /** What type of Service it is */
-    private Description description;
+    /** The name of the service */
+    private ServiceTitle title;
 
     /** Amount of money in dollars that this Service brings in */
     private Amount price;
@@ -18,12 +18,12 @@ public class Service {
 
     /**
      * Constructor for Service.
-     * @param description The description of the service.
+     * @param title The title of the service.
      * @param price The price of the service.
      * @param duration The duration of the service.
      */
-    public Service(Description description, Amount price, Duration duration) {
-        this.description = description;
+    public Service(ServiceTitle title, Amount price, Duration duration) {
+        this.title = title;
         this.price = price;
         this.duration = duration;
     }

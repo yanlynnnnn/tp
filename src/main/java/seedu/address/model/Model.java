@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.service.Service;
 
 /**
  * The API of the Model component.
@@ -110,7 +111,7 @@ public interface Model {
     /**
      * Replaces the contents of the expense list with {@code expenses}.
      */
-    public void setExpenses(List<Expense> expenses);
+    void setExpenses(List<Expense> expenses);
 
     /** Returns an unmodifiable view of the filtered expense list */
     ObservableList<Expense> getFilteredExpenseList();
@@ -120,4 +121,9 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredExpenseList(Predicate<Expense> predicate);
+
+    /**
+     * Adds the given service.
+     */
+    void addService(Service toAdd);
 }

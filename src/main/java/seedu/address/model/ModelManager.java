@@ -14,6 +14,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.service.Service;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -191,4 +192,9 @@ public class ModelManager implements Model {
                 && filteredClients.equals(other.filteredClients);
     }
 
+    //=========== ServiceManager ===============
+    @Override
+    public void addService(Service toAdd) {
+        requireNonNull(toAdd);
+    }
 }
