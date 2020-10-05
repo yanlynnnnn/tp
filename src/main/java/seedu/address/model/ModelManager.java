@@ -30,6 +30,7 @@ public class ModelManager implements Model {
 
     private final FilteredList<Client> filteredClients;
     private final FilteredList<Expense> filteredExpenses;
+    private final FilteredList<Service> filteredServices;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
@@ -46,6 +47,7 @@ public class ModelManager implements Model {
 
         filteredClients = new FilteredList<>(this.addressBook.getClientList());
         filteredExpenses = new FilteredList<>(this.addressBook.getExpenseList());
+        filteredServices= new FilteredList<>(this.serviceManager.getServiceList());
     }
 
     public ModelManager() {
@@ -202,5 +204,18 @@ public class ModelManager implements Model {
     @Override
     public void addService(Service toAdd) {
         requireNonNull(toAdd);
+        serviceManager.addService(toAdd);
+        updateFilteredServiceList(PREDICATE_SHOW_ALL_SERVICES);
+    }
+
+    @Override
+    public void updateFilteredServiceList(Predicate<Service> predicate) {
+        requireNonNull(predicate);
+        filteredServices.setPredicate(predicate);
+    }
+
+    @Override
+    public ReadOnlyServiceManager getServiceManager() {
+        return this.serviceManager;
     }
 }

@@ -60,4 +60,9 @@ public class ServiceCode {
                 || (other instanceof ServiceCode// instanceof handles nulls
                 && value.equals(((ServiceCode) other).value)); // state check
     }
+
+    @Override
+    public String toString() {
+        return value;
+    }
 }

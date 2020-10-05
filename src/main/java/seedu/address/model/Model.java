@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.service.Service;
 
 /**
@@ -19,6 +20,9 @@ public interface Model {
 
     /** {@code Predicate} that always evaluate to true */
     Predicate<Expense> PREDICATE_SHOW_ALL_EXPENSES = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Service> PREDICATE_SHOW_ALL_SERVICES = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -122,8 +126,13 @@ public interface Model {
      */
     void updateFilteredExpenseList(Predicate<Expense> predicate);
 
+    // ====================== ServiceManager ========================
     /**
      * Adds the given service.
      */
     void addService(Service toAdd);
+
+    void updateFilteredServiceList(Predicate<Service> predicate);
+
+    ReadOnlyServiceManager getServiceManager();
 }

@@ -106,6 +106,6 @@ public class StorageManager implements Storage {
 
     @Override
     public void saveServiceManager(ReadOnlyServiceManager serviceManager, Path filePath) throws IOException {
-        saveServiceManager(serviceManager, filePath);
+        serviceStorage.saveServiceManager(serviceManager, filePath);
     }
 }

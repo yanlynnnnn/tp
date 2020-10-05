@@ -85,7 +85,7 @@ public class Service implements UniqueListItem {
                 .append(" Price: ")
                 .append(getPrice())
                 .append(" Service Code: ")
-                .append(getServiceCode());
+                .append(getServiceCode().toString());
         return builder.toString();
     }
 

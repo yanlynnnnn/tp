@@ -10,6 +10,7 @@ import java.util.logging.Logger;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.commons.util.FileUtil;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 
@@ -61,11 +62,15 @@ public class JsonServiceStorage implements ServiceStorage {
 
     @Override
     public void saveServiceManager(ReadOnlyServiceManager serviceManager) throws IOException {
-
+        saveServiceManager(serviceManager, filePath);
     }
 
     @Override
     public void saveServiceManager(ReadOnlyServiceManager serviceManager, Path filePath) throws IOException {
+        requireNonNull(serviceManager);
+        requireNonNull(filePath);
 
+        FileUtil.createIfMissing(filePath);
+        JsonUtil.saveJsonFile(new JsonSerializableServiceManager(serviceManager), filePath);
     }
 }
