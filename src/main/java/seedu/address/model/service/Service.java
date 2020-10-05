@@ -5,7 +5,7 @@ import seedu.address.model.util.attributes.Description;
 
 public class Service {
     /** The name of the service */
-    private ServiceTitle title;
+    private Title title;
 
     /** Amount of money in dollars that this Service brings in */
     private Amount price;
@@ -22,7 +22,7 @@ public class Service {
      * @param price The price of the service.
      * @param duration The duration of the service.
      */
-    public Service(ServiceTitle title, Amount price, Duration duration) {
+    public Service(Title title, Amount price, Duration duration) {
         this.title = title;
         this.price = price;
         this.duration = duration;

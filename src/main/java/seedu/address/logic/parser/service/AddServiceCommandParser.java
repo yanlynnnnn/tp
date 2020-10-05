@@ -14,6 +14,10 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.service.Duration;
+import seedu.address.model.service.Service;
+import seedu.address.model.util.attributes.Price;
+import seedu.address.model.util.attributes.Title;
 
 
 /**
@@ -38,8 +42,13 @@ public class AddServiceCommandParser implements Parser<AddServiceCommand> {
             || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddServiceCommand.MESSAGE_USAGE));
         }
+        Title title = ParserUtil.parseTitle(argMultimap.getValue(PREFIX_SERVICE_TITLE).get());
+        Duration duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_SERVICE_DURATION).get());
+        Price price = ParserUtil.parsePrice(argMultimap.getValue(PREFIX_SERVICE_PRICE).get());
 
+        Service service = new Service(title, duration, price);
 
+        return new AddServiceCommand(service);
     }
 
     /**
