@@ -320,121 +320,193 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `GrAB3` and the **Actor** is the `user`, unless specified otherwise)
 
-### Appointment List
+### Services Management
 
-**UC01: Add an appointment into the appointment list**
+#### UC001: Add a Service 
+Add a service provided by the business into GrAB3.
 
-**Preconditions: Appointment list must exist**
+**Preconditions: Appointment list must exist.**
 
-**Guarantees: A new appointment will be added to the appointment list**
+**Guarantees: A new service will be added to the service list upon successful command.**
 
 **MSS**
+1. User adds a service by providing details.
+1. GrAB3 adds the service to the service list.  
+1. GrAB3 displays successful additional message.
+Use case ends.
 
-0.  User adds appointment into appointment list.
-1.  GrAB3 shows the updated list of appointments.
+Extensions:  
+* 1a. Incomplete details provided.  
+  * 1a1. GrAB3 displays an error message.  
+  Use case resumes at step 1.
+        
+#### UC002: Edit a Service
+Edit the details of an existing service.
 
-    Use case ends.
+**Preconditions: Service exists in service list.**
+
+**Guarantees: Updated service list with new service details.**
+
+**MSS**
+1. User requests to list all services.
+1. GrAB3 shows a list of services.
+1. User edits an existing service by providing the details.
+1. GrAB3 update the details of the selected service.
+1. GrAB3 update the service list.
+Use case ends.
+
+Extensions:
+* 3a. Invalid index provided.
+  * 3a1. GrAB3 displays an error message.  
+  Use case resumes at step 1.
+
+* 3b. Incomplete details provided.  
+  * 3b1. GrAB3 displays an error message.  
+  Use case resumes at step 1.
+        
+#### UC003: Delete a Service
+Delete the selected service from the service list.
+
+**Preconditions: Service exists in service list.**
+
+**Guarantees: Updated service list with service specified by user deleted.**
+
+**MSS**
+1. User requests to list all services.
+1. GrAB3 shows a list of services.
+1. User request to delete a specific service.
+1. GrAB3 delete a service. 
+1. GrAB3 shows the updated list view.
+Use case ends.
 
 **Extensions**
+* 3a. Invalid index provided.
+  * 3a1. GrAB3 displays an error message.  
+  Use case resumes at step 1.
 
-* 2a. The specified module code is invalid.
+#### UC004: Find a Service
+Find a service in the service list.
 
-    * 2a1. GrAB3 shows an error message.
+**Preconditions: Service exists in service list.**
 
-    Use case resumes at step 1.
+**Guarantees: Display all services in the service list that matches the search value.**
+
+**MSS**
+1. User requests to list all services that matches the search value.
+1. GrAB3 searches for services that matches search value.
+1. GrAB3 show list of all services that matches the search value.
+Use case ends.
+
+**Extensions**
+* 2a. No service matches the search value.
+  * 2a1. GrAB3 displays empty list.
+  Use case resumes at step 1.
+  
+#### UC005: List Services 
+List all the services in the service list.
+
+**Preconditions: Service exists in service list.**
+ 
+**Guarantees: All services in the service list will be displayed.**
+ 
+**MSS**
+1. User requests to list all services.
+1. GrAB3 display all services in the service list.
+Use case ends.
+
+**Extensions**
+* 1a. No service in service list.
+  * 1a1. GrAB3 displays empty list.
+  Use case resumes at step 1.
+  
+#### UC005: Clear Services
+Clear all services in the service list.
+
+**Preconditions: Service exists in service list**
+
+**Guarantees: An empty revenue list.**
+
+**MSS**
+1. User requests to clear the list.
+1. GrAB3 shows the updated list.
+Use case ends.
 
 ### Client List
 
-**UC02: Add a client to client list**
+#### UC001: Add a client to client list
 
 **Preconditions: A client must exist**
 
 **Guarantees: A new client will added to the client list** 
 
 **MSS**
-
 1.  User requests to add a new client into the client list.
-2.  GrAB3 shows the updated client list
-
-    Use case ends.
+1.  GrAB3 shows the updated client list
+Use case ends.
 
 **Extensions**
 
 * 1a. Client description is empty.
-
     * 1a1. GrAB3 shows an error message.
-    
-        Use case resumes at step 2.
+    Use case resumes at step 2.
 
-**UC03: Delete a client**
+#### UC003: Delete a client**
 
 **Preconditions: client schedule must exist**
 
 **Guarantees: The client specified by the user will be deleted**
 
 **MSS**
-
 1.  User requests to list all clients.
-2.  GrAB3 displays a list of clients.
-3.  User requests to delete a specific client from the list generated.
-4.  GrAB3 shows the updated list after deletion of the client.
-
-    Use case ends.
+1.  GrAB3 displays a list of clients.
+1.  User requests to delete a specific client from the list generated.
+1.  GrAB3 shows the updated list after deletion of the client.
+Use case ends.
 
 **Extensions**
-
 * 3a. The specified client does not exist.
-
     * 3a1. GrAB3 shows an error message.
+    Use case resumes at step 2.
 
-      Use case resumes at step 2.
-
-**UC04: Edit a client**
+#### UC004: Edit a client
 
 **Preconditions: Client exists in TaskSchedule**
 
 **Guarantees: Client specified by user gets edited**
 
 **MSS**
-
 1.  User requests to list all clients.
-2.  GrAB3 shows a list of clients.
-3.  User requests to edit the description of a specific client from that list.
-4.  GrAB3 shows the updated client.
-
-    Use case ends.
+1.  GrAB3 shows a list of clients.
+1.  User requests to edit the description of a specific client from that list.
+1.  GrAB3 shows the updated client.
+Use case ends.
 
 **Extensions**
-
 * 3a. The given index is invalid.
-
     * 3a1. GrAB3 shows an error message.
+    Use case resumes at step 2.
 
-        Use case resumes at step 2.
+### Appointment List
 
+####UC01: Add an appointment into the appointment list
 
-### Expense List
+**Preconditions: Appointment list must exist**
 
-**UC04: Sort expenses by ascending/descending order**
-
-**Preconditions: Expenses exist in expense list**
-
-**Guarantees: View of expenses sorted in order specified by user **
+**Guarantees: A new appointment will be added to the appointment list**
 
 **MSS**
-
-1.  User requests to list all expenses.
-2.  GrAB3 shows a list of expenses.
-3.  User requests to sort the expenses by ascending order.
-4.  GrAB3 shows the sorted list view.
-
-    Use case ends.
+1.  User adds appointment into appointment list.
+1.  GrAB3 shows the updated list of appointments.
+Use case ends.
 
 **Extensions**
+* 2a. The specified module code is invalid.
+    * 2a1. GrAB3 shows an error message.
+    Use case resumes at step 1.
 
 ### Revenue List
 
-**UC05: Clear the revenue list**
+#### UC05: Clear the revenue list**
 
 **Preconditions: Revenues exist in revenue list**
 
@@ -451,22 +523,20 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-### Service List
+### Expense List
 
-**UC06: Delete a service **
+#### UC04: Sort expenses by ascending/descending order
 
-**Preconditions: Service exists in service list**
+**Preconditions: Expenses exist in expense list**
 
-**Guarantees: Updated list with service specified by user deleted **
+**Guarantees: View of expenses sorted in order specified by user.**
 
 **MSS**
-
-1.  User requests to list all services.
-2.  GrAB3 shows a list of services.
-3.  User delete a service.
-4.  GrAB3 shows the updated list view.
-
-    Use case ends.
+1.  User requests to list all expenses.
+1.  GrAB3 shows a list of expenses.
+1.  User requests to sort the expenses by ascending order.
+1.  GrAB3 shows the sorted list view.
+Use case ends.
 
 **Extensions**
 
