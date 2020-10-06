@@ -3,6 +3,7 @@ package seedu.address.model.util.attributes;
 import static java.util.Objects.requireNonNull;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.function.Predicate;
 
 import seedu.address.commons.util.AppUtil;
@@ -25,7 +26,7 @@ public class Price {
     public Price(double price) {
         requireNonNull(price);
         AppUtil.checkArgument(isValidPrice(price), MESSAGE_CONSTRAINTS);
-        value = new BigDecimal(price);
+        value = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP);
     }
 
     /**
@@ -35,9 +36,14 @@ public class Price {
         return VALIDATION_PREDICATE.test(test);
     }
 
+    /**
+     * Gives a string representation of the price, in Singapore Dollars.
+     *
+     * @return a string representing the amount of Singapore Dollars the price is.
+     */
     @Override
     public String toString() {
-        return value.toString();
+        return value.setScale(2, RoundingMode.HALF_UP).toString(); // Two decimal places
     }
 
     @Override
