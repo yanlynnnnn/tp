@@ -2,9 +2,9 @@ package seedu.address.model.service;
 
 import java.util.Objects;
 
-import seedu.address.model.util.uniquelist.UniqueListItem;
 import seedu.address.model.util.attributes.Price;
 import seedu.address.model.util.attributes.Title;
+import seedu.address.model.util.uniquelist.UniqueListItem;
 
 public class Service implements UniqueListItem {
     /** The name of the service */

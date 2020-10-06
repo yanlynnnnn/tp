@@ -35,7 +35,8 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs, ReadOnlyServiceManager serviceManager) {
+    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
+                        ReadOnlyServiceManager serviceManager) {
         super();
         requireAllNonNull(addressBook, userPrefs, serviceManager);
 
@@ -47,7 +48,7 @@ public class ModelManager implements Model {
 
         filteredClients = new FilteredList<>(this.addressBook.getClientList());
         filteredExpenses = new FilteredList<>(this.addressBook.getExpenseList());
-        filteredServices= new FilteredList<>(this.serviceManager.getServiceList());
+        filteredServices = new FilteredList<>(this.serviceManager.getServiceList());
     }
 
     public ModelManager() {

@@ -34,6 +34,10 @@ public class AddServiceCommand extends Command {
     private static final String MESSAGE_SUCCESS = "New Service added: %1$s";
     private final Service toAdd;
 
+    /**
+     * Adds a Service object as an attribute for the AddServiceCommand object.
+     * @param toAdd is the Service to be added.
+     */
     public AddServiceCommand(Service toAdd) {
         requireNonNull(toAdd);
         this.toAdd = toAdd;

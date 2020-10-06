@@ -14,7 +14,6 @@ import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.model.service.Duration;
 import seedu.address.model.service.Service;
-import seedu.address.model.service.ServiceCode;
 import seedu.address.model.util.attributes.Price;
 import seedu.address.model.util.attributes.Tag;
 import seedu.address.model.util.attributes.Title;
@@ -24,7 +23,7 @@ import seedu.address.model.util.attributes.Title;
  */
 public class SampleDataUtil {
     public static Client[] getSampleClients() {
-        return new Client[] {
+        return new Client[]{
             new Client(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                 getTagSet("friends")),
             new Client(new Name("Bernice Yu"), new Phone("99272758"), new Email("berniceyu@example.com"),
@@ -41,17 +40,17 @@ public class SampleDataUtil {
     }
 
     public static Service[] getSampleServices() {
-        return new Service[] {
-                new Service(new Title("Lash Lift"), new Duration(0.5), new Price(38.0)).addSerivceCode("SC000"),
-                new Service(new Title("Nail Extension"), new Duration(0.5), new Price(28.9)).addSerivceCode("SC001"),
-                new Service(new Title("Pedicure"), new Duration(0.5), new Price(18.5)).addSerivceCode("SC003"),
-                new Service(new Title("Hair Treatment"), new Duration(1.5), new Price(88.9)).addSerivceCode("SC007"),
-                new Service(new Title("Manicure"), new Duration(1.0), new Price(21.5)).addSerivceCode("SC005"),
+        return new Service[]{
+            new Service(new Title("Lash Lift"), new Duration(0.5), new Price(38.0)).addSerivceCode("SC000"),
+            new Service(new Title("Nail Extension"), new Duration(0.5), new Price(28.9)).addSerivceCode("SC001"),
+            new Service(new Title("Pedicure"), new Duration(0.5), new Price(18.5)).addSerivceCode("SC003"),
+            new Service(new Title("Hair Treatment"), new Duration(1.5), new Price(88.9)).addSerivceCode("SC007"),
+            new Service(new Title("Manicure"), new Duration(1.0), new Price(21.5)).addSerivceCode("SC005"),
         };
     }
 
     public static ReadOnlyServiceManager getSampleServiceManager() {
-        ServiceManager sampleServiceManager =  new ServiceManager();
+        ServiceManager sampleServiceManager = new ServiceManager();
         for (Service sampleService : getSampleServices()) {
             sampleServiceManager.addService(sampleService);
         }
@@ -71,7 +70,7 @@ public class SampleDataUtil {
      */
     public static Set<Tag> getTagSet(String... strings) {
         return Arrays.stream(strings)
-                .map(Tag::new)
-                .collect(Collectors.toSet());
+            .map(Tag::new)
+            .collect(Collectors.toSet());
     }
 }

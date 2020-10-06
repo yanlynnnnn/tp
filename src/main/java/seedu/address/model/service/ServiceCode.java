@@ -13,11 +13,11 @@ import seedu.address.model.util.attributes.Title;
  * A unique identification code for each Service object.
  */
 public class ServiceCode {
+    public static final String LEADING_ZEROES_REGEX = "^0+(?!$)";
+    public static final Predicate<ServiceCode> VALIDATION_PREDICATE = i -> i.value.substring(0, 2).equals("SC")
+        && i.value.length() == 5 && getIntFromServiceCode(i) < 1000 && getIntFromServiceCode(i) >= 0;
     /** String representing a unique identification number for each Service object */
     public final String value;
-    public static final String leadingZerosRegex = "^0+(?!$)";
-    public static final Predicate<ServiceCode> VALIDATION_PREDICATE = i -> i.value.substring(0,2).equals("SC") &&
-            i.value.length() == 5 && getIntFromServiceCode(i) < 1000 && getIntFromServiceCode(i) >= 0;
 
     public ServiceCode(String value) {
         this.value = value;
@@ -34,11 +34,11 @@ public class ServiceCode {
 
         for (int codeNum = 0; codeNum < 1000; codeNum++) {
             String potentialServiceCode = "SC" + "0".repeat(3 - String.valueOf(codeNum).length())
-                    + String.valueOf(codeNum);
+                + String.valueOf(codeNum);
 
             // .equals for two services return true as long as value of ServiceCode is the same
-            if (!set.contains(new Service(new Title("Test"),new Duration(0.5),new Price(0.5))
-                    .addSerivceCode(potentialServiceCode))) {
+            if (!set.contains(new Service(new Title("Test"), new Duration(0.5), new Price(0.5))
+                .addSerivceCode(potentialServiceCode))) {
 
                 serviceCode = potentialServiceCode;
                 break;
@@ -47,7 +47,7 @@ public class ServiceCode {
 
         if (serviceCode.equals("")) { // No suitable service code found from codeNum 0 - 999
             throw new MaximumServiceException("You have reached the maximum number of services that you can add"
-                    + "for SuperSalon");
+                + "for SuperSalon");
         }
 
         return serviceCode;
@@ -64,14 +64,14 @@ public class ServiceCode {
      * @return an integer representing the unique identification number.
      */
     private static int getIntFromServiceCode(ServiceCode serviceCode) {
-        return Integer.valueOf(serviceCode.value.substring(2).replaceFirst(leadingZerosRegex, ""));
+        return Integer.valueOf(serviceCode.value.substring(2).replaceFirst(LEADING_ZEROES_REGEX, ""));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof ServiceCode// instanceof handles nulls
-                && value.equals(((ServiceCode) other).value)); // state check
+            || (other instanceof ServiceCode// instanceof handles nulls
+            && value.equals(((ServiceCode) other).value)); // state check
     }
 
     @Override

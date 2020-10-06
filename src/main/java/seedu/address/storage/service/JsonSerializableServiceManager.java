@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.ServiceManager;
@@ -18,7 +19,7 @@ import seedu.address.model.service.Service;
 @JsonRootName(value = "serviceManager")
 public class JsonSerializableServiceManager {
 
-    public static final String MESSAGE_DUPLICATE_SERVICE= "Service list contains duplicate service(s).";
+    public static final String MESSAGE_DUPLICATE_SERVICE = "Service list contains duplicate service(s).";
 
     private final List<JsonAdaptedService> services = new ArrayList<>();
 

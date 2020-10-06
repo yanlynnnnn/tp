@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
@@ -31,7 +32,8 @@ public class JsonAdaptedService {
      */
     @JsonCreator
     public JsonAdaptedService(@JsonProperty("title") String title, @JsonProperty("price") Double price,
-                             @JsonProperty("duration") Double duration, @JsonProperty("serviceCode") String serviceCode) {
+                              @JsonProperty("duration") Double duration,
+                              @JsonProperty("serviceCode") String serviceCode) {
         this.title = title;
         this.price = new BigDecimal(price);
         this.duration = duration;
@@ -64,7 +66,8 @@ public class JsonAdaptedService {
         final Title modelTitle = new Title(title);
 
         if (duration == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Duration.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Duration.class.getSimpleName()));
         }
         if (!Duration.isValidDuration(duration)) {
             throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
@@ -77,10 +80,11 @@ public class JsonAdaptedService {
         if (!Price.isValidPrice(price.doubleValue())) {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
         }
-        final Price modelPrice= new Price(price.doubleValue());
+        final Price modelPrice = new Price(price.doubleValue());
 
         if (serviceCode == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, ServiceCode.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    ServiceCode.class.getSimpleName()));
         }
         if (!ServiceCode.isValidServiceCode(serviceCode)) {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);

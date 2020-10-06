@@ -43,10 +43,11 @@ public class JsonServiceStorage implements ServiceStorage {
      * @throws DataConversionException if the file is not in the correct format.
      */
     @Override
-    public Optional<ReadOnlyServiceManager> readServiceManager(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyServiceManager> readServiceManager(Path filePath) throws DataConversionException,
+            IOException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableServiceManager> jsonServiceManager= JsonUtil.readJsonFile(
+        Optional<JsonSerializableServiceManager> jsonServiceManager = JsonUtil.readJsonFile(
                 filePath, JsonSerializableServiceManager.class);
         if (!jsonServiceManager.isPresent()) {
             return Optional.empty();

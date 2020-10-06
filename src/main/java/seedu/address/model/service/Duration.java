@@ -17,6 +17,10 @@ public class Duration {
 
     public final Double value;
 
+    /**
+     * The time taken for a Service to be completed.
+     * @param duration is a double value representing the amount of hours it takes.
+     */
     public Duration(Double duration) {
         requireNonNull(duration);
         AppUtil.checkArgument(isValidDuration(duration), MESSAGE_CONSTRAINTS);

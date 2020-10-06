@@ -5,12 +5,10 @@ import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Stream;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.client.Client;
 import seedu.address.model.util.uniquelist.exceptions.DuplicateItemException;
 import seedu.address.model.util.uniquelist.exceptions.ItemNotFoundException;
 

@@ -23,6 +23,10 @@ public class Price {
     /** Representing money in Singapore Dollars */
     public final BigDecimal value;
 
+    /**
+     * The cost of a Service in Singapore Dollars.
+     * @param price double value input representing dolalrs and cents.
+     */
     public Price(double price) {
         requireNonNull(price);
         AppUtil.checkArgument(isValidPrice(price), MESSAGE_CONSTRAINTS);
