@@ -85,8 +85,10 @@ public class JsonAdaptedService {
         if (!ServiceCode.isValidServiceCode(serviceCode)) {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
         }
-        final ServiceCode modelServiceCode = new ServiceCode(serviceCode);
 
-        return new Service(modelTitle, modelDuration, modelPrice, modelServiceCode);
+        Service service = new Service(modelTitle, modelDuration, modelPrice);
+        service.addSerivceCode(serviceCode);
+
+        return service;
     }
 }

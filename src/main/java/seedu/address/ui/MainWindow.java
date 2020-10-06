@@ -36,12 +36,13 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
-    // List panels for each service component
-    @FXML
-    private StackPane serviceListPanelPlaceholder;
+    // Tabs panels for each service component
     private ServiceListPanel serviceListPanel;
 
 
+
+    @FXML
+    private StackPane serviceListPanelPlaceholder;
 
     @FXML
     private StackPane commandBoxPlaceholder;

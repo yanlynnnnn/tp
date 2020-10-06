@@ -2,7 +2,6 @@ package seedu.address.model.service;
 
 import java.util.Objects;
 
-import seedu.address.model.client.Client;
 import seedu.address.model.util.uniquelist.UniqueListItem;
 import seedu.address.model.util.attributes.Price;
 import seedu.address.model.util.attributes.Title;
@@ -15,7 +14,7 @@ public class Service implements UniqueListItem {
     private Price price;
 
     /** Unique identification number for each Service */
-    private final ServiceCode serviceCode;
+    private ServiceCode serviceCode;
 
     /** How long the service takes */
     private Duration duration;
@@ -25,13 +24,11 @@ public class Service implements UniqueListItem {
      * @param title The title of the service.
      * @param duration The duration of the service.
      * @param price The price of the service.
-     * @param serviceCode The unique identification code for the service object.
      */
-    public Service(Title title, Duration duration, Price price, ServiceCode serviceCode) {
+    public Service(Title title, Duration duration, Price price) {
         this.title = title;
         this.duration = duration;
         this.price = price;
-        this.serviceCode = serviceCode;
     }
 
     public Title getTitle() {
@@ -51,29 +48,21 @@ public class Service implements UniqueListItem {
     }
 
     /**
-     * Returns true if both services have the same identity and data fields.
-     * This defines a stronger notion of equality between two services.
+     * Returns true if both services have the same ServiceCode.
+     * Used for comparison of Service objects in a HashSet when generating a new ServiceCode.
      */
     @Override
     public boolean equals(Object other) {
         if (other == this) {
             return true;
         }
-
-        if (!(other instanceof Client)) {
-            return false;
-        }
-
-        Client otherClient = (Client) other;
-        return otherClient.getName().equals(getTitle())
-                && otherClient.getPhone().equals(getDuration())
-                && otherClient.getEmail().equals(getServiceCode())
-                && otherClient.getTags().equals(getPrice());
+        Service otherService = (Service) other;
+        return otherService.getServiceCode().equals(getServiceCode());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(title, duration, price, serviceCode);
+        return Objects.hash(serviceCode.value);
     }
 
     @Override
@@ -110,5 +99,15 @@ public class Service implements UniqueListItem {
                 && duration.equals(otherService.duration)
                 && price.equals(otherService.price)
                 && serviceCode.equals(otherService.serviceCode);
+    }
+
+    /**
+     * Sets a unique ServiceCode for the Service.
+     *
+     * @param inputCode is the service code to be set for the Service.
+     */
+    public Service addSerivceCode(String inputCode) {
+        this.serviceCode = new ServiceCode(inputCode);
+        return this;
     }
 }

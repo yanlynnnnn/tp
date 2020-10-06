@@ -46,5 +46,4 @@ public class ServiceListPanel extends UiPart<Region> {
             }
         }
     }
-
 }

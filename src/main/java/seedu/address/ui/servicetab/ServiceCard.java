@@ -27,7 +27,7 @@ public class ServiceCard extends UiPart<Region> {
 
     public final Service service;
 
-    @javafx.fxml.FXML
+    @FXML
     private HBox cardPane;
     @FXML
     private Label title;

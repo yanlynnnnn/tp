@@ -16,7 +16,6 @@ import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.service.Duration;
 import seedu.address.model.service.Service;
-import seedu.address.model.service.ServiceCode;
 import seedu.address.model.util.attributes.Price;
 import seedu.address.model.util.attributes.Title;
 
@@ -47,7 +46,7 @@ public class AddServiceCommandParser implements Parser<AddServiceCommand> {
         Duration duration = ParserUtil.parseDuration(argMultimap.getValue(PREFIX_SERVICE_DURATION).get());
         Price price = ParserUtil.parsePrice(argMultimap.getValue(PREFIX_SERVICE_PRICE).get());
 
-        Service service = new Service(title, duration, price, new ServiceCode("SC001"));
+        Service service = new Service(title, duration, price);
 
         return new AddServiceCommand(service);
     }
