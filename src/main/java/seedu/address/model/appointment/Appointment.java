@@ -47,8 +47,8 @@ public class Appointment {
         return timeOfDay;
     }
 
-    public boolean isAppointmentDone() {
-        return status.isDone();
+    public Status getStatus() {
+        return status;
     }
 
     /**
@@ -65,7 +65,7 @@ public class Appointment {
                 && otherAppointment.getService().equals(getService())
                 && otherAppointment.getAppointmentDate().equals(getAppointmentDate())
                 && otherAppointment.getAppointmentTime().equals(getAppointmentTime())
-                && (otherAppointment.isAppointmentDone() == isAppointmentDone());
+                && (otherAppointment.getStatus() == getStatus());
     }
 
     /**
@@ -87,7 +87,7 @@ public class Appointment {
                 && otherAppointment.getService().equals(getService())
                 && otherAppointment.getAppointmentDate().equals(getAppointmentDate())
                 && otherAppointment.getAppointmentTime().equals(getAppointmentTime())
-                && (otherAppointment.isAppointmentDone() == isAppointmentDone());
+                && (otherAppointment.getStatus() == getStatus());
     }
 
     @Override
@@ -107,7 +107,7 @@ public class Appointment {
                 .append(" Service ")
                 .append(getService())
                 .append(" Done? ")
-                .append(isAppointmentDone() ? "Yes" : "No");
+                .append(getStatus());
         return builder.toString();
     }
 
