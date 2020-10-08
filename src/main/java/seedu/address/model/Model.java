@@ -132,6 +132,13 @@ public interface Model {
      */
     void addService(Service toAdd);
 
+    /**
+     * Replaces the given service {@code target} with {@code editedService}.
+     * {@code target} must exist in SuperSalon's service list.
+     * The service identity of {@code editedService} must not be the same as another existing service in SuperSalon.
+     */
+    void setService(Service target, Service editedService);
+
     void updateFilteredServiceList(Predicate<Service> predicate);
 
     ObservableList<Service> getFilteredServiceList();
