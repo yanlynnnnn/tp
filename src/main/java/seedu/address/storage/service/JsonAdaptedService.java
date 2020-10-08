@@ -61,7 +61,7 @@ public class JsonAdaptedService {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
         }
         if (!Title.isValidTitle(title)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Title.MESSAGE_CONSTRAINTS);
         }
         final Title modelTitle = new Title(title);
 
@@ -70,7 +70,7 @@ public class JsonAdaptedService {
                     Duration.class.getSimpleName()));
         }
         if (!Duration.isValidDuration(duration)) {
-            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Duration.MESSAGE_CONSTRAINTS);
         }
         final Duration modelDuration = new Duration(duration);
 
@@ -78,7 +78,7 @@ public class JsonAdaptedService {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Amount.class.getSimpleName()));
         }
         if (!Amount.isValidAmount(price.doubleValue())) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Amount.MESSAGE_CONSTRAINTS);
         }
         final Amount modelAmount = new Amount(price.doubleValue());
 
@@ -87,7 +87,7 @@ public class JsonAdaptedService {
                     ServiceCode.class.getSimpleName()));
         }
         if (!ServiceCode.isValidServiceCode(serviceCode)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(ServiceCode.MESSAGE_CONSTRAINTS);
         }
 
         Service service = new Service(modelTitle, modelDuration, modelAmount);
