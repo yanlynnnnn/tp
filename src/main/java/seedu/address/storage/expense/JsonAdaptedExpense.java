@@ -48,6 +48,7 @@ public class JsonAdaptedExpense {
         date = source.getDate().toString();
         description = source.getDescription().value;
         isFixed = source.getIsFixed().value ? 't' : 'f';
+        tag = source.getTag().toString();
     }
 
     /**
