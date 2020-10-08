@@ -16,7 +16,7 @@ public class TimeOfDay {
     private static final DateTimeFormatter FORMAT_INPUT = DateTimeFormatter.ofPattern("HHmm");
     private static final DateTimeFormatter FORMAT_OUTPUT = DateTimeFormatter.ofPattern("h:mm a");
 
-    protected final LocalTime time;
+    protected final LocalTime value;
 
     /**
      * Represents the date stored for any model object.
@@ -25,7 +25,7 @@ public class TimeOfDay {
     public TimeOfDay(String timeString) {
         requireNonNull(timeString);
         checkArgument(isValidTime(timeString), MESSAGE_CONSTRAINTS);
-        this.time = LocalTime.parse(timeString, FORMAT_INPUT);
+        this.value = LocalTime.parse(timeString, FORMAT_INPUT);
     }
 
     /**
@@ -44,16 +44,16 @@ public class TimeOfDay {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof TimeOfDay // instanceof handles nulls
-                && time.equals(((TimeOfDay) other).time)); // state check
+                && value.equals(((TimeOfDay) other).value)); // state check
     }
 
     @Override
     public int hashCode() {
-        return time.hashCode();
+        return value.hashCode();
     }
 
     @Override
     public String toString() {
-        return time.format(FORMAT_OUTPUT);
+        return value.format(FORMAT_OUTPUT);
     }
 }

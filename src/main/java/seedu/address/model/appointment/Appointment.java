@@ -17,7 +17,7 @@ public class Appointment {
     private final Service service;
     private final Date appointmentDate;
     private final TimeOfDay timeOfDay;
-    private boolean isDone;
+    private Status status;
 
     /**
      * Constructor for an Appointment.
@@ -28,7 +28,7 @@ public class Appointment {
         this.service = service;
         this.appointmentDate = appointmentDate;
         this.timeOfDay = timeOfDay;
-        this.isDone = false;
+        this.status = new Status("n");
     }
 
     public Client getClient() {
@@ -48,7 +48,7 @@ public class Appointment {
     }
 
     public boolean isAppointmentDone() {
-        return isDone;
+        return status.isDone();
     }
 
     /**
@@ -93,7 +93,7 @@ public class Appointment {
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(client, service, appointmentDate, timeOfDay, isDone);
+        return Objects.hash(client, service, appointmentDate, timeOfDay, status);
     }
 
     @Override
