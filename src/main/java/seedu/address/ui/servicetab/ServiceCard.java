@@ -44,7 +44,7 @@ public class ServiceCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         title.setText(service.getTitle().value);
         duration.setText(String.valueOf(service.getDuration().value));
-        price.setText(String.valueOf(service.getPrice().value));
+        price.setText(String.valueOf(service.getAmount().value));
     }
 
     @Override
