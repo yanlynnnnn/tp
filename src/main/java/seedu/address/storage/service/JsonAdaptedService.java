@@ -6,9 +6,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.client.Email;
-import seedu.address.model.client.Name;
-import seedu.address.model.client.Phone;
 import seedu.address.model.service.Duration;
 import seedu.address.model.service.Service;
 import seedu.address.model.service.ServiceCode;
