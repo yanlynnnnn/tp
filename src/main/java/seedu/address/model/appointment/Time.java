@@ -9,12 +9,12 @@ import java.time.format.DateTimeParseException;
 
 public class Time {
 
-    public static final String MESSAGE_CONSTRAINTS = "Time entered must be in the format of <HH:mm>,"
-            + " where HH is the 24-hour clock timing.";
+    public static final String MESSAGE_CONSTRAINTS = "Time entered must be in the format of <HHmm>,"
+            + " where HH is the 24-hour clock timing, mm is the minutes of the hour.";
 
     // TODO Need to test if these formatters are correct.
-    private static final DateTimeFormatter FORMAT_INPUT = DateTimeFormatter.ofPattern("HH:mm");
-    private static final DateTimeFormatter FORMAT_OUTPUT = DateTimeFormatter.ofPattern("hh:mm a");
+    private static final DateTimeFormatter FORMAT_INPUT = DateTimeFormatter.ofPattern("HHmm");
+    private static final DateTimeFormatter FORMAT_OUTPUT = DateTimeFormatter.ofPattern("h:mm a");
 
     protected final LocalTime time;
 
