@@ -8,9 +8,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.expense.IsFixed;
-import seedu.address.model.util.attributes.Description;
-import seedu.address.model.util.attributes.Price;
+import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Date;
+import seedu.address.model.util.attributes.Description;
 import seedu.address.model.util.attributes.Tag;
 
 /**
@@ -20,78 +20,86 @@ public class JsonAdaptedExpense {
 
     public static final String MISSING_FIELD_MESSAGE_FORMAT = "Expense's %s field is missing!";
 
-    private final Amount value;
-    private final Date date;
-    private final Description description;
-    private final IsFixed isFixed;
-    private final Tag tag;
+    private final BigDecimal value;
+    private final String date;
+    private final String description;
+    private final char isFixed;
+    private String tag;
 
     /**
      * Constructs a {@code JsonAdaptedService} with the given Service details.
      */
     @JsonCreator
-    public JsonAdaptedService(@JsonProperty("value") Amount value, @JsonProperty("date") Date date,
-                              @JsonProperty("duration") Double duration,
-                              @JsonProperty("serviceCode") String serviceCode) {
-        this.title = title;
-        this.price = new BigDecimal(price);
-        this.duration = duration;
-        this.serviceCode = serviceCode;
+    public JsonAdaptedExpense(@JsonProperty("value") double value, @JsonProperty("date") String date,
+                              @JsonProperty("description") String description,
+                              @JsonProperty("isFixed") char isFixed, @JsonProperty("tag") String tag) {
+        this.value = new BigDecimal(value);
+        this.date = date;
+        this.description = description;
+        this.isFixed = isFixed;
+        this.tag = tag;
     }
 
     /**
-     * Converts a given {@code Service} into this class for Jackson use.
+     * Converts a given {@code Expense} into this class for Jackson use.
      */
-    public JsonAdaptedService(Service source) {
-        title = source.getTitle().value;
-        price = source.getPrice().value;
-        duration = source.getDuration().value;
-        serviceCode = source.getServiceCode().value;
-
+    public JsonAdaptedExpense(Expense source) {
+        value = source.getValue().value;
+        date = source.getDate().toString();
+        description = source.getDescription().value;
+        isFixed = source.getIsFixed().value ? 't' : 'f';
     }
 
     /**
-     * Converts this Jackson-friendly adapted service object into the model's {@code Service} object.
+     * Converts this Jackson-friendly adapted expense object into the model's {@code Expense} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted service.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted expense.
      */
-    public Service toModelType() throws IllegalValueException {
-        if (title == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
+    public Expense toModelType() throws IllegalValueException {
+        if (value == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Amount.class.getSimpleName()));
         }
-        if (!Title.isValidTitle(title)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+        if (!Amount.isValidAmount(value.doubleValue())) {
+            throw new IllegalValueException(Amount.MESSAGE_CONSTRAINTS);
         }
-        final Title modelTitle = new Title(title);
+        final Amount modelValue = new Amount(value.doubleValue());
 
-        if (duration == null) {
+        if (date == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Duration.class.getSimpleName()));
+                    Date.class.getSimpleName()));
         }
-        if (!Duration.isValidDuration(duration)) {
-            throw new IllegalValueException(Phone.MESSAGE_CONSTRAINTS);
+        if (!Date.isValidDate(date)) {
+            throw new IllegalValueException(Date.MESSAGE_CONSTRAINTS);
         }
-        final Duration modelDuration = new Duration(duration);
+        final Date modelDate = new Date(date);
 
-        if (price == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Price.class.getSimpleName()));
+        if ((int) isFixed == 0) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, IsFixed.class.getSimpleName()));
         }
-        if (!Price.isValidPrice(price.doubleValue())) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        if (!IsFixed.isValidIsFixed(isFixed)) {
+            throw new IllegalValueException(IsFixed.MESSAGE_CONSTRAINTS);
         }
-        final Price modelPrice = new Price(price.doubleValue());
+        final IsFixed modelIsFixed = new IsFixed(isFixed);
 
-        if (serviceCode == null) {
+        if (description == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    ServiceCode.class.getSimpleName()));
+                    Description.class.getSimpleName()));
         }
-        if (!ServiceCode.isValidServiceCode(serviceCode)) {
-            throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
+        if (!Description.isValidDescription(description)) {
+            throw new IllegalValueException(Description.MESSAGE_CONSTRAINTS);
         }
+        final Description modelDescription = new Description(description);
 
-        Service service = new Service(modelTitle, modelDuration, modelPrice);
-        service.addSerivceCode(serviceCode);
+        if (tag == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Tag.class.getSimpleName()));
+        }
+        if (!Tag.isValidTagName(tag)) {
+            throw new IllegalValueException(Tag.MESSAGE_CONSTRAINTS);
+        }
+        final Tag modelTag = new Tag(tag);
+        Expense expense = new Expense(modelDescription, modelIsFixed, modelValue, modelDate, modelTag);
 
-        return service;
+        return expense;
     }
 }

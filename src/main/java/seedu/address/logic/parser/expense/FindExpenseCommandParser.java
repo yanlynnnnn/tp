@@ -51,7 +51,8 @@ public class FindExpenseCommandParser implements Parser<FindExpenseCommand> {
                     argMultimap.getValue(PREFIX_DESCRIPTION).get()));
         }
         if (argMultimap.getValue(PREFIX_ISFIXED).isPresent()) {
-            predicate = new IsFixedPredicate(ParserUtil.parseIsFixed(argMultimap.getValue(PREFIX_ISFIXED).get()));
+            predicate = new IsFixedPredicate(ParserUtil.parseIsFixed(argMultimap.getValue(PREFIX_ISFIXED)
+                    .get().charAt(0)));
         }
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
             predicate = new DatePredicate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));

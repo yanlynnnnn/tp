@@ -360,7 +360,7 @@ Outcome:
 
 {Example outcome screenshot}
 
-### 6.1.3 List all appointment: `listapt`
+### 6.1.3 List all appointments: `listapt`
 
 Use this command to see your list of all your upcoming appointments.
 
@@ -759,7 +759,7 @@ You just purchased a bottle of conditioner for your client's hair treatment toda
 You can follow the steps below to add the expense to GrAB3.
 
 Steps :
-1. Type `addexp d/conditioner f/f v/15.00 dt/28-10-2020 t/hair supplies` in to _Command Box_.
+1. Type `addexp d/conditioner f/f v/15.00 dt/28-10-2020 t/hairsupplies` in to _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
@@ -1059,7 +1059,7 @@ Example:
 ### Expense Tracker
 |Action | Format | Examples
 |---------------|------------------------------------------------------------------|------------------------------------------------------------------
-|**Add**        | `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`        | `addexp d/conditioner f/f v/15.00 dt/28-10-2020 t/hair supplies`
+|**Add**        | `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`        | `addexp d/conditioner f/f v/15.00 dt/28-10-2020 t/hairsupplies`
 |**Edit**       | `INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]` | `editexp 2 d/Eyelash Curler`
 |**Delete**     | `deleteexp INDEX`                                                | `deleteexp 3`
 |**Find**       | `[d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*`             | `findexp dt/08-09-2020`

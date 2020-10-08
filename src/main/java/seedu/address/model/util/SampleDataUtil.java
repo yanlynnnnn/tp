@@ -10,11 +10,17 @@ import seedu.address.model.client.Client;
 import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
 import seedu.address.model.client.Phone;
+import seedu.address.model.expense.Expense;
+import seedu.address.model.expense.IsFixed;
+import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.model.service.Duration;
 import seedu.address.model.service.Service;
 import seedu.address.model.util.attributes.Amount;
+import seedu.address.model.util.attributes.Date;
+import seedu.address.model.util.attributes.Description;
 import seedu.address.model.util.attributes.Tag;
 import seedu.address.model.util.attributes.Title;
 
@@ -49,6 +55,21 @@ public class SampleDataUtil {
         };
     }
 
+    public static Expense[] getSampleExpenses() {
+        return new Expense[]{
+            new Expense(new Description("Conditioner"), new IsFixed('f'), new Amount(15.0),
+                    new Date("10-10-2020"), new Tag("HairSupplies")),
+            new Expense(new Description("Lash Tint"), new IsFixed('f'), new Amount(20.0),
+                    new Date("10-12-2020"), new Tag("LashSupplies")),
+            new Expense(new Description("Nail Polish"), new IsFixed('f'), new Amount(10.0),
+                    new Date("09-12-2020"), new Tag("NailSupplies")),
+            new Expense(new Description("Chair"), new IsFixed('t'), new Amount(25.0),
+                    new Date("10-10-2020"), new Tag("Equipment")),
+            new Expense(new Description("Lash Extension Glue"), new IsFixed('f'), new Amount(45.0),
+                    new Date("01-12-2020"), new Tag("LashSupplies")),
+        };
+    }
+
     public static ReadOnlyServiceManager getSampleServiceManager() {
         ServiceManager sampleServiceManager = new ServiceManager();
         for (Service sampleService : getSampleServices()) {
@@ -63,6 +84,14 @@ public class SampleDataUtil {
             sampleAb.addClient(sampleClient);
         }
         return sampleAb;
+    }
+
+    public static ReadOnlyExpenseTracker getSampleExpenseTracker() {
+        ExpenseTracker sampleExpenseTracker = new ExpenseTracker();
+        for (Expense sampleExpense : getSampleExpenses()) {
+            sampleExpenseTracker.addExpense(sampleExpense);
+        }
+        return sampleExpenseTracker;
     }
 
     /**

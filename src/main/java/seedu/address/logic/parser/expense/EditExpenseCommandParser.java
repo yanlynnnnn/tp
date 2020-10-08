@@ -46,7 +46,8 @@ public class EditExpenseCommandParser implements Parser<EditExpenseCommand> {
                     argMultimap.getValue(PREFIX_DESCRIPTION).get()));
         }
         if (argMultimap.getValue(PREFIX_ISFIXED).isPresent()) {
-            editExpenseDescriptor.setIsFixed(ParserUtil.parseIsFixed(argMultimap.getValue(PREFIX_ISFIXED).get()));
+            editExpenseDescriptor.setIsFixed(ParserUtil.parseIsFixed(argMultimap.getValue(PREFIX_ISFIXED).get()
+                .charAt(0)));
         }
         if (argMultimap.getValue(PREFIX_AMOUNT).isPresent()) {
             editExpenseDescriptor.setAmount(ParserUtil.parseAmount(argMultimap.getValue(PREFIX_AMOUNT).get()));
