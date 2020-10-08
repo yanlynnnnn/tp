@@ -63,7 +63,7 @@ public class FindExpenseCommandParser implements Parser<FindExpenseCommand> {
     }
 
     /**
-     * Returns true if there is more than one input parameter.
+     * Returns true if there is more than one input parameters.
      */
     private static boolean areMultipleParametersPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).filter(prefix -> argumentMultimap.getValue(prefix).isPresent()).count()
