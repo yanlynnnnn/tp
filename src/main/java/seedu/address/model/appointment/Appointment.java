@@ -7,12 +7,13 @@ import java.util.Objects;
 import seedu.address.model.client.Client;
 import seedu.address.model.service.Service;
 import seedu.address.model.util.attributes.Date;
+import seedu.address.model.util.uniquelist.UniqueListItem;
 
 /**
  * Represents an Appointment in the address book.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Appointment {
+public class Appointment implements UniqueListItem {
     private final Client client;
     private final Service service;
     private final Date appointmentDate;
@@ -52,23 +53,6 @@ public class Appointment {
     }
 
     /**
-     * Returns true if both appointments of the same name have at least one other identity field that is the same.
-     * This defines a weaker notion of equality between two clients.
-     */
-    public boolean isSameAppointment(Appointment otherAppointment) {
-        if (otherAppointment == this) {
-            return true;
-        }
-
-        return otherAppointment != null
-                && otherAppointment.getClient().equals(getClient())
-                && otherAppointment.getService().equals(getService())
-                && otherAppointment.getAppointmentDate().equals(getAppointmentDate())
-                && otherAppointment.getAppointmentTime().equals(getAppointmentTime())
-                && (otherAppointment.getStatus() == getStatus());
-    }
-
-    /**
      * Returns true if both appointments have the same identity and data fields.
      * This defines a stronger notion of equality between two clients.
      */
@@ -86,8 +70,7 @@ public class Appointment {
         return otherAppointment.getClient().equals(getClient())
                 && otherAppointment.getService().equals(getService())
                 && otherAppointment.getAppointmentDate().equals(getAppointmentDate())
-                && otherAppointment.getAppointmentTime().equals(getAppointmentTime())
-                && (otherAppointment.getStatus() == getStatus());
+                && otherAppointment.getAppointmentTime().equals(getAppointmentTime());
     }
 
     @Override
@@ -111,4 +94,20 @@ public class Appointment {
         return builder.toString();
     }
 
+    @Override
+    public boolean isSame(UniqueListItem other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Appointment)) {
+            return false;
+        }
+
+        Appointment otherAppointment = (Appointment) other;
+        return client.equals(otherAppointment.client)
+                && service.equals(otherAppointment.service)
+                && appointmentDate.equals(otherAppointment.appointmentDate)
+                && timeOfDay.equals(otherAppointment.timeOfDay);
+    }
 }
