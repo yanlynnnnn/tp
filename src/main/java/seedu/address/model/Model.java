@@ -172,4 +172,9 @@ public interface Model {
      */
     void setAppointment(List<Appointment> appointment);
 
+    /**
+     * Checks if Appointment is stored in Appointment Manager.
+     */
+    boolean hasAppointment(Appointment appointment);
+
 }

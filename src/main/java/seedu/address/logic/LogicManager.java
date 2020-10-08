@@ -87,7 +87,8 @@ public class LogicManager implements Logic {
         model.setGuiSettings(guiSettings);
     }
 
-    @Override public ObservableList<Service> getFilteredServiceList() {
+    @Override
+    public ObservableList<Service> getFilteredServiceList() {
         return model.getFilteredServiceList();
     }
 }
