@@ -11,6 +11,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.client.Client;
+import seedu.address.model.manager.ServiceManager;
 import seedu.address.testutil.ClientBuilder;
 
 /**
@@ -22,14 +23,14 @@ public class AddCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+        model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new ServiceManager());
     }
 
     @Test
     public void execute_newClient_success() {
         Client validClient = new ClientBuilder().build();
 
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new ServiceManager());
         expectedModel.addClient(validClient);
 
         assertCommandSuccess(new AddCommand(validClient), model,

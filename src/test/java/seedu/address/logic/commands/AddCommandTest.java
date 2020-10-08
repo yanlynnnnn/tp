@@ -23,6 +23,8 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.model.service.Service;
 import seedu.address.testutil.ClientBuilder;
 
 public class AddCommandTest {
@@ -177,6 +179,26 @@ public class AddCommandTest {
 
         @Override
         public void updateFilteredExpenseList(Predicate<Expense> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyServiceManager getServiceManager() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Service> getFilteredServiceList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredServiceList(Predicate<Service> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addService(Service toAdd) {
             throw new AssertionError("This method should not be called.");
         }
     }
