@@ -12,7 +12,14 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
 import seedu.address.model.client.Phone;
+import seedu.address.model.expense.IsFixed;
+import seedu.address.model.service.Duration;
+import seedu.address.model.util.attributes.Amount;
+import seedu.address.model.util.attributes.Date;
+import seedu.address.model.util.attributes.Description;
+import seedu.address.model.util.attributes.Price;
 import seedu.address.model.util.attributes.Tag;
+import seedu.address.model.util.attributes.Title;
 
 
 /**
@@ -107,6 +114,109 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses {@code String amount} into a {@code Amount}.
+     */
+    public static Amount parseAmount(String amount) throws ParseException {
+        requireNonNull(amount);
+        String trimmedAmount = amount.trim();
+        if (!Amount.isValidAmount(amount)) {
+            throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
+        }
+        return new Amount(trimmedAmount);
+    }
+
+    /**
+     * Parses {@code String date} into a {@code Date}.
+     */
+    public static Date parseDate(String date) throws ParseException {
+        requireNonNull(date);
+        String trimmedDate = date.trim();
+        if (!Date.isValidDate(date)) {
+            throw new ParseException(Date.MESSAGE_CONSTRAINTS);
+        }
+        return new Date(trimmedDate);
+    }
+
+    /**
+     * Parses {@code String description} into a {@code Description}.
+     */
+    public static Description parseDescription(String description) throws ParseException {
+        requireNonNull(description);
+        String trimmedDescription = description.trim();
+        if (!Description.isValidDescription(description)) {
+            throw new ParseException(Description.MESSAGE_CONSTRAINTS);
+        }
+        return new Description(trimmedDescription);
+    }
+
+    /**
+     * Parses {@code String isFixed} into a {@code IsFixed}.
+     */
+    public static IsFixed parseIsFixed(String isFixed) throws ParseException {
+        requireNonNull(isFixed);
+        String trimmedIsFixed = isFixed.trim();
+        if (!IsFixed.isValidIsFixed(isFixed)) {
+            throw new ParseException(IsFixed.MESSAGE_CONSTRAINTS);
+        }
+        return new IsFixed(trimmedIsFixed);
+    }
+
+    /**
+     * Parses a {@code String title} into an {@code Title}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code title} is invalid.
+     */
+    public static Title parseTitle(String title) throws ParseException {
+        requireNonNull(title);
+        String trimmedTitle = title.trim();
+        if (!Title.isValidTitle(trimmedTitle)) {
+            throw new ParseException(Title.MESSAGE_CONSTRAINTS);
+        }
+        return new Title(trimmedTitle);
+    }
+
+    /**
+     * Parses a {@code String Price} into a {@code {Price}}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code price} is invalid.
+     */
+    public static Price parsePrice(String price) throws ParseException {
+        requireNonNull(price);
+        price = price.trim();
+        try {
+            Double doublePrice = Double.parseDouble(price);
+            if (!Price.isValidPrice(doublePrice)) {
+                throw new ParseException(Price.MESSAGE_CONSTRAINTS);
+            }
+            return new Price(doublePrice);
+        } catch (NumberFormatException e) {
+            throw new ParseException(Price.MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    /**
+     * Parses a {@code String Duration} into a {@code {Duration}}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code duration} is invalid.
+     */
+    public static Duration parseDuration(String duration) throws ParseException {
+        requireNonNull(duration);
+        duration = duration.trim();
+        try {
+            Double doubleDuration = Double.parseDouble(duration);
+            if (!Duration.isValidDuration(doubleDuration)) {
+                throw new ParseException(Duration.MESSAGE_CONSTRAINTS);
+            }
+            return new Duration(doubleDuration);
+        } catch (NumberFormatException e) {
+            throw new ParseException(Duration.MESSAGE_CONSTRAINTS);
+        }
     }
 }
 

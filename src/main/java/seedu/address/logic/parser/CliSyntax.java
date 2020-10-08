@@ -10,5 +10,15 @@ public class CliSyntax {
     public static final Prefix PREFIX_PHONE = new Prefix("p/");
     public static final Prefix PREFIX_EMAIL = new Prefix("e/");
     public static final Prefix PREFIX_TAG = new Prefix("t/");
+    public static final Prefix PREFIX_AMOUNT = new Prefix("v/");
+    public static final Prefix PREFIX_ISFIXED = new Prefix("f/");
+    public static final Prefix PREFIX_DESCRIPTION = new Prefix("d/");
+    public static final Prefix PREFIX_DATE = new Prefix("dt/");
+
+    /* Prefixes for Service commands */
+    public static final Prefix PREFIX_SERVICE_TITLE = new Prefix("t/");
+    public static final Prefix PREFIX_SERVICE_PRICE = new Prefix("p/");
+    public static final Prefix PREFIX_SERVICE_DURATION = new Prefix("du/");
+    public static final Prefix PREFIX_SERVICE_SERVICE_CODE = new Prefix("s/");
 
 }
