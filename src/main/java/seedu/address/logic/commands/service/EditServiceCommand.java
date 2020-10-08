@@ -1,4 +1,13 @@
-package seedu.address.logic.parser.service;
+package seedu.address.logic.commands.service;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_PRICE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_SERVICES;
+
+import java.util.List;
+import java.util.Optional;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
@@ -9,14 +18,9 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.service.Duration;
 import seedu.address.model.service.Service;
-import seedu.address.model.util.attributes.*;
-
-import java.util.List;
-import java.util.Optional;
-
-import static java.util.Objects.requireNonNull;
-import static seedu.address.logic.parser.CliSyntax.*;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_SERVICES;
+import seedu.address.model.service.ServiceCode;
+import seedu.address.model.util.attributes.Amount;
+import seedu.address.model.util.attributes.Title;
 
 /**
  * Edits the details of an existing service in SuperSalon.
@@ -27,15 +31,15 @@ public class EditServiceCommand extends Command {
     public static final String COMMAND_WORD = "editsvc";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the service identified "
-            + "by the index number used in the displayed service list. "
-            + "Existing values will be overwritten by the input values.\n"
-            + "Parameters: INDEX (must be a positive integer) "
-            + "[" + PREFIX_SERVICE_TITLE + " TITLE] "
-            + "[" + PREFIX_SERVICE_DURATION + " DURATION] "
-            + "[" + PREFIX_SERVICE_PRICE + " PRICE] "
-            + "Example: " + COMMAND_WORD + " 1 "
-            + PREFIX_SERVICE_DURATION + "1 "
-            + PREFIX_SERVICE_PRICE + "45 ";
+        + "by the index number used in the displayed service list. "
+        + "Existing values will be overwritten by the input values.\n"
+        + "Parameters: INDEX (must be a positive integer) "
+        + "[" + PREFIX_SERVICE_TITLE + " TITLE] "
+        + "[" + PREFIX_SERVICE_DURATION + " DURATION] "
+        + "[" + PREFIX_SERVICE_PRICE + " PRICE] "
+        + "Example: " + COMMAND_WORD + " 1 "
+        + PREFIX_SERVICE_DURATION + "1 "
+        + PREFIX_SERVICE_PRICE + "45 ";
 
     public static final String MESSAGE_EDIT_SERVICE_SUCCESS = "Edited Service: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
@@ -44,7 +48,7 @@ public class EditServiceCommand extends Command {
     private final EditServiceCommand.EditServiceDescriptor editServiceDescriptor;
 
     /**
-     * @param index of the service in the filtered service list to edit
+     * @param index                 of the service in the filtered service list to edit
      * @param editServiceDescriptor details to edit the service with
      */
     public EditServiceCommand(Index index, EditServiceCommand.EditServiceDescriptor editServiceDescriptor) {
@@ -67,7 +71,8 @@ public class EditServiceCommand extends Command {
         Service serviceToEdit = lastShownList.get(index.getZeroBased());
         Service editedService = createEditedService(serviceToEdit, editServiceDescriptor);
 
-        if (serviceToEdit.isSame(editedService)) { // Used .isSame instead of .equals because .eqauls compares only ServiceCode
+        // Used .isSame instead of .equals because .eqauls compares only ServiceCode
+        if (serviceToEdit.isSame(editedService)) {
             throw new CommandException(MESSAGE_NOT_EDITED);
         }
 
@@ -88,7 +93,10 @@ public class EditServiceCommand extends Command {
         Duration updatedDuration = editServiceDescriptor.getDuration().orElse(serviceToEdit.getDuration());
         Amount updatedAmount = editServiceDescriptor.getAmount().orElse(serviceToEdit.getAmount());
 
-        return new Service(updatedTitle, updatedDuration, updatedAmount);
+        Service editedService = new Service(updatedTitle, updatedDuration, updatedAmount);
+        editedService.addSerivceCode(serviceToEdit.getServiceCode().value); // ServiceCode is unchanged
+
+        return editedService;
     }
 
     @Override
@@ -106,7 +114,7 @@ public class EditServiceCommand extends Command {
         // state check
         EditServiceCommand e = (EditServiceCommand) other;
         return index.equals(e.index)
-                && editServiceDescriptor.equals(e.editServiceDescriptor);
+            && editServiceDescriptor.equals(e.editServiceDescriptor);
     }
 
     /**
@@ -117,8 +125,10 @@ public class EditServiceCommand extends Command {
         private Title title;
         private Amount value;
         private Duration duration;
+        private ServiceCode serviceCode;
 
-        public EditServiceDescriptor() {}
+        public EditServiceDescriptor() {
+        }
 
         /**
          * Copy constructor.
@@ -128,6 +138,7 @@ public class EditServiceCommand extends Command {
             setTitle(toCopy.title);
             setAmount(toCopy.value);
             setDuration(toCopy.duration);
+            setServiceCode(toCopy.serviceCode);
         }
 
         /**
@@ -161,6 +172,14 @@ public class EditServiceCommand extends Command {
             return Optional.ofNullable(duration);
         }
 
+        public void setServiceCode(ServiceCode serviceCode) {
+            this.serviceCode = serviceCode;
+        }
+
+        public Optional<ServiceCode> getServiceCode() {
+            return Optional.ofNullable(serviceCode);
+        }
+
         @Override
         public boolean equals(Object other) {
             // short circuit if same object
@@ -177,8 +196,8 @@ public class EditServiceCommand extends Command {
             EditServiceCommand.EditServiceDescriptor e = (EditServiceCommand.EditServiceDescriptor) other;
 
             return getTitle().equals(e.getTitle())
-                    && getAmount().equals(e.getAmount())
-                    && getDuration().equals(e.getDuration());
+                && getAmount().equals(e.getAmount())
+                && getDuration().equals(e.getDuration());
         }
     }
 }

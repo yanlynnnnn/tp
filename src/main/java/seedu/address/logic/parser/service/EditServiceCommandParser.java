@@ -1,16 +1,19 @@
-package seedu.address.logic.commands.service;
+package seedu.address.logic.parser.service;
+
+import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_DURATION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_PRICE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
 
 import seedu.address.commons.core.index.Index;
+import seedu.address.logic.commands.service.EditServiceCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.logic.parser.service.EditServiceCommand;
 
-import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
 
 /**
  * Parses input arguments and creates a new EditServiceCommand object
@@ -42,7 +45,8 @@ public class EditServiceCommandParser implements Parser<EditServiceCommand> {
                     argMultimap.getValue(PREFIX_SERVICE_TITLE).get()));
         }
         if (argMultimap.getValue(PREFIX_SERVICE_DURATION).isPresent()) {
-            editServiceDescriptor.setDuration(ParserUtil.parseDuration(argMultimap.getValue(PREFIX_SERVICE_DURATION).get()));
+            editServiceDescriptor.setDuration(ParserUtil.parseDuration(argMultimap.getValue(PREFIX_SERVICE_DURATION)
+                .get()));
         }
         if (argMultimap.getValue(PREFIX_SERVICE_PRICE).isPresent()) {
             editServiceDescriptor.setAmount(ParserUtil.parseAmount(argMultimap.getValue(PREFIX_SERVICE_PRICE).get()));
