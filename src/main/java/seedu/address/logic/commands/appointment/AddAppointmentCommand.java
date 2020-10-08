@@ -55,6 +55,7 @@ public class AddAppointmentCommand extends Command {
         if (model.hasAppointment(toAdd)) {
             throw new CommandException(MESSAGE_DUPLICATE_APPOINTMENT);
         }
+        //TODO Check if Phone number is in model and if ServiceCode is in model.
 
         model.addAppointment(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));

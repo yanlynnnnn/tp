@@ -3,9 +3,12 @@ package seedu.address.model.appointment;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
+import java.util.Optional;
 
 import seedu.address.model.client.Client;
+import seedu.address.model.client.Phone;
 import seedu.address.model.service.Service;
+import seedu.address.model.service.ServiceCode;
 import seedu.address.model.util.attributes.Date;
 import seedu.address.model.util.uniquelist.UniqueListItem;
 
@@ -14,30 +17,44 @@ import seedu.address.model.util.uniquelist.UniqueListItem;
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Appointment implements UniqueListItem {
-    private final Client client;
-    private final Service service;
+
     private final Date appointmentDate;
     private final TimeOfDay timeOfDay;
+    private final ServiceCode serviceCode;
+    private final Phone phone;
+
+    private Optional<Client> client;
+    private Optional<Service> service;
     private Status status;
 
     /**
      * Constructor for an Appointment.
      */
-    public Appointment(Client client, Service service, Date appointmentDate, TimeOfDay timeOfDay) {
+    public Appointment(Date appointmentDate, TimeOfDay timeOfDay, Phone phone, ServiceCode serviceCode) {
         requireAllNonNull(client, service, appointmentDate, timeOfDay);
-        this.client = client;
-        this.service = service;
         this.appointmentDate = appointmentDate;
         this.timeOfDay = timeOfDay;
+        this.phone = phone;
+        this.serviceCode = serviceCode;
+        this.client = Optional.empty();
+        this.service = Optional.empty();
         this.status = new Status("n");
     }
 
+    public Phone getPhone() {
+        return phone;
+    }
+
+    public ServiceCode getServiceCode() {
+        return serviceCode;
+    }
+
     public Client getClient() {
-        return client;
+        return client.get();
     }
 
     public Service getService() {
-        return service;
+        return service.get();
     }
 
     public Date getAppointmentDate() {
@@ -67,8 +84,8 @@ public class Appointment implements UniqueListItem {
         }
 
         Appointment otherAppointment = (Appointment) other;
-        return otherAppointment.getClient().equals(getClient())
-                && otherAppointment.getService().equals(getService())
+        return otherAppointment.getPhone().equals(getPhone())
+                && otherAppointment.getServiceCode().equals(getServiceCode())
                 && otherAppointment.getAppointmentDate().equals(getAppointmentDate())
                 && otherAppointment.getAppointmentTime().equals(getAppointmentTime());
     }
@@ -105,8 +122,8 @@ public class Appointment implements UniqueListItem {
         }
 
         Appointment otherAppointment = (Appointment) other;
-        return client.equals(otherAppointment.client)
-                && service.equals(otherAppointment.service)
+        return phone.equals(otherAppointment.phone)
+                && serviceCode.equals(otherAppointment.serviceCode)
                 && appointmentDate.equals(otherAppointment.appointmentDate)
                 && timeOfDay.equals(otherAppointment.timeOfDay);
     }
