@@ -242,7 +242,7 @@ public class ModelManager implements Model {
     public void addRevenue(Revenue toAdd) {
         requireNonNull(toAdd);
         revenueTracker.addRevenue(toAdd);
-        updateFilteredServiceList(PREDICATE_SHOW_ALL_REVENUE);
+        updateFilteredRevenueList(PREDICATE_SHOW_ALL_REVENUE);
     }
 
     @Override

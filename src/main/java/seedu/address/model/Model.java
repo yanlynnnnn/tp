@@ -36,7 +36,7 @@ public interface Model {
     /**
      * {@code Predicate} that always evaluate to true
      */
-    Predicate<Service> PREDICATE_SHOW_ALL_REVENUE = unused -> true;
+    Predicate<Revenue> PREDICATE_SHOW_ALL_REVENUE = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
