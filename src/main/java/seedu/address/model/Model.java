@@ -132,6 +132,12 @@ public interface Model {
      */
     void addService(Service toAdd);
 
+    /**
+     * Deletes the given Service.
+     * The Service must exist in SuperSalon.
+     */
+    void deleteService(Service target);
+
     void updateFilteredServiceList(Predicate<Service> predicate);
 
     ObservableList<Service> getFilteredServiceList();
