@@ -7,9 +7,9 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class Time {
+public class TimeOfDay {
 
-    public static final String MESSAGE_CONSTRAINTS = "Time entered must be in the format of <HHmm>,"
+    public static final String MESSAGE_CONSTRAINTS = "TimeOfDay entered must be in the format of <HHmm>,"
             + " where HH is the 24-hour clock timing, mm is the minutes of the hour.";
 
     // TODO Need to test if these formatters are correct.
@@ -22,14 +22,14 @@ public class Time {
      * Represents the date stored for any model object.
      * @param timeString The input time by the user.
      */
-    public Time(String timeString) {
+    public TimeOfDay(String timeString) {
         requireNonNull(timeString);
         checkArgument(isValidTime(timeString), MESSAGE_CONSTRAINTS);
         this.time = LocalTime.parse(timeString, FORMAT_INPUT);
     }
 
     /**
-     * Returns true if a given string is a valid Time format.
+     * Returns true if a given string is a valid TimeOfDay format.
      */
     public static boolean isValidTime(String test) {
         try {
@@ -43,8 +43,8 @@ public class Time {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Time // instanceof handles nulls
-                && time.equals(((Time) other).time)); // state check
+                || (other instanceof TimeOfDay // instanceof handles nulls
+                && time.equals(((TimeOfDay) other).time)); // state check
     }
 
     @Override

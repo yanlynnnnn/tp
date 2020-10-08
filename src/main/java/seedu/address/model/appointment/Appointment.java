@@ -16,13 +16,13 @@ public class Appointment {
     private final Client client;
     private final Service service;
     private final Date appointmentDate;
-    private final Time timeOfDay;
+    private final TimeOfDay timeOfDay;
     private boolean isDone;
 
     /**
      * Constructor for an Appointment.
      */
-    public Appointment(Client client, Service service, Date appointmentDate, Time timeOfDay) {
+    public Appointment(Client client, Service service, Date appointmentDate, TimeOfDay timeOfDay) {
         requireAllNonNull(client, service, appointmentDate, timeOfDay);
         this.client = client;
         this.service = service;
@@ -43,7 +43,7 @@ public class Appointment {
         return appointmentDate;
     }
 
-    public Time getAppointmentTime() {
+    public TimeOfDay getAppointmentTime() {
         return timeOfDay;
     }
 
