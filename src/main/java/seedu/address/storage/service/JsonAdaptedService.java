@@ -12,7 +12,7 @@ import seedu.address.model.client.Phone;
 import seedu.address.model.service.Duration;
 import seedu.address.model.service.Service;
 import seedu.address.model.service.ServiceCode;
-import seedu.address.model.util.attributes.Price;
+import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Title;
 
 /**
@@ -45,7 +45,7 @@ public class JsonAdaptedService {
      */
     public JsonAdaptedService(Service source) {
         title = source.getTitle().value;
-        price = source.getPrice().value;
+        price = source.getAmount().value;
         duration = source.getDuration().value;
         serviceCode = source.getServiceCode().value;
 
@@ -75,12 +75,12 @@ public class JsonAdaptedService {
         final Duration modelDuration = new Duration(duration);
 
         if (price == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Price.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Amount.class.getSimpleName()));
         }
-        if (!Price.isValidPrice(price.doubleValue())) {
+        if (!Amount.isValidAmount(price.doubleValue())) {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
         }
-        final Price modelPrice = new Price(price.doubleValue());
+        final Amount modelAmount = new Amount(price.doubleValue());
 
         if (serviceCode == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
@@ -90,7 +90,7 @@ public class JsonAdaptedService {
             throw new IllegalValueException(Email.MESSAGE_CONSTRAINTS);
         }
 
-        Service service = new Service(modelTitle, modelDuration, modelPrice);
+        Service service = new Service(modelTitle, modelDuration, modelAmount);
         service.addSerivceCode(serviceCode);
 
         return service;

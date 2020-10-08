@@ -14,7 +14,7 @@ import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.model.service.Duration;
 import seedu.address.model.service.Service;
-import seedu.address.model.util.attributes.Price;
+import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Tag;
 import seedu.address.model.util.attributes.Title;
 
@@ -41,11 +41,11 @@ public class SampleDataUtil {
 
     public static Service[] getSampleServices() {
         return new Service[]{
-            new Service(new Title("Lash Lift"), new Duration(0.5), new Price(38.0)).addSerivceCode("SC000"),
-            new Service(new Title("Nail Extension"), new Duration(0.5), new Price(28.9)).addSerivceCode("SC001"),
-            new Service(new Title("Pedicure"), new Duration(0.5), new Price(18.5)).addSerivceCode("SC003"),
-            new Service(new Title("Hair Treatment"), new Duration(1.5), new Price(88.9)).addSerivceCode("SC007"),
-            new Service(new Title("Manicure"), new Duration(1.0), new Price(21.5)).addSerivceCode("SC005"),
+            new Service(new Title("Lash Lift"), new Duration(0.5), new Amount(38.0)).addSerivceCode("SC000"),
+            new Service(new Title("Nail Extension"), new Duration(0.5), new Amount(28.9)).addSerivceCode("SC001"),
+            new Service(new Title("Pedicure"), new Duration(0.5), new Amount(18.5)).addSerivceCode("SC003"),
+            new Service(new Title("Hair Treatment"), new Duration(1.5), new Amount(88.9)).addSerivceCode("SC007"),
+            new Service(new Title("Manicure"), new Duration(1.0), new Amount(21.5)).addSerivceCode("SC005"),
         };
     }
 

@@ -2,7 +2,7 @@ package seedu.address.model.service;
 
 import java.util.Objects;
 
-import seedu.address.model.util.attributes.Price;
+import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Title;
 import seedu.address.model.util.uniquelist.UniqueListItem;
 
@@ -11,7 +11,7 @@ public class Service implements UniqueListItem {
     private Title title;
 
     /** Amount of money in dollars that this Service brings in */
-    private Price price;
+    private Amount price;
 
     /** Unique identification number for each Service */
     private ServiceCode serviceCode;
@@ -25,7 +25,7 @@ public class Service implements UniqueListItem {
      * @param duration The duration of the service.
      * @param price The price of the service.
      */
-    public Service(Title title, Duration duration, Price price) {
+    public Service(Title title, Duration duration, Amount price) {
         this.title = title;
         this.duration = duration;
         this.price = price;
@@ -35,7 +35,7 @@ public class Service implements UniqueListItem {
         return title;
     }
 
-    public Price getPrice() {
+    public Amount getAmount() {
         return price;
     }
 
@@ -71,8 +71,8 @@ public class Service implements UniqueListItem {
         builder.append(getTitle())
                 .append(" Duration: ")
                 .append(getDuration())
-                .append(" Price: ")
-                .append(getPrice())
+                .append(" Amount: ")
+                .append(getAmount())
                 .append(" Service Code: ")
                 .append(getServiceCode().toString());
         return builder.toString();
