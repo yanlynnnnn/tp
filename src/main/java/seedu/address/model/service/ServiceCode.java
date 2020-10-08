@@ -6,13 +6,14 @@ import java.util.Set;
 import java.util.function.Predicate;
 
 import seedu.address.model.service.exceptions.MaximumServiceException;
-import seedu.address.model.util.attributes.Price;
+import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Title;
 
 /**
  * A unique identification code for each Service object.
  */
 public class ServiceCode {
+    public static final String MESSAGE_CONSTRAINTS = "ServiceCode needs to be in the range of SC000-SC999";
     public static final String LEADING_ZEROES_REGEX = "^0+(?!$)";
     public static final Predicate<ServiceCode> VALIDATION_PREDICATE = i -> i.value.substring(0, 2).equals("SC")
         && i.value.length() == 5 && getIntFromServiceCode(i) < 1000 && getIntFromServiceCode(i) >= 0;
@@ -37,7 +38,7 @@ public class ServiceCode {
                 + String.valueOf(codeNum);
 
             // .equals for two services return true as long as value of ServiceCode is the same
-            if (!set.contains(new Service(new Title("Test"), new Duration(0.5), new Price(0.5))
+            if (!set.contains(new Service(new Title("Test"), new Duration(0.5), new Amount(0.5))
                 .addSerivceCode(potentialServiceCode))) {
 
                 serviceCode = potentialServiceCode;
