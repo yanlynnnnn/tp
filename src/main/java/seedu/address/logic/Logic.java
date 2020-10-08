@@ -10,14 +10,17 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.revenue.Revenue;
 import seedu.address.model.service.Service;
 
 /**
  * API of the Logic component
  */
 public interface Logic {
+
     /**
      * Executes the command and returns the result.
+     *
      * @param commandText The command as entered by the user.
      * @return the result of the command execution.
      * @throws CommandException If an error occurs during command execution.
@@ -32,10 +35,14 @@ public interface Logic {
      */
     ReadOnlyAddressBook getAddressBook();
 
-    /** Returns an unmodifiable view of the filtered list of clients */
+    /**
+     * Returns an unmodifiable view of the filtered list of clients
+     */
     ObservableList<Client> getFilteredClientList();
 
-    /** Returns an unmodifiable view of the filtered list of expenses */
+    /**
+     * Returns an unmodifiable view of the filtered list of expenses
+     */
     public ObservableList<Expense> getFilteredExpenseList();
 
     /**
@@ -53,6 +60,13 @@ public interface Logic {
      */
     void setGuiSettings(GuiSettings guiSettings);
 
-    /** Returns an unmodifiable view of the filtered list of services */
+    /**
+     * Returns an unmodifiable view of the filtered list of services
+     */
     ObservableList<Service> getFilteredServiceList();
+
+    /**
+     * Returns an unmodifiable view of the filtered list of revenues
+     */
+    ObservableList<Revenue> getFilteredRevenueList();
 }

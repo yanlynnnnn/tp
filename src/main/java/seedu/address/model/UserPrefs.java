@@ -14,14 +14,17 @@ import seedu.address.commons.core.GuiSettings;
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path addressBookFilePath = Paths.get("data" , "addressbook.json");
+    private Path addressBookFilePath = Paths.get("data", "addressbook.json");
 
-    private Path serviceStorageFilePath = Paths.get("data" , "services.json");
+    private Path serviceStorageFilePath = Paths.get("data", "services.json");
+
+    private Path revenueStorageFilePath = Paths.get("data", "revenue.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
      */
-    public UserPrefs() {}
+    public UserPrefs() {
+    }
 
     /**
      * Creates a {@code UserPrefs} with the prefs in {@code userPrefs}.
@@ -75,6 +78,10 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     public Path getServiceStorageFilePath() {
         return serviceStorageFilePath;
+    }
+
+    public Path getRevenueStorageFilePath() {
+        return revenueStorageFilePath;
     }
 
     @Override

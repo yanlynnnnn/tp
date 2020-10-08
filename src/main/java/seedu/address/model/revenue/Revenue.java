@@ -18,10 +18,10 @@ public class Revenue {
     /**
      * Every field must be present and not null.
      */
-    public Revenue(Service service, Date date, Amount value) {
+    public Revenue(Service service, Date date) {
         this.service = service;
         this.date = date;
-        this.value = value;
+        this.value = service.getAmount();
     }
 
     public Service getService() {
@@ -36,19 +36,19 @@ public class Revenue {
         return value;
     }
 
-    /**
-     * Returns true if both revenues have the same identity fields.
-     * This defines a weaker notion of equality between two revenues.
-     */
-    public boolean isSameRevenue(Revenue otherRevenue) {
-        if (otherRevenue == this) {
-            return true;
-        }
-
-        return otherRevenue != null
-                && otherRevenue.getService().equals(getService())
-                && (otherRevenue.getDate().equals(getDate()));
-    }
+    //    /**
+    //     * Returns true if both revenues have the same identity fields.
+    //     * This defines a weaker notion of equality between two revenues.
+    //     */
+    //    public boolean isSameRevenue(Revenue otherRevenue) {
+    //        if (otherRevenue == this) {
+    //            return true;
+    //        }
+    //
+    //        return otherRevenue != null
+    //                && otherRevenue.getService().equals(getService())
+    //                && (otherRevenue.getDate().equals(getDate()));
+    //    }
 
     /**
      * Returns true if both revenues have the same identity and data fields.
@@ -56,18 +56,16 @@ public class Revenue {
      */
     @Override
     public boolean equals(Object other) {
-        if (other == this) {
-            return true;
-        }
+        return other == this;
 
-        if (!(other instanceof Revenue)) {
-            return false;
-        }
-
-        Revenue otherRevenue = (Revenue) other;
-        return otherRevenue.getService().equals(getService())
-                && otherRevenue.getDate().equals(getDate())
-                && otherRevenue.getValue().equals(getValue());
+        //        if (!(other instanceof Revenue)) {
+        //            return false;
+        //        }
+        //
+        //        Revenue otherRevenue = (Revenue) other;
+        //        return otherRevenue.getService().equals(getService())
+        //                && otherRevenue.getDate().equals(getDate())
+        //                && otherRevenue.getValue().equals(getValue());
     }
 
     @Override

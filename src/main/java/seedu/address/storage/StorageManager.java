@@ -10,7 +10,9 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.storage.revenue.RevenueStorage;
 import seedu.address.storage.service.ServiceStorage;
 
 /**
@@ -22,16 +24,19 @@ public class StorageManager implements Storage {
     private AddressBookStorage addressBookStorage;
     private ServiceStorage serviceStorage;
     private UserPrefsStorage userPrefsStorage;
+    private RevenueStorage revenueStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given
+     * {@code AddressBookStorage}, {@code UserPrefStorage}, {@code ServiceStorage} and {@code RevenueStorage}.
      */
     public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage,
-                          ServiceStorage serviceStorage) {
+                          ServiceStorage serviceStorage, RevenueStorage revenueStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.serviceStorage = serviceStorage;
+        this.revenueStorage = revenueStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -107,5 +112,33 @@ public class StorageManager implements Storage {
     @Override
     public void saveServiceManager(ReadOnlyServiceManager serviceManager, Path filePath) throws IOException {
         serviceStorage.saveServiceManager(serviceManager, filePath);
+    }
+
+    // ================ RevenueTracker methods ==============================
+
+    @Override
+    public Path getRevenueTrackerStorageFilePath() {
+        return revenueStorage.getRevenueTrackerStorageFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyRevenueTracker> readRevenueTracker() throws DataConversionException, IOException {
+        return readRevenueTracker(revenueStorage.getRevenueTrackerStorageFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyRevenueTracker> readRevenueTracker(Path filePath) throws DataConversionException,
+            IOException {
+        return revenueStorage.readRevenueTracker(filePath);
+    }
+
+    @Override
+    public void saveRevenueTracker(ReadOnlyRevenueTracker revenueTracker) throws IOException {
+        saveRevenueTracker(revenueTracker, revenueStorage.getRevenueTrackerStorageFilePath());
+    }
+
+    @Override
+    public void saveRevenueTracker(ReadOnlyRevenueTracker revenueTracker, Path filePath) throws IOException {
+        revenueStorage.saveRevenueTracker(revenueTracker, filePath);
     }
 }

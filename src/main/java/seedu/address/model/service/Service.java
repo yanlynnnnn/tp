@@ -106,7 +106,7 @@ public class Service implements UniqueListItem {
      *
      * @param inputCode is the service code to be set for the Service.
      */
-    public Service addSerivceCode(String inputCode) {
+    public Service addServiceCode(String inputCode) {
         this.serviceCode = new ServiceCode(inputCode);
         return this;
     }

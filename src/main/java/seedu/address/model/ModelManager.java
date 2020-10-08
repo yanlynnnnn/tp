@@ -14,45 +14,53 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
+import seedu.address.model.revenue.Revenue;
 import seedu.address.model.service.Service;
 
 /**
  * Represents the in-memory model of the address book data.
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
     private final AddressBook addressBook;
     private final ServiceManager serviceManager;
+    private final RevenueTracker revenueTracker;
     private final UserPrefs userPrefs;
 
     private final FilteredList<Client> filteredClients;
     private final FilteredList<Expense> filteredExpenses;
     private final FilteredList<Service> filteredServices;
+    private final FilteredList<Revenue> filteredRevenue;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
-                        ReadOnlyServiceManager serviceManager) {
+                        ReadOnlyServiceManager serviceManager, ReadOnlyRevenueTracker revenueTracker) {
         super();
-        requireAllNonNull(addressBook, userPrefs, serviceManager);
+        requireAllNonNull(addressBook, userPrefs, serviceManager, revenueTracker);
 
         logger.fine("Initializing with SuperSalon: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         this.serviceManager = new ServiceManager(serviceManager);
+        this.revenueTracker = new RevenueTracker(revenueTracker);
 
         filteredClients = new FilteredList<>(this.addressBook.getClientList());
         filteredExpenses = new FilteredList<>(this.addressBook.getExpenseList());
         filteredServices = new FilteredList<>(this.serviceManager.getServiceList());
+        filteredRevenue = new FilteredList<>(this.revenueTracker.getRevenueList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new ServiceManager());
+        this(new AddressBook(), new UserPrefs(), new ServiceManager(), new RevenueTracker());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -227,5 +235,39 @@ public class ModelManager implements Model {
     @Override
     public ReadOnlyServiceManager getServiceManager() {
         return this.serviceManager;
+    }
+
+    //=========== RevenueTracker ===============
+    @Override
+    public void addRevenue(Revenue toAdd) {
+        requireNonNull(toAdd);
+        revenueTracker.addRevenue(toAdd);
+        updateFilteredServiceList(PREDICATE_SHOW_ALL_REVENUE);
+    }
+
+    @Override
+    public void deleteRevenue(Revenue target) {
+        revenueTracker.removeRevenue(target);
+    }
+
+    @Override
+    public void setRevenues(List<Revenue> revenues) {
+        revenueTracker.setRevenues(revenues);
+    }
+
+    @Override
+    public void updateFilteredRevenueList(Predicate<Revenue> predicate) {
+        requireNonNull(predicate);
+        filteredRevenue.setPredicate(predicate);
+    }
+
+    @Override
+    public ObservableList<Revenue> getFilteredRevenueList() {
+        return filteredRevenue;
+    }
+
+    @Override
+    public ReadOnlyRevenueTracker getRevenueTracker() {
+        return this.revenueTracker;
     }
 }

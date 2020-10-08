@@ -10,11 +10,15 @@ import seedu.address.model.client.Client;
 import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
 import seedu.address.model.client.Phone;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
+import seedu.address.model.revenue.Revenue;
 import seedu.address.model.service.Duration;
 import seedu.address.model.service.Service;
 import seedu.address.model.util.attributes.Amount;
+import seedu.address.model.util.attributes.Date;
 import seedu.address.model.util.attributes.Tag;
 import seedu.address.model.util.attributes.Title;
 
@@ -22,6 +26,7 @@ import seedu.address.model.util.attributes.Title;
  * Contains utility methods for populating {@code AddressBook} with sample data.
  */
 public class SampleDataUtil {
+
     public static Client[] getSampleClients() {
         return new Client[]{
             new Client(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
@@ -41,11 +46,11 @@ public class SampleDataUtil {
 
     public static Service[] getSampleServices() {
         return new Service[]{
-            new Service(new Title("Lash Lift"), new Duration(0.5), new Amount(38.0)).addSerivceCode("SC000"),
-            new Service(new Title("Nail Extension"), new Duration(0.5), new Amount(28.9)).addSerivceCode("SC001"),
-            new Service(new Title("Pedicure"), new Duration(0.5), new Amount(18.5)).addSerivceCode("SC003"),
-            new Service(new Title("Hair Treatment"), new Duration(1.5), new Amount(88.9)).addSerivceCode("SC007"),
-            new Service(new Title("Manicure"), new Duration(1.0), new Amount(21.5)).addSerivceCode("SC005"),
+            new Service(new Title("Lash Lift"), new Duration(0.5), new Amount(38.0)).addServiceCode("SC000"),
+            new Service(new Title("Nail Extension"), new Duration(0.5), new Amount(28.9)).addServiceCode("SC001"),
+            new Service(new Title("Pedicure"), new Duration(0.5), new Amount(18.5)).addServiceCode("SC003"),
+            new Service(new Title("Hair Treatment"), new Duration(1.5), new Amount(88.9)).addServiceCode("SC007"),
+            new Service(new Title("Manicure"), new Duration(1.0), new Amount(21.5)).addServiceCode("SC005"),
         };
     }
 
@@ -55,6 +60,33 @@ public class SampleDataUtil {
             sampleServiceManager.addService(sampleService);
         }
         return sampleServiceManager;
+    }
+
+    public static Revenue[] getSampleRevenue() {
+        return new Revenue[]{
+            new Revenue(new Service(new Title("Lash Lift"), new Duration(0.5), new Amount(38.0))
+                .addServiceCode("SC000"), new Date("20-10-2020")),
+            new Revenue(new Service(new Title("Lash Lift"), new Duration(0.5), new Amount(38.0))
+                .addServiceCode("SC000"), new Date("21-10-2020")),
+            new Revenue(new Service(new Title("Lash Lift"), new Duration(0.5), new Amount(38.0))
+                .addServiceCode("SC000"), new Date("21-10-2020")),
+            new Revenue(new Service(new Title("Nail Extension"), new Duration(0.5), new Amount(28.9))
+                .addServiceCode("SC001"), new Date("22-10-2020")),
+            new Revenue(new Service(new Title("Pedicure"), new Duration(0.5), new Amount(18.5))
+                .addServiceCode("SC003"), new Date("22-10-2020")),
+            new Revenue(new Service(new Title("Hair Treatment"), new Duration(1.5), new Amount(88.9))
+                .addServiceCode("SC007"), new Date("22-10-2020")),
+            new Revenue(new Service(new Title("Manicure"), new Duration(1.0), new Amount(21.5))
+                .addServiceCode("SC005"), new Date("22-10-2020"))
+        };
+    }
+
+    public static ReadOnlyRevenueTracker getSampleRevenueTracker() {
+        RevenueTracker sampleRevenueTracker = new RevenueTracker();
+        for (Revenue sampleRevenue : getSampleRevenue()) {
+            sampleRevenueTracker.addRevenue(sampleRevenue);
+        }
+        return sampleRevenueTracker;
     }
 
     public static ReadOnlyAddressBook getSampleAddressBook() {

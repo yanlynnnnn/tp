@@ -8,21 +8,35 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.model.revenue.Revenue;
 import seedu.address.model.service.Service;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Client> PREDICATE_SHOW_ALL_CLIENTS = unused -> true;
 
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Expense> PREDICATE_SHOW_ALL_EXPENSES = unused -> true;
 
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Service> PREDICATE_SHOW_ALL_SERVICES = unused -> true;
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<Service> PREDICATE_SHOW_ALL_REVENUE = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -59,7 +73,9 @@ public interface Model {
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
-    /** Returns the AddressBook */
+    /**
+     * Returns the AddressBook
+     */
     ReadOnlyAddressBook getAddressBook();
 
     /**
@@ -86,11 +102,14 @@ public interface Model {
      */
     void setClient(Client target, Client editedClient);
 
-    /** Returns an unmodifiable view of the filtered client list */
+    /**
+     * Returns an unmodifiable view of the filtered client list
+     */
     ObservableList<Client> getFilteredClientList();
 
     /**
      * Updates the filter of the filtered client list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredClientList(Predicate<Client> predicate);
@@ -117,16 +136,20 @@ public interface Model {
      */
     void setExpenses(List<Expense> expenses);
 
-    /** Returns an unmodifiable view of the filtered expense list */
+    /**
+     * Returns an unmodifiable view of the filtered expense list
+     */
     ObservableList<Expense> getFilteredExpenseList();
 
     /**
      * Updates the filter of the filtered expense list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredExpenseList(Predicate<Expense> predicate);
 
     // ====================== ServiceManager ========================
+
     /**
      * Adds the given service.
      */
@@ -137,5 +160,30 @@ public interface Model {
     ObservableList<Service> getFilteredServiceList();
 
     ReadOnlyServiceManager getServiceManager();
+
+    // ====================== Revenue Tracker ========================
+
+    /**
+     * Adds the given revenue.
+     */
+    void addRevenue(Revenue toAdd);
+
+    /**
+     * Deletes the given revenue.
+     * The revenue must exist in GrAB3.
+     */
+    void deleteRevenue(Revenue target);
+
+    /**
+     * Replaces the contents of the revenue list with {@code expenses}.
+     */
+    void setRevenues(List<Revenue> revenues);
+
+    void updateFilteredRevenueList(Predicate<Revenue> predicate);
+
+    ObservableList<Revenue> getFilteredRevenueList();
+
+    ReadOnlyRevenueTracker getRevenueTracker();
+
 
 }
