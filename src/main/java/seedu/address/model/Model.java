@@ -6,8 +6,10 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.ReadOnlyAppointmentManager;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.service.Service;
 
@@ -23,6 +25,9 @@ public interface Model {
 
     /** {@code Predicate} that always evaluate to true */
     Predicate<Service> PREDICATE_SHOW_ALL_SERVICES = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Appointment> PREDICATE_SHOW_ALL_APPOINTMENTS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -137,5 +142,34 @@ public interface Model {
     ObservableList<Service> getFilteredServiceList();
 
     ReadOnlyServiceManager getServiceManager();
+
+    // ====================== AppointmentManager ========================
+    /**
+     * Adds the given appointment.
+     */
+    void addAppointment(Appointment toAdd);
+
+    /**
+     * Updates the filter of the filtered appointment list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredAppointmentList(Predicate<Appointment> predicate);
+
+    /** Returns an unmodifiable view of the filtered appointment list */
+    ObservableList<Appointment> getFilteredAppointmentList();
+
+    /** Returns the appointment manager. */
+    ReadOnlyAppointmentManager getAppointmentManager();
+
+    /**
+     * Replaces the given appointment {@code target} with {@code editedAppointment}.
+     * {@code target} must exist in the SuperSalon.
+     */
+    void setAppointment(Appointment target, Appointment editedAppointment);
+
+    /**
+     * Replaces the contents of the appointment list with {@code appointment}.
+     */
+    void setAppointment(List<Appointment> appointment);
 
 }

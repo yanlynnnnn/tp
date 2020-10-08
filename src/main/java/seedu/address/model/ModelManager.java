@@ -12,8 +12,11 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.AppointmentManager;
+import seedu.address.model.manager.ReadOnlyAppointmentManager;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.model.service.Service;
@@ -24,19 +27,21 @@ import seedu.address.model.service.Service;
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final AddressBook addressBook; // This is ClientManager.
     private final ServiceManager serviceManager;
+    private final AppointmentManager appointmentManager;
     private final UserPrefs userPrefs;
 
     private final FilteredList<Client> filteredClients;
     private final FilteredList<Expense> filteredExpenses;
     private final FilteredList<Service> filteredServices;
+    private final FilteredList<Appointment> filteredAppointments;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
-                        ReadOnlyServiceManager serviceManager) {
+                        ReadOnlyServiceManager serviceManager, ReadOnlyAppointmentManager appointmentManager) {
         super();
         requireAllNonNull(addressBook, userPrefs, serviceManager);
 
@@ -45,14 +50,16 @@ public class ModelManager implements Model {
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         this.serviceManager = new ServiceManager(serviceManager);
+        this.appointmentManager = new AppointmentManager(appointmentManager);
 
         filteredClients = new FilteredList<>(this.addressBook.getClientList());
         filteredExpenses = new FilteredList<>(this.addressBook.getExpenseList());
         filteredServices = new FilteredList<>(this.serviceManager.getServiceList());
+        filteredAppointments = new FilteredList<>(this.appointmentManager.getAppointmentList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new ServiceManager());
+        this(new AddressBook(), new UserPrefs(), new ServiceManager(), new AppointmentManager());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -122,11 +129,10 @@ public class ModelManager implements Model {
     @Override
     public void setClient(Client target, Client editedClient) {
         requireAllNonNull(target, editedClient);
-
         addressBook.setClient(target, editedClient);
     }
 
-    //=========== Filtered Client List Accessors =============================================================
+    //=========== Filtered Expense List Accessors =============================================================
     @Override
     public void deleteExpense(Expense target) {
         addressBook.removeExpense(target);
@@ -141,7 +147,6 @@ public class ModelManager implements Model {
     @Override
     public void setExpense(Expense target, Expense editedExpense) {
         requireAllNonNull(target, editedExpense);
-
         addressBook.setExpense(target, editedExpense);
     }
 
@@ -150,7 +155,7 @@ public class ModelManager implements Model {
         addressBook.setExpenses(expenses);
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Client List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Client} backed by the internal list of
@@ -182,25 +187,6 @@ public class ModelManager implements Model {
         filteredExpenses.setPredicate(predicate);
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        // short circuit if same object
-        if (obj == this) {
-            return true;
-        }
-
-        // instanceof handles nulls
-        if (!(obj instanceof ModelManager)) {
-            return false;
-        }
-
-        // state check
-        ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
-                && userPrefs.equals(other.userPrefs)
-                && filteredClients.equals(other.filteredClients);
-    }
-
     //=========== ServiceManager ===============
     @Override
     public void addService(Service toAdd) {
@@ -227,5 +213,61 @@ public class ModelManager implements Model {
     @Override
     public ReadOnlyServiceManager getServiceManager() {
         return this.serviceManager;
+    }
+
+    //================== AppointmentManager ==================
+    @Override
+    public void addAppointment(Appointment toAdd) {
+        requireNonNull(toAdd);
+        appointmentManager.addAppointment(toAdd);
+        updateFilteredAppointmentList(PREDICATE_SHOW_ALL_APPOINTMENTS);
+    }
+
+    @Override
+    public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
+        requireNonNull(predicate);
+        filteredAppointments.setPredicate(predicate);
+    }
+
+    @Override
+    public ObservableList<Appointment> getFilteredAppointmentList() {
+        return filteredAppointments;
+    }
+
+    @Override
+    public ReadOnlyAppointmentManager getAppointmentManager() {
+        return appointmentManager;
+    }
+
+    @Override
+    public void setAppointment(Appointment target, Appointment editedAppointment) {
+        requireAllNonNull(target, editedAppointment);
+        appointmentManager.setAppointments(target, editedAppointment);
+    }
+
+    @Override
+    public void setAppointment(List<Appointment> appointments) {
+        appointmentManager.setAppointments(appointments);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        // short circuit if same object
+        if (obj == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(obj instanceof ModelManager)) {
+            return false;
+        }
+
+        // state check
+        ModelManager other = (ModelManager) obj;
+        return addressBook.equals(other.addressBook)
+                && userPrefs.equals(other.userPrefs)
+                && filteredClients.equals(other.filteredClients)
+                && filteredServices.equals(other.filteredServices)
+                && filteredAppointments.equals(other.filteredAppointments);
     }
 }
