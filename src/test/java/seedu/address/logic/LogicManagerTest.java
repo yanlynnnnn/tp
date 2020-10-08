@@ -26,9 +26,12 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.client.Client;
+import seedu.address.model.manager.ServiceManager;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
+import seedu.address.storage.service.JsonServiceStorage;
+import seedu.address.storage.service.ServiceStorage;
 import seedu.address.testutil.ClientBuilder;
 
 public class LogicManagerTest {
@@ -45,7 +48,9 @@ public class LogicManagerTest {
         JsonAddressBookStorage addressBookStorage =
                 new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        ServiceStorage serviceStorage = new JsonServiceStorage(temporaryFolder.resolve("services.json"));
+
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -74,7 +79,9 @@ public class LogicManagerTest {
                 new JsonAddressBookIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        ServiceStorage serviceStorage = new JsonServiceStorage(temporaryFolder.resolve("ioExceptionServices.json"));
+
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
@@ -127,7 +134,7 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new ServiceManager());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 

@@ -10,6 +10,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.service.Service;
 
 /**
  * API of the Logic component
@@ -51,4 +52,7 @@ public interface Logic {
      * Set the user prefs' GUI settings.
      */
     void setGuiSettings(GuiSettings guiSettings);
+
+    /** Returns an unmodifiable view of the filtered list of services */
+    ObservableList<Service> getFilteredServiceList();
 }

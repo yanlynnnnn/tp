@@ -16,6 +16,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.ui.servicetab.ServiceListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -34,6 +35,14 @@ public class MainWindow extends UiPart<Stage> {
     private ClientListPanel clientListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+
+    // Tabs panels for each service component
+    private ServiceListPanel serviceListPanel;
+
+
+
+    @FXML
+    private StackPane serviceListPanelPlaceholder;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -110,6 +119,9 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
+        // serviceListPanel = new ServiceListPanel(logic.getFilteredServiceList());
+        // serviceListPanelPlaceholder.getChildren().add(serviceListPanel.getRoot());
+
         clientListPanel = new ClientListPanel(logic.getFilteredClientList());
         clientListPanelPlaceholder.getChildren().add(clientListPanel.getRoot());
 
