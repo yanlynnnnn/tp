@@ -210,6 +210,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteService(Service target) {
+        serviceManager.removeService(target);
+    }
+
+    @Override
     public void updateFilteredServiceList(Predicate<Service> predicate) {
         requireNonNull(predicate);
         filteredServices.setPredicate(predicate);

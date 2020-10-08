@@ -22,12 +22,14 @@ import seedu.address.logic.commands.expense.EditExpenseCommand;
 import seedu.address.logic.commands.expense.FindExpenseCommand;
 import seedu.address.logic.commands.expense.ListExpenseCommand;
 import seedu.address.logic.commands.service.AddServiceCommand;
+import seedu.address.logic.commands.service.DeleteServiceCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.expense.AddExpenseCommandParser;
 import seedu.address.logic.parser.expense.DeleteExpenseCommandParser;
 import seedu.address.logic.parser.expense.EditExpenseCommandParser;
 import seedu.address.logic.parser.expense.FindExpenseCommandParser;
 import seedu.address.logic.parser.service.AddServiceCommandParser;
+import seedu.address.logic.parser.service.DeleteServiceCommandParser;
 
 
 /**
@@ -101,6 +103,9 @@ public class AddressBookParser {
 
         case AddServiceCommand.COMMAND_WORD:
             return new AddServiceCommandParser().parse(arguments);
+
+        case DeleteServiceCommand.COMMAND_WORD:
+            return new DeleteServiceCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

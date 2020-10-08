@@ -24,7 +24,7 @@ public class DeleteServiceCommand extends Command {
         + "Parameters: INDEX (must be a positive integer)\n"
         + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_CLIENT_SUCCESS = "Deleted Service: %1$s";
+    public static final String MESSAGE_DELETE_SERVICE_SUCCESS = "Deleted Service: %1$s";
 
     private final Index targetIndex;
 
@@ -38,12 +38,12 @@ public class DeleteServiceCommand extends Command {
         List<Service> lastShownList = model.getFilteredServiceList();
 
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
+            throw new CommandException(Messages.MESSAGE_SERVICES_INVALID_SERVICE_DISPLAYED_INDEX);
         }
 
         Service serviceToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteService(serviceToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_CLIENT_SUCCESS, serviceToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_SERVICE_SUCCESS, serviceToDelete));
     }
 
     @Override
