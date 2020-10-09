@@ -8,7 +8,8 @@ import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.service.Service;
-import seedu.address.model.util.uniquelist.UniqueList;
+import seedu.address.model.service.ServiceCode;
+import seedu.address.model.service.UniqueServiceList;
 
 /**
  * Wraps all data at the ServiceManager level
@@ -16,17 +17,17 @@ import seedu.address.model.util.uniquelist.UniqueList;
  */
 public class ServiceManager implements ReadOnlyServiceManager {
 
-    private final UniqueList<Service> services;
+    private final UniqueServiceList services;
 
     public ServiceManager() {
-        this.services = new UniqueList<>();
+        this.services = new UniqueServiceList();
     }
 
     /**
      * Creates an ServiceManager using the Services in the {@code toBeCopied}
      */
     public ServiceManager(ReadOnlyServiceManager toBeCopied) {
-        this.services = new UniqueList<>();
+        this.services = new UniqueServiceList();
         resetData(toBeCopied);
     }
 
@@ -57,6 +58,15 @@ public class ServiceManager implements ReadOnlyServiceManager {
         requireNonNull(service);
         return services.contains(service);
     }
+
+    /**
+     * Returns true if a service with the same service code as {@code service code} exists in the SuperSalon.
+     */
+    public boolean hasService(ServiceCode serviceCode) {
+        requireNonNull(serviceCode);
+        return services.contains(serviceCode);
+    }
+
 
     /**
      * Adds a service to the SuperSalon.
@@ -110,5 +120,10 @@ public class ServiceManager implements ReadOnlyServiceManager {
     @Override
     public int hashCode() {
         return Objects.hash(services);
+    }
+
+    public Service getServiceByServiceCode(ServiceCode serviceCode) {
+        requireNonNull(serviceCode);
+        return services.getServiceByServiceCode(serviceCode);
     }
 }

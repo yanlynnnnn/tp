@@ -69,6 +69,14 @@ public class Appointment implements UniqueListItem {
         return status;
     }
 
+    public void setClient(Client client) {
+        this.client = Optional.of(client);
+    }
+
+    public void setService(Service service) {
+        this.service = Optional.of(service);
+    }
+
     /**
      * Returns true if both appointments have the same identity and data fields.
      * This defines a stronger notion of equality between two clients.

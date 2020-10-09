@@ -8,10 +8,12 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.client.Client;
+import seedu.address.model.client.Phone;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.manager.ReadOnlyAppointmentManager;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.service.Service;
+import seedu.address.model.service.ServiceCode;
 
 /**
  * The API of the Model component.
@@ -73,6 +75,11 @@ public interface Model {
     boolean hasClient(Client client);
 
     /**
+     * Returns true if a client with the same phone number as {@code phone} exists in the address book.
+     */
+    boolean hasClient(Phone phone);
+
+    /**
      * Deletes the given client.
      * The client must exist in the address book.
      */
@@ -83,6 +90,12 @@ public interface Model {
      * {@code client} must not already exist in the address book.
      */
     void addClient(Client client);
+
+    /**
+     * Gets the client based on provided phone number.
+     * {@code phone} must exist in the address book.
+     */
+    Client getClientByPhone(Phone phone);
 
     /**
      * Replaces the given client {@code target} with {@code editedClient}.
@@ -136,6 +149,13 @@ public interface Model {
      * Adds the given service.
      */
     void addService(Service toAdd);
+
+    /**
+     * Returns true if a service with the same service code as {@code code} exists in SuperSalon.
+     */
+    boolean hasService(ServiceCode code);
+
+    Service getServiceByServiceCode(ServiceCode serviceCode);
 
     void updateFilteredServiceList(Predicate<Service> predicate);
 

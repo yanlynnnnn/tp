@@ -14,12 +14,14 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.client.Client;
+import seedu.address.model.client.Phone;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.manager.AppointmentManager;
 import seedu.address.model.manager.ReadOnlyAppointmentManager;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.model.service.Service;
+import seedu.address.model.service.ServiceCode;
 
 /**
  * Represents the in-memory model of the address book data.
@@ -116,6 +118,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasClient(Phone phone) {
+        requireAllNonNull(phone);
+        return addressBook.hasClient(phone);
+    }
+
+    @Override
     public void deleteClient(Client target) {
         addressBook.removeClient(target);
     }
@@ -130,6 +138,12 @@ public class ModelManager implements Model {
     public void setClient(Client target, Client editedClient) {
         requireAllNonNull(target, editedClient);
         addressBook.setClient(target, editedClient);
+    }
+
+    @Override
+    public Client getClientByPhone(Phone phone) {
+        requireAllNonNull(phone);
+        return addressBook.getClientByPhone(phone);
     }
 
     //=========== Filtered Expense List Accessors =============================================================
@@ -196,6 +210,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasService(ServiceCode code) {
+        requireAllNonNull(code);
+        return serviceManager.hasService(code);
+    }
+
+    @Override
     public void updateFilteredServiceList(Predicate<Service> predicate) {
         requireNonNull(predicate);
         filteredServices.setPredicate(predicate);
@@ -213,6 +233,12 @@ public class ModelManager implements Model {
     @Override
     public ReadOnlyServiceManager getServiceManager() {
         return this.serviceManager;
+    }
+
+    @Override
+    public Service getServiceByServiceCode(ServiceCode serviceCode) {
+        requireAllNonNull(serviceCode);
+        return serviceManager.getServiceByServiceCode(serviceCode);
     }
 
     //================== AppointmentManager ==================
