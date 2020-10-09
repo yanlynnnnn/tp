@@ -142,7 +142,7 @@ public class ParserUtil {
     /**
      * Parses {@code String isFixed} into a {@code IsFixed}.
      */
-    public static IsFixed parseIsFixed(char isFixed) throws ParseException {
+    public static IsFixed parseIsFixed(String isFixed) throws ParseException {
         requireNonNull(isFixed);
         if (!IsFixed.isValidIsFixed(isFixed)) {
             throw new ParseException(IsFixed.MESSAGE_CONSTRAINTS);

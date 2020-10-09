@@ -57,15 +57,15 @@ public class SampleDataUtil {
 
     public static Expense[] getSampleExpenses() {
         return new Expense[]{
-            new Expense(new Description("Conditioner"), new IsFixed('f'), new Amount(15.0),
+            new Expense(new Description("Conditioner"), new IsFixed("f"), new Amount(15.0),
                     new Date("10-10-2020"), new Tag("HairSupplies")),
-            new Expense(new Description("Lash Tint"), new IsFixed('f'), new Amount(20.0),
+            new Expense(new Description("Lash Tint"), new IsFixed("f"), new Amount(20.0),
                     new Date("10-12-2020"), new Tag("LashSupplies")),
-            new Expense(new Description("Nail Polish"), new IsFixed('f'), new Amount(10.0),
+            new Expense(new Description("Nail Polish"), new IsFixed("f"), new Amount(10.0),
                     new Date("09-12-2020"), new Tag("NailSupplies")),
-            new Expense(new Description("Chair"), new IsFixed('t'), new Amount(25.0),
+            new Expense(new Description("Chair"), new IsFixed("t"), new Amount(25.0),
                     new Date("10-10-2020"), new Tag("Equipment")),
-            new Expense(new Description("Lash Extension Glue"), new IsFixed('f'), new Amount(45.0),
+            new Expense(new Description("Lash Extension Glue"), new IsFixed("f"), new Amount(45.0),
                     new Date("01-12-2020"), new Tag("LashSupplies")),
         };
     }

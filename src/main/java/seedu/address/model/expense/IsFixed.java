@@ -13,14 +13,14 @@ public class IsFixed {
      * Represents whether the expense is fixed.
      * @param isFixed
      */
-    public IsFixed(char isFixed) {
+    public IsFixed(String isFixed) {
         requireNonNull(isFixed);
         AppUtil.checkArgument(isValidIsFixed(isFixed), MESSAGE_CONSTRAINTS);
-        value = (isFixed == 't') ? true : false;
+        value = (isFixed.equals("t")) ? true : false;
     }
 
-    public static boolean isValidIsFixed(char test) {
-        return (test == 't' || test == 'f');
+    public static boolean isValidIsFixed(String test) {
+        return (test.equals("t") || test.equals("f"));
     }
 
     @Override

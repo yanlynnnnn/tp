@@ -52,7 +52,7 @@ public class FindExpenseCommandParser implements Parser<FindExpenseCommand> {
         }
         if (argMultimap.getValue(PREFIX_ISFIXED).isPresent()) {
             predicate = new IsFixedPredicate(ParserUtil.parseIsFixed(argMultimap.getValue(PREFIX_ISFIXED)
-                    .get().charAt(0)));
+                    .get()));
         }
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
             predicate = new DatePredicate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));

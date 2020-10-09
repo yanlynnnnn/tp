@@ -23,7 +23,7 @@ public class JsonAdaptedExpense {
     private final BigDecimal value;
     private final String date;
     private final String description;
-    private final char isFixed;
+    private final String isFixed;
     private String tag;
 
     /**
@@ -32,7 +32,7 @@ public class JsonAdaptedExpense {
     @JsonCreator
     public JsonAdaptedExpense(@JsonProperty("value") double value, @JsonProperty("date") String date,
                               @JsonProperty("description") String description,
-                              @JsonProperty("isFixed") char isFixed, @JsonProperty("tag") String tag) {
+                              @JsonProperty("isFixed") String isFixed, @JsonProperty("tag") String tag) {
         this.value = new BigDecimal(value);
         this.date = date;
         this.description = description;
@@ -47,7 +47,7 @@ public class JsonAdaptedExpense {
         value = source.getValue().value;
         date = source.getDate().toString();
         description = source.getDescription().value;
-        isFixed = source.getIsFixed().value ? 't' : 'f';
+        isFixed = source.getIsFixed().value ? "t" : "f";
         tag = source.getTag().toString();
     }
 
@@ -74,7 +74,7 @@ public class JsonAdaptedExpense {
         }
         final Date modelDate = new Date(date);
 
-        if ((int) isFixed == 0) {
+        if (isFixed == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, IsFixed.class.getSimpleName()));
         }
         if (!IsFixed.isValidIsFixed(isFixed)) {

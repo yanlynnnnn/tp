@@ -43,7 +43,7 @@ public class AddExpenseCommandParser implements Parser<AddExpenseCommand> {
         }
 
         Description description = ParserUtil.parseDescription(argMultimap.getValue(PREFIX_DESCRIPTION).get());
-        IsFixed isFixed = ParserUtil.parseIsFixed(argMultimap.getValue(PREFIX_ISFIXED).get().charAt(0));
+        IsFixed isFixed = ParserUtil.parseIsFixed(argMultimap.getValue(PREFIX_ISFIXED).get());
         Amount value = ParserUtil.parseAmount(argMultimap.getValue(PREFIX_AMOUNT).get());
         Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
         Tag tag = ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get());
