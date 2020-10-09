@@ -23,8 +23,8 @@ import seedu.address.model.util.uniquelist.exceptions.ItemNotFoundException;
  */
 public class UniqueList<T extends UniqueListItem> implements Iterable<T> {
 
-    private final ObservableList<T> internalList = FXCollections.observableArrayList();
-    private final ObservableList<T> internalUnmodifiableList =
+    protected final ObservableList<T> internalList = FXCollections.observableArrayList();
+    protected final ObservableList<T> internalUnmodifiableList =
             FXCollections.unmodifiableObservableList(internalList);
 
     /**
