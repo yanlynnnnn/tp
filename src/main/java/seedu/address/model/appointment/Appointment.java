@@ -20,41 +20,29 @@ public class Appointment implements UniqueListItem {
 
     private final Date appointmentDate;
     private final TimeOfDay timeOfDay;
-    private final ServiceCode serviceCode;
-    private final Phone phone;
+    private final Client client;
+    private final Service service;
     private final Status status;
-
-    private Optional<Client> client;
-    private Optional<Service> service;
 
     /**
      * Constructor for an Appointment.
      */
-    public Appointment(Date appointmentDate, TimeOfDay timeOfDay, Phone phone, ServiceCode serviceCode) {
+    public Appointment(Date appointmentDate, TimeOfDay timeOfDay, Client client, Service service) {
         requireAllNonNull(client, service, appointmentDate, timeOfDay);
         this.appointmentDate = appointmentDate;
         this.timeOfDay = timeOfDay;
-        this.phone = phone;
-        this.serviceCode = serviceCode;
-        this.client = Optional.empty();
-        this.service = Optional.empty();
+        this.client = client;
+        this.service = service;
         this.status = new Status("n");
     }
 
-    public Phone getPhone() {
-        return phone;
-    }
-
-    public ServiceCode getServiceCode() {
-        return serviceCode;
-    }
 
     public Client getClient() {
-        return client.get();
+        return client;
     }
 
     public Service getService() {
-        return service.get();
+        return service;
     }
 
     public Date getAppointmentDate() {
@@ -77,13 +65,6 @@ public class Appointment implements UniqueListItem {
         status.markUnDone();
     }
 
-    public void setClient(Client client) {
-        this.client = Optional.of(client);
-    }
-
-    public void setService(Service service) {
-        this.service = Optional.of(service);
-    }
 
     /**
      * Returns true if both appointments have the same identity and data fields.
@@ -100,8 +81,8 @@ public class Appointment implements UniqueListItem {
         }
 
         Appointment otherAppointment = (Appointment) other;
-        return otherAppointment.getPhone().equals(getPhone())
-                && otherAppointment.getServiceCode().equals(getServiceCode())
+        return otherAppointment.getClient().equals(getClient())
+                && otherAppointment.getService().equals(getService())
                 && otherAppointment.getAppointmentDate().equals(getAppointmentDate())
                 && otherAppointment.getAppointmentTime().equals(getAppointmentTime());
     }
@@ -138,8 +119,8 @@ public class Appointment implements UniqueListItem {
         }
 
         Appointment otherAppointment = (Appointment) other;
-        return phone.equals(otherAppointment.phone)
-                && serviceCode.equals(otherAppointment.serviceCode)
+        return client.equals(otherAppointment.getClient())
+                && service.equals(otherAppointment.getService())
                 && appointmentDate.equals(otherAppointment.appointmentDate)
                 && timeOfDay.equals(otherAppointment.timeOfDay);
     }

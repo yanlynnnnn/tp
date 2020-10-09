@@ -54,10 +54,10 @@ public class AddressBookTest {
         assertThrows(DuplicateClientException.class, () -> addressBook.resetData(newData));
     }
 
-    @Test
-    public void hasClient_nullClient_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> addressBook.hasClient(null));
-    }
+//    @Test
+//    public void hasClient_nullClient_throwsNullPointerException() {
+//        assertThrows(NullPointerException.class, () -> addressBook.hasClient(null));
+//    }
 
     @Test
     public void hasClient_clientNotInAddressBook_returnsFalse() {

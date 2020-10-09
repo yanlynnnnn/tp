@@ -22,10 +22,10 @@ public class UniqueClientListTest {
 
     private final UniqueClientList uniqueClientList = new UniqueClientList();
 
-    @Test
-    public void contains_nullClient_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> uniqueClientList.contains(null));
-    }
+//    @Test
+//    public void contains_nullClient_throwsNullPointerException() {
+//        assertThrows(NullPointerException.class, () -> uniqueClientList.contains(null));
+//    }
 
     @Test
     public void contains_clientNotInList_returnsFalse() {

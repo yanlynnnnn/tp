@@ -10,7 +10,9 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.manager.ReadOnlyAppointmentManager;
 import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.storage.appointment.AppointmentStorage;
 import seedu.address.storage.service.ServiceStorage;
 
 /**
@@ -21,17 +23,19 @@ public class StorageManager implements Storage {
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private AddressBookStorage addressBookStorage;
     private ServiceStorage serviceStorage;
+    private AppointmentStorage appointmentStorage;
     private UserPrefsStorage userPrefsStorage;
 
     /**
      * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
      */
     public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage,
-                          ServiceStorage serviceStorage) {
+                          ServiceStorage serviceStorage, AppointmentStorage appointmentStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.serviceStorage = serviceStorage;
+        this.appointmentStorage = appointmentStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -107,5 +111,34 @@ public class StorageManager implements Storage {
     @Override
     public void saveServiceManager(ReadOnlyServiceManager serviceManager, Path filePath) throws IOException {
         serviceStorage.saveServiceManager(serviceManager, filePath);
+    }
+
+    // =========================== AppointmentManager methods ===========================
+
+    @Override
+    public Path getAppointmentManagerStorageFilePath() {
+        return appointmentStorage.getAppointmentManagerStorageFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyAppointmentManager> readAppointmentManager() throws DataConversionException, IOException {
+        return readAppointmentManager(appointmentStorage.getAppointmentManagerStorageFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyAppointmentManager> readAppointmentManager(Path filePath)
+            throws DataConversionException, IOException {
+        return appointmentStorage.readAppointmentManager(filePath);
+    }
+
+    @Override
+    public void saveAppointmentManager(ReadOnlyAppointmentManager appointmentManager) throws IOException {
+        saveAppointmentManager(appointmentManager, appointmentStorage.getAppointmentManagerStorageFilePath());
+    }
+
+    @Override
+    public void saveAppointmentManager(ReadOnlyAppointmentManager appointmentManager, Path filePath)
+            throws IOException {
+        appointmentStorage.saveAppointmentManager(appointmentManager, filePath);
     }
 }

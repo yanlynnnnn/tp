@@ -6,14 +6,20 @@ import java.util.stream.Collectors;
 
 import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.appointment.Appointment;
+import seedu.address.model.appointment.TimeOfDay;
 import seedu.address.model.client.Client;
 import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
 import seedu.address.model.client.Phone;
+import seedu.address.model.manager.AppointmentManager;
+import seedu.address.model.manager.ReadOnlyAppointmentManager;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.model.service.Duration;
 import seedu.address.model.service.Service;
+import seedu.address.model.service.ServiceCode;
+import seedu.address.model.util.attributes.Date;
 import seedu.address.model.util.attributes.Price;
 import seedu.address.model.util.attributes.Tag;
 import seedu.address.model.util.attributes.Title;
@@ -49,6 +55,33 @@ public class SampleDataUtil {
         };
     }
 
+    private static Appointment[] getSampleAppointments() {
+        Client[] sampleClients = getSampleClients();
+        Service[] sampleServices = getSampleServices();
+        return new Appointment[]{
+            new Appointment(
+                new Date("21-10-2020"), new TimeOfDay("1300"),
+                sampleClients[0], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("23-10-2020"), new TimeOfDay("1030"),
+                sampleClients[1], sampleServices[3]
+            ),
+            new Appointment(
+                new Date("25-10-2020"), new TimeOfDay("1030"),
+                sampleClients[2], sampleServices[2]
+            ),
+            new Appointment(
+                new Date("25-10-2020"), new TimeOfDay("1400"),
+                sampleClients[3], sampleServices[1]
+            ),
+            new Appointment(
+                new Date("26-10-2020"), new TimeOfDay("1300"),
+                sampleClients[4], sampleServices[0]
+            )
+        };
+    }
+
     public static ReadOnlyServiceManager getSampleServiceManager() {
         ServiceManager sampleServiceManager = new ServiceManager();
         for (Service sampleService : getSampleServices()) {
@@ -73,4 +106,13 @@ public class SampleDataUtil {
             .map(Tag::new)
             .collect(Collectors.toSet());
     }
+
+    public static ReadOnlyAppointmentManager getSampleAppointmentManager() {
+        AppointmentManager sampleAppointmentManager = new AppointmentManager();
+        for (Appointment sampleAppointment : getSampleAppointments()) {
+            sampleAppointmentManager.addAppointment(sampleAppointment);
+        }
+        return sampleAppointmentManager;
+    }
+
 }

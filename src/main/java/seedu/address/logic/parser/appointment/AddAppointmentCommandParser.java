@@ -16,10 +16,9 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.appointment.Appointment;
+import seedu.address.model.appointment.AppointmentTemp;
 import seedu.address.model.appointment.TimeOfDay;
 import seedu.address.model.client.Phone;
-import seedu.address.model.service.Service;
 import seedu.address.model.service.ServiceCode;
 import seedu.address.model.util.attributes.Date;
 
@@ -30,11 +29,13 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
     @Override
     public AddAppointmentCommand parse(String userInput) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(userInput, PREFIX_DATE, PREFIX_PHONE, PREFIX_TIME_OF_DAY, PREFIX_SERVICE_SERVICE_CODE);
+                ArgumentTokenizer.tokenize(
+                    userInput, PREFIX_DATE, PREFIX_PHONE,
+                    PREFIX_TIME_OF_DAY, PREFIX_SERVICE_SERVICE_CODE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_DATE, PREFIX_PHONE, PREFIX_TIME_OF_DAY, PREFIX_SERVICE_SERVICE_CODE)
                 || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddAppointmentCommand.MESSAGE_USAGE));
         }
 
         Date date = ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get());
@@ -43,9 +44,9 @@ public class AddAppointmentCommandParser implements Parser<AddAppointmentCommand
         Phone phone = ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get());
         ServiceCode serviceCode = ParserUtil.parseServiceCode(argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).get());
 
-        Appointment appointment = new Appointment(date, time, phone, serviceCode);
+        AppointmentTemp appointmentTemp = new AppointmentTemp(date, time, phone, serviceCode);
 
-        return new AddAppointmentCommand(appointment);
+        return new AddAppointmentCommand(appointmentTemp);
     }
 
     /**

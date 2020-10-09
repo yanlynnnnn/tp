@@ -11,6 +11,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.appointment.Appointment;
+import seedu.address.model.appointment.AppointmentTemp;
 import seedu.address.model.client.Client;
 import seedu.address.model.service.Service;
 
@@ -37,12 +38,12 @@ public class AddAppointmentCommand extends Command {
     public static final String MESSAGE_INVALID_PHONE = "The phone number specified does not refer to an existing client.";
     public static final String MESSAGE_INVALID_SERVICE_CODE = "The service code specified does not exist in SuperSalon.";
 
-    private final Appointment toAdd;
+    private final AppointmentTemp toAdd;
 
     /**
      * Creates an AddCommand to add the specified {@code Client}
      */
-    public AddAppointmentCommand(Appointment appointment) {
+    public AddAppointmentCommand(AppointmentTemp appointment) {
         requireNonNull(appointment);
         toAdd = appointment;
     }
@@ -50,20 +51,26 @@ public class AddAppointmentCommand extends Command {
     @Override
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
-
-        if (model.hasAppointment(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_APPOINTMENT);
-        } else if (!model.hasClient(toAdd.getPhone())) {
+        // Check if phone number and service code are present in the model.
+        if (!model.hasClient(toAdd.getPhone())) {
             throw new CommandException(MESSAGE_INVALID_PHONE);
         } else if (!model.hasService(toAdd.getServiceCode())) {
             throw new CommandException(MESSAGE_INVALID_SERVICE_CODE);
         }
+        // Create client and service with the phone number and service code.
         Client clientToAdd = model.getClientByPhone(toAdd.getPhone());
         Service serviceToAdd = model.getServiceByServiceCode(toAdd.getServiceCode());
-        toAdd.setClient(clientToAdd);
-        toAdd.setService(serviceToAdd);
-        model.addAppointment(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        Appointment resultToAdd = new Appointment(
+            toAdd.getAppointmentDate(), toAdd.getAppointmentTime(),
+            clientToAdd, serviceToAdd
+        );
+        // Check if appointment is already present.
+        if (model.hasAppointment(resultToAdd)) {
+            throw new CommandException(MESSAGE_DUPLICATE_APPOINTMENT);
+        } else {
+            model.addAppointment(resultToAdd);
+        }
+        return new CommandResult(String.format(MESSAGE_SUCCESS, resultToAdd));
     }
 
     @Override

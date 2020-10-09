@@ -231,7 +231,7 @@ public class ParserUtil {
         requireNonNull(timeOfDay);
         String trimmedTimeOfDay = timeOfDay.trim();
         if (!TimeOfDay.isValidTime(trimmedTimeOfDay)) {
-            throw new ParseException(Date.MESSAGE_CONSTRAINTS);
+            throw new ParseException(TimeOfDay.MESSAGE_CONSTRAINTS);
         }
         return new TimeOfDay(trimmedTimeOfDay);
     }
@@ -245,8 +245,8 @@ public class ParserUtil {
     public static ServiceCode parseServiceCode(String serviceCode) throws ParseException {
         requireNonNull(serviceCode);
         String trimmedServiceCode = serviceCode.trim();
-        if (!TimeOfDay.isValidTime(trimmedServiceCode)) {
-            throw new ParseException(Date.MESSAGE_CONSTRAINTS);
+        if (!ServiceCode.isValidServiceCode(trimmedServiceCode)) {
+            throw new ParseException(ServiceCode.MESSAGE_CONSTRAINTS);
         }
         return new ServiceCode(trimmedServiceCode);
     }
