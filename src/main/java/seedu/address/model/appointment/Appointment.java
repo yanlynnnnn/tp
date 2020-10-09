@@ -22,10 +22,10 @@ public class Appointment implements UniqueListItem {
     private final TimeOfDay timeOfDay;
     private final ServiceCode serviceCode;
     private final Phone phone;
+    private final Status status;
 
     private Optional<Client> client;
     private Optional<Service> service;
-    private Status status;
 
     /**
      * Constructor for an Appointment.
@@ -67,6 +67,14 @@ public class Appointment implements UniqueListItem {
 
     public Status getStatus() {
         return status;
+    }
+
+    public void markDone() {
+        status.markDone();
+    }
+
+    public void markUnDone() {
+        status.markUnDone();
     }
 
     public void setClient(Client client) {

@@ -12,7 +12,7 @@ public class Status {
             "Status of appointment should be either 'y' or 'n' to"
             + "indicate if the appointment is done or not, and it should not be blank.";
 
-    private final boolean value;
+    private boolean value;
 
     /**
      * Constructs a {@code status}
@@ -24,14 +24,27 @@ public class Status {
         this.value = status.equals("y");
     }
 
+    public Status(boolean isDone) {
+        this.value = isDone;
+    }
+
     public static boolean isValidStatus(String test) {
         return test.toLowerCase().equals("y") || test.toLowerCase().equals("n");
+    }
+
+    public void markDone() {
+        this.value = true;
+    }
+
+    public void markUnDone() {
+        this.value = false;
     }
 
     @Override
     public String toString() {
         return value ? "Yes" : "No";
     }
+
 
     @Override
     public boolean equals(Object other) {

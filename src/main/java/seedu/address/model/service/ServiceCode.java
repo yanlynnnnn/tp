@@ -14,6 +14,7 @@ import seedu.address.model.util.attributes.Title;
  */
 public class ServiceCode {
     public static final String LEADING_ZEROES_REGEX = "^0+(?!$)";
+    public static final String MESSAGE_CONSTRAINTS = "";
     public static final Predicate<ServiceCode> VALIDATION_PREDICATE = i -> i.value.substring(0, 2).equals("SC")
         && i.value.length() == 5 && getIntFromServiceCode(i) < 1000 && getIntFromServiceCode(i) >= 0;
     /** String representing a unique identification number for each Service object */
