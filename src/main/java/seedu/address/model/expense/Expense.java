@@ -93,14 +93,14 @@ public class Expense {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getDescription())
-                .append(" Fixed: ")
+                .append("\n Is Fixed: ")
                 .append(getIsFixed())
                 .append(" Value: ")
                 .append(getValue())
                 .append(" Date: ")
                 .append(getDate())
-                .append(" Tag: ");
-        getTag();
+                .append(" Tag: ")
+                .append(getTag());
         return builder.toString();
     }
 }
