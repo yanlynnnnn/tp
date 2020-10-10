@@ -7,7 +7,7 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.model.Model;
-import seedu.address.model.client.NameContainsKeywordsPredicate;
+import seedu.address.model.service.ServiceContainKeywordPredicate;
 
 /**
  * Finds and lists all services in Homerce whose name contains any of the argument keywords.
@@ -23,7 +23,7 @@ public class FindServiceCommand extends Command {
 
     private final ServiceContainKeywordPredicate predicate;
 
-    public FindServiceCommand(NameContainsKeywordsPredicate predicate) {
+    public FindServiceCommand(ServiceContainKeywordPredicate predicate) {
         this.predicate = predicate;
     }
 
@@ -38,7 +38,7 @@ public class FindServiceCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof FindCommand // instanceof handles nulls
-            && predicate.equals(((FindCommand) other).predicate)); // state check
+            || (other instanceof FindServiceCommand// instanceof handles nulls
+            && predicate.equals(((FindServiceCommand) other).predicate)); // state check
     }
 }
