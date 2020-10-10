@@ -135,6 +135,10 @@ public interface Model {
      */
     void addService(Service toAdd);
 
+    /**
+     * Updates the filter of the filtered service list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
     void updateFilteredServiceList(Predicate<Service> predicate);
 
     ObservableList<Service> getFilteredServiceList();
