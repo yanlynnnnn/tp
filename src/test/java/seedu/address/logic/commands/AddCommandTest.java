@@ -194,6 +194,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setServiceManager(ReadOnlyServiceManager serviceManager) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Service> getFilteredServiceList() {
             throw new AssertionError("This method should not be called.");
         }
