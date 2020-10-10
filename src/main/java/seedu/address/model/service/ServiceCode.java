@@ -39,7 +39,7 @@ public class ServiceCode {
 
             // .equals for two services return true as long as value of ServiceCode is the same
             if (!set.contains(new Service(new Title("Test"), new Duration(0.5), new Amount(0.5))
-                .addSerivceCode(potentialServiceCode))) {
+                .addServiceCode(potentialServiceCode))) {
 
                 serviceCode = potentialServiceCode;
                 break;

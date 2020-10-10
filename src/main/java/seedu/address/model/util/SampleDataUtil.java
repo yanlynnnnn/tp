@@ -47,11 +47,11 @@ public class SampleDataUtil {
 
     public static Service[] getSampleServices() {
         return new Service[]{
-            new Service(new Title("Lash Lift"), new Duration(0.5), new Amount(38.0)).addSerivceCode("SC000"),
-            new Service(new Title("Nail Extension"), new Duration(0.5), new Amount(28.9)).addSerivceCode("SC001"),
-            new Service(new Title("Pedicure"), new Duration(0.5), new Amount(18.5)).addSerivceCode("SC003"),
-            new Service(new Title("Hair Treatment"), new Duration(1.5), new Amount(88.9)).addSerivceCode("SC007"),
-            new Service(new Title("Manicure"), new Duration(1.0), new Amount(21.5)).addSerivceCode("SC005"),
+            new Service(new Title("Lash Lift"), new Duration(0.5), new Amount(38.0)).addServiceCode("SC000"),
+            new Service(new Title("Nail Extension"), new Duration(0.5), new Amount(28.9)).addServiceCode("SC001"),
+            new Service(new Title("Pedicure"), new Duration(0.5), new Amount(18.5)).addServiceCode("SC003"),
+            new Service(new Title("Hair Treatment"), new Duration(1.5), new Amount(88.9)).addServiceCode("SC007"),
+            new Service(new Title("Manicure"), new Duration(1.0), new Amount(21.5)).addServiceCode("SC005"),
         };
     }
 
