@@ -16,9 +16,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.client.AddClientCommand;
+import seedu.address.logic.commands.client.ListClientCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -26,9 +26,15 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.client.Client;
+import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.ServiceManager;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
+import seedu.address.storage.expense.ExpenseStorage;
+import seedu.address.storage.expense.JsonExpenseStorage;
+import seedu.address.storage.service.JsonServiceStorage;
+import seedu.address.storage.service.ServiceStorage;
 import seedu.address.testutil.ClientBuilder;
 
 public class LogicManagerTest {
@@ -45,7 +51,11 @@ public class LogicManagerTest {
         JsonAddressBookStorage addressBookStorage =
                 new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        ServiceStorage serviceStorage = new JsonServiceStorage(temporaryFolder.resolve("services.json"));
+        ExpenseStorage expenseStorage = new JsonExpenseStorage(temporaryFolder.resolve("expenses.json"));
+
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage,
+                expenseStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -57,14 +67,14 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
-        String deleteCommand = "delete 9";
+        String deleteCommand = "deletecli 9";
         assertCommandException(deleteCommand, MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
     }
 
     @Test
     public void execute_validCommand_success() throws Exception {
-        String listCommand = ListCommand.COMMAND_WORD;
-        assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
+        String listCommand = ListClientCommand.COMMAND_WORD;
+        assertCommandSuccess(listCommand, ListClientCommand.MESSAGE_SUCCESS, model);
     }
 
     @Test
@@ -74,11 +84,15 @@ public class LogicManagerTest {
                 new JsonAddressBookIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
         JsonUserPrefsStorage userPrefsStorage =
                 new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage);
+        ServiceStorage serviceStorage = new JsonServiceStorage(temporaryFolder.resolve("ioExceptionServices.json"));
+        ExpenseStorage expenseStorage = new JsonExpenseStorage(temporaryFolder.resolve("ioExceptionExpenses.json"));
+
+        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage,
+                serviceStorage, expenseStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY;
+        String addCommand = AddClientCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY;
         Client expectedClient = new ClientBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addClient(expectedClient);
@@ -127,7 +141,8 @@ public class LogicManagerTest {
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
             String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs());
+        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new ServiceManager(),
+                new ExpenseTracker());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 

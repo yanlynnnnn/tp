@@ -13,10 +13,12 @@ import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
 import seedu.address.model.client.Phone;
 import seedu.address.model.expense.IsFixed;
+import seedu.address.model.service.Duration;
 import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Date;
 import seedu.address.model.util.attributes.Description;
 import seedu.address.model.util.attributes.Tag;
+import seedu.address.model.util.attributes.Title;
 
 
 /**
@@ -114,18 +116,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code String amount} into a {@code Amount}.
-     */
-    public static Amount parseAmount(String amount) throws ParseException {
-        requireNonNull(amount);
-        String trimmedAmount = amount.trim();
-        if (!Amount.isValidAmount(amount)) {
-            throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
-        }
-        return new Amount(trimmedAmount);
-    }
-
-    /**
      * Parses {@code String date} into a {@code Date}.
      */
     public static Date parseDate(String date) throws ParseException {
@@ -154,11 +144,65 @@ public class ParserUtil {
      */
     public static IsFixed parseIsFixed(String isFixed) throws ParseException {
         requireNonNull(isFixed);
-        String trimmedIsFixed = isFixed.trim();
         if (!IsFixed.isValidIsFixed(isFixed)) {
             throw new ParseException(IsFixed.MESSAGE_CONSTRAINTS);
         }
-        return new IsFixed(trimmedIsFixed);
+        return new IsFixed(isFixed);
+    }
+
+    /**
+     * Parses a {@code String title} into an {@code Title}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code title} is invalid.
+     */
+    public static Title parseTitle(String title) throws ParseException {
+        requireNonNull(title);
+        String trimmedTitle = title.trim();
+        if (!Title.isValidTitle(trimmedTitle)) {
+            throw new ParseException(Title.MESSAGE_CONSTRAINTS);
+        }
+        return new Title(trimmedTitle);
+    }
+
+    /**
+     * Parses a {@code String Amount} into a {@code {Amount}}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code amount} is invalid.
+     */
+    public static Amount parseAmount(String amount) throws ParseException {
+        requireNonNull(amount);
+        amount = amount.trim();
+        try {
+            Double doubleAmount = Double.parseDouble(amount);
+            if (!Amount.isValidAmount(doubleAmount)) {
+                throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
+            }
+            return new Amount(doubleAmount);
+        } catch (NumberFormatException e) {
+            throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
+        }
+    }
+
+    /**
+     * Parses a {@code String Duration} into a {@code {Duration}}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code duration} is invalid.
+     */
+    public static Duration parseDuration(String duration) throws ParseException {
+        requireNonNull(duration);
+        duration = duration.trim();
+        try {
+            Double doubleDuration = Double.parseDouble(duration);
+            if (!Duration.isValidDuration(doubleDuration)) {
+                throw new ParseException(Duration.MESSAGE_CONSTRAINTS);
+            }
+            return new Duration(doubleDuration);
+        } catch (NumberFormatException e) {
+            throw new ParseException(Duration.MESSAGE_CONSTRAINTS);
+        }
     }
 }
 

@@ -8,6 +8,9 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.ReadOnlyExpenseTracker;
+import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.model.service.Service;
 
 /**
  * The API of the Model component.
@@ -18,6 +21,9 @@ public interface Model {
 
     /** {@code Predicate} that always evaluate to true */
     Predicate<Expense> PREDICATE_SHOW_ALL_EXPENSES = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Service> PREDICATE_SHOW_ALL_SERVICES = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -110,7 +116,7 @@ public interface Model {
     /**
      * Replaces the contents of the expense list with {@code expenses}.
      */
-    public void setExpenses(List<Expense> expenses);
+    void setExpenses(List<Expense> expenses);
 
     /** Returns an unmodifiable view of the filtered expense list */
     ObservableList<Expense> getFilteredExpenseList();
@@ -120,4 +126,38 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredExpenseList(Predicate<Expense> predicate);
+
+    ReadOnlyExpenseTracker getExpenseTracker();
+
+    // ====================== ServiceManager ========================
+    /**
+     * Adds the given service.
+     */
+    void addService(Service toAdd);
+
+    /**
+     * Deletes the given Service.
+     * The Service must exist in SuperSalon.
+     */
+    void deleteService(Service target);
+
+    /**
+     * Replaces the given service {@code target} with {@code editedService}.
+     * {@code target} must exist in SuperSalon's service list.
+     * The service identity of {@code editedService} must not be the same as another existing service in SuperSalon.
+     */
+    void setService(Service target, Service editedService);
+
+
+    void updateFilteredServiceList(Predicate<Service> predicate);
+
+    ObservableList<Service> getFilteredServiceList();
+
+    ReadOnlyServiceManager getServiceManager();
+
+    /**
+     * Replaces serviceManager data with the data in {@code serviceManager}.
+     */
+    void setServiceManager(ReadOnlyServiceManager serviceManager);
+
 }

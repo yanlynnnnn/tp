@@ -2,42 +2,58 @@ package seedu.address.model.util.attributes;
 
 import static java.util.Objects.requireNonNull;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.function.Predicate;
+
 import seedu.address.commons.util.AppUtil;
 
+/**
+ * The price of a service provided by SuperSalon.
+ */
 public class Amount {
-    public static final String MESSAGE_CONSTRAINTS = "Amount must be a valid number less than 1000 with "
-            + "2 decimal places";
+    public static final String MESSAGE_CONSTRAINTS = "Amount (in dollars and cents - eg: 15.00) "
+            + "must be a valid double greater than 0";
 
-    // Allows value less than 1000, and at most 2 decimal places.
-    public static final String VALIDATION_REGEX = "^([\\d]{1,3})(\\.[\\d]{2})?$";
-    public final String value;
+    private static final double MIN_VALUE = 0.0;
+    private static final double MAX_VALUE = Double.MAX_VALUE;
+    public static final Predicate<Double> VALIDATION_PREDICATE = i -> i > MIN_VALUE && i <= MAX_VALUE;
+
+
+    /** Representing money in Singapore Dollars */
+    public final BigDecimal value;
 
     /**
-     * Represents the monetary amount for any model object.
-     * @param amount
+     * The cost of a Service in Singapore Dollars.
+     * @param amount double value input representing dollars and cents.
      */
-    public Amount(String amount) {
+    public Amount(double amount) {
         requireNonNull(amount);
         AppUtil.checkArgument(isValidAmount(amount), MESSAGE_CONSTRAINTS);
-        value = String.format("%.2f", Double.parseDouble(amount));
+        value = new BigDecimal(amount).setScale(2, RoundingMode.HALF_UP);
     }
 
     /**
-     * Returns true if a given string is a valid amount.
+     * Returns true if a given amount value is a valid.
      */
-    public static boolean isValidAmount(String test) {
-        return test.matches(VALIDATION_REGEX);
+    public static boolean isValidAmount(Double test) {
+        return VALIDATION_PREDICATE.test(test);
     }
 
+    /**
+     * Gives a string representation of the amount, in Singapore Dollars.
+     *
+     * @return a string representing the amount of Singapore Dollars the amount is.
+     */
     @Override
     public String toString() {
-        return String.format("%.2f", Double.parseDouble(value));
+        return value.setScale(2, RoundingMode.HALF_UP).toString(); // Two decimal places
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Amount // instanceof handles nulls
+                || (other instanceof Amount// instanceof handles nulls
                 && value.equals(((Amount) other).value)); // state check
     }
 
