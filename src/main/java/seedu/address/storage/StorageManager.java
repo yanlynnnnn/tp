@@ -10,11 +10,11 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
-import seedu.address.storage.revenue.RevenueStorage;
 import seedu.address.storage.expense.ExpenseStorage;
+import seedu.address.storage.revenue.RevenueStorage;
 import seedu.address.storage.service.ServiceStorage;
 
 /**
@@ -104,7 +104,7 @@ public class StorageManager implements Storage {
 
     @Override
     public Optional<ReadOnlyServiceManager> readServiceManager(Path filePath) throws DataConversionException,
-            IOException {
+        IOException {
         return serviceStorage.readServiceManager(filePath);
     }
 
@@ -132,7 +132,7 @@ public class StorageManager implements Storage {
 
     @Override
     public Optional<ReadOnlyRevenueTracker> readRevenueTracker(Path filePath) throws DataConversionException,
-            IOException {
+        IOException {
         return revenueStorage.readRevenueTracker(filePath);
     }
 
@@ -160,7 +160,7 @@ public class StorageManager implements Storage {
 
     @Override
     public Optional<ReadOnlyExpenseTracker> readExpenseTracker(Path filePath) throws DataConversionException,
-            IOException {
+        IOException {
         return expenseStorage.readExpenseTracker(filePath);
     }
 

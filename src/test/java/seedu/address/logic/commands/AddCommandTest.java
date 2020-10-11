@@ -23,8 +23,8 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
-import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.revenue.Revenue;
 import seedu.address.model.service.Service;
@@ -189,7 +189,7 @@ public class AddCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-         @Override
+        @Override
         public ReadOnlyExpenseTracker getExpenseTracker() {
             throw new AssertionError("This method should not be called.");
         }

@@ -14,9 +14,9 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
-import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
@@ -45,9 +45,10 @@ public class ModelManager implements Model {
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
-                        ReadOnlyServiceManager serviceManager, ReadOnlyRevenueTracker revenueTracker, ReadOnlyExpenseTracker expenseTracker) {
+                        ReadOnlyServiceManager serviceManager, ReadOnlyRevenueTracker revenueTracker,
+                        ReadOnlyExpenseTracker expenseTracker) {
         super();
-        requireAllNonNull(addressBook, userPrefs, serviceManage, revenueTracker, expenseTracker);
+        requireAllNonNull(addressBook, userPrefs, serviceManager, revenueTracker, expenseTracker);
 
         logger.fine("Initializing with SuperSalon: " + addressBook + " and user prefs " + userPrefs);
 
@@ -64,7 +65,7 @@ public class ModelManager implements Model {
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new ServiceManager(), new RevenueTracker(), new ExpenseTracker);
+        this(new AddressBook(), new UserPrefs(), new ServiceManager(), new RevenueTracker(), new ExpenseTracker());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -214,8 +215,8 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return addressBook.equals(other.addressBook)
-                && userPrefs.equals(other.userPrefs)
-                && filteredClients.equals(other.filteredClients);
+            && userPrefs.equals(other.userPrefs)
+            && filteredClients.equals(other.filteredClients);
     }
 
     //=========== ServiceManager ===============

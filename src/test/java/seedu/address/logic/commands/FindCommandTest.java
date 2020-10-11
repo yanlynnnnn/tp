@@ -19,8 +19,8 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.client.NameContainsKeywordsPredicate;
-import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
 
 /**

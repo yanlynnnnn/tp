@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-
 import seedu.address.commons.core.Config;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.core.Version;
@@ -22,9 +21,9 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
@@ -35,10 +34,10 @@ import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
-import seedu.address.storage.revenue.JsonRevenueStorage;
-import seedu.address.storage.revenue.RevenueStorage;
 import seedu.address.storage.expense.ExpenseStorage;
 import seedu.address.storage.expense.JsonExpenseStorage;
+import seedu.address.storage.revenue.JsonRevenueStorage;
+import seedu.address.storage.revenue.RevenueStorage;
 import seedu.address.storage.service.JsonServiceStorage;
 import seedu.address.storage.service.ServiceStorage;
 import seedu.address.ui.Ui;
@@ -74,7 +73,8 @@ public class MainApp extends Application {
         RevenueStorage revenueStorage = new JsonRevenueStorage(userPrefs.getRevenueStorageFilePath());
         ExpenseStorage expenseStorage = new JsonExpenseStorage(userPrefs.getExpenseStorageFilePath());
 
-        storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage, revenueStorage, expenseStorage);
+        storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage, revenueStorage,
+            expenseStorage);
 
         initLogging(config);
 

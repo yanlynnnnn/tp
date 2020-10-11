@@ -16,8 +16,8 @@ import org.junit.jupiter.api.Test;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.client.NameContainsKeywordsPredicate;
-import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.testutil.AddressBookBuilder;
 
@@ -107,7 +107,8 @@ public class ModelManagerTest {
 
         // same values -> returns true
         modelManager = new ModelManager(addressBook, userPrefs, serviceManager, revenueTracker, expenseTracker);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, serviceManager, revenueTracker, expenseTracker);
+        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, serviceManager, revenueTracker,
+            expenseTracker);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -126,7 +127,8 @@ public class ModelManagerTest {
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredClientList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, serviceManager, revenueTracker, expenseTracker)));
+        assertFalse(modelManager
+            .equals(new ModelManager(addressBook, userPrefs, serviceManager, revenueTracker, expenseTracker)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredClientList(PREDICATE_SHOW_ALL_CLIENTS);
