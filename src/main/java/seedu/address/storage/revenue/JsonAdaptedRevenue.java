@@ -16,7 +16,7 @@ import seedu.address.model.util.attributes.Title;
 
 public class JsonAdaptedRevenue {
 
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Service's %s field is missing!";
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Revenue's %s field is missing!";
 
     private final String title;
     private final BigDecimal price;
@@ -25,7 +25,7 @@ public class JsonAdaptedRevenue {
     private final String date;
 
     /**
-     * Constructs a {@code JsonAdaptedService} with the given Service details.
+     * Constructs a {@code JsonAdaptedRevenue} with the given Revenue details.
      */
     @JsonCreator
     public JsonAdaptedRevenue(@JsonProperty("title") String title, @JsonProperty("price") Double price,
@@ -40,7 +40,7 @@ public class JsonAdaptedRevenue {
     }
 
     /**
-     * Converts a given {@code Service} into this class for Jackson use.
+     * Converts a given {@code Revenue} into this class for Jackson use.
      */
     public JsonAdaptedRevenue(Revenue source) {
         title = source.getService().getTitle().value;
@@ -51,9 +51,9 @@ public class JsonAdaptedRevenue {
     }
 
     /**
-     * Converts this Jackson-friendly adapted service object into the model's {@code Service} object.
+     * Converts this Jackson-friendly adapted revenue object into the model's {@code Revenue} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted service.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted revenue.
      */
     public Revenue toModelType() throws IllegalValueException {
         if (title == null) {

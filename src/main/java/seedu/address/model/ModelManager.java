@@ -51,7 +51,7 @@ public class ModelManager implements Model {
         super();
         requireAllNonNull(addressBook, userPrefs, serviceManager, revenueTracker, expenseTracker);
 
-        logger.fine("Initializing with SuperSalon: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with Homerce: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);

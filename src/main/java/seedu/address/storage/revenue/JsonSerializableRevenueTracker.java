@@ -19,8 +19,6 @@ import seedu.address.model.revenue.Revenue;
 @JsonRootName(value = "revenueTracker")
 public class JsonSerializableRevenueTracker {
 
-    // public static final String MESSAGE_DUPLICATE_SERVICE = "Service list contains duplicate service(s).";
-
     private final List<JsonAdaptedRevenue> revenues = new ArrayList<>();
 
     /**
@@ -34,7 +32,7 @@ public class JsonSerializableRevenueTracker {
     /**
      * Converts a given {@code ReadOnlyRevenueTracker} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableServiceManager}.
+     * @param source future changes to this will not affect the created {@code JsonSerializableRevenueManager}.
      */
     public JsonSerializableRevenueTracker(ReadOnlyRevenueTracker source) {
         revenues.addAll(source.getRevenueList().stream().map(JsonAdaptedRevenue::new).collect(Collectors.toList()));

@@ -45,11 +45,11 @@ public class JsonRevenueStorage implements RevenueStorage {
      */
     @Override
     public Optional<ReadOnlyRevenueTracker> readRevenueTracker(Path filePath) throws DataConversionException,
-            IOException {
+        IOException {
         requireNonNull(filePath);
 
         Optional<JsonSerializableRevenueTracker> jsonRevenueTracker = JsonUtil.readJsonFile(
-                filePath, JsonSerializableRevenueTracker.class);
+            filePath, JsonSerializableRevenueTracker.class);
         if (jsonRevenueTracker.isEmpty()) {
             return Optional.empty();
         }

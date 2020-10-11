@@ -36,36 +36,19 @@ public class Revenue {
         return value;
     }
 
-    //    /**
-    //     * Returns true if both revenues have the same identity fields.
-    //     * This defines a weaker notion of equality between two revenues.
-    //     */
-    //    public boolean isSameRevenue(Revenue otherRevenue) {
-    //        if (otherRevenue == this) {
-    //            return true;
-    //        }
-    //
-    //        return otherRevenue != null
-    //                && otherRevenue.getService().equals(getService())
-    //                && (otherRevenue.getDate().equals(getDate()));
-    //    }
-
     /**
      * Returns true if both revenues have the same identity and data fields.
      * This defines a stronger notion of equality between two revenues.
      */
     @Override
     public boolean equals(Object other) {
-        return other == this;
-
-        //        if (!(other instanceof Revenue)) {
-        //            return false;
-        //        }
-        //
-        //        Revenue otherRevenue = (Revenue) other;
-        //        return otherRevenue.getService().equals(getService())
-        //                && otherRevenue.getDate().equals(getDate())
-        //                && otherRevenue.getValue().equals(getValue());
+        if (other == this) {
+            return true;
+        }
+        Revenue otherRevenue = (Revenue) other;
+        return otherRevenue.getService().equals(getService())
+            && otherRevenue.getDate().equals(getDate())
+            && otherRevenue.getValue().equals(getValue());
     }
 
     @Override
@@ -76,12 +59,12 @@ public class Revenue {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Service: ")
-                .append(getService())
-                .append(" Date: ")
-                .append(getDate())
-                .append(" Value: ")
-                .append(getValue());
+        builder.append("Revenue: ")
+            .append(getService())
+            .append(" Date: ")
+            .append(getDate())
+            .append(" Value: ")
+            .append(getValue());
         return builder.toString();
     }
 }

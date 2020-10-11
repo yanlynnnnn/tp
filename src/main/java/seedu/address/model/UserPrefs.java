@@ -16,9 +16,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     private GuiSettings guiSettings = new GuiSettings();
     private Path addressBookFilePath = Paths.get("data", "addressbook.json");
 
-    private Path serviceStorageFilePath = Paths.get("data" , "services.json");
-    private Path expenseStorageFilePath = Paths.get("data" , "expenses.json");
-
+    private Path serviceStorageFilePath = Paths.get("data", "services.json");
+    private Path expenseStorageFilePath = Paths.get("data", "expenses.json");
     private Path revenueStorageFilePath = Paths.get("data", "revenue.json");
 
     /**
@@ -74,7 +73,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         UserPrefs o = (UserPrefs) other;
 
         return guiSettings.equals(o.guiSettings)
-                && addressBookFilePath.equals(o.addressBookFilePath);
+            && addressBookFilePath.equals(o.addressBookFilePath);
     }
 
     public Path getServiceStorageFilePath() {
