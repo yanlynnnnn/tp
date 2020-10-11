@@ -4,7 +4,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.EditCommand;
+import seedu.address.logic.commands.client.EditClientCommand;
 import seedu.address.model.client.Client;
 import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
@@ -16,21 +16,21 @@ import seedu.address.model.util.attributes.Tag;
  */
 public class EditClientDescriptorBuilder {
 
-    private EditCommand.EditClientDescriptor descriptor;
+    private EditClientCommand.EditClientDescriptor descriptor;
 
     public EditClientDescriptorBuilder() {
-        descriptor = new EditCommand.EditClientDescriptor();
+        descriptor = new EditClientCommand.EditClientDescriptor();
     }
 
-    public EditClientDescriptorBuilder(EditCommand.EditClientDescriptor descriptor) {
-        this.descriptor = new EditCommand.EditClientDescriptor(descriptor);
+    public EditClientDescriptorBuilder(EditClientCommand.EditClientDescriptor descriptor) {
+        this.descriptor = new EditClientCommand.EditClientDescriptor(descriptor);
     }
 
     /**
      * Returns an {@code EditClientDescriptor} with fields containing {@code client}'s details
      */
     public EditClientDescriptorBuilder(Client client) {
-        descriptor = new EditCommand.EditClientDescriptor();
+        descriptor = new EditClientCommand.EditClientDescriptor();
         descriptor.setName(client.getName());
         descriptor.setPhone(client.getPhone());
         descriptor.setEmail(client.getEmail());
@@ -71,7 +71,7 @@ public class EditClientDescriptorBuilder {
         return this;
     }
 
-    public EditCommand.EditClientDescriptor build() {
+    public EditClientCommand.EditClientDescriptor build() {
         return descriptor;
     }
 }
