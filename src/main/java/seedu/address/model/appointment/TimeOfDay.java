@@ -12,7 +12,6 @@ public class TimeOfDay {
     public static final String MESSAGE_CONSTRAINTS = "TimeOfDay entered must be in the format of <HHmm>,"
             + " where HH is the 24-hour clock timing, mm is the minutes of the hour.";
 
-    // TODO Need to test if these formatters are correct.
     private static final DateTimeFormatter FORMAT_INPUT = DateTimeFormatter.ofPattern("HHmm");
     private static final DateTimeFormatter FORMAT_OUTPUT = DateTimeFormatter.ofPattern("h:mm a");
 
