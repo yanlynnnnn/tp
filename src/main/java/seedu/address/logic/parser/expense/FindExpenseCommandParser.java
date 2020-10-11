@@ -51,7 +51,8 @@ public class FindExpenseCommandParser implements Parser<FindExpenseCommand> {
                     argMultimap.getValue(PREFIX_DESCRIPTION).get()));
         }
         if (argMultimap.getValue(PREFIX_ISFIXED).isPresent()) {
-            predicate = new IsFixedPredicate(ParserUtil.parseIsFixed(argMultimap.getValue(PREFIX_ISFIXED).get()));
+            predicate = new IsFixedPredicate(ParserUtil.parseIsFixed(argMultimap.getValue(PREFIX_ISFIXED)
+                    .get()));
         }
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
             predicate = new DatePredicate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
@@ -63,7 +64,7 @@ public class FindExpenseCommandParser implements Parser<FindExpenseCommand> {
     }
 
     /**
-     * Returns true if there is more than one input parameter.
+     * Returns true if there is more than one input parameters.
      */
     private static boolean areMultipleParametersPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).filter(prefix -> argumentMultimap.getValue(prefix).isPresent()).count()
