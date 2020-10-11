@@ -51,6 +51,6 @@ public class Date {
 
     @Override
     public String toString() {
-        return date.format(FORMAT_OUTPUT);
+        return date.format(FORMAT_INPUT);
     }
 }

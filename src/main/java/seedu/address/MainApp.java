@@ -210,7 +210,7 @@ public class MainApp extends Application {
     private ReadOnlyExpenseTracker initExpenseTracker(Storage storage) {
         ReadOnlyExpenseTracker expenseTracker;
         try {
-            Optional<ReadOnlyExpenseTracker> expenseTrackerOptional = storage.readExpenseTracker();
+            Optional<ReadOnlyExpenseTracker> expenseTrackerOptional;
             expenseTrackerOptional = storage.readExpenseTracker();
             if (!expenseTrackerOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a sample ExpenseTracker");

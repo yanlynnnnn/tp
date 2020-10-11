@@ -27,7 +27,7 @@ public class Amount {
      * The cost of a Service in Singapore Dollars.
      * @param amount double value input representing dollars and cents.
      */
-    public Amount(double amount) {
+    public Amount(Double amount) {
         requireNonNull(amount);
         AppUtil.checkArgument(isValidAmount(amount), MESSAGE_CONSTRAINTS);
         value = new BigDecimal(amount).setScale(2, RoundingMode.HALF_UP);
