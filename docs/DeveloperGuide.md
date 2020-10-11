@@ -2,7 +2,7 @@
 layout: page
 title: Developer Guide
 ---
-# GrAB3 Developer Guide
+# Homerce Developer Guide
 
 ## Table of Contents:
  * [1. Introduction](#1-introduction)
@@ -24,20 +24,20 @@ title: Developer Guide
 
 ## 1. **Introduction**
 
-**GrAB3** is a desktop business management application meant for home-based beauty salon owners who want to consolidate all
+**Homerce** is a desktop business management application meant for home-based beauty salon owners who want to consolidate all
 the information related to their business, such as upcoming appointments, their list of clients, as well as profits recorded. 
 It focuses on the Command Line Interface (CLI) while providing users with a simple and clean Graphical User Interface (GUI).
-Thus, the main interaction with **GrAB3**. will be done through commands.
+Thus, the main interaction with **Homerce**. will be done through commands.
 
-The features of GrAB3 include:
+The features of Homerce include:
 * Keeping track of existing/new clients.
 * Scheduling of upcoming appointments with clients.
 * Recording of revenue from services provided.
 * Recording of business-related expenses.
 * Calculation of business profit.
 
-The purpose of this Developer Guide is to help you understand the design and implementation of **GrAB3**, 
-so that you can get started on your contributions to **GrAB3**.
+The purpose of this Developer Guide is to help you understand the design and implementation of **Homerce**, 
+so that you can get started on your contributions to **Homerce**.
 
 ## 2. **Setting up, getting started**
 
@@ -318,12 +318,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ## **Appendix C: Use Cases**
 
-(For all use cases below, the **System** is `GrAB3` and the **Actor** is the `user`, unless specified otherwise)
+(For all use cases below, the **System** is `Homerce` and the **Actor** is the `user`, unless specified otherwise)
 
 ### Services Management
 
 #### UC001: Add a Service 
-Add a service provided by the business into GrAB3.
+Add a service provided by the business into Homerce.
+
+**System: Homerce**
+
+**Actor: User**
 
 **Preconditions: Appointment list must exist.**
 
@@ -331,17 +335,21 @@ Add a service provided by the business into GrAB3.
 
 **MSS**
 1. User adds a service by providing details.
-1. GrAB3 adds the service to the service list.  
-1. GrAB3 displays successful additional message.
+1. Homerce adds the service to the service list.  
+1. Homerce displays a successful message.
 Use case ends.
 
 Extensions:  
 * 1a. Incomplete details provided.  
-  * 1a1. GrAB3 displays an error message.  
+  * 1a1. Homerce displays an error message.  
   Use case resumes at step 1.
         
 #### UC002: Edit a Service
 Edit the details of an existing service.
+
+**System: Homerce**
+
+**Actor: User**
 
 **Preconditions: Service exists in service list.**
 
@@ -349,23 +357,27 @@ Edit the details of an existing service.
 
 **MSS**
 1. User requests to list all services.
-1. GrAB3 shows a list of services.
+1. Homerce shows a list of services.
 1. User edits an existing service by providing the details.
-1. GrAB3 update the details of the selected service.
-1. GrAB3 update the service list.
+1. Homerce updates the details of the selected service.
+1. Homerce updates the service list.
 Use case ends.
 
 Extensions:
 * 3a. Invalid index provided.
-  * 3a1. GrAB3 displays an error message.  
+  * 3a1. Homerce displays an error message.  
   Use case resumes at step 1.
 
 * 3b. Incomplete details provided.  
-  * 3b1. GrAB3 displays an error message.  
+  * 3b1. Homerce displays an error message.  
   Use case resumes at step 1.
         
 #### UC003: Delete a Service
 Delete the selected service from the service list.
+
+**System: Homerce**
+
+**Actor: User**
 
 **Preconditions: Service exists in service list.**
 
@@ -373,37 +385,45 @@ Delete the selected service from the service list.
 
 **MSS**
 1. User requests to list all services.
-1. GrAB3 shows a list of services.
-1. User request to delete a specific service.
-1. GrAB3 delete a service. 
-1. GrAB3 shows the updated list view.
+1. Homerce shows a list of services.
+1. User requests to delete a specific service.
+1. Homerce deletes a service. 
+1. Homerce shows the updated list view.
 Use case ends.
 
 **Extensions**
 * 3a. Invalid index provided.
-  * 3a1. GrAB3 displays an error message.  
+  * 3a1. Homerce displays an error message.  
   Use case resumes at step 1.
 
 #### UC004: Find a Service
 Find a service in the service list.
+
+**System: Homerce**
+
+**Actor: User**
 
 **Preconditions: Service exists in service list.**
 
 **Guarantees: Display all services in the service list that matches the search value.**
 
 **MSS**
-1. User requests to list all services that matches the search value.
-1. GrAB3 searches for services that matches search value.
-1. GrAB3 show list of all services that matches the search value.
+1. User requests to list all services that match the search value.
+1. Homerce searches for services that match search value.
+1. Homerce shows a list of all services that match the search value.
 Use case ends.
 
 **Extensions**
 * 2a. No service matches the search value.
-  * 2a1. GrAB3 displays empty list.
+  * 2a1. Homerce displays an empty list.
   Use case resumes at step 1.
   
 #### UC005: List Services 
 List all the services in the service list.
+
+**System: Homerce**
+
+**Actor: User**
 
 **Preconditions: Service exists in service list.**
  
@@ -411,29 +431,37 @@ List all the services in the service list.
  
 **MSS**
 1. User requests to list all services.
-1. GrAB3 display all services in the service list.
+1. Homerce displays all services in the service list.
 Use case ends.
 
 **Extensions**
 * 1a. No service in service list.
-  * 1a1. GrAB3 displays empty list.
+  * 1a1. Homerce displays an empty list.
   Use case resumes at step 1.
   
 #### UC005: Clear Services
 Clear all services in the service list.
 
-**Preconditions: Service exists in service list**
+**System: Homerce**
+
+**Actor: User**
+
+**Preconditions: At least one service exists in the service list**
 
 **Guarantees: An empty revenue list.**
 
 **MSS**
 1. User requests to clear the list.
-1. GrAB3 shows the updated list.
+1. Homerce shows the updated list.
 Use case ends.
 
 ### Client List
 
 #### UC001: Add a client to client list
+
+**System: Homerce**
+
+**Actor: User**
 
 **Preconditions: A client must exist**
 
@@ -441,16 +469,20 @@ Use case ends.
 
 **MSS**
 1.  User requests to add a new client into the client list.
-1.  GrAB3 shows the updated client list
+1.  Homerce shows the updated client list
 Use case ends.
 
 **Extensions**
 
 * 1a. Client description is empty.
-    * 1a1. GrAB3 shows an error message.
+    * 1a1. Homerce shows an error message.
     Use case resumes at step 2.
 
 #### UC003: Delete a client**
+
+**System: Homerce**
+
+**Actor: User**
 
 **Preconditions: client schedule must exist**
 
@@ -458,17 +490,21 @@ Use case ends.
 
 **MSS**
 1.  User requests to list all clients.
-1.  GrAB3 displays a list of clients.
+1.  Homerce displays a list of clients.
 1.  User requests to delete a specific client from the list generated.
-1.  GrAB3 shows the updated list after deletion of the client.
+1.  Homerce shows the updated list after deletion of the client.
 Use case ends.
 
 **Extensions**
 * 3a. The specified client does not exist.
-    * 3a1. GrAB3 shows an error message.
+    * 3a1. Homerce shows an error message.
     Use case resumes at step 2.
 
 #### UC004: Edit a client
+
+**System: Homerce**
+
+**Actor: User**
 
 **Preconditions: Client exists in TaskSchedule**
 
@@ -476,19 +512,23 @@ Use case ends.
 
 **MSS**
 1.  User requests to list all clients.
-1.  GrAB3 shows a list of clients.
-1.  User requests to edit the description of a specific client from that list.
-1.  GrAB3 shows the updated client.
+1.  Homerce shows a list of clients.
+1.  User requests to edit the details of a specific client from that list.
+1.  Homerce shows the updated client.
 Use case ends.
 
 **Extensions**
 * 3a. The given index is invalid.
-    * 3a1. GrAB3 shows an error message.
+    * 3a1. Homerce shows an error message.
     Use case resumes at step 2.
 
 ### Appointment List
 
 ####UC01: Add an appointment into the appointment list
+
+**System: Homerce**
+
+**Actor: User**
 
 **Preconditions: Appointment list must exist**
 
@@ -496,12 +536,12 @@ Use case ends.
 
 **MSS**
 1.  User adds appointment into appointment list.
-1.  GrAB3 shows the updated list of appointments.
+1.  Homerce shows the updated list of appointments.
 Use case ends.
 
 **Extensions**
-* 2a. The specified module code is invalid.
-    * 2a1. GrAB3 shows an error message.
+* 2a. The specified service code is invalid.
+    * 2a1. Homerce shows an error message.
     Use case resumes at step 1.
 
 ### Revenue List
@@ -515,9 +555,9 @@ Use case ends.
 **MSS**
 
 1.  User requests to list all revenues.
-2.  GrAB3 shows a list of revenues.
+2.  Homerce shows a list of revenues.
 3.  User requests to clear the list.
-4.  GrAB3 shows the updated list.
+4.  Homerce shows the updated list.
 
     Use case ends.
 
@@ -527,15 +567,19 @@ Use case ends.
 
 #### UC04: Sort expenses by ascending/descending order
 
+**System: Homerce**
+
+**Actor: User**
+
 **Preconditions: Expenses exist in expense list**
 
 **Guarantees: View of expenses sorted in order specified by user.**
 
 **MSS**
 1.  User requests to list all expenses.
-1.  GrAB3 shows a list of expenses.
+1.  Homerce shows a list of expenses.
 1.  User requests to sort the expenses by ascending order.
-1.  GrAB3 shows the sorted list view.
+1.  Homerce shows the list of expenses sorted in ascending order.
 Use case ends.
 
 **Extensions**
@@ -547,22 +591,22 @@ Use case ends.
 ## **Appendix D: Non-Functional Requirements**
 
 * System Requirements:
-    * GrAB3 should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-    * GrAB3 should be optimized for keyboard input and can function without the use of a mouse.
+    * Homerce should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+    * Homerce should be optimized for keyboard input and can function without the use of a mouse.
       However, a mouse would improve the user experience.
     * The computer running the Java Virtual Machine (JVM) should have sufficient disk space to
       accommodate the user's data stored in the system. It should also have sufficient RAM
       and CPU power to run the JVM smoothly.
 * Performance Requirements:
-    * GrAB3 should be able to start up and load existing the user's stored data sufficiently fast (< 10s). 
+    * Homerce should be able to start up and load existing the user's stored data sufficiently fast (< 10s). 
     * Context switching / menu navigation through the use of either text commands or button clicks should be sufficiently fast (< 10s). 
 * Usability:
-    * GrAB3 should be user-friendly for any client who can use a computer and does not require prior technical knowledge.
-    * The user interface of GrAB3 should look intuitive and simple to navigate. It should not look cluttered with too many panels.
+    * Homerce should be user-friendly for any client who can use a computer and does not require prior technical knowledge.
+    * The user interface of Homerce should look intuitive and simple to navigate. It should not look cluttered with too many panels.
 * Reliability:
-    * GrAB3 should not crash in the event of incorrect user input - this should be handled safely with exceptions.  
+    * Homerce should not crash in the event of incorrect user input - this should be handled safely with exceptions.  
 * Scalability:
-    * GrAB3 should be able to handle thousands of appointments, clients, expenses and all other recorded entries by a user.
+    * Homerce should be able to handle thousands of appointments, clients, expenses and all other recorded entries by a user.
      No expansion of hardware capabilities or software modifications should be required.
 
 ## **Appendix E: Glossary**
