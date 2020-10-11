@@ -9,6 +9,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_SERVICE_CODE;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+import seedu.address.logic.commands.appointment.AddAppointmentCommand;
 import seedu.address.logic.commands.appointment.FindAppointmentCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
@@ -39,10 +40,19 @@ public class FindAppointmentCommandParser implements Parser<FindAppointmentComma
          */
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(userInput, PREFIX_DATE, PREFIX_PHONE, PREFIX_SERVICE_SERVICE_CODE, PREFIX_NAME);
-        if (areMultipleParametersPresent(argMultimap, PREFIX_DATE,
-            PREFIX_PHONE, PREFIX_SERVICE_SERVICE_CODE, PREFIX_NAME)) {
+        if (areMultipleParametersPresent(argMultimap, PREFIX_DATE, PREFIX_PHONE, PREFIX_SERVICE_SERVICE_CODE,
+            PREFIX_NAME)) {
             throw new ParseException(MULTIPLE_PARAMETERS);
         }
+        if ((!arePrefixesPresent(argMultimap, PREFIX_DATE)
+            && !arePrefixesPresent(argMultimap, PREFIX_PHONE)
+            && !arePrefixesPresent(argMultimap, PREFIX_NAME)
+            && !arePrefixesPresent(argMultimap, PREFIX_SERVICE_SERVICE_CODE))
+            || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                AddAppointmentCommand.MESSAGE_USAGE));
+        }
+
         Predicate<Appointment> predicate = null;
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
             predicate = new DateAppointmentPredicate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
@@ -65,5 +75,13 @@ public class FindAppointmentCommandParser implements Parser<FindAppointmentComma
     private static boolean areMultipleParametersPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).filter(prefix -> argumentMultimap.getValue(prefix).isPresent()).count()
             > NUM_ALLOWED_PARAMETERS;
+    }
+
+    /**
+     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }
