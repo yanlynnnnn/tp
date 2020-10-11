@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.client;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalClients.getTypicalAddressBook;
@@ -12,14 +12,14 @@ import seedu.address.model.UserPrefs;
 import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.ServiceManager;
 
-public class ClearCommandTest {
+public class ClearClientCommandTest {
 
     @Test
     public void execute_emptyAddressBook_success() {
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
 
-        assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ClearClientCommand(), model, ClearClientCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
     @Test
@@ -30,7 +30,7 @@ public class ClearCommandTest {
                 new ExpenseTracker());
         expectedModel.setAddressBook(new AddressBook());
 
-        assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ClearClientCommand(), model, ClearClientCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
 }

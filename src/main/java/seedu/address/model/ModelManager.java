@@ -223,7 +223,7 @@ public class ModelManager implements Model {
     public void deleteService(Service target) {
         serviceManager.removeService(target);
     }
-  
+
     @Override
     public void setService(Service target, Service editedService) {
         CollectionUtil.requireAllNonNull(target, editedService);

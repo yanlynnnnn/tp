@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.client;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showClientAtIndex;
@@ -15,9 +15,9 @@ import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.ServiceManager;
 
 /**
- * Contains integration tests (interaction with the Model) and unit tests for ListCommand.
+ * Contains integration tests (interaction with the Model) and unit tests for ListClientCommand.
  */
-public class ListCommandTest {
+public class ListClientCommandTest {
 
     private Model model;
     private Model expectedModel;
@@ -32,12 +32,12 @@ public class ListCommandTest {
 
     @Test
     public void execute_listIsNotFiltered_showsSameList() {
-        assertCommandSuccess(new ListCommand(), model, ListCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListClientCommand(), model, ListClientCommand.MESSAGE_SUCCESS, expectedModel);
     }
 
     @Test
     public void execute_listIsFiltered_showsEverything() {
         showClientAtIndex(model, INDEX_FIRST_CLIENT);
-        assertCommandSuccess(new ListCommand(), model, ListCommand.MESSAGE_SUCCESS, expectedModel);
+        assertCommandSuccess(new ListClientCommand(), model, ListClientCommand.MESSAGE_SUCCESS, expectedModel);
     }
 }
