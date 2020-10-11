@@ -205,21 +205,21 @@ public class MainApp extends Application {
      * Returns a {@code ReadOnlyAppointmentManager} with the data from {@code storage}'s appointments.
      * The data from the sample appointments will be used instead if {@code storage}'s appointment manager is not found,
      * or an empty appointment manager will be used instead if errors occur when reading {@code storage}'s
-     * service manager.
+     * appointment manager.
      */
     private ReadOnlyAppointmentManager initAppointmentManager(Storage storage) {
         ReadOnlyAppointmentManager appointmentManager;
         try {
             Optional<ReadOnlyAppointmentManager> appointmentManagerOptional = storage.readAppointmentManager();
             if (!appointmentManagerOptional.isPresent()) {
-                logger.info("Data file not found. Will be starting with a sample ServiceManager");
+                logger.info("Data file not found. Will be starting with a sample AppointmentManager");
             }
             appointmentManager = appointmentManagerOptional.orElseGet(SampleDataUtil::getSampleAppointmentManager);
         } catch (DataConversionException e) {
-            logger.warning("Data file not in the correct format. Will be starting with an empty ServiceManager");
+            logger.warning("Data file not in the correct format. Will be starting with an empty AppointmentManager");
             appointmentManager = new AppointmentManager();
         } catch (IOException e) {
-            logger.warning("Problem while reading from the file. Will be starting with an empty ServiceManager");
+            logger.warning("Problem while reading from the file. Will be starting with an empty AppointmentManager");
             appointmentManager = new AppointmentManager();
         }
         return appointmentManager;

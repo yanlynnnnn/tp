@@ -19,7 +19,7 @@ import seedu.address.model.service.Service;
  * Adds an appointment to SuperSalon.
  */
 public class AddAppointmentCommand extends Command {
-    public static final String COMMAND_WORD = "addappt";
+    public static final String COMMAND_WORD = "addapt";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to the address book. "
             + "Parameters: "
