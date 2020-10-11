@@ -17,7 +17,7 @@ import seedu.address.ui.UiPart;
 public class ServiceListPanel extends UiPart<Region> {
     public static final String TAB_NAME = "Service Tab";
 
-    private static final String FXML = "ServiceListPanel.fxml";
+    private static final String FXML = "servicespanel/ServiceListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ServiceListPanel.class);
 
     @FXML

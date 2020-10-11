@@ -17,7 +17,7 @@ import seedu.address.ui.UiPart;
 public class ClientListPanel extends UiPart<Region> {
     public static final String TAB_NAME = "Client Tab";
 
-    private static final String FXML = "ClientListPanel.fxml";
+    private static final String FXML = "clientspanel/ClientListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ClientListPanel.class);
 
     @FXML
