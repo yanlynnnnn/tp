@@ -1,4 +1,4 @@
-package seedu.address.ui.servicetab;
+package seedu.address.ui.servicespanel;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

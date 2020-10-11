@@ -1,4 +1,4 @@
-package seedu.address.ui;
+package seedu.address.ui.clientspanel;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -9,6 +9,7 @@ import javafx.scene.layout.Region;
 import java.util.logging.Logger;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.client.Client;
+import seedu.address.ui.UiPart;
 
 /**
  * Panel containing the list of clients.

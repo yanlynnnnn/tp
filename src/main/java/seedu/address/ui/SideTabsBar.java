@@ -6,7 +6,8 @@ import javafx.scene.layout.Region;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.ui.servicetab.ServiceListPanel;
+import seedu.address.ui.clientspanel.ClientListPanel;
+import seedu.address.ui.servicespanel.ServiceListPanel;
 
 /**
  * Panel containing the list of persons.

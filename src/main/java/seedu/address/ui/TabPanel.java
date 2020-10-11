@@ -9,7 +9,8 @@ import java.util.logging.Logger;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.client.Client;
 import seedu.address.model.service.Service;
-import seedu.address.ui.servicetab.ServiceListPanel;
+import seedu.address.ui.clientspanel.ClientListPanel;
+import seedu.address.ui.servicespanel.ServiceListPanel;
 
 /**
  * Panel containing the list of persons.
