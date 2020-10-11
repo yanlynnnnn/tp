@@ -17,7 +17,7 @@ import seedu.address.model.expense.Expense;
  */
 public class AddExpenseCommand extends Command {
 
-    public static final String COMMAND_WORD = "addexpense";
+    public static final String COMMAND_WORD = "addexp";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an expense to GrAB3. "
             + "Parameters: "
@@ -31,7 +31,7 @@ public class AddExpenseCommand extends Command {
             + PREFIX_ISFIXED + "f "
             + PREFIX_AMOUNT + "15.00 "
             + PREFIX_DATE + "29-01-2020 "
-            + PREFIX_TAG + "hair supplies ";
+            + PREFIX_TAG + "hairsupplies ";
 
     public static final String MESSAGE_SUCCESS = "New expense added: %1$s";
 

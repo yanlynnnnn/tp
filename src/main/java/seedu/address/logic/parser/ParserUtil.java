@@ -17,7 +17,6 @@ import seedu.address.model.service.Duration;
 import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Date;
 import seedu.address.model.util.attributes.Description;
-import seedu.address.model.util.attributes.Price;
 import seedu.address.model.util.attributes.Tag;
 import seedu.address.model.util.attributes.Title;
 
@@ -117,18 +116,6 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code String amount} into a {@code Amount}.
-     */
-    public static Amount parseAmount(String amount) throws ParseException {
-        requireNonNull(amount);
-        String trimmedAmount = amount.trim();
-        if (!Amount.isValidAmount(amount)) {
-            throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
-        }
-        return new Amount(trimmedAmount);
-    }
-
-    /**
      * Parses {@code String date} into a {@code Date}.
      */
     public static Date parseDate(String date) throws ParseException {
@@ -157,11 +144,10 @@ public class ParserUtil {
      */
     public static IsFixed parseIsFixed(String isFixed) throws ParseException {
         requireNonNull(isFixed);
-        String trimmedIsFixed = isFixed.trim();
         if (!IsFixed.isValidIsFixed(isFixed)) {
             throw new ParseException(IsFixed.MESSAGE_CONSTRAINTS);
         }
-        return new IsFixed(trimmedIsFixed);
+        return new IsFixed(isFixed);
     }
 
     /**
@@ -180,22 +166,22 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String Price} into a {@code {Price}}.
+     * Parses a {@code String Amount} into a {@code {Amount}}.
      * Leading and trailing whitespaces will be trimmed.
      *
-     * @throws ParseException if the given {@code price} is invalid.
+     * @throws ParseException if the given {@code amount} is invalid.
      */
-    public static Price parsePrice(String price) throws ParseException {
-        requireNonNull(price);
-        price = price.trim();
+    public static Amount parseAmount(String amount) throws ParseException {
+        requireNonNull(amount);
+        amount = amount.trim();
         try {
-            Double doublePrice = Double.parseDouble(price);
-            if (!Price.isValidPrice(doublePrice)) {
-                throw new ParseException(Price.MESSAGE_CONSTRAINTS);
+            Double doubleAmount = Double.parseDouble(amount);
+            if (!Amount.isValidAmount(doubleAmount)) {
+                throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
             }
-            return new Price(doublePrice);
+            return new Amount(doubleAmount);
         } catch (NumberFormatException e) {
-            throw new ParseException(Price.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
         }
     }
 

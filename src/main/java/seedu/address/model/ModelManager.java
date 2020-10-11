@@ -12,8 +12,11 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.util.CollectionUtil;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.model.service.Service;
@@ -26,6 +29,7 @@ public class ModelManager implements Model {
 
     private final AddressBook addressBook;
     private final ServiceManager serviceManager;
+    private final ExpenseTracker expenseTracker;
     private final UserPrefs userPrefs;
 
     private final FilteredList<Client> filteredClients;
@@ -36,23 +40,24 @@ public class ModelManager implements Model {
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
-                        ReadOnlyServiceManager serviceManager) {
+                        ReadOnlyServiceManager serviceManager, ReadOnlyExpenseTracker expenseTracker) {
         super();
-        requireAllNonNull(addressBook, userPrefs, serviceManager);
+        requireAllNonNull(addressBook, userPrefs, serviceManager, expenseTracker);
 
         logger.fine("Initializing with SuperSalon: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         this.serviceManager = new ServiceManager(serviceManager);
+        this.expenseTracker = new ExpenseTracker(expenseTracker);
 
         filteredClients = new FilteredList<>(this.addressBook.getClientList());
-        filteredExpenses = new FilteredList<>(this.addressBook.getExpenseList());
+        filteredExpenses = new FilteredList<>(this.expenseTracker.getExpenseList());
         filteredServices = new FilteredList<>(this.serviceManager.getServiceList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new ServiceManager());
+        this(new AddressBook(), new UserPrefs(), new ServiceManager(), new ExpenseTracker());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -126,15 +131,15 @@ public class ModelManager implements Model {
         addressBook.setClient(target, editedClient);
     }
 
-    //=========== Filtered Client List Accessors =============================================================
+    //=========== Expense Tracker =============================================================
     @Override
     public void deleteExpense(Expense target) {
-        addressBook.removeExpense(target);
+        expenseTracker.removeExpense(target);
     }
 
     @Override
     public void addExpense(Expense expense) {
-        addressBook.addExpense(expense);
+        expenseTracker.addExpense(expense);
         updateFilteredExpenseList(PREDICATE_SHOW_ALL_EXPENSES);
     }
 
@@ -142,12 +147,32 @@ public class ModelManager implements Model {
     public void setExpense(Expense target, Expense editedExpense) {
         requireAllNonNull(target, editedExpense);
 
-        addressBook.setExpense(target, editedExpense);
+        expenseTracker.setExpense(target, editedExpense);
     }
 
     @Override
     public void setExpenses(List<Expense> expenses) {
-        addressBook.setExpenses(expenses);
+        expenseTracker.setExpenses(expenses);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Expense} backed by the internal list of Expenses
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Expense> getFilteredExpenseList() {
+        return filteredExpenses;
+    }
+
+    @Override
+    public void updateFilteredExpenseList(Predicate<Expense> predicate) {
+        requireNonNull(predicate);
+        filteredExpenses.setPredicate(predicate);
+    }
+
+    @Override
+    public ReadOnlyExpenseTracker getExpenseTracker() {
+        return this.expenseTracker;
     }
 
     //=========== Filtered Person List Accessors =============================================================
@@ -165,21 +190,6 @@ public class ModelManager implements Model {
     public void updateFilteredClientList(Predicate<Client> predicate) {
         requireNonNull(predicate);
         filteredClients.setPredicate(predicate);
-    }
-
-    /**
-     * Returns an unmodifiable view of the list of {@code Expense} backed by the internal list of Expenses
-     * {@code versionedAddressBook}
-     */
-    @Override
-    public ObservableList<Expense> getFilteredExpenseList() {
-        return filteredExpenses;
-    }
-
-    @Override
-    public void updateFilteredExpenseList(Predicate<Expense> predicate) {
-        requireNonNull(predicate);
-        filteredExpenses.setPredicate(predicate);
     }
 
     @Override
@@ -201,12 +211,23 @@ public class ModelManager implements Model {
                 && filteredClients.equals(other.filteredClients);
     }
 
-    //=========== ServiceManager ===============
+    //================ ServiceManager ==================
     @Override
     public void addService(Service toAdd) {
         requireNonNull(toAdd);
         serviceManager.addService(toAdd);
         updateFilteredServiceList(PREDICATE_SHOW_ALL_SERVICES);
+    }
+
+    @Override
+    public void deleteService(Service target) {
+        serviceManager.removeService(target);
+    }
+
+    @Override
+    public void setService(Service target, Service editedService) {
+        CollectionUtil.requireAllNonNull(target, editedService);
+        serviceManager.setService(target, editedService);
     }
 
     @Override
@@ -227,5 +248,14 @@ public class ModelManager implements Model {
     @Override
     public ReadOnlyServiceManager getServiceManager() {
         return this.serviceManager;
+    }
+
+    /**
+     * Replaces serviceManager data with the data in {@code serviceManager}.
+     */
+    @Override
+    public void setServiceManager(ReadOnlyServiceManager serviceManager) {
+        requireNonNull(serviceManager);
+        this.serviceManager.resetData(serviceManager);
     }
 }
