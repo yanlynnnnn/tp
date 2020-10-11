@@ -140,7 +140,7 @@ public interface Model {
      * The Service must exist in SuperSalon.
      */
     void deleteService(Service target);
-  
+
     /**
      * Replaces the given service {@code target} with {@code editedService}.
      * {@code target} must exist in SuperSalon's service list.
