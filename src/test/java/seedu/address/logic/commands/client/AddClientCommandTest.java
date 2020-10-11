@@ -196,6 +196,11 @@ public class AddClientCommandTest {
         }
 
         @Override
+        public void setServiceManager(ReadOnlyServiceManager serviceManager) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public ObservableList<Service> getFilteredServiceList() {
             throw new AssertionError("This method should not be called.");
         }
@@ -207,6 +212,16 @@ public class AddClientCommandTest {
 
         @Override
         public void addService(Service toAdd) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteService(Service target) {
+            throw new AssertionError("This method should not be called.");
+        }
+      
+        @Override
+        public void setService(Service target, Service editedService) {
             throw new AssertionError("This method should not be called.");
         }
     }
