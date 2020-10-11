@@ -52,7 +52,7 @@ public class EditExpenseCommand extends Command {
     private final EditExpenseCommand.EditExpenseDescriptor editExpenseDescriptor;
 
     /**
-     * @param index of the expense in the filtered expense list to edit
+     * @param index                 of the expense in the filtered expense list to edit
      * @param editExpenseDescriptor details to edit the expense with
      */
     public EditExpenseCommand(Index index, EditExpenseCommand.EditExpenseDescriptor editExpenseDescriptor) {
@@ -130,7 +130,8 @@ public class EditExpenseCommand extends Command {
         private Date date;
         private Tag tag;
 
-        public EditExpenseDescriptor() {}
+        public EditExpenseDescriptor() {
+        }
 
         /**
          * Copy constructor.
@@ -214,4 +215,3 @@ public class EditExpenseCommand extends Command {
         }
     }
 }
-

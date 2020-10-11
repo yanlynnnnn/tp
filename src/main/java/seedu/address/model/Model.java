@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.service.Service;
 
@@ -126,6 +127,8 @@ public interface Model {
      */
     void updateFilteredExpenseList(Predicate<Expense> predicate);
 
+    ReadOnlyExpenseTracker getExpenseTracker();
+
     // ====================== ServiceManager ========================
     /**
      * Adds the given service.
@@ -137,6 +140,14 @@ public interface Model {
      * The Service must exist in SuperSalon.
      */
     void deleteService(Service target);
+  
+    /**
+     * Replaces the given service {@code target} with {@code editedService}.
+     * {@code target} must exist in SuperSalon's service list.
+     * The service identity of {@code editedService} must not be the same as another existing service in SuperSalon.
+     */
+    void setService(Service target, Service editedService);
+
 
     void updateFilteredServiceList(Predicate<Service> predicate);
 

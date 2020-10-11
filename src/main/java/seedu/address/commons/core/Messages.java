@@ -12,6 +12,8 @@ public class Messages {
     public static final String MESSAGE_INVALID_EXPENSE_DISPLAYED_INDEX = "The expense index provided is invalid";
     public static final String MESSAGE_EXPENSES_LISTED_OVERVIEW = "%1$d expenses listed!";
 
+    // ============== Service related messages ===========
+    public static final String MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX = "The service index provided is invalid";
     public static final String MESSAGE_SERVICES_INVALID_SERVICE_DISPLAYED_INDEX = "The service index "
-        + "provided is invalid";
+        + "provided is invalid"
 }

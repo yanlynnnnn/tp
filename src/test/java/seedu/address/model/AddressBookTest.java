@@ -83,11 +83,6 @@ public class AddressBookTest {
         assertThrows(UnsupportedOperationException.class, () -> addressBook.getClientList().remove(0));
     }
 
-    @Test
-    public void getExpenseList_modifyList_throwsUnsupportedOperationException() {
-        assertThrows(UnsupportedOperationException.class, () -> addressBook.getExpenseList().remove(0));
-    }
-
     /**
      * A stub ReadOnlyAddressBook whose clients list can violate interface constraints.
      */
@@ -104,11 +99,7 @@ public class AddressBookTest {
         public ObservableList<Client> getClientList() {
             return clients;
         }
-
-        @Override
-        public ObservableList<Expense> getExpenseList() {
-            return expenses;
-        }
     }
-
 }
+
+

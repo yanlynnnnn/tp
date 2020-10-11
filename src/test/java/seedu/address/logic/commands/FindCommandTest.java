@@ -19,14 +19,17 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.client.NameContainsKeywordsPredicate;
+import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.ServiceManager;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
  */
 public class FindCommandTest {
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new ServiceManager());
-    private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new ServiceManager());
+    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new ServiceManager(),
+            new ExpenseTracker());
+    private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new ServiceManager(),
+            new ExpenseTracker());
 
     @Test
     public void equals() {
