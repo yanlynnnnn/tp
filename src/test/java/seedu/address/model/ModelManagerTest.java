@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.client.NameContainsKeywordsPredicate;
 import seedu.address.model.manager.RevenueTracker;
+import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.testutil.AddressBookBuilder;
 
@@ -102,10 +103,11 @@ public class ModelManagerTest {
         UserPrefs userPrefs = new UserPrefs();
         ServiceManager serviceManager = new ServiceManager();
         RevenueTracker revenueTracker = new RevenueTracker();
+        ExpenseTracker expenseTracker = new ExpenseTracker();
 
         // same values -> returns true
-        modelManager = new ModelManager(addressBook, userPrefs, serviceManager, revenueTracker);
-        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, serviceManager, revenueTracker);
+        modelManager = new ModelManager(addressBook, userPrefs, serviceManager, revenueTracker, expenseTracker);
+        ModelManager modelManagerCopy = new ModelManager(addressBook, userPrefs, serviceManager, revenueTracker, expenseTracker);
         assertTrue(modelManager.equals(modelManagerCopy));
 
         // same object -> returns true
@@ -119,12 +121,12 @@ public class ModelManagerTest {
 
         // different addressBook -> returns false
         assertFalse(modelManager
-            .equals(new ModelManager(differentAddressBook, userPrefs, serviceManager, revenueTracker)));
+            .equals(new ModelManager(differentAddressBook, userPrefs, serviceManager, revenueTracker, expenseTracker)));
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredClientList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, serviceManager, revenueTracker)));
+        assertFalse(modelManager.equals(new ModelManager(addressBook, userPrefs, serviceManager, revenueTracker, expenseTracker)));
 
         // resets modelManager to initial state for upcoming tests
         modelManager.updateFilteredClientList(PREDICATE_SHOW_ALL_CLIENTS);
@@ -133,6 +135,6 @@ public class ModelManagerTest {
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
         assertFalse(modelManager
-            .equals(new ModelManager(addressBook, differentUserPrefs, serviceManager, revenueTracker)));
+            .equals(new ModelManager(addressBook, differentUserPrefs, serviceManager, revenueTracker, expenseTracker)));
     }
 }

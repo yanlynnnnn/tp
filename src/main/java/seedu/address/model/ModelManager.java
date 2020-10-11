@@ -15,6 +15,8 @@ import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
+import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
@@ -31,6 +33,7 @@ public class ModelManager implements Model {
     private final AddressBook addressBook;
     private final ServiceManager serviceManager;
     private final RevenueTracker revenueTracker;
+    private final ExpenseTracker expenseTracker;
     private final UserPrefs userPrefs;
 
     private final FilteredList<Client> filteredClients;
@@ -42,9 +45,9 @@ public class ModelManager implements Model {
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
     public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
-                        ReadOnlyServiceManager serviceManager, ReadOnlyRevenueTracker revenueTracker) {
+                        ReadOnlyServiceManager serviceManager, ReadOnlyRevenueTracker revenueTracker, ReadOnlyExpenseTracker expenseTracker) {
         super();
-        requireAllNonNull(addressBook, userPrefs, serviceManager, revenueTracker);
+        requireAllNonNull(addressBook, userPrefs, serviceManage, revenueTracker, expenseTracker);
 
         logger.fine("Initializing with SuperSalon: " + addressBook + " and user prefs " + userPrefs);
 
@@ -52,15 +55,16 @@ public class ModelManager implements Model {
         this.userPrefs = new UserPrefs(userPrefs);
         this.serviceManager = new ServiceManager(serviceManager);
         this.revenueTracker = new RevenueTracker(revenueTracker);
+        this.expenseTracker = new ExpenseTracker(expenseTracker);
 
         filteredClients = new FilteredList<>(this.addressBook.getClientList());
-        filteredExpenses = new FilteredList<>(this.addressBook.getExpenseList());
+        filteredExpenses = new FilteredList<>(this.expenseTracker.getExpenseList());
         filteredServices = new FilteredList<>(this.serviceManager.getServiceList());
         filteredRevenue = new FilteredList<>(this.revenueTracker.getRevenueList());
     }
 
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new ServiceManager(), new RevenueTracker());
+        this(new AddressBook(), new UserPrefs(), new ServiceManager(), new RevenueTracker(), new ExpenseTracker);
     }
 
     //=========== UserPrefs ==================================================================================
@@ -134,15 +138,15 @@ public class ModelManager implements Model {
         addressBook.setClient(target, editedClient);
     }
 
-    //=========== Filtered Client List Accessors =============================================================
+    //=========== Expense Tracker =============================================================
     @Override
     public void deleteExpense(Expense target) {
-        addressBook.removeExpense(target);
+        expenseTracker.removeExpense(target);
     }
 
     @Override
     public void addExpense(Expense expense) {
-        addressBook.addExpense(expense);
+        expenseTracker.addExpense(expense);
         updateFilteredExpenseList(PREDICATE_SHOW_ALL_EXPENSES);
     }
 
@@ -150,12 +154,32 @@ public class ModelManager implements Model {
     public void setExpense(Expense target, Expense editedExpense) {
         requireAllNonNull(target, editedExpense);
 
-        addressBook.setExpense(target, editedExpense);
+        expenseTracker.setExpense(target, editedExpense);
     }
 
     @Override
     public void setExpenses(List<Expense> expenses) {
-        addressBook.setExpenses(expenses);
+        expenseTracker.setExpenses(expenses);
+    }
+
+    /**
+     * Returns an unmodifiable view of the list of {@code Expense} backed by the internal list of Expenses
+     * {@code versionedAddressBook}
+     */
+    @Override
+    public ObservableList<Expense> getFilteredExpenseList() {
+        return filteredExpenses;
+    }
+
+    @Override
+    public void updateFilteredExpenseList(Predicate<Expense> predicate) {
+        requireNonNull(predicate);
+        filteredExpenses.setPredicate(predicate);
+    }
+
+    @Override
+    public ReadOnlyExpenseTracker getExpenseTracker() {
+        return this.expenseTracker;
     }
 
     //=========== Filtered Person List Accessors =============================================================
@@ -173,21 +197,6 @@ public class ModelManager implements Model {
     public void updateFilteredClientList(Predicate<Client> predicate) {
         requireNonNull(predicate);
         filteredClients.setPredicate(predicate);
-    }
-
-    /**
-     * Returns an unmodifiable view of the list of {@code Expense} backed by the internal list of Expenses
-     * {@code versionedAddressBook}
-     */
-    @Override
-    public ObservableList<Expense> getFilteredExpenseList() {
-        return filteredExpenses;
-    }
-
-    @Override
-    public void updateFilteredExpenseList(Predicate<Expense> predicate) {
-        requireNonNull(predicate);
-        filteredExpenses.setPredicate(predicate);
     }
 
     @Override

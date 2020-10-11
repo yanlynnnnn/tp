@@ -144,11 +144,10 @@ public class ParserUtil {
      */
     public static IsFixed parseIsFixed(String isFixed) throws ParseException {
         requireNonNull(isFixed);
-        String trimmedIsFixed = isFixed.trim();
         if (!IsFixed.isValidIsFixed(isFixed)) {
             throw new ParseException(IsFixed.MESSAGE_CONSTRAINTS);
         }
-        return new IsFixed(trimmedIsFixed);
+        return new IsFixed(isFixed);
     }
 
     /**

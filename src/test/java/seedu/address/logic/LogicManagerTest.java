@@ -27,12 +27,15 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.client.Client;
 import seedu.address.model.manager.RevenueTracker;
+import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.revenue.JsonRevenueStorage;
 import seedu.address.storage.revenue.RevenueStorage;
+import seedu.address.storage.expense.ExpenseStorage;
+import seedu.address.storage.expense.JsonExpenseStorage;
 import seedu.address.storage.service.JsonServiceStorage;
 import seedu.address.storage.service.ServiceStorage;
 import seedu.address.testutil.ClientBuilder;
@@ -54,9 +57,10 @@ public class LogicManagerTest {
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         ServiceStorage serviceStorage = new JsonServiceStorage(temporaryFolder.resolve("services.json"));
         RevenueStorage revenueStorage = new JsonRevenueStorage(temporaryFolder.resolve("revenues.json"));
+        ExpenseStorage expenseStorage = new JsonExpenseStorage(temporaryFolder.resolve("expenses.json"));
 
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage,
-            revenueStorage);
+            revenueStorage, expenseStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -87,9 +91,10 @@ public class LogicManagerTest {
             new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
         ServiceStorage serviceStorage = new JsonServiceStorage(temporaryFolder.resolve("ioExceptionServices.json"));
         RevenueStorage revenueStorage = new JsonRevenueStorage(temporaryFolder.resolve("ioExceptionServices.json"));
+        ExpenseStorage expenseStorage = new JsonExpenseStorage(temporaryFolder.resolve("ioExceptionExpenses.json"));
 
         StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage,
-            revenueStorage);
+            revenueStorage, expenseStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
@@ -147,7 +152,7 @@ public class LogicManagerTest {
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
                                       String expectedMessage) {
         Model expectedModel = new ModelManager(model
-            .getAddressBook(), new UserPrefs(), new ServiceManager(), new RevenueTracker());
+            .getAddressBook(), new UserPrefs(), new ServiceManager(), new RevenueTracker(), new  ExpenseStorage());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 

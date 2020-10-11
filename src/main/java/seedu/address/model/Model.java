@@ -9,6 +9,7 @@ import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
+import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.revenue.Revenue;
 import seedu.address.model.service.Service;
@@ -147,6 +148,8 @@ public interface Model {
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredExpenseList(Predicate<Expense> predicate);
+
+    ReadOnlyExpenseTracker getExpenseTracker();
 
     // ====================== ServiceManager ========================
 

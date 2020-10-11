@@ -23,6 +23,8 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
+import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
@@ -35,6 +37,8 @@ import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.storage.revenue.JsonRevenueStorage;
 import seedu.address.storage.revenue.RevenueStorage;
+import seedu.address.storage.expense.ExpenseStorage;
+import seedu.address.storage.expense.JsonExpenseStorage;
 import seedu.address.storage.service.JsonServiceStorage;
 import seedu.address.storage.service.ServiceStorage;
 import seedu.address.ui.Ui;
@@ -68,8 +72,9 @@ public class MainApp extends Application {
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
         ServiceStorage serviceStorage = new JsonServiceStorage(userPrefs.getServiceStorageFilePath());
         RevenueStorage revenueStorage = new JsonRevenueStorage(userPrefs.getRevenueStorageFilePath());
+        ExpenseStorage expenseStorage = new JsonExpenseStorage(userPrefs.getExpenseStorageFilePath());
 
-        storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage, revenueStorage);
+        storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage, revenueStorage, expenseStorage);
 
         initLogging(config);
 
@@ -90,6 +95,7 @@ public class MainApp extends Application {
         ReadOnlyAddressBook initialData;
         ReadOnlyServiceManager serviceManager = initServiceManager(storage);
         ReadOnlyRevenueTracker revenueTracker = initRevenueTracker(storage);
+        ReadOnlyExpenseTracker expenseTracker = initExpenseTracker(storage);
         try {
             addressBookOptional = storage.readAddressBook();
             if (!addressBookOptional.isPresent()) {
@@ -104,7 +110,7 @@ public class MainApp extends Application {
             initialData = new AddressBook();
         }
 
-        return new ModelManager(initialData, userPrefs, serviceManager, revenueTracker);
+        return new ModelManager(initialData, userPrefs, serviceManager, revenueTracker, expenseTracker);
     }
 
     private void initLogging(Config config) {
@@ -225,6 +231,31 @@ public class MainApp extends Application {
         }
         return revenueTracker;
     }
+
+    /**
+     * Returns a {@code ReadOnlyExpenseTracker} with the data from {@code storage}'s services.
+     * The data from the sample expenses will be used instead if {@code storage}'s expenses tracker is not found,
+     * or an empty expense tracker will be used instead if errors occur when reading {@code storage}'s expense tracker.
+     */
+    private ReadOnlyExpenseTracker initExpenseTracker(Storage storage) {
+        ReadOnlyExpenseTracker expenseTracker;
+        try {
+            Optional<ReadOnlyExpenseTracker> expenseTrackerOptional = storage.readExpenseTracker();
+            expenseTrackerOptional = storage.readExpenseTracker();
+            if (!expenseTrackerOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample ExpenseTracker");
+            }
+            expenseTracker = expenseTrackerOptional.orElseGet(SampleDataUtil::getSampleExpenseTracker);
+        } catch (DataConversionException e) {
+            logger.warning("Data file not in the correct format. Will be starting with an empty ExpenseTracker");
+            expenseTracker = new ExpenseTracker();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the file. Will be starting with an empty ExpenseTracker");
+            expenseTracker = new ExpenseTracker();
+        }
+        return expenseTracker;
+    }
+
 
     @Override
     public void start(Stage primaryStage) {

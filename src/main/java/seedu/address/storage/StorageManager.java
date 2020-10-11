@@ -11,8 +11,10 @@ import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
+import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.storage.revenue.RevenueStorage;
+import seedu.address.storage.expense.ExpenseStorage;
 import seedu.address.storage.service.ServiceStorage;
 
 /**
@@ -23,6 +25,7 @@ public class StorageManager implements Storage {
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private AddressBookStorage addressBookStorage;
     private ServiceStorage serviceStorage;
+    private ExpenseStorage expenseStorage;
     private UserPrefsStorage userPrefsStorage;
     private RevenueStorage revenueStorage;
 
@@ -31,12 +34,13 @@ public class StorageManager implements Storage {
      * {@code AddressBookStorage}, {@code UserPrefStorage}, {@code ServiceStorage} and {@code RevenueStorage}.
      */
     public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage,
-                          ServiceStorage serviceStorage, RevenueStorage revenueStorage) {
+                          ServiceStorage serviceStorage, RevenueStorage revenueStorage, ExpenseStorage expenseStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.serviceStorage = serviceStorage;
         this.revenueStorage = revenueStorage;
+        this.expenseStorage = expenseStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -140,5 +144,33 @@ public class StorageManager implements Storage {
     @Override
     public void saveRevenueTracker(ReadOnlyRevenueTracker revenueTracker, Path filePath) throws IOException {
         revenueStorage.saveRevenueTracker(revenueTracker, filePath);
+    }
+
+    // ================ ExpenseTracker methods ==============================
+
+    @Override
+    public Path getExpenseTrackerStorageFilePath() {
+        return expenseStorage.getExpenseTrackerStorageFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyExpenseTracker> readExpenseTracker() throws DataConversionException, IOException {
+        return readExpenseTracker(expenseStorage.getExpenseTrackerStorageFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyExpenseTracker> readExpenseTracker(Path filePath) throws DataConversionException,
+            IOException {
+        return expenseStorage.readExpenseTracker(filePath);
+    }
+
+    @Override
+    public void saveExpenseTracker(ReadOnlyExpenseTracker expenseTracker) throws IOException {
+        saveExpenseTracker(expenseTracker, expenseStorage.getExpenseTrackerStorageFilePath());
+    }
+
+    @Override
+    public void saveExpenseTracker(ReadOnlyExpenseTracker expenseTracker, Path filePath) throws IOException {
+        expenseStorage.saveExpenseTracker(expenseTracker, filePath);
     }
 }

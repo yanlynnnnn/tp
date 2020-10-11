@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.util.nonuniquelist.exceptions.ItemNotFoundException;
+import seedu.address.model.expense.exceptions.ItemNotFoundException;
 
 public class NonUniqueList<T> implements Iterable<T> {
 
