@@ -155,4 +155,9 @@ public interface Model {
 
     ReadOnlyServiceManager getServiceManager();
 
+    /**
+     * Replaces serviceManager data with the data in {@code serviceManager}.
+     */
+    void setServiceManager(ReadOnlyServiceManager serviceManager);
+
 }

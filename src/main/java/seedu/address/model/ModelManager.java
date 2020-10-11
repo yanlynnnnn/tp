@@ -249,4 +249,13 @@ public class ModelManager implements Model {
     public ReadOnlyServiceManager getServiceManager() {
         return this.serviceManager;
     }
+
+    /**
+     * Replaces serviceManager data with the data in {@code serviceManager}.
+     */
+    @Override
+    public void setServiceManager(ReadOnlyServiceManager serviceManager) {
+        requireNonNull(serviceManager);
+        this.serviceManager.resetData(serviceManager);
+    }
 }
