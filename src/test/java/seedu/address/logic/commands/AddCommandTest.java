@@ -209,10 +209,14 @@ public class AddCommandTest {
         }
 
         @Override
+        public void deleteService(Service target) {
+            throw new AssertionError("This method should not be called.");
+        }
+      
+        @Override
         public void setService(Service target, Service editedService) {
             throw new AssertionError("This method should not be called.");
         }
-
     }
 
     /**

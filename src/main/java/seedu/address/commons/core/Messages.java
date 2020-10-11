@@ -14,5 +14,6 @@ public class Messages {
 
     // ============== Service related messages ===========
     public static final String MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX = "The service index provided is invalid";
-
+    public static final String MESSAGE_SERVICES_INVALID_SERVICE_DISPLAYED_INDEX = "The service index "
+        + "provided is invalid"
 }
