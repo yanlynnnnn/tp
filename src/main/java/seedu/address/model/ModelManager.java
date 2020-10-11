@@ -250,6 +250,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void deleteAppointment(Appointment toDelete) {
+        appointmentManager.removeAppointment(toDelete);
+    }
+
+    @Override
     public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
         requireNonNull(predicate);
         filteredAppointments.setPredicate(predicate);

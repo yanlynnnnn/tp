@@ -123,7 +123,6 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     public void setExpense(Expense target, Expense editedExpense) {
         requireNonNull(editedExpense);
-
         expenses.setExpense(target, editedExpense);
     }
 
@@ -143,6 +142,7 @@ public class AddressBook implements ReadOnlyAddressBook {
         expenses.remove(key);
     }
 
+
     //// util methods
 
     @Override
@@ -161,6 +161,8 @@ public class AddressBook implements ReadOnlyAddressBook {
         return expenses.asUnmodifiableObservableList();
     }
 
+
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -178,4 +180,6 @@ public class AddressBook implements ReadOnlyAddressBook {
     public int hashCode() {
         return Objects.hash(clients, expenses);
     }
+
+
 }

@@ -1,6 +1,7 @@
 package seedu.address.model;
 
 import javafx.collections.ObservableList;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
 
@@ -19,6 +20,5 @@ public interface ReadOnlyAddressBook {
      * Returns an unmodifiable view of the expenses list.
      */
     ObservableList<Expense> getExpenseList();
-
 
 }

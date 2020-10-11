@@ -170,6 +170,11 @@ public interface Model {
     void addAppointment(Appointment toAdd);
 
     /**
+     * Deletes the given appointment.
+     */
+    void deleteAppointment(Appointment toDelete);
+
+    /**
      * Updates the filter of the filtered appointment list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
