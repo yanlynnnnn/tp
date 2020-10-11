@@ -4,18 +4,17 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.Region;
 
 import java.util.logging.Logger;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.service.Service;
-import seedu.address.ui.UiPart;
+import seedu.address.ui.Panel;
 
 /**
  * Panel containing the list of services.
  */
-public class ServiceListPanel extends UiPart<Region> {
-    public static final String TAB_NAME = "Service Tab";
+public class ServiceListPanel extends Panel {
+    public static final String TAB_NAME = "Services";
 
     private static final String FXML = "servicespanel/ServiceListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ServiceListPanel.class);

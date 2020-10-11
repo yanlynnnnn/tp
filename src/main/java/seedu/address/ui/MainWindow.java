@@ -32,21 +32,15 @@ public class MainWindow extends UiPart<Stage> {
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
-    // Tabs panels for each service component
+    // Panels for each component
     private ServiceListPanel serviceListPanel;
     private ClientListPanel clientListPanel;
-
-    @FXML
-    private StackPane serviceListPanelPlaceholder;
 
     @FXML
     private StackPane commandBoxPlaceholder;
 
     @FXML
     private MenuItem helpMenuItem;
-
-    @FXML
-    private StackPane clientListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -124,26 +118,16 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-//        serviceListPanel = new ServiceListPanel(logic.getFilteredServiceList());
-//        serviceListPanelPlaceholder.getChildren().add(serviceListPanel.getRoot());
+        serviceListPanel = new ServiceListPanel(logic.getFilteredServiceList());
 
-//        clientListPanel = new ClientListPanel(logic.getFilteredClientList());
-//        clientListPanelPlaceholder.getChildren().add(clientListPanel.getRoot());
+        clientListPanel = new ClientListPanel(logic.getFilteredClientList());
 
-//        tabPanel = new TabPanel(
-//                logic.getFilteredClientList(), logic.getFilteredServiceList()
-//        );
-//        tabPanelPlaceholder.getChildren().add(tabPanel.getRoot());
-
+        // Default view for user on app startup
         switchTab(ClientListPanel.TAB_NAME);
-        // Independent Ui parts residing in this Ui container
         sideTabsBarPlaceholder.getChildren().add(new SideTabsBar(this::switchTab).getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
-
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
 
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
@@ -155,7 +139,7 @@ public class MainWindow extends UiPart<Stage> {
     private void switchTab(String tabName) {
         tabPanelPlaceholder.getChildren().clear();
         statusbarPlaceholder.getChildren().clear();
-        //statusbarPlaceholder.getChildren().add(new StatusBarFooter(tabName).getRoot());
+        statusbarPlaceholder.getChildren().add(new StatusBarFooter(tabName).getRoot());
 
         switch (tabName) {
         case ClientListPanel.TAB_NAME:
