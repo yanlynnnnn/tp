@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.util.CollectionUtil;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.manager.ExpenseTracker;
@@ -219,12 +220,23 @@ public class ModelManager implements Model {
             && filteredClients.equals(other.filteredClients);
     }
 
-    //=========== ServiceManager ===============
+    //================ ServiceManager ==================
     @Override
     public void addService(Service toAdd) {
         requireNonNull(toAdd);
         serviceManager.addService(toAdd);
         updateFilteredServiceList(PREDICATE_SHOW_ALL_SERVICES);
+    }
+
+    @Override
+    public void deleteService(Service target) {
+        serviceManager.removeService(target);
+    }
+
+    @Override
+    public void setService(Service target, Service editedService) {
+        CollectionUtil.requireAllNonNull(target, editedService);
+        serviceManager.setService(target, editedService);
     }
 
     @Override
@@ -245,6 +257,15 @@ public class ModelManager implements Model {
     @Override
     public ReadOnlyServiceManager getServiceManager() {
         return this.serviceManager;
+    }
+
+    /**
+     * Replaces serviceManager data with the data in {@code serviceManager}.
+     */
+    @Override
+    public void setServiceManager(ReadOnlyServiceManager serviceManager) {
+        requireNonNull(serviceManager);
+        this.serviceManager.resetData(serviceManager);
     }
 
     //=========== RevenueTracker ===============

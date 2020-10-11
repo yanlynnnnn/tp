@@ -1,4 +1,4 @@
-package seedu.address.logic.commands;
+package seedu.address.logic.commands.client;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -11,7 +11,7 @@ import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.logic.commands.EditCommand.EditClientDescriptor;
+import seedu.address.logic.commands.client.EditClientCommand.EditClientDescriptor;
 import seedu.address.testutil.EditClientDescriptorBuilder;
 
 public class EditClientDescriptorTest {
@@ -19,7 +19,7 @@ public class EditClientDescriptorTest {
     @Test
     public void equals() {
         // same values -> returns true
-        EditCommand.EditClientDescriptor descriptorWithSameValues = new EditClientDescriptor(DESC_AMY);
+        EditClientCommand.EditClientDescriptor descriptorWithSameValues = new EditClientDescriptor(DESC_AMY);
         assertTrue(DESC_AMY.equals(descriptorWithSameValues));
 
         // same object -> returns true
