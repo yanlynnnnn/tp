@@ -1,4 +1,4 @@
-package seedu.address.storage.service;
+package seedu.address.storage.revenue;
 
 import java.math.BigDecimal;
 
@@ -6,54 +6,56 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.revenue.Revenue;
 import seedu.address.model.service.Duration;
 import seedu.address.model.service.Service;
 import seedu.address.model.service.ServiceCode;
 import seedu.address.model.util.attributes.Amount;
+import seedu.address.model.util.attributes.Date;
 import seedu.address.model.util.attributes.Title;
 
-/**
- * Jackson-friendly version of {@link Service}.
- */
-public class JsonAdaptedService {
+public class JsonAdaptedRevenue {
 
-    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Service's %s field is missing!";
+    public static final String MISSING_FIELD_MESSAGE_FORMAT = "Revenue's %s field is missing!";
 
     private final String title;
     private final BigDecimal price;
     private final Double duration;
     private final String serviceCode;
+    private final String date;
 
     /**
-     * Constructs a {@code JsonAdaptedService} with the given Service details.
+     * Constructs a {@code JsonAdaptedRevenue} with the given Revenue details.
      */
     @JsonCreator
-    public JsonAdaptedService(@JsonProperty("title") String title, @JsonProperty("price") Double price,
+    public JsonAdaptedRevenue(@JsonProperty("title") String title, @JsonProperty("price") Double price,
                               @JsonProperty("duration") Double duration,
-                              @JsonProperty("serviceCode") String serviceCode) {
+                              @JsonProperty("serviceCode") String serviceCode,
+                              @JsonProperty("date") String date) {
         this.title = title;
         this.price = new BigDecimal(price);
         this.duration = duration;
         this.serviceCode = serviceCode;
+        this.date = date;
     }
 
     /**
-     * Converts a given {@code Service} into this class for Jackson use.
+     * Converts a given {@code Revenue} into this class for Jackson use.
      */
-    public JsonAdaptedService(Service source) {
-        title = source.getTitle().value;
-        price = source.getAmount().value;
-        duration = source.getDuration().value;
-        serviceCode = source.getServiceCode().value;
-
+    public JsonAdaptedRevenue(Revenue source) {
+        title = source.getService().getTitle().value;
+        price = source.getService().getAmount().value;
+        duration = source.getService().getDuration().value;
+        serviceCode = source.getService().getServiceCode().value;
+        date = source.getDate().toString();
     }
 
     /**
-     * Converts this Jackson-friendly adapted service object into the model's {@code Service} object.
+     * Converts this Jackson-friendly adapted revenue object into the model's {@code Revenue} object.
      *
-     * @throws IllegalValueException if there were any data constraints violated in the adapted service.
+     * @throws IllegalValueException if there were any data constraints violated in the adapted revenue.
      */
-    public Service toModelType() throws IllegalValueException {
+    public Revenue toModelType() throws IllegalValueException {
         if (title == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Title.class.getSimpleName()));
         }
@@ -64,7 +66,7 @@ public class JsonAdaptedService {
 
         if (duration == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    Duration.class.getSimpleName()));
+                Duration.class.getSimpleName()));
         }
         if (!Duration.isValidDuration(duration)) {
             throw new IllegalValueException(Duration.MESSAGE_CONSTRAINTS);
@@ -81,15 +83,24 @@ public class JsonAdaptedService {
 
         if (serviceCode == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
-                    ServiceCode.class.getSimpleName()));
+                ServiceCode.class.getSimpleName()));
         }
         if (!ServiceCode.isValidServiceCode(serviceCode)) {
             throw new IllegalValueException(ServiceCode.MESSAGE_CONSTRAINTS);
         }
 
+        if (date == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Date.class.getSimpleName()));
+        }
+
+        if (!Date.isValidDate(date)) {
+            throw new IllegalValueException(Date.MESSAGE_CONSTRAINTS);
+        }
+        final Date modelDate = new Date(date);
+
         Service service = new Service(modelTitle, modelDuration, modelAmount);
         service.addServiceCode(serviceCode);
 
-        return service;
+        return new Revenue(service, modelDate);
     }
 }

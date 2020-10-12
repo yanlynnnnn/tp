@@ -50,7 +50,7 @@ public class AddServiceCommand extends Command {
         // Generate unique ServiceCode for the Service before adding it to model
         List<Service> lastShownList = model.getFilteredServiceList();
         String serviceCode = ServiceCode.generateNewServiceCode(lastShownList);
-        toAdd.addSerivceCode(serviceCode);
+        toAdd.addServiceCode(serviceCode);
 
         model.addService(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));

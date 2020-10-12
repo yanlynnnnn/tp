@@ -25,7 +25,9 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.model.revenue.Revenue;
 import seedu.address.model.service.Service;
 import seedu.address.testutil.ClientBuilder;
 
@@ -85,6 +87,7 @@ public class AddClientCommandTest {
      * A default model stub that have all of the methods failing.
      */
     private class ModelStub implements Model {
+
         @Override
         public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
             throw new AssertionError("This method should not be called.");
@@ -151,6 +154,18 @@ public class AddClientCommandTest {
         }
 
         @Override
+        public ObservableList<Client> getFilteredClientList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredClientList(Predicate<Client> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        // ============================== Expense Tracker ====================================
+
+        @Override
         public void deleteExpense(Expense target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -166,19 +181,10 @@ public class AddClientCommandTest {
         }
 
         @Override
-        public ObservableList<Client> getFilteredClientList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public ObservableList<Expense> getFilteredExpenseList() {
             throw new AssertionError("This method should not be called.");
         }
 
-        @Override
-        public void updateFilteredClientList(Predicate<Client> predicate) {
-            throw new AssertionError("This method should not be called.");
-        }
 
         @Override
         public void updateFilteredExpenseList(Predicate<Expense> predicate) {
@@ -187,6 +193,13 @@ public class AddClientCommandTest {
 
         @Override
         public ReadOnlyExpenseTracker getExpenseTracker() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        // ============================== Service Management ====================================
+
+        @Override
+        public void addService(Service toAdd) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -210,8 +223,35 @@ public class AddClientCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        // ============================== Revenue Tracker ====================================
+
         @Override
-        public void addService(Service toAdd) {
+        public void addRevenue(Revenue toAdd) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteRevenue(Revenue target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setRevenues(List<Revenue> revenues) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredRevenueList(Predicate<Revenue> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Revenue> getFilteredRevenueList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyRevenueTracker getRevenueTracker() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -230,6 +270,7 @@ public class AddClientCommandTest {
      * A Model stub that contains a single client.
      */
     private class ModelStubWithClient extends ModelStub {
+
         private final Client client;
 
         ModelStubWithClient(Client client) {
@@ -248,6 +289,7 @@ public class AddClientCommandTest {
      * A Model stub that always accept the client being added.
      */
     private class ModelStubAcceptingClientAdded extends ModelStub {
+
         final ArrayList<Client> clientsAdded = new ArrayList<>();
 
         @Override

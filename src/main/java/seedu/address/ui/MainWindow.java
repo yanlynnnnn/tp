@@ -17,6 +17,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.clientspanel.ClientListPanel;
+import seedu.address.ui.revenuepanel.RevenueListPanel;
 import seedu.address.ui.servicepanel.ServiceListPanel;
 
 /**
@@ -34,12 +35,12 @@ public class MainWindow extends UiPart<Stage> {
 
     // Independent Ui parts residing in this Ui container
     private ClientListPanel clientListPanel;
+    private RevenueListPanel revenueListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
     // Tabs panels for each service component
     private ServiceListPanel serviceListPanel;
-
 
 
     @FXML
@@ -53,6 +54,9 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane clientListPanelPlaceholder;
+
+    @FXML
+    private StackPane revenueListPanelPlaceholder;
 
     @FXML
     private StackPane resultDisplayPlaceholder;
@@ -88,6 +92,7 @@ public class MainWindow extends UiPart<Stage> {
 
     /**
      * Sets the accelerator of a MenuItem.
+     *
      * @param keyCombination the KeyCombination value of the accelerator
      */
     private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
@@ -122,6 +127,9 @@ public class MainWindow extends UiPart<Stage> {
     void fillInnerParts() {
         // serviceListPanel = new ServiceListPanel(logic.getFilteredServiceList());
         // serviceListPanelPlaceholder.getChildren().add(serviceListPanel.getRoot());
+
+        //        revenueListPanel = new RevenueListPanel(logic.getFilteredRevenueList());
+        //        revenueListPanelPlaceholder.getChildren().add(revenueListPanel.getRoot());
 
         clientListPanel = new ClientListPanel(logic.getFilteredClientList());
         clientListPanelPlaceholder.getChildren().add(clientListPanel.getRoot());
@@ -170,7 +178,7 @@ public class MainWindow extends UiPart<Stage> {
     @FXML
     private void handleExit() {
         GuiSettings guiSettings = new GuiSettings(primaryStage.getWidth(), primaryStage.getHeight(),
-                (int) primaryStage.getX(), (int) primaryStage.getY());
+            (int) primaryStage.getX(), (int) primaryStage.getY());
         logic.setGuiSettings(guiSettings);
         helpWindow.hide();
         primaryStage.hide();

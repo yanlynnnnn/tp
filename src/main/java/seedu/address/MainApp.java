@@ -23,7 +23,9 @@ import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.model.util.SampleDataUtil;
 import seedu.address.storage.AddressBookStorage;
@@ -34,6 +36,8 @@ import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.storage.expense.ExpenseStorage;
 import seedu.address.storage.expense.JsonExpenseStorage;
+import seedu.address.storage.revenue.JsonRevenueStorage;
+import seedu.address.storage.revenue.RevenueStorage;
 import seedu.address.storage.service.JsonServiceStorage;
 import seedu.address.storage.service.ServiceStorage;
 import seedu.address.ui.Ui;
@@ -66,9 +70,11 @@ public class MainApp extends Application {
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
         AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
         ServiceStorage serviceStorage = new JsonServiceStorage(userPrefs.getServiceStorageFilePath());
+        RevenueStorage revenueStorage = new JsonRevenueStorage(userPrefs.getRevenueStorageFilePath());
         ExpenseStorage expenseStorage = new JsonExpenseStorage(userPrefs.getExpenseStorageFilePath());
 
-        storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage, expenseStorage);
+        storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage, revenueStorage,
+            expenseStorage);
 
         initLogging(config);
 
@@ -88,6 +94,7 @@ public class MainApp extends Application {
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
         ReadOnlyServiceManager serviceManager = initServiceManager(storage);
+        ReadOnlyRevenueTracker revenueTracker = initRevenueTracker(storage);
         ReadOnlyExpenseTracker expenseTracker = initExpenseTracker(storage);
         try {
             addressBookOptional = storage.readAddressBook();
@@ -103,7 +110,7 @@ public class MainApp extends Application {
             initialData = new AddressBook();
         }
 
-        return new ModelManager(initialData, userPrefs, serviceManager, expenseTracker);
+        return new ModelManager(initialData, userPrefs, serviceManager, revenueTracker, expenseTracker);
     }
 
     private void initLogging(Config config) {
@@ -133,7 +140,7 @@ public class MainApp extends Application {
             initializedConfig = configOptional.orElse(new Config());
         } catch (DataConversionException e) {
             logger.warning("Config file at " + configFilePathUsed + " is not in the correct format. "
-                    + "Using default config properties");
+                + "Using default config properties");
             initializedConfig = new Config();
         }
 
@@ -161,7 +168,7 @@ public class MainApp extends Application {
             initializedPrefs = prefsOptional.orElse(new UserPrefs());
         } catch (DataConversionException e) {
             logger.warning("UserPrefs file at " + prefsFilePath + " is not in the correct format. "
-                    + "Using default user prefs");
+                + "Using default user prefs");
             initializedPrefs = new UserPrefs();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
@@ -200,6 +207,29 @@ public class MainApp extends Application {
             serviceManager = new ServiceManager();
         }
         return serviceManager;
+    }
+
+    /**
+     * Returns a {@code ReadOnlyRevenueTracker} with the data from {@code storage}'s revenue.
+     * The data from the sample revenues will be used instead if {@code storage}'s revenue tracker is not found,
+     * or an empty revenue tracker will be used instead if errors occur when reading {@code storage}'s revenue tracker.
+     */
+    private ReadOnlyRevenueTracker initRevenueTracker(Storage storage) {
+        ReadOnlyRevenueTracker revenueTracker;
+        try {
+            Optional<ReadOnlyRevenueTracker> revenueTrackerOptional = storage.readRevenueTracker();
+            if (!revenueTrackerOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample RevenueTracker");
+            }
+            revenueTracker = revenueTrackerOptional.orElseGet(SampleDataUtil::getSampleRevenueTracker);
+        } catch (DataConversionException e) {
+            logger.warning("Data file not in the correct format. Will be starting with an empty RevenueTracker");
+            revenueTracker = new RevenueTracker();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the file. Will be starting with an empty RevenueTracker");
+            revenueTracker = new RevenueTracker();
+        }
+        return revenueTracker;
     }
 
     /**

@@ -14,6 +14,7 @@ import seedu.address.model.client.Name;
 import seedu.address.model.client.Phone;
 import seedu.address.model.expense.IsFixed;
 import seedu.address.model.service.Duration;
+import seedu.address.model.service.ServiceCode;
 import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Date;
 import seedu.address.model.util.attributes.Description;
@@ -33,6 +34,7 @@ public class ParserUtil {
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
      * trimmed.
+     *
      * @throws ParseException if the specified index is invalid (not non-zero unsigned integer).
      */
     public static Index parseIndex(String oneBasedIndex) throws ParseException {
@@ -203,6 +205,21 @@ public class ParserUtil {
         } catch (NumberFormatException e) {
             throw new ParseException(Duration.MESSAGE_CONSTRAINTS);
         }
+    }
+
+    /**
+     * Parses a {@code String serviceCode} into a {@code {serviceCode}}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code serviceCode} is invalid.
+     */
+    public static ServiceCode parseServiceCode(String serviceCode) throws ParseException {
+        requireNonNull(serviceCode);
+        String trimmedServiceCode = serviceCode.trim();
+        if (!ServiceCode.isValidServiceCode(trimmedServiceCode)) {
+            throw new ParseException(ServiceCode.MESSAGE_CONSTRAINTS);
+        }
+        return new ServiceCode(trimmedServiceCode);
     }
 }
 

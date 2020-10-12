@@ -24,6 +24,7 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.client.Client;
 import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.testutil.ClientBuilder;
 import seedu.address.testutil.EditClientDescriptorBuilder;
@@ -35,7 +36,7 @@ import seedu.address.testutil.EditClientDescriptorBuilder;
 public class EditClientCommandTest {
 
     private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new ServiceManager(),
-            new ExpenseTracker());
+        new RevenueTracker(), new ExpenseTracker());
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
@@ -46,7 +47,7 @@ public class EditClientCommandTest {
         String expectedMessage = String.format(EditClientCommand.MESSAGE_EDIT_CLIENT_SUCCESS, editedClient);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(),
-            new ServiceManager(), new ExpenseTracker());
+            new ServiceManager(), new RevenueTracker(), new ExpenseTracker());
         expectedModel.setClient(model.getFilteredClientList().get(0), editedClient);
 
         assertCommandSuccess(editClientCommand, model, expectedMessage, expectedModel);
@@ -68,7 +69,7 @@ public class EditClientCommandTest {
         String expectedMessage = String.format(EditClientCommand.MESSAGE_EDIT_CLIENT_SUCCESS, editedClient);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(),
-            new ServiceManager(), new ExpenseTracker());
+            new ServiceManager(), new RevenueTracker(), new ExpenseTracker());
         expectedModel.setClient(lastClient, editedClient);
 
         assertCommandSuccess(editClientCommand, model, expectedMessage, expectedModel);
@@ -83,7 +84,7 @@ public class EditClientCommandTest {
         String expectedMessage = String.format(EditClientCommand.MESSAGE_EDIT_CLIENT_SUCCESS, editedClient);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(),
-            new ServiceManager(), new ExpenseTracker());
+            new ServiceManager(), new RevenueTracker(), new ExpenseTracker());
 
         assertCommandSuccess(editClientCommand, model, expectedMessage, expectedModel);
     }
@@ -100,7 +101,7 @@ public class EditClientCommandTest {
         String expectedMessage = String.format(EditClientCommand.MESSAGE_EDIT_CLIENT_SUCCESS, editedClient);
 
         Model expectedModel = new ModelManager(new AddressBook(model.getAddressBook()), new UserPrefs(),
-            new ServiceManager(), new ExpenseTracker());
+            new ServiceManager(), new RevenueTracker(), new ExpenseTracker());
         expectedModel.setClient(model.getFilteredClientList().get(0), editedClient);
 
         assertCommandSuccess(editClientCommand, model, expectedMessage, expectedModel);
