@@ -13,11 +13,14 @@ import seedu.address.model.util.attributes.Title;
  * A unique identification code for each Service object.
  */
 public class ServiceCode {
+
     public static final String MESSAGE_CONSTRAINTS = "ServiceCode needs to be in the range of SC000-SC999";
     public static final String LEADING_ZEROES_REGEX = "^0+(?!$)";
     public static final Predicate<ServiceCode> VALIDATION_PREDICATE = i -> i.value.substring(0, 2).equals("SC")
         && i.value.length() == 5 && getIntFromServiceCode(i) < 1000 && getIntFromServiceCode(i) >= 0;
-    /** String representing a unique identification number for each Service object */
+    /**
+     * String representing a unique identification number for each Service object
+     */
     public final String value;
 
     public ServiceCode(String value) {

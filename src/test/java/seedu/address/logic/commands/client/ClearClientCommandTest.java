@@ -10,6 +10,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
 
 public class ClearClientCommandTest {
@@ -25,9 +26,9 @@ public class ClearClientCommandTest {
     @Test
     public void execute_nonEmptyAddressBook_success() {
         Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new ServiceManager(),
-                new ExpenseTracker());
+            new RevenueTracker(), new ExpenseTracker());
         Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new ServiceManager(),
-                new ExpenseTracker());
+            new RevenueTracker(), new ExpenseTracker());
         expectedModel.setAddressBook(new AddressBook());
 
         assertCommandSuccess(new ClearClientCommand(), model, ClearClientCommand.MESSAGE_SUCCESS, expectedModel);

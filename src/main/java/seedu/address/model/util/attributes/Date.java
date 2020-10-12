@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class Date {
+
     public static final String MESSAGE_CONSTRAINTS = "Date entered must be in the format of <dd-MM-yyyy>.";
 
     private static final DateTimeFormatter FORMAT_INPUT = DateTimeFormatter.ofPattern("d-M-yyyy");
@@ -17,6 +18,7 @@ public class Date {
 
     /**
      * Represents the date stored for any model object.
+     *
      * @param dateString
      */
     public Date(String dateString) {
@@ -40,8 +42,8 @@ public class Date {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Date // instanceof handles nulls
-                && date.equals(((Date) other).date)); // state check
+            || (other instanceof Date // instanceof handles nulls
+            && date.equals(((Date) other).date)); // state check
     }
 
     @Override
