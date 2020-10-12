@@ -94,7 +94,7 @@ public class EditServiceCommand extends Command {
         Amount updatedAmount = editServiceDescriptor.getAmount().orElse(serviceToEdit.getAmount());
 
         Service editedService = new Service(updatedTitle, updatedDuration, updatedAmount);
-        editedService.addSerivceCode(serviceToEdit.getServiceCode().value); // ServiceCode is unchanged
+        editedService.addServiceCode(serviceToEdit.getServiceCode().value); // ServiceCode is unchanged
 
         return editedService;
     }

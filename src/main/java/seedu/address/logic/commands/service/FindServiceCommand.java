@@ -11,7 +11,6 @@ import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
 import seedu.address.model.service.Service;
-import seedu.address.model.service.ServiceContainKeywordPredicate;
 
 /**
  * Finds and lists all services in Homerce whose name contains any of the argument keywords.
@@ -21,7 +20,7 @@ public class FindServiceCommand extends Command {
     public static final String COMMAND_WORD = "findsvc";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all services by either their "
-        + "title or service code (case-insensitive) and displays them as a list with index numbers.\n"
+        + "title or service code (case-sensitive) and displays them as a list with index numbers.\n"
         + "Parameters: "
         + PREFIX_SERVICE_TITLE + "TITLE "
         + PREFIX_SERVICE_SERVICE_CODE + "SERVICE_CODE "

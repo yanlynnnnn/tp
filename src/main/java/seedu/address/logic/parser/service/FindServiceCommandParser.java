@@ -1,19 +1,12 @@
 package seedu.address.logic.parser.service;
 
-import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_ISFIXED;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_SERVICE_CODE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
-import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.expense.FindExpenseCommand;
 import seedu.address.logic.commands.service.FindServiceCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
@@ -21,14 +14,8 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.expense.DatePredicate;
-import seedu.address.model.expense.DescriptionPredicate;
-import seedu.address.model.expense.Expense;
-import seedu.address.model.expense.IsFixedPredicate;
-import seedu.address.model.expense.TagPredicate;
 import seedu.address.model.service.Service;
 import seedu.address.model.service.ServiceCodePredicate;
-import seedu.address.model.service.ServiceContainKeywordPredicate;
 import seedu.address.model.service.ServiceTitlePredicate;
 
 /**
@@ -45,10 +32,13 @@ public class FindServiceCommandParser implements Parser<FindServiceCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public FindServiceCommand parse(String args) throws ParseException {
-        // Find better way to check if there is more than one parameter input.
-        requireNonNull(args);
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(args, PREFIX_SERVICE_TITLE, PREFIX_SERVICE_SERVICE_CODE);
+
+        if (!arePrefixesPresent(argMultimap, PREFIX_SERVICE_TITLE, PREFIX_SERVICE_SERVICE_CODE)
+            || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindServiceCommand.MESSAGE_USAGE));
+        }
 
         if (areMultipleParametersPresent(argMultimap, PREFIX_SERVICE_TITLE, PREFIX_SERVICE_SERVICE_CODE)) {
             throw new ParseException(MULTIPLE_PARAMETERS);
@@ -60,11 +50,20 @@ public class FindServiceCommandParser implements Parser<FindServiceCommand> {
                 argMultimap.getValue(PREFIX_SERVICE_TITLE).get()));
         }
         if (argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).isPresent()) {
-            predicate = new ServiceCodePredicate(ParserUtil.parseServiceCode(argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE)
-                .get()));
+            predicate = new ServiceCodePredicate(ParserUtil
+                .parseServiceCode(argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE)
+                    .get()));
         }
 
         return new FindServiceCommand(predicate);
+    }
+
+    /**
+     * * Returns true if none of the prefixes contains empty {@code Optional} values
+     * {@code ArgumentMultimap}.
+     */
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 
     /**
