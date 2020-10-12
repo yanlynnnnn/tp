@@ -2,6 +2,9 @@ package seedu.address.model.service;
 
 import java.util.function.Predicate;
 
+/**
+ * Tests that a {@code Service}'s {@code Title} matches the given Title.
+ */
 import seedu.address.model.util.attributes.Title;
 
 public class ServiceTitlePredicate implements Predicate<Service> {

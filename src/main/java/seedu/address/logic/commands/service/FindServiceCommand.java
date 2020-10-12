@@ -4,10 +4,13 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_SERVICE_CODE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
 
+import java.util.function.Predicate;
+
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
+import seedu.address.model.service.Service;
 import seedu.address.model.service.ServiceContainKeywordPredicate;
 
 /**
@@ -25,9 +28,9 @@ public class FindServiceCommand extends Command {
         + "Example: " + COMMAND_WORD + " "
         + PREFIX_SERVICE_TITLE + "Lash Lift";
 
-    private final ServiceContainKeywordPredicate predicate;
+    private final Predicate<Service> predicate;
 
-    public FindServiceCommand(ServiceContainKeywordPredicate predicate) {
+    public FindServiceCommand(Predicate<Service> predicate) {
         this.predicate = predicate;
     }
 

@@ -27,6 +27,7 @@ import seedu.address.model.expense.Expense;
 import seedu.address.model.expense.IsFixedPredicate;
 import seedu.address.model.expense.TagPredicate;
 import seedu.address.model.service.Service;
+import seedu.address.model.service.ServiceCodePredicate;
 import seedu.address.model.service.ServiceContainKeywordPredicate;
 import seedu.address.model.service.ServiceTitlePredicate;
 
