@@ -28,6 +28,7 @@ import seedu.address.model.expense.IsFixedPredicate;
 import seedu.address.model.expense.TagPredicate;
 import seedu.address.model.service.Service;
 import seedu.address.model.service.ServiceContainKeywordPredicate;
+import seedu.address.model.service.ServiceTitlePredicate;
 
 /**
  * Parses input arguments and creates a new FindServiceCommand object
@@ -54,11 +55,11 @@ public class FindServiceCommandParser implements Parser<FindServiceCommand> {
 
         Predicate<Service> predicate = null;
         if (argMultimap.getValue(PREFIX_SERVICE_TITLE).isPresent()) {
-            predicate = new ServiceTitlePredicate(ParserUtil.parseDescription(
+            predicate = new ServiceTitlePredicate(ParserUtil.parseTitle(
                 argMultimap.getValue(PREFIX_SERVICE_TITLE).get()));
         }
         if (argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).isPresent()) {
-            predicate = new ServiceCodePredicate(ParserUtil.parseIsFixed(argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE)
+            predicate = new ServiceCodePredicate(ParserUtil.parseServiceCode(argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE)
                 .get()));
         }
 
