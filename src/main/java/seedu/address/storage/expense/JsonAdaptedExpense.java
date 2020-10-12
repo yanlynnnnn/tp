@@ -12,6 +12,7 @@ import seedu.address.model.util.attributes.Amount;
 import seedu.address.model.util.attributes.Date;
 import seedu.address.model.util.attributes.Description;
 import seedu.address.model.util.attributes.Tag;
+import seedu.address.storage.JsonAdaptedTag;
 
 /**
  * Jackson-friendly version of {@link Expense}.
@@ -24,15 +25,15 @@ public class JsonAdaptedExpense {
     private final String date;
     private final String description;
     private final String isFixed;
-    private String tag;
+    private final JsonAdaptedTag tag;
 
     /**
      * Constructs a {@code JsonAdaptedService} with the given Service details.
      */
     @JsonCreator
-    public JsonAdaptedExpense(@JsonProperty("value") double value, @JsonProperty("date") String date,
+    public JsonAdaptedExpense(@JsonProperty("value") Double value, @JsonProperty("date") String date,
                               @JsonProperty("description") String description,
-                              @JsonProperty("isFixed") String isFixed, @JsonProperty("tag") String tag) {
+                              @JsonProperty("isFixed") String isFixed, @JsonProperty("tag") JsonAdaptedTag tag) {
         this.value = new BigDecimal(value);
         this.date = date;
         this.description = description;
@@ -48,7 +49,7 @@ public class JsonAdaptedExpense {
         date = source.getDate().toString();
         description = source.getDescription().value;
         isFixed = source.getIsFixed().value ? "t" : "f";
-        tag = source.getTag().toString();
+        tag = new JsonAdaptedTag(source.getTag());
     }
 
     /**
@@ -95,10 +96,10 @@ public class JsonAdaptedExpense {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Tag.class.getSimpleName()));
         }
-        if (!Tag.isValidTagName(tag)) {
+        if (!Tag.isValidTagName(tag.toModelType().tagName)) {
             throw new IllegalValueException(Tag.MESSAGE_CONSTRAINTS);
         }
-        final Tag modelTag = new Tag(tag);
+        final Tag modelTag = tag.toModelType();
         Expense expense = new Expense(modelDescription, modelIsFixed, modelValue, modelDate, modelTag);
 
         return expense;

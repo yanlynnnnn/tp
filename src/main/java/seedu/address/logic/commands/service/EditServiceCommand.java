@@ -48,7 +48,7 @@ public class EditServiceCommand extends Command {
     private final EditServiceCommand.EditServiceDescriptor editServiceDescriptor;
 
     /**
-     * @param index                 of the service in the filtered service list to edit
+     * @param index of the service in the filtered service list to edit
      * @param editServiceDescriptor details to edit the service with
      */
     public EditServiceCommand(Index index, EditServiceCommand.EditServiceDescriptor editServiceDescriptor) {
@@ -94,7 +94,7 @@ public class EditServiceCommand extends Command {
         Amount updatedAmount = editServiceDescriptor.getAmount().orElse(serviceToEdit.getAmount());
 
         Service editedService = new Service(updatedTitle, updatedDuration, updatedAmount);
-        editedService.addSerivceCode(serviceToEdit.getServiceCode().value); // ServiceCode is unchanged
+        editedService.addServiceCode(serviceToEdit.getServiceCode().value); // ServiceCode is unchanged
 
         return editedService;
     }
@@ -122,6 +122,7 @@ public class EditServiceCommand extends Command {
      * corresponding field value of the service.
      */
     public static class EditServiceDescriptor {
+
         private Title title;
         private Amount value;
         private Duration duration;

@@ -10,9 +10,13 @@ import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.manager.ReadOnlyAppointmentManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.storage.appointment.AppointmentStorage;
 import seedu.address.storage.expense.ExpenseStorage;
+import seedu.address.storage.revenue.RevenueStorage;
 import seedu.address.storage.service.ServiceStorage;
 
 /**
@@ -23,19 +27,25 @@ public class StorageManager implements Storage {
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
     private AddressBookStorage addressBookStorage;
     private ServiceStorage serviceStorage;
+    private AppointmentStorage appointmentStorage;
     private ExpenseStorage expenseStorage;
     private UserPrefsStorage userPrefsStorage;
+    private RevenueStorage revenueStorage;
 
     /**
-     * Creates a {@code StorageManager} with the given {@code AddressBookStorage} and {@code UserPrefStorage}.
+     * Creates a {@code StorageManager} with the given
+     * {@code AddressBookStorage}, {@code UserPrefStorage}, {@code ServiceStorage} and {@code RevenueStorage}.
      */
-    public StorageManager(AddressBookStorage addressBookStorage, UserPrefsStorage userPrefsStorage,
-                          ServiceStorage serviceStorage, ExpenseStorage expenseStorage) {
+    public StorageManager(UserPrefsStorage userPrefsStorage, AddressBookStorage addressBookStorage,
+                          ServiceStorage serviceStorage, RevenueStorage revenueStorage,
+                          ExpenseStorage expenseStorage, AppointmentStorage appointmentStorage) {
         super();
         this.addressBookStorage = addressBookStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.serviceStorage = serviceStorage;
+        this.revenueStorage = revenueStorage;
         this.expenseStorage = expenseStorage;
+        this.appointmentStorage = appointmentStorage;
     }
 
     // ================ UserPrefs methods ==============================
@@ -99,7 +109,7 @@ public class StorageManager implements Storage {
 
     @Override
     public Optional<ReadOnlyServiceManager> readServiceManager(Path filePath) throws DataConversionException,
-            IOException {
+        IOException {
         return serviceStorage.readServiceManager(filePath);
     }
 
@@ -111,6 +121,63 @@ public class StorageManager implements Storage {
     @Override
     public void saveServiceManager(ReadOnlyServiceManager serviceManager, Path filePath) throws IOException {
         serviceStorage.saveServiceManager(serviceManager, filePath);
+    }
+
+    // =========================== AppointmentManager methods ===========================
+
+    @Override
+    public Path getAppointmentManagerStorageFilePath() {
+        return appointmentStorage.getAppointmentManagerStorageFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyAppointmentManager> readAppointmentManager() throws DataConversionException, IOException {
+        return readAppointmentManager(appointmentStorage.getAppointmentManagerStorageFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyAppointmentManager> readAppointmentManager(Path filePath)
+            throws DataConversionException, IOException {
+        return appointmentStorage.readAppointmentManager(filePath);
+    }
+
+    @Override
+    public void saveAppointmentManager(ReadOnlyAppointmentManager appointmentManager) throws IOException {
+        saveAppointmentManager(appointmentManager, appointmentStorage.getAppointmentManagerStorageFilePath());
+    }
+
+    @Override
+    public void saveAppointmentManager(ReadOnlyAppointmentManager appointmentManager, Path filePath)
+            throws IOException {
+        appointmentStorage.saveAppointmentManager(appointmentManager, filePath);
+    }
+
+    // ================ RevenueTracker methods ==============================
+
+    @Override
+    public Path getRevenueTrackerStorageFilePath() {
+        return revenueStorage.getRevenueTrackerStorageFilePath();
+    }
+
+    @Override
+    public Optional<ReadOnlyRevenueTracker> readRevenueTracker() throws DataConversionException, IOException {
+        return readRevenueTracker(revenueStorage.getRevenueTrackerStorageFilePath());
+    }
+
+    @Override
+    public Optional<ReadOnlyRevenueTracker> readRevenueTracker(Path filePath) throws DataConversionException,
+        IOException {
+        return revenueStorage.readRevenueTracker(filePath);
+    }
+
+    @Override
+    public void saveRevenueTracker(ReadOnlyRevenueTracker revenueTracker) throws IOException {
+        saveRevenueTracker(revenueTracker, revenueStorage.getRevenueTrackerStorageFilePath());
+    }
+
+    @Override
+    public void saveRevenueTracker(ReadOnlyRevenueTracker revenueTracker, Path filePath) throws IOException {
+        revenueStorage.saveRevenueTracker(revenueTracker, filePath);
     }
 
     // ================ ExpenseTracker methods ==============================
@@ -127,7 +194,7 @@ public class StorageManager implements Storage {
 
     @Override
     public Optional<ReadOnlyExpenseTracker> readExpenseTracker(Path filePath) throws DataConversionException,
-            IOException {
+        IOException {
         return expenseStorage.readExpenseTracker(filePath);
     }
 

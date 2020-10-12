@@ -6,24 +6,45 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.client.Client;
+import seedu.address.model.client.Phone;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.ReadOnlyAppointmentManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.model.revenue.Revenue;
 import seedu.address.model.service.Service;
+import seedu.address.model.service.ServiceCode;
 
 /**
  * The API of the Model component.
  */
 public interface Model {
-    /** {@code Predicate} that always evaluate to true */
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Client> PREDICATE_SHOW_ALL_CLIENTS = unused -> true;
 
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Expense> PREDICATE_SHOW_ALL_EXPENSES = unused -> true;
 
-    /** {@code Predicate} that always evaluate to true */
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
     Predicate<Service> PREDICATE_SHOW_ALL_SERVICES = unused -> true;
+
+    /**
+     * {@code Predicate} that always evaluate to true
+     */
+    Predicate<Revenue> PREDICATE_SHOW_ALL_REVENUE = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Appointment> PREDICATE_SHOW_ALL_APPOINTMENTS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -60,13 +81,20 @@ public interface Model {
      */
     void setAddressBook(ReadOnlyAddressBook addressBook);
 
-    /** Returns the AddressBook */
+    /**
+     * Returns the AddressBook
+     */
     ReadOnlyAddressBook getAddressBook();
 
     /**
      * Returns true if a client with the same identity as {@code client} exists in the address book.
      */
     boolean hasClient(Client client);
+
+    /**
+     * Returns true if a client with the same phone number as {@code phone} exists in the address book.
+     */
+    boolean hasClient(Phone phone);
 
     /**
      * Deletes the given client.
@@ -81,17 +109,26 @@ public interface Model {
     void addClient(Client client);
 
     /**
+     * Gets the client based on provided phone number.
+     * {@code phone} must exist in the address book.
+     */
+    Client getClientByPhone(Phone phone);
+
+    /**
      * Replaces the given client {@code target} with {@code editedClient}.
      * {@code target} must exist in the address book.
      * The client identity of {@code editedClient} must not be the same as another existing client in the address book.
      */
     void setClient(Client target, Client editedClient);
 
-    /** Returns an unmodifiable view of the filtered client list */
+    /**
+     * Returns an unmodifiable view of the filtered client list
+     */
     ObservableList<Client> getFilteredClientList();
 
     /**
      * Updates the filter of the filtered client list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredClientList(Predicate<Client> predicate);
@@ -118,11 +155,14 @@ public interface Model {
      */
     void setExpenses(List<Expense> expenses);
 
-    /** Returns an unmodifiable view of the filtered expense list */
+    /**
+     * Returns an unmodifiable view of the filtered expense list
+     */
     ObservableList<Expense> getFilteredExpenseList();
 
     /**
      * Updates the filter of the filtered expense list to filter by the given {@code predicate}.
+     *
      * @throws NullPointerException if {@code predicate} is null.
      */
     void updateFilteredExpenseList(Predicate<Expense> predicate);
@@ -130,10 +170,18 @@ public interface Model {
     ReadOnlyExpenseTracker getExpenseTracker();
 
     // ====================== ServiceManager ========================
+
     /**
      * Adds the given service.
      */
     void addService(Service toAdd);
+
+    /**
+     * Returns true if a service with the same service code as {@code code} exists in SuperSalon.
+     */
+    boolean hasService(ServiceCode code);
+
+    Service getServiceByServiceCode(ServiceCode serviceCode);
 
     /**
      * Deletes the given Service.
@@ -148,7 +196,10 @@ public interface Model {
      */
     void setService(Service target, Service editedService);
 
-
+    /**
+     * Updates the filter of the filtered service list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
     void updateFilteredServiceList(Predicate<Service> predicate);
 
     ObservableList<Service> getFilteredServiceList();
@@ -160,4 +211,67 @@ public interface Model {
      */
     void setServiceManager(ReadOnlyServiceManager serviceManager);
 
+    // ====================== Revenue Tracker ========================
+
+    /**
+     * Adds the given revenue.
+     */
+    void addRevenue(Revenue toAdd);
+
+    /**
+     * Deletes the given revenue.
+     * The revenue must exist in GrAB3.
+     */
+    void deleteRevenue(Revenue target);
+
+    /**
+     * Replaces the contents of the revenue list with {@code expenses}.
+     */
+    void setRevenues(List<Revenue> revenues);
+
+    void updateFilteredRevenueList(Predicate<Revenue> predicate);
+
+    ObservableList<Revenue> getFilteredRevenueList();
+
+    ReadOnlyRevenueTracker getRevenueTracker();
+
+
+    // ====================== AppointmentManager ========================
+    /**
+     * Adds the given appointment.
+     */
+    void addAppointment(Appointment toAdd);
+
+    /**
+     * Deletes the given appointment.
+     */
+    void deleteAppointment(Appointment toDelete);
+
+    /**
+     * Updates the filter of the filtered appointment list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredAppointmentList(Predicate<Appointment> predicate);
+
+    /** Returns an unmodifiable view of the filtered appointment list */
+    ObservableList<Appointment> getFilteredAppointmentList();
+
+    /** Returns the appointment manager. */
+    ReadOnlyAppointmentManager getAppointmentManager();
+
+    /**
+     * Replaces the given appointment {@code target} with {@code editedAppointment}.
+     * {@code target} must exist in the SuperSalon.
+     */
+    void setAppointment(Appointment target, Appointment editedAppointment);
+
+    /**
+     * Replaces the contents of the appointment list with {@code appointment}.
+     */
+    void setAppointment(List<Appointment> appointment);
+
+    /**
+     * Checks if Appointment is stored in Appointment Manager.
+     */
+    boolean hasAppointment(Appointment appointment);
 }

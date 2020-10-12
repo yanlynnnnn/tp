@@ -42,9 +42,11 @@ public class DateTest {
 
     @Test
     public void toStringTest() {
+
         Date date1 = new Date("20-1-2020");
         Date date2 = new Date("1-12-2020");
-        assertEquals("20 Jan 2020", date1.toString());
-        assertEquals("01 Dec 2020", date2.toString());
+
+        assertEquals("20-1-2020", date1.toString());
+        assertEquals("1-12-2020", date2.toString());
     }
 }
