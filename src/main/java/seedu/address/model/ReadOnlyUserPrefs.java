@@ -13,5 +13,9 @@ public interface ReadOnlyUserPrefs {
 
     Path getAddressBookFilePath();
 
+    Path getAppointmentStorageFilePath();
+
+    Path getServiceStorageFilePath();
+
     Path getRevenueStorageFilePath();
 }

@@ -21,7 +21,9 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.manager.AppointmentManager;
 import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.ReadOnlyAppointmentManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
@@ -34,6 +36,8 @@ import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
+import seedu.address.storage.appointment.AppointmentStorage;
+import seedu.address.storage.appointment.JsonAppointmentStorage;
 import seedu.address.storage.expense.ExpenseStorage;
 import seedu.address.storage.expense.JsonExpenseStorage;
 import seedu.address.storage.revenue.JsonRevenueStorage;
@@ -72,9 +76,10 @@ public class MainApp extends Application {
         ServiceStorage serviceStorage = new JsonServiceStorage(userPrefs.getServiceStorageFilePath());
         RevenueStorage revenueStorage = new JsonRevenueStorage(userPrefs.getRevenueStorageFilePath());
         ExpenseStorage expenseStorage = new JsonExpenseStorage(userPrefs.getExpenseStorageFilePath());
+        AppointmentStorage appointmentStorage = new JsonAppointmentStorage(userPrefs.getAppointmentStorageFilePath());
 
-        storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage, revenueStorage,
-            expenseStorage);
+        storage = new StorageManager(userPrefsStorage, addressBookStorage, serviceStorage, revenueStorage,
+            expenseStorage, appointmentStorage);
 
         initLogging(config);
 
@@ -94,6 +99,7 @@ public class MainApp extends Application {
         Optional<ReadOnlyAddressBook> addressBookOptional;
         ReadOnlyAddressBook initialData;
         ReadOnlyServiceManager serviceManager = initServiceManager(storage);
+        ReadOnlyAppointmentManager appointmentManager = initAppointmentManager(storage);
         ReadOnlyRevenueTracker revenueTracker = initRevenueTracker(storage);
         ReadOnlyExpenseTracker expenseTracker = initExpenseTracker(storage);
         try {
@@ -110,7 +116,8 @@ public class MainApp extends Application {
             initialData = new AddressBook();
         }
 
-        return new ModelManager(initialData, userPrefs, serviceManager, revenueTracker, expenseTracker);
+        return new ModelManager(userPrefs, initialData, serviceManager, revenueTracker,
+                expenseTracker, appointmentManager);
     }
 
     private void initLogging(Config config) {
@@ -256,6 +263,30 @@ public class MainApp extends Application {
         return expenseTracker;
     }
 
+
+    /**
+     * Returns a {@code ReadOnlyAppointmentManager} with the data from {@code storage}'s appointments.
+     * The data from the sample appointments will be used instead if {@code storage}'s appointment manager is not found,
+     * or an empty appointment manager will be used instead if errors occur when reading {@code storage}'s
+     * appointment manager.
+     */
+    private ReadOnlyAppointmentManager initAppointmentManager(Storage storage) {
+        ReadOnlyAppointmentManager appointmentManager;
+        try {
+            Optional<ReadOnlyAppointmentManager> appointmentManagerOptional = storage.readAppointmentManager();
+            if (!appointmentManagerOptional.isPresent()) {
+                logger.info("Data file not found. Will be starting with a sample AppointmentManager");
+            }
+            appointmentManager = appointmentManagerOptional.orElseGet(SampleDataUtil::getSampleAppointmentManager);
+        } catch (DataConversionException e) {
+            logger.warning("Data file not in the correct format. Will be starting with an empty AppointmentManager");
+            appointmentManager = new AppointmentManager();
+        } catch (IOException e) {
+            logger.warning("Problem while reading from the file. Will be starting with an empty AppointmentManager");
+            appointmentManager = new AppointmentManager();
+        }
+        return appointmentManager;
+    }
 
     @Override
     public void start(Stage primaryStage) {

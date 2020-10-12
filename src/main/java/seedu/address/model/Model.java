@@ -6,13 +6,17 @@ import java.util.function.Predicate;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.client.Client;
+import seedu.address.model.client.Phone;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.ReadOnlyAppointmentManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.revenue.Revenue;
 import seedu.address.model.service.Service;
+import seedu.address.model.service.ServiceCode;
 
 /**
  * The API of the Model component.
@@ -38,6 +42,9 @@ public interface Model {
      * {@code Predicate} that always evaluate to true
      */
     Predicate<Revenue> PREDICATE_SHOW_ALL_REVENUE = unused -> true;
+
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Appointment> PREDICATE_SHOW_ALL_APPOINTMENTS = unused -> true;
 
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
@@ -85,6 +92,11 @@ public interface Model {
     boolean hasClient(Client client);
 
     /**
+     * Returns true if a client with the same phone number as {@code phone} exists in the address book.
+     */
+    boolean hasClient(Phone phone);
+
+    /**
      * Deletes the given client.
      * The client must exist in the address book.
      */
@@ -95,6 +107,12 @@ public interface Model {
      * {@code client} must not already exist in the address book.
      */
     void addClient(Client client);
+
+    /**
+     * Gets the client based on provided phone number.
+     * {@code phone} must exist in the address book.
+     */
+    Client getClientByPhone(Phone phone);
 
     /**
      * Replaces the given client {@code target} with {@code editedClient}.
@@ -159,6 +177,13 @@ public interface Model {
     void addService(Service toAdd);
 
     /**
+     * Returns true if a service with the same service code as {@code code} exists in SuperSalon.
+     */
+    boolean hasService(ServiceCode code);
+
+    Service getServiceByServiceCode(ServiceCode serviceCode);
+
+    /**
      * Deletes the given Service.
      * The Service must exist in SuperSalon.
      */
@@ -211,4 +236,42 @@ public interface Model {
     ReadOnlyRevenueTracker getRevenueTracker();
 
 
+    // ====================== AppointmentManager ========================
+    /**
+     * Adds the given appointment.
+     */
+    void addAppointment(Appointment toAdd);
+
+    /**
+     * Deletes the given appointment.
+     */
+    void deleteAppointment(Appointment toDelete);
+
+    /**
+     * Updates the filter of the filtered appointment list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredAppointmentList(Predicate<Appointment> predicate);
+
+    /** Returns an unmodifiable view of the filtered appointment list */
+    ObservableList<Appointment> getFilteredAppointmentList();
+
+    /** Returns the appointment manager. */
+    ReadOnlyAppointmentManager getAppointmentManager();
+
+    /**
+     * Replaces the given appointment {@code target} with {@code editedAppointment}.
+     * {@code target} must exist in the SuperSalon.
+     */
+    void setAppointment(Appointment target, Appointment editedAppointment);
+
+    /**
+     * Replaces the contents of the appointment list with {@code appointment}.
+     */
+    void setAppointment(List<Appointment> appointment);
+
+    /**
+     * Checks if Appointment is stored in Appointment Manager.
+     */
+    boolean hasAppointment(Appointment appointment);
 }
