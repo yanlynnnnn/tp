@@ -9,7 +9,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_SERVICE_CODE;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.appointment.AddAppointmentCommand;
 import seedu.address.logic.commands.appointment.FindAppointmentCommand;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
@@ -44,13 +43,13 @@ public class FindAppointmentCommandParser implements Parser<FindAppointmentComma
             PREFIX_NAME)) {
             throw new ParseException(MULTIPLE_PARAMETERS);
         }
-        if ((!arePrefixesPresent(argMultimap, PREFIX_DATE)
-            && !arePrefixesPresent(argMultimap, PREFIX_PHONE)
-            && !arePrefixesPresent(argMultimap, PREFIX_NAME)
-            && !arePrefixesPresent(argMultimap, PREFIX_SERVICE_SERVICE_CODE))
+        if ((!isPrefixPresent(argMultimap, PREFIX_DATE)
+            && !isPrefixPresent(argMultimap, PREFIX_PHONE)
+            && !isPrefixPresent(argMultimap, PREFIX_NAME)
+            && !isPrefixPresent(argMultimap, PREFIX_SERVICE_SERVICE_CODE))
             || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
-                AddAppointmentCommand.MESSAGE_USAGE));
+                FindAppointmentCommand.MESSAGE_USAGE));
         }
 
         Predicate<Appointment> predicate = null;
@@ -78,10 +77,9 @@ public class FindAppointmentCommandParser implements Parser<FindAppointmentComma
     }
 
     /**
-     * Returns true if none of the prefixes contains empty {@code Optional} values in the given
-     * {@code ArgumentMultimap}.
+     * Returns true if the prefix is present in the user's command.
      */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
-        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
+    private static boolean isPrefixPresent(ArgumentMultimap argumentMultimap, Prefix prefix) {
+        return argumentMultimap.getValue(prefix).isPresent();
     }
 }

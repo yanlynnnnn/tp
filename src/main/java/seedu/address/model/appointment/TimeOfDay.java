@@ -53,6 +53,6 @@ public class TimeOfDay {
 
     @Override
     public String toString() {
-        return value.format(FORMAT_OUTPUT);
+        return value.format(FORMAT_INPUT);
     }
 }

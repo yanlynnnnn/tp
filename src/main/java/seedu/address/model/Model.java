@@ -201,5 +201,4 @@ public interface Model {
      * Checks if Appointment is stored in Appointment Manager.
      */
     boolean hasAppointment(Appointment appointment);
-
 }

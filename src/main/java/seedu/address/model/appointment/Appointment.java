@@ -3,12 +3,9 @@ package seedu.address.model.appointment;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.Objects;
-import java.util.Optional;
 
 import seedu.address.model.client.Client;
-import seedu.address.model.client.Phone;
 import seedu.address.model.service.Service;
-import seedu.address.model.service.ServiceCode;
 import seedu.address.model.util.attributes.Date;
 import seedu.address.model.util.uniquelist.UniqueListItem;
 

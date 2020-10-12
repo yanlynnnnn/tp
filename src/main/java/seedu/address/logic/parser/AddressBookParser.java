@@ -18,8 +18,11 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.appointment.AddAppointmentCommand;
 import seedu.address.logic.commands.appointment.ClearAppointmentCommand;
 import seedu.address.logic.commands.appointment.DeleteAppointmentCommand;
+import seedu.address.logic.commands.appointment.DoneAppointmentCommand;
+import seedu.address.logic.commands.appointment.EditAppointmentCommand;
 import seedu.address.logic.commands.appointment.FindAppointmentCommand;
 import seedu.address.logic.commands.appointment.ListAppointmentCommand;
+import seedu.address.logic.commands.appointment.UnDoneAppointmentCommand;
 import seedu.address.logic.commands.expense.AddExpenseCommand;
 import seedu.address.logic.commands.expense.ClearExpenseCommand;
 import seedu.address.logic.commands.expense.DeleteExpenseCommand;
@@ -29,7 +32,10 @@ import seedu.address.logic.commands.expense.ListExpenseCommand;
 import seedu.address.logic.commands.service.AddServiceCommand;
 import seedu.address.logic.parser.appointment.AddAppointmentCommandParser;
 import seedu.address.logic.parser.appointment.DeleteAppointmentCommandParser;
+import seedu.address.logic.parser.appointment.DoneAppointmentCommandParser;
+import seedu.address.logic.parser.appointment.EditAppointmentCommandParser;
 import seedu.address.logic.parser.appointment.FindAppointmentCommandParser;
+import seedu.address.logic.parser.appointment.UnDoneAppointmentCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.expense.AddExpenseCommandParser;
 import seedu.address.logic.parser.expense.DeleteExpenseCommandParser;
@@ -124,6 +130,15 @@ public class AddressBookParser {
 
         case ClearAppointmentCommand.COMMAND_WORD:
             return new ClearAppointmentCommand();
+
+        case DoneAppointmentCommand.COMMAND_WORD:
+            return new DoneAppointmentCommandParser().parse(arguments);
+
+        case UnDoneAppointmentCommand.COMMAND_WORD:
+            return new UnDoneAppointmentCommandParser().parse(arguments);
+
+        case EditAppointmentCommand.COMMAND_WORD:
+            return new EditAppointmentCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
