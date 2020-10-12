@@ -20,6 +20,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     private Path expenseStorageFilePath = Paths.get("data", "expenses.json");
     private Path revenueStorageFilePath = Paths.get("data", "revenue.json");
 
+    private Path appointmentStorageFilePath = Paths.get("data", "appointments.json");
+
     /**
      * Creates a {@code UserPrefs} with default values.
      */
@@ -41,6 +43,8 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
         setAddressBookFilePath(newUserPrefs.getAddressBookFilePath());
+        setServiceStorageFilePath(newUserPrefs.getServiceStorageFilePath());
+        setAppointmentStorageFilePath(newUserPrefs.getAppointmentStorageFilePath());
     }
 
     public GuiSettings getGuiSettings() {
@@ -61,6 +65,20 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         this.addressBookFilePath = addressBookFilePath;
     }
 
+    public void setServiceStorageFilePath(Path serviceStorageFilePath) {
+        requireNonNull(serviceStorageFilePath);
+        this.serviceStorageFilePath = serviceStorageFilePath;
+    }
+
+    public Path getAppointmentStorageFilePath() {
+        return appointmentStorageFilePath;
+    }
+
+    public void setAppointmentStorageFilePath(Path appointmentStorageFilePath) {
+        requireNonNull(appointmentStorageFilePath);
+        this.appointmentStorageFilePath = appointmentStorageFilePath;
+    }
+
     @Override
     public boolean equals(Object other) {
         if (other == this) {
@@ -73,7 +91,9 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         UserPrefs o = (UserPrefs) other;
 
         return guiSettings.equals(o.guiSettings)
-            && addressBookFilePath.equals(o.addressBookFilePath);
+                && addressBookFilePath.equals(o.addressBookFilePath)
+                && serviceStorageFilePath.equals(o.serviceStorageFilePath)
+                && appointmentStorageFilePath.equals(o.appointmentStorageFilePath);
     }
 
     public Path getServiceStorageFilePath() {
