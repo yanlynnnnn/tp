@@ -1,6 +1,8 @@
 package seedu.address.logic.commands.service;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_SERVICE_CODE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.Command;
@@ -15,10 +17,13 @@ import seedu.address.model.service.ServiceContainKeywordPredicate;
 public class FindServiceCommand extends Command {
     public static final String COMMAND_WORD = "findsvc";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all services whose names contain any of "
-        + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-        + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-        + "Example: " + COMMAND_WORD + " Lash";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all services by either their "
+        + "title or service code (case-insensitive) and displays them as a list with index numbers.\n"
+        + "Parameters: "
+        + PREFIX_SERVICE_TITLE + "TITLE "
+        + PREFIX_SERVICE_SERVICE_CODE + "SERVICE_CODE "
+        + "Example: " + COMMAND_WORD + " "
+        + PREFIX_SERVICE_TITLE + "Lash Lift";
 
     private final ServiceContainKeywordPredicate predicate;
 
