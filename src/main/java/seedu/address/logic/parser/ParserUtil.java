@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.appointment.TimeOfDay;
 import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
 import seedu.address.model.client.Phone;
@@ -221,5 +222,21 @@ public class ParserUtil {
         }
         return new ServiceCode(trimmedServiceCode);
     }
+
+    /**
+     * Parses a {@code String timeOfDay} into a {@code {timeOfDay}}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code timeOfDay} is invalid.
+     */
+    public static TimeOfDay parseTime(String timeOfDay) throws ParseException {
+        requireNonNull(timeOfDay);
+        String trimmedTimeOfDay = timeOfDay.trim();
+        if (!TimeOfDay.isValidTime(trimmedTimeOfDay)) {
+            throw new ParseException(TimeOfDay.MESSAGE_CONSTRAINTS);
+        }
+        return new TimeOfDay(trimmedTimeOfDay);
+    }
+
 }
 

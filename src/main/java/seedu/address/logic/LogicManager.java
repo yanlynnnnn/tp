@@ -14,6 +14,7 @@ import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.client.Client;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.revenue.Revenue;
@@ -54,6 +55,7 @@ public class LogicManager implements Logic {
             storage.saveServiceManager(model.getServiceManager());
             storage.saveRevenueTracker(model.getRevenueTracker());
             storage.saveExpenseTracker(model.getExpenseTracker());
+            storage.saveAppointmentManager(model.getAppointmentManager());
         } catch (IOException ioe) {
             throw new CommandException(FILE_OPS_ERROR_MESSAGE + ioe, ioe);
         }
@@ -99,5 +101,10 @@ public class LogicManager implements Logic {
     @Override
     public ObservableList<Revenue> getFilteredRevenueList() {
         return model.getFilteredRevenueList();
+    }
+
+    @Override
+    public ObservableList<Appointment> getFilteredAppointmentList() {
+        return model.getFilteredAppointmentList();
     }
 }

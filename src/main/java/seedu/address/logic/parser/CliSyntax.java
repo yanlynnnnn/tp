@@ -21,4 +21,8 @@ public class CliSyntax {
     public static final Prefix PREFIX_SERVICE_DURATION = new Prefix("du/");
     public static final Prefix PREFIX_SERVICE_SERVICE_CODE = new Prefix("s/");
 
+    // Prefixes for Appointment command
+    public static final Prefix PREFIX_TIME_OF_DAY = new Prefix("t/");
+    public static final Prefix PREFIX_MONTH_OF_YEAR = new Prefix("m/");
+
 }
