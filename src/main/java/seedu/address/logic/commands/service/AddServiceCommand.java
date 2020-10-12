@@ -23,9 +23,9 @@ public class AddServiceCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a service to the list of services "
             + "Parameters: "
-            + PREFIX_SERVICE_TITLE + " TITLE "
-            + PREFIX_SERVICE_DURATION + " DURATION "
-            + PREFIX_SERVICE_PRICE + " PRICE "
+            + PREFIX_SERVICE_TITLE + "TITLE "
+            + PREFIX_SERVICE_DURATION + "DURATION "
+            + PREFIX_SERVICE_PRICE + "PRICE "
             + " Example: " + COMMAND_WORD + " "
             + PREFIX_SERVICE_TITLE + "Lash Lift"
             + PREFIX_SERVICE_DURATION + "0.5 "
@@ -50,7 +50,7 @@ public class AddServiceCommand extends Command {
         // Generate unique ServiceCode for the Service before adding it to model
         List<Service> lastShownList = model.getFilteredServiceList();
         String serviceCode = ServiceCode.generateNewServiceCode(lastShownList);
-        toAdd.addSerivceCode(serviceCode);
+        toAdd.addServiceCode(serviceCode);
 
         model.addService(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));

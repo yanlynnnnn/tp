@@ -12,51 +12,74 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.util.CollectionUtil;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.client.Client;
+import seedu.address.model.client.Phone;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.AppointmentManager;
 import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.ReadOnlyAppointmentManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
+import seedu.address.model.revenue.Revenue;
 import seedu.address.model.service.Service;
+import seedu.address.model.service.ServiceCode;
 
 /**
  * Represents the in-memory model of the address book data.
  */
 public class ModelManager implements Model {
+
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook;
+    private final AddressBook addressBook; // This is ClientManager.
     private final ServiceManager serviceManager;
+    private final AppointmentManager appointmentManager;
+    private final RevenueTracker revenueTracker;
     private final ExpenseTracker expenseTracker;
     private final UserPrefs userPrefs;
 
     private final FilteredList<Client> filteredClients;
     private final FilteredList<Expense> filteredExpenses;
     private final FilteredList<Service> filteredServices;
+    private final FilteredList<Revenue> filteredRevenue;
+    private final FilteredList<Appointment> filteredAppointments;
 
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyAddressBook addressBook, ReadOnlyUserPrefs userPrefs,
-                        ReadOnlyServiceManager serviceManager, ReadOnlyExpenseTracker expenseTracker) {
+    public ModelManager(ReadOnlyUserPrefs userPrefs, ReadOnlyAddressBook addressBook,
+                        ReadOnlyServiceManager serviceManager, ReadOnlyRevenueTracker revenueTracker,
+                        ReadOnlyExpenseTracker expenseTracker, ReadOnlyAppointmentManager appointmentManager) {
         super();
-        requireAllNonNull(addressBook, userPrefs, serviceManager, expenseTracker);
+        requireAllNonNull(addressBook, userPrefs, serviceManager, revenueTracker, expenseTracker);
 
-        logger.fine("Initializing with SuperSalon: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with Homerce: " + addressBook + " and user prefs " + userPrefs);
 
         this.addressBook = new AddressBook(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         this.serviceManager = new ServiceManager(serviceManager);
+        this.appointmentManager = new AppointmentManager(appointmentManager);
+        this.revenueTracker = new RevenueTracker(revenueTracker);
         this.expenseTracker = new ExpenseTracker(expenseTracker);
 
         filteredClients = new FilteredList<>(this.addressBook.getClientList());
         filteredExpenses = new FilteredList<>(this.expenseTracker.getExpenseList());
         filteredServices = new FilteredList<>(this.serviceManager.getServiceList());
+        filteredAppointments = new FilteredList<>(this.appointmentManager.getAppointmentList());
+        filteredRevenue = new FilteredList<>(this.revenueTracker.getRevenueList());
     }
 
+    /**
+     * Initializes a ModelManager with the given addressBook and userPrefs.
+     */
     public ModelManager() {
-        this(new AddressBook(), new UserPrefs(), new ServiceManager(), new ExpenseTracker());
+        this(new UserPrefs(), new AddressBook(), new ServiceManager(), new RevenueTracker(), new ExpenseTracker(),
+                new AppointmentManager());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -113,6 +136,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public boolean hasClient(Phone phone) {
+        requireAllNonNull(phone);
+        return addressBook.hasClient(phone);
+    }
+
+    @Override
     public void deleteClient(Client target) {
         addressBook.removeClient(target);
     }
@@ -128,6 +157,12 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedClient);
 
         addressBook.setClient(target, editedClient);
+    }
+
+    @Override
+    public Client getClientByPhone(Phone phone) {
+        requireAllNonNull(phone);
+        return addressBook.getClientByPhone(phone);
     }
 
     //=========== Expense Tracker =============================================================
@@ -174,7 +209,7 @@ public class ModelManager implements Model {
         return this.expenseTracker;
     }
 
-    //=========== Filtered Person List Accessors =============================================================
+    //=========== Filtered Client List Accessors =============================================================
 
     /**
      * Returns an unmodifiable view of the list of {@code Client} backed by the internal list of
@@ -191,31 +226,29 @@ public class ModelManager implements Model {
         filteredClients.setPredicate(predicate);
     }
 
-    @Override
-    public boolean equals(Object obj) {
-        // short circuit if same object
-        if (obj == this) {
-            return true;
-        }
-
-        // instanceof handles nulls
-        if (!(obj instanceof ModelManager)) {
-            return false;
-        }
-
-        // state check
-        ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
-                && userPrefs.equals(other.userPrefs)
-                && filteredClients.equals(other.filteredClients);
-    }
-
-    //=========== ServiceManager ===============
+    //================ ServiceManager ==================
     @Override
     public void addService(Service toAdd) {
         requireNonNull(toAdd);
         serviceManager.addService(toAdd);
         updateFilteredServiceList(PREDICATE_SHOW_ALL_SERVICES);
+    }
+
+    @Override
+    public void deleteService(Service target) {
+        serviceManager.removeService(target);
+    }
+
+    @Override
+    public void setService(Service target, Service editedService) {
+        CollectionUtil.requireAllNonNull(target, editedService);
+        serviceManager.setService(target, editedService);
+    }
+
+    @Override
+    public boolean hasService(ServiceCode code) {
+        requireAllNonNull(code);
+        return serviceManager.hasService(code);
     }
 
     @Override
@@ -236,5 +269,121 @@ public class ModelManager implements Model {
     @Override
     public ReadOnlyServiceManager getServiceManager() {
         return this.serviceManager;
+    }
+
+    /**
+     * Replaces serviceManager data with the data in {@code serviceManager}.
+     */
+    @Override
+    public void setServiceManager(ReadOnlyServiceManager serviceManager) {
+        requireNonNull(serviceManager);
+        this.serviceManager.resetData(serviceManager);
+    }
+
+    //=========== RevenueTracker ===============
+    @Override
+    public void addRevenue(Revenue toAdd) {
+        requireNonNull(toAdd);
+        revenueTracker.addRevenue(toAdd);
+        updateFilteredRevenueList(PREDICATE_SHOW_ALL_REVENUE);
+    }
+
+    @Override
+    public void deleteRevenue(Revenue target) {
+        revenueTracker.removeRevenue(target);
+    }
+
+    @Override
+    public void setRevenues(List<Revenue> revenues) {
+        revenueTracker.setRevenues(revenues);
+    }
+
+    @Override
+    public void updateFilteredRevenueList(Predicate<Revenue> predicate) {
+        requireNonNull(predicate);
+        filteredRevenue.setPredicate(predicate);
+    }
+
+    @Override
+    public ObservableList<Revenue> getFilteredRevenueList() {
+        return filteredRevenue;
+    }
+
+    @Override
+    public ReadOnlyRevenueTracker getRevenueTracker() {
+        return this.revenueTracker;
+    }
+
+    @Override
+    public Service getServiceByServiceCode(ServiceCode serviceCode) {
+        requireAllNonNull(serviceCode);
+        return serviceManager.getServiceByServiceCode(serviceCode);
+    }
+
+    //================== AppointmentManager ==================
+    @Override
+    public void addAppointment(Appointment toAdd) {
+        requireNonNull(toAdd);
+        appointmentManager.addAppointment(toAdd);
+        updateFilteredAppointmentList(PREDICATE_SHOW_ALL_APPOINTMENTS);
+    }
+
+    @Override
+    public void deleteAppointment(Appointment toDelete) {
+        appointmentManager.removeAppointment(toDelete);
+    }
+
+    @Override
+    public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
+        requireNonNull(predicate);
+        filteredAppointments.setPredicate(predicate);
+    }
+
+    @Override
+    public ObservableList<Appointment> getFilteredAppointmentList() {
+        return filteredAppointments;
+    }
+
+    @Override
+    public ReadOnlyAppointmentManager getAppointmentManager() {
+        return appointmentManager;
+    }
+
+    @Override
+    public void setAppointment(Appointment target, Appointment editedAppointment) {
+        requireAllNonNull(target, editedAppointment);
+        appointmentManager.setAppointments(target, editedAppointment);
+    }
+
+    @Override
+    public void setAppointment(List<Appointment> appointments) {
+        appointmentManager.setAppointments(appointments);
+    }
+
+    @Override
+    public boolean hasAppointment(Appointment appointment) {
+        return appointmentManager.hasAppointment(appointment);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        // short circuit if same object
+        if (obj == this) {
+            return true;
+        }
+
+        // instanceof handles nulls
+        if (!(obj instanceof ModelManager)) {
+            return false;
+        }
+
+        // state check
+        ModelManager other = (ModelManager) obj;
+        return addressBook.equals(other.addressBook)
+                && userPrefs.equals(other.userPrefs)
+                && filteredClients.equals(other.filteredClients)
+                && filteredServices.equals(other.filteredServices)
+                && filteredAppointments.equals(other.filteredAppointments)
+                && filteredExpenses.equals(other.filteredExpenses);
     }
 }

@@ -88,7 +88,7 @@ public class JsonAdaptedService {
         }
 
         Service service = new Service(modelTitle, modelDuration, modelAmount);
-        service.addSerivceCode(serviceCode);
+        service.addServiceCode(serviceCode);
 
         return service;
     }

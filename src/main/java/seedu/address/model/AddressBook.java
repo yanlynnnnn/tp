@@ -6,6 +6,7 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.client.Client;
+import seedu.address.model.client.Phone;
 import seedu.address.model.client.UniqueClientList;
 
 /**
@@ -66,6 +67,14 @@ public class AddressBook implements ReadOnlyAddressBook {
     }
 
     /**
+     * Returns true if a client with the same phone number as {@code phone} exists in the address book.
+     */
+    public boolean hasClient(Phone phone) {
+        requireNonNull(phone);
+        return clients.contains(phone);
+    }
+
+    /**
      * Adds a client to the address book.
      * The client must not already exist in the address book.
      */
@@ -82,6 +91,11 @@ public class AddressBook implements ReadOnlyAddressBook {
         requireNonNull(editedClient);
 
         clients.setClient(target, editedClient);
+    }
+
+    public Client getClientByPhone(Phone phone) {
+        requireNonNull(phone);
+        return clients.getClientByPhone(phone);
     }
 
     /**

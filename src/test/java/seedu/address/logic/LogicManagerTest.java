@@ -16,9 +16,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
-import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.client.AddClientCommand;
+import seedu.address.logic.commands.client.ListClientCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
@@ -26,18 +26,25 @@ import seedu.address.model.ModelManager;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.client.Client;
+import seedu.address.model.manager.AppointmentManager;
 import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.StorageManager;
+import seedu.address.storage.appointment.AppointmentStorage;
+import seedu.address.storage.appointment.JsonAppointmentStorage;
 import seedu.address.storage.expense.ExpenseStorage;
 import seedu.address.storage.expense.JsonExpenseStorage;
+import seedu.address.storage.revenue.JsonRevenueStorage;
+import seedu.address.storage.revenue.RevenueStorage;
 import seedu.address.storage.service.JsonServiceStorage;
 import seedu.address.storage.service.ServiceStorage;
 import seedu.address.testutil.ClientBuilder;
 
 public class LogicManagerTest {
+
     private static final IOException DUMMY_IO_EXCEPTION = new IOException("dummy exception");
 
     @TempDir
@@ -49,13 +56,16 @@ public class LogicManagerTest {
     @BeforeEach
     public void setUp() {
         JsonAddressBookStorage addressBookStorage =
-                new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
+            new JsonAddressBookStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         ServiceStorage serviceStorage = new JsonServiceStorage(temporaryFolder.resolve("services.json"));
+        RevenueStorage revenueStorage = new JsonRevenueStorage(temporaryFolder.resolve("revenues.json"));
         ExpenseStorage expenseStorage = new JsonExpenseStorage(temporaryFolder.resolve("expenses.json"));
+        AppointmentStorage appointmentStorage = new JsonAppointmentStorage(
+                temporaryFolder.resolve("appointments.json"));
 
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage, serviceStorage,
-                expenseStorage);
+        StorageManager storage = new StorageManager(userPrefsStorage, addressBookStorage, serviceStorage,
+            revenueStorage, expenseStorage, appointmentStorage);
         logic = new LogicManager(model, storage);
     }
 
@@ -67,32 +77,35 @@ public class LogicManagerTest {
 
     @Test
     public void execute_commandExecutionError_throwsCommandException() {
-        String deleteCommand = "delete 9";
+        String deleteCommand = "deletecli 9";
         assertCommandException(deleteCommand, MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
     }
 
     @Test
     public void execute_validCommand_success() throws Exception {
-        String listCommand = ListCommand.COMMAND_WORD;
-        assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
+        String listCommand = ListClientCommand.COMMAND_WORD;
+        assertCommandSuccess(listCommand, ListClientCommand.MESSAGE_SUCCESS, model);
     }
 
     @Test
     public void execute_storageThrowsIoException_throwsCommandException() {
         // Setup LogicManager with JsonAddressBookIoExceptionThrowingStub
         JsonAddressBookStorage addressBookStorage =
-                new JsonAddressBookIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
+            new JsonAddressBookIoExceptionThrowingStub(temporaryFolder.resolve("ioExceptionAddressBook.json"));
         JsonUserPrefsStorage userPrefsStorage =
-                new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
+            new JsonUserPrefsStorage(temporaryFolder.resolve("ioExceptionUserPrefs.json"));
         ServiceStorage serviceStorage = new JsonServiceStorage(temporaryFolder.resolve("ioExceptionServices.json"));
+        RevenueStorage revenueStorage = new JsonRevenueStorage(temporaryFolder.resolve("ioExceptionServices.json"));
         ExpenseStorage expenseStorage = new JsonExpenseStorage(temporaryFolder.resolve("ioExceptionExpenses.json"));
+        AppointmentStorage appointmentStorage = new JsonAppointmentStorage(
+                temporaryFolder.resolve("appointments.json"));
 
-        StorageManager storage = new StorageManager(addressBookStorage, userPrefsStorage,
-                serviceStorage, expenseStorage);
+        StorageManager storage = new StorageManager(userPrefsStorage, addressBookStorage, serviceStorage,
+            revenueStorage, expenseStorage, appointmentStorage);
         logic = new LogicManager(model, storage);
 
         // Execute add command
-        String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY;
+        String addCommand = AddClientCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY;
         Client expectedClient = new ClientBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addClient(expectedClient);
@@ -110,10 +123,11 @@ public class LogicManagerTest {
      * - no exceptions are thrown <br>
      * - the feedback message is equal to {@code expectedMessage} <br>
      * - the internal model manager state is the same as that in {@code expectedModel} <br>
+     *
      * @see #assertCommandFailure(String, Class, String, Model)
      */
     private void assertCommandSuccess(String inputCommand, String expectedMessage,
-            Model expectedModel) throws CommandException, ParseException {
+                                      Model expectedModel) throws CommandException, ParseException {
         CommandResult result = logic.execute(inputCommand);
         assertEquals(expectedMessage, result.getFeedbackToUser());
         assertEquals(expectedModel, model);
@@ -121,6 +135,7 @@ public class LogicManagerTest {
 
     /**
      * Executes the command, confirms that a ParseException is thrown and that the result message is correct.
+     *
      * @see #assertCommandFailure(String, Class, String, Model)
      */
     private void assertParseException(String inputCommand, String expectedMessage) {
@@ -129,6 +144,7 @@ public class LogicManagerTest {
 
     /**
      * Executes the command, confirms that a CommandException is thrown and that the result message is correct.
+     *
      * @see #assertCommandFailure(String, Class, String, Model)
      */
     private void assertCommandException(String inputCommand, String expectedMessage) {
@@ -137,12 +153,13 @@ public class LogicManagerTest {
 
     /**
      * Executes the command, confirms that the exception is thrown and that the result message is correct.
+     *
      * @see #assertCommandFailure(String, Class, String, Model)
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
-            String expectedMessage) {
-        Model expectedModel = new ModelManager(model.getAddressBook(), new UserPrefs(), new ServiceManager(),
-                new ExpenseTracker());
+                                      String expectedMessage) {
+        Model expectedModel = new ModelManager(new UserPrefs(), model.getAddressBook(),
+                new ServiceManager(), new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
         assertCommandFailure(inputCommand, expectedException, expectedMessage, expectedModel);
     }
 
@@ -151,10 +168,11 @@ public class LogicManagerTest {
      * - the {@code expectedException} is thrown <br>
      * - the resulting error message is equal to {@code expectedMessage} <br>
      * - the internal model manager state is the same as that in {@code expectedModel} <br>
+     *
      * @see #assertCommandSuccess(String, String, Model)
      */
     private void assertCommandFailure(String inputCommand, Class<? extends Throwable> expectedException,
-            String expectedMessage, Model expectedModel) {
+                                      String expectedMessage, Model expectedModel) {
         assertThrows(expectedException, expectedMessage, () -> logic.execute(inputCommand));
         assertEquals(expectedModel, model);
     }
@@ -163,6 +181,7 @@ public class LogicManagerTest {
      * A stub class to throw an {@code IOException} when the save method is called.
      */
     private static class JsonAddressBookIoExceptionThrowingStub extends JsonAddressBookStorage {
+
         private JsonAddressBookIoExceptionThrowingStub(Path filePath) {
             super(filePath);
         }
