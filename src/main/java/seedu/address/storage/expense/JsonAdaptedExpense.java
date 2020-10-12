@@ -1,8 +1,6 @@
 package seedu.address.storage.expense;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -27,7 +25,7 @@ public class JsonAdaptedExpense {
     private final String date;
     private final String description;
     private final String isFixed;
-    private List<JsonAdaptedTag> tag = new ArrayList<>();
+    private JsonAdaptedTag tag;
 
     /**
      * Constructs a {@code JsonAdaptedExpense} with the given Expense details.
@@ -35,14 +33,12 @@ public class JsonAdaptedExpense {
     @JsonCreator
     public JsonAdaptedExpense(@JsonProperty("value") Double value, @JsonProperty("date") String date,
                               @JsonProperty("description") String description,
-                              @JsonProperty("isFixed") String isFixed, @JsonProperty("tag") List<JsonAdaptedTag> tag) {
+                              @JsonProperty("isFixed") String isFixed, @JsonProperty("tag") JsonAdaptedTag tag) {
         this.value = new BigDecimal(value);
         this.date = date;
         this.description = description;
         this.isFixed = isFixed;
-        if (tag != null) {
-            this.tag.addAll(tag);
-        }
+        this.tag = tag;
     }
 
     /**
@@ -52,8 +48,8 @@ public class JsonAdaptedExpense {
         value = source.getValue().value;
         date = source.getDate().toString();
         description = source.getDescription().value;
-        isFixed = source.getIsFixed().value ? "t" : "f";
-        tag.add(new JsonAdaptedTag(source.getTag()));
+        isFixed = source.getIsFixed().value ? "y" : "n";
+        tag = new JsonAdaptedTag(source.getTag());
     }
 
     /**
@@ -100,10 +96,10 @@ public class JsonAdaptedExpense {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
                     Tag.class.getSimpleName()));
         }
-        if (!Tag.isValidTagName(tag.get(0).getTagName())) {
+        if (!Tag.isValidTagName(tag.toModelType().tagName)) {
             throw new IllegalValueException(Tag.MESSAGE_CONSTRAINTS);
         }
-        final Tag modelTag = new Tag(tag.get(0).getTagName());
+        final Tag modelTag = new Tag(tag.toModelType().tagName);
         Expense expense = new Expense(modelDescription, modelIsFixed, modelValue, modelDate, modelTag);
 
         return expense;

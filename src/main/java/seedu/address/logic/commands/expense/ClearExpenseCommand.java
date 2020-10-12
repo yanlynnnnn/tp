@@ -21,7 +21,7 @@ public class ClearExpenseCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.setExpenses(new ArrayList<Expense>());
+        model.setExpenses(new ArrayList<>());
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
