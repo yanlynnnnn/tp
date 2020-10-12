@@ -1,4 +1,4 @@
-package seedu.address.ui.servicetab;
+package seedu.address.ui.servicepanel;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

@@ -16,8 +16,9 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.ui.revenuetab.RevenueListPanel;
-import seedu.address.ui.servicetab.ServiceListPanel;
+import seedu.address.ui.clientspanel.ClientListPanel;
+import seedu.address.ui.revenuepanel.RevenueListPanel;
+import seedu.address.ui.servicepanel.ServiceListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -56,6 +57,7 @@ public class MainWindow extends UiPart<Stage> {
 
     @FXML
     private StackPane revenueListPanelPlaceholder;
+
     @FXML
     private StackPane resultDisplayPlaceholder;
 

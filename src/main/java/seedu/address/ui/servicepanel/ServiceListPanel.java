@@ -1,4 +1,4 @@
-package seedu.address.ui.servicetab;
+package seedu.address.ui.servicepanel;
 
 import java.util.logging.Logger;
 

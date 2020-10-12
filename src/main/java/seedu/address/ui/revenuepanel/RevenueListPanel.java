@@ -1,4 +1,4 @@
-package seedu.address.ui.revenuetab;
+package seedu.address.ui.revenuepanel;
 
 import java.util.logging.Logger;
 
