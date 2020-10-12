@@ -19,7 +19,7 @@ public class FindExpenseCommand extends Command {
 
     public static final String COMMAND_WORD = "findexp";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all expenses by either their"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all expenses by either their "
             + "description, date, is fixed, or tag, and displays them as a list with index numbers.\n"
             + "Parameters: "
             + PREFIX_DESCRIPTION + "DESCRIPTION "

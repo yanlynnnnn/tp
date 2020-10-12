@@ -25,7 +25,7 @@ public class JsonSerializableExpenseTracker {
      * Constructs a {@code JsonSerializableExpenseTracker } with the given services.
      */
     @JsonCreator
-    public JsonSerializableExpenseTracker(@JsonProperty("services") List<JsonAdaptedExpense> expenses) {
+    public JsonSerializableExpenseTracker(@JsonProperty("expenses") List<JsonAdaptedExpense> expenses) {
         this.expenses.addAll(expenses);
     }
 

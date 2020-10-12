@@ -208,7 +208,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String serviceCode} into a {@code {serviceCode}}.
+     * Parses a {@code String serviceCode} into a {@code {ServiceCode}}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code serviceCode} is invalid.
