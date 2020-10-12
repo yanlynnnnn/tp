@@ -22,7 +22,7 @@ public class FindServiceCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all services by either their "
         + "title or service code (case-sensitive) and displays them as a list with index numbers.\n"
         + "Parameters: "
-        + PREFIX_SERVICE_TITLE + "TITLE "
+        + PREFIX_SERVICE_TITLE + "TITLE or "
         + PREFIX_SERVICE_SERVICE_CODE + "SERVICE_CODE "
         + "Example: " + COMMAND_WORD + " "
         + PREFIX_SERVICE_TITLE + "Lash Lift";
