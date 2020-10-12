@@ -136,6 +136,19 @@ public interface Model {
     void addService(Service toAdd);
 
     /**
+     * Deletes the given Service.
+     * The Service must exist in SuperSalon.
+     */
+    void deleteService(Service target);
+
+    /**
+     * Replaces the given service {@code target} with {@code editedService}.
+     * {@code target} must exist in SuperSalon's service list.
+     * The service identity of {@code editedService} must not be the same as another existing service in SuperSalon.
+     */
+    void setService(Service target, Service editedService);
+
+    /**
      * Updates the filter of the filtered service list to filter by the given {@code predicate}.
      * @throws NullPointerException if {@code predicate} is null.
      */
@@ -144,5 +157,10 @@ public interface Model {
     ObservableList<Service> getFilteredServiceList();
 
     ReadOnlyServiceManager getServiceManager();
+
+    /**
+     * Replaces serviceManager data with the data in {@code serviceManager}.
+     */
+    void setServiceManager(ReadOnlyServiceManager serviceManager);
 
 }

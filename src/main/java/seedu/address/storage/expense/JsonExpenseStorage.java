@@ -48,7 +48,7 @@ public class JsonExpenseStorage implements ExpenseStorage {
         requireNonNull(filePath);
 
         Optional<JsonSerializableExpenseTracker> jsonExpenseTracker = JsonUtil.readJsonFile(
-                filePath, JsonSerializableExpenseTracker.class);
+            filePath, JsonSerializableExpenseTracker.class);
         if (!jsonExpenseTracker.isPresent()) {
             return Optional.empty();
         }

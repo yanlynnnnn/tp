@@ -6,15 +6,15 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import seedu.address.logic.commands.AddCommand;
-import seedu.address.logic.commands.ClearCommand;
 import seedu.address.logic.commands.Command;
-import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.ExitCommand;
-import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.HelpCommand;
-import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.client.AddClientCommand;
+import seedu.address.logic.commands.client.ClearClientCommand;
+import seedu.address.logic.commands.client.DeleteClientCommand;
+import seedu.address.logic.commands.client.EditClientCommand;
+import seedu.address.logic.commands.client.FindClientCommand;
+import seedu.address.logic.commands.client.ListClientCommand;
 import seedu.address.logic.commands.expense.AddExpenseCommand;
 import seedu.address.logic.commands.expense.ClearExpenseCommand;
 import seedu.address.logic.commands.expense.DeleteExpenseCommand;
@@ -22,13 +22,23 @@ import seedu.address.logic.commands.expense.EditExpenseCommand;
 import seedu.address.logic.commands.expense.FindExpenseCommand;
 import seedu.address.logic.commands.expense.ListExpenseCommand;
 import seedu.address.logic.commands.service.AddServiceCommand;
+import seedu.address.logic.commands.service.ClearServiceCommand;
+import seedu.address.logic.commands.service.DeleteServiceCommand;
+import seedu.address.logic.commands.service.EditServiceCommand;
 import seedu.address.logic.commands.service.FindServiceCommand;
+import seedu.address.logic.commands.service.ListServiceCommand;
+import seedu.address.logic.parser.client.AddCommandParser;
+import seedu.address.logic.parser.client.DeleteCommandParser;
+import seedu.address.logic.parser.client.EditCommandParser;
+import seedu.address.logic.parser.client.FindCommandParser;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.logic.parser.expense.AddExpenseCommandParser;
 import seedu.address.logic.parser.expense.DeleteExpenseCommandParser;
 import seedu.address.logic.parser.expense.EditExpenseCommandParser;
 import seedu.address.logic.parser.expense.FindExpenseCommandParser;
 import seedu.address.logic.parser.service.AddServiceCommandParser;
+import seedu.address.logic.parser.service.DeleteServiceCommandParser;
+import seedu.address.logic.parser.service.EditServiceCommandParser;
 import seedu.address.logic.parser.service.FindServiceCommandParser;
 
 
@@ -59,23 +69,23 @@ public class AddressBookParser {
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
 
-        case AddCommand.COMMAND_WORD:
+        case AddClientCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
 
-        case EditCommand.COMMAND_WORD:
+        case EditClientCommand.COMMAND_WORD:
             return new EditCommandParser().parse(arguments);
 
-        case DeleteCommand.COMMAND_WORD:
+        case DeleteClientCommand.COMMAND_WORD:
             return new DeleteCommandParser().parse(arguments);
 
-        case ClearCommand.COMMAND_WORD:
-            return new ClearCommand();
+        case ClearClientCommand.COMMAND_WORD:
+            return new ClearClientCommand();
 
-        case FindCommand.COMMAND_WORD:
+        case FindClientCommand.COMMAND_WORD:
             return new FindCommandParser().parse(arguments);
 
-        case ListCommand.COMMAND_WORD:
-            return new ListCommand();
+        case ListClientCommand.COMMAND_WORD:
+            return new ListClientCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
@@ -106,6 +116,18 @@ public class AddressBookParser {
 
         case FindServiceCommand.COMMAND_WORD:
             return new FindServiceCommandParser().parse(arguments);
+
+        case ClearServiceCommand.COMMAND_WORD:
+            return new ClearServiceCommand();
+
+        case ListServiceCommand.COMMAND_WORD:
+            return new ListServiceCommand();
+
+        case DeleteServiceCommand.COMMAND_WORD:
+            return new DeleteServiceCommandParser().parse(arguments);
+
+        case EditServiceCommand.COMMAND_WORD:
+            return new EditServiceCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
