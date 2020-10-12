@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
-import seedu.address.model.expense.Expense;
 
 /**
  * Clears the expense list.
