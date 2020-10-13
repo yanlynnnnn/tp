@@ -7,11 +7,11 @@ import seedu.address.model.util.attributes.Date;
 /**
  * Tests that a {@code Revenue}'s {@code Date} matches the given date.
  */
-public class DatePredicate implements Predicate<Revenue> {
+public class RevenueDatePredicate implements Predicate<Revenue> {
 
     private final Date date;
 
-    public DatePredicate(Date date) {
+    public RevenueDatePredicate(Date date) {
         this.date = date;
     }
 
@@ -23,7 +23,7 @@ public class DatePredicate implements Predicate<Revenue> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof DatePredicate // instanceof handles nulls
-            && date.equals(((DatePredicate) other).date)); // state check
+            || (other instanceof RevenueDatePredicate // instanceof handles nulls
+            && date.equals(((RevenueDatePredicate) other).date)); // state check
     }
 }

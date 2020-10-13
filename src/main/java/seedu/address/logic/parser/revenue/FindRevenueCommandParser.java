@@ -14,9 +14,9 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.revenue.DatePredicate;
 import seedu.address.model.revenue.Revenue;
-import seedu.address.model.revenue.ServiceCodeRevenuePredicate;
+import seedu.address.model.revenue.RevenueDatePredicate;
+import seedu.address.model.revenue.RevenueServiceCodePredicate;
 
 /**
  * Parses input arguments and creates a new FindRevenueCommand object
@@ -47,9 +47,9 @@ public class FindRevenueCommandParser implements Parser<FindRevenueCommand> {
 
         Predicate<Revenue> predicate = null;
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
-            predicate = new DatePredicate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
+            predicate = new RevenueDatePredicate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
         } else if (argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).isPresent()) {
-            predicate = new ServiceCodeRevenuePredicate(ParserUtil
+            predicate = new RevenueServiceCodePredicate(ParserUtil
                 .parseServiceCode(argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).get()));
         }
 

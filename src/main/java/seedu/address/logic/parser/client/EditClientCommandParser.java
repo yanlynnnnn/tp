@@ -25,7 +25,7 @@ import seedu.address.model.util.attributes.Tag;
 /**
  * Parses input arguments and creates a new EditClientCommand object
  */
-public class EditCommandParser implements Parser<EditClientCommand> {
+public class EditClientCommandParser implements Parser<EditClientCommand> {
 
     /**
      * Parses the given {@code String} of arguments in the context of the EditClientCommand

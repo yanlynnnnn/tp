@@ -4,10 +4,10 @@ import java.util.function.Predicate;
 
 import seedu.address.model.client.Name;
 
-public class NameAppointmentPredicate implements Predicate<Appointment> {
+public class AppointmentNamePredicate implements Predicate<Appointment> {
     private final Name clientName;
 
-    public NameAppointmentPredicate(Name clientName) {
+    public AppointmentNamePredicate(Name clientName) {
         this.clientName = clientName;
     }
 
@@ -21,7 +21,7 @@ public class NameAppointmentPredicate implements Predicate<Appointment> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof NameAppointmentPredicate// instanceof handles nulls
-            && clientName.equals(((NameAppointmentPredicate) other).clientName)); // state check
+            || (other instanceof AppointmentNamePredicate// instanceof handles nulls
+            && clientName.equals(((AppointmentNamePredicate) other).clientName)); // state check
     }
 }

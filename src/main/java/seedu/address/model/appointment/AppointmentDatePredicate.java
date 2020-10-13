@@ -4,11 +4,11 @@ import java.util.function.Predicate;
 
 import seedu.address.model.util.attributes.Date;
 
-public class DateAppointmentPredicate implements Predicate<Appointment> {
+public class AppointmentDatePredicate implements Predicate<Appointment> {
 
     private final Date dateOfAppointment;
 
-    public DateAppointmentPredicate(Date dateOfAppointment) {
+    public AppointmentDatePredicate(Date dateOfAppointment) {
         this.dateOfAppointment = dateOfAppointment;
     }
 
@@ -20,7 +20,7 @@ public class DateAppointmentPredicate implements Predicate<Appointment> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof DateAppointmentPredicate // instanceof handles nulls
-            && dateOfAppointment.equals(((DateAppointmentPredicate) other).dateOfAppointment)); // state check
+            || (other instanceof AppointmentDatePredicate // instanceof handles nulls
+            && dateOfAppointment.equals(((AppointmentDatePredicate) other).dateOfAppointment)); // state check
     }
 }

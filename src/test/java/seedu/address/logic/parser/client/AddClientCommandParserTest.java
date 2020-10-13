@@ -36,7 +36,7 @@ import seedu.address.model.util.attributes.Tag;
 import seedu.address.testutil.ClientBuilder;
 
 public class AddClientCommandParserTest {
-    private AddCommandParser parser = new AddCommandParser();
+    private AddClientCommandParser parser = new AddClientCommandParser();
 
     @Test
     public void parse_allFieldsPresent_success() {
