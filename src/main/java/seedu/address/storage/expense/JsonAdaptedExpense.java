@@ -28,7 +28,7 @@ public class JsonAdaptedExpense {
     private final JsonAdaptedTag tag;
 
     /**
-     * Constructs a {@code JsonAdaptedService} with the given Service details.
+     * Constructs a {@code JsonAdaptedExpense} with the given Expense details.
      */
     @JsonCreator
     public JsonAdaptedExpense(@JsonProperty("value") Double value, @JsonProperty("date") String date,
@@ -48,7 +48,7 @@ public class JsonAdaptedExpense {
         value = source.getValue().value;
         date = source.getDate().toString();
         description = source.getDescription().value;
-        isFixed = source.getIsFixed().value ? "t" : "f";
+        isFixed = source.getIsFixed().value ? "y" : "n";
         tag = new JsonAdaptedTag(source.getTag());
     }
 
@@ -99,7 +99,7 @@ public class JsonAdaptedExpense {
         if (!Tag.isValidTagName(tag.toModelType().tagName)) {
             throw new IllegalValueException(Tag.MESSAGE_CONSTRAINTS);
         }
-        final Tag modelTag = tag.toModelType();
+        final Tag modelTag = new Tag(tag.toModelType().tagName);
         Expense expense = new Expense(modelDescription, modelIsFixed, modelValue, modelDate, modelTag);
 
         return expense;
