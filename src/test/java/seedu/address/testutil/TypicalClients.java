@@ -60,12 +60,12 @@ public class TypicalClients {
     /**
      * Returns an {@code AddressBook} with all the typical clients.
      */
-    public static ClientManager getTypicalAddressBook() {
-        ClientManager ab = new ClientManager();
+    public static ClientManager getTypicalClientManager() {
+        ClientManager cm = new ClientManager();
         for (Client client : getTypicalClients()) {
-            ab.addClient(client);
+            cm.addClient(client);
         }
-        return ab;
+        return cm;
     }
 
     public static List<Client> getTypicalClients() {

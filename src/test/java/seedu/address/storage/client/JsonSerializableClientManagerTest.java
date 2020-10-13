@@ -26,7 +26,7 @@ public class JsonSerializableClientManagerTest {
         JsonSerializableClientManager dataFromFile = JsonUtil.readJsonFile(TYPICAL_CLIENTS_FILE,
                 JsonSerializableClientManager.class).get();
         ClientManager clientManagerFromFile = dataFromFile.toModelType();
-        ClientManager typicalClientsClientManager = TypicalClients.getTypicalAddressBook();
+        ClientManager typicalClientsClientManager = TypicalClients.getTypicalClientManager();
         assertEquals(clientManagerFromFile, typicalClientsClientManager);
     }
 

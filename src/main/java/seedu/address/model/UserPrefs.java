@@ -14,7 +14,7 @@ import seedu.address.commons.core.GuiSettings;
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path addressBookFilePath = Paths.get("data", "addressbook.json");
+    private Path clientManagerFilePath = Paths.get("data", "clientManager.json");
 
     private Path serviceStorageFilePath = Paths.get("data", "services.json");
     private Path expenseStorageFilePath = Paths.get("data", "expenses.json");
@@ -42,7 +42,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public void resetData(ReadOnlyUserPrefs newUserPrefs) {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
-        setAddressBookFilePath(newUserPrefs.getAddressBookFilePath());
+        setClientManagerFilePath(newUserPrefs.getClientManagerFilePath());
         setServiceStorageFilePath(newUserPrefs.getServiceStorageFilePath());
         setAppointmentStorageFilePath(newUserPrefs.getAppointmentStorageFilePath());
     }
@@ -56,13 +56,13 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         this.guiSettings = guiSettings;
     }
 
-    public Path getAddressBookFilePath() {
-        return addressBookFilePath;
+    public Path getClientManagerFilePath() {
+        return clientManagerFilePath;
     }
 
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        this.addressBookFilePath = addressBookFilePath;
+    public void setClientManagerFilePath(Path clientManagerFilePath) {
+        requireNonNull(clientManagerFilePath);
+        this.clientManagerFilePath = clientManagerFilePath;
     }
 
     public void setServiceStorageFilePath(Path serviceStorageFilePath) {
@@ -91,7 +91,7 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         UserPrefs o = (UserPrefs) other;
 
         return guiSettings.equals(o.guiSettings)
-                && addressBookFilePath.equals(o.addressBookFilePath)
+                && clientManagerFilePath.equals(o.clientManagerFilePath)
                 && serviceStorageFilePath.equals(o.serviceStorageFilePath)
                 && appointmentStorageFilePath.equals(o.appointmentStorageFilePath);
     }
@@ -110,14 +110,14 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     @Override
     public int hashCode() {
-        return Objects.hash(guiSettings, addressBookFilePath);
+        return Objects.hash(guiSettings, clientManagerFilePath);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
-        sb.append("\nLocal data file location : " + addressBookFilePath);
+        sb.append("\nLocal data file location : " + clientManagerFilePath);
         return sb.toString();
     }
 

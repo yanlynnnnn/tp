@@ -52,17 +52,17 @@ public class ModelManager implements Model {
     private final FilteredList<Appointment> filteredAppointments;
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given clientManager and userPrefs.
      */
-    public ModelManager(ReadOnlyUserPrefs userPrefs, ReadOnlyClientManager addressBook,
+    public ModelManager(ReadOnlyUserPrefs userPrefs, ReadOnlyClientManager clientManager,
                         ReadOnlyServiceManager serviceManager, ReadOnlyRevenueTracker revenueTracker,
                         ReadOnlyExpenseTracker expenseTracker, ReadOnlyAppointmentManager appointmentManager) {
         super();
-        requireAllNonNull(addressBook, userPrefs, serviceManager, revenueTracker, expenseTracker);
+        requireAllNonNull(clientManager, userPrefs, serviceManager, revenueTracker, expenseTracker);
 
-        logger.fine("Initializing with Homerce: " + addressBook + " and user prefs " + userPrefs);
+        logger.fine("Initializing with Homerce: " + clientManager + " and user prefs " + userPrefs);
 
-        this.clientManager = new ClientManager(addressBook);
+        this.clientManager = new ClientManager(clientManager);
         this.userPrefs = new UserPrefs(userPrefs);
         this.serviceManager = new ServiceManager(serviceManager);
         this.appointmentManager = new AppointmentManager(appointmentManager);
@@ -77,7 +77,7 @@ public class ModelManager implements Model {
     }
 
     /**
-     * Initializes a ModelManager with the given addressBook and userPrefs.
+     * Initializes a ModelManager with the given clientManager and userPrefs.
      */
     public ModelManager() {
         this(new UserPrefs(), new ClientManager(), new ServiceManager(), new RevenueTracker(), new ExpenseTracker(),
@@ -109,25 +109,25 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return userPrefs.getAddressBookFilePath();
+    public Path getClientManagerFilePath() {
+        return userPrefs.getClientManagerFilePath();
     }
 
     @Override
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        userPrefs.setAddressBookFilePath(addressBookFilePath);
+    public void setClientManagerFilePath(Path clientManagerFilePath) {
+        requireNonNull(clientManagerFilePath);
+        userPrefs.setClientManagerFilePath(clientManagerFilePath);
     }
 
-    //=========== AddressBook ================================================================================
+    //=========== ClientManager ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyClientManager addressBook) {
-        this.clientManager.resetData(addressBook);
+    public void setClientManager(ReadOnlyClientManager clientManager) {
+        this.clientManager.resetData(clientManager);
     }
 
     @Override
-    public ReadOnlyClientManager getAddressBook() {
+    public ReadOnlyClientManager getClientManager() {
         return clientManager;
     }
 
@@ -193,7 +193,7 @@ public class ModelManager implements Model {
 
     /**
      * Returns an unmodifiable view of the list of {@code Expense} backed by the internal list of Expenses
-     * {@code versionedAddressBook}
+     * {@code versionedClientManager}
      */
     @Override
     public ObservableList<Expense> getFilteredExpenseList() {
@@ -215,7 +215,7 @@ public class ModelManager implements Model {
 
     /**
      * Returns an unmodifiable view of the list of {@code Client} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedClientManager}
      */
     @Override
     public ObservableList<Client> getFilteredClientList() {
@@ -261,7 +261,7 @@ public class ModelManager implements Model {
 
     /**
      * Returns an unmodifiable view of the list of {@code Client} backed by the internal list of
-     * {@code versionedAddressBook}
+     * {@code versionedClientManager}
      */
     @Override
     public ObservableList<Service> getFilteredServiceList() {

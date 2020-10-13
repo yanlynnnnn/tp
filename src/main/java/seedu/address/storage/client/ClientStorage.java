@@ -19,7 +19,7 @@ public interface ClientStorage {
     Path getClientManagerFilePath();
 
     /**
-     * Returns AddressBook data as a {@link ReadOnlyClientManager}.
+     * Returns ClientManager data as a {@link ReadOnlyClientManager}.
      *   Returns {@code Optional.empty()} if storage file is not found.
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException if there was any problem when reading from the storage.
@@ -33,14 +33,14 @@ public interface ClientStorage {
 
     /**
      * Saves the given {@link ReadOnlyClientManager} to the storage.
-     * @param addressBook cannot be null.
+     * @param clientManager cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveClientManager(ReadOnlyClientManager addressBook) throws IOException;
+    void saveClientManager(ReadOnlyClientManager clientManager) throws IOException;
 
     /**
      * @see #saveClientManager(ReadOnlyClientManager)
      */
-    void saveClientManager(ReadOnlyClientManager addressBook, Path filePath) throws IOException;
+    void saveClientManager(ReadOnlyClientManager clientManager, Path filePath) throws IOException;
 
 }

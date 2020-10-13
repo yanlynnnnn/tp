@@ -51,7 +51,7 @@ public class LogicManager implements Logic {
         commandResult = command.execute(model);
 
         try {
-            storage.saveClientManager(model.getAddressBook());
+            storage.saveClientManager(model.getClientManager());
             storage.saveServiceManager(model.getServiceManager());
             storage.saveRevenueTracker(model.getRevenueTracker());
             storage.saveExpenseTracker(model.getExpenseTracker());
@@ -64,8 +64,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyClientManager getAddressBook() {
-        return model.getAddressBook();
+    public ReadOnlyClientManager getClientManager() {
+        return model.getClientManager();
     }
 
     @Override
@@ -79,8 +79,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public Path getAddressBookFilePath() {
-        return model.getAddressBookFilePath();
+    public Path getClientManagerFilePath() {
+        return model.getClientManagerFilePath();
     }
 
     @Override

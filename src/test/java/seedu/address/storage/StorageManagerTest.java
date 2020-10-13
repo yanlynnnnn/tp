@@ -2,7 +2,7 @@ package seedu.address.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static seedu.address.testutil.TypicalClients.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalClients.getTypicalClientManager;
 
 import java.nio.file.Path;
 
@@ -33,14 +33,14 @@ public class StorageManagerTest {
 
     @BeforeEach
     public void setUp() {
-        JsonClientStorage addressBookStorage = new JsonClientStorage(getTempFilePath("ab"));
+        JsonClientStorage clientManagerStorage = new JsonClientStorage(getTempFilePath("ab"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(getTempFilePath("prefs"));
         ServiceStorage serviceStorage = new JsonServiceStorage(getTempFilePath("services"));
         RevenueStorage revenueStorage = new JsonRevenueStorage(getTempFilePath("revenues"));
         ExpenseStorage expenseStorage = new JsonExpenseStorage(getTempFilePath("expenses"));
         AppointmentStorage appointmentStorage = new JsonAppointmentStorage(getTempFilePath("appointments"));
 
-        storageManager = new StorageManager(userPrefsStorage, addressBookStorage, serviceStorage,
+        storageManager = new StorageManager(userPrefsStorage, clientManagerStorage, serviceStorage,
                 revenueStorage, expenseStorage, appointmentStorage);
     }
 
@@ -63,13 +63,13 @@ public class StorageManagerTest {
     }
 
     @Test
-    public void addressBookReadSave() throws Exception {
+    public void clientManagerReadSave() throws Exception {
         /*
          * Note: This is an integration test that verifies the StorageManager is properly wired to the
-         * {@link JsonAddressBookStorage} class.
-         * More extensive testing of UserPref saving/reading is done in {@link JsonAddressBookStorageTest} class.
+         * {@link JsonClientStorage} class.
+         * More extensive testing of UserPref saving/reading is done in {@link JsonClientStorageTest} class.
          */
-        ClientManager original = getTypicalAddressBook();
+        ClientManager original = getTypicalClientManager();
         storageManager.saveClientManager(original);
         ReadOnlyClientManager retrieved = storageManager.readClientManager().get();
         assertEquals(original, new ClientManager(retrieved));

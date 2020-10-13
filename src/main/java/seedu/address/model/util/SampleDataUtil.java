@@ -32,7 +32,7 @@ import seedu.address.model.util.attributes.Tag;
 import seedu.address.model.util.attributes.Title;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code Homerce} with sample data.
  */
 public class SampleDataUtil {
 

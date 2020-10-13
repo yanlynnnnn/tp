@@ -30,11 +30,11 @@ public interface Logic {
     CommandResult execute(String commandText) throws CommandException, ParseException;
 
     /**
-     * Returns the AddressBook.
+     * Returns the ClientManager.
      *
-     * @see seedu.address.model.Model#getAddressBook()
+     * @see seedu.address.model.Model#getClientManager()
      */
-    ReadOnlyClientManager getAddressBook();
+    ReadOnlyClientManager getClientManager();
 
     /**
      * Returns an unmodifiable view of the filtered list of clients
@@ -62,7 +62,7 @@ public interface Logic {
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getClientManagerFilePath();
 
     /**
      * Returns the user prefs' GUI settings.

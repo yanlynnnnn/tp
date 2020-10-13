@@ -2,7 +2,7 @@ package seedu.address.logic.commands.client;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalClients.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalClients.getTypicalClientManager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,7 +26,7 @@ public class AddClientCommandIntegrationTest {
 
     @BeforeEach
     public void setUp() {
-        model = new ModelManager(new UserPrefs(), getTypicalAddressBook(), new ServiceManager(),
+        model = new ModelManager(new UserPrefs(), getTypicalClientManager(), new ServiceManager(),
                 new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
     }
 
@@ -34,7 +34,7 @@ public class AddClientCommandIntegrationTest {
     public void execute_newClient_success() {
         Client validClient = new ClientBuilder().build();
 
-        Model expectedModel = new ModelManager(new UserPrefs(), model.getAddressBook(), new ServiceManager(),
+        Model expectedModel = new ModelManager(new UserPrefs(), model.getClientManager(), new ServiceManager(),
             new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
         expectedModel.addClient(validClient);
 
@@ -44,7 +44,7 @@ public class AddClientCommandIntegrationTest {
 
     @Test
     public void execute_duplicateClient_throwsCommandException() {
-        Client clientInList = model.getAddressBook().getClientList().get(0);
+        Client clientInList = model.getClientManager().getClientList().get(0);
         assertCommandFailure(new AddClientCommand(clientInList), model, AddClientCommand.MESSAGE_DUPLICATE_CLIENT);
     }
 

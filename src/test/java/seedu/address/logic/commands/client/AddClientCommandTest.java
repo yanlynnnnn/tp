@@ -113,12 +113,12 @@ public class AddClientCommandTest {
         }
 
         @Override
-        public Path getAddressBookFilePath() {
+        public Path getClientManagerFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBookFilePath(Path addressBookFilePath) {
+        public void setClientManagerFilePath(Path clientManagerFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -133,12 +133,12 @@ public class AddClientCommandTest {
         }
 
         @Override
-        public void setAddressBook(ReadOnlyClientManager newData) {
+        public void setClientManager(ReadOnlyClientManager newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyClientManager getAddressBook() {
+        public ReadOnlyClientManager getClientManager() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -369,7 +369,7 @@ public class AddClientCommandTest {
         }
 
         @Override
-        public ReadOnlyClientManager getAddressBook() {
+        public ReadOnlyClientManager getClientManager() {
             return new ClientManager();
         }
     }

@@ -33,6 +33,6 @@ public interface Storage extends ClientStorage, UserPrefsStorage, ServiceStorage
     Optional<ReadOnlyClientManager> readClientManager() throws DataConversionException, IOException;
 
     @Override
-    void saveClientManager(ReadOnlyClientManager addressBook) throws IOException;
+    void saveClientManager(ReadOnlyClientManager clientManager) throws IOException;
 
 }

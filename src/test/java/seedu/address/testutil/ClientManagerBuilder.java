@@ -4,26 +4,26 @@ import seedu.address.model.client.Client;
 import seedu.address.model.manager.ClientManager;
 
 /**
- * A utility class to help with building Addressbook objects.
+ * A utility class to help with building ClientManager objects.
  * Example usage: <br>
- *     {@code AddressBook ab = new AddressBookBuilder().withClient("John", "Doe").build();}
+ *     {@code ClientManager cm = new ClientManagerBuilder().withClient("John", "Doe").build();}
  */
-public class AddressBookBuilder {
+public class ClientManagerBuilder {
 
     private ClientManager clientManager;
 
-    public AddressBookBuilder() {
+    public ClientManagerBuilder() {
         clientManager = new ClientManager();
     }
 
-    public AddressBookBuilder(ClientManager clientManager) {
+    public ClientManagerBuilder(ClientManager clientManager) {
         this.clientManager = clientManager;
     }
 
     /**
-     * Adds a new {@code Client} to the {@code AddressBook} that we are building.
+     * Adds a new {@code Client} to the {@code ClientManager} that we are building.
      */
-    public AddressBookBuilder withClient(Client client) {
+    public ClientManagerBuilder withClient(Client client) {
         clientManager.addClient(client);
         return this;
     }

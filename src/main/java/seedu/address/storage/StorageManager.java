@@ -21,7 +21,7 @@ import seedu.address.storage.revenue.RevenueStorage;
 import seedu.address.storage.service.ServiceStorage;
 
 /**
- * Manages storage of AddressBook data in local storage.
+ * Manages storage of ClientManager data in local storage.
  */
 public class StorageManager implements Storage {
 
@@ -35,7 +35,7 @@ public class StorageManager implements Storage {
 
     /**
      * Creates a {@code StorageManager} with the given
-     * {@code AddressBookStorage}, {@code UserPrefStorage}, {@code ServiceStorage} and {@code RevenueStorage}.
+     * {@code ClientManagerStorage}, {@code UserPrefStorage}, {@code ServiceStorage} and {@code RevenueStorage}.
      */
     public StorageManager(UserPrefsStorage userPrefsStorage, ClientStorage clientStorage,
                           ServiceStorage serviceStorage, RevenueStorage revenueStorage,
@@ -67,7 +67,7 @@ public class StorageManager implements Storage {
     }
 
 
-    // ================ AddressBook methods ==============================
+    // ================ ClientManager methods ==============================
 
     @Override
     public Path getClientManagerFilePath() {
@@ -87,14 +87,14 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public void saveClientManager(ReadOnlyClientManager addressBook) throws IOException {
-        saveClientManager(addressBook, clientStorage.getClientManagerFilePath());
+    public void saveClientManager(ReadOnlyClientManager clientManager) throws IOException {
+        saveClientManager(clientManager, clientStorage.getClientManagerFilePath());
     }
 
     @Override
-    public void saveClientManager(ReadOnlyClientManager addressBook, Path filePath) throws IOException {
+    public void saveClientManager(ReadOnlyClientManager clientManager, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        clientStorage.saveClientManager(addressBook, filePath);
+        clientStorage.saveClientManager(clientManager, filePath);
     }
 
     // ================ ServiceManager methods ==============================
