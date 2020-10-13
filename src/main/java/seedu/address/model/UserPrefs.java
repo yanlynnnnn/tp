@@ -14,15 +14,19 @@ import seedu.address.commons.core.GuiSettings;
 public class UserPrefs implements ReadOnlyUserPrefs {
 
     private GuiSettings guiSettings = new GuiSettings();
-    private Path addressBookFilePath = Paths.get("data" , "addressbook.json");
+    private Path clientManagerFilePath = Paths.get("data", "clientManager.json");
 
-    private Path serviceStorageFilePath = Paths.get("data" , "services.json");
-    private Path expenseStorageFilePath = Paths.get("data" , "expenses.json");
+    private Path serviceStorageFilePath = Paths.get("data", "services.json");
+    private Path expenseStorageFilePath = Paths.get("data", "expenses.json");
+    private Path revenueStorageFilePath = Paths.get("data", "revenue.json");
+
+    private Path appointmentStorageFilePath = Paths.get("data", "appointments.json");
 
     /**
      * Creates a {@code UserPrefs} with default values.
      */
-    public UserPrefs() {}
+    public UserPrefs() {
+    }
 
     /**
      * Creates a {@code UserPrefs} with the prefs in {@code userPrefs}.
@@ -38,7 +42,9 @@ public class UserPrefs implements ReadOnlyUserPrefs {
     public void resetData(ReadOnlyUserPrefs newUserPrefs) {
         requireNonNull(newUserPrefs);
         setGuiSettings(newUserPrefs.getGuiSettings());
-        setAddressBookFilePath(newUserPrefs.getAddressBookFilePath());
+        setClientManagerFilePath(newUserPrefs.getClientManagerFilePath());
+        setServiceStorageFilePath(newUserPrefs.getServiceStorageFilePath());
+        setAppointmentStorageFilePath(newUserPrefs.getAppointmentStorageFilePath());
     }
 
     public GuiSettings getGuiSettings() {
@@ -50,13 +56,27 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         this.guiSettings = guiSettings;
     }
 
-    public Path getAddressBookFilePath() {
-        return addressBookFilePath;
+    public Path getClientManagerFilePath() {
+        return clientManagerFilePath;
     }
 
-    public void setAddressBookFilePath(Path addressBookFilePath) {
-        requireNonNull(addressBookFilePath);
-        this.addressBookFilePath = addressBookFilePath;
+    public void setClientManagerFilePath(Path clientManagerFilePath) {
+        requireNonNull(clientManagerFilePath);
+        this.clientManagerFilePath = clientManagerFilePath;
+    }
+
+    public void setServiceStorageFilePath(Path serviceStorageFilePath) {
+        requireNonNull(serviceStorageFilePath);
+        this.serviceStorageFilePath = serviceStorageFilePath;
+    }
+
+    public Path getAppointmentStorageFilePath() {
+        return appointmentStorageFilePath;
+    }
+
+    public void setAppointmentStorageFilePath(Path appointmentStorageFilePath) {
+        requireNonNull(appointmentStorageFilePath);
+        this.appointmentStorageFilePath = appointmentStorageFilePath;
     }
 
     @Override
@@ -71,11 +91,17 @@ public class UserPrefs implements ReadOnlyUserPrefs {
         UserPrefs o = (UserPrefs) other;
 
         return guiSettings.equals(o.guiSettings)
-                && addressBookFilePath.equals(o.addressBookFilePath);
+                && clientManagerFilePath.equals(o.clientManagerFilePath)
+                && serviceStorageFilePath.equals(o.serviceStorageFilePath)
+                && appointmentStorageFilePath.equals(o.appointmentStorageFilePath);
     }
 
     public Path getServiceStorageFilePath() {
         return serviceStorageFilePath;
+    }
+
+    public Path getRevenueStorageFilePath() {
+        return revenueStorageFilePath;
     }
 
     public Path getExpenseStorageFilePath() {
@@ -84,14 +110,14 @@ public class UserPrefs implements ReadOnlyUserPrefs {
 
     @Override
     public int hashCode() {
-        return Objects.hash(guiSettings, addressBookFilePath);
+        return Objects.hash(guiSettings, clientManagerFilePath);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("Gui Settings : " + guiSettings);
-        sb.append("\nLocal data file location : " + addressBookFilePath);
+        sb.append("\nLocal data file location : " + clientManagerFilePath);
         return sb.toString();
     }
 

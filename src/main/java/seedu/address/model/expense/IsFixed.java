@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.address.commons.util.AppUtil;
 
 public class IsFixed {
-    public static final String MESSAGE_CONSTRAINTS = "IsFixed must be in 't' or 'f' format.";
+    public static final String MESSAGE_CONSTRAINTS = "IsFixed must be in 'y' or 'n' format.";
 
     public final boolean value;
 
@@ -16,15 +16,15 @@ public class IsFixed {
     public IsFixed(String isFixed) {
         requireNonNull(isFixed);
         AppUtil.checkArgument(isValidIsFixed(isFixed), MESSAGE_CONSTRAINTS);
-        value = (isFixed.equals("t")) ? true : false;
+        value = (isFixed.equals("y")) ? true : false;
     }
 
     public static boolean isValidIsFixed(String test) {
-        return (test.equals("t") || test.equals("f"));
+        return (test.equals("y") || test.equals("n"));
     }
 
     @Override
     public String toString() {
-        return value ? "True" : "False";
+        return value ? "Yes" : "No";
     }
 }

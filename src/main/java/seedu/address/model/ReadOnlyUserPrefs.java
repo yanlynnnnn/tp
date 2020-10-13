@@ -11,6 +11,11 @@ public interface ReadOnlyUserPrefs {
 
     GuiSettings getGuiSettings();
 
-    Path getAddressBookFilePath();
+    Path getClientManagerFilePath();
 
+    Path getAppointmentStorageFilePath();
+
+    Path getServiceStorageFilePath();
+
+    Path getRevenueStorageFilePath();
 }

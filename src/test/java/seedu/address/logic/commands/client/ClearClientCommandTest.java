@@ -1,15 +1,17 @@
 package seedu.address.logic.commands.client;
 
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.address.testutil.TypicalClients.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalClients.getTypicalClientManager;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.manager.AppointmentManager;
+import seedu.address.model.manager.ClientManager;
 import seedu.address.model.manager.ExpenseTracker;
+import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
 
 public class ClearClientCommandTest {
@@ -24,11 +26,11 @@ public class ClearClientCommandTest {
 
     @Test
     public void execute_nonEmptyAddressBook_success() {
-        Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new ServiceManager(),
-                new ExpenseTracker());
-        Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs(), new ServiceManager(),
-                new ExpenseTracker());
-        expectedModel.setAddressBook(new AddressBook());
+        Model model = new ModelManager(new UserPrefs(), getTypicalClientManager(), new ServiceManager(),
+            new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
+        Model expectedModel = new ModelManager(new UserPrefs(), getTypicalClientManager(), new ServiceManager(),
+            new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
+        expectedModel.setClientManager(new ClientManager());
 
         assertCommandSuccess(new ClearClientCommand(), model, ClearClientCommand.MESSAGE_SUCCESS, expectedModel);
     }

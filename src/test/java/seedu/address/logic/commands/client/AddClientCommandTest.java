@@ -18,15 +18,21 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
+import seedu.address.model.appointment.Appointment;
 import seedu.address.model.client.Client;
+import seedu.address.model.client.Phone;
 import seedu.address.model.expense.Expense;
+import seedu.address.model.manager.ClientManager;
+import seedu.address.model.manager.ReadOnlyAppointmentManager;
+import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
+import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
+import seedu.address.model.revenue.Revenue;
 import seedu.address.model.service.Service;
+import seedu.address.model.service.ServiceCode;
 import seedu.address.testutil.ClientBuilder;
 
 public class AddClientCommandTest {
@@ -85,6 +91,7 @@ public class AddClientCommandTest {
      * A default model stub that have all of the methods failing.
      */
     private class ModelStub implements Model {
+
         @Override
         public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
             throw new AssertionError("This method should not be called.");
@@ -106,12 +113,12 @@ public class AddClientCommandTest {
         }
 
         @Override
-        public Path getAddressBookFilePath() {
+        public Path getClientManagerFilePath() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void setAddressBookFilePath(Path addressBookFilePath) {
+        public void setClientManagerFilePath(Path clientManagerFilePath) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -126,17 +133,22 @@ public class AddClientCommandTest {
         }
 
         @Override
-        public void setAddressBook(ReadOnlyAddressBook newData) {
+        public void setClientManager(ReadOnlyClientManager newData) {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
+        public ReadOnlyClientManager getClientManager() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
         public boolean hasClient(Client client) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasClient(Phone phone) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -149,6 +161,18 @@ public class AddClientCommandTest {
         public void setClient(Client target, Client editedClient) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public ObservableList<Client> getFilteredClientList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredClientList(Predicate<Client> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        // ============================== Expense Tracker ====================================
 
         @Override
         public void deleteExpense(Expense target) {
@@ -166,19 +190,10 @@ public class AddClientCommandTest {
         }
 
         @Override
-        public ObservableList<Client> getFilteredClientList() {
-            throw new AssertionError("This method should not be called.");
-        }
-
-        @Override
         public ObservableList<Expense> getFilteredExpenseList() {
             throw new AssertionError("This method should not be called.");
         }
 
-        @Override
-        public void updateFilteredClientList(Predicate<Client> predicate) {
-            throw new AssertionError("This method should not be called.");
-        }
 
         @Override
         public void updateFilteredExpenseList(Predicate<Expense> predicate) {
@@ -187,6 +202,18 @@ public class AddClientCommandTest {
 
         @Override
         public ReadOnlyExpenseTracker getExpenseTracker() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setExpenseTracker(ReadOnlyExpenseTracker expenseTracker) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        // ============================== Service Management ====================================
+
+        @Override
+        public void addService(Service toAdd) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -210,8 +237,35 @@ public class AddClientCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
+        // ============================== Revenue Tracker ====================================
+
         @Override
-        public void addService(Service toAdd) {
+        public void addRevenue(Revenue toAdd) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteRevenue(Revenue target) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setRevenues(List<Revenue> revenues) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredRevenueList(Predicate<Revenue> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Revenue> getFilteredRevenueList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyRevenueTracker getRevenueTracker() {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -224,12 +278,68 @@ public class AddClientCommandTest {
         public void setService(Service target, Service editedService) {
             throw new AssertionError("This method should not be called.");
         }
+
+        @Override
+        public Client getClientByPhone(Phone phone) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasService(ServiceCode code) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Service getServiceByServiceCode(ServiceCode serviceCode) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void addAppointment(Appointment toAdd) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void deleteAppointment(Appointment target) {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
+        public void updateFilteredAppointmentList(Predicate<Appointment> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Appointment> getFilteredAppointmentList() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyAppointmentManager getAppointmentManager() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAppointment(Appointment target, Appointment editedAppointment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAppointment(List<Appointment> appointment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public boolean hasAppointment(Appointment appointment) {
+            throw new AssertionError("This method should not be called.");
+        }
     }
 
     /**
      * A Model stub that contains a single client.
      */
     private class ModelStubWithClient extends ModelStub {
+
         private final Client client;
 
         ModelStubWithClient(Client client) {
@@ -248,6 +358,7 @@ public class AddClientCommandTest {
      * A Model stub that always accept the client being added.
      */
     private class ModelStubAcceptingClientAdded extends ModelStub {
+
         final ArrayList<Client> clientsAdded = new ArrayList<>();
 
         @Override
@@ -263,8 +374,8 @@ public class AddClientCommandTest {
         }
 
         @Override
-        public ReadOnlyAddressBook getAddressBook() {
-            return new AddressBook();
+        public ReadOnlyClientManager getClientManager() {
+            return new ClientManager();
         }
     }
 

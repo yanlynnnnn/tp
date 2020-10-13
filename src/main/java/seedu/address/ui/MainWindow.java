@@ -2,12 +2,8 @@ package seedu.address.ui;
 
 import java.util.logging.Logger;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.TextInputControl;
-import javafx.scene.input.KeyCombination;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import seedu.address.commons.core.GuiSettings;
@@ -16,7 +12,11 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.ui.servicetab.ServiceListPanel;
+import seedu.address.ui.appointmentpanel.AppointmentListPanel;
+import seedu.address.ui.clientpanel.ClientListPanel;
+import seedu.address.ui.expensepanel.ExpenseListPanel;
+import seedu.address.ui.revenuepanel.RevenueListPanel;
+import seedu.address.ui.servicepanel.ServiceListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -32,17 +32,15 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private ClientListPanel clientListPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
-    // Tabs panels for each service component
+    // Panels for each component
     private ServiceListPanel serviceListPanel;
-
-
-
-    @FXML
-    private StackPane serviceListPanelPlaceholder;
+    private ClientListPanel clientListPanel;
+    private AppointmentListPanel appointmentListPanel;
+    private RevenueListPanel revenueListPanel;
+    private ExpenseListPanel expenseListPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -51,13 +49,16 @@ public class MainWindow extends UiPart<Stage> {
     private MenuItem helpMenuItem;
 
     @FXML
-    private StackPane clientListPanelPlaceholder;
-
-    @FXML
     private StackPane resultDisplayPlaceholder;
 
     @FXML
     private StackPane statusbarPlaceholder;
+
+    @FXML
+    private StackPane sideTabsBarPlaceholder;
+
+    @FXML
+    private StackPane tabPanelPlaceholder;
 
     /**
      * Creates a {@code MainWindow} with the given {@code Stage} and {@code Logic}.
@@ -72,7 +73,7 @@ public class MainWindow extends UiPart<Stage> {
         // Configure the UI
         setWindowDefaultSize(logic.getGuiSettings());
 
-        setAccelerators();
+        //setAccelerators();
 
         helpWindow = new HelpWindow();
     }
@@ -81,58 +82,58 @@ public class MainWindow extends UiPart<Stage> {
         return primaryStage;
     }
 
-    private void setAccelerators() {
-        setAccelerator(helpMenuItem, KeyCombination.valueOf("F1"));
-    }
-
-    /**
-     * Sets the accelerator of a MenuItem.
-     * @param keyCombination the KeyCombination value of the accelerator
-     */
-    private void setAccelerator(MenuItem menuItem, KeyCombination keyCombination) {
-        menuItem.setAccelerator(keyCombination);
-
-        /*
-         * TODO: the code below can be removed once the bug reported here
-         * https://bugs.openjdk.java.net/browse/JDK-8131666
-         * is fixed in later version of SDK.
-         *
-         * According to the bug report, TextInputControl (TextField, TextArea) will
-         * consume function-key events. Because CommandBox contains a TextField, and
-         * ResultDisplay contains a TextArea, thus some accelerators (e.g F1) will
-         * not work when the focus is in them because the key event is consumed by
-         * the TextInputControl(s).
-         *
-         * For now, we add following event filter to capture such key events and open
-         * help window purposely so to support accelerators even when focus is
-         * in CommandBox or ResultDisplay.
-         */
-        getRoot().addEventFilter(KeyEvent.KEY_PRESSED, event -> {
-            if (event.getTarget() instanceof TextInputControl && keyCombination.match(event)) {
-                menuItem.getOnAction().handle(new ActionEvent());
-                event.consume();
-            }
-        });
-    }
-
     /**
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        // serviceListPanel = new ServiceListPanel(logic.getFilteredServiceList());
-        // serviceListPanelPlaceholder.getChildren().add(serviceListPanel.getRoot());
+        serviceListPanel = new ServiceListPanel(logic.getFilteredServiceList());
 
         clientListPanel = new ClientListPanel(logic.getFilteredClientList());
-        clientListPanelPlaceholder.getChildren().add(clientListPanel.getRoot());
+
+        revenueListPanel = new RevenueListPanel(logic.getFilteredRevenueList());
+
+        expenseListPanel = new ExpenseListPanel(logic.getFilteredExpenseList());
+
+        appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
+
+        // Default view for user on app startup
+        switchTab(ClientListPanel.TAB_NAME);
+        sideTabsBarPlaceholder.getChildren().add(new SideTabsBar(this::switchTab).getRoot());
 
         resultDisplay = new ResultDisplay();
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        StatusBarFooter statusBarFooter = new StatusBarFooter(logic.getAddressBookFilePath());
-        statusbarPlaceholder.getChildren().add(statusBarFooter.getRoot());
-
         CommandBox commandBox = new CommandBox(this::executeCommand);
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+    }
+
+    /**
+     * Switches tab to the specified tab name.
+     */
+    private void switchTab(String tabName) {
+        tabPanelPlaceholder.getChildren().clear();
+        statusbarPlaceholder.getChildren().clear();
+        statusbarPlaceholder.getChildren().add(new StatusBarFooter(tabName).getRoot());
+
+        switch (tabName) {
+        case ClientListPanel.TAB_NAME:
+            tabPanelPlaceholder.getChildren().add(clientListPanel.getRoot());
+            break;
+        case ServiceListPanel.TAB_NAME:
+            tabPanelPlaceholder.getChildren().add(serviceListPanel.getRoot());
+            break;
+        case AppointmentListPanel.TAB_NAME:
+            tabPanelPlaceholder.getChildren().add(appointmentListPanel.getRoot());
+            break;
+        case RevenueListPanel.TAB_NAME:
+            tabPanelPlaceholder.getChildren().add(revenueListPanel.getRoot());
+            break;
+        case ExpenseListPanel.TAB_NAME:
+            tabPanelPlaceholder.getChildren().add(expenseListPanel.getRoot());
+            break;
+        default:
+            throw new AssertionError("No such tab name: " + tabName);
+        }
     }
 
     /**
@@ -175,9 +176,6 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-    public ClientListPanel getClientListPanel() {
-        return clientListPanel;
-    }
 
     /**
      * Executes the command and returns the result.
