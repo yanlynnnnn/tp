@@ -39,9 +39,9 @@ public class RevenueCard extends UiPart<Region> {
         super(FXML);
         this.revenue = revenue;
         id.setText(displayedIndex + ". ");
-        title.setText(revenue.getService().getTitle().value);
-        price.setText(String.valueOf(revenue.getValue().value));
-        date.setText(String.valueOf(revenue.getDate().toString()));
+        title.setText("Description: " + revenue.getService().getTitle().value);
+        price.setText("Amount: $" + revenue.getValue().value);
+        date.setText(revenue.getDate().toUiString());
     }
 
     @Override

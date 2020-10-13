@@ -55,4 +55,8 @@ public class TimeOfDay {
     public String toString() {
         return value.format(FORMAT_INPUT);
     }
+
+    public String toUiString() {
+        return value.format(FORMAT_OUTPUT);
+    }
 }
