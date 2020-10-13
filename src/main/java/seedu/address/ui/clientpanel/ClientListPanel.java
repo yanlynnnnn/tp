@@ -1,4 +1,4 @@
-package seedu.address.ui.clientspanel;
+package seedu.address.ui.clientpanel;
 
 import java.util.logging.Logger;
 
@@ -6,16 +6,17 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.client.Client;
-import seedu.address.ui.UiPart;
+import seedu.address.ui.Panel;
 
 /**
  * Panel containing the list of clients.
  */
-public class ClientListPanel extends UiPart<Region> {
-    private static final String FXML = "clientspanel/ClientListPanel.fxml";
+public class ClientListPanel extends Panel {
+    public static final String TAB_NAME = "Client";
+
+    private static final String FXML = "clientpanel/ClientListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ClientListPanel.class);
 
     @FXML

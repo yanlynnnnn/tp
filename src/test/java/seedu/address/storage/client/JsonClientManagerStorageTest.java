@@ -83,7 +83,6 @@ public class JsonClientManagerStorageTest {
         jsonAddressBookStorage.saveClientManager(original); // file path not specified
         readBack = jsonAddressBookStorage.readClientManager().get(); // file path not specified
         assertEquals(original, new ClientManager(readBack));
-
     }
 
     @Test

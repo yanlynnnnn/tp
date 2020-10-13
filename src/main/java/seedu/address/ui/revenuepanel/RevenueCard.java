@@ -9,7 +9,7 @@ import seedu.address.ui.UiPart;
 
 public class RevenueCard extends UiPart<Region> {
 
-    private static final String FXML = "RevenueListCard.fxml";
+    private static final String FXML = "revenuepanel/RevenueListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -24,7 +24,7 @@ public class RevenueCard extends UiPart<Region> {
     @FXML
     private HBox cardPane;
     @FXML
-    private Label serviceTitle;
+    private Label title;
     @FXML
     private Label id;
     @FXML
@@ -39,7 +39,7 @@ public class RevenueCard extends UiPart<Region> {
         super(FXML);
         this.revenue = revenue;
         id.setText(displayedIndex + ". ");
-        serviceTitle.setText(revenue.getService().getTitle().value);
+        title.setText(revenue.getService().getTitle().value);
         price.setText(String.valueOf(revenue.getValue().value));
         date.setText(String.valueOf(revenue.getDate().toString()));
     }

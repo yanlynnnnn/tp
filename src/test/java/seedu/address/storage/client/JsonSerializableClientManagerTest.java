@@ -33,16 +33,15 @@ public class JsonSerializableClientManagerTest {
     @Test
     public void toModelType_invalidClientFile_throwsIllegalValueException() throws Exception {
         JsonSerializableClientManager dataFromFile = JsonUtil.readJsonFile(INVALID_CLIENT_FILE,
-                JsonSerializableClientManager.class).get();
+            JsonSerializableClientManager.class).get();
         assertThrows(IllegalValueException.class, dataFromFile::toModelType);
     }
 
     @Test
     public void toModelType_duplicateClients_throwsIllegalValueException() throws Exception {
         JsonSerializableClientManager dataFromFile = JsonUtil.readJsonFile(DUPLICATE_CLIENT_FILE,
-                JsonSerializableClientManager.class).get();
+            JsonSerializableClientManager.class).get();
         assertThrows(IllegalValueException.class, JsonSerializableClientManager.MESSAGE_DUPLICATE_CLIENT,
-                dataFromFile::toModelType);
+            dataFromFile::toModelType);
     }
-
 }

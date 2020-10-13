@@ -25,7 +25,7 @@ title: Developer Guide
 ## 1. **Introduction**
 
 **Homerce** is a desktop business management application meant for home-based beauty salon owners who want to consolidate all
-the information related to their business, such as upcoming appointments, their list of clients, as well as profits recorded. 
+the information related to their business, such as upcoming appointments, their list of clients, as well as profits recorded.
 It focuses on the Command Line Interface (CLI) while providing users with a simple and clean Graphical User Interface (GUI).
 Thus, the main interaction with **Homerce**. will be done through commands.
 
@@ -36,7 +36,7 @@ The features of Homerce include:
 * Recording of business-related expenses.
 * Calculation of business profit.
 
-The purpose of this Developer Guide is to help you understand the design and implementation of **Homerce**, 
+The purpose of this Developer Guide is to help you understand the design and implementation of **Homerce**,
 so that you can get started on your contributions to **Homerce**.
 
 ## 2. **Setting up, getting started**
@@ -322,7 +322,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Services Management
 
-#### UC001: Add a Service 
+#### UC001: Add a Service
 Add a service provided by the business into Homerce.
 
 **System: Homerce**
@@ -335,15 +335,15 @@ Add a service provided by the business into Homerce.
 
 **MSS**
 1. User adds a service by providing details.
-1. Homerce adds the service to the service list.  
+1. Homerce adds the service to the service list.
 1. Homerce displays a successful message.
 Use case ends.
 
-Extensions:  
-* 1a. Incomplete details provided.  
-  * 1a1. Homerce displays an error message.  
+Extensions:
+* 1a. Incomplete details provided.
+  * 1a1. Homerce displays an error message.
   Use case resumes at step 1.
-        
+
 #### UC002: Edit a Service
 Edit the details of an existing service.
 
@@ -365,13 +365,13 @@ Use case ends.
 
 Extensions:
 * 3a. Invalid index provided.
-  * 3a1. Homerce displays an error message.  
+  * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
 
-* 3b. Incomplete details provided.  
-  * 3b1. Homerce displays an error message.  
+* 3b. Incomplete details provided.
+  * 3b1. Homerce displays an error message.
   Use case resumes at step 1.
-        
+
 #### UC003: Delete a Service
 Delete the selected service from the service list.
 
@@ -387,13 +387,13 @@ Delete the selected service from the service list.
 1. User requests to list all services.
 1. Homerce shows a list of services.
 1. User requests to delete a specific service.
-1. Homerce deletes a service. 
+1. Homerce deletes a service.
 1. Homerce shows the updated list view.
 Use case ends.
 
 **Extensions**
 * 3a. Invalid index provided.
-  * 3a1. Homerce displays an error message.  
+  * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
 
 #### UC004: Find a Service
@@ -417,8 +417,8 @@ Use case ends.
 * 2a. No service matches the search value.
   * 2a1. Homerce displays an empty list.
   Use case resumes at step 1.
-  
-#### UC005: List Services 
+
+#### UC005: List Services
 List all the services in the service list.
 
 **System: Homerce**
@@ -426,9 +426,9 @@ List all the services in the service list.
 **Actor: User**
 
 **Preconditions: Service exists in service list.**
- 
+
 **Guarantees: All services in the service list will be displayed.**
- 
+
 **MSS**
 1. User requests to list all services.
 1. Homerce displays all services in the service list.
@@ -438,7 +438,7 @@ Use case ends.
 * 1a. No service in service list.
   * 1a1. Homerce displays an empty list.
   Use case resumes at step 1.
-  
+
 #### UC005: Clear Services
 Clear all services in the service list.
 
@@ -465,7 +465,7 @@ Use case ends.
 
 **Preconditions: A client must exist**
 
-**Guarantees: A new client will added to the client list** 
+**Guarantees: A new client will added to the client list**
 
 **MSS**
 1.  User requests to add a new client into the client list.
@@ -598,13 +598,13 @@ Use case ends.
       accommodate the user's data stored in the system. It should also have sufficient RAM
       and CPU power to run the JVM smoothly.
 * Performance Requirements:
-    * Homerce should be able to start up and load existing the user's stored data sufficiently fast (< 10s). 
-    * Context switching / menu navigation through the use of either text commands or button clicks should be sufficiently fast (< 10s). 
+    * Homerce should be able to start up and load existing the user's stored data sufficiently fast (< 10s).
+    * Context switching / menu navigation through the use of either text commands or button clicks should be sufficiently fast (< 10s).
 * Usability:
     * Homerce should be user-friendly for any client who can use a computer and does not require prior technical knowledge.
     * The user interface of Homerce should look intuitive and simple to navigate. It should not look cluttered with too many panels.
 * Reliability:
-    * Homerce should not crash in the event of incorrect user input - this should be handled safely with exceptions.  
+    * Homerce should not crash in the event of incorrect user input - this should be handled safely with exceptions.
 * Scalability:
     * Homerce should be able to handle thousands of appointments, clients, expenses and all other recorded entries by a user.
      No expansion of hardware capabilities or software modifications should be required.

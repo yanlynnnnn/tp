@@ -1,4 +1,4 @@
-package seedu.address.ui.appointmenttab;
+package seedu.address.ui.appointmentpanel;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -12,7 +12,7 @@ import seedu.address.ui.UiPart;
  */
 public class AppointmentCard extends UiPart<Region> {
     //TODO Fix issue with fxml rendering.
-    private static final String FXML = "AppointmentListCard.fxml";
+    private static final String FXML = "appointmentpanel/AppointmentListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
