@@ -48,12 +48,12 @@ public class AppointmentCard extends UiPart<Region> {
         super(FXML);
         this.appointment = appointment;
         id.setText(displayedIndex + ". ");
-        clientName.setText(appointment.getClient().getName().fullName);
-        clientPhone.setText(appointment.getClient().getPhone().value);
-        date.setText(String.valueOf(appointment.getAppointmentDate().toString()));
-        timeOfDay.setText(String.valueOf(appointment.getAppointmentTime().toString()));
-        service.setText(String.valueOf(appointment.getService().getTitle().value));
-        isDone.setText(String.valueOf(appointment.getStatus().toString()));
+        clientName.setText("Name: " + appointment.getClient().getName().fullName);
+        clientPhone.setText("Phone: " + appointment.getClient().getPhone().value);
+        date.setText(appointment.getAppointmentDate().toUiString());
+        timeOfDay.setText("Time: " + appointment.getAppointmentTime().toUiString());
+        service.setText("Service: " + appointment.getService().getTitle().value);
+        isDone.setText("Done? " + appointment.getStatus().toString());
     }
 
     @Override
