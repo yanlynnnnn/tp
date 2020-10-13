@@ -1,7 +1,10 @@
 package seedu.address.logic.commands.expense;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_ISFIXED;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.function.Predicate;
 
@@ -22,7 +25,10 @@ public class FindExpenseCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all expenses by either their "
             + "description, date, is fixed, or tag, and displays them as a list with index numbers.\n"
             + "Parameters: "
-            + PREFIX_DESCRIPTION + "DESCRIPTION "
+            + "[" + PREFIX_DESCRIPTION + "DESCRIPTION] "
+            + "[" + PREFIX_DATE + "DATE] "
+            + "[" + PREFIX_ISFIXED + "ISFIXED] "
+            + "[" + PREFIX_TAG + "TAG] "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DESCRIPTION + "Conditioner ";
 

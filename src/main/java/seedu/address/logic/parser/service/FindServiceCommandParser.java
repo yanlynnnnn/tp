@@ -35,7 +35,7 @@ public class FindServiceCommandParser implements Parser<FindServiceCommand> {
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(args, PREFIX_SERVICE_TITLE, PREFIX_SERVICE_SERVICE_CODE);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_SERVICE_TITLE, PREFIX_SERVICE_SERVICE_CODE)
+        if (!anyPrefixesPresent(argMultimap, PREFIX_SERVICE_TITLE, PREFIX_SERVICE_SERVICE_CODE)
             || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindServiceCommand.MESSAGE_USAGE));
         }
@@ -62,7 +62,7 @@ public class FindServiceCommandParser implements Parser<FindServiceCommand> {
      * * Returns true if none of the prefixes contains empty {@code Optional} values
      * {@code ArgumentMultimap}.
      */
-    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+    private static boolean anyPrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).anyMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 

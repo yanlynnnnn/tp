@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.TimeOfDay;
 import seedu.address.model.client.Client;
@@ -15,8 +13,10 @@ import seedu.address.model.client.Phone;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.expense.IsFixed;
 import seedu.address.model.manager.AppointmentManager;
+import seedu.address.model.manager.ClientManager;
 import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.ReadOnlyAppointmentManager;
+import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
@@ -32,7 +32,7 @@ import seedu.address.model.util.attributes.Tag;
 import seedu.address.model.util.attributes.Title;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code Homerce} with sample data.
  */
 public class SampleDataUtil {
 
@@ -65,16 +65,16 @@ public class SampleDataUtil {
 
     public static Expense[] getSampleExpenses() {
         return new Expense[]{
-            new Expense(new Description("Conditioner"), new IsFixed("f"), new Amount(15.0),
-                new Date("10-10-2020"), new Tag("HairSupplies")),
-            new Expense(new Description("Lash Tint"), new IsFixed("f"), new Amount(20.0),
-                new Date("10-12-2020"), new Tag("LashSupplies")),
-            new Expense(new Description("Nail Polish"), new IsFixed("f"), new Amount(10.0),
-                new Date("09-12-2020"), new Tag("NailSupplies")),
-            new Expense(new Description("Chair"), new IsFixed("t"), new Amount(25.0),
-                new Date("10-10-2020"), new Tag("Equipment")),
-            new Expense(new Description("Lash Extension Glue"), new IsFixed("f"), new Amount(45.0),
-                new Date("01-12-2020"), new Tag("LashSupplies")),
+            new Expense(new Description("Conditioner"), new IsFixed("n"), new Amount(15.0),
+                    new Date("10-10-2020"), new Tag("HairSupplies")),
+            new Expense(new Description("Lash Tint"), new IsFixed("n"), new Amount(20.0),
+                    new Date("10-12-2020"), new Tag("LashSupplies")),
+            new Expense(new Description("Nail Polish"), new IsFixed("n"), new Amount(10.0),
+                    new Date("09-12-2020"), new Tag("NailSupplies")),
+            new Expense(new Description("Chair"), new IsFixed("y"), new Amount(25.0),
+                    new Date("10-10-2020"), new Tag("Equipment")),
+            new Expense(new Description("Lash Extension Glue"), new IsFixed("n"), new Amount(45.0),
+                    new Date("01-12-2020"), new Tag("LashSupplies")),
         };
     }
 
@@ -140,8 +140,8 @@ public class SampleDataUtil {
         return sampleRevenueTracker;
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
+    public static ReadOnlyClientManager getSampleClientManager() {
+        ClientManager sampleAb = new ClientManager();
         for (Client sampleClient : getSampleClients()) {
             sampleAb.addClient(sampleClient);
         }
