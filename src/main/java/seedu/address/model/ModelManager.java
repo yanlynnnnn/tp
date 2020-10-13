@@ -206,6 +206,15 @@ public class ModelManager implements Model {
         filteredExpenses.setPredicate(predicate);
     }
 
+    /**
+     * Replaces serviceManager data with the data in {@code serviceManager}.
+     */
+    @Override
+    public void setExpenseTracker(ReadOnlyExpenseTracker expenseTracker) {
+        requireNonNull(expenseTracker);
+        this.expenseTracker.resetData(expenseTracker);
+    }
+
     @Override
     public ReadOnlyExpenseTracker getExpenseTracker() {
         return this.expenseTracker;
