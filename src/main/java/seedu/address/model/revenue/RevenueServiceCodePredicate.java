@@ -4,11 +4,11 @@ import java.util.function.Predicate;
 
 import seedu.address.model.service.ServiceCode;
 
-public class ServiceCodeRevenuePredicate implements Predicate<Revenue> {
+public class RevenueServiceCodePredicate implements Predicate<Revenue> {
 
     private final ServiceCode serviceCode;
 
-    public ServiceCodeRevenuePredicate(ServiceCode serviceCode) {
+    public RevenueServiceCodePredicate(ServiceCode serviceCode) {
         this.serviceCode = serviceCode;
     }
 
@@ -20,7 +20,7 @@ public class ServiceCodeRevenuePredicate implements Predicate<Revenue> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof ServiceCodeRevenuePredicate // instanceof handles nulls
-            && serviceCode.equals(((ServiceCodeRevenuePredicate) other).serviceCode)); // state check
+            || (other instanceof RevenueServiceCodePredicate // instanceof handles nulls
+            && serviceCode.equals(((RevenueServiceCodePredicate) other).serviceCode)); // state check
     }
 }

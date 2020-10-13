@@ -1,12 +1,16 @@
 package seedu.address.logic.commands.client;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
+
+import java.util.function.Predicate;
 
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
-import seedu.address.model.client.NameContainsKeywordsPredicate;
+import seedu.address.model.client.Client;
 
 /**
  * Finds and lists all clients in address book whose name contains any of the argument keywords.
@@ -16,14 +20,17 @@ public class FindClientCommand extends Command {
 
     public static final String COMMAND_WORD = "findcli";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all clients whose names contain any of "
-            + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all clients by either their name or phone "
+         + "(case-sensitive) and displays them as a list with index numbers.\n"
+             + "Parameters: "
+             + PREFIX_NAME + "NAME or "
+        + PREFIX_PHONE + "PHONE "
+        + "Example: " + COMMAND_WORD + " "
+        + PREFIX_NAME + "John";
 
-    private final NameContainsKeywordsPredicate predicate;
+    private final Predicate<Client> predicate;
 
-    public FindClientCommand(NameContainsKeywordsPredicate predicate) {
+    public FindClientCommand(Predicate<Client> predicate) {
         this.predicate = predicate;
     }
 

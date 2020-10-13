@@ -7,10 +7,10 @@ import seedu.address.model.util.attributes.Description;
 /**
  * Tests that a {@code Expense}'s {@code Description} matches the given description.
  */
-public class DescriptionPredicate implements Predicate<Expense> {
+public class ExpenseDescriptionPredicate implements Predicate<Expense> {
     private final Description description;
 
-    public DescriptionPredicate(Description description) {
+    public ExpenseDescriptionPredicate(Description description) {
         this.description = description;
     }
 
@@ -22,7 +22,7 @@ public class DescriptionPredicate implements Predicate<Expense> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof DescriptionPredicate // instanceof handles nulls
-                && description.equals(((DescriptionPredicate) other).description)); // state check
+                || (other instanceof ExpenseDescriptionPredicate // instanceof handles nulls
+                && description.equals(((ExpenseDescriptionPredicate) other).description)); // state check
     }
 }

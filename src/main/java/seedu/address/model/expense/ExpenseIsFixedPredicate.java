@@ -5,10 +5,10 @@ import java.util.function.Predicate;
 /**
  * Tests that a {@code Expense}'s {@code IsFixed} matches the given isFixed.
  */
-public class IsFixedPredicate implements Predicate<Expense> {
+public class ExpenseIsFixedPredicate implements Predicate<Expense> {
     private final IsFixed isFixed;
 
-    public IsFixedPredicate(IsFixed isFixed) {
+    public ExpenseIsFixedPredicate(IsFixed isFixed) {
         this.isFixed = isFixed;
     }
 
@@ -20,7 +20,7 @@ public class IsFixedPredicate implements Predicate<Expense> {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof IsFixedPredicate // instanceof handles nulls
-                && isFixed.equals(((IsFixedPredicate) other).isFixed)); // state check
+                || (other instanceof ExpenseIsFixedPredicate // instanceof handles nulls
+                && isFixed.equals(((ExpenseIsFixedPredicate) other).isFixed)); // state check
     }
 }

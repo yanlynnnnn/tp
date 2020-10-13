@@ -18,10 +18,10 @@ import seedu.address.logic.parser.Parser;
 import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.expense.DatePredicate;
-import seedu.address.model.expense.DescriptionPredicate;
 import seedu.address.model.expense.Expense;
-import seedu.address.model.expense.IsFixedPredicate;
+import seedu.address.model.expense.ExpenseDatePredicate;
+import seedu.address.model.expense.ExpenseDescriptionPredicate;
+import seedu.address.model.expense.ExpenseIsFixedPredicate;
 import seedu.address.model.expense.TagPredicate;
 
 /**
@@ -62,15 +62,15 @@ public class FindExpenseCommandParser implements Parser<FindExpenseCommand> {
 
         Predicate<Expense> predicate = null;
         if (argMultimap.getValue(PREFIX_DESCRIPTION).isPresent()) {
-            predicate = new DescriptionPredicate(ParserUtil.parseDescription(
+            predicate = new ExpenseDescriptionPredicate(ParserUtil.parseDescription(
                     argMultimap.getValue(PREFIX_DESCRIPTION).get()));
         }
         if (argMultimap.getValue(PREFIX_ISFIXED).isPresent()) {
-            predicate = new IsFixedPredicate(ParserUtil.parseIsFixed(argMultimap.getValue(PREFIX_ISFIXED)
+            predicate = new ExpenseIsFixedPredicate(ParserUtil.parseIsFixed(argMultimap.getValue(PREFIX_ISFIXED)
                     .get()));
         }
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
-            predicate = new DatePredicate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
+            predicate = new ExpenseDatePredicate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
         }
         if (argMultimap.getValue(PREFIX_TAG).isPresent()) {
             predicate = new TagPredicate(ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get()));

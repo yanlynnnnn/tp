@@ -17,10 +17,10 @@ import seedu.address.logic.parser.ParserUtil;
 import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.appointment.Appointment;
-import seedu.address.model.appointment.DateAppointmentPredicate;
-import seedu.address.model.appointment.NameAppointmentPredicate;
-import seedu.address.model.appointment.PhoneAppointmentPredicate;
-import seedu.address.model.appointment.ServiceCodeAppointmentPredicate;
+import seedu.address.model.appointment.AppointmentDatePredicate;
+import seedu.address.model.appointment.AppointmentNamePredicate;
+import seedu.address.model.appointment.AppointmentPhonePredicate;
+import seedu.address.model.appointment.AppointmentServiceCodePredicate;
 
 public class FindAppointmentCommandParser implements Parser<FindAppointmentCommand> {
 
@@ -54,14 +54,14 @@ public class FindAppointmentCommandParser implements Parser<FindAppointmentComma
 
         Predicate<Appointment> predicate = null;
         if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
-            predicate = new DateAppointmentPredicate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
+            predicate = new AppointmentDatePredicate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
         } else if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            predicate = new PhoneAppointmentPredicate(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
+            predicate = new AppointmentPhonePredicate(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
         } else if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            predicate = new NameAppointmentPredicate(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
+            predicate = new AppointmentNamePredicate(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
             // TODO Not sure if this works if user enters name with multiple words.
         } else if (argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).isPresent()) {
-            predicate = new ServiceCodeAppointmentPredicate(ParserUtil
+            predicate = new AppointmentServiceCodePredicate(ParserUtil
                 .parseServiceCode(argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).get()));
         }
 
