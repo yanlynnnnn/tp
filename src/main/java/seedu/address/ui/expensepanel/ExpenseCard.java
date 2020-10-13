@@ -52,7 +52,7 @@ public class ExpenseCard extends UiPart<Region> {
         description.setText("Description: " + expense.getDescription().toString());
         isFixed.setText("Fixed Expense? " + expense.getIsFixed().toString());
         value.setText("Amount: " + expense.getValue().value);
-        date.setText(expense.getDate().toString());
+        date.setText(expense.getDate().toUiString());
         tag.setText(expense.getTag().toString());
     }
 
