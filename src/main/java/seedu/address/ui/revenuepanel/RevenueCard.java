@@ -40,8 +40,8 @@ public class RevenueCard extends UiPart<Region> {
         this.revenue = revenue;
         id.setText(displayedIndex + ". ");
         title.setText(revenue.getService().getTitle().value);
-        price.setText(String.valueOf(revenue.getValue().value));
-        date.setText(String.valueOf(revenue.getDate().toString()));
+        price.setText("Amount: $" + revenue.getValue().value);
+        date.setText("Date: " + revenue.getDate().toString());
     }
 
     @Override
