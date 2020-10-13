@@ -7,10 +7,10 @@ import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.manager.ReadOnlyAppointmentManager;
+import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
@@ -80,7 +80,8 @@ public class StorageManager implements Storage {
     }
 
     @Override
-    public Optional<ReadOnlyClientManager> readClientManager(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyClientManager> readClientManager(Path filePath) throws DataConversionException,
+            IOException {
         logger.fine("Attempting to read data from file: " + filePath);
         return clientStorage.readClientManager(filePath);
     }

@@ -11,9 +11,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 
 import seedu.address.commons.core.GuiSettings;
+import seedu.address.model.UserPrefs;
 import seedu.address.model.manager.ClientManager;
 import seedu.address.model.manager.ReadOnlyClientManager;
-import seedu.address.model.UserPrefs;
 import seedu.address.storage.appointment.AppointmentStorage;
 import seedu.address.storage.appointment.JsonAppointmentStorage;
 import seedu.address.storage.client.JsonClientStorage;

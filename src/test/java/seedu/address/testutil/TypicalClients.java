@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.manager.ClientManager;
 import seedu.address.model.client.Client;
+import seedu.address.model.manager.ClientManager;
 
 /**
  * A utility class containing a list of {@code Client} objects to be used in tests.

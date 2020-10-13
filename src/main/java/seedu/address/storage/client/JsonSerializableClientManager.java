@@ -9,10 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
+import seedu.address.model.client.Client;
 import seedu.address.model.manager.ClientManager;
 import seedu.address.model.manager.ReadOnlyClientManager;
-import seedu.address.model.client.Client;
-import seedu.address.storage.client.JsonAdaptedClient;
 
 /**
  * An Immutable AddressBook that is serializable to JSON format.

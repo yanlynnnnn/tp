@@ -15,10 +15,10 @@ import java.util.List;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.client.EditClientCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.manager.ClientManager;
 import seedu.address.model.Model;
 import seedu.address.model.client.Client;
 import seedu.address.model.client.NameContainsKeywordsPredicate;
+import seedu.address.model.manager.ClientManager;
 import seedu.address.testutil.EditClientDescriptorBuilder;
 
 /**

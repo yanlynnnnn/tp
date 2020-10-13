@@ -1,4 +1,4 @@
-package seedu.address.storage;
+package seedu.address.storage.client;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.address.storage.client.JsonAdaptedClient.MISSING_FIELD_MESSAGE_FORMAT;
@@ -15,7 +15,7 @@ import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
 import seedu.address.model.client.Phone;
-import seedu.address.storage.client.JsonAdaptedClient;
+import seedu.address.storage.JsonAdaptedTag;
 
 public class JsonAdaptedClientTest {
     private static final String INVALID_NAME = "R@chel";

@@ -5,9 +5,9 @@ import java.nio.file.Path;
 import java.util.Optional;
 
 import seedu.address.commons.exceptions.DataConversionException;
-import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.storage.appointment.AppointmentStorage;
 import seedu.address.storage.client.ClientStorage;
 import seedu.address.storage.expense.ExpenseStorage;

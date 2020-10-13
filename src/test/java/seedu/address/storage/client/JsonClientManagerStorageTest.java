@@ -1,4 +1,4 @@
-package seedu.address.storage;
+package seedu.address.storage.client;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -18,10 +18,9 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.manager.ClientManager;
 import seedu.address.model.manager.ReadOnlyClientManager;
-import seedu.address.storage.client.JsonClientStorage;
 
 public class JsonClientManagerStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonClientStorageTest");
 
     @TempDir
     public Path testFolder;
@@ -48,17 +47,17 @@ public class JsonClientManagerStorageTest {
 
     @Test
     public void read_notJsonFormat_exceptionThrown() {
-        assertThrows(DataConversionException.class, () -> readAddressBook("notJsonFormatAddressBook.json"));
+        assertThrows(DataConversionException.class, () -> readAddressBook("notJsonFormatClient.json"));
     }
 
     @Test
     public void readAddressBook_invalidClientAddressBook_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readAddressBook("invalidClientAddressBook.json"));
+        assertThrows(DataConversionException.class, () -> readAddressBook("invalidClientManager.json"));
     }
 
     @Test
     public void readAddressBook_invalidAndValidClientAddressBook_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readAddressBook("invalidAndValidClientAddressBook.json"));
+        assertThrows(DataConversionException.class, () -> readAddressBook("invalidAndValidClientManager.json"));
     }
 
     @Test
