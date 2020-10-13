@@ -30,8 +30,8 @@ import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.AddressBookStorage;
-import seedu.address.storage.JsonAddressBookStorage;
+import seedu.address.storage.client.ClientStorage;
+import seedu.address.storage.client.JsonClientStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
@@ -72,13 +72,13 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
+        ClientStorage clientStorage = new JsonClientStorage(userPrefs.getAddressBookFilePath());
         ServiceStorage serviceStorage = new JsonServiceStorage(userPrefs.getServiceStorageFilePath());
         RevenueStorage revenueStorage = new JsonRevenueStorage(userPrefs.getRevenueStorageFilePath());
         ExpenseStorage expenseStorage = new JsonExpenseStorage(userPrefs.getExpenseStorageFilePath());
         AppointmentStorage appointmentStorage = new JsonAppointmentStorage(userPrefs.getAppointmentStorageFilePath());
 
-        storage = new StorageManager(userPrefsStorage, addressBookStorage, serviceStorage, revenueStorage,
+        storage = new StorageManager(userPrefsStorage, clientStorage, serviceStorage, revenueStorage,
             expenseStorage, appointmentStorage);
 
         initLogging(config);
@@ -103,7 +103,7 @@ public class MainApp extends Application {
         ReadOnlyRevenueTracker revenueTracker = initRevenueTracker(storage);
         ReadOnlyExpenseTracker expenseTracker = initExpenseTracker(storage);
         try {
-            addressBookOptional = storage.readAddressBook();
+            addressBookOptional = storage.readClientManager();
             if (!addressBookOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a sample AddressBook");
             }

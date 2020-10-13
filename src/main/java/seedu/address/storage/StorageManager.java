@@ -15,6 +15,7 @@ import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.storage.appointment.AppointmentStorage;
+import seedu.address.storage.client.ClientStorage;
 import seedu.address.storage.expense.ExpenseStorage;
 import seedu.address.storage.revenue.RevenueStorage;
 import seedu.address.storage.service.ServiceStorage;
@@ -25,7 +26,7 @@ import seedu.address.storage.service.ServiceStorage;
 public class StorageManager implements Storage {
 
     private static final Logger logger = LogsCenter.getLogger(StorageManager.class);
-    private AddressBookStorage addressBookStorage;
+    private ClientStorage clientStorage;
     private ServiceStorage serviceStorage;
     private AppointmentStorage appointmentStorage;
     private ExpenseStorage expenseStorage;
@@ -36,11 +37,11 @@ public class StorageManager implements Storage {
      * Creates a {@code StorageManager} with the given
      * {@code AddressBookStorage}, {@code UserPrefStorage}, {@code ServiceStorage} and {@code RevenueStorage}.
      */
-    public StorageManager(UserPrefsStorage userPrefsStorage, AddressBookStorage addressBookStorage,
+    public StorageManager(UserPrefsStorage userPrefsStorage, ClientStorage clientStorage,
                           ServiceStorage serviceStorage, RevenueStorage revenueStorage,
                           ExpenseStorage expenseStorage, AppointmentStorage appointmentStorage) {
         super();
-        this.addressBookStorage = addressBookStorage;
+        this.clientStorage = clientStorage;
         this.userPrefsStorage = userPrefsStorage;
         this.serviceStorage = serviceStorage;
         this.revenueStorage = revenueStorage;
@@ -69,30 +70,30 @@ public class StorageManager implements Storage {
     // ================ AddressBook methods ==============================
 
     @Override
-    public Path getAddressBookFilePath() {
-        return addressBookStorage.getAddressBookFilePath();
+    public Path getClientManagerFilePath() {
+        return clientStorage.getClientManagerFilePath();
     }
 
     @Override
-    public Optional<ReadOnlyClientManager> readAddressBook() throws DataConversionException, IOException {
-        return readAddressBook(addressBookStorage.getAddressBookFilePath());
+    public Optional<ReadOnlyClientManager> readClientManager() throws DataConversionException, IOException {
+        return readClientManager(clientStorage.getClientManagerFilePath());
     }
 
     @Override
-    public Optional<ReadOnlyClientManager> readAddressBook(Path filePath) throws DataConversionException, IOException {
+    public Optional<ReadOnlyClientManager> readClientManager(Path filePath) throws DataConversionException, IOException {
         logger.fine("Attempting to read data from file: " + filePath);
-        return addressBookStorage.readAddressBook(filePath);
+        return clientStorage.readClientManager(filePath);
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyClientManager addressBook) throws IOException {
-        saveAddressBook(addressBook, addressBookStorage.getAddressBookFilePath());
+    public void saveClientManager(ReadOnlyClientManager addressBook) throws IOException {
+        saveClientManager(addressBook, clientStorage.getClientManagerFilePath());
     }
 
     @Override
-    public void saveAddressBook(ReadOnlyClientManager addressBook, Path filePath) throws IOException {
+    public void saveClientManager(ReadOnlyClientManager addressBook, Path filePath) throws IOException {
         logger.fine("Attempting to write to data file: " + filePath);
-        addressBookStorage.saveAddressBook(addressBook, filePath);
+        clientStorage.saveClientManager(addressBook, filePath);
     }
 
     // ================ ServiceManager methods ==============================

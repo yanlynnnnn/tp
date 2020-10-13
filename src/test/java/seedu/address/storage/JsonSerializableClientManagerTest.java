@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.commons.util.JsonUtil;
 import seedu.address.model.manager.ClientManager;
+import seedu.address.storage.client.JsonSerializableAddressBook;
 import seedu.address.testutil.TypicalClients;
 
 public class JsonSerializableClientManagerTest {

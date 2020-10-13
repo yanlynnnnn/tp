@@ -1,4 +1,4 @@
-package seedu.address.storage;
+package seedu.address.storage.client;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -11,12 +11,12 @@ import seedu.address.model.manager.ReadOnlyClientManager;
 /**
  * Represents a storage for {@link ClientManager}.
  */
-public interface AddressBookStorage {
+public interface ClientStorage {
 
     /**
      * Returns the file path of the data file.
      */
-    Path getAddressBookFilePath();
+    Path getClientManagerFilePath();
 
     /**
      * Returns AddressBook data as a {@link ReadOnlyClientManager}.
@@ -24,23 +24,23 @@ public interface AddressBookStorage {
      * @throws DataConversionException if the data in storage is not in the expected format.
      * @throws IOException if there was any problem when reading from the storage.
      */
-    Optional<ReadOnlyClientManager> readAddressBook() throws DataConversionException, IOException;
+    Optional<ReadOnlyClientManager> readClientManager() throws DataConversionException, IOException;
 
     /**
-     * @see #getAddressBookFilePath()
+     * @see #getClientManagerFilePath()
      */
-    Optional<ReadOnlyClientManager> readAddressBook(Path filePath) throws DataConversionException, IOException;
+    Optional<ReadOnlyClientManager> readClientManager(Path filePath) throws DataConversionException, IOException;
 
     /**
      * Saves the given {@link ReadOnlyClientManager} to the storage.
      * @param addressBook cannot be null.
      * @throws IOException if there was any problem writing to the file.
      */
-    void saveAddressBook(ReadOnlyClientManager addressBook) throws IOException;
+    void saveClientManager(ReadOnlyClientManager addressBook) throws IOException;
 
     /**
-     * @see #saveAddressBook(ReadOnlyClientManager)
+     * @see #saveClientManager(ReadOnlyClientManager)
      */
-    void saveAddressBook(ReadOnlyClientManager addressBook, Path filePath) throws IOException;
+    void saveClientManager(ReadOnlyClientManager addressBook, Path filePath) throws IOException;
 
 }

@@ -9,6 +9,7 @@ import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.storage.appointment.AppointmentStorage;
+import seedu.address.storage.client.ClientStorage;
 import seedu.address.storage.expense.ExpenseStorage;
 import seedu.address.storage.revenue.RevenueStorage;
 import seedu.address.storage.service.ServiceStorage;
@@ -16,7 +17,7 @@ import seedu.address.storage.service.ServiceStorage;
 /**
  * API of the Storage component
  */
-public interface Storage extends AddressBookStorage, UserPrefsStorage, ServiceStorage, RevenueStorage, ExpenseStorage,
+public interface Storage extends ClientStorage, UserPrefsStorage, ServiceStorage, RevenueStorage, ExpenseStorage,
     AppointmentStorage {
 
     @Override
@@ -26,12 +27,12 @@ public interface Storage extends AddressBookStorage, UserPrefsStorage, ServiceSt
     void saveUserPrefs(ReadOnlyUserPrefs userPrefs) throws IOException;
 
     @Override
-    Path getAddressBookFilePath();
+    Path getClientManagerFilePath();
 
     @Override
-    Optional<ReadOnlyClientManager> readAddressBook() throws DataConversionException, IOException;
+    Optional<ReadOnlyClientManager> readClientManager() throws DataConversionException, IOException;
 
     @Override
-    void saveAddressBook(ReadOnlyClientManager addressBook) throws IOException;
+    void saveClientManager(ReadOnlyClientManager addressBook) throws IOException;
 
 }

@@ -10,7 +10,7 @@ import seedu.address.model.client.Client;
 import seedu.address.model.client.Name;
 import seedu.address.model.service.Service;
 import seedu.address.model.util.attributes.Date;
-import seedu.address.storage.JsonAdaptedClient;
+import seedu.address.storage.client.JsonAdaptedClient;
 import seedu.address.storage.service.JsonAdaptedService;
 
 public class JsonAdaptedAppointment {

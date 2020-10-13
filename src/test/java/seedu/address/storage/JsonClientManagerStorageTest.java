@@ -18,6 +18,7 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.manager.ClientManager;
 import seedu.address.model.manager.ReadOnlyClientManager;
+import seedu.address.storage.client.JsonClientStorage;
 
 public class JsonClientManagerStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonAddressBookStorageTest");
@@ -31,7 +32,7 @@ public class JsonClientManagerStorageTest {
     }
 
     private java.util.Optional<ReadOnlyClientManager> readAddressBook(String filePath) throws Exception {
-        return new JsonAddressBookStorage(Paths.get(filePath)).readAddressBook(addToTestDataPathIfNotNull(filePath));
+        return new JsonClientStorage(Paths.get(filePath)).readClientManager(addToTestDataPathIfNotNull(filePath));
     }
 
     private Path addToTestDataPathIfNotNull(String prefsFileInTestDataFolder) {
@@ -64,24 +65,24 @@ public class JsonClientManagerStorageTest {
     public void readAndSaveAddressBook_allInOrder_success() throws Exception {
         Path filePath = testFolder.resolve("TempAddressBook.json");
         ClientManager original = getTypicalAddressBook();
-        JsonAddressBookStorage jsonAddressBookStorage = new JsonAddressBookStorage(filePath);
+        JsonClientStorage jsonAddressBookStorage = new JsonClientStorage(filePath);
 
         // Save in new file and read back
-        jsonAddressBookStorage.saveAddressBook(original, filePath);
-        ReadOnlyClientManager readBack = jsonAddressBookStorage.readAddressBook(filePath).get();
+        jsonAddressBookStorage.saveClientManager(original, filePath);
+        ReadOnlyClientManager readBack = jsonAddressBookStorage.readClientManager(filePath).get();
         assertEquals(original, new ClientManager(readBack));
 
         // Modify data, overwrite exiting file, and read back
         original.addClient(HOON);
         original.removeClient(ALICE);
-        jsonAddressBookStorage.saveAddressBook(original, filePath);
-        readBack = jsonAddressBookStorage.readAddressBook(filePath).get();
+        jsonAddressBookStorage.saveClientManager(original, filePath);
+        readBack = jsonAddressBookStorage.readClientManager(filePath).get();
         assertEquals(original, new ClientManager(readBack));
 
         // Save and read without specifying file path
         original.addClient(IDA);
-        jsonAddressBookStorage.saveAddressBook(original); // file path not specified
-        readBack = jsonAddressBookStorage.readAddressBook().get(); // file path not specified
+        jsonAddressBookStorage.saveClientManager(original); // file path not specified
+        readBack = jsonAddressBookStorage.readClientManager().get(); // file path not specified
         assertEquals(original, new ClientManager(readBack));
 
     }
@@ -96,8 +97,8 @@ public class JsonClientManagerStorageTest {
      */
     private void saveAddressBook(ReadOnlyClientManager addressBook, String filePath) {
         try {
-            new JsonAddressBookStorage(Paths.get(filePath))
-                    .saveAddressBook(addressBook, addToTestDataPathIfNotNull(filePath));
+            new JsonClientStorage(Paths.get(filePath))
+                    .saveClientManager(addressBook, addToTestDataPathIfNotNull(filePath));
         } catch (IOException ioe) {
             throw new AssertionError("There should not be an error writing to the file.", ioe);
         }
