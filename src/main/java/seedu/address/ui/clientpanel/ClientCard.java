@@ -1,12 +1,12 @@
 package seedu.address.ui.clientpanel;
 
+import java.util.Comparator;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
-
-import java.util.Comparator;
 import seedu.address.model.client.Client;
 import seedu.address.ui.UiPart;
 

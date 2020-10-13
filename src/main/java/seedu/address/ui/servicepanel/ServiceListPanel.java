@@ -1,11 +1,11 @@
 package seedu.address.ui.servicepanel;
 
+import java.util.logging.Logger;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
-
-import java.util.logging.Logger;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.model.service.Service;
 import seedu.address.ui.Panel;
