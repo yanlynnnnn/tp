@@ -34,6 +34,8 @@ public class ServiceCard extends UiPart<Region> {
     private Label duration;
     @FXML
     private Label price;
+    @FXML
+    private Label code;
 
     /**
      * Creates a {@code ServiceCode} with the given {@code Service} and index to display.
@@ -43,8 +45,9 @@ public class ServiceCard extends UiPart<Region> {
         this.service = service;
         id.setText(displayedIndex + ". ");
         title.setText(service.getTitle().value);
-        duration.setText(String.valueOf(service.getDuration().value));
-        price.setText(String.valueOf(service.getAmount().value));
+        duration.setText("Duration: " + service.getDuration().value + " hours");
+        price.setText("Price: $" + service.getAmount().value);
+        code.setText("Code: " + service.getServiceCode().value);
     }
 
     @Override

@@ -55,4 +55,8 @@ public class Date {
     public String toString() {
         return date.format(FORMAT_INPUT);
     }
+
+    public String toUiString() {
+        return date.format(FORMAT_OUTPUT);
+    }
 }
