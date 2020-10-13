@@ -18,4 +18,17 @@
             <Insets top="2.0"/>
         </padding>
     </Button>
+    <Button fx:id="appointments" contentDisplay="CENTER" mnemonicParsing="false"
+            onAction="#handleSwitchToAppointmentTab"
+            VBox.vgrow="NEVER">
+        <padding>
+            <Insets top="2.0"/>
+        </padding>
+    </Button>
+    <Button fx:id="revenue" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSwitchToRevenueTab"
+            VBox.vgrow="NEVER">
+        <padding>
+            <Insets top="2.0"/>
+        </padding>
+    </Button>
 </VBox>

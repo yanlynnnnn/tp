@@ -12,8 +12,10 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.ui.clientspanel.ClientListPanel;
-import seedu.address.ui.servicespanel.ServiceListPanel;
+import seedu.address.ui.appointmentpanel.AppointmentListPanel;
+import seedu.address.ui.clientpanel.ClientListPanel;
+import seedu.address.ui.revenuepanel.RevenueListPanel;
+import seedu.address.ui.servicepanel.ServiceListPanel;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -35,6 +37,9 @@ public class MainWindow extends UiPart<Stage> {
     // Panels for each component
     private ServiceListPanel serviceListPanel;
     private ClientListPanel clientListPanel;
+    private AppointmentListPanel appointmentListPanel;
+    private RevenueListPanel revenueListPanel;
+    // private ExpenseListPanel expenseListPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -74,6 +79,8 @@ public class MainWindow extends UiPart<Stage> {
         // Set up list panels
         clientListPanel = new ClientListPanel(logic.getFilteredClientList());
         serviceListPanel = new ServiceListPanel(logic.getFilteredServiceList());
+        appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
+        revenueListPanel = new RevenueListPanel(logic.getFilteredRevenueList());
     }
 
     public Stage getPrimaryStage() {
@@ -123,6 +130,12 @@ public class MainWindow extends UiPart<Stage> {
 
         clientListPanel = new ClientListPanel(logic.getFilteredClientList());
 
+        revenueListPanel = new RevenueListPanel(logic.getFilteredRevenueList());
+
+        //expenseListPanel = new ExpenseListPanel(logic.getFilteredExpenseList());
+
+        appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
+
         // Default view for user on app startup
         switchTab(ClientListPanel.TAB_NAME);
         sideTabsBarPlaceholder.getChildren().add(new SideTabsBar(this::switchTab).getRoot());
@@ -148,6 +161,12 @@ public class MainWindow extends UiPart<Stage> {
             break;
         case ServiceListPanel.TAB_NAME:
             tabPanelPlaceholder.getChildren().add(serviceListPanel.getRoot());
+            break;
+        case AppointmentListPanel.TAB_NAME:
+            tabPanelPlaceholder.getChildren().add(appointmentListPanel.getRoot());
+            break;
+        case RevenueListPanel.TAB_NAME:
+            tabPanelPlaceholder.getChildren().add(revenueListPanel.getRoot());
             break;
         default:
             throw new AssertionError("No such tab name: " + tabName);

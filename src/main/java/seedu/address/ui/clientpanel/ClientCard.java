@@ -1,4 +1,4 @@
-package seedu.address.ui.clientspanel;
+package seedu.address.ui.clientpanel;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -15,7 +15,7 @@ import seedu.address.ui.UiPart;
  */
 public class ClientCard extends UiPart<Region> {
 
-    private static final String FXML = "clientspanel/ClientListCard.fxml";
+    private static final String FXML = "clientpanel/ClientListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.

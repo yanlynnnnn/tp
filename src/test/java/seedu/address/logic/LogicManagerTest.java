@@ -59,7 +59,7 @@ public class LogicManagerTest {
             new JsonClientStorage(temporaryFolder.resolve("addressBook.json"));
         JsonUserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(temporaryFolder.resolve("userPrefs.json"));
         ServiceStorage serviceStorage = new JsonServiceStorage(temporaryFolder.resolve("services.json"));
-        RevenueStorage revenueStorage = new JsonRevenueStorage(temporaryFolder.resolve("revenues.json"));
+        RevenueStorage revenueStorage = new JsonRevenueStorage(temporaryFolder.resolve("revenue.json"));
         ExpenseStorage expenseStorage = new JsonExpenseStorage(temporaryFolder.resolve("expenses.json"));
         AppointmentStorage appointmentStorage = new JsonAppointmentStorage(
                 temporaryFolder.resolve("appointments.json"));

@@ -1,4 +1,4 @@
-package seedu.address.ui.clientspanel;
+package seedu.address.ui.clientpanel;
 
 import java.util.logging.Logger;
 
@@ -15,9 +15,9 @@ import seedu.address.ui.Panel;
  * Panel containing the list of clients.
  */
 public class ClientListPanel extends Panel {
-    public static final String TAB_NAME = "Clients";
+    public static final String TAB_NAME = "Client";
 
-    private static final String FXML = "clientspanel/ClientListPanel.fxml";
+    private static final String FXML = "clientpanel/ClientListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ClientListPanel.class);
 
     @FXML

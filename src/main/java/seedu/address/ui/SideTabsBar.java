@@ -6,8 +6,10 @@ import javafx.scene.layout.Region;
 import java.util.function.Consumer;
 import java.util.logging.Logger;
 import seedu.address.commons.core.LogsCenter;
-import seedu.address.ui.clientspanel.ClientListPanel;
-import seedu.address.ui.servicespanel.ServiceListPanel;
+import seedu.address.ui.appointmentpanel.AppointmentListPanel;
+import seedu.address.ui.clientpanel.ClientListPanel;
+import seedu.address.ui.revenuepanel.RevenueListPanel;
+import seedu.address.ui.servicepanel.ServiceListPanel;
 
 /**
  * Panel containing the list of persons.
@@ -33,4 +35,19 @@ public class SideTabsBar extends UiPart<Region> {
     private void handleSwitchToServiceTab() {
         consumer.accept(ServiceListPanel.TAB_NAME);
     }
+
+    @FXML
+    private void handleSwitchToAppointmentTab() {
+        consumer.accept(AppointmentListPanel.TAB_NAME);
+    }
+
+    @FXML
+    private void handleSwitchToRevenueTab() {
+        consumer.accept(RevenueListPanel.TAB_NAME);
+    }
+
+//    @FXML
+//    private void handleSwitchToExpenseTab() {
+//        consumer.accept(ExpenseListPanel.TAB_NAME);
+//    }
 }

@@ -12,8 +12,9 @@ import seedu.address.model.revenue.Revenue;
 import seedu.address.ui.UiPart;
 
 public class RevenueListPanel extends UiPart<Region> {
+    public static final String TAB_NAME = "Revenue";
 
-    private static final String FXML = "RevenueListPanel.fxml";
+    private static final String FXML = "revenuepanel/RevenueListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(RevenueListPanel.class);
 
     @FXML

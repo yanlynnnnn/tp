@@ -1,4 +1,4 @@
-package seedu.address.ui.appointmenttab;
+package seedu.address.ui.appointmentpanel;
 
 import java.util.logging.Logger;
 
@@ -15,8 +15,9 @@ import seedu.address.ui.UiPart;
  * Panel containing list of Appointments.
  */
 public class AppointmentListPanel extends UiPart<Region> {
-    //TODO Need to create FXML file.
-    private static final String FXML = "AppointmentListPanel.fxml";
+    public static final String TAB_NAME = "Appointment";
+
+    private static final String FXML = "appointmentpanel/AppointmentListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(AppointmentListPanel.class);
 
     @FXML
