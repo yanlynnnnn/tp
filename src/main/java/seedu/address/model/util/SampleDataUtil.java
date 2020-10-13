@@ -140,7 +140,7 @@ public class SampleDataUtil {
         return sampleRevenueTracker;
     }
 
-    public static ReadOnlyClientManager getSampleAddressBook() {
+    public static ReadOnlyClientManager getSampleClientManager() {
         ClientManager sampleAb = new ClientManager();
         for (Client sampleClient : getSampleClients()) {
             sampleAb.addClient(sampleClient);

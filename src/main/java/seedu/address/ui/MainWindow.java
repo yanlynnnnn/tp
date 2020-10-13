@@ -14,6 +14,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.ui.appointmentpanel.AppointmentListPanel;
 import seedu.address.ui.clientpanel.ClientListPanel;
+import seedu.address.ui.expensepanel.ExpenseListPanel;
 import seedu.address.ui.revenuepanel.RevenueListPanel;
 import seedu.address.ui.servicepanel.ServiceListPanel;
 
@@ -39,7 +40,7 @@ public class MainWindow extends UiPart<Stage> {
     private ClientListPanel clientListPanel;
     private AppointmentListPanel appointmentListPanel;
     private RevenueListPanel revenueListPanel;
-    // private ExpenseListPanel expenseListPanel;
+    private ExpenseListPanel expenseListPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -75,12 +76,6 @@ public class MainWindow extends UiPart<Stage> {
         //setAccelerators();
 
         helpWindow = new HelpWindow();
-
-        // Set up list panels
-        clientListPanel = new ClientListPanel(logic.getFilteredClientList());
-        serviceListPanel = new ServiceListPanel(logic.getFilteredServiceList());
-        appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
-        revenueListPanel = new RevenueListPanel(logic.getFilteredRevenueList());
     }
 
     public Stage getPrimaryStage() {
@@ -97,7 +92,7 @@ public class MainWindow extends UiPart<Stage> {
 
         revenueListPanel = new RevenueListPanel(logic.getFilteredRevenueList());
 
-        //expenseListPanel = new ExpenseListPanel(logic.getFilteredExpenseList());
+        expenseListPanel = new ExpenseListPanel(logic.getFilteredExpenseList());
 
         appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
 
@@ -132,6 +127,9 @@ public class MainWindow extends UiPart<Stage> {
             break;
         case RevenueListPanel.TAB_NAME:
             tabPanelPlaceholder.getChildren().add(revenueListPanel.getRoot());
+            break;
+        case ExpenseListPanel.TAB_NAME:
+            tabPanelPlaceholder.getChildren().add(expenseListPanel.getRoot());
             break;
         default:
             throw new AssertionError("No such tab name: " + tabName);

@@ -8,6 +8,7 @@ import javafx.scene.layout.Region;
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.ui.appointmentpanel.AppointmentListPanel;
 import seedu.address.ui.clientpanel.ClientListPanel;
+import seedu.address.ui.expensepanel.ExpenseListPanel;
 import seedu.address.ui.revenuepanel.RevenueListPanel;
 import seedu.address.ui.servicepanel.ServiceListPanel;
 
@@ -51,8 +52,8 @@ public class SideTabsBar extends UiPart<Region> {
         consumer.accept(RevenueListPanel.TAB_NAME);
     }
 
-    //    @FXML
-    //    private void handleSwitchToExpenseTab() {
-    //        consumer.accept(ExpenseListPanel.TAB_NAME);
-    //    }
+    @FXML
+    private void handleSwitchToExpenseTab() {
+        consumer.accept(ExpenseListPanel.TAB_NAME);
+    }
 }

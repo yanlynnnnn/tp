@@ -48,18 +48,15 @@ public class JsonClientManagerStorageTest {
     @Test
     public void read_notJsonFormat_exceptionThrown() {
         assertThrows(DataConversionException.class, () -> readAddressBook("notJsonFormatClient.json"));
-        assertThrows(DataConversionException.class, () -> readAddressBook("notJsonFormatClient.json"));
     }
 
     @Test
     public void readAddressBook_invalidClientAddressBook_throwDataConversionException() {
         assertThrows(DataConversionException.class, () -> readAddressBook("invalidClientManager.json"));
-        assertThrows(DataConversionException.class, () -> readAddressBook("invalidClientManager.json"));
     }
 
     @Test
     public void readAddressBook_invalidAndValidClientAddressBook_throwDataConversionException() {
-        assertThrows(DataConversionException.class, () -> readAddressBook("invalidAndValidClientManager.json"));
         assertThrows(DataConversionException.class, () -> readAddressBook("invalidAndValidClientManager.json"));
     }
 
@@ -107,7 +104,6 @@ public class JsonClientManagerStorageTest {
 
     @Test
     public void saveAddressBook_nullFilePath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> saveAddressBook(new ClientManager(), null));
         assertThrows(NullPointerException.class, () -> saveAddressBook(new ClientManager(), null));
     }
 }

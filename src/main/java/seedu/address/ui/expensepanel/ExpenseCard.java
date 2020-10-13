@@ -9,7 +9,7 @@ import seedu.address.ui.UiPart;
 
 public class ExpenseCard extends UiPart<Region> {
 
-    private static final String FXML = "ExpenseListCard.fxml";
+    private static final String FXML = "expensepanel/ExpenseListCard.fxml";
 
     /**
      * Note: Certain keywords such as "location" and "resources" are reserved keywords in JavaFX.
@@ -23,16 +23,22 @@ public class ExpenseCard extends UiPart<Region> {
 
     @FXML
     private HBox cardPane;
+
     @FXML
     private Label id;
+
     @FXML
     private Label description;
+
     @FXML
     private Label isFixed;
+
     @FXML
     private Label value;
+
     @FXML
     private Label date;
+
     @FXML
     private Label tag;
 

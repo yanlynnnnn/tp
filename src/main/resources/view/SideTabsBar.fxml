@@ -31,4 +31,10 @@
             <Insets top="2.0"/>
         </padding>
     </Button>
+    <Button fx:id="expense" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSwitchToExpenseTab"
+            VBox.vgrow="NEVER">
+        <padding>
+            <Insets top="2.0"/>
+        </padding>
+    </Button>
 </VBox>

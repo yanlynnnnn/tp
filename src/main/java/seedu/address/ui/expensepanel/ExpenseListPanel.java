@@ -12,8 +12,9 @@ import seedu.address.model.expense.Expense;
 import seedu.address.ui.UiPart;
 
 public class ExpenseListPanel extends UiPart<Region> {
+    public static final String TAB_NAME = "Expense";
 
-    private static final String FXML = "ExpenseListPanel.fxml";
+    private static final String FXML = "expensepanel/ExpenseListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ExpenseListPanel.class);
 
     @FXML
