@@ -2,11 +2,10 @@ package seedu.address.logic.commands.expense;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.ArrayList;
-
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.model.Model;
+import seedu.address.model.manager.ExpenseTracker;
 
 /**
  * Clears the expense list.
@@ -20,7 +19,7 @@ public class ClearExpenseCommand extends Command {
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);
-        model.setExpenses(new ArrayList<>());
+        model.setExpenseTracker(new ExpenseTracker());
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
