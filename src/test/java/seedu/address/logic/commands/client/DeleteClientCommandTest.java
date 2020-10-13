@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.CommandTestUtil.showClientAtIndex;
-import static seedu.address.testutil.TypicalClients.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalClients.getTypicalClientManager;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_CLIENT;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_CLIENT;
 
@@ -28,7 +28,7 @@ import seedu.address.model.manager.ServiceManager;
  */
 public class DeleteClientCommandTest {
 
-    private Model model = new ModelManager(new UserPrefs(), getTypicalAddressBook(), new ServiceManager(),
+    private Model model = new ModelManager(new UserPrefs(), getTypicalClientManager(), new ServiceManager(),
         new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
 
     @Test
@@ -38,7 +38,7 @@ public class DeleteClientCommandTest {
 
         String expectedMessage = String.format(DeleteClientCommand.MESSAGE_DELETE_CLIENT_SUCCESS, clientToDelete);
 
-        ModelManager expectedModel = new ModelManager(new UserPrefs(), model.getAddressBook(), new ServiceManager(),
+        ModelManager expectedModel = new ModelManager(new UserPrefs(), model.getClientManager(), new ServiceManager(),
                 new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
         expectedModel.deleteClient(clientToDelete);
 
@@ -62,7 +62,7 @@ public class DeleteClientCommandTest {
 
         String expectedMessage = String.format(DeleteClientCommand.MESSAGE_DELETE_CLIENT_SUCCESS, clientToDelete);
 
-        Model expectedModel = new ModelManager(new UserPrefs(), model.getAddressBook(), new ServiceManager(),
+        Model expectedModel = new ModelManager(new UserPrefs(), model.getClientManager(), new ServiceManager(),
                 new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
         expectedModel.deleteClient(clientToDelete);
         showNoClient(expectedModel);
@@ -76,7 +76,7 @@ public class DeleteClientCommandTest {
 
         Index outOfBoundIndex = INDEX_SECOND_CLIENT;
         // ensures that outOfBoundIndex is still in bounds of address book list
-        assertTrue(outOfBoundIndex.getZeroBased() < model.getAddressBook().getClientList().size());
+        assertTrue(outOfBoundIndex.getZeroBased() < model.getClientManager().getClientList().size());
 
         DeleteClientCommand deleteClientCommand = new DeleteClientCommand(outOfBoundIndex);
 

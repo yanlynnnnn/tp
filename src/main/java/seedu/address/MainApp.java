@@ -15,29 +15,29 @@ import seedu.address.commons.util.ConfigUtil;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.Logic;
 import seedu.address.logic.LogicManager;
-import seedu.address.model.AddressBook;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.manager.AppointmentManager;
+import seedu.address.model.manager.ClientManager;
 import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.ReadOnlyAppointmentManager;
+import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
 import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
 import seedu.address.model.util.SampleDataUtil;
-import seedu.address.storage.AddressBookStorage;
-import seedu.address.storage.JsonAddressBookStorage;
 import seedu.address.storage.JsonUserPrefsStorage;
 import seedu.address.storage.Storage;
 import seedu.address.storage.StorageManager;
 import seedu.address.storage.UserPrefsStorage;
 import seedu.address.storage.appointment.AppointmentStorage;
 import seedu.address.storage.appointment.JsonAppointmentStorage;
+import seedu.address.storage.client.ClientStorage;
+import seedu.address.storage.client.JsonClientStorage;
 import seedu.address.storage.expense.ExpenseStorage;
 import seedu.address.storage.expense.JsonExpenseStorage;
 import seedu.address.storage.revenue.JsonRevenueStorage;
@@ -72,13 +72,13 @@ public class MainApp extends Application {
 
         UserPrefsStorage userPrefsStorage = new JsonUserPrefsStorage(config.getUserPrefsFilePath());
         UserPrefs userPrefs = initPrefs(userPrefsStorage);
-        AddressBookStorage addressBookStorage = new JsonAddressBookStorage(userPrefs.getAddressBookFilePath());
+        ClientStorage clientStorage = new JsonClientStorage(userPrefs.getClientManagerFilePath());
         ServiceStorage serviceStorage = new JsonServiceStorage(userPrefs.getServiceStorageFilePath());
         RevenueStorage revenueStorage = new JsonRevenueStorage(userPrefs.getRevenueStorageFilePath());
         ExpenseStorage expenseStorage = new JsonExpenseStorage(userPrefs.getExpenseStorageFilePath());
         AppointmentStorage appointmentStorage = new JsonAppointmentStorage(userPrefs.getAppointmentStorageFilePath());
 
-        storage = new StorageManager(userPrefsStorage, addressBookStorage, serviceStorage, revenueStorage,
+        storage = new StorageManager(userPrefsStorage, clientStorage, serviceStorage, revenueStorage,
             expenseStorage, appointmentStorage);
 
         initLogging(config);
@@ -96,24 +96,24 @@ public class MainApp extends Application {
      * or an empty address book will be used instead if errors occur when reading {@code storage}'s address book.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        Optional<ReadOnlyAddressBook> addressBookOptional;
-        ReadOnlyAddressBook initialData;
+        Optional<ReadOnlyClientManager> addressBookOptional;
+        ReadOnlyClientManager initialData;
         ReadOnlyServiceManager serviceManager = initServiceManager(storage);
         ReadOnlyAppointmentManager appointmentManager = initAppointmentManager(storage);
         ReadOnlyRevenueTracker revenueTracker = initRevenueTracker(storage);
         ReadOnlyExpenseTracker expenseTracker = initExpenseTracker(storage);
         try {
-            addressBookOptional = storage.readAddressBook();
+            addressBookOptional = storage.readClientManager();
             if (!addressBookOptional.isPresent()) {
                 logger.info("Data file not found. Will be starting with a sample AddressBook");
             }
             initialData = addressBookOptional.orElseGet(SampleDataUtil::getSampleAddressBook);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            initialData = new ClientManager();
         } catch (IOException e) {
             logger.warning("Problem while reading from the file. Will be starting with an empty AddressBook");
-            initialData = new AddressBook();
+            initialData = new ClientManager();
         }
 
         return new ModelManager(userPrefs, initialData, serviceManager, revenueTracker,

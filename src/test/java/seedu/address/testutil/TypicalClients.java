@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import seedu.address.model.AddressBook;
 import seedu.address.model.client.Client;
+import seedu.address.model.manager.ClientManager;
 
 /**
  * A utility class containing a list of {@code Client} objects to be used in tests.
@@ -60,12 +60,12 @@ public class TypicalClients {
     /**
      * Returns an {@code AddressBook} with all the typical clients.
      */
-    public static AddressBook getTypicalAddressBook() {
-        AddressBook ab = new AddressBook();
+    public static ClientManager getTypicalClientManager() {
+        ClientManager cm = new ClientManager();
         for (Client client : getTypicalClients()) {
-            ab.addClient(client);
+            cm.addClient(client);
         }
-        return ab;
+        return cm;
     }
 
     public static List<Client> getTypicalClients() {
