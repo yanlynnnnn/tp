@@ -1,4 +1,4 @@
-package seedu.address.model;
+package seedu.address.model.manager;
 
 import static java.util.Objects.requireNonNull;
 
@@ -13,7 +13,7 @@ import seedu.address.model.client.UniqueClientList;
  * Wraps all data at the address-book level
  * Duplicates are not allowed (by .isSameClient comparison)
  */
-public class AddressBook implements ReadOnlyAddressBook {
+public class ClientManager implements ReadOnlyClientManager {
 
     private final UniqueClientList clients;
 
@@ -28,12 +28,12 @@ public class AddressBook implements ReadOnlyAddressBook {
         clients = new UniqueClientList();
     }
 
-    public AddressBook() {}
+    public ClientManager() {}
 
     /**
      * Creates an AddressBook using the Clients in the {@code toBeCopied}
      */
-    public AddressBook(ReadOnlyAddressBook toBeCopied) {
+    public ClientManager(ReadOnlyClientManager toBeCopied) {
         this();
         resetData(toBeCopied);
     }
@@ -51,7 +51,7 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Resets the existing data of this {@code AddressBook} with {@code newData}.
      */
-    public void resetData(ReadOnlyAddressBook newData) {
+    public void resetData(ReadOnlyClientManager newData) {
         requireNonNull(newData);
         setClients(newData.getClientList());
     }
@@ -121,8 +121,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof AddressBook // instanceof handles nulls
-                && clients.equals(((AddressBook) other).clients));
+                || (other instanceof ClientManager // instanceof handles nulls
+                && clients.equals(((ClientManager) other).clients));
     }
 
     @Override

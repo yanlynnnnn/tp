@@ -4,8 +4,6 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.TimeOfDay;
 import seedu.address.model.client.Client;
@@ -15,8 +13,10 @@ import seedu.address.model.client.Phone;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.expense.IsFixed;
 import seedu.address.model.manager.AppointmentManager;
+import seedu.address.model.manager.ClientManager;
 import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.ReadOnlyAppointmentManager;
+import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
@@ -32,7 +32,7 @@ import seedu.address.model.util.attributes.Tag;
 import seedu.address.model.util.attributes.Title;
 
 /**
- * Contains utility methods for populating {@code AddressBook} with sample data.
+ * Contains utility methods for populating {@code Homerce} with sample data.
  */
 public class SampleDataUtil {
 
@@ -140,8 +140,8 @@ public class SampleDataUtil {
         return sampleRevenueTracker;
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
+    public static ReadOnlyClientManager getSampleAddressBook() {
+        ClientManager sampleAb = new ClientManager();
         for (Client sampleClient : getSampleClients()) {
             sampleAb.addClient(sampleClient);
         }

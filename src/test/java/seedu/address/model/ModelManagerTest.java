@@ -17,10 +17,11 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.client.NameContainsKeywordsPredicate;
 import seedu.address.model.manager.AppointmentManager;
+import seedu.address.model.manager.ClientManager;
 import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
-import seedu.address.testutil.AddressBookBuilder;
+import seedu.address.testutil.ClientManagerBuilder;
 
 public class ModelManagerTest {
 
@@ -30,7 +31,7 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new AddressBook(), new AddressBook(modelManager.getAddressBook()));
+        assertEquals(new ClientManager(), new ClientManager(modelManager.getClientManager()));
     }
 
     @Test
@@ -41,14 +42,14 @@ public class ModelManagerTest {
     @Test
     public void setUserPrefs_validUserPrefs_copiesUserPrefs() {
         UserPrefs userPrefs = new UserPrefs();
-        userPrefs.setAddressBookFilePath(Paths.get("address/book/file/path"));
+        userPrefs.setClientManagerFilePath(Paths.get("address/book/file/path"));
         userPrefs.setGuiSettings(new GuiSettings(1, 2, 3, 4));
         modelManager.setUserPrefs(userPrefs);
         assertEquals(userPrefs, modelManager.getUserPrefs());
 
         // Modifying userPrefs should not modify modelManager's userPrefs
         UserPrefs oldUserPrefs = new UserPrefs(userPrefs);
-        userPrefs.setAddressBookFilePath(Paths.get("new/address/book/file/path"));
+        userPrefs.setClientManagerFilePath(Paths.get("new/address/book/file/path"));
         assertEquals(oldUserPrefs, modelManager.getUserPrefs());
     }
 
@@ -65,15 +66,15 @@ public class ModelManagerTest {
     }
 
     @Test
-    public void setAddressBookFilePath_nullPath_throwsNullPointerException() {
-        assertThrows(NullPointerException.class, () -> modelManager.setAddressBookFilePath(null));
+    public void setClientManagerFilePath_nullPath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.setClientManagerFilePath(null));
     }
 
     @Test
-    public void setAddressBookFilePath_validPath_setsAddressBookFilePath() {
+    public void setClientManagerFilePath_validPath_setsClientManagerFilePath() {
         Path path = Paths.get("address/book/file/path");
-        modelManager.setAddressBookFilePath(path);
-        assertEquals(path, modelManager.getAddressBookFilePath());
+        modelManager.setClientManagerFilePath(path);
+        assertEquals(path, modelManager.getClientManagerFilePath());
     }
 
     //    @Test
@@ -82,12 +83,12 @@ public class ModelManagerTest {
     //    }
 
     @Test
-    public void hasClient_clientNotInAddressBook_returnsFalse() {
+    public void hasClient_clientNotInClientManager_returnsFalse() {
         assertFalse(modelManager.hasClient(ALICE));
     }
 
     @Test
-    public void hasClient_clientInAddressBook_returnsTrue() {
+    public void hasClient_clientInClientManager_returnsTrue() {
         modelManager.addClient(ALICE);
         assertTrue(modelManager.hasClient(ALICE));
     }
@@ -99,8 +100,8 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        AddressBook addressBook = new AddressBookBuilder().withClient(ALICE).withClient(BENSON).build();
-        AddressBook differentAddressBook = new AddressBook();
+        ClientManager clientManager = new ClientManagerBuilder().withClient(ALICE).withClient(BENSON).build();
+        ClientManager differentClientManager = new ClientManager();
         UserPrefs userPrefs = new UserPrefs();
         ServiceManager serviceManager = new ServiceManager();
         RevenueTracker revenueTracker = new RevenueTracker();
@@ -108,9 +109,9 @@ public class ModelManagerTest {
         AppointmentManager appointmentManager = new AppointmentManager();
 
         // same values -> returns true
-        modelManager = new ModelManager(userPrefs, addressBook, serviceManager,
+        modelManager = new ModelManager(userPrefs, clientManager, serviceManager,
                 revenueTracker, expenseTracker, appointmentManager);
-        ModelManager modelManagerCopy = new ModelManager(userPrefs, addressBook, serviceManager, revenueTracker,
+        ModelManager modelManagerCopy = new ModelManager(userPrefs, clientManager, serviceManager, revenueTracker,
             expenseTracker, appointmentManager);
         assertTrue(modelManager.equals(modelManagerCopy));
 
@@ -123,15 +124,15 @@ public class ModelManagerTest {
         // different types -> returns false
         assertFalse(modelManager.equals(5));
 
-        // different addressBook -> returns false
+        // different clientManager -> returns false
         assertFalse(modelManager
-            .equals(new ModelManager(userPrefs, differentAddressBook,
+            .equals(new ModelManager(userPrefs, differentClientManager,
                     serviceManager, revenueTracker, expenseTracker, appointmentManager)));
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredClientList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(userPrefs, addressBook,
+        assertFalse(modelManager.equals(new ModelManager(userPrefs, clientManager,
                 serviceManager, revenueTracker, expenseTracker, appointmentManager)));
 
         // resets modelManager to initial state for upcoming tests
@@ -139,8 +140,8 @@ public class ModelManagerTest {
 
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
-        differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(differentUserPrefs, addressBook, serviceManager,
+        differentUserPrefs.setClientManagerFilePath(Paths.get("differentFilePath"));
+        assertFalse(modelManager.equals(new ModelManager(differentUserPrefs, clientManager, serviceManager,
                 revenueTracker, expenseTracker, appointmentManager)));
     }
 }

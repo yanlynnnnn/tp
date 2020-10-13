@@ -1,4 +1,4 @@
-package seedu.address.storage;
+package seedu.address.storage.client;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -15,6 +15,7 @@ import seedu.address.model.client.Email;
 import seedu.address.model.client.Name;
 import seedu.address.model.client.Phone;
 import seedu.address.model.util.attributes.Tag;
+import seedu.address.storage.JsonAdaptedTag;
 
 /**
  * Jackson-friendly version of {@link Client}.

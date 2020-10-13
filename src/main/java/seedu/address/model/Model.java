@@ -11,6 +11,7 @@ import seedu.address.model.client.Client;
 import seedu.address.model.client.Phone;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.manager.ReadOnlyAppointmentManager;
+import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
@@ -69,22 +70,22 @@ public interface Model {
     /**
      * Returns the user prefs' address book file path.
      */
-    Path getAddressBookFilePath();
+    Path getClientManagerFilePath();
 
     /**
      * Sets the user prefs' address book file path.
      */
-    void setAddressBookFilePath(Path addressBookFilePath);
+    void setClientManagerFilePath(Path clientManagerFilePath);
 
     /**
-     * Replaces address book data with the data in {@code addressBook}.
+     * Replaces address book data with the data in {@code clientManager}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setClientManager(ReadOnlyClientManager clientManager);
 
     /**
-     * Returns the AddressBook
+     * Returns the ClientManager
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyClientManager getClientManager();
 
     /**
      * Returns true if a client with the same identity as {@code client} exists in the address book.
