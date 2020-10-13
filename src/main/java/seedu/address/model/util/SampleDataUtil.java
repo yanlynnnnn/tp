@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.manager.ClientManager;
+import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.appointment.TimeOfDay;
 import seedu.address.model.client.Client;
@@ -140,8 +140,8 @@ public class SampleDataUtil {
         return sampleRevenueTracker;
     }
 
-    public static ReadOnlyAddressBook getSampleAddressBook() {
-        AddressBook sampleAb = new AddressBook();
+    public static ReadOnlyClientManager getSampleAddressBook() {
+        ClientManager sampleAb = new ClientManager();
         for (Client sampleClient : getSampleClients()) {
             sampleAb.addClient(sampleClient);
         }

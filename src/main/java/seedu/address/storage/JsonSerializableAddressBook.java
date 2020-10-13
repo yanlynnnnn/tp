@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonRootName;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.AddressBook;
-import seedu.address.model.ReadOnlyAddressBook;
+import seedu.address.model.manager.ClientManager;
+import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.client.Client;
 
 /**
@@ -36,7 +36,7 @@ class JsonSerializableAddressBook {
      *
      * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
      */
-    public JsonSerializableAddressBook(ReadOnlyAddressBook source) {
+    public JsonSerializableAddressBook(ReadOnlyClientManager source) {
         clients.addAll(source.getClientList().stream().map(JsonAdaptedClient::new).collect(Collectors.toList()));
     }
 
@@ -45,16 +45,16 @@ class JsonSerializableAddressBook {
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
-    public AddressBook toModelType() throws IllegalValueException {
-        AddressBook addressBook = new AddressBook();
+    public ClientManager toModelType() throws IllegalValueException {
+        ClientManager clientManager = new ClientManager();
         for (JsonAdaptedClient jsonAdaptedClient : clients) {
             Client client = jsonAdaptedClient.toModelType();
-            if (addressBook.hasClient(client)) {
+            if (clientManager.hasClient(client)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_CLIENT);
             }
-            addressBook.addClient(client);
+            clientManager.addClient(client);
         }
-        return addressBook;
+        return clientManager;
     }
 
 }

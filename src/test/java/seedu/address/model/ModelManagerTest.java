@@ -17,6 +17,7 @@ import org.junit.jupiter.api.Test;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.client.NameContainsKeywordsPredicate;
 import seedu.address.model.manager.AppointmentManager;
+import seedu.address.model.manager.ClientManager;
 import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.RevenueTracker;
 import seedu.address.model.manager.ServiceManager;
@@ -30,7 +31,7 @@ public class ModelManagerTest {
     public void constructor() {
         assertEquals(new UserPrefs(), modelManager.getUserPrefs());
         assertEquals(new GuiSettings(), modelManager.getGuiSettings());
-        assertEquals(new AddressBook(), new AddressBook(modelManager.getAddressBook()));
+        assertEquals(new ClientManager(), new ClientManager(modelManager.getAddressBook()));
     }
 
     @Test
@@ -99,8 +100,8 @@ public class ModelManagerTest {
 
     @Test
     public void equals() {
-        AddressBook addressBook = new AddressBookBuilder().withClient(ALICE).withClient(BENSON).build();
-        AddressBook differentAddressBook = new AddressBook();
+        ClientManager clientManager = new AddressBookBuilder().withClient(ALICE).withClient(BENSON).build();
+        ClientManager differentClientManager = new ClientManager();
         UserPrefs userPrefs = new UserPrefs();
         ServiceManager serviceManager = new ServiceManager();
         RevenueTracker revenueTracker = new RevenueTracker();
@@ -108,9 +109,9 @@ public class ModelManagerTest {
         AppointmentManager appointmentManager = new AppointmentManager();
 
         // same values -> returns true
-        modelManager = new ModelManager(userPrefs, addressBook, serviceManager,
+        modelManager = new ModelManager(userPrefs, clientManager, serviceManager,
                 revenueTracker, expenseTracker, appointmentManager);
-        ModelManager modelManagerCopy = new ModelManager(userPrefs, addressBook, serviceManager, revenueTracker,
+        ModelManager modelManagerCopy = new ModelManager(userPrefs, clientManager, serviceManager, revenueTracker,
             expenseTracker, appointmentManager);
         assertTrue(modelManager.equals(modelManagerCopy));
 
@@ -125,13 +126,13 @@ public class ModelManagerTest {
 
         // different addressBook -> returns false
         assertFalse(modelManager
-            .equals(new ModelManager(userPrefs, differentAddressBook,
+            .equals(new ModelManager(userPrefs, differentClientManager,
                     serviceManager, revenueTracker, expenseTracker, appointmentManager)));
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
         modelManager.updateFilteredClientList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-        assertFalse(modelManager.equals(new ModelManager(userPrefs, addressBook,
+        assertFalse(modelManager.equals(new ModelManager(userPrefs, clientManager,
                 serviceManager, revenueTracker, expenseTracker, appointmentManager)));
 
         // resets modelManager to initial state for upcoming tests
@@ -140,7 +141,7 @@ public class ModelManagerTest {
         // different userPrefs -> returns false
         UserPrefs differentUserPrefs = new UserPrefs();
         differentUserPrefs.setAddressBookFilePath(Paths.get("differentFilePath"));
-        assertFalse(modelManager.equals(new ModelManager(differentUserPrefs, addressBook, serviceManager,
+        assertFalse(modelManager.equals(new ModelManager(differentUserPrefs, clientManager, serviceManager,
                 revenueTracker, expenseTracker, appointmentManager)));
     }
 }

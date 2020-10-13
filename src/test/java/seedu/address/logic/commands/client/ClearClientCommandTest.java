@@ -5,7 +5,7 @@ import static seedu.address.testutil.TypicalClients.getTypicalAddressBook;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.address.model.AddressBook;
+import seedu.address.model.manager.ClientManager;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -30,7 +30,7 @@ public class ClearClientCommandTest {
             new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
         Model expectedModel = new ModelManager(new UserPrefs(), getTypicalAddressBook(), new ServiceManager(),
             new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
-        expectedModel.setAddressBook(new AddressBook());
+        expectedModel.setAddressBook(new ClientManager());
 
         assertCommandSuccess(new ClearClientCommand(), model, ClearClientCommand.MESSAGE_SUCCESS, expectedModel);
     }

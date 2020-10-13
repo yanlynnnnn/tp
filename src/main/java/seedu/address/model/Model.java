@@ -11,6 +11,7 @@ import seedu.address.model.client.Client;
 import seedu.address.model.client.Phone;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.manager.ReadOnlyAppointmentManager;
+import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
@@ -79,12 +80,12 @@ public interface Model {
     /**
      * Replaces address book data with the data in {@code addressBook}.
      */
-    void setAddressBook(ReadOnlyAddressBook addressBook);
+    void setAddressBook(ReadOnlyClientManager addressBook);
 
     /**
      * Returns the AddressBook
      */
-    ReadOnlyAddressBook getAddressBook();
+    ReadOnlyClientManager getAddressBook();
 
     /**
      * Returns true if a client with the same identity as {@code client} exists in the address book.

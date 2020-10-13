@@ -18,8 +18,10 @@ import seedu.address.model.client.Client;
 import seedu.address.model.client.Phone;
 import seedu.address.model.expense.Expense;
 import seedu.address.model.manager.AppointmentManager;
+import seedu.address.model.manager.ClientManager;
 import seedu.address.model.manager.ExpenseTracker;
 import seedu.address.model.manager.ReadOnlyAppointmentManager;
+import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.model.manager.ReadOnlyExpenseTracker;
 import seedu.address.model.manager.ReadOnlyRevenueTracker;
 import seedu.address.model.manager.ReadOnlyServiceManager;
@@ -36,7 +38,7 @@ public class ModelManager implements Model {
 
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
 
-    private final AddressBook addressBook; // This is ClientManager.
+    private final ClientManager clientManager; // This is ClientManager.
     private final ServiceManager serviceManager;
     private final AppointmentManager appointmentManager;
     private final RevenueTracker revenueTracker;
@@ -52,7 +54,7 @@ public class ModelManager implements Model {
     /**
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
-    public ModelManager(ReadOnlyUserPrefs userPrefs, ReadOnlyAddressBook addressBook,
+    public ModelManager(ReadOnlyUserPrefs userPrefs, ReadOnlyClientManager addressBook,
                         ReadOnlyServiceManager serviceManager, ReadOnlyRevenueTracker revenueTracker,
                         ReadOnlyExpenseTracker expenseTracker, ReadOnlyAppointmentManager appointmentManager) {
         super();
@@ -60,14 +62,14 @@ public class ModelManager implements Model {
 
         logger.fine("Initializing with Homerce: " + addressBook + " and user prefs " + userPrefs);
 
-        this.addressBook = new AddressBook(addressBook);
+        this.clientManager = new ClientManager(addressBook);
         this.userPrefs = new UserPrefs(userPrefs);
         this.serviceManager = new ServiceManager(serviceManager);
         this.appointmentManager = new AppointmentManager(appointmentManager);
         this.revenueTracker = new RevenueTracker(revenueTracker);
         this.expenseTracker = new ExpenseTracker(expenseTracker);
 
-        filteredClients = new FilteredList<>(this.addressBook.getClientList());
+        filteredClients = new FilteredList<>(this.clientManager.getClientList());
         filteredExpenses = new FilteredList<>(this.expenseTracker.getExpenseList());
         filteredServices = new FilteredList<>(this.serviceManager.getServiceList());
         filteredAppointments = new FilteredList<>(this.appointmentManager.getAppointmentList());
@@ -78,7 +80,7 @@ public class ModelManager implements Model {
      * Initializes a ModelManager with the given addressBook and userPrefs.
      */
     public ModelManager() {
-        this(new UserPrefs(), new AddressBook(), new ServiceManager(), new RevenueTracker(), new ExpenseTracker(),
+        this(new UserPrefs(), new ClientManager(), new ServiceManager(), new RevenueTracker(), new ExpenseTracker(),
                 new AppointmentManager());
     }
 
@@ -120,35 +122,35 @@ public class ModelManager implements Model {
     //=========== AddressBook ================================================================================
 
     @Override
-    public void setAddressBook(ReadOnlyAddressBook addressBook) {
-        this.addressBook.resetData(addressBook);
+    public void setAddressBook(ReadOnlyClientManager addressBook) {
+        this.clientManager.resetData(addressBook);
     }
 
     @Override
-    public ReadOnlyAddressBook getAddressBook() {
-        return addressBook;
+    public ReadOnlyClientManager getAddressBook() {
+        return clientManager;
     }
 
     @Override
     public boolean hasClient(Client client) {
         requireNonNull(client);
-        return addressBook.hasClient(client);
+        return clientManager.hasClient(client);
     }
 
     @Override
     public boolean hasClient(Phone phone) {
         requireAllNonNull(phone);
-        return addressBook.hasClient(phone);
+        return clientManager.hasClient(phone);
     }
 
     @Override
     public void deleteClient(Client target) {
-        addressBook.removeClient(target);
+        clientManager.removeClient(target);
     }
 
     @Override
     public void addClient(Client client) {
-        addressBook.addClient(client);
+        clientManager.addClient(client);
         updateFilteredClientList(PREDICATE_SHOW_ALL_CLIENTS);
     }
 
@@ -156,13 +158,13 @@ public class ModelManager implements Model {
     public void setClient(Client target, Client editedClient) {
         requireAllNonNull(target, editedClient);
 
-        addressBook.setClient(target, editedClient);
+        clientManager.setClient(target, editedClient);
     }
 
     @Override
     public Client getClientByPhone(Phone phone) {
         requireAllNonNull(phone);
-        return addressBook.getClientByPhone(phone);
+        return clientManager.getClientByPhone(phone);
     }
 
     //=========== Expense Tracker =============================================================
@@ -379,7 +381,7 @@ public class ModelManager implements Model {
 
         // state check
         ModelManager other = (ModelManager) obj;
-        return addressBook.equals(other.addressBook)
+        return clientManager.equals(other.clientManager)
                 && userPrefs.equals(other.userPrefs)
                 && filteredClients.equals(other.filteredClients)
                 && filteredServices.equals(other.filteredServices)
