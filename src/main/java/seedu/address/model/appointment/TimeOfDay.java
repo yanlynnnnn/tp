@@ -7,29 +7,28 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
-public class Time {
+public class TimeOfDay {
 
-    public static final String MESSAGE_CONSTRAINTS = "Time entered must be in the format of <HH:mm>,"
-            + " where HH is the 24-hour clock timing.";
+    public static final String MESSAGE_CONSTRAINTS = "TimeOfDay entered must be in the format of <HHmm>,"
+            + " where HH is the 24-hour clock timing, mm is the minutes of the hour.";
 
-    // TODO Need to test if these formatters are correct.
-    private static final DateTimeFormatter FORMAT_INPUT = DateTimeFormatter.ofPattern("HH:mm");
-    private static final DateTimeFormatter FORMAT_OUTPUT = DateTimeFormatter.ofPattern("hh:mm a");
+    private static final DateTimeFormatter FORMAT_INPUT = DateTimeFormatter.ofPattern("HHmm");
+    private static final DateTimeFormatter FORMAT_OUTPUT = DateTimeFormatter.ofPattern("h:mm a");
 
-    protected final LocalTime time;
+    protected final LocalTime value;
 
     /**
      * Represents the date stored for any model object.
      * @param timeString The input time by the user.
      */
-    public Time(String timeString) {
+    public TimeOfDay(String timeString) {
         requireNonNull(timeString);
         checkArgument(isValidTime(timeString), MESSAGE_CONSTRAINTS);
-        this.time = LocalTime.parse(timeString, FORMAT_INPUT);
+        this.value = LocalTime.parse(timeString, FORMAT_INPUT);
     }
 
     /**
-     * Returns true if a given string is a valid Time format.
+     * Returns true if a given string is a valid TimeOfDay format.
      */
     public static boolean isValidTime(String test) {
         try {
@@ -43,17 +42,17 @@ public class Time {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof Time // instanceof handles nulls
-                && time.equals(((Time) other).time)); // state check
+                || (other instanceof TimeOfDay // instanceof handles nulls
+                && value.equals(((TimeOfDay) other).value)); // state check
     }
 
     @Override
     public int hashCode() {
-        return time.hashCode();
+        return value.hashCode();
     }
 
     @Override
     public String toString() {
-        return time.format(FORMAT_OUTPUT);
+        return value.format(FORMAT_INPUT);
     }
 }

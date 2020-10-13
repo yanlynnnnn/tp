@@ -37,6 +37,14 @@ public class UniqueClientList implements Iterable<Client> {
     }
 
     /**
+     * Returns true if the list contains a client with the provided phone number.
+     */
+    public boolean contains(Phone toCheck) {
+        requireNonNull(toCheck);
+        return internalList.stream().anyMatch(x -> x.getPhone().equals(toCheck));
+    }
+
+    /**
      * Adds a client to the list.
      * The client must not already exist in the list.
      */
@@ -95,6 +103,19 @@ public class UniqueClientList implements Iterable<Client> {
         }
 
         internalList.setAll(clients);
+    }
+
+    /**
+     * Find the client based on Phone number. If phone does not match a client, exception is thrown.
+     */
+    public Client getClientByPhone(Phone phone) {
+        requireAllNonNull(phone);
+        for (Client client : internalList) {
+            if (client.getPhone().equals(phone)) {
+                return client;
+            }
+        }
+        throw new ClientNotFoundException();
     }
 
     /**

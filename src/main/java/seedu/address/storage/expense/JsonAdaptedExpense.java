@@ -25,7 +25,7 @@ public class JsonAdaptedExpense {
     private final String date;
     private final String description;
     private final String isFixed;
-    private JsonAdaptedTag tag;
+    private final JsonAdaptedTag tag;
 
     /**
      * Constructs a {@code JsonAdaptedExpense} with the given Expense details.
