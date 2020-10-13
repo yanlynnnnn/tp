@@ -22,7 +22,7 @@ public class JsonSerializableExpenseTracker {
     private final List<JsonAdaptedExpense> expenses = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableExpenseTracker } with the given services.
+     * Constructs a {@code JsonSerializableExpenseTracker } with the given expenses.
      */
     @JsonCreator
     public JsonSerializableExpenseTracker(@JsonProperty("expenses") List<JsonAdaptedExpense> expenses) {

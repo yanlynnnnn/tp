@@ -18,6 +18,9 @@ import org.junit.jupiter.api.io.TempDir;
 import seedu.address.commons.exceptions.DataConversionException;
 import seedu.address.model.manager.ClientManager;
 import seedu.address.model.manager.ReadOnlyClientManager;
+import seedu.address.commons.exceptions.DataConversionException;
+import seedu.address.model.manager.ClientManager;
+import seedu.address.model.manager.ReadOnlyClientManager;
 
 public class JsonClientManagerStorageTest {
     private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonClientStorageTest");
@@ -48,15 +51,18 @@ public class JsonClientManagerStorageTest {
     @Test
     public void read_notJsonFormat_exceptionThrown() {
         assertThrows(DataConversionException.class, () -> readAddressBook("notJsonFormatClient.json"));
+        assertThrows(DataConversionException.class, () -> readAddressBook("notJsonFormatClient.json"));
     }
 
     @Test
     public void readAddressBook_invalidClientAddressBook_throwDataConversionException() {
         assertThrows(DataConversionException.class, () -> readAddressBook("invalidClientManager.json"));
+        assertThrows(DataConversionException.class, () -> readAddressBook("invalidClientManager.json"));
     }
 
     @Test
     public void readAddressBook_invalidAndValidClientAddressBook_throwDataConversionException() {
+        assertThrows(DataConversionException.class, () -> readAddressBook("invalidAndValidClientManager.json"));
         assertThrows(DataConversionException.class, () -> readAddressBook("invalidAndValidClientManager.json"));
     }
 
@@ -83,7 +89,6 @@ public class JsonClientManagerStorageTest {
         jsonAddressBookStorage.saveClientManager(original); // file path not specified
         readBack = jsonAddressBookStorage.readClientManager().get(); // file path not specified
         assertEquals(original, new ClientManager(readBack));
-
     }
 
     @Test
@@ -105,6 +110,7 @@ public class JsonClientManagerStorageTest {
 
     @Test
     public void saveAddressBook_nullFilePath_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> saveAddressBook(new ClientManager(), null));
         assertThrows(NullPointerException.class, () -> saveAddressBook(new ClientManager(), null));
     }
 }
