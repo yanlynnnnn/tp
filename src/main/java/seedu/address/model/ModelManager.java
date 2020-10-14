@@ -191,6 +191,11 @@ public class ModelManager implements Model {
         expenseTracker.setExpenses(expenses);
     }
 
+    @Override
+    public List<Expense> filterExpensesByMonth(Predicate<Expense> predicate) {
+        return expenseTracker.filterByMonth(predicate);
+    }
+
     /**
      * Returns an unmodifiable view of the list of {@code Expense} backed by the internal list of Expenses
      * {@code versionedClientManager}
@@ -307,6 +312,11 @@ public class ModelManager implements Model {
     @Override
     public void setRevenues(List<Revenue> revenues) {
         revenueTracker.setRevenues(revenues);
+    }
+
+    @Override
+    public List<Revenue> filterRevenueByMonth(Predicate<Revenue> predicate) {
+        return revenueTracker.filterByMonth(predicate);
     }
 
     @Override

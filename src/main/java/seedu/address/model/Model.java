@@ -157,6 +157,11 @@ public interface Model {
     void setExpenses(List<Expense> expenses);
 
     /**
+     * Returns a List of expenses filtered by month.
+     */
+    List<Expense> filterExpensesByMonth(Predicate<Expense> predicate);
+
+    /**
      * Returns an unmodifiable view of the filtered expense list
      */
     ObservableList<Expense> getFilteredExpenseList();
@@ -234,6 +239,8 @@ public interface Model {
      * Replaces the contents of the revenue list with {@code expenses}.
      */
     void setRevenues(List<Revenue> revenues);
+
+    List<Revenue> filterRevenueByMonth(Predicate<Revenue> predicate);
 
     void updateFilteredRevenueList(Predicate<Revenue> predicate);
 
