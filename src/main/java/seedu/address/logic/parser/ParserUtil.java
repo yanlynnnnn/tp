@@ -1,7 +1,11 @@
 package seedu.address.logic.parser;
 
+import static java.lang.Integer.parseInt;
 import static java.util.Objects.requireNonNull;
 
+import java.time.Month;
+import java.time.temporal.ChronoField;
+import java.time.temporal.ValueRange;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,6 +35,7 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_INDEX = "Index is not a non-zero unsigned integer.";
     public static final String MESSAGE_INVALID_DAY_FORMAT = "Day should contain only the first 3 letters of the day.";
     public static final String MESSAGE_INVALID_DURATION = "Duration should be a number in hours.";
+    public static final String MESSAGE_INVALID_MONTH = "Month should be a number between 1 - 12";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -43,7 +48,7 @@ public class ParserUtil {
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
-        return Index.fromOneBased(Integer.parseInt(trimmedIndex));
+        return Index.fromOneBased(parseInt(trimmedIndex));
     }
 
     /**
@@ -224,7 +229,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String timeOfDay} into a {@code {timeOfDay}}.
+     * Parses a {@code String timeOfDay} into a {@code {TimeOfDay}}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code timeOfDay} is invalid.
@@ -238,7 +243,25 @@ public class ParserUtil {
         return new TimeOfDay(trimmedTimeOfDay);
     }
 
+    /**
+     * Parses a {@code String month} into a {@code {Month}}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code month} is invalid.
+     */
+    public static Month parseMonth(String month) throws ParseException {
+        requireNonNull(month);
+        int trimmedMonth = parseInt(month.trim());
+        if (!isValidMonth(trimmedMonth)) {
+            throw new ParseException(MESSAGE_INVALID_MONTH);
+        }
+        return Month.of(trimmedMonth);
+    }
 
-
+    private static boolean isValidMonth(int month) {
+        Month monthObject = Month.of(month);
+        ValueRange range = monthObject.range(ChronoField.MONTH_OF_YEAR);
+        return range.isValidIntValue(month);
+    }
 }
 

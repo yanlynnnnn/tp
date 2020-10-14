@@ -3,6 +3,7 @@ package seedu.address.logic.parser;
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MONTH_OF_YEAR;
 
+import java.time.Month;
 import java.util.stream.Stream;
 import seedu.address.logic.commands.ProfitCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -27,7 +28,9 @@ public class ProfitCommandParser implements Parser<ProfitCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, ProfitCommand.MESSAGE_USAGE));
         }
 
-        return new ProfitCommand("month");
+        Month month = ParserUtil.parseMonth(argumentMultimap.getValue(PREFIX_MONTH_OF_YEAR).get());
+
+        return new ProfitCommand(month);
     }
 
     /**

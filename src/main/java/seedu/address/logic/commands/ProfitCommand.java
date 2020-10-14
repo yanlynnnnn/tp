@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_MONTH_OF_YEAR;
 
+import java.time.Month;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -20,8 +21,8 @@ public class ProfitCommand extends Command {
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_MONTH_OF_YEAR + "mar";
 
-    private final String month;
-    public ProfitCommand(String month) {
+    private final Month month;
+    public ProfitCommand(Month month) {
         this.month = month;
     }
     @Override
