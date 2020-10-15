@@ -15,8 +15,8 @@ import seedu.homerce.logic.parser.ParserUtil;
 import seedu.homerce.logic.parser.Prefix;
 import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.model.client.Client;
-import seedu.homerce.model.client.ClientNamePredicate;
-import seedu.homerce.model.client.ClientPhonePredicate;
+import seedu.homerce.model.client.predicate.ClientNamePredicate;
+import seedu.homerce.model.client.predicate.ClientPhonePredicate;
 
 /**
  * Parses input arguments and creates a new FindClientCommand object

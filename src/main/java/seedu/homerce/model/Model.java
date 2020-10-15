@@ -95,7 +95,7 @@ public interface Model {
     /**
      * Returns true if a client with the same phone number as {@code phone} exists in the homerce book.
      */
-    boolean hasClient(Phone phone);
+    boolean checkClientWithPhone(Phone phone);
 
     /**
      * Deletes the given client.
@@ -155,6 +155,16 @@ public interface Model {
      * Replaces the contents of the expense list with {@code expenses}.
      */
     void setExpenses(List<Expense> expenses);
+
+    /**
+     * Returns a List of expenses filtered by month.
+     */
+    List<Expense> filterExpenseByMonth(Predicate<Expense> predicate);
+
+    /**
+     * Returns a List of expenses filtered by year.
+     */
+    List<Expense> filterExpenseByYear(Predicate<Expense> predicate);
 
     /**
      * Returns an unmodifiable view of the filtered expense list
@@ -234,6 +244,16 @@ public interface Model {
      * Replaces the contents of the revenue list with {@code expenses}.
      */
     void setRevenues(List<Revenue> revenues);
+
+    /**
+     * Returns a List of revenue filtered by month.
+     */
+    List<Revenue> filterRevenueByYear(Predicate<Revenue> predicate);
+
+    /**
+     * Returns a list of revenue filtered by year
+     */
+    List<Revenue> filterRevenueByMonth(Predicate<Revenue> predicate);
 
     void updateFilteredRevenueList(Predicate<Revenue> predicate);
 

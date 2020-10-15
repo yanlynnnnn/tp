@@ -15,7 +15,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.homerce.commons.core.GuiSettings;
-import seedu.homerce.model.client.NameContainsKeywordsPredicate;
+import seedu.homerce.model.client.predicate.NameContainsKeywordsPredicate;
 import seedu.homerce.model.manager.AppointmentManager;
 import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.ExpenseTracker;
@@ -77,10 +77,10 @@ public class ModelManagerTest {
         assertEquals(path, modelManager.getClientManagerFilePath());
     }
 
-    //    @Test
-    //    public void hasClient_nullClient_throwsNullPointerException() {
-    //        assertThrows(NullPointerException.class, () -> modelManager.hasClient(null));
-    //    }
+    @Test
+    public void hasClient_nullClient_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasClient(null));
+    }
 
     @Test
     public void hasClient_clientNotInClientManager_returnsFalse() {
