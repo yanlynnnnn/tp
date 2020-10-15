@@ -1,6 +1,5 @@
 package seedu.address.logic.parser;
 
-import static java.lang.Integer.parseInt;
 import static java.util.Objects.requireNonNull;
 
 import java.time.Month;
@@ -48,7 +47,7 @@ public class ParserUtil {
         if (!StringUtil.isNonZeroUnsignedInteger(trimmedIndex)) {
             throw new ParseException(MESSAGE_INVALID_INDEX);
         }
-        return Index.fromOneBased(parseInt(trimmedIndex));
+        return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
 
     /**
@@ -251,7 +250,7 @@ public class ParserUtil {
      */
     public static Month parseMonth(String month) throws ParseException {
         requireNonNull(month);
-        int trimmedMonth = parseInt(month.trim());
+        int trimmedMonth = Integer.parseInt(month.trim());
         if (!isValidMonth(trimmedMonth)) {
             throw new ParseException(MESSAGE_INVALID_MONTH);
         }
