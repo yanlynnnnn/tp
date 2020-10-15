@@ -11,7 +11,6 @@ import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.expense.exceptions.ItemNotFoundException;
-import seedu.address.model.service.Service;
 
 public class NonUniqueList<T> implements Iterable<T> {
 
@@ -98,6 +97,11 @@ public class NonUniqueList<T> implements Iterable<T> {
         return internalList.size();
     }
 
+    /**
+     * Creates a deep copy of all the non unique list of items.
+     *
+     * @return a list of deep copied items.
+     */
     public List<T> deepCopy() {
         Iterator<T> iterator = this.iterator();
         List<T> itemsCopy = new ArrayList<>();

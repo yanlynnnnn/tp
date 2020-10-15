@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import seedu.address.model.client.Client;
 import seedu.address.model.service.exceptions.ServiceNotFoundException;
 import seedu.address.model.util.uniquelist.UniqueList;
 
@@ -34,6 +33,11 @@ public class UniqueServiceList extends UniqueList<Service> {
         throw new ServiceNotFoundException();
     }
 
+    /**
+     * Creates a deep copy of all the services in the unique list of services.
+     *
+     * @return a list of services.
+     */
     public List<Service> deepCopy() {
         Iterator<Service> iterator = this.iterator();
         List<Service> servicesCopy = new ArrayList<>();

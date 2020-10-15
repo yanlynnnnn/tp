@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.revenue.Revenue;
-import seedu.address.model.service.Service;
 import seedu.address.model.util.nonuniquelist.NonUniqueList;
 
 /**
@@ -103,6 +102,11 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
         return Objects.hash(revenues);
     }
 
+    /**
+     * Creates a deep copy of all the revenues in the list of revenues.
+     *
+     * @return a list of revenues.
+     */
     public RevenueTracker deepCopy() {
         List<Revenue> internalListCopy = revenues.deepCopy();
         RevenueTracker revenueTrackerCopy = new RevenueTracker();

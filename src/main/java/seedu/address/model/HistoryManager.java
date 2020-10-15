@@ -50,12 +50,12 @@ public class HistoryManager {
      * @return true if the command will change the state of Homerce.
      */
     private static boolean willCommandChangeState(Command command) {
-       return !(command instanceof UndoCommand) && !(command instanceof HelpCommand)
-           && !(command instanceof FindClientCommand) && !(command instanceof ListClientCommand)
-           && !(command instanceof FindExpenseCommand) && !(command instanceof ListExpenseCommand)
-           && !(command instanceof FindServiceCommand) && !(command instanceof ListServiceCommand)
-           && !(command instanceof FindRevenueCommand) && !(command instanceof ListRevenueCommand)
-           && !(command instanceof FindAppointmentCommand) && !(command instanceof ListAppointmentCommand);
+        return !(command instanceof UndoCommand) && !(command instanceof HelpCommand)
+            && !(command instanceof FindClientCommand) && !(command instanceof ListClientCommand)
+            && !(command instanceof FindExpenseCommand) && !(command instanceof ListExpenseCommand)
+            && !(command instanceof FindServiceCommand) && !(command instanceof ListServiceCommand)
+            && !(command instanceof FindRevenueCommand) && !(command instanceof ListRevenueCommand)
+            && !(command instanceof FindAppointmentCommand) && !(command instanceof ListAppointmentCommand);
     }
 
     public Model getPreviousState() {

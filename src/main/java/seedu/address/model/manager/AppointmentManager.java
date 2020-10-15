@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.appointment.Appointment;
-import seedu.address.model.service.Service;
 import seedu.address.model.util.uniquelist.UniqueList;
 
 /**
@@ -111,6 +110,11 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
         return Objects.hash(appointments);
     }
 
+    /**
+     * Creates a deep copy of all the appointments in the unique list of appointments.
+     *
+     * @return an appointment manager with a list of deep copied appointments.
+     */
     public AppointmentManager deepCopy() {
         List<Appointment> internalListCopy = appointments.deepCopy();
         AppointmentManager appointmentManagerCopy = new AppointmentManager();

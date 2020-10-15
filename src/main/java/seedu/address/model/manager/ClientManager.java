@@ -130,6 +130,11 @@ public class ClientManager implements ReadOnlyClientManager {
         return clients.hashCode();
     }
 
+    /**
+     * Creates a deep copy of all the clients in the unique list of clients.
+     *
+     * @return a client manager with a list of deep copied clients.
+     */
     public ClientManager deepCopy() {
         List<Client> internalListCopy = clients.deepCopy();
         ClientManager clientManagerCopy = new ClientManager();

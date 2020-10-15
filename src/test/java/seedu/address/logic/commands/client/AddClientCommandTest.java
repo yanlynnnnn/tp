@@ -18,6 +18,7 @@ import javafx.collections.ObservableList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
+import seedu.address.model.HistoryManager;
 import seedu.address.model.Model;
 import seedu.address.model.ReadOnlyUserPrefs;
 import seedu.address.model.appointment.Appointment;
@@ -47,7 +48,7 @@ public class AddClientCommandTest {
         ModelStubAcceptingClientAdded modelStub = new ModelStubAcceptingClientAdded();
         Client validClient = new ClientBuilder().build();
 
-        CommandResult commandResult = new AddClientCommand(validClient).execute(modelStub, );
+        CommandResult commandResult = new AddClientCommand(validClient).execute(modelStub, new HistoryManager());
 
         assertEquals(String.format(AddClientCommand.MESSAGE_SUCCESS, validClient), commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validClient), modelStub.clientsAdded);
@@ -60,7 +61,7 @@ public class AddClientCommandTest {
         ModelStub modelStub = new ModelStubWithClient(validClient);
 
         assertThrows(CommandException.class, AddClientCommand.MESSAGE_DUPLICATE_CLIENT, () ->
-            addClientCommand.execute(modelStub, ));
+            addClientCommand.execute(modelStub, new HistoryManager()));
     }
 
     @Test
@@ -270,6 +271,11 @@ public class AddClientCommandTest {
         }
 
         @Override
+        public void setRevenueTracker(ReadOnlyRevenueTracker revenueTracker) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void deleteService(Service target) {
             throw new AssertionError("This method should not be called.");
         }
@@ -331,6 +337,21 @@ public class AddClientCommandTest {
 
         @Override
         public boolean hasAppointment(Appointment appointment) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAppointmentManager(ReadOnlyAppointmentManager appointmentManager) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void replaceModel(Model previousModel) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public Model deepCopy() {
             throw new AssertionError("This method should not be called.");
         }
     }

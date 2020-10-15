@@ -10,8 +10,6 @@ import java.util.stream.Stream;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
-import seedu.address.model.service.Service;
 import seedu.address.model.util.uniquelist.exceptions.DuplicateItemException;
 import seedu.address.model.util.uniquelist.exceptions.ItemNotFoundException;
 
@@ -155,6 +153,11 @@ public class UniqueList<T extends UniqueListItem> implements Iterable<T> {
         return internalList.stream();
     }
 
+    /**
+     * Creates a deep copy of all the items in the unique list.
+     *
+     * @return a list of deep copied items.
+     */
     public List<T> deepCopy() {
         Iterator<T> iterator = this.iterator();
         List<T> itemsCopy = new ArrayList<>();

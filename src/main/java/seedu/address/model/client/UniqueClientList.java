@@ -157,6 +157,11 @@ public class UniqueClientList implements Iterable<Client> {
         return true;
     }
 
+    /**
+     * Creates a deep copy of all the clients in the UniqueClientList.
+     *
+     * @return a list of clients.
+     */
     public List<Client> deepCopy() {
         Iterator<Client> iterator = this.iterator();
         List<Client> clientsCopy = new ArrayList<>();

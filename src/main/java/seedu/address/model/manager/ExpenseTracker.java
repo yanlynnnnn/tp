@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.expense.Expense;
-import seedu.address.model.service.Service;
 import seedu.address.model.util.nonuniquelist.NonUniqueList;
 
 public class ExpenseTracker implements ReadOnlyExpenseTracker {
@@ -97,6 +96,11 @@ public class ExpenseTracker implements ReadOnlyExpenseTracker {
         return Objects.hash(expenses);
     }
 
+    /**
+     * Creates a deep copy of all the expenses in the list of expenses.
+     *
+     * @return a list of expenses.
+     */
     public ExpenseTracker deepCopy() {
         List<Expense> internalListCopy = expenses.deepCopy();
         ExpenseTracker expenseManagerCopy = new ExpenseTracker();
