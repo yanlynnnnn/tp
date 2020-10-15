@@ -19,7 +19,6 @@ import seedu.homerce.model.Model;
 import seedu.homerce.model.ModelManager;
 import seedu.homerce.model.ReadOnlyUserPrefs;
 import seedu.homerce.model.UserPrefs;
-import seedu.homerce.model.client.Client;
 import seedu.homerce.model.manager.AppointmentManager;
 import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.ExpenseTracker;
