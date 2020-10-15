@@ -7,5 +7,5 @@
       "y" : 100
     }
   },
-  "clientManagerFilePath" : "clientmanager.json"
+  "clientManagerFilePath" : "clients.json"
 }
