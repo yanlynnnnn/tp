@@ -147,8 +147,7 @@ public class AddClientCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-        @Override
-        public boolean hasClient(Phone phone) {
+        public boolean checkClientWithPhone(Phone phone) {
             throw new AssertionError("This method should not be called.");
         }
 

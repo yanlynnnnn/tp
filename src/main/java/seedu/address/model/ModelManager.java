@@ -137,10 +137,12 @@ public class ModelManager implements Model {
         return clientManager.hasClient(client);
     }
 
-    @Override
-    public boolean hasClient(Phone phone) {
+    /**
+     * Checks if a client exists in the client manager using the client's phone number.
+     */
+    public boolean checkClientWithPhone(Phone phone) {
         requireAllNonNull(phone);
-        return clientManager.hasClient(phone);
+        return clientManager.checkClientWithPhone(phone);
     }
 
     @Override

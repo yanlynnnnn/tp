@@ -1,4 +1,4 @@
-package seedu.address.model;
+package seedu.address.model.manager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -20,8 +20,6 @@ import javafx.collections.ObservableList;
 import seedu.address.model.client.Client;
 import seedu.address.model.client.exceptions.DuplicateClientException;
 import seedu.address.model.expense.Expense;
-import seedu.address.model.manager.ClientManager;
-import seedu.address.model.manager.ReadOnlyClientManager;
 import seedu.address.testutil.ClientBuilder;
 
 public class ClientManagerTest {
@@ -56,10 +54,10 @@ public class ClientManagerTest {
         assertThrows(DuplicateClientException.class, () -> clientManager.resetData(newData));
     }
 
-    //    @Test
-    //    public void hasClient_nullClient_throwsNullPointerException() {
-    //        assertThrows(NullPointerException.class, () -> addressBook.hasClient(null));
-    //    }
+    @Test
+    public void hasClient_nullClient_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> clientManager.hasClient(null));
+    }
 
     @Test
     public void hasClient_clientNotInAddressBook_returnsFalse() {

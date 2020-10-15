@@ -95,7 +95,7 @@ public interface Model {
     /**
      * Returns true if a client with the same phone number as {@code phone} exists in the address book.
      */
-    boolean hasClient(Phone phone);
+    boolean checkClientWithPhone(Phone phone);
 
     /**
      * Deletes the given client.

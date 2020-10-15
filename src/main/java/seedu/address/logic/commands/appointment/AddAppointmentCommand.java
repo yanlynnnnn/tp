@@ -54,7 +54,7 @@ public class AddAppointmentCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         // Check if phone number and service code are present in the model.
-        if (!model.hasClient(toAdd.getPhone())) {
+        if (!model.checkClientWithPhone(toAdd.getPhone())) {
             throw new CommandException(MESSAGE_INVALID_PHONE);
         } else if (!model.hasService(toAdd.getServiceCode())) {
             throw new CommandException(MESSAGE_INVALID_SERVICE_CODE);

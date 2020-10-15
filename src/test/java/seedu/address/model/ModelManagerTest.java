@@ -77,10 +77,10 @@ public class ModelManagerTest {
         assertEquals(path, modelManager.getClientManagerFilePath());
     }
 
-    //    @Test
-    //    public void hasClient_nullClient_throwsNullPointerException() {
-    //        assertThrows(NullPointerException.class, () -> modelManager.hasClient(null));
-    //    }
+    @Test
+    public void hasClient_nullClient_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> modelManager.hasClient(null));
+    }
 
     @Test
     public void hasClient_clientNotInClientManager_returnsFalse() {
