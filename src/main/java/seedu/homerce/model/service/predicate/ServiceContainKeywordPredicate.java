@@ -1,9 +1,10 @@
-package seedu.homerce.model.service;
+package seedu.homerce.model.service.predicate;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.homerce.commons.util.StringUtil;
+import seedu.homerce.model.service.Service;
 
 /**
  * Tests that a {@code Service}'s {@code Title} or {@code ServiceCode} matches any of the keywords given.

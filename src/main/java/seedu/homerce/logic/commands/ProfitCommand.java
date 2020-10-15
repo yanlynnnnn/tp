@@ -11,9 +11,9 @@ import java.util.function.Predicate;
 import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.expense.Expense;
-import seedu.homerce.model.expense.ExpenseMonthPredicate;
+import seedu.homerce.model.expense.predicate.ExpenseMonthPredicate;
 import seedu.homerce.model.revenue.Revenue;
-import seedu.homerce.model.revenue.RevenueMonthPredicate;
+import seedu.homerce.model.revenue.predicate.RevenueMonthPredicate;
 
 public class ProfitCommand extends Command {
 

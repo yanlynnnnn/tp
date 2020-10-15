@@ -1,7 +1,8 @@
-package seedu.homerce.model.expense;
+package seedu.homerce.model.expense.predicate;
 
 import java.time.Month;
 import java.util.function.Predicate;
+import seedu.homerce.model.expense.Expense;
 
 /**
  * Tests that a {@code Expense}'s {@code Date} matches the given date.

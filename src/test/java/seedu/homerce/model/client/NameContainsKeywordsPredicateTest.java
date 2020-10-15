@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.homerce.model.client.predicate.NameContainsKeywordsPredicate;
 import seedu.homerce.testutil.ClientBuilder;
 
 public class NameContainsKeywordsPredicateTest {

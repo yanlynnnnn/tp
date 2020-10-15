@@ -1,7 +1,8 @@
-package seedu.homerce.model.revenue;
+package seedu.homerce.model.revenue.predicate;
 
 import java.util.function.Predicate;
 
+import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.service.ServiceCode;
 
 public class RevenueServiceCodePredicate implements Predicate<Revenue> {

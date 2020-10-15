@@ -1,6 +1,8 @@
-package seedu.homerce.model.client;
+package seedu.homerce.model.client.predicate;
 
 import java.util.function.Predicate;
+import seedu.homerce.model.client.Client;
+import seedu.homerce.model.client.Name;
 
 public class ClientNamePredicate implements Predicate<Client> {
     private final Name clientName;

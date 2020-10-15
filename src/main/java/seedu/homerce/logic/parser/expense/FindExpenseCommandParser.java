@@ -19,9 +19,9 @@ import seedu.homerce.logic.parser.ParserUtil;
 import seedu.homerce.logic.parser.Prefix;
 import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.model.expense.Expense;
-import seedu.homerce.model.expense.ExpenseDatePredicate;
-import seedu.homerce.model.expense.ExpenseDescriptionPredicate;
-import seedu.homerce.model.expense.ExpenseIsFixedPredicate;
+import seedu.homerce.model.expense.predicate.ExpenseDatePredicate;
+import seedu.homerce.model.expense.predicate.ExpenseDescriptionPredicate;
+import seedu.homerce.model.expense.predicate.ExpenseIsFixedPredicate;
 import seedu.homerce.model.expense.TagPredicate;
 
 /**

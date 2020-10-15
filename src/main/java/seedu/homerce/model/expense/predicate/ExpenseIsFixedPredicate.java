@@ -1,6 +1,8 @@
-package seedu.homerce.model.expense;
+package seedu.homerce.model.expense.predicate;
 
 import java.util.function.Predicate;
+import seedu.homerce.model.expense.Expense;
+import seedu.homerce.model.expense.IsFixed;
 
 /**
  * Tests that a {@code Expense}'s {@code IsFixed} matches the given isFixed.
