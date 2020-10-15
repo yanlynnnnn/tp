@@ -6,6 +6,8 @@ import static seedu.homerce.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.address.logic.commands.expense.BreakdownExpenseCommand;
+import seedu.address.logic.parser.expense.BreakdownExpenseCommandParser;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.ExitCommand;
 import seedu.homerce.logic.commands.HelpCommand;
@@ -128,6 +130,9 @@ public class HomerceParser {
 
         case ClearExpenseCommand.COMMAND_WORD:
             return new ClearExpenseCommand();
+
+        case BreakdownExpenseCommand.COMMAND_WORD:
+            return new BreakdownExpenseCommandParser().parse(arguments);
 
         case AddServiceCommand.COMMAND_WORD:
             return new AddServiceCommandParser().parse(arguments);
