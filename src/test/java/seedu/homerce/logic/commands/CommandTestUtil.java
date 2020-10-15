@@ -12,26 +12,15 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-<<<<<<< HEAD:src/test/java/seedu/address/logic/commands/CommandTestUtil.java
-import seedu.address.commons.core.index.Index;
-import seedu.address.logic.commands.client.EditClientCommand;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.HistoryManager;
-import seedu.address.model.Model;
-import seedu.address.model.client.Client;
-import seedu.address.model.client.NameContainsKeywordsPredicate;
-import seedu.address.model.manager.ClientManager;
-import seedu.address.testutil.EditClientDescriptorBuilder;
-=======
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.client.EditClientCommand;
 import seedu.homerce.logic.commands.exceptions.CommandException;
+import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.client.NameContainsKeywordsPredicate;
 import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.testutil.EditClientDescriptorBuilder;
->>>>>>> 150900a5b6ef51f2f3ebc5d3d0e21ef7725aedf1:src/test/java/seedu/homerce/logic/commands/CommandTestUtil.java
 
 /**
  * Contains helper methods for testing commands.

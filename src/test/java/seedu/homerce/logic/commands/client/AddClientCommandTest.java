@@ -15,31 +15,10 @@ import java.util.function.Predicate;
 import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
-<<<<<<< HEAD:src/test/java/seedu/address/logic/commands/client/AddClientCommandTest.java
-import seedu.address.commons.core.GuiSettings;
-import seedu.address.logic.commands.CommandResult;
-import seedu.address.logic.commands.exceptions.CommandException;
-import seedu.address.model.HistoryManager;
-import seedu.address.model.Model;
-import seedu.address.model.ReadOnlyUserPrefs;
-import seedu.address.model.appointment.Appointment;
-import seedu.address.model.client.Client;
-import seedu.address.model.client.Phone;
-import seedu.address.model.expense.Expense;
-import seedu.address.model.manager.ClientManager;
-import seedu.address.model.manager.ReadOnlyAppointmentManager;
-import seedu.address.model.manager.ReadOnlyClientManager;
-import seedu.address.model.manager.ReadOnlyExpenseTracker;
-import seedu.address.model.manager.ReadOnlyRevenueTracker;
-import seedu.address.model.manager.ReadOnlyServiceManager;
-import seedu.address.model.revenue.Revenue;
-import seedu.address.model.service.Service;
-import seedu.address.model.service.ServiceCode;
-import seedu.address.testutil.ClientBuilder;
-=======
 import seedu.homerce.commons.core.GuiSettings;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
+import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ReadOnlyUserPrefs;
 import seedu.homerce.model.appointment.Appointment;
@@ -56,7 +35,6 @@ import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
 import seedu.homerce.testutil.ClientBuilder;
->>>>>>> 150900a5b6ef51f2f3ebc5d3d0e21ef7725aedf1:src/test/java/seedu/homerce/logic/commands/client/AddClientCommandTest.java
 
 public class AddClientCommandTest {
 
