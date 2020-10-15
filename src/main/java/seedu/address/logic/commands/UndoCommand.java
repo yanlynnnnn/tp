@@ -15,6 +15,7 @@ public class UndoCommand extends Command {
 
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) throws CommandException {
+
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }

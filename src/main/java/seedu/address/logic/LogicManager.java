@@ -12,6 +12,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.AddressBookParser;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.HistoryManager;
 import seedu.address.model.Model;
 import seedu.address.model.appointment.Appointment;
 import seedu.address.model.client.Client;
@@ -32,13 +33,15 @@ public class LogicManager implements Logic {
     private final Model model;
     private final Storage storage;
     private final AddressBookParser addressBookParser;
+    private HistoryManager historyManager;
 
     /**
      * Constructs a {@code LogicManager} with the given {@code Model} and {@code Storage}.
      */
-    public LogicManager(Model model, Storage storage) {
+    public LogicManager(Model model, Storage storage, HistoryManager historyManager) {
         this.model = model;
         this.storage = storage;
+        this.historyManager = historyManager;
         addressBookParser = new AddressBookParser();
     }
 
@@ -48,8 +51,8 @@ public class LogicManager implements Logic {
 
         CommandResult commandResult;
         Command command = addressBookParser.parseCommand(commandText);
-        commandResult = command.execute(model, );
 
+        commandResult = command.execute(model, historyManager);
         try {
             storage.saveClientManager(model.getClientManager());
             storage.saveServiceManager(model.getServiceManager());

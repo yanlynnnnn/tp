@@ -21,6 +21,7 @@ import seedu.address.logic.commands.client.AddClientCommand;
 import seedu.address.logic.commands.client.ListClientCommand;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.HistoryManager;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -66,7 +67,10 @@ public class LogicManagerTest {
 
         StorageManager storage = new StorageManager(userPrefsStorage, addressBookStorage, serviceStorage,
             revenueStorage, expenseStorage, appointmentStorage);
-        logic = new LogicManager(model, storage);
+
+        HistoryManager historyManager = new HistoryManager(model);
+
+        logic = new LogicManager(model, storage, historyManager);
     }
 
     @Test
@@ -102,7 +106,10 @@ public class LogicManagerTest {
 
         StorageManager storage = new StorageManager(userPrefsStorage, addressBookStorage, serviceStorage,
             revenueStorage, expenseStorage, appointmentStorage);
-        logic = new LogicManager(model, storage);
+
+        HistoryManager historyManager = new HistoryManager(model);
+
+        logic = new LogicManager(model, storage, historyManager);
 
         // Execute add command
         String addCommand = AddClientCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY;
