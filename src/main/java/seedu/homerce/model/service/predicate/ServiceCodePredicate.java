@@ -1,6 +1,7 @@
 package seedu.homerce.model.service.predicate;
 
 import java.util.function.Predicate;
+
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
 

@@ -3,6 +3,7 @@ package seedu.homerce.logic.parser;
 import static java.util.Objects.requireNonNull;
 
 import java.time.Month;
+import java.time.Year;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ValueRange;
 import java.util.Collection;
@@ -35,6 +36,7 @@ public class ParserUtil {
     public static final String MESSAGE_INVALID_DAY_FORMAT = "Day should contain only the first 3 letters of the day.";
     public static final String MESSAGE_INVALID_DURATION = "Duration should be a number in hours.";
     public static final String MESSAGE_INVALID_MONTH = "Month should be a number between 1 - 12";
+    public static final String MESSAGE_INVALID_YEAR = "Year should be a positive valid number";
 
     /**
      * Parses {@code oneBasedIndex} into an {@code Index} and returns it. Leading and trailing whitespaces will be
@@ -250,17 +252,48 @@ public class ParserUtil {
      */
     public static Month parseMonth(String month) throws ParseException {
         requireNonNull(month);
-        int trimmedMonth = Integer.parseInt(month.trim());
+        String trimmedMonth = month.trim();
         if (!isValidMonth(trimmedMonth)) {
             throw new ParseException(MESSAGE_INVALID_MONTH);
         }
-        return Month.of(trimmedMonth);
+        return Month.of(Integer.parseInt(trimmedMonth));
     }
 
-    private static boolean isValidMonth(int month) {
-        Month monthObject = Month.of(month);
+    /**
+     * Parses a {@code String year} into a {@code {Year}}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code year} is invalid.
+     */
+    public static Year parseYear(String year) throws ParseException {
+        requireNonNull(year);
+        String trimmedYear = year.trim();
+        if (!isValidYear(trimmedYear)) {
+            throw new ParseException(MESSAGE_INVALID_YEAR);
+        }
+        return Year.of(Integer.parseInt(trimmedYear));
+    }
+
+    private static boolean isValidYear(String year) {
+        // Checks if its a String contains numbers only
+        if (!year.matches("\\d+")) {
+            return false;
+        }
+        int intYear = Integer.parseInt(year);
+        Year yearObject = Year.of(intYear);
+        ValueRange range = yearObject.range(ChronoField.YEAR);
+        return range.isValidIntValue(intYear);
+    }
+
+    private static boolean isValidMonth(String month) {
+        // Checks if its a String contains numbers only
+        if (!month.matches("\\d+")) {
+            return false;
+        }
+        int intMonth = Integer.parseInt(month);
+        Month monthObject = Month.of(intMonth);
         ValueRange range = monthObject.range(ChronoField.MONTH_OF_YEAR);
-        return range.isValidIntValue(month);
+        return range.isValidIntValue(intMonth);
     }
 }
 

@@ -194,7 +194,12 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public List<Expense> filterExpensesByMonth(Predicate<Expense> predicate) {
+    public List<Expense> filterExpenseByYear(Predicate<Expense> predicate) {
+        return expenseTracker.filterByYear(predicate);
+    }
+
+    @Override
+    public List<Expense> filterExpenseByMonth(Predicate<Expense> predicate) {
         return expenseTracker.filterByMonth(predicate);
     }
 
@@ -319,6 +324,11 @@ public class ModelManager implements Model {
     @Override
     public List<Revenue> filterRevenueByMonth(Predicate<Revenue> predicate) {
         return revenueTracker.filterByMonth(predicate);
+    }
+
+    @Override
+    public List<Revenue> filterRevenueByYear(Predicate<Revenue> predicate) {
+        return revenueTracker.filterByYear(predicate);
     }
 
     @Override

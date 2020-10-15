@@ -210,8 +210,13 @@ public class AddClientCommandTest {
         }
 
         @Override
-        public List<Expense> filterExpensesByMonth(Predicate<Expense> predicate) {
+        public List<Expense> filterExpenseByMonth(Predicate<Expense> predicate) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public List<Expense> filterExpenseByYear(Predicate<Expense> predicate) {
+            throw new AssertionError("This method should not be called");
         }
 
         // ============================== Service Management ====================================
@@ -276,6 +281,11 @@ public class AddClientCommandTest {
         @Override
         public List<Revenue> filterRevenueByMonth(Predicate<Revenue> predicate) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public List<Revenue> filterRevenueByYear(Predicate<Revenue> predicate) {
+            throw new AssertionError("This method should not be called");
         }
 
         @Override

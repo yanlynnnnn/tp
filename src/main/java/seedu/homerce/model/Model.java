@@ -159,7 +159,12 @@ public interface Model {
     /**
      * Returns a List of expenses filtered by month.
      */
-    List<Expense> filterExpensesByMonth(Predicate<Expense> predicate);
+    List<Expense> filterExpenseByMonth(Predicate<Expense> predicate);
+
+    /**
+     * Returns a List of expenses filtered by year.
+     */
+    List<Expense> filterExpenseByYear(Predicate<Expense> predicate);
 
     /**
      * Returns an unmodifiable view of the filtered expense list
@@ -240,6 +245,14 @@ public interface Model {
      */
     void setRevenues(List<Revenue> revenues);
 
+    /**
+     * Returns a List of revenue filtered by month.
+     */
+    List<Revenue> filterRevenueByYear(Predicate<Revenue> predicate);
+
+    /**
+     * Returns a list of revenue filtered by year
+     */
     List<Revenue> filterRevenueByMonth(Predicate<Revenue> predicate);
 
     void updateFilteredRevenueList(Predicate<Revenue> predicate);

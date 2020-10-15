@@ -1,6 +1,7 @@
 package seedu.homerce.model.expense.predicate;
 
 import java.util.function.Predicate;
+
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.expense.IsFixed;
 

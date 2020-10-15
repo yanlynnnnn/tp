@@ -2,6 +2,7 @@ package seedu.homerce.model.revenue.predicate;
 
 import java.time.Year;
 import java.util.function.Predicate;
+
 import seedu.homerce.model.revenue.Revenue;
 
 /**

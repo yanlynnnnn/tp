@@ -79,6 +79,9 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
     public List<Revenue> filterByMonth(Predicate<Revenue> predicate) {
         return revenues.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
     }
+    public List<Revenue> filterByYear(Predicate<Revenue> predicate) {
+        return revenues.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
+    }
 
     //// util methods
 
@@ -106,4 +109,5 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
     public int hashCode() {
         return Objects.hash(revenues);
     }
+
 }

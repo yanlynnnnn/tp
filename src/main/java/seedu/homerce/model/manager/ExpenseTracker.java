@@ -66,6 +66,10 @@ public class ExpenseTracker implements ReadOnlyExpenseTracker {
         return expenses.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
     }
 
+    public List<Expense> filterByYear(Predicate<Expense> predicate) {
+        return expenses.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
+    }
+
     /**
      * Removes {@code key} from this {@code ExpenseTracker}.
      * {@code key} must exist in the SuperSalon.
@@ -100,5 +104,6 @@ public class ExpenseTracker implements ReadOnlyExpenseTracker {
     public int hashCode() {
         return Objects.hash(expenses);
     }
+
 }
 
