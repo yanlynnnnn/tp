@@ -1,9 +1,10 @@
-package seedu.homerce.model.client;
+package seedu.homerce.model.client.predicate;
 
 import java.util.List;
 import java.util.function.Predicate;
 
 import seedu.homerce.commons.util.StringUtil;
+import seedu.homerce.model.client.Client;
 
 /**
  * Tests that a {@code Client}'s {@code Name} matches any of the keywords given.

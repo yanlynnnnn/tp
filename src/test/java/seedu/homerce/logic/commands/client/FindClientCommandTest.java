@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ModelManager;
 import seedu.homerce.model.UserPrefs;
-import seedu.homerce.model.client.NameContainsKeywordsPredicate;
+import seedu.homerce.model.client.predicate.NameContainsKeywordsPredicate;
 import seedu.homerce.model.manager.AppointmentManager;
 import seedu.homerce.model.manager.ExpenseTracker;
 import seedu.homerce.model.manager.RevenueTracker;

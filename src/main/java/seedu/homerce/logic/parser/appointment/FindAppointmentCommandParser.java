@@ -17,10 +17,10 @@ import seedu.homerce.logic.parser.ParserUtil;
 import seedu.homerce.logic.parser.Prefix;
 import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.model.appointment.Appointment;
-import seedu.homerce.model.appointment.AppointmentDatePredicate;
-import seedu.homerce.model.appointment.AppointmentNamePredicate;
-import seedu.homerce.model.appointment.AppointmentPhonePredicate;
-import seedu.homerce.model.appointment.AppointmentServiceCodePredicate;
+import seedu.homerce.model.appointment.predicate.AppointmentDatePredicate;
+import seedu.homerce.model.appointment.predicate.AppointmentNamePredicate;
+import seedu.homerce.model.appointment.predicate.AppointmentPhonePredicate;
+import seedu.homerce.model.appointment.predicate.AppointmentServiceCodePredicate;
 
 public class FindAppointmentCommandParser implements Parser<FindAppointmentCommand> {
 

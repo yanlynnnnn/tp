@@ -1,6 +1,9 @@
-package seedu.homerce.model.service;
+package seedu.homerce.model.service.predicate;
 
 import java.util.function.Predicate;
+
+import seedu.homerce.model.service.Service;
+import seedu.homerce.model.service.ServiceCode;
 
 /**
  * Tests that a {@code Service}'s {@code ServiceCode} matches the given service code.

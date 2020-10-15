@@ -15,8 +15,8 @@ import seedu.homerce.logic.parser.ParserUtil;
 import seedu.homerce.logic.parser.Prefix;
 import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.model.service.Service;
-import seedu.homerce.model.service.ServiceCodePredicate;
-import seedu.homerce.model.service.ServiceTitlePredicate;
+import seedu.homerce.model.service.predicate.ServiceCodePredicate;
+import seedu.homerce.model.service.predicate.ServiceTitlePredicate;
 
 /**
  * Parses input arguments and creates a new FindServiceCommand object
