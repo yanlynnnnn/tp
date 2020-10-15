@@ -44,6 +44,10 @@ public class Date {
         return date.getMonth();
     }
 
+    public int getYear() {
+        return date.getYear();
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
