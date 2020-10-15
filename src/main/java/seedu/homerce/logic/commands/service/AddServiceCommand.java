@@ -12,7 +12,7 @@ import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.service.Service;
-import seedu.homerce.model.service.ServiceCode;
+import seedu.homerce.model.util.attributes.service.ServiceCodeGenerator;
 
 /**
  * Adds a service to SuperSalon.
@@ -49,7 +49,7 @@ public class AddServiceCommand extends Command {
 
         // Generate unique ServiceCode for the Service before adding it to model
         List<Service> lastShownList = model.getFilteredServiceList();
-        String serviceCode = ServiceCode.generateNewServiceCode(lastShownList);
+        String serviceCode = ServiceCodeGenerator.generateNewServiceCode(lastShownList);
         toAdd.addServiceCode(serviceCode);
 
         model.addService(toAdd);
