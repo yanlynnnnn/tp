@@ -52,7 +52,11 @@ public class LogicManager implements Logic {
         CommandResult commandResult;
         Command command = addressBookParser.parseCommand(commandText);
 
+        // Model has not been updated by this point
+        historyManager.addToHistory(model, command);
+
         commandResult = command.execute(model, historyManager);
+
         try {
             storage.saveClientManager(model.getClientManager());
             storage.saveServiceManager(model.getServiceManager());

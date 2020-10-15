@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
+
 import seedu.address.model.service.Service;
 import seedu.address.model.service.ServiceCode;
 import seedu.address.model.service.UniqueServiceList;
@@ -125,5 +126,12 @@ public class ServiceManager implements ReadOnlyServiceManager {
     public Service getServiceByServiceCode(ServiceCode serviceCode) {
         requireNonNull(serviceCode);
         return services.getServiceByServiceCode(serviceCode);
+    }
+
+    public ServiceManager deepCopy() {
+        List<Service> internalListCopy = services.deepCopy();
+        ServiceManager serviceManagerCopy = new ServiceManager();
+        serviceManagerCopy.setServices(internalListCopy);
+        return serviceManagerCopy;
     }
 }

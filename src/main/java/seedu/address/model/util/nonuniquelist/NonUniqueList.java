@@ -3,6 +3,7 @@ package seedu.address.model.util.nonuniquelist;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
@@ -10,6 +11,7 @@ import java.util.stream.Stream;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.address.model.expense.exceptions.ItemNotFoundException;
+import seedu.address.model.service.Service;
 
 public class NonUniqueList<T> implements Iterable<T> {
 
@@ -94,6 +96,15 @@ public class NonUniqueList<T> implements Iterable<T> {
 
     public int size() {
         return internalList.size();
+    }
+
+    public List<T> deepCopy() {
+        Iterator<T> iterator = this.iterator();
+        List<T> itemsCopy = new ArrayList<>();
+        while (iterator.hasNext()) {
+            itemsCopy.add(iterator.next());
+        }
+        return itemsCopy;
     }
 }
 

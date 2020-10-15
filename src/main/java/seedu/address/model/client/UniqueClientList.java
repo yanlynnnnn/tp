@@ -3,6 +3,7 @@ package seedu.address.model.client;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -154,5 +155,14 @@ public class UniqueClientList implements Iterable<Client> {
             }
         }
         return true;
+    }
+
+    public List<Client> deepCopy() {
+        Iterator<Client> iterator = this.iterator();
+        List<Client> clientsCopy = new ArrayList<>();
+        while (iterator.hasNext()) {
+            clientsCopy.add(iterator.next());
+        }
+        return clientsCopy;
     }
 }

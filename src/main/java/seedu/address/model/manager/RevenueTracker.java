@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.revenue.Revenue;
+import seedu.address.model.service.Service;
 import seedu.address.model.util.nonuniquelist.NonUniqueList;
 
 /**
@@ -100,5 +101,12 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
     @Override
     public int hashCode() {
         return Objects.hash(revenues);
+    }
+
+    public RevenueTracker deepCopy() {
+        List<Revenue> internalListCopy = revenues.deepCopy();
+        RevenueTracker revenueTrackerCopy = new RevenueTracker();
+        revenueTrackerCopy.setRevenues(internalListCopy);
+        return revenueTrackerCopy;
     }
 }

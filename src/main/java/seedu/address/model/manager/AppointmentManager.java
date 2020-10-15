@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.address.model.appointment.Appointment;
+import seedu.address.model.service.Service;
 import seedu.address.model.util.uniquelist.UniqueList;
 
 /**
@@ -108,5 +109,12 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
     @Override
     public int hashCode() {
         return Objects.hash(appointments);
+    }
+
+    public AppointmentManager deepCopy() {
+        List<Appointment> internalListCopy = appointments.deepCopy();
+        AppointmentManager appointmentManagerCopy = new AppointmentManager();
+        appointmentManagerCopy.setAppointments(internalListCopy);
+        return appointmentManagerCopy;
     }
 }

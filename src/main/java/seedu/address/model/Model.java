@@ -241,6 +241,8 @@ public interface Model {
 
     ReadOnlyRevenueTracker getRevenueTracker();
 
+    void setRevenueTracker(ReadOnlyRevenueTracker revenueTracker);
+
 
     // ====================== AppointmentManager ========================
     /**
@@ -280,4 +282,11 @@ public interface Model {
      * Checks if Appointment is stored in Appointment Manager.
      */
     boolean hasAppointment(Appointment appointment);
+
+    void setAppointmentManager(ReadOnlyAppointmentManager appointmentManager);
+
+    // ====================== HistoryManager ========================
+    void replaceModel(Model previousModel);
+
+    Model deepCopy();
 }

@@ -129,5 +129,12 @@ public class ClientManager implements ReadOnlyClientManager {
     public int hashCode() {
         return clients.hashCode();
     }
+
+    public ClientManager deepCopy() {
+        List<Client> internalListCopy = clients.deepCopy();
+        ClientManager clientManagerCopy = new ClientManager();
+        clientManagerCopy.setClients((internalListCopy));
+        return clientManagerCopy;
+    }
 }
 

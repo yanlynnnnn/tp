@@ -3,6 +3,11 @@ package seedu.address.model.service;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import seedu.address.model.client.Client;
 import seedu.address.model.service.exceptions.ServiceNotFoundException;
 import seedu.address.model.util.uniquelist.UniqueList;
 
@@ -27,5 +32,14 @@ public class UniqueServiceList extends UniqueList<Service> {
             }
         }
         throw new ServiceNotFoundException();
+    }
+
+    public List<Service> deepCopy() {
+        Iterator<Service> iterator = this.iterator();
+        List<Service> servicesCopy = new ArrayList<>();
+        while (iterator.hasNext()) {
+            servicesCopy.add(iterator.next());
+        }
+        return servicesCopy;
     }
 }

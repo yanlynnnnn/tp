@@ -3,12 +3,15 @@ package seedu.address.model.util.uniquelist;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+
+import seedu.address.model.service.Service;
 import seedu.address.model.util.uniquelist.exceptions.DuplicateItemException;
 import seedu.address.model.util.uniquelist.exceptions.ItemNotFoundException;
 
@@ -150,5 +153,14 @@ public class UniqueList<T extends UniqueListItem> implements Iterable<T> {
      */
     public Stream<T> stream() {
         return internalList.stream();
+    }
+
+    public List<T> deepCopy() {
+        Iterator<T> iterator = this.iterator();
+        List<T> itemsCopy = new ArrayList<>();
+        while (iterator.hasNext()) {
+            itemsCopy.add(iterator.next());
+        }
+        return itemsCopy;
     }
 }
