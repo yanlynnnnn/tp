@@ -12,7 +12,7 @@ import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.service.Service;
-import seedu.address.model.service.ServiceCode;
+import seedu.address.model.service.ServiceCodeGenerator;
 
 /**
  * Adds a service to SuperSalon.
@@ -49,7 +49,7 @@ public class AddServiceCommand extends Command {
 
         // Generate unique ServiceCode for the Service before adding it to model
         List<Service> lastShownList = model.getFilteredServiceList();
-        String serviceCode = ServiceCode.generateNewServiceCode(lastShownList);
+        String serviceCode = ServiceCodeGenerator.generateNewServiceCode(lastShownList);
         toAdd.addServiceCode(serviceCode);
 
         model.addService(toAdd);
