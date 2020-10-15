@@ -11,6 +11,7 @@ import java.util.function.Predicate;
 import seedu.address.commons.core.Messages;
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.model.HistoryManager;
 import seedu.address.model.Model;
 import seedu.address.model.expense.Expense;
 
@@ -39,7 +40,7 @@ public class FindExpenseCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
         model.updateFilteredExpenseList(predicate);
         return new CommandResult(

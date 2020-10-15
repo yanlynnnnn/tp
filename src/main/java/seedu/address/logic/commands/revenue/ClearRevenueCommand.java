@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.model.HistoryManager;
 import seedu.address.model.Model;
 import seedu.address.model.revenue.Revenue;
 
@@ -16,7 +17,7 @@ public class ClearRevenueCommand extends Command {
 
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
         model.setRevenues(new ArrayList<Revenue>());
         return new CommandResult(MESSAGE_SUCCESS);

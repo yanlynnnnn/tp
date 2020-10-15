@@ -5,6 +5,7 @@ import static seedu.address.model.Model.PREDICATE_SHOW_ALL_REVENUE;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.model.HistoryManager;
 import seedu.address.model.Model;
 
 /**
@@ -18,7 +19,7 @@ public class ListRevenueCommand extends Command {
 
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
         model.updateFilteredRevenueList(PREDICATE_SHOW_ALL_REVENUE);
         return new CommandResult(MESSAGE_SUCCESS);

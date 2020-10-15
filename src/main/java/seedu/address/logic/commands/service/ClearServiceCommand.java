@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.address.logic.commands.Command;
 import seedu.address.logic.commands.CommandResult;
+import seedu.address.model.HistoryManager;
 import seedu.address.model.Model;
 import seedu.address.model.manager.ServiceManager;
 
@@ -17,7 +18,7 @@ public class ClearServiceCommand extends Command {
 
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
         model.setServiceManager(new ServiceManager());
         return new CommandResult(MESSAGE_SUCCESS);
