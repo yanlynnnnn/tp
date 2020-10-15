@@ -16,6 +16,9 @@ public class UndoCommand extends Command {
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) throws CommandException {
         Model previousModel = historyManager.getPreviousState();
+        if (previousModel == null) {
+            throw new CommandException("There are no more changes to be undone!");
+        }
         model.replaceModel(previousModel);
         return new CommandResult(MESSAGE_SUCCESS);
     }

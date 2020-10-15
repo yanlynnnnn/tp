@@ -87,7 +87,7 @@ public class MainApp extends Application {
 
         model = initModelManager(storage, userPrefs);
 
-        historyManager = new HistoryManager(model);
+        historyManager = new HistoryManager();
 
         logic = new LogicManager(model, storage, historyManager);
 
