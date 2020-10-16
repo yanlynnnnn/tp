@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.ExitCommand;
 import seedu.homerce.logic.commands.HelpCommand;
+import seedu.homerce.logic.commands.ProfitCommand;
 import seedu.homerce.logic.commands.UndoCommand;
 import seedu.homerce.logic.commands.appointment.AddAppointmentCommand;
 import seedu.homerce.logic.commands.appointment.ClearAppointmentCommand;
@@ -183,6 +184,9 @@ public class HomerceParser {
 
         case UndoCommand.COMMAND_WORD:
             return new UndoCommand();
+
+        case ProfitCommand.COMMAND_WORD:
+            return new ProfitCommandParser().parse(arguments);
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

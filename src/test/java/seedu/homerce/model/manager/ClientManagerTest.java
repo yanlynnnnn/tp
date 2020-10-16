@@ -1,4 +1,4 @@
-package seedu.homerce.model;
+package seedu.homerce.model.manager;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -20,8 +20,6 @@ import javafx.collections.ObservableList;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.client.exceptions.DuplicateClientException;
 import seedu.homerce.model.expense.Expense;
-import seedu.homerce.model.manager.ClientManager;
-import seedu.homerce.model.manager.ReadOnlyClientManager;
 import seedu.homerce.testutil.ClientBuilder;
 
 public class ClientManagerTest {
@@ -56,10 +54,10 @@ public class ClientManagerTest {
         assertThrows(DuplicateClientException.class, () -> clientManager.resetData(newData));
     }
 
-    //    @Test
-    //    public void hasClient_nullClient_throwsNullPointerException() {
-    //        assertThrows(NullPointerException.class, () -> ClientManager.hasClient(null));
-    //    }
+    @Test
+    public void hasClient_nullClient_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> clientManager.hasClient(null));
+    }
 
     @Test
     public void hasClient_clientNotInClientManager_returnsFalse() {

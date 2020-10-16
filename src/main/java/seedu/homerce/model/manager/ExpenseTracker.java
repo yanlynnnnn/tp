@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
@@ -59,6 +60,14 @@ public class ExpenseTracker implements ReadOnlyExpenseTracker {
         requireNonNull(editedExpense);
 
         expenses.setItem(target, editedExpense);
+    }
+
+    public List<Expense> filterByMonth(Predicate<Expense> predicate) {
+        return expenses.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
+    }
+
+    public List<Expense> filterByYear(Predicate<Expense> predicate) {
+        return expenses.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
     }
 
     /**

@@ -15,8 +15,8 @@ import seedu.homerce.logic.parser.ParserUtil;
 import seedu.homerce.logic.parser.Prefix;
 import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.model.revenue.Revenue;
-import seedu.homerce.model.revenue.RevenueDatePredicate;
-import seedu.homerce.model.revenue.RevenueServiceCodePredicate;
+import seedu.homerce.model.revenue.predicate.RevenueDatePredicate;
+import seedu.homerce.model.revenue.predicate.RevenueServiceCodePredicate;
 
 /**
  * Parses input arguments and creates a new FindRevenueCommand object

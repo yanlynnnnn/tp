@@ -14,6 +14,7 @@ public class CliSyntax {
     public static final Prefix PREFIX_ISFIXED = new Prefix("f/");
     public static final Prefix PREFIX_DESCRIPTION = new Prefix("d/");
     public static final Prefix PREFIX_DATE = new Prefix("dt/");
+    public static final Prefix PREFIX_YEAR = new Prefix("y/");
 
     /* Prefixes for Service commands */
     public static final Prefix PREFIX_SERVICE_TITLE = new Prefix("t/");

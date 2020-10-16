@@ -11,13 +11,13 @@ import seedu.homerce.model.Model;
  */
 public class UndoCommand extends Command {
     public static final String COMMAND_WORD = "undo";
-    public static final String MESSAGE_SUCCESS = "You have undone you previous change!";
+    public static final String MESSAGE_SUCCESS = "Undo successful!";
 
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) throws CommandException {
         Model previousModel = historyManager.getPreviousState();
         if (previousModel == null) {
-            throw new CommandException("There are no more changes to be undone!");
+            throw new CommandException("Already at oldest change");
         }
         model.replaceModel(previousModel);
         return new CommandResult(MESSAGE_SUCCESS);

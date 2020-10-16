@@ -162,10 +162,12 @@ public class ModelManager implements Model {
         return clientManager.hasClient(client);
     }
 
-    @Override
-    public boolean hasClient(Phone phone) {
+    /**
+     * Checks if a client exists in the client manager using the client's phone number.
+     */
+    public boolean checkClientWithPhone(Phone phone) {
         requireAllNonNull(phone);
-        return clientManager.hasClient(phone);
+        return clientManager.checkClientWithPhone(phone);
     }
 
     @Override
@@ -214,6 +216,16 @@ public class ModelManager implements Model {
     @Override
     public void setExpenses(List<Expense> expenses) {
         expenseTracker.setExpenses(expenses);
+    }
+
+    @Override
+    public List<Expense> filterExpenseByYear(Predicate<Expense> predicate) {
+        return expenseTracker.filterByYear(predicate);
+    }
+
+    @Override
+    public List<Expense> filterExpenseByMonth(Predicate<Expense> predicate) {
+        return expenseTracker.filterByMonth(predicate);
     }
 
     /**
@@ -338,6 +350,16 @@ public class ModelManager implements Model {
     @Override
     public void setRevenues(List<Revenue> revenues) {
         revenueTracker.setRevenues(revenues);
+    }
+
+    @Override
+    public List<Revenue> filterRevenueByMonth(Predicate<Revenue> predicate) {
+        return revenueTracker.filterByMonth(predicate);
+    }
+
+    @Override
+    public List<Revenue> filterRevenueByYear(Predicate<Revenue> predicate) {
+        return revenueTracker.filterByYear(predicate);
     }
 
     @Override

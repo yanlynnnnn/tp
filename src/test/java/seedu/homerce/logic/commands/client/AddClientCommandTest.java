@@ -148,8 +148,7 @@ public class AddClientCommandTest {
             throw new AssertionError("This method should not be called.");
         }
 
-        @Override
-        public boolean hasClient(Phone phone) {
+        public boolean checkClientWithPhone(Phone phone) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -209,6 +208,16 @@ public class AddClientCommandTest {
         @Override
         public void setExpenseTracker(ReadOnlyExpenseTracker expenseTracker) {
             throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public List<Expense> filterExpenseByMonth(Predicate<Expense> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public List<Expense> filterExpenseByYear(Predicate<Expense> predicate) {
+            throw new AssertionError("This method should not be called");
         }
 
         // ============================== Service Management ====================================
@@ -273,6 +282,15 @@ public class AddClientCommandTest {
         @Override
         public void setRevenueTracker(ReadOnlyRevenueTracker revenueTracker) {
             throw new AssertionError("This method should not be called.");
+        }
+        @Override
+        public List<Revenue> filterRevenueByMonth(Predicate<Revenue> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public List<Revenue> filterRevenueByYear(Predicate<Revenue> predicate) {
+            throw new AssertionError("This method should not be called");
         }
 
         @Override

@@ -103,7 +103,7 @@ public class EditAppointmentCommand extends Command {
         Phone updatedPhone = editAppointmentDescriptor.getPhone().orElse(appointmentToEdit.getClient().getPhone());
         ServiceCode updatedServiceCode = editAppointmentDescriptor
             .getServiceCode().orElse(appointmentToEdit.getService().getServiceCode());
-        if (!model.hasClient(updatedPhone)) {
+        if (!model.checkClientWithPhone(updatedPhone)) {
             throw new CommandException(MESSAGE_INVALID_PHONE);
         } else if (!model.hasService(updatedServiceCode)) {
             throw new CommandException(MESSAGE_INVALID_SERVICE_CODE);

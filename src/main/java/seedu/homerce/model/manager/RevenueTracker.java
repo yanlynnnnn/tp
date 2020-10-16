@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
@@ -73,6 +74,13 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
      */
     public void removeRevenue(Revenue key) {
         revenues.remove(key);
+    }
+
+    public List<Revenue> filterByMonth(Predicate<Revenue> predicate) {
+        return revenues.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
+    }
+    public List<Revenue> filterByYear(Predicate<Revenue> predicate) {
+        return revenues.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
     }
 
     //// util methods

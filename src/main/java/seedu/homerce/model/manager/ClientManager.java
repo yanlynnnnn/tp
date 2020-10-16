@@ -69,7 +69,7 @@ public class ClientManager implements ReadOnlyClientManager {
     /**
      * Returns true if a client with the same phone number as {@code phone} exists in the homerce book.
      */
-    public boolean hasClient(Phone phone) {
+    public boolean checkClientWithPhone(Phone phone) {
         requireNonNull(phone);
         return clients.contains(phone);
     }
