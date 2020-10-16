@@ -7,6 +7,7 @@ import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
+import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
  * Lists all the services in Homerce to the user.
@@ -22,6 +23,6 @@ public class ListServiceCommand extends Command {
     public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
         model.updateFilteredServiceList(PREDICATE_SHOW_ALL_SERVICES);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, ServiceListPanel.TAB_NAME);
     }
 }

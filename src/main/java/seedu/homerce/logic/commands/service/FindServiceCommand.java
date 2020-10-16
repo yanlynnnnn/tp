@@ -12,6 +12,7 @@ import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.service.Service;
+import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
  * Finds and lists all services in Homerce whose name contains any of the argument keywords.
@@ -39,7 +40,9 @@ public class FindServiceCommand extends Command {
         requireNonNull(model);
         model.updateFilteredServiceList(predicate);
         return new CommandResult(
-            String.format(Messages.MESSAGE_SERVICES_LISTED_OVERVIEW, model.getFilteredServiceList().size()));
+            String.format(Messages.MESSAGE_SERVICES_LISTED_OVERVIEW, model.getFilteredServiceList().size()),
+            ServiceListPanel.TAB_NAME
+        );
     }
 
     @Override

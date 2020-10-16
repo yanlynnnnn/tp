@@ -10,6 +10,7 @@ import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.appointment.Appointment;
+import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 
 public class FindAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "findapt";
@@ -30,7 +31,9 @@ public class FindAppointmentCommand extends Command {
         requireNonNull(model);
         model.updateFilteredAppointmentList(predicate);
         return new CommandResult(
-            String.format(Messages.MESSAGE_APPOINTMENTS_LISTED_OVERVIEW, model.getFilteredAppointmentList().size()));
+            String.format(Messages.MESSAGE_APPOINTMENTS_LISTED_OVERVIEW, model.getFilteredAppointmentList().size()),
+            AppointmentListPanel.TAB_NAME
+        );
     }
 
     @Override
