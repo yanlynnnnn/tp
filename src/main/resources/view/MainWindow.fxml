@@ -19,7 +19,7 @@
                 <URL value="@Extensions.css" />
             </stylesheets>
             <HBox>
-            <StackPane fx:id="sideTabsBarPlaceholder"/>
+            <StackPane fx:id="sideTabsBarPlaceholder" styleClass="context-menu"/>
             <VBox>
                 <VBox fx:id="personList" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
                     <StackPane fx:id="tabPanelPlaceholder" VBox.vgrow="ALWAYS"/>
