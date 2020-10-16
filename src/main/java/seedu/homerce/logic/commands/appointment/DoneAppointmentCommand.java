@@ -9,9 +9,11 @@ import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
+import seedu.homerce.logic.commands.revenue.AddRevenueCommand;
 import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.appointment.Appointment;
+import seedu.homerce.model.revenue.Revenue;
 
 public class DoneAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "done";
@@ -22,6 +24,7 @@ public class DoneAppointmentCommand extends Command {
         + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DONE_APPOINTMENT_SUCCESS = "Marked Appointment as done: %1$s";
+    public static final String MESSAGE_ADD_REVENUE_SUCCESS = "Added this %1$s";
 
     private final Index targetIndex;
 
@@ -39,9 +42,19 @@ public class DoneAppointmentCommand extends Command {
         }
 
         Appointment appointmentToMarkDone = lastShownList.get(targetIndex.getZeroBased());
+        if (appointmentToMarkDone.getStatus().isDone()) {
+            throw new CommandException(Messages.MESSAGE_APPOINTMENT_ALREADY_DONE);
+        }
         appointmentToMarkDone.markDone();
-        // TODO Add Revenue entry based on appointment.
-        return new CommandResult(String.format(MESSAGE_DONE_APPOINTMENT_SUCCESS, appointmentToMarkDone));
+        Revenue revenueToAdd = new Revenue(
+            appointmentToMarkDone.getService(),
+            appointmentToMarkDone.getAppointmentDate()
+        );
+        model.addRevenue(revenueToAdd);
+        return new CommandResult(
+            String.format(MESSAGE_DONE_APPOINTMENT_SUCCESS, appointmentToMarkDone)
+                + "\n" + String.format(MESSAGE_ADD_REVENUE_SUCCESS, revenueToAdd)
+        );
     }
 
     @Override
