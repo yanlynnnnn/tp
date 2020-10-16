@@ -23,7 +23,8 @@ public class BreakdownExpenseCommand extends Command {
 
     public static final String COMMAND_WORD = "breakdownexp";
     public static final String MESSAGE_SUCCESS = "Expenses breakdown: %1$s";
-    public static final String MESSAGE_USAGE = "Displays the breakdown of expenses for the month specified \n"
+    public static final String MESSAGE_USAGE = "Displays the breakdown of expenses for the month "
+            + "and year specified \n"
             + "Parameters: "
             + PREFIX_MONTH_OF_YEAR + "MONTH "
             + PREFIX_YEAR + "YEAR \n"
@@ -103,9 +104,10 @@ public class BreakdownExpenseCommand extends Command {
         }
         String expenseMapString = "\n";
         for (String tagName : expenseMap.keySet()) {
-            double tagPercentage = Math.round((expenseMap.get(tagName) / totalExpenseAmount) * 100);
+            double tagPercentage = (expenseMap.get(tagName) / totalExpenseAmount) * 100;
+            double roundedTagPercentage = Math.round(tagPercentage * 10) / 10.0;
             expenseMapString += "[" + tagName + ": $" + expenseMap.get(tagName) + ", "
-                    + tagPercentage + "% ] \n";
+                    + roundedTagPercentage + "% ] \n";
         }
         return expenseMapString;
     }
