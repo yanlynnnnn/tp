@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
@@ -61,6 +62,14 @@ public class ExpenseTracker implements ReadOnlyExpenseTracker {
         expenses.setItem(target, editedExpense);
     }
 
+    public List<Expense> filterByMonth(Predicate<Expense> predicate) {
+        return expenses.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
+    }
+
+    public List<Expense> filterByYear(Predicate<Expense> predicate) {
+        return expenses.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
+    }
+
     /**
      * Removes {@code key} from this {@code ExpenseTracker}.
      * {@code key} must exist in the SuperSalon.
@@ -95,5 +104,6 @@ public class ExpenseTracker implements ReadOnlyExpenseTracker {
     public int hashCode() {
         return Objects.hash(expenses);
     }
+
 }
 

@@ -1,7 +1,8 @@
-package seedu.homerce.model.appointment;
+package seedu.homerce.model.appointment.predicate;
 
 import java.util.function.Predicate;
 
+import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.util.attributes.Date;
 
 public class AppointmentDatePredicate implements Predicate<Appointment> {
