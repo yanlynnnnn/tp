@@ -6,6 +6,7 @@ package seedu.homerce.commons.core;
 public class Messages {
 
     public static final String MESSAGE_UNKNOWN_COMMAND = "Unknown command";
+    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_INVALID_COMMAND_FORMAT = "Invalid command format! \n%1$s";
     public static final String MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX = "The client index provided is invalid";
     public static final String MESSAGE_CLIENTS_LISTED_OVERVIEW = "%1$d clients listed!";
@@ -16,7 +17,11 @@ public class Messages {
     public static final String MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX = "The appointment"
             + " index provided is invalid";
     public static final String MESSAGE_APPOINTMENTS_LISTED_OVERVIEW = "%1$d appointments listed!";
-    public static final String MESSAGE_APPOINTMENT_ALREADY_DONE = "The appointment is already marked as done!";
+    public static final String MESSAGE_APPOINTMENT_ALREADY_DONE = "This appointment is already marked as done!";
+    public static final String MESSAGE_APPOINTMENT_ALREADY_UNDONE = "This appointment is already marked as not done!";
+    public static final String MESSAGE_DUPLICATE_APPOINTMENT = "This appointment already exists in the homerce book.";
+    public static final String MESSAGE_INVALID_PHONE = "The phone number does not refer to an existing client.";
+    public static final String MESSAGE_INVALID_SERVICE_CODE = "The service code specified does not exist in Homerce.";
 
     // ============== Service related messages ===========
     public static final String MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX = "The service index provided is invalid";

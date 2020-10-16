@@ -9,7 +9,6 @@ import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.logic.commands.revenue.AddRevenueCommand;
 import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.appointment.Appointment;
@@ -17,14 +16,12 @@ import seedu.homerce.model.revenue.Revenue;
 
 public class DoneAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "done";
-
     public static final String MESSAGE_USAGE = COMMAND_WORD
         + ": Marks the appointment identified by the index number used in the displayed appointment list as done.\n"
         + "Parameters: INDEX (must be a positive integer)\n"
         + "Example: " + COMMAND_WORD + " 1";
-
-    public static final String MESSAGE_DONE_APPOINTMENT_SUCCESS = "Marked Appointment as done: %1$s";
-    public static final String MESSAGE_ADD_REVENUE_SUCCESS = "Added this %1$s";
+    private static final String MESSAGE_DONE_APPOINTMENT_SUCCESS = "Marked Appointment as done: %1$s";
+    private static final String MESSAGE_ADD_REVENUE_SUCCESS = "Added this %1$s";
 
     private final Index targetIndex;
 
@@ -51,6 +48,7 @@ public class DoneAppointmentCommand extends Command {
             appointmentToMarkDone.getAppointmentDate()
         );
         model.addRevenue(revenueToAdd);
+        model.updateFilteredAppointmentList(Model.PREDICATE_SHOW_ALL_APPOINTMENTS);
         return new CommandResult(
             String.format(MESSAGE_DONE_APPOINTMENT_SUCCESS, appointmentToMarkDone)
                 + "\n" + String.format(MESSAGE_ADD_REVENUE_SUCCESS, revenueToAdd)
