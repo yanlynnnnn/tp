@@ -181,7 +181,7 @@ public interface Model {
     ReadOnlyExpenseTracker getExpenseTracker();
 
     /**
-     * Replaces serviceManager data with the data in {@code serviceManager}.
+     * Replaces expenseTracker data with the data in {@code expenseTracker}.
      */
     void setExpenseTracker(ReadOnlyExpenseTracker expenseTracker);
 
@@ -261,6 +261,8 @@ public interface Model {
 
     ReadOnlyRevenueTracker getRevenueTracker();
 
+    void setRevenueTracker(ReadOnlyRevenueTracker revenueTracker);
+
 
     // ====================== AppointmentManager ========================
     /**
@@ -300,4 +302,11 @@ public interface Model {
      * Checks if Appointment is stored in Appointment Manager.
      */
     boolean hasAppointment(Appointment appointment);
+
+    void setAppointmentManager(ReadOnlyAppointmentManager appointmentManager);
+
+    // ====================== HistoryManager ========================
+    void replaceModel(Model previousModel);
+
+    Model deepCopy();
 }

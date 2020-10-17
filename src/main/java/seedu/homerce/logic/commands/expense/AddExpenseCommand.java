@@ -9,8 +9,10 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
+import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.expense.Expense;
+import seedu.homerce.ui.expensepanel.ExpenseListPanel;
 
 /**
  * Adds an expense to GrAB3.
@@ -28,7 +30,7 @@ public class AddExpenseCommand extends Command {
             + "[" + PREFIX_TAG + "TAG]...\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DESCRIPTION + "Conditioner "
-            + PREFIX_ISFIXED + "f "
+            + PREFIX_ISFIXED + "n "
             + PREFIX_AMOUNT + "15.00 "
             + PREFIX_DATE + "29-01-2020 "
             + PREFIX_TAG + "hairsupplies ";
@@ -46,10 +48,10 @@ public class AddExpenseCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
 
         model.addExpense(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ExpenseListPanel.TAB_NAME);
     }
 }

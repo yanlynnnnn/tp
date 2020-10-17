@@ -4,8 +4,10 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
+import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.revenue.Revenue;
+import seedu.homerce.ui.revenuepanel.RevenueListPanel;
 
 public class AddRevenueCommand extends Command {
 
@@ -23,9 +25,12 @@ public class AddRevenueCommand extends Command {
     }
 
     @Override
-    public CommandResult execute(Model model) {
+    public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
         model.addRevenue(toAdd);
-        return new CommandResult(String.format(MESSAGE_ADD_REVENUE_SUCCESS, toAdd));
+        return new CommandResult(
+            String.format(MESSAGE_ADD_REVENUE_SUCCESS, toAdd),
+            RevenueListPanel.TAB_NAME
+        );
     }
 }
