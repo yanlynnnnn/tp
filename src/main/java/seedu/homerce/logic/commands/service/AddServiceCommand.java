@@ -14,6 +14,7 @@ import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.util.attributes.service.ServiceCodeGenerator;
+import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
  * Adds a service to SuperSalon.
@@ -54,6 +55,6 @@ public class AddServiceCommand extends Command {
         toAdd.addServiceCode(serviceCode);
 
         model.addService(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ServiceListPanel.TAB_NAME);
     }
 }

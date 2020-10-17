@@ -7,6 +7,7 @@ import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
+import seedu.homerce.ui.expensepanel.ExpenseListPanel;
 
 /**
  * Lists all expenses in GrAB3 to the user.
@@ -22,6 +23,6 @@ public class ListExpenseCommand extends Command {
     public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
         model.updateFilteredExpenseList(PREDICATE_SHOW_ALL_EXPENSES);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, ExpenseListPanel.TAB_NAME);
     }
 }

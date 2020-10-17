@@ -12,6 +12,7 @@ import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.client.Client;
+import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
  * Adds a client to the homerce book.
@@ -55,7 +56,7 @@ public class AddClientCommand extends Command {
         }
 
         model.addClient(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ClientListPanel.TAB_NAME);
     }
 
     @Override

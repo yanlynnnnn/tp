@@ -3,6 +3,7 @@ package seedu.homerce.logic.commands;
 import static java.util.Objects.requireNonNull;
 
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * Represents the result of a command execution.
@@ -17,6 +18,9 @@ public class CommandResult {
     /** The application should exit. */
     private final boolean exit;
 
+    /** String name of tab to switch to, for commands which initiates tab-switching */
+    private final Optional<String> tabNameToNavigate;
+
     /**
      * Constructs a {@code CommandResult} with the specified fields.
      */
@@ -24,6 +28,17 @@ public class CommandResult {
         this.feedbackToUser = requireNonNull(feedbackToUser);
         this.showHelp = showHelp;
         this.exit = exit;
+        this.tabNameToNavigate = Optional.empty();
+    }
+
+    /**
+     * Constructs a {@code CommandResult} with the specified fields.
+     */
+    public CommandResult(String feedbackToUser, boolean showHelp, boolean exit, String tabName) {
+        this.feedbackToUser = requireNonNull(feedbackToUser);
+        this.showHelp = showHelp;
+        this.exit = exit;
+        this.tabNameToNavigate = Optional.ofNullable(tabName);
     }
 
     /**
@@ -31,7 +46,11 @@ public class CommandResult {
      * and other fields set to their default value.
      */
     public CommandResult(String feedbackToUser) {
-        this(feedbackToUser, false, false);
+        this(feedbackToUser, false, false, null);
+    }
+
+    public CommandResult(String feedbackToUser, String tabName) {
+        this(feedbackToUser, false, false, tabName);
     }
 
     public String getFeedbackToUser() {
@@ -44,6 +63,9 @@ public class CommandResult {
 
     public boolean isExit() {
         return exit;
+    }
+    public Optional<String> getTabNameToNavigate() {
+        return tabNameToNavigate;
     }
 
     @Override

@@ -11,6 +11,7 @@ import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.revenue.Revenue;
+import seedu.homerce.ui.revenuepanel.RevenueListPanel;
 
 /**
  * Finds and lists all revenue in homerce book whose name contains any of the argument keywords.
@@ -38,7 +39,9 @@ public class FindRevenueCommand extends Command {
         requireNonNull(model);
         model.updateFilteredRevenueList(predicate);
         return new CommandResult(
-            String.format(Messages.MESSAGE_REVENUE_LISTED_OVERVIEW, model.getFilteredRevenueList().size()));
+            String.format(Messages.MESSAGE_REVENUE_LISTED_OVERVIEW, model.getFilteredRevenueList().size()),
+            RevenueListPanel.TAB_NAME
+        );
     }
 
     @Override
