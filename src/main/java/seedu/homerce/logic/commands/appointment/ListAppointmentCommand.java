@@ -7,6 +7,7 @@ import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
+import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 
 public class ListAppointmentCommand extends Command {
 
@@ -17,6 +18,6 @@ public class ListAppointmentCommand extends Command {
     public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
         model.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_APPOINTMENTS);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, AppointmentListPanel.TAB_NAME);
     }
 }
