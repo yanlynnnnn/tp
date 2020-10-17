@@ -2,6 +2,7 @@ package seedu.homerce.model.appointment;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.testutil.Assert.assertThrows;
 
@@ -46,5 +47,33 @@ public class TimeOfDayTest {
         TimeOfDay time2 = new TimeOfDay("1030");
         assertEquals("1745", time1.toString());
         assertEquals("1030", time2.toString());
+    }
+
+    @Test
+    public void toUiStringTest() {
+        TimeOfDay time1 = new TimeOfDay("1234");
+        TimeOfDay time2 = new TimeOfDay("0001");
+        assertEquals("12:34 PM", time1.toUiString());
+        assertEquals("12:01 AM", time2.toUiString());
+    }
+
+    @Test
+    public void equalityTest() {
+        TimeOfDay time1 = new TimeOfDay("0900");
+        TimeOfDay time2 = new TimeOfDay("0900");
+        TimeOfDay time3 = new TimeOfDay("2100");
+        assertEquals(time1, time2);
+        assertNotEquals(time2, time3);
+    }
+
+    @Test
+    public void hashCodeTest() {
+        TimeOfDay time1 = new TimeOfDay("0900");
+        TimeOfDay time2 = new TimeOfDay("0900");
+        TimeOfDay time3 = new TimeOfDay("2100");
+        TimeOfDay time4 = new TimeOfDay("1200");
+        assertEquals(time1.hashCode(), time2.hashCode());
+        assertNotEquals(time2.hashCode(), time3.hashCode());
+        assertEquals(time4.hashCode(), time4.hashCode());
     }
 }
