@@ -224,7 +224,7 @@ public class ParserUtil {
      */
     public static ServiceCode parseServiceCode(String serviceCode) throws ParseException {
         requireNonNull(serviceCode);
-        String trimmedServiceCode = serviceCode.trim();
+        String trimmedServiceCode = serviceCode.trim().toUpperCase();
         if (!ServiceCode.isValidServiceCode(trimmedServiceCode)) {
             throw new ParseException(ServiceCode.MESSAGE_CONSTRAINTS);
         }
