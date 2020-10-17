@@ -18,6 +18,7 @@ import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.appointment.AppointmentTemp;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.service.Service;
+import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 
 /**
  * Adds an appointment to Homerce.

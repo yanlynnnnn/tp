@@ -7,6 +7,7 @@ import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
+import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 
 public class ListAppointmentCommand extends Command {
 

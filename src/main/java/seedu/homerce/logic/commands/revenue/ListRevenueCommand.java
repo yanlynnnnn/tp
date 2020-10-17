@@ -7,6 +7,7 @@ import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
+import seedu.homerce.ui.revenuepanel.RevenueListPanel;
 
 /**
  * Lists all revenues in Homerce to the user.
@@ -22,6 +23,6 @@ public class ListRevenueCommand extends Command {
     public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
         model.updateFilteredRevenueList(PREDICATE_SHOW_ALL_REVENUE);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, RevenueListPanel.TAB_NAME);
     }
 }

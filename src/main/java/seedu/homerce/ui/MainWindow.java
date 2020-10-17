@@ -1,5 +1,6 @@
 package seedu.homerce.ui;
 
+import java.util.Optional;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
@@ -111,6 +112,7 @@ public class MainWindow extends UiPart<Stage> {
      * Switches tab to the specified tab name.
      */
     private void switchTab(String tabName) {
+        logger.info("Switching tab to: " + tabName);
         tabPanelPlaceholder.getChildren().clear();
         statusbarPlaceholder.getChildren().clear();
         statusbarPlaceholder.getChildren().add(new StatusBarFooter(tabName).getRoot());
@@ -187,7 +189,13 @@ public class MainWindow extends UiPart<Stage> {
             CommandResult commandResult = logic.execute(commandText);
             logger.info("Result: " + commandResult.getFeedbackToUser());
             resultDisplay.setFeedbackToUser(commandResult.getFeedbackToUser());
-
+            //If a tab name to switch is present in command result, switch the tab.
+            Optional<String> tabNameToSwitch = commandResult.getTabNameToNavigate();
+            if (tabNameToSwitch.isPresent()) {
+                logger.info("Found tab name in command result.");
+                String tabName = tabNameToSwitch.get();
+                switchTab(tabName);
+            }
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }

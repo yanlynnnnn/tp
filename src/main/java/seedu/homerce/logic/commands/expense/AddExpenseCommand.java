@@ -12,6 +12,7 @@ import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.expense.Expense;
+import seedu.homerce.ui.expensepanel.ExpenseListPanel;
 
 /**
  * Adds an expense to GrAB3.
@@ -51,6 +52,6 @@ public class AddExpenseCommand extends Command {
         requireNonNull(model);
 
         model.addExpense(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
+        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ExpenseListPanel.TAB_NAME);
     }
 }
