@@ -20,10 +20,10 @@ public class HelpWindow extends UiPart<Stage> {
     public static final String HELP_MESSAGE =
             "Homerce is a business-management application which "
             + "tracks your revenues, expenses and manages your appointments.\n"
-            + "Commands which are available: addapt, clearapt, deleteapt, editapt,"
-            + "findapt, listapt, done, undone, addcli, clearcli, deletecli, editcli,"
-            + "findcli, listcli, addexp, clearexp, deleteexp, editexp, findexp,"
-            + "listexp, addrev, clearrev, deleterev, findrev, listrev, addsvc, clearsvc,"
+            + "Commands which are available: addapt, clearapt, deleteapt, editapt, "
+            + "findapt, listapt, done, undone, addcli, clearcli, deletecli, editcli, "
+            + "findcli, listcli, addexp, clearexp, deleteexp, editexp, findexp, "
+            + "listexp, addrev, clearrev, deleterev, findrev, listrev, addsvc, clearsvc, "
             + "deletesvc, editsvc, findsvc, listsvc, help, exit, undo, breakdown.\n"
             + "For usage of these commands, refer to the to the user guide: "
             + USERGUIDE_URL;
