@@ -48,6 +48,10 @@ public class Date {
         return date.getYear();
     }
 
+    public LocalDate getLocalDate() {
+        return date;
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
