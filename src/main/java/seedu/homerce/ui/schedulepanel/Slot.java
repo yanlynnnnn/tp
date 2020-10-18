@@ -11,13 +11,13 @@ public class Slot extends SlotContainer {
 
     private static final String FXML = "schedulepanel/Slot.fxml";
 
-    private String idText;
+    private String clientName;
     private String dateText;
     private String timeText;
     private String descriptionText;
 
     @FXML
-    private Label id;
+    private Label title;
 
     @FXML
     private Label time;
@@ -26,18 +26,18 @@ public class Slot extends SlotContainer {
     private Label description;
 
     public Slot(Appointment appointment, int displayedIndex) {
-        super(FXML, 60);
+        super(FXML, appointment.getService().getDuration().value);
 
-        this.idText = "1";
-        this.dateText = "2020";
-        this.timeText = "9am";
-        this.descriptionText = "Lorem";
+        this.clientName = appointment.getClient().getName().fullName;
+        this.dateText = appointment .getAppointmentDate().toString();
+        this.timeText = appointment.getAppointmentTime().getTime().toString();
+        this.descriptionText = appointment.getService().getTitle().value;
 
         setText();
     }
 
     private void setText() {
-        id.setText(idText);
+        title.setText(clientName);
         time.setText(timeText);
         description.setText(descriptionText);
     }

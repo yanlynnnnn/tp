@@ -8,7 +8,7 @@
 <HBox id="slotPane" fx:id="slotPane" styleClass="calendar-grid-cell" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
     <VBox alignment="TOP_LEFT" prefHeight="50" GridPane.columnIndex="0">
         <HBox alignment="CENTER_LEFT" spacing="5">
-            <Label fx:id="id"  />
+            <Label fx:id="title"  />
         </HBox>
         <Label fx:id="time" text="\$time" />
         <Label fx:id="description"  text="\$description" />

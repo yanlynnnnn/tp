@@ -10,13 +10,14 @@ import seedu.homerce.ui.UiPart;
  */
 public abstract class SlotContainer extends UiPart<Region> {
 
-    public static final double WIDTH_SCALING_FACTOR = 2;
+    public static final double WIDTH_SCALING_FACTOR = 240;
 
     @FXML
     protected HBox slotPane;
 
     public SlotContainer(String fxml, double minutes) {
         super(fxml);
+        System.out.println(minutes * WIDTH_SCALING_FACTOR);
         slotPane.setPrefWidth(minutes * WIDTH_SCALING_FACTOR);
     }
 }
