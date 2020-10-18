@@ -141,12 +141,10 @@ public class Appointment implements UniqueListItem {
         LocalTime endTimeOfOther = startTimeOfOther
             .plusHours((long) Math.floor(durationOther.value))
             .plusMinutes((long) ((durationOther.value % 1) * 60));
-        System.out.println("Comparing: " + this + " and other: " + other);
         boolean result = (endTimeOfOther.isAfter(startTimeOfThis) && endTimeOfOther.isBefore(endTimeOfThis))
                 || (endTimeOfOther.isAfter(endTimeOfThis) && startTimeOfOther.isBefore(startTimeOfThis))
                 || (endTimeOfThis.isAfter(endTimeOfOther) && startTimeOfThis.isBefore(startTimeOfOther))
                 || (endTimeOfThis.isAfter(startTimeOfOther) && endTimeOfThis.isBefore(endTimeOfOther));
-        System.out.println("Is there a clash? " + result);
-        return result && appointmentDate.equals(other.appointmentDate);
+        return result;
     }
 }
