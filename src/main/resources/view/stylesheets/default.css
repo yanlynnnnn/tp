@@ -1,0 +1,11 @@
+.calendar-grid {
+    -fx-background-color: transparent;
+    -fx-padding: 10;
+}
+
+.calendar-grid-cell {
+    -fx-background-insets: 5 0 5 0;
+    -fx-padding: 10;
+    -fx-border-color: black;
+}
+
