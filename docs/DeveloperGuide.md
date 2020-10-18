@@ -11,7 +11,7 @@
      * [3.5 Storage Component](#3.5-storage-component)
      * [3.6 Common Classes](#3.6-common-classes)
  * [4. **Implementation**](#4-implementation)
-     * [4.1 Architecture](#4.1-service-manager)
+     * [4.1 List Managers](#4.1-list-managers)
  * [5. **Documentation**](#5-documentation)
  * [6. **Logging**](#6-logging)
  * [7. **Testing**](#7-testing)
@@ -163,95 +163,64 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 --------------------------------------------------------------------------------------------------------------------
 
 ## 4. **Implementation**
-
 This section describes some noteworthy details on how certain features are implemented.
 
-### 4.1 Service Manager 
+### 4.1 List Managers
+Homerce allows the user to manage different essential lists for his or her home-based beauty salon.
+
+The different types of lists include:
+1. Appointments list
+2. Clients list
+3. Services list
+
+All these lists are managed by a `ListManager` which support basic [CRUD](#appendix-e-glossary) operations and some
+additional operations depending on the different types of `ListManager`s. Additional operations include operations such as
+`sort`. The term *item* will be used to refer to an element stored in a list.
+
+Common commands for all list managers:
+* `add` - Creates a new list item
+* `edit` - Modifies an existing list item
+* `delete` - Removes an existing item from the list
+* `list` - Shows all items in the list
+* `find` - Searches for item(s) in the list
+* `clear` - Removes all the items in the list
+
+#### 4.1.1 Rationale 
+When running a home-based beauty salon, there are many things that the user needs to manage. The 3 lists stated above
+are essential to every home-based beauty salon. That is why there are `ListManager`s to help the user manage the 3
+lists so that they can run their home-based beauty salon effectively and efficiently. 
+
+#### 4.1.2 Current Implementation
+In this section, we will explain the structure of a `ListManager`. As mentioned in this section's overview, the term
+*item* refers to an elements stored in a list.
 
 
-### \[Proposed\] Undo/redo feature
 
-#### Proposed Implementation
+#### 4.1.3 Design Consideration 
 
-The proposed undo/redo mechanism is facilitated by `VersionedAddressBook`. It extends `AddressBook` with an undo/redo history, stored internally as an `addressBookStateList` and `currentStatePointer`. Additionally, it implements the following operations:
 
-* `VersionedAddressBook#commit()` — Saves the current address book state in its history.
-* `VersionedAddressBook#undo()` — Restores the previous address book state from its history.
-* `VersionedAddressBook#redo()` — Restores a previously undone address book state from its history.
+### 4.2 List Trackers 
+Homerce allows the user to keep track of different lists that stores the financial details of his or her home-based beauty salon.
 
-These operations are exposed in the `Model` interface as `Model#commitAddressBook()`, `Model#undoAddressBook()` and `Model#redoAddressBook()` respectively.
+The different types of lists include:
+1. Expenses list
+2. Revenue list
 
-Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.
+All these lists tracked by a `ListTracker`. The `ListTracker` for an expenses list will have additional `add`, `edit`,
+and `delete` operations. The term *item* will be used to refer to elements stored in a list.
 
-Step 1. The user launches the application for the first time. The `VersionedAddressBook` will be initialized with the initial address book state, and the `currentStatePointer` pointing to that single address book state.
+Common commands for all list managers:
+* `sort` - Sorts the list by the given order
+* `list` - Shows all items in the list
+* `find` - Searches for item(s) in the list
+* `clear` - Removes all the items in the list
+* `breakdown` - Categorizes and gives an overview of the items in the list
 
-![UndoRedoState0](images/UndoRedoState0.png)
+#### 4.2.1 Rationale 
 
-Step 2. The user executes `delete 5` command to delete the 5th client in the address book. The `delete` command calls `Model#commitAddressBook()`, causing the modified state of the address book after the `delete 5` command executes to be saved in the `addressBookStateList`, and the `currentStatePointer` is shifted to the newly inserted address book state.
+#### 4.2.2 Current Implementation
 
-![UndoRedoState1](images/UndoRedoState1.png)
-
-Step 3. The user executes `add n/David …​` to add a new client. The `add` command also calls `Model#commitAddressBook()`, causing another modified address book state to be saved into the `addressBookStateList`.
-
-![UndoRedoState2](images/UndoRedoState2.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If a command fails its execution, it will not call `Model#commitAddressBook()`, so the address book state will not be saved into the `addressBookStateList`.
-
-</div>
-
-Step 4. The user now decides that adding the client was a mistake, and decides to undo that action by executing the `undo` command. The `undo` command will call `Model#undoAddressBook()`, which will shift the `currentStatePointer` once to the left, pointing it to the previous address book state, and restores the address book to that state.
-
-![UndoRedoState3](images/UndoRedoState3.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The `undo` command uses `Model#canUndoAddressBook()` to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-The following sequence diagram shows how the undo operation works:
-
-![UndoSequenceDiagram](images/UndoSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `UndoCommand` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-The `redo` command does the opposite — it calls `Model#redoAddressBook()`, which shifts the `currentStatePointer` once to the right, pointing to the previously undone state, and restores the address book to that state.
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** If the `currentStatePointer` is at index `addressBookStateList.size() - 1`, pointing to the latest address book state, then there are no undone AddressBook states to restore. The `redo` command uses `Model#canRedoAddressBook()` to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-Step 5. The user then decides to execute the command `list`. Commands that do not modify the address book, such as `list`, will usually not call `Model#commitAddressBook()`, `Model#undoAddressBook()` or `Model#redoAddressBook()`. Thus, the `addressBookStateList` remains unchanged.
-
-![UndoRedoState4](images/UndoRedoState4.png)
-
-Step 6. The user executes `clear`, which calls `Model#commitAddressBook()`. Since the `currentStatePointer` is not pointing at the end of the `addressBookStateList`, all address book states after the `currentStatePointer` will be purged. Reason: It no longer makes sense to redo the `add n/David …​` command. This is the behavior that most modern desktop applications follow.
-
-![UndoRedoState5](images/UndoRedoState5.png)
-
-The following activity diagram summarizes what happens when a user executes a new command:
-
-![CommitActivityDiagram](images/CommitActivityDiagram.png)
-
-#### Design consideration:
-
-##### Aspect: How undo & redo executes
-
-* **Alternative 1 (current choice):** Saves the entire address book.
-  * Pros: Easy to implement.
-  * Cons: May have performance issues in terms of memory usage.
-
-* **Alternative 2:** Individual command knows how to undo/redo by
-  itself.
-  * Pros: Will use less memory (e.g. for `delete`, just save the client being deleted).
-  * Cons: We must ensure that the implementation of each individual command are correct.
-
-_{more aspects and alternatives to be added}_
-
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
+#### 4.2.3 Design Consideration 
 
 ## 5. **Documentation**
 
@@ -620,6 +589,7 @@ Use case ends.
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **JVM**: Java Virtual Machine - Java code that is compiled is run in the virtual machine.
+* **CRUD**: In computer programming, create, read, update, and delete (CRUD) are the four basic functions of persistent storage
 
 ## **Appendix F: Instructions for manual testing**
 
