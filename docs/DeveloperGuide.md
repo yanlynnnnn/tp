@@ -191,13 +191,30 @@ are essential to every home-based beauty salon. That is why there are `ListManag
 lists so that they can run their home-based beauty salon effectively and efficiently. 
 
 #### 4.1.2 Current Implementation
-In this section, we will explain the structure of a `ListManager`. As mentioned in this section's overview, the term
-*item* refers to an elements stored in a list.
+In this section, we will explain the structure of a `ListManager`.
+As mentioned in this section's overview, the term *item* refers to an element stored in a list.
 
+The `ListManager` contains a `UniqueList` which is a data structure that stores all the *items* of a list. The 
+`UniqueList` uses Java's generics and contains items that implement the `UniqueListItem` interface. The uniqueness of
+an *item* in the list is checked using the `isSame()` method of the `UniqueListItem` interface.
 
+The `ListManager` also implements the `ReadOnlyManager` interface which has the `getList()` method. The `getList()` method
+returns an `ObservableList` of *items*. For instance, `ServiceManager` implements `ReadOnlyServiceManager`. The
+`ObservableList` of *items* allow listeners to track changes when they occur and reflect these changes to the graphical
+user interface.
+
+The following class diagram models the structure of the `ListManager`.
 
 #### 4.1.3 Design Consideration 
+**Aspect: Implementation of a `ListManager`**
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1 (current choice)** <br> Extract the common functionality of the <br> 3 `ListManager`s into one generic `UniqueList` class.<br> The `UniqueList` class is used as the base data structure <br> and all 3 `ListManager`s build additional functionality on top of it. | Makes use of the Don't Repeat Yourself (DRY) principle which guards against duplication of information and minimizes repeated code.| All `ListManager`s will have dependencies on `UniqueList`. Implementation of all `ListManager`s will require `UniqueList` to be finished implementing first.|
+| **Option 2** <br> Do not extract any common functionalities.| Each member can begin working on their own implementation of `ListManager` immediately and independently as there are no dependencies on a common `UniqueList`. | Violates DRY principle and results in a lot of repeated code and functionality|
 
+Reason for choosing option 1:
+* Follow good coding standards by applying design principles such as the DRY principle.
+* Reduce total man-hours required to create each `ListManager` once the common dependency of `UniqueList` has been created.
 
 ### 4.2 List Trackers 
 Homerce allows the user to keep track of different lists that stores the financial details of his or her home-based beauty salon.
@@ -217,10 +234,44 @@ Common commands for all list managers:
 * `breakdown` - Categorizes and gives an overview of the items in the list
 
 #### 4.2.1 Rationale 
+When running a home-based beauty salon, it is important to keep track of the financials of the business. The revenue and
+expenses information are essential to any home-based beauty salon. That is why there are `ListTrackers`s to help the user manage 
+the revenue and expenses lists so that they can keep track of their home-based beauty salon's profitability conveniently. 
 
 #### 4.2.2 Current Implementation
+In this section, we will explain the structure of a `ListTracker`.
+As mentioned in this section's overview, the term *item* refers to an element stored in a list.
+
+The `ListTracker` contains a `NonUniqueList` which is a data structure that stores all the *items* of a list. The 
+`NonUniqueList` uses Java's generics and contains items that implement the `NonUniqueListItem` interface. 
+
+The `ListTracker` also implements the `ReadOnlyTracker` interface which has the `getList()` method. The `getList()` method
+returns an `ObservableList` of *items*. For instance, `RevenueTracker` implements `ReadOnlyRevenueTracker`. The
+`ObservableList` of *items* allow listeners to track changes when they occur and reflect these changes to the graphical
+user interface.
+
+The following class diagram models the structure of the `ListTracker`.
 
 #### 4.2.3 Design Consideration 
+**Aspect: Separating a `ListManager` from a `ListTracker`**
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Make use of a `ListManager` to keep track of expenses and revenue as well | Reduces repeated code for certain functionalities such as `list`, `find` and `clear`. | A `ListManager` depends on a `UniqueList` which ensure that all *items* in the list are unique. However, revenue and expense entries may not be unique. This means that revenue and expense *item* entries can not be properly represented using a `ListManager`.|
+| **Option 2 (current choice)** <br> Create a new `ListTracker` to keep track of expenses and revenue | Allows for a proper representation of non unique revenue and expense items in Homerce. | Some code will be repeated for certain common functionalities amongst `ListManager` and `ListTracker`.|
+
+Reason for choosing option 2:
+* Homerce needs to be able to add revenue and expense details for it to track the financials of the home-based beauty salon. This can only be done with a `ListTracker` which allows for non-unique list *items*.
+* Using `ListTracker` with a dependency on `NonUniqueList` allows for a different implementation when comparing two *items* in the list.
+
+**Aspect: Implementation of a `ListTracker`**
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1 (current choice)** <br> Extract the common functionality of the <br> 3 `ListTracker`s into one generic `NonUniqueList` class.<br> The `NonUniqueList` class is used as the base data structure <br> and both `ListTracker`s build additional functionality on top of it. | Makes use of the Don't Repeat Yourself (DRY) principle which guards against duplication of information and minimizes repeated code.| Both `ListTracker`s will have dependencies on `NonUniqueList`. Implementation of both `ListTracker`s will require `NonUniqueList` to be finished implementing first.|
+| **Option 2** <br> Do not extract any common functionalities.| Each member can begin working on their own implementation of `ListTracker` immediately and independently as there are no dependencies on a common `NonUniqueList`. | Violates DRY principle and results in a lot of repeated code and functionality|
+
+Reason for choosing option 1:
+* Follow good coding standards by applying design principles such as the DRY principle.
+* Reduce total man-hours required to create each `ListTracker` once the common dependency of `NonUniqueList` has been created.
 
 ## 5. **Documentation**
 
