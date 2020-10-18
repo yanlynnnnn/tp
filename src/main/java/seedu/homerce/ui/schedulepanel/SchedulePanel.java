@@ -1,6 +1,7 @@
 
 package seedu.homerce.ui.schedulepanel;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.logging.Logger;
 
@@ -12,6 +13,7 @@ import javafx.scene.layout.Region;
 import seedu.homerce.commons.core.LogsCenter;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.service.Duration;
+import seedu.homerce.model.util.attributes.Date;
 import seedu.homerce.ui.UiPart;
 
 /**
@@ -44,30 +46,39 @@ public class SchedulePanel extends UiPart<Region> {
      * Fills the grid pane with the slots.
      */
     public void construct() {
-        LocalTime earliestTime = appointments.stream()
-                .map(appointment -> appointment.getAppointmentTime().getTime())
-                .reduce((time1, time2) -> (time1.isBefore(time2) ? time1 : time2))
-                .get();
-        construct(earliestTime);
-    }
+        if (appointments.size() == 0) {
+            return;
+        }
 
-    /**
-     * Fills the grid pane with the slots, given the earliest time of all slots.
-     */
-    private void construct(LocalTime earliestTime) {
         int rowIndex = 0;
+        LocalDate initAppointmentDate = appointments.get(0).getAppointmentDate().getLocalDate();
+
         for (int i = 0; i < appointments.size(); i++) {
             Appointment curr = appointments.get(i);
+            LocalDate currAppointmentDate = curr.getAppointmentDate().getLocalDate();
             Slot slot = new Slot(curr, i);
             int colSpan = getColSpan(curr.getService().getDuration());
+
+            if (!isSameDate(initAppointmentDate, currAppointmentDate)) {
+                rowIndex++;
+                initAppointmentDate = currAppointmentDate;
+            }
             gridPane.add(slot.getRoot(), i, rowIndex, colSpan, 1);
-            rowIndex++;
         }
     }
 
     private int getColSpan(Duration duration) {
         // Duration of service are by 0.5 hours so multiplication by 4 will always give an integer
         return (int) (duration.value * SCALE_FACTOR);
+    }
+
+    private boolean isSameDate(LocalDate currDate, LocalDate next) {
+        // Dates are sorted so next will only be after or the same as currDate
+        assert !next.isBefore(currDate): "Dates not sorted properly";
+        if (next.isAfter(currDate)) {
+            return false;
+        }
+        return true;
     }
 
 }
