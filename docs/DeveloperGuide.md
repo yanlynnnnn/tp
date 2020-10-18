@@ -201,7 +201,7 @@ user interface.
 The following class diagram models the structure of the `ListManager`.
 
 ![Class diagram for list manager](images/ListManagerClassDiagram.png) 
-*Figure 1. Structure of `ListManager``*
+*Figure 1. Structure of `ListManager`*
 
 #### 4.1.3 Design Consideration 
 **Aspect: Implementation of a `ListManager`**
@@ -250,7 +250,7 @@ user interface.
 
 The following class diagram models the structure of the `ListTracker`.
 ![Class diagram for list tracker](images/ListTrackerClassDiagram.png)
-*Figure 2. Structure of `ListTracker``*
+*Figure 2. Structure of `ListTracker`*
 
 #### 4.2.3 Design Consideration 
 **Aspect: Separating a `ListManager` from a `ListTracker`**
