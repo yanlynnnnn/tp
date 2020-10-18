@@ -118,7 +118,7 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 This section contains all the information about the features of **Homerce**. 
 You may enter a command into the _Command Box_ to use each feature or sub-feature.
 
-## 4.1. Service Management
+### 4.1. Service Management
 
 This feature allows you to manage the services that your home-based beauty salon provides. You can record the 
 following information about your services: `TITLE`, `DURATION` and `PRICE`.
@@ -313,7 +313,7 @@ Outcome:
 
 {Example outcome screenshot}
 
-## 4.2. Appointment Tracker
+### 4.2. Appointment Tracker
 
 Scheduling appointments is an essential part of your beauty salon and
 Homerce makes it easy to keep track of your upcoming appointments with
@@ -587,7 +587,7 @@ Outcome:
 
 {Example outcome screenshot}
 
-## 4.3. Revenue Tracker
+### 4.3. Revenue Tracker
 
 Homerce knows that revenue tracking is very important for your business.
 Thus, this feature allows you to track the revenue that you have generated effortlessly.
@@ -604,7 +604,7 @@ The table below shows a list of command parameters that will be used in this fea
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
 
-##### 4.3.2. Find a Revenue : `findrev`
+#### 4.3.2. Find a Revenue : `findrev`
 
 You can use this command to find revenues by 'date' or 'service code' in Homerce.
 
@@ -728,7 +728,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-## 4.4 Expense Tracker
+### 4.4 Expense Tracker
 
 Homerce knows that expense tracking in important in managing business expenditure.
 Thus, this feature allows you to track all the expenses you may incur during your business operations.
@@ -965,7 +965,7 @@ Outcome :
 2. Homerce will display a Pie Chart that categorizes expenses made in December 2020 based on their 'tags', 
 along with the total cost of all expenses in each category.
 
-## 4.5. Others
+### 4.5. Others
 
 {Description}
 
@@ -1021,15 +1021,15 @@ Outcome:
 
 Homerce data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-## 4.6. Future Feature Enhancement v2.0
+### 4.6. Future Feature Enhancement v2.0
 
 {Description} 
 
-### 4.6.1. Feature 1
+#### 4.6.1. Feature 1
 
 {Description}
 
-#### 4.6.1.1. Feature command 1 `Feature command 1`
+##### 4.6.1.1. Feature command 1 `Feature command 1`
 
 {Description}
 
