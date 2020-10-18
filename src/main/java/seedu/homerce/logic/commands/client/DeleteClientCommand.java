@@ -14,7 +14,7 @@ import seedu.homerce.model.Model;
 import seedu.homerce.model.client.Client;
 
 /**
- * Deletes a client identified using it's displayed index from the homerce book.
+ * Deletes a client identified using it's displayed index from the homerce.
  */
 public class DeleteClientCommand extends Command {
 

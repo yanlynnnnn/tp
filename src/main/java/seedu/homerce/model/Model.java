@@ -68,17 +68,17 @@ public interface Model {
     void setGuiSettings(GuiSettings guiSettings);
 
     /**
-     * Returns the user prefs' homerce book file path.
+     * Returns the user prefs' homerce file path.
      */
     Path getClientManagerFilePath();
 
     /**
-     * Sets the user prefs' homerce book file path.
+     * Sets the user prefs' homerce file path.
      */
     void setClientManagerFilePath(Path clientManagerFilePath);
 
     /**
-     * Replaces homerce book data with the data in {@code clientManager}.
+     * Replaces homerce data with the data in {@code clientManager}.
      */
     void setClientManager(ReadOnlyClientManager clientManager);
 
@@ -88,37 +88,37 @@ public interface Model {
     ReadOnlyClientManager getClientManager();
 
     /**
-     * Returns true if a client with the same identity as {@code client} exists in the homerce book.
+     * Returns true if a client with the same identity as {@code client} exists in the homerce.
      */
     boolean hasClient(Client client);
 
     /**
-     * Returns true if a client with the same phone number as {@code phone} exists in the homerce book.
+     * Returns true if a client with the same phone number as {@code phone} exists in the homerce.
      */
     boolean checkClientWithPhone(Phone phone);
 
     /**
      * Deletes the given client.
-     * The client must exist in the homerce book.
+     * The client must exist in the homerce.
      */
     void deleteClient(Client target);
 
     /**
      * Adds the given client.
-     * {@code client} must not already exist in the homerce book.
+     * {@code client} must not already exist in the homerce.
      */
     void addClient(Client client);
 
     /**
      * Gets the client based on provided phone number.
-     * {@code phone} must exist in the homerce book.
+     * {@code phone} must exist in the homerce.
      */
     Client getClientByPhone(Phone phone);
 
     /**
      * Replaces the given client {@code target} with {@code editedClient}.
-     * {@code target} must exist in the homerce book.
-     * The client identity of {@code editedClient} must not be the same as another existing client in the homerce book.
+     * {@code target} must exist in the homerce.
+     * The client identity of {@code editedClient} must not be the same as another existing client in the homerce.
      */
     void setClient(Client target, Client editedClient);
 

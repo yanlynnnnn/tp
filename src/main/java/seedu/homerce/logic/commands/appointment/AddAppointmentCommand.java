@@ -26,7 +26,7 @@ import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 public class AddAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "addapt";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to the homerce book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an appointment to the homerce. "
         + "Parameters: "
         + PREFIX_DATE + "DATE "
         + PREFIX_TIME_OF_DAY + "TIME "

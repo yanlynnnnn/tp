@@ -14,7 +14,7 @@ import seedu.homerce.model.Model;
 import seedu.homerce.model.appointment.Appointment;
 
 /**
- * Deletes an appointment identified using it's displayed index from the homerce book.
+ * Deletes an appointment identified using it's displayed index from the homerce.
  */
 public class DeleteAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "deleteapt";

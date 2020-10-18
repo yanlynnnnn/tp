@@ -19,7 +19,7 @@ public class Messages {
     public static final String MESSAGE_APPOINTMENTS_LISTED_OVERVIEW = "%1$d appointments listed!";
     public static final String MESSAGE_APPOINTMENT_ALREADY_DONE = "This appointment is already marked as done!";
     public static final String MESSAGE_APPOINTMENT_ALREADY_UNDONE = "This appointment is already marked as not done!";
-    public static final String MESSAGE_DUPLICATE_APPOINTMENT = "This appointment already exists in the homerce book.";
+    public static final String MESSAGE_DUPLICATE_APPOINTMENT = "This appointment already exists in the homerce.";
     public static final String MESSAGE_INVALID_PHONE = "The phone number does not refer to an existing client.";
     public static final String MESSAGE_INVALID_SERVICE_CODE = "The service code specified does not exist in Homerce.";
 

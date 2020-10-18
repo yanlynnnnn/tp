@@ -10,7 +10,7 @@ import seedu.homerce.model.util.attributes.Date;
 import seedu.homerce.model.util.uniquelist.UniqueListItem;
 
 /**
- * Represents an Appointment in the homerce book.
+ * Represents an Appointment in the homerce.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Appointment implements UniqueListItem {

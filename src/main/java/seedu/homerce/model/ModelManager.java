@@ -32,7 +32,7 @@ import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
 
 /**
- * Represents the in-memory model of the homerce book data.
+ * Represents the in-memory model of the homerce data.
  */
 public class ModelManager implements Model {
 
