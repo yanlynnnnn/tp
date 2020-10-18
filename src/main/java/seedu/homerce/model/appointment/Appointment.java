@@ -2,6 +2,8 @@ package seedu.homerce.model.appointment;
 
 import static seedu.homerce.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import seedu.homerce.model.client.Client;
@@ -14,6 +16,7 @@ import seedu.homerce.model.util.uniquelist.UniqueListItem;
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Appointment implements UniqueListItem {
+    private static final DateTimeFormatter FORMAT_INPUT = DateTimeFormatter.ofPattern("HHmm");
 
     private final Date appointmentDate;
     private final TimeOfDay timeOfDay;
@@ -33,7 +36,6 @@ public class Appointment implements UniqueListItem {
         this.status = new Status("n");
     }
 
-
     public Client getClient() {
         return client;
     }
@@ -46,12 +48,21 @@ public class Appointment implements UniqueListItem {
         return appointmentDate;
     }
 
-    public TimeOfDay getAppointmentTime() {
+    public TimeOfDay getAppointmentStartTime() {
         return timeOfDay;
     }
 
     public Status getStatus() {
         return status;
+    }
+
+    public TimeOfDay getAppointmentEndTime() {
+        // Duration time has intervals of 0.5h
+        double durationMinutes = service.getDuration().value * 60;
+        LocalTime endTime = timeOfDay.getTime().plusMinutes((long) durationMinutes);
+        String formattedEndTime = endTime.format(FORMAT_INPUT);
+
+        return new TimeOfDay(formattedEndTime);
     }
 
     public void markDone() {
@@ -81,7 +92,7 @@ public class Appointment implements UniqueListItem {
         return otherAppointment.getClient().equals(getClient())
                 && otherAppointment.getService().equals(getService())
                 && otherAppointment.getAppointmentDate().equals(getAppointmentDate())
-                && otherAppointment.getAppointmentTime().equals(getAppointmentTime());
+                && otherAppointment.getAppointmentStartTime().equals(getAppointmentStartTime());
     }
 
     @Override
@@ -95,7 +106,7 @@ public class Appointment implements UniqueListItem {
         final StringBuilder builder = new StringBuilder();
         builder.append(getAppointmentDate())
                 .append(" ")
-                .append(getAppointmentTime())
+                .append(getAppointmentStartTime())
                 .append(" Client: ")
                 .append(getClient())
                 .append(" Service ")

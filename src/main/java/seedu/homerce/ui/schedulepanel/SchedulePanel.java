@@ -1,10 +1,19 @@
 
 package seedu.homerce.ui.schedulepanel;
 
+import com.sun.javafx.collections.ImmutableObservableList;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.logging.Logger;
 
+import javafx.beans.InvalidationListener;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
@@ -51,24 +60,28 @@ public class SchedulePanel extends UiPart<Region> {
         }
 
         int rowIndex = 0;
-        LocalDate initAppointmentDate = appointments.get(0).getAppointmentDate().getLocalDate();
+        LocalDate prevAppointmentDate = appointments.get(0).getAppointmentDate().getLocalDate();
 
         for (int i = 0; i < appointments.size(); i++) {
             Appointment curr = appointments.get(i);
             LocalDate currAppointmentDate = curr.getAppointmentDate().getLocalDate();
             Slot slot = new Slot(curr, i);
-            int colSpan = getColSpan(curr.getService().getDuration());
 
-            if (!isSameDate(initAppointmentDate, currAppointmentDate)) {
+
+
+            if (!isSameDate(prevAppointmentDate, currAppointmentDate)) {
                 rowIndex++;
-                initAppointmentDate = currAppointmentDate;
+                prevAppointmentDate = currAppointmentDate;
             }
+            int colSpan = getColSpan(curr.getService().getDuration());
+            curr.getAppointmentEndTime();
+
             gridPane.add(slot.getRoot(), i, rowIndex, colSpan, 1);
         }
     }
 
     private int getColSpan(Duration duration) {
-        // Duration of service are by 0.5 hours so multiplication by 4 will always give an integer
+        // Service timings are in 0.5 hours so multiplication by an even SCALE_FACTOR will always give an a whole number
         return (int) (duration.value * SCALE_FACTOR);
     }
 
@@ -80,5 +93,4 @@ public class SchedulePanel extends UiPart<Region> {
         }
         return true;
     }
-
 }

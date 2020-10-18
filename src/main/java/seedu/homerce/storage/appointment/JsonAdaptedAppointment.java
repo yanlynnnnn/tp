@@ -43,7 +43,7 @@ public class JsonAdaptedAppointment {
      */
     public JsonAdaptedAppointment(Appointment source) {
         date = source.getAppointmentDate().toString();
-        timeOfDay = source.getAppointmentTime().toString();
+        timeOfDay = source.getAppointmentStartTime().toString();
         status = source.getStatus().isDone();
         client = new JsonAdaptedClient(source.getClient());
         service = new JsonAdaptedService((source.getService()));

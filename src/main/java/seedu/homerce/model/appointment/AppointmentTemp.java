@@ -41,7 +41,7 @@ public class AppointmentTemp {
         return appointmentDate;
     }
 
-    public TimeOfDay getAppointmentTime() {
+    public TimeOfDay getAppointmentStartTime() {
         return timeOfDay;
     }
 }
