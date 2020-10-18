@@ -229,9 +229,9 @@ Outcome:
 
 #### 4.1.5. Find a service by keyword: `findsvc`
 
-You can use this command to find services by keywords. Homerce will search for your services using the service title.
+You can use this command to find specefic services which matches the description you provide. 
 
-Format: `findsvc KEYWORD`
+Format: `findsvc [t/TITLE]* [s/SERVICE_CODE]`
 
 <div markdown="block" class="alert alert-info">
 
@@ -246,7 +246,7 @@ Let's say you want to find all the services that contain nail in its title from 
 follow these instructions.
 
 Finding a service:
-1. Type `findsvc nail` into the *Command Box*.
+1. Type `findsvc t/nail` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -969,11 +969,30 @@ along with the total cost of all expenses in each category.
 
 {Description}
 
-#### 4.5.1. Others Command Parameter
+#### 4.5.X. Others Command Parameter Template
 
 {Description}
 
 {Command parameter explanation}
+
+#### 4.5.1. Undo previous change: `undo` 
+
+Undo the last change you made to Homerce.
+
+Example:
+
+If you have accidently deleted an appointment from Homerce, and wish to undo that mistake, you can follow the steps below
+to do so.
+
+Steps: 
+1. Type `undo` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome: 
+
+1. Homerce will undo the last change you made.
+
+{add example screenshot outcome}
 
 #### 4.5.2. Viewing help : `help`
 
@@ -1071,7 +1090,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Lash Lift d/0.5 p/38`
 |**Edit** | `editsvc s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc s/SC001 d/0.5`
 |**Delete** | `deletesvc s/SERVICE_CODE` | `deletesvc s/SC001`
-|**Find** | `findsvc KEYWORD` | `findsvc nail`
+|**Find** | `findsvc KEYWORD` | `findsvc t/nail`
 |**List** | `listsvc` | 
 |**Clear** | `clearexp` | 
 
@@ -1102,6 +1121,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 
 Action | Format | Examples
 --------|--------|----------
+**Undo** | `undo` | 
 **Help** | `help [COMMAND]` | `help`
 **Exit** | `exit` | 
 
