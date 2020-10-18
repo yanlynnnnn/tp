@@ -1,26 +1,29 @@
----
-layout: page
-title: Developer Guide
----
-# Homerce Developer Guide
+# Homerce - Developer Guide
 
 ## Table of Contents:
- * [1. Introduction](#1-introduction)
- * [2. Setting up, getting started](#2-setting-up-getting-started)
- * [3. Design](#3-design)
- * [4. Implementation](#4-implementation)
- * [5. Documentation](#5-documentation)
- * [6. Logging](#6-logging)
- * [7. Testing](#7-testing)
- * [8. Configuration](#8-configuration)
- * [9. DevOps](#9-dev-ops)
- * [Appendix A: Product Scope](#appendix-a-product-scope)
- * [Appendix B: User Stories](#appendix-b-user-stories)
- * [Appendix C: Use Cases](#appendix-c-use-cases)
- * [Appendix D: Non Functional Requirements](#appendix-d-non-functional-requirements)
- * [Appendix E: Glossary](#appendix-e-glossary)
- * [Appendix F: Instructions for Manual Testing](#appendix-f-instructions-for-manual-testing)
- * [Appendix G: Effort](#appendix-g-effort)
+ * [1. **Introduction**](#1-introduction)
+ * [2. **Setting up**](#2-setting-up)
+ * [3. **Design**](#3-design)
+     * [3.1 Architecture](#3.1-architecture)
+     * [3.2 UI Component](#3.2-ui-component)
+     * [3.3 Logic Component](#3.3-logic-component)
+     * [3.4 Model Component](#3.4-model-component)
+     * [3.5 Storage Component](#3.5-storage-component)
+     * [3.6 Common Classes](#3.6-common-classes)
+ * [4. **Implementation**](#4-implementation)
+     * [4.1 Architecture](#4.1-service-manager)
+ * [5. **Documentation**](#5-documentation)
+ * [6. **Logging**](#6-logging)
+ * [7. **Testing**](#7-testing)
+ * [8. **Configuration**](#8-configuration)
+ * [9. **DevOps**](#9-dev-ops)
+ * [**Appendix A: Product Scope**](#appendix-a-product-scope)
+ * [**Appendix B: User Stories**](#appendix-b-user-stories)
+ * [**Appendix C: Use Cases**](#appendix-c-use-cases)
+ * [**Appendix D: Non Functional Requirements**](#appendix-d-non-functional-requirements)
+ * [**Appendix E: Glossary**](#appendix-e-glossary)
+ * [**Appendix F: Instructions for Manual Testing**](#appendix-f-instructions-for-manual-testing)
+ * [**Appendix G: Effort**](#appendix-g-effort)
 
 ## 1. **Introduction**
 
@@ -39,7 +42,7 @@ The features of Homerce include:
 The purpose of this Developer Guide is to help you understand the design and implementation of **Homerce**,
 so that you can get started on your contributions to **Homerce**.
 
-## 2. **Setting up, getting started**
+## 2. **Setting up**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
@@ -87,7 +90,7 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 The sections below give more details of each component.
 
-### 3.2 UI component
+### 3.2 UI Component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
 
@@ -103,7 +106,7 @@ The `UI` component,
 * Executes user commands using the `Logic` component.
 * Listens for changes to `Model` data so that the UI can be updated with the modified data.
 
-### 3.3 Logic component
+### 3.3 Logic Component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
 
@@ -123,7 +126,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 <div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `DeleteCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
 </div>
 
-### 3.4 Model component
+### 3.4 Model Component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
 
@@ -143,7 +146,7 @@ The `Model`,
 </div>
 
 
-### 3.5 Storage component
+### 3.5 Storage Component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
 
@@ -153,7 +156,7 @@ The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
 * can save the address book data in json format and read it back.
 
-### 3.6 Common classes
+### 3.6 Common Classes
 
 Classes used by multiple components are in the `seedu.addressbook.commons` package.
 
@@ -162,6 +165,9 @@ Classes used by multiple components are in the `seedu.addressbook.commons` packa
 ## 4. **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+
+### 4.1 Service Manager 
+
 
 ### \[Proposed\] Undo/redo feature
 
