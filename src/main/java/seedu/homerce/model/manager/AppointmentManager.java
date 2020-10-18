@@ -8,24 +8,24 @@ import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.homerce.model.appointment.Appointment;
-import seedu.homerce.model.util.uniquelist.UniqueList;
+import seedu.homerce.model.appointment.uniquelist.UniqueAppointmentList;
 
 /**
  * Wraps all data at the AppointmentManager level
  * Duplicates are not allowed (by .equals comparison)
  */
 public class AppointmentManager implements ReadOnlyAppointmentManager {
-    private final UniqueList<Appointment> appointments;
+    private final UniqueAppointmentList appointments;
 
     public AppointmentManager() {
-        this.appointments = new UniqueList<>();
+        this.appointments = new UniqueAppointmentList();
     }
 
     /**
      * Creates an AppointmentManager using the Appointments in the {@code toBeCopied}
      */
     public AppointmentManager(ReadOnlyAppointmentManager toBeCopied) {
-        this.appointments = new UniqueList<>();
+        this.appointments = new UniqueAppointmentList();
         resetData(toBeCopied);
     }
 
@@ -95,7 +95,7 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
 
     @Override
     public ObservableList<Appointment> getAppointmentList() {
-        return appointments.asUnmodifiableObservableList();
+        return appointments.asModifiableList();
     }
 
     @Override

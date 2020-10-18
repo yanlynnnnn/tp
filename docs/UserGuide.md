@@ -1,119 +1,129 @@
----
-layout: page
-title: User Guide
----
+
+# Homerce - User Guide
+
 ## 1. Introduction
+
+Welcome to the User Guide of **Homerce**!
+
 
 Are you an independent home-based beauty salon owner, scrambling between your calendar, client contacts, 
 and notebook to keep track of all your appointments, revenue and expenses? 
 Do you spend hours tabulating all your revenue and expenses just to get an idea of how your business is doing?
-Fret not, our application, GrAB3, will reduce the hassle of managing your business and saves your valuable time. 
-GrAB3 is an all-in-one application that helps home-based beauty salon owners consolidate their business details - 
+Fret not, our application, Homerce, will reduce the hassle of managing your business and save your valuable time. 
+Homerce is an all-in-one application that helps home-based beauty salon owners consolidate their business details - 
 such as their appointments, revenue and expenses - into a single application. 
-The application uses a Command Line Interface (CLI)...
 
-* Table of Contents
-{:toc}
+The application uses a Command Line Interface (CLI); this means that you operate the application by typing commands 
+into a Command Box. If you are fast at typing, you can operate the application faster than other Graphical User Interface 
+(GUI) applications; GUI applications allow users to interact with the application through graphical icons such as buttons.
+
+If you are interested, jump to [Section 2 - Quick Start](#2-quick-start) to learn how to start managing your business using Homerce.
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## 2. Quick start
 
-1. Ensure you have Java `11` or above installed in your Computer.
+This section gives you step-by-step instructions on how to download and open the application.
 
-1. Download the latest `GrAB3.jar` from [here](https://github.com/AY2021S1-CS2103T-W13-3/tp/releases).
+1. Ensure you have Java `11` or above installed in your Computer. You may install it [here](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html). 
 
-1. Copy the file to the folder you want to use as the _home folder_ for your GrAB3.
+2. Download the latest `Homerce.jar` [here](https://github.com/AY2021S1-CS2103T-W13-3/tp/releases).
 
-1. Double-click the file to start the app. The GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+3. Copy the file to the folder you want to use as the _home folder_ for Homerce.
+
+4. Double-click the file to start the app. A GUI similar to Figure 1 below should appear in a few seconds. Note how the app contains some sample data. <br> <br>
    ![Ui](images/Ui.png)
+   _Figure 1 - GUI of Homerce_
+   
+6. Type your command into the command box at the bottom of the screen, and press `Enter` on your keyboard to execute it. E.g. typing `help` and pressing `Enter` will open a help window.<br>
 
-1.Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
-   Some example commands you can try:
+7. Refer to [Section 4 - Features](#4-features) for details on the commands you can use for each feature. <br> <br>
 
-  ~~* **`listmodules`** : Lists all module provided by the university.~~
-
-  ~~* **`setup`**`n/John Doe sd/22-09-2020 ed/29-11-2020 ay/AY20/21 Sem 1` : Adds a user named `John Doe` and academic year `AY20/21 Sem 1` that spans from `22-09-2020` to `29-11-2020`.~~
-  
-  ~~* **`listtaskschedule`**`2` : List all the user tasks in task schedule for Week 2.~~
-
-  ~~* **`exit`** : Exits the app.~~
-
-1. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 ## 3. About
 
-### 3.1 Structure of this document
+### 3.1. Structure of this document
 
-### 3.2 Reading this document
+We have structured this User Guide in a way to help you find what you need easily and quickly. 
+In the next subsection, [Section 3.2 - Reading this document](#3.2-Reading-this-document), you can find several useful tips on how to read this guide.
+The following section, [Section 4 - Features](#4-features), documents the four main features in **Homerce**, namely:
 
-#### 3.2.1 Terminology related to the GUI
+* Service Management
 
-#### 3.2.2 General Symbols and Syntax 
+* Appointment Tracking
+
+* Revenue Tracking
+
+* Expense Tracking
+
+### 3.2. Reading this document
+
+This section introduces you to some technical terms, symbols and syntax that are used throughout the guide. You may want to
+familiarize yourself with them before moving to the next section. 
+
+#### 3.2.1. Terminology related to the GUI
+
+Figure 2 shows the GUI of **Homerce**, annotated with a description of each GUI component.
+
+{Figure 2, screenshot of GUI with annotations} <br>
+_Figure 2 -  Annotated GUI of Homerce_
+
+#### 3.2.2. General Symbols and Syntax 
 
 The table below explains the general syntax used throughout the user guide.
 
 | Syntax |  What it means |
 |----------|-------------|
 | `command` |  A grey highlighted block specifies a executable command that can be entered into the command box.  |
-| 💡 | The light bulb indicates that the enclosed text is a tip. |
+| _italics_ | Italicised text indicates that the text has a definition specific to Homerce. |
 |<div markdown="block" class="alert alert-info"> :information_source: </div>  | An exclamation mark indicates that the following text is important. |
 
-#### 3.2.3 Command Syntax and Usage
+#### 3.2.3. Command Syntax and Usage
 
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `setup n/USERNAME`, `USERNAME` is a parameter which can be used as `setup n/John Doe`.
+The table below explains some important technical terms to help you understand and use commands in Homerce.
 
-* Items in square brackets are optional.<br>
-  e.g `tn/TASKNAME [t/TAG]` can be used as `tn/CCA lunch meeting t/CCA` or as `tn/CCA lunch meeting`.
+| Technical Term | What it means |
+| ---------------| --------------|
+| Command Word | The first word of a command. It determines the action that Homerce should perform. |
+| Prefix | The characters at the start of a parameter. It distinguishes one parameter from another.|
+| Parameter | The word following each prefix. They are values given to a command to perform the specified action.|
 
-* Items with `…​` after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/CCA`, `t/CCA t/Fintech Society` etc.
+Example:
+`addexp d/DESCRIPTION f/ISFIXED v/VALUE dt/DATE [t/TAG]`
 
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `tn/TASKNAME du/DURATION`, `du/DURATION tn/TASKNAME` is also acceptable.
+Breakdown: <br>
+**Command Word** - `addexp` <br>
+**Prefixes** - `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE`, `TAG` <br>
+**Parameters** - `d/`, `f/`, `v/`, `dt/`, `t/`
+
+The following points explain the format of a command. 
+More examples will be provided for each command in [Section 4 - Features](#4-features).
+
+1. Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+    - In `deletesvc s/SERVICE_CODE`, `SERVICE_CODE` is a parameter and the command can be used as `deletesvc s/SC001`.
+
+2. Items in square brackets are optional.<br>
+    - `v/VALUE [t/TAG]` can be used as `v/15 t/equipment` or as `v/15`.
+
+3. Items with `…​` after them can be used multiple times, including zero times.<br>
+    - `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/blacklist`, `t/VIP t/friend` etc.
+
+4. Parameters can be in any order.<br>
+    - if the command specifies `d/DESCRIPTION dt/DATE`, `dt/DATE d/DESCRIPTION` is also acceptable.
 
 
 ## 4. Features
 
-This section contains all the information about the features of *GrAB3*. 
-Enter the command into the _Command Box_ to use each feature or sub-feature.
+This section contains all the information about the features of **Homerce**. 
+You may enter a command into the _Command Box_ to use each feature or sub-feature.
 
-### Feature 1
-
-{Description}
-
-#### Feature 1 parameter
-
-{Description}
-
-{Command parameter explanation}
-
-##### Feature command 1 `Feature command 1`
-
-{Description}
-
-Format : `Format`
-
-{Format explanation / limitation}
-
-Example:
-
-{Example description/ case scenario}
-
-{Example action}
-
-{Example Outcome details}
-
-{Example outcome screenshot}
-
-## 4.1 Services Management
+### 4.1. Service Management
 
 This feature allows you to manage the services that your home-based beauty salon provides. You can record the 
 following information about your services: `TITLE`, `DURATION` and `PRICE`.
 
-#### 4.1.1 Service Management Command Parameters
+#### 4.1.1. Service Management Command Parameters
 
 Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used in this feature.
@@ -123,11 +133,11 @@ The table below shows a list of command parameters that will be used in this fea
 |`TITLE`| The title of the service you are providing. It must be alphanumeric words not more than 50 characters long.|E.g `Lash Lift`
 |`DURATION`| The duration of the service in hours. <br> <br> It be in half hour intervals.| E.g `1.5`
 |`PRICE`| The revenue received from the service. <br> <br> It must be in dollars.| E.g `5.50`
-|`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long. | E.g. If you have added an eyelash extension service into GrAB3 and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
+|`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 
-#### 4.1.2 Add a new service: `addsvc`
+#### 4.1.2. Add a new service: `addsvc`
 
-You can use this command to add a new service GrAB3.
+You can use this command to add a new service Homerce.
 
 Format: `addsvc t/TITLE d/DURATION p/PRICE`
 
@@ -140,7 +150,7 @@ Format: `addsvc t/TITLE d/DURATION p/PRICE`
 </div>
 
 Example:
-Let's say you have a service with the following information you want to add into GrAB3. You can follow these instructions.
+Let's say you have a service with the following information you want to add into Homerce. You can follow these instructions.
 
 | Service | |
 |---------|--------- |
@@ -154,14 +164,14 @@ Adding the above service:
 
 Outcome:
 1. The Result Display will show success message.
-2. GrAB3 will switch to the Services Tab.
+2. Homerce will switch to the Services Tab.
 3. You can now see all your services including the newly added service.
 
 {Example outcome screenshot}
 
-#### 4.1.3 Edit an existing service: `editsvc`
+#### 4.1.3. Edit an existing service: `editsvc`
 
-You can use this command to edit an existing service in GrAB3.
+You can use this command to edit an existing service in Homerce.
 
 Format: `editsvc s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*`
 
@@ -183,14 +193,14 @@ Editing an existing service:
 
 Outcome:
 1. The Result Display will show a success message.
-2. GrAB3 will switch to the Services Tab.
+2. Homerce will switch to the Services Tab.
 3. You can now see all your services including the edited service.
 
 {Example outcome screenshot}
 
-#### 4.1.4 Delete an existing service: `deletesvc`
+#### 4.1.4. Delete an existing service: `deletesvc`
 
-You can use this command to delete an existing service in GrAB3.
+You can use this command to delete an existing service in Homerce.
 
 Format: `deletesvc s/SERVICE_CODE`
 
@@ -203,7 +213,7 @@ Format: `deletesvc s/SERVICE_CODE`
 </div>
 
 Example:
-Let's say you are no longer providing a particular service and want to delete it from GrAB3. You can follow these
+Let's say you are no longer providing a particular service and want to delete it from Homerce. You can follow these
 instructions.
 
 Deleting an existing service:
@@ -212,14 +222,14 @@ Deleting an existing service:
 
 Outcome:
 1. The Result Display will show a success message.
-2. GrAB3 will switch to the Services Tab.
-3. You can now see that the service with service code SC001 has been deleted from GrAB3.
+2. Homerce will switch to the Services Tab.
+3. You can now see that the service with service code SC001 has been deleted from Homerce.
 
 {Example outcome screenshot}
 
-#### 4.1.5 Find a service by keyword: `findsvc`
+#### 4.1.5. Find a service by keyword: `findsvc`
 
-You can use this command to find services by keywords. GrAB3 will search for your services using the service title.
+You can use this command to find services by keywords. Homerce will search for your services using the service title.
 
 Format: `findsvc KEYWORD`
 
@@ -241,14 +251,14 @@ Finding a service:
 
 Outcome:
 1. The Result Display will show a success message.
-2. GrAB3 will switch to the Services Tab.
+2. Homerce will switch to the Services Tab.
 3. You can now see the services in your list of services that contain nail in its title.
 
 {Example outcome screenshot}
 
-#### 4.1.6 List all existing services: `listsvc`
+#### 4.1.6. List all existing services: `listsvc`
 
-You can use this command to navigate to the Services Tab and display all your added services in GrAB3.
+You can use this command to navigate to the Services Tab and display all your added services in Homerce.
 
 Format: `listsvc`
 
@@ -269,14 +279,14 @@ Listing all services:
 
 Outcome:
 1. The Result Display will show a success message.
-2. GrAB3 will switch to the Services Tab.
+2. Homerce will switch to the Services Tab.
 3. You can now see all your services.
 
 {Example outcome screenshot}
 
-#### 4.1.7 Clear all existing services: `clearsvc`
+#### 4.1.7. Clear all existing services: `clearsvc`
 
-You can use this command to clear and delete the all the services in GrAB3.
+You can use this command to clear and delete the all the services in Homerce.
 
 Format: `clearsvc`
 
@@ -298,20 +308,20 @@ Clearing all services:
 
 Outcome:
 1. The Result Display will show a success message.
-2. GrAB3 will switch to the Services Tab.
+2. Homerce will switch to the Services Tab.
 3. You can see that the list of services is now empty.
 
 {Example outcome screenshot}
 
-## 6.1 Appointment Tracker
+### 4.2. Appointment Tracker
 
 Scheduling appointments is an essential part of your beauty salon and
-GrAB3 makes it easy to keep track of your upcoming appointments with
+Homerce makes it easy to keep track of your upcoming appointments with
 your customers. You can add appointments for a particular service and
-client, mark it as done, and GrAB3 will automatically credit the revenue
+client, mark it as done, and Homerce will automatically credit the revenue
 into the revenue tracker.
 
-### 6.1.1 Appointment Tracker Command Parameters
+#### 4.2.1. Appointment Tracker Command Parameters
 
 This feature uses a number of parameters, which are detailed below.
 
@@ -320,12 +330,12 @@ This feature uses a number of parameters, which are detailed below.
 |`DATE`  | The date of the appointment. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
 |`TIME` | The time of the appointment. <br> <br> It must be in the format of `HH:MM` | E.g. Typing `17:30` would mean 5:30 PM.  <br> <br> E.g. Typing `0900` would mean 9:00 AM.
 |`MONTH` | The month of the appointment. <br> <br> It must be in the format of a 3 letter phrase representing the month. | E.g. Typing `Jan` would mean January.  <br> <br> E.g. Typing `Dec` would mean December.
-|`SERVICE_CODE`| The service code is the code that identifies the type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into GrAB3 and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
+|`SERVICE_CODE`| The service code is the code that identifies the type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`PHONE_NUMBER` | The phone number of the client. <br> <br> It must be a 8-digit number starting with 6, 8, or 9.| E.g. Typing `81281234` or `91235678` is a valid phone number.  <br> <br> E.g. Typing `999`or `800012345` would not be a recognised number.
 |`NAME` | The name of the client booking the appointment. <br> <br> It must consist alphanumeric characters not more than 100 characters long. | E.g. If a client with the name `Hartin Menz` called to book an appointment, the same name `Hartin Menz` would be used as the parameter for `NAME`.
 |`INDEX` | The index of the appointment in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the appointment with index-2 in the displayed list.
 
-### 6.1.2 Add an appointment: `addapt`
+#### 4.2.2. Add an appointment: `addapt`
 
 When a new or existing client calls to make a booking for your services, use this
 command to add details of the appointment into the appointment tracker.
@@ -339,7 +349,7 @@ Format : `addapt dt/DATE t/TIME s/SERVICE_CODE p/PHONE_NUMBER`
 Example:
 
 Let's say your client called to make an appointment.
-You can follow these instructions to add his/her appointment details into GrAB3.
+You can follow these instructions to add his/her appointment details into Homerce.
 
 | Appointment | |
 |---------|--------- |
@@ -354,13 +364,13 @@ Steps:
 
 Outcome:
 1. The Result Display will show a success message.
-1. GrAB3 will switch to the appointment tab.
+1. Homerce will switch to the appointment tab.
 1. You can now see all your appointments including the newly added appointment.
 
 
 {Example outcome screenshot}
 
-### 6.1.3 List all appointments: `listapt`
+#### 4.2.3. List all appointments: `listapt`
 
 Use this command to see your list of all your upcoming appointments.
 
@@ -372,7 +382,7 @@ Format : `listapt`
 
 Example:
 
-Let's say you want to list all your appointments stored in GrAB3.
+Let's say you want to list all your appointments stored in Homerce.
 You can follow these instructions.
 
 Steps:
@@ -381,15 +391,15 @@ Steps:
 
 Outcome:
 1. The Result Display will show a success message.
-1. GrAB3 will switch to the appointment tab.
-1. You can now see all your appointments stored in GrAB3.
+1. Homerce will switch to the appointment tab.
+1. You can now see all your appointments stored in Homerce.
 
 {Example outcome screenshot}
 
-### 6.1.4 Find an appointment: `findapt`
+#### 4.2.4. Find an appointment: `findapt`
 
 Use this command to find a specific appointment which matches the description you provide
-to GrAB3.
+to Homerce.
 
 Format : `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]* [m/MONTH]*`
 
@@ -399,7 +409,7 @@ Format : `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]* [m/MO
 
 Example:
 
-Let's say you have a number of appointments stored in GrAB3 and you want to search for a particular one.
+Let's say you have a number of appointments stored in Homerce and you want to search for a particular one.
 You can follow these instructions to list all the appointments which match your search criteria(s).
 
 | Appointment | |
@@ -414,13 +424,13 @@ Steps:
 
 Outcome:
 1. The Result Display will show a success message.
-1. GrAB3 will switch to the appointment tab.
+1. Homerce will switch to the appointment tab.
 1. You can now see all your appointments made by the number `82341245` in the
 month of March and is of the service `SC002`.
 
 {Example outcome screenshot}
 
-### 6.1.5 Edit an appointment: `editapt`
+#### 4.2.5. Edit an appointment: `editapt`
 
 When a new or existing client calls to edit a booking he or she had made, use this
 command to edit details of the appointment.
@@ -433,8 +443,8 @@ Format : `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER]`
 
 Example:
 
-Let's say you searched for the appointment which you want to edit in GrAB3.
-You searched for the appointment in GrAB3 with `listapt` or `findapt`,
+Let's say you searched for the appointment which you want to edit in Homerce.
+You searched for the appointment in Homerce with `listapt` or `findapt`,
 and you want to edit it with the following details:
 
 | Appointment | |
@@ -450,12 +460,12 @@ Steps:
 
 Outcome:
 1. The Result Display will show a success message.
-1. GrAB3 will switch to the appointment tab.
+1. Homerce will switch to the appointment tab.
 1. You will see your edited appointment displayed alongside other appointments in your tracker.
 
 {Example outcome screenshot}
 
-### 6.1.6 Mark an appointment as done: `done`
+#### 4.2.6. Mark an appointment as done: `done`
 
 After an appointment with a client has been completed, use this command to credit the revenue from the service and remove the appointment
 from the list of upcoming appointments.
@@ -468,7 +478,7 @@ Format : `done INDEX`
 
 Example:
 
-Let's say you just finished an appointment with a client. After finding the appointment in GrAB3
+Let's say you just finished an appointment with a client. After finding the appointment in Homerce
 with `listapt` or `findapt`, you can follow these instructions to mark that appointment as done.
 
 | Appointment | |
@@ -481,12 +491,12 @@ Steps:
 
 Outcome:
 1. The Result Display will show a success message.
-1. GrAB3 will switch to the appointment tab.
+1. Homerce will switch to the appointment tab.
 1. You will see your appointment marked as done, displayed alongside other appointments in your tracker.
 
 {Example outcome screenshot}
 
-### 6.1.7 Mark an appointment as not done: `undone`
+#### 4.2.7. Mark an appointment as not done: `undone`
 
 In the event that an appointment was marked as done by accident, you can
 use this command to revert this and ensure your appointment is still
@@ -513,12 +523,12 @@ Steps:
 
 Outcome:
 1. The Result Display will show a success message.
-1. GrAB3 will switch to the appointment tab.
+1. Homerce will switch to the appointment tab.
 1. You will see your appointment marked as not done, alongside other appointments in your tracker.
 
 {Example outcome screenshot}
 
-### 6.1.8 Delete an existing appointment: `deleteapt`
+#### 4.2.8. Delete an existing appointment: `deleteapt`
 
 If a client informs you that he or she wants to cancel an appointment, you can
 use this command to delete that particular command from the appointment tracker.
@@ -531,7 +541,7 @@ Format : `deleteapt INDEX`
 
 Example:
 
-Let's say you a client called to cancel his/her appointment. After finding the appointment in GrAB3
+Let's say you a client called to cancel his/her appointment. After finding the appointment in Homerce
 with `listapt` or `findapt`, you can follow these instructions to delete that appointment.
 
 | Appointment | |
@@ -544,15 +554,15 @@ Steps:
 
 Outcome:
 1. The Result Display will show a success message.
-1. GrAB3 will switch to the appointment tab.
+1. Homerce will switch to the appointment tab.
 1. You will see the rest of your appointments in your tracker, with the one with index 2 removed.
 
 {Example outcome screenshot}
 
-### 6.1.9 Clear all appointments: `clearapt`
+#### 4.2.9. Clear all appointments: `clearapt`
 
 In the event that you want to reset the entire list of appointments
-in GrAB3, you may use this command to delete all prior and upcoming
+in Homerce, you may use this command to delete all prior and upcoming
 appointments with your clients.
 
 Format : `clearapt`
@@ -563,7 +573,7 @@ Format : `clearapt`
 
 Example:
 
-Let's say you want to clear all appointments stored in GrAB3.
+Let's say you want to clear all appointments stored in Homerce.
 You can follow these instructions to do so.
 
 Steps:
@@ -572,18 +582,18 @@ Steps:
 
 Outcome:
 1. The Result Display will show a success message.
-1. GrAB3 will switch to the appointment tab.
+1. Homerce will switch to the appointment tab.
 1. You will no appointments listed in the tracker.
 
 {Example outcome screenshot}
 
-### Revenue Tracker
+### 4.3. Revenue Tracker
 
-GrAB3 knows that revenue tracking is very important for your business.
+Homerce knows that revenue tracking is very important for your business.
 Thus, this feature allows you to track the revenue that you have generated effortlessly.
 Revenue will be automatically recorded when an appointment is indicated as done.
 
-#### Revenue Tracker Command Parameters
+#### 4.3.1. Revenue Tracker Command Parameters
 
 Before you dive into using the feature, you may want to have a look at the common parameter used in this feature.
 The table below shows a list of command parameters that will be used in this feature.
@@ -591,12 +601,12 @@ The table below shows a list of command parameters that will be used in this fea
 | Parameter Name | Description | Example
 |---------|---------|---------
 |`DATE`  | The revenue earned date. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
-|`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into GrAB3 and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
+|`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
 
-##### Find a Revenue : `findrev`
+#### 4.3.2. Find a Revenue : `findrev`
 
-You can use this command to find revenues by 'date' or 'service code' in GrAB3.
+You can use this command to find revenues by 'date' or 'service code' in Homerce.
 
 Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
 
@@ -619,13 +629,13 @@ Steps :
 
 Outcome : 
 1. It will display a success message ~~in the _Dashboard_.~~
-1. GrAB3 will list out all the revenue for 29-09-2020 in the _Revenue_ tab.  
+1. Homerce will list out all the revenue for 29-09-2020 in the _Revenue_ tab.  
 
 {Example outcome screenshot}
 
-##### Sort Revenues: `sortrev`
+#### 4.3.3. Sort Revenues: `sortrev`
 
-You can use this command to sort the list of revenue in ascending or descending order by value in GrAB3.
+You can use this command to sort the list of revenue in ascending or descending order by value in Homerce.
 
 Format : `sortrev ORDER`
 
@@ -648,13 +658,13 @@ Steps :
 
 Outcome : 
 1. It will display a successful message ~~in the _Dashboard_.~~
-1. GrAB3 will list out all the revenue entries sorted from highest to lowest cost in the _Revenue_ tab.
+1. Homerce will list out all the revenue entries sorted from highest to lowest cost in the _Revenue_ tab.
 
 {Example outcome screenshot}
 
-##### List Revenues : `listrev`
+#### 4.3.4. List Revenues : `listrev`
 
-You can use this command to list all your revenue entries in GrAB3.
+You can use this command to list all your revenue entries in Homerce.
 
 Format : `listrev`
 
@@ -670,19 +680,19 @@ Steps :
 
 Outcome : 
 1. It will display a successful message ~~in the _Dashboard_.~~
-1. GrAB3 will list out all your revenue entries in the _Revenue_ tab.
+1. Homerce will list out all your revenue entries in the _Revenue_ tab.
 
 {Example outcome screenshot}
 
-##### Clear Expenses : `clearrev`
+#### 4.3.5. Clear Revenue : `clearrev`
 
-You can use this command to clear all revenue entries in GrAB3.
+You can use this command to clear all revenue entries in Homerce.
 
 Format : `clearrev`
 
 Example :
 
-You wish to remove all revenues entries in GrAB3 and restart your revenue management from scratch.
+You wish to remove all revenues entries in Homerce and restart your revenue management from scratch.
 
 You can follow the steps below to clear all your revenue entries.
 
@@ -692,11 +702,11 @@ Steps :
 
 Outcome : 
 1. It will display a successful message ~~in the _Dashboard_.~~
-1. GrAB3 will clear all the revenue data.
+1. Homerce will clear all the revenue data.
 
 {Example outcome screenshot}
 
-##### Breakdown Revenue : `breakdownrev`
+#### 4.3.6. Breakdown Revenue : `breakdownrev`
 
 You can use this command to breakdown revenue into their relevant categories, based on their 'service code'.
 
@@ -714,16 +724,16 @@ Steps :
 
 Outcome : 
 1. It will display a successful message ~~in the _Dashboard_.~~
-1. GrAB3 will display a Pie Chart that categorizes revenues based on their 'service code', along with the total cost of all expenses in each category.
+1. Homerce will display a Pie Chart that categorizes revenues based on their 'service code', along with the total cost of all expenses in each category.
 
 {Example outcome screenshot}
 
-### Expense Tracker
+### 4.4 Expense Tracker
 
-GrAB3 knows that expense tracking in important in managing business expenditure.
+Homerce knows that expense tracking in important in managing business expenditure.
 Thus, this feature allows you to track all the expenses you may incur during your business operations.
 
-#### Expense Tracker Command Parameters
+#### 4.4.1. Expense Tracker Command Parameters
 
 Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used.
@@ -740,9 +750,9 @@ The table below shows a list of command parameters that will be used.
 |`MONTH`| The month the expense is made. <br> <br> It must be a valid integer between 1 - 12. | E.g. Typing '12' would refer to the month of December. 
 |`YEAR`| The year the expense is made. <br> <br> It must be a valid year. | E.g. Typing '2020' would refer to the year 2020.
 
-##### Add an Expense `addexp`
+#### 4.4.2. Add an Expense `addexp`
 
-You can use this command to add a new expense to GrAB3.
+You can use this command to add a new expense to Homerce.
 
 Format : `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`
 
@@ -759,20 +769,20 @@ Example :
 
 You just purchased a bottle of conditioner for your client's hair treatment today for $15 (28-10-2020).
 
-You can follow the steps below to add the expense to GrAB3.
+You can follow the steps below to add the expense to Homerce.
 
 Steps :
-1. Type `addexp d/conditioner f/n v/15.00 dt/28-10-2020 t/hairsupplies` in to _Command Box_.
+1. Type `addexp d/conditioner f/n v/15.00 dt/28-10-2020 t/hairsupplies` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. GrAB3 will display a success message.
+1. Homerce will display a success message.
 
 {Example outcome screenshot}
 
-##### Edit an Expense `editexp`
+#### 4.4.3. Edit an Expense `editexp`
 
-You can use this command to edit an expense in GrAB3.
+You can use this command to edit an expense in Homerce.
 
 Format : `editexp INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]`
 
@@ -788,7 +798,7 @@ Format : `editexp INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]
 
 Example :
 
-You misspelled the description of an expense when adding it into GrAB3 and wish to change it to "Eyelash Curler".
+You misspelled the description of an expense when adding it into Homerce and wish to change it to "Eyelash Curler".
 
 You can follow the steps below to edit the expense.
 
@@ -797,13 +807,13 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. GrAB3 will display a success message.
+1. Homerce will display a success message.
 
 {Example outcome screenshot}
 
-##### Delete an Expense `deleteexp`
+#### 4.4.4. Delete an Expense `deleteexp`
 
-You can use this command to delete an expense in GrAB3.
+You can use this command to delete an expense in Homerce.
 
 Format : `deleteexp INDEX`
 
@@ -811,7 +821,7 @@ Format : `deleteexp INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+* Refer to [Expense Tracker Command Parameters](#rexpense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -826,13 +836,13 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. GrAB3 will display a success message.
+1. Homerce will display a success message.
 
 {Example outcome screenshot}
 
-##### Find an Expense `findexp`
+#### 4.4.5. Find an Expense `findexp`
 
-You can use this command to find an expense in GrAB3.
+You can use this command to find an expense in Homerce.
 
 Format : `findexp [d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*`
 
@@ -857,11 +867,11 @@ Steps :
 
 Outcome :
 1. It will display a success message. 
-2. GrAB3 will list out all the expenses for 08-09-2020.
+2. Homerce will list out all the expenses for 08-09-2020.
 
-##### Sort Expenses `sortexp`
+#### 4.4.6. Sort Expenses `sortexp`
 
-You can use this command to sort expenses in GrAB3.
+You can use this command to sort expenses in Homerce.
 
 Format : `sortexp ORDER`
 
@@ -885,11 +895,11 @@ Steps :
 
 Outcome :
 1. It will display a success message.
-2. GrAB3 will list out all the expenses sorted from highest to lowest cost.
+2. Homerce will list out all the expenses sorted from highest to lowest cost.
 
-##### List Expenses `listexp`
+#### 4.4.7. List Expenses `listexp`
 
-You can use this command to list all your expenses in GrAB3.
+You can use this command to list all your expenses in Homerce.
 
 Format : `listexp`
 
@@ -905,17 +915,17 @@ Steps :
 
 Outcome :
 1. It will display a success message.
-2. GrAB3 will list out all your expenses.
+2. Homerce will list out all your expenses.
 
-##### Clear Expenses `clearexp`
+#### 4.4.8. Clear Expenses `clearexp`
 
-You can use this command to clear all expenses in GrAB3.
+You can use this command to clear all expenses in Homerce.
 
 Format : `clearexp`
 
 Example :
 
-You wish to remove all expense entries in GrAB3 and restart your expense management from scratch.
+You wish to remove all expense entries in Homerce and restart your expense management from scratch.
 
 You can follow the steps below to clear all your expenses.
 
@@ -926,7 +936,7 @@ Steps :
 Outcome :
 1. It will display a success message.
 
-##### Breakdown Expenses `breakdownexp`
+#### 4.4.9. Breakdown Expenses `breakdownexp`
 
 You can use this command to breakdown expenses into their relevant categories, based on their 'tags'.
 
@@ -952,20 +962,20 @@ Steps :
 
 Outcome :
 1. It will display a success message.
-2. GrAB3 will display a Pie Chart that categorizes expenses made in December 2020 based on their 'tags', 
+2. Homerce will display a Pie Chart that categorizes expenses made in December 2020 based on their 'tags', 
 along with the total cost of all expenses in each category.
 
-## Others
+### 4.5. Others
 
 {Description}
 
-### Others Command Parameter
+#### 4.5.1. Others Command Parameter
 
 {Description}
 
 {Command parameter explanation}
 
-#### Viewing help : `help`
+#### 4.5.2. Viewing help : `help`
 
 Show a message explaining how to access the help page.
 
@@ -975,7 +985,7 @@ Format : `help [COMMAND]`
 
 Example:
 
-If you are unsure of the commands that GrAB3 offered. You can follow the steps below to get a full list of all the commands.
+If you are unsure of the commands that Homerce offered. You can follow the steps below to get a full list of all the commands.
 
 Steps: 
 1. Type `help` into the _Command Box_.
@@ -983,11 +993,11 @@ Steps:
 
 Outcome: 
 
-1. GrAb3 will switch to the _Help_ tab.
+1. Homerce will switch to the _Help_ tab.
 
 ![help message](images/helpMessage.png)
 
-#### Exit GrAB3 : `exit`
+#### 4.5.3. Exit Homerce : `exit`
 
 Exits the program.
 
@@ -995,7 +1005,7 @@ Format : `exit`
 
 Example:
 
-If you wish to exit GrAb3. 
+If you wish to exit Homerce. 
 
 Steps: 
 1. Type `exit` into the _Command Box_.
@@ -1003,23 +1013,23 @@ Steps:
 
 Outcome: 
 
-1. GrAb3 will close its window.
+1. Homerce will close its window.
 
 {Example outcome screenshot}
 
-### Saving the Data - Can consider moving to about.
+#### 4.5.4. Saving the Data - Can consider moving to about.
 
-GrAB3 data are saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
+Homerce data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-## Future Feature Enhancement v2.0
+### 4.6. Future Feature Enhancement v2.0
 
 {Description} 
 
-### Feature 1
+#### 4.6.1. Feature 1
 
 {Description}
 
-#### Feature command 1 `Feature command 1`
+##### 4.6.1.1. Feature command 1 `Feature command 1`
 
 {Description}
 
@@ -1036,20 +1046,26 @@ Example:
 
 --------------------------------------------------------------------------------------------------------------------
 
-## FAQ
+## 5. FAQ
+
+**Q**: How do I create a Revenue in Homerce? <br>
+**A**: Unfortunately, Homerce does not allow you to directly create a revenue. A Revenue will only be created when an appointment
+is marked as done.
+
+**Q**: What is the `isFixed` parameter in the Expense Tracker for? <br>
+**A**: Marking an expense as 'Fixed' indicates to Homerce that the particular expense is fixed and recurs every month. Homerce
+will automatically add the same expense to your list of expenses every month. 
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous GrAB3 home folder.
+**A**: By default, Homerce saves all your data in a folder named `data` in the same directory as the application. 
+You can copy and transfer the data folder into the same directory as Homerce on your other computer and Homerce will automatically load your data for you.
+
 
 --------------------------------------------------------------------------------------------------------------------
 
-## Command summary
+## 6. Command summary
 
-### Feature
-
-{Feature command table} 
-
-### Service Management 
+### 6.1 Service Management Commands
 |Action | Format | Examples
 |---------|---------|---------
 |**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Lash Lift d/0.5 p/38`
@@ -1059,7 +1075,9 @@ Example:
 |**List** | `listsvc` | 
 |**Clear** | `clearexp` | 
 
-### Revenue Tracker
+### 6.2. Appointment Tracker Commands
+
+### 6.3. Revenue Tracker Commands
 |Action | Format | Examples
 |---------|---------|---------
 |**Find** | `findrev [dt/DATE]* [sc/SERVICE_CODE]*` | `findrev dt\28-09-2020`
@@ -1068,7 +1086,7 @@ Example:
 |**Clear**      | `clearrev`                                                       | 
 |**Breakdown**  | `breakdownrev`                                                   | 
 
-### Expense Tracker
+### 6.4. Expense Tracker Commands
 |Action | Format | Examples
 |---------------|------------------------------------------------------------------|------------------------------------------------------------------
 |**Add**        | `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`        | `addexp d/conditioner f/n v/15.00 dt/28-10-2020 t/hairsupplies`
@@ -1080,7 +1098,7 @@ Example:
 |**Clear**      | `clearexp`                                                       | 
 |**Breakdown**  | `breakdownexp m/MONTH y/YEAR`                                    | `breakdownexp m/12 y/2020`
 
-### Others
+### 6.5. Other Commands
 
 Action | Format | Examples
 --------|--------|----------

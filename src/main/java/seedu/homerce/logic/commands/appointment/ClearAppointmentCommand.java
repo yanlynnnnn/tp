@@ -14,7 +14,8 @@ import seedu.homerce.model.Model;
  */
 public class ClearAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "clearapt";
-    private static final String MESSAGE_CLEAR_APPOINTMENT_SUCCESS = "Appointment list has been cleared!";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": clears all appointments in Homerce.";
+    public static final String MESSAGE_CLEAR_APPOINTMENT_SUCCESS = "Appointment list has been cleared!";
 
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) {
