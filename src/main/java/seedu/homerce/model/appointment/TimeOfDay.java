@@ -63,4 +63,8 @@ public class TimeOfDay {
     public String toUiString() {
         return value.format(FORMAT_OUTPUT);
     }
+
+    public LocalTime getLocalTime() {
+        return value;
+    }
 }
