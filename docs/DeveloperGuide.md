@@ -200,6 +200,9 @@ user interface.
 
 The following class diagram models the structure of the `ListManager`.
 
+![Class diagram for list manager](images/ListManagerClassDiagram.png) 
+*Figure 1. Structure of `ListManager``*
+
 #### 4.1.3 Design Consideration 
 **Aspect: Implementation of a `ListManager`**
 |              | **Pros**   | **Cons** |
@@ -246,6 +249,8 @@ returns an `ObservableList` of *items*. For instance, `RevenueTracker` implement
 user interface.
 
 The following class diagram models the structure of the `ListTracker`.
+![Class diagram for list tracker](images/ListTrackerClassDiagram.png)
+*Figure 2. Structure of `ListTracker``*
 
 #### 4.2.3 Design Consideration 
 **Aspect: Separating a `ListManager` from a `ListTracker`**
@@ -267,6 +272,8 @@ Reason for choosing option 2:
 Reason for choosing option 1:
 * Follow good coding standards by applying design principles such as the DRY principle.
 * Reduce total man-hours required to create each `ListTracker` once the common dependency of `NonUniqueList` has been created.
+
+
 
 ## 5. **Documentation**
 
