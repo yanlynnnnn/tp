@@ -969,11 +969,30 @@ along with the total cost of all expenses in each category.
 
 {Description}
 
-#### 4.5.1. Others Command Parameter
+#### 4.5.X. Others Command Parameter Template
 
 {Description}
 
 {Command parameter explanation}
+
+#### 4.5.1. Undo previous change: `undo` 
+
+Undo the last change you made to Homerce.
+
+Example:
+
+If you have accidently deleted an appointment from Homerce, and wish to undo that mistake, you can follow the steps below
+to do so.
+
+Steps: 
+1. Type `undo` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome: 
+
+1. Homerce will undo the last change you made.
+
+{add example screenshot outcome}
 
 #### 4.5.2. Viewing help : `help`
 
@@ -1102,6 +1121,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 
 Action | Format | Examples
 --------|--------|----------
+**Undo** | `undo` | 
 **Help** | `help [COMMAND]` | `help`
 **Exit** | `exit` | 
 
