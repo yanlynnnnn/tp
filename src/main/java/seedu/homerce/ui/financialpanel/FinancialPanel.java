@@ -1,7 +1,5 @@
 package seedu.homerce.ui.financialpanel;
 
-import java.net.URL;
-
 import javax.swing.plaf.synth.Region;
 
 import javafx.collections.FXCollections;
@@ -21,6 +19,8 @@ public class FinancialPanel extends UiPart<Region> {
 
     public static final String TAB_NAME = "Financials";
     private static final String FXML = "financialpanel/BreakdownFinancial.fxml";
+    private ObservableList<Expense> expenseList;
+    private ObservableList<Revenue> revenueList;
 
     @FXML
     private PieChart revenueChart;
@@ -40,12 +40,17 @@ public class FinancialPanel extends UiPart<Region> {
 
     public FinancialPanel(ObservableList<Expense> expenseList, ObservableList<Revenue> revenueList) {
         super(FXML);
+        this.expenseList = expenseList;
+        this.revenueList = revenueList;
+    }
+
+    public void construct() {
         setExpenseChart(expenseList);
         setRevenueChart(revenueList);
         setProfitChart(expenseList, revenueList);
-
+        
     }
-
+    
     private void setExpenseChart(ObservableList<Expense> expenseList) {
         ObservableList<PieChart.Data> expenseChartData = FXCollections.observableArrayList(
             new PieChart.Data("Hair", 15),

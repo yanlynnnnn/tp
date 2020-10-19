@@ -138,6 +138,7 @@ public class MainWindow extends UiPart<Stage> {
             tabPanelPlaceholder.getChildren().add(expenseListPanel.getRoot());
             break;
         case FinancialPanel.TAB_NAME:
+            financialPanel.construct();
             tabPanelPlaceholder.getChildren().add(financialPanel.getRoot());
             break;
         default:
