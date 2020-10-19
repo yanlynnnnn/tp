@@ -36,7 +36,7 @@ public class AddAppointmentCommand extends Command {
             + PREFIX_PHONE + "94759600";
 
     public static final String MESSAGE_SUCCESS = "New appointment added: %1$s";
-    public static final String MESSAGE_DUPLICATE_APPOINTMENT = "This appointment already exists in SuperSalon.";
+    public static final String MESSAGE_CLASHING_APPOINTMENT = "This appointment clashes with an existing appointment.";
     public static final String MESSAGE_INVALID_PHONE = "The phone number specified does not refer "
             + "to an existing client.";
     public static final String MESSAGE_INVALID_SERVICE_CODE = "The service code specified does"
@@ -70,7 +70,7 @@ public class AddAppointmentCommand extends Command {
         );
         // Check if appointment is already present.
         if (model.hasAppointment(resultToAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_APPOINTMENT);
+            throw new CommandException(MESSAGE_CLASHING_APPOINTMENT);
         } else {
             model.addAppointment(resultToAdd);
         }

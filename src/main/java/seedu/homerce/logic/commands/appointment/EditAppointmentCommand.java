@@ -46,7 +46,7 @@ public class EditAppointmentCommand extends Command {
 
     public static final String MESSAGE_EDIT_APPOINTMENT_SUCCESS = "Edited Appointment: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_APPOINTMENT = "This appointment already exists in the homerce book.";
+    public static final String MESSAGE_CLASHING_APPOINTMENT = "This appointment clashes with an existing appointment.";
     public static final String MESSAGE_INVALID_PHONE = "The phone number does not refer to an existing client.";
     public static final String MESSAGE_INVALID_SERVICE_CODE = "The service code specified does not exist in Homerce.";
 
@@ -79,7 +79,7 @@ public class EditAppointmentCommand extends Command {
         Appointment editedAppointment = createEditedAppointment(appointmentToEdit, editAppointmentDescriptor, model);
 
         if (!appointmentToEdit.isSame(editedAppointment) && model.hasAppointment(editedAppointment)) {
-            throw new CommandException(MESSAGE_DUPLICATE_APPOINTMENT);
+            throw new CommandException(MESSAGE_CLASHING_APPOINTMENT);
         }
 
         model.setAppointment(appointmentToEdit, editedAppointment);
