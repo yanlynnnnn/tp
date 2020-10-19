@@ -36,6 +36,15 @@ public class Slot extends SlotContainer {
         setText();
     }
 
+    private Slot(double hours) {
+        super(FXML, hours);
+
+    }
+
+    public static Slot blankSlot() {
+        return new Slot(0.5);
+    }
+
     private void setText() {
         title.setText(clientName);
         time.setText(timeText);
