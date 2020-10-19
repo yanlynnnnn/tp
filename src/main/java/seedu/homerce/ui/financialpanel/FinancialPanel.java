@@ -19,7 +19,7 @@ import seedu.homerce.ui.UiPart;
 
 public class FinancialPanel extends UiPart<Region> {
 
-    public static final String TAB_NAME = "Financials Tab";
+    public static final String TAB_NAME = "Financials";
     private static final String FXML = "financialpanel/BreakdownFinancial.fxml";
 
     @FXML
