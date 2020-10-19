@@ -1,9 +1,6 @@
 package seedu.homerce.logic.commands.appointment;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.homerce.commons.core.Messages.MESSAGE_DUPLICATE_APPOINTMENT;
-import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_PHONE;
-import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_SERVICE_CODE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_SERVICE_CODE;
@@ -37,14 +34,12 @@ public class AddAppointmentCommand extends Command {
         + PREFIX_TIME_OF_DAY + "1430 "
         + PREFIX_SERVICE_SERVICE_CODE + "SC001 "
         + PREFIX_PHONE + "94759600";
-
-    private static final String MESSAGE_ADD_APPOINTMENT_SUCCESS = "New appointment added: %1$s";
     public static final String MESSAGE_CLASHING_APPOINTMENT = "This appointment clashes with an existing appointment.";
     public static final String MESSAGE_INVALID_PHONE = "The phone number specified does not refer "
-            + "to an existing client.";
+        + "to an existing client.";
     public static final String MESSAGE_INVALID_SERVICE_CODE = "The service code specified does"
-            + " not exist in SuperSalon.";
-
+        + " not exist in SuperSalon.";
+    private static final String MESSAGE_ADD_APPOINTMENT_SUCCESS = "New appointment added: %1$s";
     private final AppointmentTemp toAdd;
 
     /**
