@@ -328,8 +328,8 @@ This feature uses a number of parameters, which are detailed below.
 | Parameter Name | Description | Example
 |---------|---------|---------
 |`DATE`  | The date of the appointment. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
-|`TIME` | The time of the appointment. <br> <br> It must be in the format of `HH:MM` | E.g. Typing `17:30` would mean 5:30 PM.  <br> <br> E.g. Typing `0900` would mean 9:00 AM.
-|`MONTH` | The month of the appointment. <br> <br> It must be in the format of a 3 letter phrase representing the month. | E.g. Typing `Jan` would mean January.  <br> <br> E.g. Typing `Dec` would mean December.
+|`TIME` | The time of the appointment. <br> <br> It must be in the format of `HHMM` | E.g. Typing `1730` would mean 5:30 PM.  <br> <br> E.g. Typing `0900` would mean 9:00 AM.
+|`MONTH` | The month of the appointment. <br> <br> It must be a valid integer between 1 - 12. | E.g. Typing '12' would refer to the month of December.
 |`SERVICE_CODE`| The service code is the code that identifies the type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`PHONE_NUMBER` | The phone number of the client. <br> <br> It must be a 8-digit number starting with 6, 8, or 9.| E.g. Typing `81281234` or `91235678` is a valid phone number.  <br> <br> E.g. Typing `999`or `800012345` would not be a recognised number.
 |`NAME` | The name of the client booking the appointment. <br> <br> It must consist alphanumeric characters not more than 100 characters long. | E.g. If a client with the name `Hartin Menz` called to book an appointment, the same name `Hartin Menz` would be used as the parameter for `NAME`.
@@ -342,7 +342,7 @@ command to add details of the appointment into the appointment tracker.
 
 Format : `addapt dt/DATE t/TIME s/SERVICE_CODE p/PHONE_NUMBER`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Appointment Tracker Command Parameters](#611-appointment-tracker-command-parameters) for more details about each parameter.
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
 |---------|---------
 <br> 
 
@@ -354,12 +354,12 @@ You can follow these instructions to add his/her appointment details into Homerc
 | Appointment | |
 |---------|--------- |
 |`DATE`| 28-10-2020 |
-|`TIME`| 13:00 |
+|`TIME`| 1300 |
 |`SERVICE_CODE`| SC001 |
 |`PHONE_NUMBER`| 83232656 |
 
 Steps:
-1. Type `addapt dt/28-10-2020 t/13:00 s/SC001 p/83232656` in the command box.
+1. Type `addapt dt/28-10-2020 t/1300 s/SC001 p/83232656` in the command box.
 1. Press `Enter` on your keyboard.
 
 Outcome:
@@ -409,24 +409,17 @@ Format : `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]* [m/MO
 
 Example:
 
-Let's say you have a number of appointments stored in Homerce and you want to search for a particular one.
-You can follow these instructions to list all the appointments which match your search criteria(s).
-
-| Appointment | |
-|---------|--------- |
-|`PHONE_NUMBER`| 82341245 |
-|`SERVICE_CODE`| SC002 |
-|`MONTH`| Mar |
+Let's say you have a number of appointments stored in Homerce and you want to search for those booked by the phone
+number 82341245. You can follow these instructions to list all the appointments which match your search criteria.
 
 Steps:
-1. Type `findapt p/82341245 s/SC002 m/Mar` in the command box.
+1. Type `findapt p/82341245` in the command box.
 1. Press `Enter` on your keyboard.
 
 Outcome:
 1. The Result Display will show a success message.
 1. Homerce will switch to the appointment tab.
-1. You can now see all your appointments made by the number `82341245` in the
-month of March and is of the service `SC002`.
+1. You can now see all your appointments made by the number `82341245`.
 
 {Example outcome screenshot}
 
@@ -444,18 +437,18 @@ Format : `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER]`
 Example:
 
 Let's say you searched for the appointment which you want to edit in Homerce.
-You searched for the appointment in Homerce with `listapt` or `findapt`,
+You searched for the appointment in Homerce with `listapt` or `findapt`, see that it's index is 1,
 and you want to edit it with the following details:
 
 | Appointment | |
 |---------|--------- |
 |`INDEX`| 1 |
 |`DATE`| 28-10-2020 |
-|`TIME`| 13:00 |
+|`TIME`| 1300 |
 |`PHONE_NUMBER`| 93451222 |
 
 Steps:
-1. Type `editapt 1 dt/28-10-2020 t/13:00 p/93451222` in the command box.
+1. Type `editapt 1 dt/28-10-2020 t/1300 p/93451222` in the command box.
 1. Press `Enter` on your keyboard.
 
 Outcome:
@@ -467,8 +460,8 @@ Outcome:
 
 #### 4.2.6. Mark an appointment as done: `done`
 
-After an appointment with a client has been completed, use this command to credit the revenue from the service and remove the appointment
-from the list of upcoming appointments.
+After an appointment with a client has been completed, use this command to credit the revenue from the service and mark the appointment
+as done.
 
 Format : `done INDEX`
 
@@ -479,11 +472,8 @@ Format : `done INDEX`
 Example:
 
 Let's say you just finished an appointment with a client. After finding the appointment in Homerce
-with `listapt` or `findapt`, you can follow these instructions to mark that appointment as done.
-
-| Appointment | |
-|---------|--------- |
-|`INDEX`| 5 |
+with `listapt` or `findapt`, you see that the appointment has index 5. You can follow these instructions 
+to mark that appointment as done.
 
 Steps:
 1. Type `done 5` in the command box.
@@ -511,11 +501,8 @@ Format : `undone INDEX`
 Example:
 
 Let's say you just marked an appointment as done by accident. You searched for that
-appointment with `listapt` or `findapt` and the one you want to change is . You then follow these instructions to undo it.
-
-| Appointment | |
-|---------|--------- |
-|`INDEX`| 3 |
+appointment with `listapt` or `findapt` and the one you want to change has index 3.
+You then follow these instructions to undo it.
 
 Steps:
 1. Type `undone 3` in the command box.
@@ -542,14 +529,11 @@ Format : `deleteapt INDEX`
 Example:
 
 Let's say you a client called to cancel his/her appointment. After finding the appointment in Homerce
-with `listapt` or `findapt`, you can follow these instructions to delete that appointment.
-
-| Appointment | |
-|---------|--------- |
-|`INDEX`| 2 |
+with `listapt` or `findapt`, you see that the appointment to delete has index 2. You can follow these instructions 
+to delete that appointment.
 
 Steps:
-1. Type `delete 2` in the command box.
+1. Type `deleteapt 2` in the command box.
 1. Press `Enter` on your keyboard.
 
 Outcome:
@@ -998,7 +982,7 @@ Outcome:
 
 Show a message explaining how to access the help page.
 
-Format : `help [COMMAND]`
+Format : `help`
 
 {Format explanation / limitation}
 
@@ -1088,13 +1072,25 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |Action | Format | Examples
 |---------|---------|---------
 |**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Lash Lift d/0.5 p/38`
-|**Edit** | `editsvc s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc s/SC001 d/0.5`
-|**Delete** | `deletesvc s/SERVICE_CODE` | `deletesvc s/SC001`
+|**Edit** | `editsvc INDEX s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc s/SC001 d/0.5`
+|**Delete** | `deletesvc INDEX s/SERVICE_CODE` | `deletesvc s/SC001`
 |**Find** | `findsvc KEYWORD` | `findsvc t/nail`
 |**List** | `listsvc` | 
-|**Clear** | `clearexp` | 
+|**Clear** | `clearsvc` | 
 
 ### 6.2. Appointment Tracker Commands
+
+|Action | Format | Examples
+|---------|---------|---------
+|**Add** | `addapt dt/DATE t/TIME s/SERVICE_CODE p/PHONE_NUMBER` | `addapt dt/15-10-2020 t/1300 s/SC001 p/98429700`
+|**Edit** | `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER] [s/SERVICE_CODE]` | `editapt 1 dt/28-10-2020 t/1300 p/93451222`
+|**Delete** | `deleteapt INDEX` | `deleteapt 1`
+|**Find** | `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]* [m/MONTH]* ` | `findapt p/82341245`
+|**List** | `listapt` |
+|**Clear** | `clearapt`| 
+|**Done** | `done INDEX` | `done 1`
+|**Undone** | `undone INDEX` | `undone 3` 
+
 
 ### 6.3. Revenue Tracker Commands
 |Action | Format | Examples
@@ -1109,9 +1105,9 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |Action | Format | Examples
 |---------------|------------------------------------------------------------------|------------------------------------------------------------------
 |**Add**        | `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`        | `addexp d/conditioner f/n v/15.00 dt/28-10-2020 t/hairsupplies`
-|**Edit**       | `INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]` | `editexp 2 d/Eyelash Curler`
+|**Edit**       | `editexp INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]` | `editexp 2 d/Eyelash Curler`
 |**Delete**     | `deleteexp INDEX`                                                | `deleteexp 3`
-|**Find**       | `[d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*`             | `findexp dt/08-09-2020`
+|**Find**       | `findexp [d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*` | `findexp dt/08-09-2020`
 |**Sort**       | `sortexp ORDER`                                                  | `sortexp desc`
 |**List**       | `listexp`                                                        | 
 |**Clear**      | `clearexp`                                                       | 
@@ -1122,6 +1118,6 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 Action | Format | Examples
 --------|--------|----------
 **Undo** | `undo` | 
-**Help** | `help [COMMAND]` | `help`
+**Help** | `help` |
 **Exit** | `exit` | 
 
