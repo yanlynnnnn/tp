@@ -74,6 +74,7 @@ public class ModelManager implements Model {
         filteredServices = new FilteredList<>(this.serviceManager.getServiceList());
         filteredAppointments = new FilteredList<>(this.appointmentManager.getAppointmentList());
         filteredRevenue = new FilteredList<>(this.revenueTracker.getRevenueList());
+        
     }
 
     /**

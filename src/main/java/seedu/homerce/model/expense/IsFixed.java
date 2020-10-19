@@ -8,6 +8,7 @@ public class IsFixed {
     public static final String MESSAGE_CONSTRAINTS = "IsFixed must be in 'y' or 'n' format.";
 
     public final boolean value;
+    private boolean willRecur;
 
     /**
      * Represents whether the expense is fixed.
@@ -16,7 +17,20 @@ public class IsFixed {
     public IsFixed(String isFixed) {
         requireNonNull(isFixed);
         AppUtil.checkArgument(isValidIsFixed(isFixed), MESSAGE_CONSTRAINTS);
-        value = (isFixed.equals("y")) ? true : false;
+        boolean isExpenseFixed = isFixed.equals("y");
+        value = isExpenseFixed;
+        willRecur = isExpenseFixed;
+    }
+
+    /**
+     * Mark IsFixed as recurred.
+     */
+    public void markRecurred() {
+        this.willRecur = false;
+    }
+
+    public boolean getRecurred() {
+        return this.willRecur;
     }
 
     public static boolean isValidIsFixed(String test) {
