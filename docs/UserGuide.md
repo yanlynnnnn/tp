@@ -409,12 +409,8 @@ Format : `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]* [m/MO
 
 Example:
 
-Let's say you have a number of appointments stored in Homerce and you want to search for a particular one.
-You can follow these instructions to list all the appointments which match your search criteria.
-
-| Appointment | |
-|---------|--------- |
-|`PHONE_NUMBER`| 82341245 |
+Let's say you have a number of appointments stored in Homerce and you want to search for those booked by the phone
+number 82341245. You can follow these instructions to list all the appointments which match your search criteria.
 
 Steps:
 1. Type `findapt p/82341245` in the command box.
@@ -441,7 +437,7 @@ Format : `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER]`
 Example:
 
 Let's say you searched for the appointment which you want to edit in Homerce.
-You searched for the appointment in Homerce with `listapt` or `findapt`,
+You searched for the appointment in Homerce with `listapt` or `findapt`, see that it's index is 1,
 and you want to edit it with the following details:
 
 | Appointment | |
@@ -476,11 +472,8 @@ Format : `done INDEX`
 Example:
 
 Let's say you just finished an appointment with a client. After finding the appointment in Homerce
-with `listapt` or `findapt`, you can follow these instructions to mark that appointment as done.
-
-| Appointment | |
-|---------|--------- |
-|`INDEX`| 5 |
+with `listapt` or `findapt`, you see that the appointment has index 5. You can follow these instructions 
+to mark that appointment as done.
 
 Steps:
 1. Type `done 5` in the command box.
@@ -508,11 +501,8 @@ Format : `undone INDEX`
 Example:
 
 Let's say you just marked an appointment as done by accident. You searched for that
-appointment with `listapt` or `findapt` and the one you want to change is . You then follow these instructions to undo it.
-
-| Appointment | |
-|---------|--------- |
-|`INDEX`| 3 |
+appointment with `listapt` or `findapt` and the one you want to change has index 3.
+You then follow these instructions to undo it.
 
 Steps:
 1. Type `undone 3` in the command box.
@@ -539,14 +529,11 @@ Format : `deleteapt INDEX`
 Example:
 
 Let's say you a client called to cancel his/her appointment. After finding the appointment in Homerce
-with `listapt` or `findapt`, you can follow these instructions to delete that appointment.
-
-| Appointment | |
-|---------|--------- |
-|`INDEX`| 2 |
+with `listapt` or `findapt`, you see that the appointment to delete has index 2. You can follow these instructions 
+to delete that appointment.
 
 Steps:
-1. Type `delete 2` in the command box.
+1. Type `deleteapt 2` in the command box.
 1. Press `Enter` on your keyboard.
 
 Outcome:
