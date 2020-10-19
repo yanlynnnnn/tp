@@ -68,7 +68,7 @@ public class LogicManagerTest {
         StorageManager storage = new StorageManager(userPrefsStorage, clientStorage, serviceStorage,
             revenueStorage, expenseStorage, appointmentStorage);
 
-        HistoryManager historyManager = new HistoryManager();
+        HistoryManager historyManager = HistoryManager.getInstance();
 
         logic = new LogicManager(model, storage, historyManager);
     }
@@ -107,7 +107,7 @@ public class LogicManagerTest {
         StorageManager storage = new StorageManager(userPrefsStorage, clientStorage, serviceStorage,
             revenueStorage, expenseStorage, appointmentStorage);
 
-        HistoryManager historyManager = new HistoryManager();
+        HistoryManager historyManager = HistoryManager.getInstance();
 
         logic = new LogicManager(model, storage, historyManager);
 

@@ -24,10 +24,6 @@ public class Status {
         this.value = status.equals("y");
     }
 
-    public Status(boolean isDone) {
-        this.value = isDone;
-    }
-
     public static boolean isValidStatus(String test) {
         return test.toLowerCase().equals("y") || test.toLowerCase().equals("n");
     }

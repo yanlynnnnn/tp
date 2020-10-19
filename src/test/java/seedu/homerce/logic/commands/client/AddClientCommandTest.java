@@ -48,7 +48,8 @@ public class AddClientCommandTest {
         ModelStubAcceptingClientAdded modelStub = new ModelStubAcceptingClientAdded();
         Client validClient = new ClientBuilder().build();
 
-        CommandResult commandResult = new AddClientCommand(validClient).execute(modelStub, new HistoryManager());
+        CommandResult commandResult = new AddClientCommand(validClient).execute(modelStub,
+            HistoryManager.getInstance());
 
         assertEquals(String.format(AddClientCommand.MESSAGE_SUCCESS, validClient), commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validClient), modelStub.clientsAdded);
@@ -61,7 +62,7 @@ public class AddClientCommandTest {
         ModelStub modelStub = new ModelStubWithClient(validClient);
 
         assertThrows(CommandException.class, AddClientCommand.MESSAGE_DUPLICATE_CLIENT, () ->
-            addClientCommand.execute(modelStub, new HistoryManager()));
+            addClientCommand.execute(modelStub, HistoryManager.getInstance()));
     }
 
     @Test

@@ -23,10 +23,24 @@ import seedu.homerce.logic.commands.service.ListServiceCommand;
  * A new HistoryManager is initialized upon each start up of Homerce.
  */
 public class HistoryManager {
+    private static HistoryManager historyManager = null;
     private LinkedList<Model> models;
 
-    public HistoryManager() {
+    private HistoryManager() {
         this.models = new LinkedList<>();
+    }
+
+    /**
+     * Factory method to return the one and only instance of HistoryManager if it exists, otherwise a new
+     * HistoryManager will be created.
+     *
+     * @return the sole instance of HistoryManager.
+     */
+    public static HistoryManager getInstance() {
+        if (historyManager == null) {
+            historyManager = new HistoryManager();
+        }
+        return historyManager;
     }
 
     /**

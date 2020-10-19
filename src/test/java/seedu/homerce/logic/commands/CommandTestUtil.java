@@ -73,7 +73,7 @@ public class CommandTestUtil {
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
             Model expectedModel) {
         try {
-            CommandResult result = command.execute(actualModel, new HistoryManager());
+            CommandResult result = command.execute(actualModel, HistoryManager.getInstance());
             assertEquals(expectedCommandResult, result);
             assertEquals(expectedModel, actualModel);
         } catch (CommandException ce) {
@@ -103,7 +103,8 @@ public class CommandTestUtil {
         ClientManager expectedClientManager = new ClientManager(actualModel.getClientManager());
         List<Client> expectedFilteredList = new ArrayList<>(actualModel.getFilteredClientList());
 
-        assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel, new HistoryManager()));
+        assertThrows(CommandException.class, expectedMessage, () -> command.execute(actualModel,
+            HistoryManager.getInstance()));
         assertEquals(expectedClientManager, actualModel.getClientManager());
         assertEquals(expectedFilteredList, actualModel.getFilteredClientList());
     }
