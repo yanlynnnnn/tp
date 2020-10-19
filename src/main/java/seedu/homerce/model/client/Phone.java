@@ -4,7 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.homerce.commons.util.AppUtil.checkArgument;
 
 /**
- * Represents a Client's phone number in the homerce book.
+ * Represents a Client's phone number in the homerce.
  * Guarantees: immutable; is valid as declared in {@link #isValidPhone(String)}
  */
 public class Phone {

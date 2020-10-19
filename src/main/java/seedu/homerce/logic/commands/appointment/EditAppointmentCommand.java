@@ -43,7 +43,6 @@ public class EditAppointmentCommand extends Command {
         + "Example: " + COMMAND_WORD + " 1 "
         + PREFIX_PHONE + "91234567 "
         + PREFIX_SERVICE_SERVICE_CODE + "SC002";
-
     public static final String MESSAGE_EDIT_APPOINTMENT_SUCCESS = "Edited Appointment: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_CLASHING_APPOINTMENT = "This appointment clashes with an existing appointment.";
@@ -78,7 +77,12 @@ public class EditAppointmentCommand extends Command {
         Appointment appointmentToEdit = lastShownList.get(index.getZeroBased());
         Appointment editedAppointment = createEditedAppointment(appointmentToEdit, editAppointmentDescriptor, model);
 
-        if (!appointmentToEdit.isSame(editedAppointment) && model.hasAppointment(editedAppointment)) {
+        if (appointmentToEdit.equals(editedAppointment)) {
+            throw new CommandException(MESSAGE_NOT_EDITED);
+        }
+        Model modelCopy = model.deepCopy();
+        modelCopy.deleteAppointment(appointmentToEdit);
+        if (modelCopy.hasAppointment(editedAppointment)) {
             throw new CommandException(MESSAGE_CLASHING_APPOINTMENT);
         }
 

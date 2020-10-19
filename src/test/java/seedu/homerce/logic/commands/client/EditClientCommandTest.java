@@ -121,7 +121,7 @@ public class EditClientCommandTest {
     public void execute_duplicateClientFilteredList_failure() {
         showClientAtIndex(model, INDEX_FIRST_CLIENT);
 
-        // edit client in filtered list into a duplicate in homerce book
+        // edit client in filtered list into a duplicate in homerce
         Client clientInList = model.getClientManager().getClientList().get(INDEX_SECOND_CLIENT.getZeroBased());
         EditClientCommand editClientCommand = new EditClientCommand(INDEX_FIRST_CLIENT,
             new EditClientDescriptorBuilder(clientInList).build());
@@ -141,13 +141,13 @@ public class EditClientCommandTest {
 
     /**
      * Edit filtered list where index is larger than size of filtered list,
-     * but smaller than size of homerce book
+     * but smaller than size of homerce
      */
     @Test
     public void execute_invalidClientIndexFilteredList_failure() {
         showClientAtIndex(model, INDEX_FIRST_CLIENT);
         Index outOfBoundIndex = INDEX_SECOND_CLIENT;
-        // ensures that outOfBoundIndex is still in bounds of homerce book list
+        // ensures that outOfBoundIndex is still in bounds of homerce list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getClientManager().getClientList().size());
 
         EditClientCommand editClientCommand = new EditClientCommand(outOfBoundIndex,
