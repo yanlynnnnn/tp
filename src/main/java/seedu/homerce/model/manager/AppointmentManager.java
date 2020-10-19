@@ -42,7 +42,7 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
     //// appointment-level operations
 
     /**
-     * Returns true if a appointment with the same identity as {@code appointment} exists in the SuperSalon.
+     * Returns true if a appointment with the same identity as {@code appointment} exists in the Homerce.
      */
     public boolean hasAppointment(Appointment appointment) {
         requireNonNull(appointment);
@@ -50,8 +50,8 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
     }
 
     /**
-     * Adds a appointment to the SuperSalon.
-     * The appointment must not already exist in SuperSalon.
+     * Adds a appointment to the Homerce.
+     * The appointment must not already exist in Homerce.
      */
     public void addAppointment(Appointment p) {
         appointments.add(p);
@@ -67,9 +67,9 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
 
     /**
      * Replaces the given appointment {@code target} in the list with {@code editedAppointment}.
-     * {@code target} must exist in the SuperSalon.
+     * {@code target} must exist in the Homerce.
      * The appointment identity of {@code editedAppointment} must not be the same as another existing appointment
-     * in the SuperSalon.
+     * in the Homerce.
      */
     public void setAppointments(Appointment target, Appointment editedAppointment) {
         requireNonNull(editedAppointment);
@@ -78,7 +78,7 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
 
     /**
      * Removes {@code appointmentToRemove} from this {@code AppointmentManager}.
-     * {@code appointmentToRemove} must exist in SuperSalon.
+     * {@code appointmentToRemove} must exist in Homerce.
      */
     public void removeAppointment(Appointment appointmentToRemove) {
         appointments.remove(appointmentToRemove);
