@@ -1,5 +1,9 @@
 package seedu.homerce.ui.financialpanel;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -49,31 +53,63 @@ public class FinancialPanel extends UiPart<Region> {
         setProfitChart(expenseList, revenueList);
         
     }
-    
+
+    /**
+     * Creates a pie chart based on the tags in the given list of expenses.
+     *
+     * In order for the chart to show only expenses for a particular month, the list of expenses need to be filtered
+     * to only include expenses within that month.
+     */
     private void setExpenseChart(ObservableList<Expense> expenseList) {
-        ObservableList<PieChart.Data> expenseChartData = FXCollections.observableArrayList(
-            new PieChart.Data("Hair", 15),
-            new PieChart.Data("Fixed", 45.1),
-            new PieChart.Data("Towel", 25.9),
-            new PieChart.Data("Ingredients", 10)
-        );
+        Map<String, Double> maps = new HashMap<>();
+        for (Expense expense : expenseList) {
+            if (maps.containsKey(expense.getTag().tagName)) {
+                double currentExpense = maps.get(expense.getTag().tagName);
+                double newExpense = currentExpense + expense.getValue().value.doubleValue();
+                maps.put(expense.getTag().tagName, newExpense);
+
+            } else {
+                double newExpense =  expense.getValue().value.doubleValue();
+                maps.put(expense.getTag().tagName, newExpense);
+
+            }
+        }
+        ObservableList<PieChart.Data> expenseChartData = maps.entrySet().stream()
+            .map(expense -> new PieChart.Data(expense.getKey(), expense.getValue()))
+            .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         expenseChart.setData(expenseChartData);
-
     }
 
+    /**
+     * Creates a pie chart based on the Services in the given list of revenues.
+     *
+     * In order for the chart to show only revenues for a particular month, the list of revenues need to be filtered
+     * to only include revenues within that month.
+     */
     private void setRevenueChart(ObservableList<Revenue> revenueList) {
-        ObservableList<PieChart.Data> revenueChartData = FXCollections.observableArrayList(
-            new PieChart.Data("Hair Blow", 45.9),
-            new PieChart.Data("Lash lift", 37.5),
-            new PieChart.Data("Manicure", 23),
-            new PieChart.Data("Hair Treatment", 80)
-        );
+        Map<String, Double> maps = new HashMap<>();
+        for (Revenue revenue : revenueList) {
+            if (maps.containsKey(revenue.getService().getTitle().value)) {
+                double currentRevenue = maps.get(revenue.getService().getTitle().value);
+                double newRevenue = currentRevenue + revenue.getValue().value.doubleValue();
+                maps.put(revenue.getService().getTitle().value, newRevenue);
+
+            } else {
+                double newRevenue =  revenue.getValue().value.doubleValue();
+                maps.put(revenue.getService().getTitle().value, newRevenue);
+            }
+        }
+        ObservableList<PieChart.Data> revenueChartData = maps.entrySet().stream()
+            .map(revenue -> new PieChart.Data(revenue.getKey(), revenue.getValue()))
+            .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         revenueChart.setData(revenueChartData);
-
     }
 
+    /**
+     * Creates a profit chart using the list of revenues and expenses.
+     */
     private void setProfitChart(ObservableList<Expense> expenseList, ObservableList<Revenue> revenueList) {
         XYChart.Series set = new XYChart.Series<>();
 
