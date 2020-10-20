@@ -2,7 +2,10 @@ package seedu.homerce.ui.schedulepanel;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
@@ -23,6 +26,7 @@ public class SchedulePanel extends UiPart<Region> {
     private static final int ROW_SPAN = 1;
     private static final int NUM_OF_HALF_HOURS = 48;
     private static final double SCALE_FACTOR = 2.0;
+    private static final int GRID_INDEX_BUFFER = 1;
     private static final String FXML = "schedulepanel/SchedulePanel.fxml";
     private final Logger logger = LogsCenter.getLogger(seedu.homerce.ui.schedulepanel.SchedulePanel.class);
 
@@ -52,6 +56,7 @@ public class SchedulePanel extends UiPart<Region> {
         }
         constructGrid();
         addAppointmentSlotsToGrid();
+        addDateDisplaySlotsToGrid();
     }
 
     private int getColSpan(Duration duration) {
@@ -69,14 +74,18 @@ public class SchedulePanel extends UiPart<Region> {
         return colIndex - 1;
     }
 
+    /**
+     * Returns the column index that fits into the grid after changing the start index to the earliest timing
+     * and taking into account the slot taken up by the date display
+     */
     private int getAdjustedColIndex(Appointment appointment) {
         int currIndex = getColIndex(appointment.getAppointmentStartTime().getLocalTime());
-        return currIndex - getColIndex(getEarliestStartTime());
+        return currIndex - getColIndex(getEarliestStartTime()) + GRID_INDEX_BUFFER;
     }
 
     private boolean isSameDate(LocalDate currDate, LocalDate next) {
-        // Dates are sorted so next will only be after or the same as currDate
-        assert !next.isBefore(currDate): "Dates not sorted properly";
+        // Dates are sorted so next date will only be after or the same as currDate
+        assert !next.isBefore(currDate) : "Dates not sorted properly";
         if (next.isAfter(currDate)) {
             return false;
         }
@@ -97,12 +106,18 @@ public class SchedulePanel extends UiPart<Region> {
             .get();
 
     }
+
+    private List<LocalDate> getListOfUniqueDates() {
+        return appointments.stream().map(x -> x.getAppointmentDate()
+            .getLocalDate()).distinct().collect(Collectors.toList());
+    }
+
     private void constructGrid() {
         int earliestTimeIndex = getColIndex(getEarliestStartTime());
         int latestTimeIndex = getColIndex(getLatestEndTime());
 
         int numColumns = NUM_OF_HALF_HOURS - earliestTimeIndex - (NUM_OF_HALF_HOURS - latestTimeIndex);
-        for (int i = 0; i < numColumns; i++) {
+        for (int i = 0; i < numColumns + GRID_INDEX_BUFFER; i++) {
             ColumnConstraints con = new ColumnConstraints();
             con.setPrefWidth(SINGLE_COLUMN_WIDTH);
             gridPane.getColumnConstraints().add(con);
@@ -116,7 +131,7 @@ public class SchedulePanel extends UiPart<Region> {
         for (int i = 0; i < appointments.size(); i++) {
             Appointment curr = appointments.get(i);
             LocalDate currAppointmentDate = curr.getAppointmentDate().getLocalDate();
-            Slot slot = new Slot(curr, i);
+            AppointmentSlot appointmentSlot = new AppointmentSlot(curr);
 
             if (!isSameDate(prevAppointmentDate, currAppointmentDate)) {
                 rowIndex++;
@@ -124,7 +139,15 @@ public class SchedulePanel extends UiPart<Region> {
             }
             int colIndex = getAdjustedColIndex(curr);
             int colSpan = getColSpan(curr.getService().getDuration());
-            gridPane.add(slot.getRoot(), colIndex, rowIndex, colSpan, ROW_SPAN);
+            gridPane.add(appointmentSlot.getRoot(), colIndex, rowIndex, colSpan, ROW_SPAN);
+        }
+    }
+
+    private void addDateDisplaySlotsToGrid() {
+        List<LocalDate> dates = getListOfUniqueDates();
+        for (int i = 0; i < dates.size(); i++) {
+            DisplayDateSlot slot = new DisplayDateSlot(dates.get(i));
+            gridPane.add(slot.getRoot(), 0, i, 1, ROW_SPAN);
         }
     }
 }

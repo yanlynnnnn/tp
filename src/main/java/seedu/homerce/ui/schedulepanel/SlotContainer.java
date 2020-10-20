@@ -15,7 +15,10 @@ public abstract class SlotContainer extends UiPart<Region> {
     @FXML
     protected HBox slotPane;
 
-    public SlotContainer(String fxml, double hours) {
+    /**
+     * Constructor for a slot container that sets the width of a slot
+     */
+    public SlotContainer(String fxml) {
         super(fxml);
         slotPane.setPrefWidth(WIDTH_SCALING_FACTOR);
     }
