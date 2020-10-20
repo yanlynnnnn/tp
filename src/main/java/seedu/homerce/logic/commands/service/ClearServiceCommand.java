@@ -9,7 +9,7 @@ import seedu.homerce.model.Model;
 import seedu.homerce.model.manager.ServiceManager;
 
 /**
- * Clears the homerce book.
+ * Clears the homerce.
  */
 public class ClearServiceCommand extends Command {
 

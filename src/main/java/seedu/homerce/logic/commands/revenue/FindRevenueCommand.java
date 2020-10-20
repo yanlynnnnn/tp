@@ -14,7 +14,7 @@ import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.ui.revenuepanel.RevenueListPanel;
 
 /**
- * Finds and lists all revenue in homerce book whose name contains any of the argument keywords.
+ * Finds and lists all revenue in homerce whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindRevenueCommand extends Command {
