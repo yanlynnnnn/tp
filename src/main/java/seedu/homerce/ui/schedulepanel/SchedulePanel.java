@@ -1,4 +1,3 @@
-
 package seedu.homerce.ui.schedulepanel;
 
 import java.time.LocalDate;
@@ -20,7 +19,9 @@ import seedu.homerce.ui.UiPart;
  */
 public class SchedulePanel extends UiPart<Region> {
     public static final String TAB_NAME = "Schedule";
-
+    private static final int SINGLE_COLUMN_WIDTH = 120;
+    private static final int ROW_SPAN = 1;
+    private static final int NUM_OF_HALF_HOURS = 48;
     private static final double SCALE_FACTOR = 2.0;
     private static final String FXML = "schedulepanel/SchedulePanel.fxml";
     private final Logger logger = LogsCenter.getLogger(seedu.homerce.ui.schedulepanel.SchedulePanel.class);
@@ -46,33 +47,11 @@ public class SchedulePanel extends UiPart<Region> {
      */
     public void construct() {
         if (appointments.size() == 0) {
+            System.out.println("No appointments in schedule");
             return;
         }
-        gridPane.setGridLinesVisible(true);
-
-        // Creates 48 0.5h columns in the grid with fixed width
-        for (int i = 0; i < 48; i++) {
-            ColumnConstraints con = new ColumnConstraints();
-            con.setPrefWidth(120);
-            gridPane.getColumnConstraints().add(con);
-        }
-        int rowIndex = 0;
-        LocalDate prevAppointmentDate = appointments.get(0).getAppointmentDate().getLocalDate();
-
-        for (int i = 0; i < appointments.size(); i++) {
-            Appointment curr = appointments.get(i);
-            LocalDate currAppointmentDate = curr.getAppointmentDate().getLocalDate();
-            Slot slot = new Slot(curr, i);
-
-            if (!isSameDate(prevAppointmentDate, currAppointmentDate)) {
-                rowIndex++;
-                prevAppointmentDate = currAppointmentDate;
-            }
-            int colIndex = getColIndex(curr.getAppointmentStartTime().getTime());
-            int colSpan = getColSpan(curr.getService().getDuration());
-            curr.getAppointmentEndTime();
-            gridPane.add(slot.getRoot(), colIndex, rowIndex, colSpan, 1);
-        }
+        constructGrid();
+        addAppointmentSlotsToGrid();
     }
 
     private int getColSpan(Duration duration) {
@@ -86,8 +65,13 @@ public class SchedulePanel extends UiPart<Region> {
             // Account for 0.5h in the schedule
             colIndex += 1;
         }
-        // Accoutn for 0 index
+        // Account for 0 index
         return colIndex - 1;
+    }
+
+    private int getAdjustedColIndex(Appointment appointment) {
+        int currIndex = getColIndex(appointment.getAppointmentStartTime().getLocalTime());
+        return currIndex - getColIndex(getEarliestStartTime());
     }
 
     private boolean isSameDate(LocalDate currDate, LocalDate next) {
@@ -97,5 +81,50 @@ public class SchedulePanel extends UiPart<Region> {
             return false;
         }
         return true;
+    }
+
+    private LocalTime getEarliestStartTime() {
+        return appointments.stream()
+            .map(appointment -> appointment.getAppointmentStartTime().getLocalTime())
+            .reduce((time1, time2) -> (time1.isBefore(time2) ? time1 : time2))
+            .get();
+    }
+
+    private LocalTime getLatestEndTime() {
+        return appointments.stream()
+            .map(appointment -> appointment.getAppointmentEndTime().getLocalTime())
+            .reduce((time1, time2) -> (time1.isAfter(time2) ? time1 : time2))
+            .get();
+
+    }
+    private void constructGrid() {
+        int earliestTimeIndex = getColIndex(getEarliestStartTime());
+        int latestTimeIndex = getColIndex(getLatestEndTime());
+
+        int numColumns = NUM_OF_HALF_HOURS - earliestTimeIndex - (NUM_OF_HALF_HOURS - latestTimeIndex);
+        for (int i = 0; i < numColumns; i++) {
+            ColumnConstraints con = new ColumnConstraints();
+            con.setPrefWidth(SINGLE_COLUMN_WIDTH);
+            gridPane.getColumnConstraints().add(con);
+        }
+    }
+
+    private void addAppointmentSlotsToGrid() {
+        int rowIndex = 0;
+        LocalDate prevAppointmentDate = appointments.get(0).getAppointmentDate().getLocalDate();
+
+        for (int i = 0; i < appointments.size(); i++) {
+            Appointment curr = appointments.get(i);
+            LocalDate currAppointmentDate = curr.getAppointmentDate().getLocalDate();
+            Slot slot = new Slot(curr, i);
+
+            if (!isSameDate(prevAppointmentDate, currAppointmentDate)) {
+                rowIndex++;
+                prevAppointmentDate = currAppointmentDate;
+            }
+            int colIndex = getAdjustedColIndex(curr);
+            int colSpan = getColSpan(curr.getService().getDuration());
+            gridPane.add(slot.getRoot(), colIndex, rowIndex, colSpan, ROW_SPAN);
+        }
     }
 }
