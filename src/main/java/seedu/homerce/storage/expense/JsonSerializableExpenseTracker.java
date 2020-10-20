@@ -71,7 +71,7 @@ public class JsonSerializableExpenseTracker {
      * If expense is recurring, return true and mark the expense's willRecur as done.
      */
     private boolean checkRecurringExpense(Expense expense, LocalDate date) {
-        boolean expenseIsRecurring = expense.getIsFixed().value && expense.getIsFixed().getRecurred();
+        boolean expenseIsRecurring = expense.getIsFixed().value && expense.getIsFixed().getIsRecurring();
         if (!expenseIsRecurring) {
             return false;
         }
@@ -81,7 +81,7 @@ public class JsonSerializableExpenseTracker {
             return false;
         }
         if (expenseDayOfMonth == date.getDayOfMonth()) {
-            expense.getIsFixed().markRecurred();
+            expense.getIsFixed().markAsRecurred();
             return true;
         } else {
             return false;
