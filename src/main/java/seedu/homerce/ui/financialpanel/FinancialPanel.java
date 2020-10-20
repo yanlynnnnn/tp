@@ -1,7 +1,5 @@
 package seedu.homerce.ui.financialpanel;
 
-import javax.swing.plaf.synth.Region;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,6 +8,7 @@ import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.layout.Region;
 
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.revenue.Revenue;
