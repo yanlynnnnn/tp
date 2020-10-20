@@ -2,6 +2,8 @@ package seedu.homerce.model.manager;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -9,16 +11,24 @@ import java.util.stream.Collectors;
 import javafx.collections.ObservableList;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.appointment.uniquelist.UniqueAppointmentList;
+import seedu.homerce.model.util.attributes.Date;
 
 /**
  * Wraps all data at the AppointmentManager level
  * Duplicates are not allowed (by .equals comparison)
  */
 public class AppointmentManager implements ReadOnlyAppointmentManager {
-    private final UniqueAppointmentList appointments;
 
+    private final UniqueAppointmentList appointments;
+    private Date date;
+
+    /**
+     * Constructor for Appointment Manager
+     */
     public AppointmentManager() {
         this.appointments = new UniqueAppointmentList();
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("d-M-yyyy");
+        this.date = new Date(dtf.format(LocalDateTime.now()));
     }
 
     /**
@@ -119,6 +129,18 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
         List<Appointment> internalListCopy = appointments.deepCopy();
         AppointmentManager appointmentManagerCopy = new AppointmentManager();
         appointmentManagerCopy.setAppointments(internalListCopy);
+        appointmentManagerCopy.setDate(this.date);
         return appointmentManagerCopy;
+    }
+
+    //// Used for pagination
+
+    /**
+     * Set date to maintain the state of the pagination.
+     *
+     * @param date
+     */
+    private void setDate(Date date) {
+        this.date = date;
     }
 }
