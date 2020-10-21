@@ -588,7 +588,7 @@ The table below shows a list of command parameters that will be used in this fea
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
 
-#### 4.3.2. Find a Revenue : `findrev`
+#### 4.3.2. Find a revenue : `findrev`
 
 You can use this command to find revenues by 'date' or 'service code' in Homerce.
 
@@ -617,7 +617,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.3.3. Sort Revenues: `sortrev`
+#### 4.3.3. Sort revenues: `sortrev`
 
 You can use this command to sort the list of revenue in ascending or descending order by value in Homerce.
 
@@ -646,7 +646,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.3.4. List Revenues : `listrev`
+#### 4.3.4. List revenues : `listrev`
 
 You can use this command to list all your revenue entries in Homerce.
 
@@ -668,7 +668,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.3.5. Clear Revenue : `clearrev`
+#### 4.3.5. Clear revenue : `clearrev`
 
 You can use this command to clear all revenue entries in Homerce.
 
@@ -690,7 +690,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.3.6. Breakdown Revenue : `breakdownrev`
+#### 4.3.6. Breakdown revenue : `breakdownrev`
 
 You can use this command to breakdown revenue into their relevant categories, based on their 'service code'.
 
@@ -734,7 +734,7 @@ The table below shows a list of command parameters that will be used.
 |`MONTH`| The month the expense is made. <br> <br> It must be a valid integer between 1 - 12. | E.g. Typing '12' would refer to the month of December. 
 |`YEAR`| The year the expense is made. <br> <br> It must be a valid year. | E.g. Typing '2020' would refer to the year 2020.
 
-#### 4.4.2. Add an Expense `addexp`
+#### 4.4.2. Add an expense `addexp`
 
 You can use this command to add a new expense to Homerce.
 
@@ -764,7 +764,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.4.3. Edit an Expense `editexp`
+#### 4.4.3. Edit an expense `editexp`
 
 You can use this command to edit an expense in Homerce.
 
@@ -795,7 +795,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.4.4. Delete an Expense `deleteexp`
+#### 4.4.4. Delete an expense `deleteexp`
 
 You can use this command to delete an expense in Homerce.
 
@@ -805,7 +805,7 @@ Format : `deleteexp INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Expense Tracker Command Parameters](#rexpense-tracker-command-parameters) for more details about each parameter.
+* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -824,7 +824,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.4.5. Find an Expense `findexp`
+#### 4.4.5. Find an expense `findexp`
 
 You can use this command to find an expense in Homerce.
 
@@ -853,7 +853,7 @@ Outcome :
 1. It will display a success message. 
 2. Homerce will list out all the expenses for 08-09-2020.
 
-#### 4.4.6. Sort Expenses `sortexp`
+#### 4.4.6. Sort expenses `sortexp`
 
 You can use this command to sort expenses in Homerce.
 
@@ -881,7 +881,7 @@ Outcome :
 1. It will display a success message.
 2. Homerce will list out all the expenses sorted from highest to lowest cost.
 
-#### 4.4.7. List Expenses `listexp`
+#### 4.4.7. List expenses `listexp`
 
 You can use this command to list all your expenses in Homerce.
 
@@ -901,7 +901,7 @@ Outcome :
 1. It will display a success message.
 2. Homerce will list out all your expenses.
 
-#### 4.4.8. Clear Expenses `clearexp`
+#### 4.4.8. Clear expenses `clearexp`
 
 You can use this command to clear all expenses in Homerce.
 
@@ -920,7 +920,7 @@ Steps :
 Outcome :
 1. It will display a success message.
 
-#### 4.4.9. Breakdown Expenses `breakdownexp`
+#### 4.4.9. Breakdown expenses `breakdownexp`
 
 You can use this command to breakdown expenses into their relevant categories, based on their 'tags'.
 
@@ -949,17 +949,154 @@ Outcome :
 2. Homerce will display a Pie Chart that categorizes expenses made in December 2020 based on their 'tags', 
 along with the total cost of all expenses in each category.
 
-### 4.5. Others
+
+### 4.5 Client Manager
+
+Homerce knows that managing the contacts of your clients is a must for any business.
+Thus, this feature allows you to keep track of all the relevant information needed about your clients.
+
+#### 4.5.1. Client Manager Command Parameters
+
+Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
+The table below shows a list of command parameters that will be used.
+
+| Parameter Name | Description | Example
+|---------|---------|---------
+|`NAME`  | The name of the client. <br><br> It must be an alphanumeric word. | E.g. Typing `John Doe` would represent the name of the client saved in the client manager.
+|`EMAIL`| <br>The email of the client. <br> Emails should be in `local-part@domain format` <br><br /> The `local-part` can only contain alphanumeric characters, and the special characters <br >+!#$%&'*+/=?\`{}~^.-&#124;<br><br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.)<br>The domain name must also have at least 2 characters and start and end with alphanumeric characters|johnDoe97@example123.com 
+|`PHONE` | Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long. | E.g. `91234567` would represent the client's phone number.
+|`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend.
+|`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list.
+
+#### 4.5.2. Add a client `addcli`
+
+You can use this command to add a new client to Homerce.
+
+Format : `addcli n/NAME p/PHONE e/EMAIL [t/TAG]`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+A new client just called in to make an appointment .
+
+You can follow the steps below to add the client to Homerce.
+
+Steps :
+1. Type `addcli n/John p/91234567 e/john@gmail.com t/new` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. Homerce will display a success message.
+
+{Example outcome screenshot}
+
+#### 4.5.3. Edit a client's details `editcli`
+
+You can use this command to edit an expense in Homerce.
+
+Format : `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes:**<br>
+ 
+* You must enter at least one optional parameter.
+* The new value entered will overwrite the existing value.
+* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+You misspelled the name of a client when adding it into Homerce and wish to change it to "Johnny".
+
+You can follow the steps below to edit the client.
+
+Steps :
+1. Type `editcli 2 n/Johnny` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. Homerce will display a success message.
+
+{Example outcome screenshot}
+
+#### 4.5.4. Delete a client `deletecli`
+
+You can use this command to delete a client in Homerce.
+
+Format : `deletecli INDEX`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+A client repeatedly fails to turn up for his appointments and you wish to delete his contact. 
+
+You can follow the steps below to delete the client.
+
+Steps :
+1. Type `deletecli 3` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. Homerce will display a success message.
+
+{Example outcome screenshot}
+
+#### 4.5.5. Find a client `findcli`
+
+You can use this command to find a client in Homerce.
+
+Format : `findcli [n/NAME]* [p/PHONE]*`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes:**<br>
+
+* You must enter at least one optional parameter.
+* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+You have many clients in your client list and wish to find more information on the client named John.
+
+You can follow the steps below to get a list of clients named John
+
+Steps :
+1. Type `findcli n/John` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. It will display a success message. 
+2. Homerce will list out all the clients with John in their name.
+
+### 4.6. Others
 
 {Description}
 
-#### 4.5.X. Others Command Parameter Template
+#### 4.6.X. Others Command Parameter Template
 
 {Description}
 
 {Command parameter explanation}
 
-#### 4.5.1. Undo previous change: `undo` 
+#### 4.6.1. Undo previous change: `undo` 
 
 Undo the last change you made to Homerce.
 
@@ -978,7 +1115,7 @@ Outcome:
 
 {add example screenshot outcome}
 
-#### 4.5.2. Viewing help : `help`
+#### 4.6.2. Viewing help : `help`
 
 Show a message explaining how to access the help page.
 
@@ -1000,7 +1137,7 @@ Outcome:
 
 ![help message](images/helpMessage.png)
 
-#### 4.5.3. Exit Homerce : `exit`
+#### 4.6.3. Exit Homerce : `exit`
 
 Exits the program.
 
@@ -1020,19 +1157,19 @@ Outcome:
 
 {Example outcome screenshot}
 
-#### 4.5.4. Saving the Data - Can consider moving to about.
+#### 4.6.4. Saving the Data - Can consider moving to about.
 
 Homerce data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-### 4.6. Future Feature Enhancement v2.0
+### 4.7. Future Feature Enhancement v2.0
 
 {Description} 
 
-#### 4.6.1. Feature 1
+#### 4.7.1. Feature 1
 
 {Description}
 
-##### 4.6.1.1. Feature command 1 `Feature command 1`
+##### 4.7.1.1. Feature command 1 `Feature command 1`
 
 {Description}
 
