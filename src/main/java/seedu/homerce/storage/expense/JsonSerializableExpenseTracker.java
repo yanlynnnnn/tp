@@ -56,12 +56,13 @@ public class JsonSerializableExpenseTracker {
         LocalDate date = LocalDate.now();
         for (JsonAdaptedExpense jsonAdaptedExpense : expenses) {
             Expense expense = jsonAdaptedExpense.toModelType();
-            boolean isRecurringExpense = checkRecurringExpense(expense, date);
-            if (isRecurringExpense) {
+            expenseTracker.addExpense(expense);
+            while (isRecurringExpense(expense, date) && !isSameMonth(expense, date)) {
+                expense.getIsFixed().markAsRecurred();
                 Expense duplicateExpense = createDuplicateExpense(expense, date);
                 expenseTracker.addExpense(duplicateExpense);
+                expense = duplicateExpense;
             }
-            expenseTracker.addExpense(expense);
         }
         return expenseTracker;
     }
@@ -70,21 +71,16 @@ public class JsonSerializableExpenseTracker {
      * Checks if the given expense is recurring and if it should be duplicated for the month.
      * If expense is recurring, return true and mark the expense's willRecur as done.
      */
-    private boolean checkRecurringExpense(Expense expense, LocalDate date) {
+    private boolean isRecurringExpense(Expense expense, LocalDate date) {
         boolean expenseIsRecurring = expense.getIsFixed().value && expense.getIsFixed().getIsRecurring();
         if (!expenseIsRecurring) {
             return false;
         }
-        Month expenseMonth = expense.getDate().getMonth();
-        int expenseDayOfMonth = expense.getDate().getDayOfMonth();
-        if (expenseMonth.equals(date.getMonth())) {
+        LocalDate expenseRecurringDate = expense.getDate().getLocalDate().plusMonths(1);
+        if (expenseRecurringDate.isAfter(date)) {
             return false;
-        }
-        if (expenseDayOfMonth == date.getDayOfMonth()) {
-            expense.getIsFixed().markAsRecurred();
-            return true;
         } else {
-            return false;
+            return true;
         }
     }
 
@@ -97,10 +93,19 @@ public class JsonSerializableExpenseTracker {
         Description duplicateDescription = new Description(expense.getDescription().value);
         IsFixed duplicateIsFixed = new IsFixed("y");
         Amount duplicateValue = new Amount(expense.getValue().value.doubleValue());
-        Date duplicateDate = new Date(date.format(formatter));
+        Date duplicateDate = new Date(expense.getDate().getLocalDate().plusMonths(1).format(formatter));
         Tag duplicateTag = new Tag(expense.getTag().tagName);
 
         return new Expense(duplicateDescription, duplicateIsFixed, duplicateValue, duplicateDate, duplicateTag);
+    }
+
+    private boolean isSameMonth(Expense expense, LocalDate date) {
+        Month expenseMonth = expense.getDate().getMonth();
+        if (expenseMonth != date.getMonth()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
 

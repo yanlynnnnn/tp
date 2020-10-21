@@ -23,6 +23,16 @@ public class IsFixed {
     }
 
     /**
+     * Represents whether the expense is fixed and is recurring.
+     * @param isFixed
+     * @param isRecurring
+     */
+    public IsFixed(String isFixed, boolean isRecurring) {
+        value = isFixed.equals("y");
+        this.isRecurring = isRecurring;
+    }
+
+    /**
      * Mark IsFixed as recurred.
      */
     public void markAsRecurred() {
