@@ -48,6 +48,7 @@ public class JsonSerializableExpenseTracker {
 
     /**
      * Converts this expenseTracker into the model's {@code ExpenseTracker} object.
+     * Adds duplicate expenses for recurring expenses.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
@@ -68,8 +69,7 @@ public class JsonSerializableExpenseTracker {
     }
 
     /**
-     * Checks if the given expense is recurring and if it should be duplicated for the month.
-     * If expense is recurring, return true and mark the expense's willRecur as done.
+     * Checks if the given expense is recurring and if it should be duplicated.
      */
     private boolean isRecurringExpense(Expense expense, LocalDate date) {
         boolean expenseIsRecurring = expense.getIsFixed().value && expense.getIsFixed().getIsRecurring();
@@ -85,7 +85,7 @@ public class JsonSerializableExpenseTracker {
     }
 
     /**
-     * Creates a duplicate expense of the original fixed recurring expense, changing date to reflect current date.
+     * Creates a duplicate expense of the original fixed recurring expense, with a date one month later.
      */
     private Expense createDuplicateExpense(Expense expense, LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
@@ -99,6 +99,9 @@ public class JsonSerializableExpenseTracker {
         return new Expense(duplicateDescription, duplicateIsFixed, duplicateValue, duplicateDate, duplicateTag);
     }
 
+    /**
+     * Checks if the recurring expense was made in the current month.
+     */
     private boolean isSameMonth(Expense expense, LocalDate date) {
         Month expenseMonth = expense.getDate().getMonth();
         if (expenseMonth != date.getMonth()) {
