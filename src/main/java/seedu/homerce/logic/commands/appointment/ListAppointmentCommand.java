@@ -5,8 +5,8 @@ import static seedu.homerce.model.Model.PREDICATE_SHOW_ALL_APPOINTMENTS;
 
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
-import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.Model;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 
 public class ListAppointmentCommand extends Command {

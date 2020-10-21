@@ -9,9 +9,9 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TAG;
 
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
-import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.expense.Expense;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.ui.expensepanel.ExpenseListPanel;
 
 /**

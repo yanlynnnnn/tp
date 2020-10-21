@@ -9,9 +9,9 @@ import java.util.function.Predicate;
 import seedu.homerce.commons.core.Messages;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
-import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.client.Client;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**

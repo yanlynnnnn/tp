@@ -1,7 +1,5 @@
 package seedu.homerce.logic.commands;
 
-import java.awt.*;
-
 import seedu.homerce.logic.commands.appointment.AddAppointmentCommand;
 import seedu.homerce.logic.commands.appointment.ClearAppointmentCommand;
 import seedu.homerce.logic.commands.appointment.DeleteAppointmentCommand;
@@ -21,8 +19,8 @@ import seedu.homerce.logic.commands.service.AddServiceCommand;
 import seedu.homerce.logic.commands.service.ClearServiceCommand;
 import seedu.homerce.logic.commands.service.DeleteServiceCommand;
 import seedu.homerce.logic.commands.service.EditServiceCommand;
-import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.Model;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.undo.History;
 import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 import seedu.homerce.ui.clientpanel.ClientListPanel;

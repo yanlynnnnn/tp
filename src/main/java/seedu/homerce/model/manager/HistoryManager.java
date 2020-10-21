@@ -29,7 +29,7 @@ public class HistoryManager {
     private LinkedList<History> histories;
 
     private HistoryManager() {
-        this.histories= new LinkedList<>();
+        this.histories = new LinkedList<>();
     }
 
     /**

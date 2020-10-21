@@ -19,12 +19,12 @@ import seedu.homerce.commons.util.CollectionUtil;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.client.Email;
 import seedu.homerce.model.client.Name;
 import seedu.homerce.model.client.Phone;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.util.attributes.Tag;
 
 /**
