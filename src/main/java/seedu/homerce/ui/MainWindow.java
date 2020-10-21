@@ -211,4 +211,8 @@ public class MainWindow extends UiPart<Stage> {
             throw e;
         }
     }
+
+    public void showWelcomeText() {
+        resultDisplay.setFeedbackToUser("To see the list of commands, type and enter the command 'help'.");
+    }
 }

@@ -75,7 +75,7 @@ public class DeleteClientCommandTest {
         showClientAtIndex(model, INDEX_FIRST_CLIENT);
 
         Index outOfBoundIndex = INDEX_SECOND_CLIENT;
-        // ensures that outOfBoundIndex is still in bounds of homerce book list
+        // ensures that outOfBoundIndex is still in bounds of homerce list
         assertTrue(outOfBoundIndex.getZeroBased() < model.getClientManager().getClientList().size());
 
         DeleteClientCommand deleteClientCommand = new DeleteClientCommand(outOfBoundIndex);

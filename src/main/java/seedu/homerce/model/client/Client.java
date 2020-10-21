@@ -10,7 +10,7 @@ import java.util.Set;
 import seedu.homerce.model.util.attributes.Tag;
 
 /**
- * Represents a Client in the homerce book.
+ * Represents a Client in the homerce.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Client {

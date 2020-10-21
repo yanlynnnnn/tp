@@ -2,15 +2,17 @@ package seedu.homerce.model.appointment;
 
 import static seedu.homerce.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalTime;
 import java.util.Objects;
 
 import seedu.homerce.model.client.Client;
+import seedu.homerce.model.service.Duration;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.util.attributes.Date;
 import seedu.homerce.model.util.uniquelist.UniqueListItem;
 
 /**
- * Represents an Appointment in the homerce book.
+ * Represents an Appointment in the homerce.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Appointment implements UniqueListItem {
@@ -79,9 +81,9 @@ public class Appointment implements UniqueListItem {
 
         Appointment otherAppointment = (Appointment) other;
         return otherAppointment.getClient().equals(getClient())
-                && otherAppointment.getService().equals(getService())
-                && otherAppointment.getAppointmentDate().equals(getAppointmentDate())
-                && otherAppointment.getAppointmentTime().equals(getAppointmentTime());
+            && otherAppointment.getService().equals(getService())
+            && otherAppointment.getAppointmentDate().equals(getAppointmentDate())
+            && otherAppointment.getAppointmentTime().equals(getAppointmentTime());
     }
 
     @Override
@@ -94,17 +96,20 @@ public class Appointment implements UniqueListItem {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getAppointmentDate())
-                .append(" ")
-                .append(getAppointmentTime())
-                .append(" Client: ")
-                .append(getClient())
-                .append(" Service ")
-                .append(getService())
-                .append(" Done? ")
-                .append(getStatus());
+            .append(" ")
+            .append(getAppointmentTime())
+            .append(" Client: ")
+            .append(getClient())
+            .append(" Service ")
+            .append(getService())
+            .append(" Done? ")
+            .append(getStatus());
         return builder.toString();
     }
 
+    /**
+     * Method to prevent duplicate appointments from being added into a UniqueAppointmentList.
+     */
     @Override
     public boolean isSame(UniqueListItem other) {
         if (other == this) {
@@ -114,11 +119,32 @@ public class Appointment implements UniqueListItem {
         if (!(other instanceof Appointment)) {
             return false;
         }
-
         Appointment otherAppointment = (Appointment) other;
-        return client.equals(otherAppointment.getClient())
-                && service.equals(otherAppointment.getService())
-                && appointmentDate.equals(otherAppointment.appointmentDate)
-                && timeOfDay.equals(otherAppointment.timeOfDay);
+        if (appointmentDate.equals(otherAppointment.appointmentDate)) {
+            return isClashing(otherAppointment);
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isClashing(Appointment other) {
+        LocalTime startTimeOfThis = getAppointmentTime().getLocalTime();
+        LocalTime startTimeOfOther = other.getAppointmentTime().getLocalTime();
+        if (startTimeOfThis.equals(startTimeOfOther)) {
+            return true;
+        }
+        Duration durationThis = getService().getDuration();
+        Duration durationOther = other.getService().getDuration();
+        LocalTime endTimeOfThis = startTimeOfThis
+            .plusHours((long) Math.floor(durationThis.value))
+            .plusMinutes((long) ((durationThis.value % 1) * 60));
+        LocalTime endTimeOfOther = startTimeOfOther
+            .plusHours((long) Math.floor(durationOther.value))
+            .plusMinutes((long) ((durationOther.value % 1) * 60));
+        boolean result = (endTimeOfOther.isAfter(startTimeOfThis) && endTimeOfOther.isBefore(endTimeOfThis))
+                || (endTimeOfOther.isAfter(endTimeOfThis) && startTimeOfOther.isBefore(startTimeOfThis))
+                || (endTimeOfThis.isAfter(endTimeOfOther) && startTimeOfThis.isBefore(startTimeOfOther))
+                || (endTimeOfThis.isAfter(startTimeOfOther) && endTimeOfThis.isBefore(endTimeOfOther));
+        return result;
     }
 }

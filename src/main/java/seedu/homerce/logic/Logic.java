@@ -60,7 +60,7 @@ public interface Logic {
     ObservableList<Revenue> getFilteredRevenueList();
 
     /**
-     * Returns the user prefs' homerce book file path.
+     * Returns the user prefs' homerce file path.
      */
     Path getClientManagerFilePath();
 

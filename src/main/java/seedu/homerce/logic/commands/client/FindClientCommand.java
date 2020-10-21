@@ -15,7 +15,7 @@ import seedu.homerce.model.client.Client;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
- * Finds and lists all clients in homerce book whose name contains any of the argument keywords.
+ * Finds and lists all clients in homerce whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindClientCommand extends Command {
