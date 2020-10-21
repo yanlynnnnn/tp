@@ -8,7 +8,7 @@ public class AppointmentComparator implements Comparator<Appointment> {
     @Override
     public int compare(Appointment t1, Appointment t2) {
         if (t1.getAppointmentDate().equals(t2.getAppointmentDate())) {
-            return t1.getAppointmentTime().getLocalTime().compareTo(t2.getAppointmentTime().getLocalTime());
+            return t1.getAppointmentStartTime().getLocalTime().compareTo(t2.getAppointmentStartTime().getLocalTime());
         } else {
             return t1.getAppointmentDate().getLocalDate().compareTo(t2.getAppointmentDate().getLocalDate());
         }

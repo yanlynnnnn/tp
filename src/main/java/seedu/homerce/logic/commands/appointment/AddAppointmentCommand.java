@@ -63,7 +63,7 @@ public class AddAppointmentCommand extends Command {
         Client clientToAdd = model.getClientByPhone(toAdd.getPhone());
         Service serviceToAdd = model.getServiceByServiceCode(toAdd.getServiceCode());
         Appointment resultToAdd = new Appointment(
-            toAdd.getAppointmentDate(), toAdd.getAppointmentTime(),
+            toAdd.getAppointmentDate(), toAdd.getAppointmentStartTime(),
             clientToAdd, serviceToAdd
         );
         // Check if appointment is already present.

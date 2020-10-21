@@ -103,7 +103,7 @@ public class EditAppointmentCommand extends Command {
 
         Date updatedDate = editAppointmentDescriptor.getDate().orElse(appointmentToEdit.getAppointmentDate());
         TimeOfDay updatedTimeOfDay =
-            editAppointmentDescriptor.getTimeOfDay().orElse(appointmentToEdit.getAppointmentTime());
+            editAppointmentDescriptor.getTimeOfDay().orElse(appointmentToEdit.getAppointmentStartTime());
         Phone updatedPhone = editAppointmentDescriptor.getPhone().orElse(appointmentToEdit.getClient().getPhone());
         ServiceCode updatedServiceCode = editAppointmentDescriptor
             .getServiceCode().orElse(appointmentToEdit.getService().getServiceCode());
