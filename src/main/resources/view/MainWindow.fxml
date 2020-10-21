@@ -17,6 +17,7 @@
             <stylesheets>
                 <URL value="@DarkTheme.css" />
                 <URL value="@Extensions.css" />
+                <URL value="@stylesheets/default.css" />
             </stylesheets>
             <HBox>
             <StackPane fx:id="sideTabsBarPlaceholder" styleClass="context-menu"/>
