@@ -100,7 +100,6 @@ public class MainApp extends Application {
      * or an empty homerce will be used instead if errors occur when reading {@code storage}'s homerce.
      */
     private Model initModelManager(Storage storage, ReadOnlyUserPrefs userPrefs) {
-        assert false;
         ReadOnlyClientManager clientManager = initClientManager(storage);
         ReadOnlyServiceManager serviceManager = initServiceManager(storage);
         ReadOnlyAppointmentManager appointmentManager = initAppointmentManager(storage);
