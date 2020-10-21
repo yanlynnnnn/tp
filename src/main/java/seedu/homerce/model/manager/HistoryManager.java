@@ -16,6 +16,7 @@ import seedu.homerce.logic.commands.revenue.ListRevenueCommand;
 import seedu.homerce.logic.commands.service.FindServiceCommand;
 import seedu.homerce.logic.commands.service.ListServiceCommand;
 import seedu.homerce.model.Model;
+import seedu.homerce.model.undo.History;
 
 
 /**
@@ -25,10 +26,10 @@ import seedu.homerce.model.Model;
  */
 public class HistoryManager {
     private static HistoryManager historyManager = null;
-    private LinkedList<Model> models;
+    private LinkedList<History> histories;
 
     private HistoryManager() {
-        this.models = new LinkedList<>();
+        this.histories= new LinkedList<>();
     }
 
     /**
@@ -54,7 +55,8 @@ public class HistoryManager {
     public void addToHistory(Model model, Command command) {
         if (willCommandChangeState(command)) {
             Model modelDeepCopy = model.deepCopy();
-            models.addLast(modelDeepCopy);
+            History history = new History(modelDeepCopy, command);
+            histories.addLast(history);
         }
     }
 
@@ -74,6 +76,6 @@ public class HistoryManager {
     }
 
     public Model getPreviousState() {
-        return models.pollLast();
+        return histories.pollLast().getModel();
     }
 }
