@@ -15,7 +15,7 @@ import seedu.homerce.commons.util.ConfigUtil;
 import seedu.homerce.commons.util.StringUtil;
 import seedu.homerce.logic.Logic;
 import seedu.homerce.logic.LogicManager;
-import seedu.homerce.model.HistoryManager;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ModelManager;
 import seedu.homerce.model.ReadOnlyUserPrefs;

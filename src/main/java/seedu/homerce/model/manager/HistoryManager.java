@@ -1,4 +1,4 @@
-package seedu.homerce.model;
+package seedu.homerce.model.manager;
 
 import java.util.LinkedList;
 
@@ -15,6 +15,7 @@ import seedu.homerce.logic.commands.revenue.FindRevenueCommand;
 import seedu.homerce.logic.commands.revenue.ListRevenueCommand;
 import seedu.homerce.logic.commands.service.FindServiceCommand;
 import seedu.homerce.logic.commands.service.ListServiceCommand;
+import seedu.homerce.model.Model;
 
 
 /**
@@ -51,7 +52,6 @@ public class HistoryManager {
      * @param command the latest command given by the user.
      */
     public void addToHistory(Model model, Command command) {
-        Model latestModelState = models.peekLast();
         if (willCommandChangeState(command)) {
             Model modelDeepCopy = model.deepCopy();
             models.addLast(modelDeepCopy);

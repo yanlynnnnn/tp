@@ -21,7 +21,7 @@ import seedu.homerce.logic.commands.client.AddClientCommand;
 import seedu.homerce.logic.commands.client.ListClientCommand;
 import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.logic.parser.exceptions.ParseException;
-import seedu.homerce.model.HistoryManager;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ModelManager;
 import seedu.homerce.model.UserPrefs;

@@ -1,6 +1,6 @@
 package seedu.homerce.logic.commands;
 
-import seedu.homerce.model.HistoryManager;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.Model;
 
 /**

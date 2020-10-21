@@ -1,8 +1,9 @@
 package seedu.homerce.logic.commands;
 
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.model.HistoryManager;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.Model;
+import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
  * Undo the last command that updates the state of Homerce's storage.
@@ -20,6 +21,6 @@ public class UndoCommand extends Command {
             throw new CommandException("Already at oldest change");
         }
         model.replaceModel(previousModel);
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, ServiceListPanel.TAB_NAME);
     }
 }

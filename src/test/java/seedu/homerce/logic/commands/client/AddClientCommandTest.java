@@ -18,7 +18,7 @@ import javafx.collections.ObservableList;
 import seedu.homerce.commons.core.GuiSettings;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.model.HistoryManager;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ReadOnlyUserPrefs;
 import seedu.homerce.model.appointment.Appointment;
