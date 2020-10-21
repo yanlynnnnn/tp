@@ -75,7 +75,7 @@ public class HistoryManager {
             && !(command instanceof FindAppointmentCommand) && !(command instanceof ListAppointmentCommand);
     }
 
-    public Model getPreviousState() {
-        return histories.pollLast().getModel();
+    public History getPreviousHistory() {
+        return histories.pollLast();
     }
 }
