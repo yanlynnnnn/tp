@@ -365,6 +365,26 @@ public class AddClientCommandTest {
         }
 
         @Override
+        public ObservableList<Appointment> getFilteredSchedule() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void nextSchedulePage() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void previousSchedulePage() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void refreshScheduleAppointments() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void replaceModel(Model previousModel) {
             throw new AssertionError("This method should not be called.");
         }
