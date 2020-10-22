@@ -35,6 +35,13 @@ public class ServiceCode {
         return Integer.valueOf(serviceCode.value.substring(2).replaceFirst(LEADING_ZEROES_REGEX, ""));
     }
 
+    /**
+     * Get the integer ID of the service code for ordering with other service codes.
+     */
+    public int getID() {
+        return Integer.valueOf(value.substring(2).replaceFirst(LEADING_ZEROES_REGEX, ""));
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
