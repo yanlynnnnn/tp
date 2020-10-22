@@ -9,7 +9,6 @@ import java.util.TimeZone;
 import java.util.function.Predicate;
 
 import seedu.homerce.model.appointment.Appointment;
-import seedu.homerce.model.util.attributes.Date;
 
 public class AppointmentPaginationPredicate implements Predicate<Appointment> {
 
@@ -39,13 +38,9 @@ public class AppointmentPaginationPredicate implements Predicate<Appointment> {
         calendar.setTime(inputCalendar.getTime());
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
         calendar.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-//        String startWeekDate = String
-//            .format("%s-%s-%s", calendar.get(Calendar.DAY_OF_MONTH),
-//                calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.YEAR));
         TimeZone tz = calendar.getTimeZone();
         ZoneId zid = tz == null ? ZoneId.systemDefault() : tz.toZoneId();
         return LocalDate.ofInstant(calendar.toInstant(), zid);
-//        return new Date(startWeekDate);
     }
 
     private LocalDate calculateEndDateOfWeek(Calendar inputCalendar) {
@@ -53,12 +48,8 @@ public class AppointmentPaginationPredicate implements Predicate<Appointment> {
         calendar.setTime(inputCalendar.getTime());
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
         calendar.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
-//        String endWeekDate = String
-//            .format("%s-%s-%s", calendar.get(Calendar.DAY_OF_MONTH), calendar.get(Calendar.MONTH) + 1, calendar
-//                .get(Calendar.YEAR));
         TimeZone tz = calendar.getTimeZone();
         ZoneId zid = tz == null ? ZoneId.systemDefault() : tz.toZoneId();
         return LocalDate.ofInstant(calendar.toInstant(), zid);
-//        return new Date(endWeekDate);
     }
 }
