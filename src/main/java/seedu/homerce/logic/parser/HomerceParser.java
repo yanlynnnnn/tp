@@ -18,6 +18,9 @@ import seedu.homerce.logic.commands.appointment.DoneAppointmentCommand;
 import seedu.homerce.logic.commands.appointment.EditAppointmentCommand;
 import seedu.homerce.logic.commands.appointment.FindAppointmentCommand;
 import seedu.homerce.logic.commands.appointment.ListAppointmentCommand;
+import seedu.homerce.logic.commands.appointment.ListScheduleCommand;
+import seedu.homerce.logic.commands.appointment.NextPageCommand;
+import seedu.homerce.logic.commands.appointment.PreviousPageCommand;
 import seedu.homerce.logic.commands.appointment.UnDoneAppointmentCommand;
 import seedu.homerce.logic.commands.client.AddClientCommand;
 import seedu.homerce.logic.commands.client.ClearClientCommand;
@@ -187,6 +190,15 @@ public class HomerceParser {
 
         case BreakdownFinanceCommand.COMMAND_WORD:
             return new BreakdownFinanceCommandParser().parse(arguments);
+
+        case ListScheduleCommand.COMMAND_WORD:
+            return new ListScheduleCommand();
+
+        case NextPageCommand.COMMAND_WORD:
+            return new NextPageCommand();
+
+        case PreviousPageCommand.COMMAND_WORD:
+            return new PreviousPageCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

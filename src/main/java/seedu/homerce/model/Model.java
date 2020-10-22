@@ -305,8 +305,18 @@ public interface Model {
 
     void setAppointmentManager(ReadOnlyAppointmentManager appointmentManager);
 
+    // ====================== Schedule ========================
+    ObservableList<Appointment> getFilteredSchedule();
+
+    void nextSchedulePage();
+
+    void previousSchedulePage();
+
+    void refreshScheduleAppointments();
+
     // ====================== HistoryManager ========================
     void replaceModel(Model previousModel);
 
     Model deepCopy();
+
 }
