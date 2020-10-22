@@ -142,6 +142,7 @@ public class MainWindow extends UiPart<Stage> {
             schedulePanel = new SchedulePanel(logic.getFilteredAppointmentList());
             schedulePanel.construct();
             tabPanelPlaceholder.getChildren().add(schedulePanel.getRoot());
+            break;
         default:
             throw new AssertionError("No such tab name: " + tabName);
         }

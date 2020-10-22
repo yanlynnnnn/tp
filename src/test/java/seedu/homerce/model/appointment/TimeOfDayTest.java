@@ -53,8 +53,8 @@ public class TimeOfDayTest {
     public void toUiStringTest() {
         TimeOfDay time1 = new TimeOfDay("1234");
         TimeOfDay time2 = new TimeOfDay("0001");
-        assertEquals("12:34 PM", time1.toUiString());
-        assertEquals("12:01 AM", time2.toUiString());
+        assertEquals("12:34 pm", time1.toUiString());
+        assertEquals("12:01 am", time2.toUiString());
     }
 
     @Test

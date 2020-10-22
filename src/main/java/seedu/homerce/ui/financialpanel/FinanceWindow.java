@@ -11,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import seedu.homerce.commons.core.LogsCenter;
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.revenue.Revenue;
@@ -55,6 +54,12 @@ public class FinanceWindow extends UiPart<Stage> {
         this(new Stage());
     }
 
+    /**
+     * Fills the data for the expense and revenue pie charts, and calculates the profit for the given month.
+     *
+     * @param expenseList the list of expenses for the month.
+     * @param revenueList the list of revenue for the month.
+     */
     public void construct(ObservableList<Expense> expenseList, ObservableList<Revenue> revenueList) {
         setExpenseChart(expenseList);
         setRevenueChart(revenueList);
@@ -76,7 +81,7 @@ public class FinanceWindow extends UiPart<Stage> {
                 maps.put(expense.getTag().tagName, newExpense);
 
             } else {
-                double newExpense =  expense.getValue().value.doubleValue();
+                double newExpense = expense.getValue().value.doubleValue();
                 maps.put(expense.getTag().tagName, newExpense);
 
             }
@@ -104,7 +109,7 @@ public class FinanceWindow extends UiPart<Stage> {
                 maps.put(revenue.getService().getTitle().value, newRevenue);
 
             } else {
-                double newRevenue =  revenue.getValue().value.doubleValue();
+                double newRevenue = revenue.getValue().value.doubleValue();
                 maps.put(revenue.getService().getTitle().value, newRevenue);
             }
         }
@@ -124,19 +129,17 @@ public class FinanceWindow extends UiPart<Stage> {
     private void setProfitDisplay(ObservableList<Expense> expenseList, ObservableList<Revenue> revenueList) {
         double totalExpense = expenseList
             .stream()
-            .reduce(0.0,
-                (sum, expense) -> sum + expense.getValue().value.doubleValue(),
-                (sum, expenseAmount) -> sum + expenseAmount);
+            .reduce(0.0, (sum, expense) -> sum + expense.getValue().value.doubleValue(), (
+                sum, expenseAmount) -> sum + expenseAmount);
         double totalRevenue = revenueList
             .stream()
-            .reduce(0.0,
-                (sum, revenue) -> sum + revenue.getValue().value.doubleValue(),
-                (sum, revenueAmount) -> sum + revenueAmount);
+            .reduce(0.0, (sum, revenue) -> sum + revenue.getValue().value.doubleValue(), (
+                sum, revenueAmount) -> sum + revenueAmount);
         double profit = totalRevenue - totalExpense;
 
-        profitText.setText("Total profits: " + String.valueOf(profit));
-        expenseText.setText("Total expenses: " + String.valueOf(totalExpense));
-        revenueText.setText("Total revenue: " + String.valueOf(totalRevenue));
+        profitText.setText("Total Profit: $" + String.valueOf(profit));
+        expenseText.setText("Total Expense: $" + String.valueOf(totalExpense));
+        revenueText.setText("Total Revenue: $" + String.valueOf(totalRevenue));
     }
 
     /**
