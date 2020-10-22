@@ -9,19 +9,25 @@ import seedu.homerce.model.util.attributes.Date;
 
 public class AppointmentPaginationPredicate implements Predicate<Appointment> {
 
-    private Date date;
+    private final Date startOfWeekDate;
+    private final Date endOfWeekDate;
 
-    public AppointmentPaginationPredicate(Date date) {
-        this.date = date;
+    /**
+     * Creates a Predicate that filters appointments such that only those in the same week as
+     * {@code referenceDate} will be displayed.
+     */
+    public AppointmentPaginationPredicate(Date referenceDate) {
+        this.startOfWeekDate = calculateStartDateOfWeek(referenceDate);
+        this.endOfWeekDate = calculateEndDateOfWeek(referenceDate);
     }
 
     @Override
     public boolean test(Appointment appointment) {
-        return calculateStartWeek(date).getLocalDate().isBefore(appointment.getAppointmentDate().getLocalDate())
-            && calculateEndWeek(date).getLocalDate().isAfter(appointment.getAppointmentDate().getLocalDate());
+        return startOfWeekDate.getLocalDate().isBefore(appointment.getAppointmentDate().getLocalDate())
+            && endOfWeekDate.getLocalDate().isAfter(appointment.getAppointmentDate().getLocalDate());
     }
 
-    private Date calculateStartWeek(Date date) {
+    private Date calculateStartDateOfWeek(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
         calendar.setTime(java.util.Date
@@ -33,10 +39,10 @@ public class AppointmentPaginationPredicate implements Predicate<Appointment> {
         return new Date(startWeekDate);
     }
 
-    private Date calculateEndWeek(Date date) {
+    private Date calculateEndDateOfWeek(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
-        date = calculateStartWeek(date);
+        date = calculateStartDateOfWeek(date);
         calendar.setTime(java.util.Date
             .from(date.getLocalDate().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
         calendar.add(Calendar.DATE, 6);
