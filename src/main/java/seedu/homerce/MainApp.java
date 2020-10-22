@@ -262,6 +262,7 @@ public class MainApp extends Application {
                 logger.info("Data file not found. Will be starting with a sample ExpenseTracker");
             }
             expenseTracker = expenseTrackerOptional.orElseGet(SampleDataUtil::getSampleExpenseTracker);
+            storage.saveExpenseTracker(expenseTracker);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty ExpenseTracker");
             expenseTracker = new ExpenseTracker();

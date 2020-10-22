@@ -89,13 +89,13 @@ The table below explains some important technical terms to help you understand a
 | Prefix | The characters at the start of a parameter. It distinguishes one parameter from another.|
 | Parameter | The word following each prefix. They are values given to a command to perform the specified action.|
 
-Example:
+**Example:** <br>
 `addexp d/DESCRIPTION f/ISFIXED v/VALUE dt/DATE [t/TAG]`
 
-Breakdown: <br>
-**Command Word** - `addexp` <br>
-**Prefixes** - `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE`, `TAG` <br>
-**Parameters** - `d/`, `f/`, `v/`, `dt/`, `t/`
+**Breakdown:** 
+* Command Word - `addexp` <br>
+* Prefixes - `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE`, `TAG` <br>
+* Parameters - `d/`, `f/`, `v/`, `dt/`, `t/`
 
 The following points explain the format of a command. 
 More examples will be provided for each command in [Section 4 - Features](#4-features).

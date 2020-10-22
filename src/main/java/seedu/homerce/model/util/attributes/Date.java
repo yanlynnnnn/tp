@@ -49,6 +49,10 @@ public class Date {
         return date.getYear();
     }
 
+    public int getDayOfMonth() {
+        return date.getDayOfMonth();
+    }
+
     public LocalDate getLocalDate() {
         return date;
     }
