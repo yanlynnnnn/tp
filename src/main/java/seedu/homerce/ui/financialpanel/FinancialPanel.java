@@ -77,6 +77,11 @@ public class FinancialPanel extends UiPart<Region> {
             .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         expenseChart.setData(expenseChartData);
+/*
+        expenseChart.setMinSize(150,150);
+        expenseChart.setMaxSize(150,150);
+*/
+        expenseChart.setLegendVisible(false);
     }
 
     /**
@@ -103,15 +108,33 @@ public class FinancialPanel extends UiPart<Region> {
             .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         revenueChart.setData(revenueChartData);
+/*
+        revenueChart.setMinSize(150,150);
+        revenueChart.setMaxSize(150,150);
+*/
+        revenueChart.setLegendVisible(false);
     }
 
     /**
-     * Creates a profit chart using the list of revenues and expenses.
+     * Creates a profit display using the list of revenues and expenses.
+     *
+     * Revenue, expense and profit displays should be capped at 6 digits. Else it will overflow the container box.
      */
     private void setProfitDisplay(ObservableList<Expense> expenseList, ObservableList<Revenue> revenueList) {
-        // Revenue, expense and profit displays are capped at 6 digits. Else it will overflow the container box.
-        profitText.setText("Total profits: " + "2,000,000");
-        expenseText.setText("Total expenses: " + "200,000");
-        revenueText.setText("Total revenue: " + "20");
+        double totalExpense = expenseList
+            .stream()
+            .reduce(0.0,
+                (sum, expense) -> sum + expense.getValue().value.doubleValue(),
+                (sum, expenseAmount) -> sum + expenseAmount);
+        double totalRevenue = revenueList
+            .stream()
+            .reduce(0.0,
+                (sum, revenue) -> sum + revenue.getValue().value.doubleValue(),
+                (sum, revenueAmount) -> sum + revenueAmount);
+        double profit = totalRevenue - totalExpense;
+
+        profitText.setText("Total profits: " + String.valueOf(profit));
+        expenseText.setText("Total expenses: " + String.valueOf(totalExpense));
+        revenueText.setText("Total revenue: " + String.valueOf(totalRevenue));
     }
 }

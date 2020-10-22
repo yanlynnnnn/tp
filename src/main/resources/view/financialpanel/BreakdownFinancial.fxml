@@ -22,9 +22,9 @@
                               <PieChart fx:id="expenseChart" layoutX="-6.0" prefHeight="295.0" prefWidth="304.0" stylesheets="@style.css" title="Expense" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="322.0">
                            <children>
-                              <PieChart fx:id="revenueChart" prefHeight="295.0" prefWidth="295.0" stylesheets="@style.css" title="Revenue" />
+                              <PieChart fx:id="revenueChart" layoutX="-6.0" prefHeight="295.0" prefWidth="304.0" stylesheets="@style.css" title="Revenue" />
                            </children>
                         </AnchorPane>
                      </items>
