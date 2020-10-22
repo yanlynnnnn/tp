@@ -13,6 +13,11 @@ public class RevenueMonthYearPredicate implements Predicate<Revenue> {
     private final Month month;
     private final Year year;
 
+    /**
+     * Constructs a Revenue Month Year Predicate.
+     * @param month
+     * @param year
+     */
     public RevenueMonthYearPredicate(Month month, Year year) {
         this.month = month;
         this.year = year;

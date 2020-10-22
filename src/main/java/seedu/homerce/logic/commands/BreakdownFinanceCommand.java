@@ -15,7 +15,6 @@ import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.revenue.predicate.RevenueMonthYearPredicate;
 import seedu.homerce.ui.expensepanel.ExpenseListPanel;
-import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 public class BreakdownFinanceCommand extends Command {
 

@@ -25,7 +25,8 @@ public class BreakdownFinanceCommandParser {
 
         if (!arePrefixesPresent(argumentMultimap, PREFIX_MONTH_OF_YEAR, PREFIX_YEAR)
                 || !argumentMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, BreakdownFinanceCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    BreakdownFinanceCommand.MESSAGE_USAGE));
         }
 
         Month month = ParserUtil.parseMonth(argumentMultimap.getValue(PREFIX_MONTH_OF_YEAR).get());
