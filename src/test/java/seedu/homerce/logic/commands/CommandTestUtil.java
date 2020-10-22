@@ -15,11 +15,11 @@ import java.util.List;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.client.EditClientCommand;
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.client.predicate.NameContainsKeywordsPredicate;
 import seedu.homerce.model.manager.ClientManager;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.testutil.EditClientDescriptorBuilder;
 
 /**

@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.revenue.Revenue;
 
 public class ClearRevenueCommand extends Command {
