@@ -463,7 +463,8 @@ public class ModelManager implements Model {
 
     @Override
     public void refreshScheduleAppointments() {
-        filteredSchedule.setAll(appointmentManager.getAppointmentListCopy());
+        filteredSchedule.clear();
+        filteredSchedule.addAll(appointmentManager.getAppointmentListCopy());
         filteredSchedule.setPredicate(appointmentManager.getCurrentWeekPredicate());
     }
 

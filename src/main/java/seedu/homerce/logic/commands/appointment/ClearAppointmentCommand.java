@@ -22,6 +22,7 @@ public class ClearAppointmentCommand extends Command {
         requireNonNull(model);
         model.setAppointment(new ArrayList<>());
         model.updateFilteredAppointmentList(Model.PREDICATE_SHOW_ALL_APPOINTMENTS);
+        model.refreshScheduleAppointments();
         return new CommandResult(MESSAGE_CLEAR_APPOINTMENT_SUCCESS);
     }
 }

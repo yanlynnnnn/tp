@@ -73,6 +73,7 @@ public class AddAppointmentCommand extends Command {
             model.addAppointment(resultToAdd);
         }
         model.updateFilteredAppointmentList(Model.PREDICATE_SHOW_ALL_APPOINTMENTS);
+        model.refreshScheduleAppointments();
         return new CommandResult(
             String.format(MESSAGE_ADD_APPOINTMENT_SUCCESS, resultToAdd),
             AppointmentListPanel.TAB_NAME
