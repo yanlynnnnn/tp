@@ -16,6 +16,7 @@ import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 import seedu.homerce.ui.expensepanel.ExpenseListPanel;
+import seedu.homerce.ui.financialpanel.FinancialPanel;
 import seedu.homerce.ui.revenuepanel.RevenueListPanel;
 import seedu.homerce.ui.schedulepanel.SchedulePanel;
 import seedu.homerce.ui.servicepanel.ServiceListPanel;
@@ -44,7 +45,7 @@ public class MainWindow extends UiPart<Stage> {
     private RevenueListPanel revenueListPanel;
     private ExpenseListPanel expenseListPanel;
     private SchedulePanel schedulePanel;
-
+    private FinancialPanel financialPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -100,6 +101,7 @@ public class MainWindow extends UiPart<Stage> {
 
         appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
 
+        financialPanel = new FinancialPanel(logic.getFilteredExpenseList(), logic.getFilteredRevenueList());
 
         // Default view for user on app startup
         switchTab(ClientListPanel.TAB_NAME);
@@ -141,6 +143,9 @@ public class MainWindow extends UiPart<Stage> {
             schedulePanel = new SchedulePanel(logic.getFilteredAppointmentList());
             schedulePanel.construct();
             tabPanelPlaceholder.getChildren().add(schedulePanel.getRoot());
+        case FinancialPanel.TAB_NAME:
+            financialPanel.construct();
+            tabPanelPlaceholder.getChildren().add(financialPanel.getRoot());
             break;
         default:
             throw new AssertionError("No such tab name: " + tabName);

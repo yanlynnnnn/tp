@@ -9,6 +9,7 @@ import seedu.homerce.commons.core.LogsCenter;
 import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 import seedu.homerce.ui.expensepanel.ExpenseListPanel;
+import seedu.homerce.ui.financialpanel.FinancialPanel;
 import seedu.homerce.ui.revenuepanel.RevenueListPanel;
 import seedu.homerce.ui.schedulepanel.SchedulePanel;
 import seedu.homerce.ui.servicepanel.ServiceListPanel;
@@ -61,5 +62,10 @@ public class SideTabsBar extends UiPart<Region> {
     @FXML
     private void handleSwitchToScheduleTab() {
         consumer.accept(SchedulePanel.TAB_NAME);
+    }
+
+    @FXML
+    private void handleSwitchToFinancialTab() {
+        consumer.accept(FinancialPanel.TAB_NAME);
     }
 }

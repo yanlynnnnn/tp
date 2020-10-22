@@ -36,4 +36,9 @@
             <Insets top="2.0" />
         </padding>
     </Button>
+    <Button fx:id="financials" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSwitchToFinancialTab" text="Financials" VBox.vgrow="NEVER">
+        <padding>
+            <Insets top="2.0" />
+        </padding>
+    </Button>
 </VBox>

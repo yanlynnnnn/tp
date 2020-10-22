@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <SplitPane dividerPositions="0.75" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0">
+              <items>
+                  <SplitPane dividerPositions="0.5" prefHeight="233.0" prefWidth="598.0">
+                     <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="322.0">
+                           <children>
+                              <PieChart fx:id="expenseChart" layoutX="-6.0" prefHeight="295.0" prefWidth="304.0" stylesheets="@style.css" title="Expense" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <PieChart fx:id="revenueChart" prefHeight="295.0" prefWidth="295.0" stylesheets="@style.css" title="Revenue" />
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+                  <Pane id="profitPane" prefHeight="83.0" prefWidth="619.0">
+                     <children>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#deeedc" height="37.0" layoutX="14.0" layoutY="44.0" opacity="0.7" stroke="WHITE" strokeType="INSIDE" width="163.0" />
+                        <Text fill="#ffeaea" layoutX="247.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Profits" textAlignment="CENTER" wrappingWidth="103.22900390625">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Text>
+                        <Text id="expenseText" fx:id="expenseText" fill="WHITE" layoutX="217.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="163.22900390625">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Text id="profitText" fx:id="profitText" fill="WHITE" layoutX="424.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="151.22900390625">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Text id="revenueText" fx:id="revenueText" fill="WHITE" layoutX="17.0" layoutY="68.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="157.22900390625">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Text>
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#f1e0e0" height="37.0" layoutX="217.0" layoutY="44.0" opacity="0.7" stroke="#f1e0e0" strokeType="INSIDE" width="163.0" />
+                        <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#e0e7f1" height="37.0" layoutX="418.0" layoutY="44.0" opacity="0.7" stroke="#e0e7f1" strokeType="INSIDE" width="163.0" />
+                     </children>
+                  </Pane>
+              </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
