@@ -16,7 +16,7 @@ import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 import seedu.homerce.ui.expensepanel.ExpenseListPanel;
-import seedu.homerce.ui.financialpanel.FinancialPanel;
+import seedu.homerce.ui.financialpanel.FinanceWindow;
 import seedu.homerce.ui.revenuepanel.RevenueListPanel;
 import seedu.homerce.ui.schedulepanel.SchedulePanel;
 import seedu.homerce.ui.servicepanel.ServiceListPanel;
@@ -37,6 +37,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private FinanceWindow financeWindow;
 
     // Panels for each component
     private ServiceListPanel serviceListPanel;
@@ -45,7 +46,6 @@ public class MainWindow extends UiPart<Stage> {
     private RevenueListPanel revenueListPanel;
     private ExpenseListPanel expenseListPanel;
     private SchedulePanel schedulePanel;
-    private FinancialPanel financialPanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -81,6 +81,7 @@ public class MainWindow extends UiPart<Stage> {
         //setAccelerators();
 
         helpWindow = new HelpWindow();
+        financeWindow = new FinanceWindow();
     }
 
     public Stage getPrimaryStage() {
@@ -100,8 +101,6 @@ public class MainWindow extends UiPart<Stage> {
         expenseListPanel = new ExpenseListPanel(logic.getFilteredExpenseList());
 
         appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
-
-        financialPanel = new FinancialPanel(logic.getFilteredExpenseList(), logic.getFilteredRevenueList());
 
         // Default view for user on app startup
         switchTab(ClientListPanel.TAB_NAME);
@@ -143,10 +142,6 @@ public class MainWindow extends UiPart<Stage> {
             schedulePanel = new SchedulePanel(logic.getFilteredAppointmentList());
             schedulePanel.construct();
             tabPanelPlaceholder.getChildren().add(schedulePanel.getRoot());
-        case FinancialPanel.TAB_NAME:
-            financialPanel.construct();
-            tabPanelPlaceholder.getChildren().add(financialPanel.getRoot());
-            break;
         default:
             throw new AssertionError("No such tab name: " + tabName);
         }
@@ -173,6 +168,19 @@ public class MainWindow extends UiPart<Stage> {
             helpWindow.show();
         } else {
             helpWindow.focus();
+        }
+    }
+
+    /**
+     * Opens the finance breakdown window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleFinance() {
+        if (!helpWindow.isShowing()) {
+            financeWindow.construct(logic.getFilteredExpenseList(), logic.getFilteredRevenueList());
+            financeWindow.show();
+        } else {
+            financeWindow.focus();
         }
     }
 
@@ -213,7 +221,9 @@ public class MainWindow extends UiPart<Stage> {
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }
-
+            if (commandResult.isShowFinance()) {
+                handleFinance();
+            }
             if (commandResult.isExit()) {
                 handleExit();
             }

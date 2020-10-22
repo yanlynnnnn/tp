@@ -2,25 +2,27 @@ package seedu.homerce.ui.financialpanel;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
-import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import seedu.homerce.commons.core.LogsCenter;
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.ui.UiPart;
 
-public class FinancialPanel extends UiPart<Region> {
-
-    public static final String TAB_NAME = "Financials";
+/**
+ * Controller for FinanceWindow.
+ */
+public class FinanceWindow extends UiPart<Stage> {
     private static final String FXML = "financialpanel/BreakdownFinancial.fxml";
-    private ObservableList<Expense> expenseList;
-    private ObservableList<Revenue> revenueList;
+    private static final Logger logger = LogsCenter.getLogger(FinanceWindow.class);
 
     @FXML
     private PieChart revenueChart;
@@ -37,19 +39,26 @@ public class FinancialPanel extends UiPart<Region> {
     @FXML
     private Text revenueText;
 
-
-
-    public FinancialPanel(ObservableList<Expense> expenseList, ObservableList<Revenue> revenueList) {
-        super(FXML);
-        this.expenseList = expenseList;
-        this.revenueList = revenueList;
+    /**
+     * Creates a new FinanceWindow.
+     *
+     * @param root Stage to use as the root of the FinanceWindow.
+     */
+    public FinanceWindow(Stage root) {
+        super(FXML, root);
     }
 
-    public void construct() {
+    /**
+     * Creates a new FinanceWindow.
+     */
+    public FinanceWindow() {
+        this(new Stage());
+    }
+
+    public void construct(ObservableList<Expense> expenseList, ObservableList<Revenue> revenueList) {
         setExpenseChart(expenseList);
         setRevenueChart(revenueList);
         setProfitDisplay(expenseList, revenueList);
-        
     }
 
     /**
@@ -77,10 +86,6 @@ public class FinancialPanel extends UiPart<Region> {
             .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         expenseChart.setData(expenseChartData);
-/*
-        expenseChart.setMinSize(150,150);
-        expenseChart.setMaxSize(150,150);
-*/
         expenseChart.setLegendVisible(false);
     }
 
@@ -108,10 +113,6 @@ public class FinancialPanel extends UiPart<Region> {
             .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         revenueChart.setData(revenueChartData);
-/*
-        revenueChart.setMinSize(150,150);
-        revenueChart.setMaxSize(150,150);
-*/
         revenueChart.setLegendVisible(false);
     }
 
@@ -136,5 +137,51 @@ public class FinancialPanel extends UiPart<Region> {
         profitText.setText("Total profits: " + String.valueOf(profit));
         expenseText.setText("Total expenses: " + String.valueOf(totalExpense));
         revenueText.setText("Total revenue: " + String.valueOf(totalRevenue));
+    }
+
+    /**
+     * Shows the help window.
+     *
+     * @throws IllegalStateException <ul>
+     *                               <li>
+     *                               if this method is called on a thread other than the JavaFX Application
+     *                               Thread.
+     *                               </li>
+     *                               <li>
+     *                               if this method is called during animation or layout processing.
+     *                               </li>
+     *                               <li>
+     *                               if this method is called on the primary stage.
+     *                               </li>
+     *                               <li>
+     *                               if {@code dialogStage} is already showing.
+     *                               </li>
+     *                               </ul>
+     */
+    public void show() {
+        logger.fine("Showing help page about the application.");
+        getRoot().show();
+        getRoot().centerOnScreen();
+    }
+
+    /**
+     * Returns true if the help window is currently being shown.
+     */
+    public boolean isShowing() {
+        return getRoot().isShowing();
+    }
+
+    /**
+     * Hides the help window.
+     */
+    public void hide() {
+        getRoot().hide();
+    }
+
+    /**
+     * Focuses on the help window.
+     */
+    public void focus() {
+        getRoot().requestFocus();
     }
 }
