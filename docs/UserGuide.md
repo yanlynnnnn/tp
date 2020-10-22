@@ -89,13 +89,13 @@ The table below explains some important technical terms to help you understand a
 | Prefix | The characters at the start of a parameter. It distinguishes one parameter from another.|
 | Parameter | The word following each prefix. They are values given to a command to perform the specified action.|
 
-Example:
+**Example:** <br>
 `addexp d/DESCRIPTION f/ISFIXED v/VALUE dt/DATE [t/TAG]`
 
-Breakdown: <br>
-**Command Word** - `addexp` <br>
-**Prefixes** - `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE`, `TAG` <br>
-**Parameters** - `d/`, `f/`, `v/`, `dt/`, `t/`
+**Breakdown:** 
+* Command Word - `addexp` <br>
+* Prefixes - `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE`, `TAG` <br>
+* Parameters - `d/`, `f/`, `v/`, `dt/`, `t/`
 
 The following points explain the format of a command. 
 More examples will be provided for each command in [Section 4 - Features](#4-features).
@@ -328,8 +328,8 @@ This feature uses a number of parameters, which are detailed below.
 | Parameter Name | Description | Example
 |---------|---------|---------
 |`DATE`  | The date of the appointment. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
-|`TIME` | The time of the appointment. <br> <br> It must be in the format of `HH:MM` | E.g. Typing `17:30` would mean 5:30 PM.  <br> <br> E.g. Typing `0900` would mean 9:00 AM.
-|`MONTH` | The month of the appointment. <br> <br> It must be in the format of a 3 letter phrase representing the month. | E.g. Typing `Jan` would mean January.  <br> <br> E.g. Typing `Dec` would mean December.
+|`TIME` | The time of the appointment. <br> <br> It must be in the format of `HHMM` | E.g. Typing `1730` would mean 5:30 PM.  <br> <br> E.g. Typing `0900` would mean 9:00 AM.
+|`MONTH` | The month of the appointment. <br> <br> It must be a valid integer between 1 - 12. | E.g. Typing '12' would refer to the month of December.
 |`SERVICE_CODE`| The service code is the code that identifies the type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`PHONE_NUMBER` | The phone number of the client. <br> <br> It must be a 8-digit number starting with 6, 8, or 9.| E.g. Typing `81281234` or `91235678` is a valid phone number.  <br> <br> E.g. Typing `999`or `800012345` would not be a recognised number.
 |`NAME` | The name of the client booking the appointment. <br> <br> It must consist alphanumeric characters not more than 100 characters long. | E.g. If a client with the name `Hartin Menz` called to book an appointment, the same name `Hartin Menz` would be used as the parameter for `NAME`.
@@ -342,7 +342,7 @@ command to add details of the appointment into the appointment tracker.
 
 Format : `addapt dt/DATE t/TIME s/SERVICE_CODE p/PHONE_NUMBER`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Appointment Tracker Command Parameters](#611-appointment-tracker-command-parameters) for more details about each parameter.
+|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
 |---------|---------
 <br> 
 
@@ -354,12 +354,12 @@ You can follow these instructions to add his/her appointment details into Homerc
 | Appointment | |
 |---------|--------- |
 |`DATE`| 28-10-2020 |
-|`TIME`| 13:00 |
+|`TIME`| 1300 |
 |`SERVICE_CODE`| SC001 |
 |`PHONE_NUMBER`| 83232656 |
 
 Steps:
-1. Type `addapt dt/28-10-2020 t/13:00 s/SC001 p/83232656` in the command box.
+1. Type `addapt dt/28-10-2020 t/1300 s/SC001 p/83232656` in the command box.
 1. Press `Enter` on your keyboard.
 
 Outcome:
@@ -409,24 +409,17 @@ Format : `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]* [m/MO
 
 Example:
 
-Let's say you have a number of appointments stored in Homerce and you want to search for a particular one.
-You can follow these instructions to list all the appointments which match your search criteria(s).
-
-| Appointment | |
-|---------|--------- |
-|`PHONE_NUMBER`| 82341245 |
-|`SERVICE_CODE`| SC002 |
-|`MONTH`| Mar |
+Let's say you have a number of appointments stored in Homerce and you want to search for those booked by the phone
+number 82341245. You can follow these instructions to list all the appointments which match your search criteria.
 
 Steps:
-1. Type `findapt p/82341245 s/SC002 m/Mar` in the command box.
+1. Type `findapt p/82341245` in the command box.
 1. Press `Enter` on your keyboard.
 
 Outcome:
 1. The Result Display will show a success message.
 1. Homerce will switch to the appointment tab.
-1. You can now see all your appointments made by the number `82341245` in the
-month of March and is of the service `SC002`.
+1. You can now see all your appointments made by the number `82341245`.
 
 {Example outcome screenshot}
 
@@ -444,18 +437,18 @@ Format : `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER]`
 Example:
 
 Let's say you searched for the appointment which you want to edit in Homerce.
-You searched for the appointment in Homerce with `listapt` or `findapt`,
+You searched for the appointment in Homerce with `listapt` or `findapt`, see that it's index is 1,
 and you want to edit it with the following details:
 
 | Appointment | |
 |---------|--------- |
 |`INDEX`| 1 |
 |`DATE`| 28-10-2020 |
-|`TIME`| 13:00 |
+|`TIME`| 1300 |
 |`PHONE_NUMBER`| 93451222 |
 
 Steps:
-1. Type `editapt 1 dt/28-10-2020 t/13:00 p/93451222` in the command box.
+1. Type `editapt 1 dt/28-10-2020 t/1300 p/93451222` in the command box.
 1. Press `Enter` on your keyboard.
 
 Outcome:
@@ -467,8 +460,8 @@ Outcome:
 
 #### 4.2.6. Mark an appointment as done: `done`
 
-After an appointment with a client has been completed, use this command to credit the revenue from the service and remove the appointment
-from the list of upcoming appointments.
+After an appointment with a client has been completed, use this command to credit the revenue from the service and mark the appointment
+as done.
 
 Format : `done INDEX`
 
@@ -479,11 +472,8 @@ Format : `done INDEX`
 Example:
 
 Let's say you just finished an appointment with a client. After finding the appointment in Homerce
-with `listapt` or `findapt`, you can follow these instructions to mark that appointment as done.
-
-| Appointment | |
-|---------|--------- |
-|`INDEX`| 5 |
+with `listapt` or `findapt`, you see that the appointment has index 5. You can follow these instructions 
+to mark that appointment as done.
 
 Steps:
 1. Type `done 5` in the command box.
@@ -511,11 +501,8 @@ Format : `undone INDEX`
 Example:
 
 Let's say you just marked an appointment as done by accident. You searched for that
-appointment with `listapt` or `findapt` and the one you want to change is . You then follow these instructions to undo it.
-
-| Appointment | |
-|---------|--------- |
-|`INDEX`| 3 |
+appointment with `listapt` or `findapt` and the one you want to change has index 3.
+You then follow these instructions to undo it.
 
 Steps:
 1. Type `undone 3` in the command box.
@@ -542,14 +529,11 @@ Format : `deleteapt INDEX`
 Example:
 
 Let's say you a client called to cancel his/her appointment. After finding the appointment in Homerce
-with `listapt` or `findapt`, you can follow these instructions to delete that appointment.
-
-| Appointment | |
-|---------|--------- |
-|`INDEX`| 2 |
+with `listapt` or `findapt`, you see that the appointment to delete has index 2. You can follow these instructions 
+to delete that appointment.
 
 Steps:
-1. Type `delete 2` in the command box.
+1. Type `deleteapt 2` in the command box.
 1. Press `Enter` on your keyboard.
 
 Outcome:
@@ -604,7 +588,7 @@ The table below shows a list of command parameters that will be used in this fea
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
 
-#### 4.3.2. Find a Revenue : `findrev`
+#### 4.3.2. Find a revenue : `findrev`
 
 You can use this command to find revenues by 'date' or 'service code' in Homerce.
 
@@ -633,7 +617,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.3.3. Sort Revenues: `sortrev`
+#### 4.3.3. Sort revenues: `sortrev`
 
 You can use this command to sort the list of revenue in ascending or descending order by value in Homerce.
 
@@ -662,7 +646,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.3.4. List Revenues : `listrev`
+#### 4.3.4. List revenues : `listrev`
 
 You can use this command to list all your revenue entries in Homerce.
 
@@ -684,7 +668,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.3.5. Clear Revenue : `clearrev`
+#### 4.3.5. Clear revenue : `clearrev`
 
 You can use this command to clear all revenue entries in Homerce.
 
@@ -706,7 +690,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.3.6. Breakdown Revenue : `breakdownrev`
+#### 4.3.6. Breakdown revenue : `breakdownrev`
 
 You can use this command to breakdown revenue into their relevant categories, based on their 'service code'.
 
@@ -750,7 +734,7 @@ The table below shows a list of command parameters that will be used.
 |`MONTH`| The month the expense is made. <br> <br> It must be a valid integer between 1 - 12. | E.g. Typing '12' would refer to the month of December. 
 |`YEAR`| The year the expense is made. <br> <br> It must be a valid year. | E.g. Typing '2020' would refer to the year 2020.
 
-#### 4.4.2. Add an Expense `addexp`
+#### 4.4.2. Add an expense `addexp`
 
 You can use this command to add a new expense to Homerce.
 
@@ -780,7 +764,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.4.3. Edit an Expense `editexp`
+#### 4.4.3. Edit an expense `editexp`
 
 You can use this command to edit an expense in Homerce.
 
@@ -811,7 +795,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.4.4. Delete an Expense `deleteexp`
+#### 4.4.4. Delete an expense `deleteexp`
 
 You can use this command to delete an expense in Homerce.
 
@@ -821,7 +805,7 @@ Format : `deleteexp INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Expense Tracker Command Parameters](#rexpense-tracker-command-parameters) for more details about each parameter.
+* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -840,7 +824,7 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.4.5. Find an Expense `findexp`
+#### 4.4.5. Find an expense `findexp`
 
 You can use this command to find an expense in Homerce.
 
@@ -869,7 +853,7 @@ Outcome :
 1. It will display a success message. 
 2. Homerce will list out all the expenses for 08-09-2020.
 
-#### 4.4.6. Sort Expenses `sortexp`
+#### 4.4.6. Sort expenses `sortexp`
 
 You can use this command to sort expenses in Homerce.
 
@@ -897,7 +881,7 @@ Outcome :
 1. It will display a success message.
 2. Homerce will list out all the expenses sorted from highest to lowest cost.
 
-#### 4.4.7. List Expenses `listexp`
+#### 4.4.7. List expenses `listexp`
 
 You can use this command to list all your expenses in Homerce.
 
@@ -917,7 +901,7 @@ Outcome :
 1. It will display a success message.
 2. Homerce will list out all your expenses.
 
-#### 4.4.8. Clear Expenses `clearexp`
+#### 4.4.8. Clear expenses `clearexp`
 
 You can use this command to clear all expenses in Homerce.
 
@@ -936,7 +920,7 @@ Steps :
 Outcome :
 1. It will display a success message.
 
-#### 4.4.9. Breakdown Expenses `breakdownexp`
+#### 4.4.9. Breakdown expenses `breakdownexp`
 
 You can use this command to breakdown expenses into their relevant categories, based on their 'tags'.
 
@@ -965,17 +949,154 @@ Outcome :
 2. Homerce will display a Pie Chart that categorizes expenses made in December 2020 based on their 'tags', 
 along with the total cost of all expenses in each category.
 
-### 4.5. Others
+
+### 4.5 Client Manager
+
+Homerce knows that managing the contacts of your clients is a must for any business.
+Thus, this feature allows you to keep track of all the relevant information needed about your clients.
+
+#### 4.5.1. Client Manager Command Parameters
+
+Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
+The table below shows a list of command parameters that will be used.
+
+| Parameter Name | Description | Example
+|---------|---------|---------
+|`NAME`  | The name of the client. <br><br> It must be an alphanumeric word. | E.g. Typing `John Doe` would represent the name of the client saved in the client manager.
+|`EMAIL`| <br>The email of the client. <br> Emails should be in `local-part@domain format` <br><br /> The `local-part` can only contain alphanumeric characters, and the special characters <br >+!#$%&'*+/=?\`{}~^.-&#124;<br><br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.)<br>The domain name must also have at least 2 characters and start and end with alphanumeric characters|johnDoe97@example123.com 
+|`PHONE` | Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long. | E.g. `91234567` would represent the client's phone number.
+|`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend.
+|`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list.
+
+#### 4.5.2. Add a client `addcli`
+
+You can use this command to add a new client to Homerce.
+
+Format : `addcli n/NAME p/PHONE e/EMAIL [t/TAG]`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+A new client just called in to make an appointment .
+
+You can follow the steps below to add the client to Homerce.
+
+Steps :
+1. Type `addcli n/John p/91234567 e/john@gmail.com t/new` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. Homerce will display a success message.
+
+{Example outcome screenshot}
+
+#### 4.5.3. Edit a client's details `editcli`
+
+You can use this command to edit an expense in Homerce.
+
+Format : `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes:**<br>
+ 
+* You must enter at least one optional parameter.
+* The new value entered will overwrite the existing value.
+* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+You misspelled the name of a client when adding it into Homerce and wish to change it to "Johnny".
+
+You can follow the steps below to edit the client.
+
+Steps :
+1. Type `editcli 2 n/Johnny` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. Homerce will display a success message.
+
+{Example outcome screenshot}
+
+#### 4.5.4. Delete a client `deletecli`
+
+You can use this command to delete a client in Homerce.
+
+Format : `deletecli INDEX`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+A client repeatedly fails to turn up for his appointments and you wish to delete his contact. 
+
+You can follow the steps below to delete the client.
+
+Steps :
+1. Type `deletecli 3` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. Homerce will display a success message.
+
+{Example outcome screenshot}
+
+#### 4.5.5. Find a client `findcli`
+
+You can use this command to find a client in Homerce.
+
+Format : `findcli [n/NAME]* [p/PHONE]*`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes:**<br>
+
+* You must enter at least one optional parameter.
+* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+You have many clients in your client list and wish to find more information on the client named John.
+
+You can follow the steps below to get a list of clients named John
+
+Steps :
+1. Type `findcli n/John` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. It will display a success message. 
+2. Homerce will list out all the clients with John in their name.
+
+### 4.6. Others
 
 {Description}
 
-#### 4.5.X. Others Command Parameter Template
+#### 4.6.X. Others Command Parameter Template
 
 {Description}
 
 {Command parameter explanation}
 
-#### 4.5.1. Undo previous change: `undo` 
+#### 4.6.1. Undo previous change: `undo` 
 
 Undo the last change you made to Homerce.
 
@@ -994,11 +1115,11 @@ Outcome:
 
 {add example screenshot outcome}
 
-#### 4.5.2. Viewing help : `help`
+#### 4.6.2. Viewing help : `help`
 
 Show a message explaining how to access the help page.
 
-Format : `help [COMMAND]`
+Format : `help`
 
 {Format explanation / limitation}
 
@@ -1016,7 +1137,7 @@ Outcome:
 
 ![help message](images/helpMessage.png)
 
-#### 4.5.3. Exit Homerce : `exit`
+#### 4.6.3. Exit Homerce : `exit`
 
 Exits the program.
 
@@ -1036,19 +1157,19 @@ Outcome:
 
 {Example outcome screenshot}
 
-#### 4.5.4. Saving the Data - Can consider moving to about.
+#### 4.6.4. Saving the Data - Can consider moving to about.
 
 Homerce data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-### 4.6. Future Feature Enhancement v2.0
+### 4.7. Future Feature Enhancement v2.0
 
 {Description} 
 
-#### 4.6.1. Feature 1
+#### 4.7.1. Feature 1
 
 {Description}
 
-##### 4.6.1.1. Feature command 1 `Feature command 1`
+##### 4.7.1.1. Feature command 1 `Feature command 1`
 
 {Description}
 
@@ -1088,13 +1209,25 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |Action | Format | Examples
 |---------|---------|---------
 |**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Lash Lift d/0.5 p/38`
-|**Edit** | `editsvc s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc s/SC001 d/0.5`
-|**Delete** | `deletesvc s/SERVICE_CODE` | `deletesvc s/SC001`
+|**Edit** | `editsvc INDEX s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc s/SC001 d/0.5`
+|**Delete** | `deletesvc INDEX s/SERVICE_CODE` | `deletesvc s/SC001`
 |**Find** | `findsvc KEYWORD` | `findsvc t/nail`
 |**List** | `listsvc` | 
-|**Clear** | `clearexp` | 
+|**Clear** | `clearsvc` | 
 
 ### 6.2. Appointment Tracker Commands
+
+|Action | Format | Examples
+|---------|---------|---------
+|**Add** | `addapt dt/DATE t/TIME s/SERVICE_CODE p/PHONE_NUMBER` | `addapt dt/15-10-2020 t/1300 s/SC001 p/98429700`
+|**Edit** | `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER] [s/SERVICE_CODE]` | `editapt 1 dt/28-10-2020 t/1300 p/93451222`
+|**Delete** | `deleteapt INDEX` | `deleteapt 1`
+|**Find** | `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]* [m/MONTH]* ` | `findapt p/82341245`
+|**List** | `listapt` |
+|**Clear** | `clearapt`| 
+|**Done** | `done INDEX` | `done 1`
+|**Undone** | `undone INDEX` | `undone 3` 
+
 
 ### 6.3. Revenue Tracker Commands
 |Action | Format | Examples
@@ -1109,9 +1242,9 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |Action | Format | Examples
 |---------------|------------------------------------------------------------------|------------------------------------------------------------------
 |**Add**        | `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`        | `addexp d/conditioner f/n v/15.00 dt/28-10-2020 t/hairsupplies`
-|**Edit**       | `INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]` | `editexp 2 d/Eyelash Curler`
+|**Edit**       | `editexp INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]` | `editexp 2 d/Eyelash Curler`
 |**Delete**     | `deleteexp INDEX`                                                | `deleteexp 3`
-|**Find**       | `[d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*`             | `findexp dt/08-09-2020`
+|**Find**       | `findexp [d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*` | `findexp dt/08-09-2020`
 |**Sort**       | `sortexp ORDER`                                                  | `sortexp desc`
 |**List**       | `listexp`                                                        | 
 |**Clear**      | `clearexp`                                                       | 
@@ -1122,6 +1255,6 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 Action | Format | Examples
 --------|--------|----------
 **Undo** | `undo` | 
-**Help** | `help [COMMAND]` | `help`
+**Help** | `help` |
 **Exit** | `exit` | 
 

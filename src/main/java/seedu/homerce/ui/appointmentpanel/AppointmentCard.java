@@ -51,7 +51,7 @@ public class AppointmentCard extends UiPart<Region> {
         clientName.setText("Name: " + appointment.getClient().getName().fullName);
         clientPhone.setText("Phone: " + appointment.getClient().getPhone().value);
         date.setText(appointment.getAppointmentDate().toUiString());
-        timeOfDay.setText("Time: " + appointment.getAppointmentTime().toUiString());
+        timeOfDay.setText("Time: " + appointment.getAppointmentStartTime().toUiString());
         service.setText("Service: " + appointment.getService().getTitle().value);
         isDone.setText("Done? " + appointment.getStatus().toString());
     }

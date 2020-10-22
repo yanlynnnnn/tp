@@ -1,8 +1,8 @@
 package seedu.homerce.logic.commands;
 
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
+import seedu.homerce.model.manager.HistoryManager;
 
 /**
  * Represents a command with hidden internal logic and the ability to be executed.

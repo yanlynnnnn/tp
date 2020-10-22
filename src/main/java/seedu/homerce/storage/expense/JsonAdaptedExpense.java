@@ -26,6 +26,7 @@ public class JsonAdaptedExpense {
     private final String description;
     private final String isFixed;
     private final JsonAdaptedTag tag;
+    private final boolean isRecurring;
 
     /**
      * Constructs a {@code JsonAdaptedExpense} with the given Expense details.
@@ -33,12 +34,14 @@ public class JsonAdaptedExpense {
     @JsonCreator
     public JsonAdaptedExpense(@JsonProperty("value") Double value, @JsonProperty("date") String date,
                               @JsonProperty("description") String description,
-                              @JsonProperty("isFixed") String isFixed, @JsonProperty("tag") JsonAdaptedTag tag) {
+                              @JsonProperty("isFixed") String isFixed, @JsonProperty("tag") JsonAdaptedTag tag,
+                              @JsonProperty("isRecurring") boolean isRecurring) {
         this.value = new BigDecimal(value);
         this.date = date;
         this.description = description;
         this.isFixed = isFixed;
         this.tag = tag;
+        this.isRecurring = isRecurring;
     }
 
     /**
@@ -50,6 +53,7 @@ public class JsonAdaptedExpense {
         description = source.getDescription().value;
         isFixed = source.getIsFixed().value ? "y" : "n";
         tag = new JsonAdaptedTag(source.getTag());
+        isRecurring = source.getIsFixed().getIsRecurring();
     }
 
     /**
@@ -81,7 +85,14 @@ public class JsonAdaptedExpense {
         if (!IsFixed.isValidIsFixed(isFixed)) {
             throw new IllegalValueException(IsFixed.MESSAGE_CONSTRAINTS);
         }
-        final IsFixed modelIsFixed = new IsFixed(isFixed);
+        IsFixed modelIsFixed;
+        if (isFixed.equals("y") && isRecurring) {
+            modelIsFixed = new IsFixed("y", true);
+        } else if (isFixed.equals("y")) {
+            modelIsFixed = new IsFixed("y", false);
+        } else {
+            modelIsFixed = new IsFixed("n");
+        }
 
         if (description == null) {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,

@@ -9,9 +9,9 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TAG;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.client.Client;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
