@@ -8,10 +8,10 @@ import java.time.Month;
 import java.time.Year;
 import java.util.function.Predicate;
 
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.expense.predicate.ExpenseMonthYearPredicate;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.revenue.predicate.RevenueMonthYearPredicate;
 import seedu.homerce.ui.expensepanel.ExpenseListPanel;
