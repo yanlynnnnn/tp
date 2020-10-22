@@ -197,6 +197,25 @@ public class ParserUtil {
     }
 
     /**
+     * Parses a {@code String order} into a {@code {isAscending}}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code order} is invalid.
+     */
+    public static boolean parseOrder(String order) throws ParseException {
+        requireNonNull(order);
+        order = order.trim();
+        try {
+            if (!order.equals("asc") && !order.equals("desc")) {
+                throw new ParseException("Order should be either 'asc' or 'desc'");
+            }
+            return order.equals("asc");
+        } catch (NumberFormatException e) {
+            throw new ParseException("Order should be either 'asc' or 'desc'");
+        }
+    }
+
+    /**
      * Parses a {@code String Duration} into a {@code {Duration}}.
      * Leading and trailing whitespaces will be trimmed.
      *

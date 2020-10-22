@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.homerce.model.expense.Expense;
+import seedu.homerce.model.expense.ExpenseComparator;
+import seedu.homerce.model.expense.ExpenseDefaultComparator;
 import seedu.homerce.model.util.nonuniquelist.NonUniqueList;
 
 public class ExpenseTracker implements ReadOnlyExpenseTracker {
@@ -115,6 +117,27 @@ public class ExpenseTracker implements ReadOnlyExpenseTracker {
         ExpenseTracker expenseManagerCopy = new ExpenseTracker();
         expenseManagerCopy.setExpenses(internalListCopy);
         return expenseManagerCopy;
+    }
+
+    /**
+     * Sorts the expense list by value.
+     * @param isAscending
+     */
+    @Override
+    public void sortExpenseList(boolean isAscending) {
+        if (isAscending) {
+            expenses.sort(new ExpenseComparator());
+        } else {
+            expenses.sort(new ExpenseComparator().reversed());;
+        }
+    }
+
+    /**
+     * Sorts the expense list by date (default).
+     */
+    @Override
+    public void sortDefaultExpenseList() {
+        expenses.sort(new ExpenseDefaultComparator());
     }
 }
 
