@@ -2,7 +2,7 @@ package seedu.homerce.model.service;
 
 import org.junit.jupiter.api.Test;
 
-public class ServiceTitlePredicate {
+public class ServiceTitlePredicateTest {
     @Test
     public void equals() {
 

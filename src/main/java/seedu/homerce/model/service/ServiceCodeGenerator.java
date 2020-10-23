@@ -1,4 +1,4 @@
-package seedu.homerce.model.util.attributes.service;
+package seedu.homerce.model.service;
 
 import java.util.HashSet;
 import java.util.List;

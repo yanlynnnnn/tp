@@ -13,7 +13,7 @@ import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.service.Service;
-import seedu.homerce.model.util.attributes.service.ServiceCodeGenerator;
+import seedu.homerce.model.service.ServiceCodeGenerator;
 import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
