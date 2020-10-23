@@ -143,7 +143,7 @@ public class FinanceWindow extends UiPart<Stage> {
     }
 
     /**
-     * Shows the help window.
+     * Shows the finance window.
      *
      * @throws IllegalStateException <ul>
      *                               <li>
@@ -162,27 +162,27 @@ public class FinanceWindow extends UiPart<Stage> {
      *                               </ul>
      */
     public void show() {
-        logger.fine("Showing help page about the application.");
+        logger.fine("Showing finance page about the application.");
         getRoot().show();
         getRoot().centerOnScreen();
     }
 
     /**
-     * Returns true if the help window is currently being shown.
+     * Returns true if the finance window is currently being shown.
      */
     public boolean isShowing() {
         return getRoot().isShowing();
     }
 
     /**
-     * Hides the help window.
+     * Hides the finance window.
      */
     public void hide() {
         getRoot().hide();
     }
 
     /**
-     * Focuses on the help window.
+     * Focuses on the finance window.
      */
     public void focus() {
         getRoot().requestFocus();
