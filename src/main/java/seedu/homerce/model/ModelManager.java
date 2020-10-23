@@ -46,7 +46,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
 
     private final FilteredList<Client> filteredClients;
-    private FilteredList<Expense> filteredExpenses;
+    private final FilteredList<Expense> filteredExpenses;
     private final FilteredList<Service> filteredServices;
     private final FilteredList<Revenue> filteredRevenue;
     private final FilteredList<Appointment> filteredAppointments;
