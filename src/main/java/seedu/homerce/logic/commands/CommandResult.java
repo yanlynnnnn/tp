@@ -93,7 +93,7 @@ public class CommandResult {
         return feedbackToUser.equals(otherCommandResult.feedbackToUser)
             && showHelp == otherCommandResult.showHelp
             && exit == otherCommandResult.exit
-            && showFinance == otherCommandResult.showHelp;
+            && showFinance == otherCommandResult.showFinance;
     }
 
     @Override
