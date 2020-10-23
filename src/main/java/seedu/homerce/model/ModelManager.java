@@ -4,15 +4,12 @@ import static java.util.Objects.requireNonNull;
 import static seedu.homerce.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.Collections;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
 
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import seedu.homerce.commons.core.GuiSettings;
 import seedu.homerce.commons.core.LogsCenter;
 import seedu.homerce.commons.util.CollectionUtil;
@@ -20,8 +17,6 @@ import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.client.Phone;
 import seedu.homerce.model.expense.Expense;
-import seedu.homerce.model.expense.ExpenseComparator;
-import seedu.homerce.model.expense.IsFixed;
 import seedu.homerce.model.manager.AppointmentManager;
 import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.ExpenseTracker;
@@ -35,11 +30,6 @@ import seedu.homerce.model.manager.ServiceManager;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
-import seedu.homerce.model.util.attributes.Amount;
-import seedu.homerce.model.util.attributes.Date;
-import seedu.homerce.model.util.attributes.Description;
-import seedu.homerce.model.util.attributes.Tag;
-import seedu.homerce.model.util.nonuniquelist.NonUniqueList;
 
 /**
  * Represents the in-memory model of the homerce data.

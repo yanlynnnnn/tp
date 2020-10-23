@@ -132,7 +132,7 @@ public class HomerceParser {
 
         case ClearExpenseCommand.COMMAND_WORD:
             return new ClearExpenseCommand();
-            
+
         case SortExpenseCommand.COMMAND_WORD:
             return new SortExpenseCommandParser().parse(arguments);
 
