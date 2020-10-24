@@ -53,7 +53,7 @@ public class ModelManager implements Model {
     private final FilteredList<Service> filteredServices;
     private final FilteredList<Revenue> filteredRevenue;
     private final FilteredList<Appointment> filteredAppointments;
-    private final FilteredList<Appointment> filteredSchedule;
+    private FilteredList<Appointment> filteredSchedule;
 
     /**
      * Initializes a ModelManager with the given clientManager and userPrefs.
@@ -470,8 +470,7 @@ public class ModelManager implements Model {
 
     @Override
     public void refreshSchedule() {
-        filteredSchedule.clear();
-        filteredSchedule.addAll(appointmentManager.getAppointmentListCopy());
+        filteredSchedule = new FilteredList<>(appointmentManager.getAppointmentListCopy());
         filteredSchedule.setPredicate(appointmentManager.getCurrentWeekPredicate());
     }
 
