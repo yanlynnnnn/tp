@@ -13,7 +13,6 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import seedu.homerce.commons.core.GuiSettings;
 import seedu.homerce.commons.core.LogsCenter;
 import seedu.homerce.model.expense.Expense;
@@ -145,7 +144,7 @@ public class FinanceWindow extends UiPart<Stage> {
     private void setProfitDisplay(ObservableList<Expense> expenseList, ObservableList<Revenue> revenueList) {
         BigDecimal totalExpense = expenseList
             .stream()
-            .reduce(new BigDecimal(0), (sum, expense) ->  sum.add(expense.getValue().value), (
+            .reduce(new BigDecimal(0), (sum, expense) -> sum.add(expense.getValue().value), (
                 sum, expenseAmount) -> sum.add(expenseAmount));
         BigDecimal totalRevenue = revenueList
             .stream()
