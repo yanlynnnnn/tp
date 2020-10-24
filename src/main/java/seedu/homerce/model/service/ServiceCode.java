@@ -1,5 +1,7 @@
 package seedu.homerce.model.service;
 
+import static java.util.Objects.requireNonNull;
+
 import java.util.function.Predicate;
 
 /**
@@ -9,15 +11,23 @@ public class ServiceCode {
 
     public static final String MESSAGE_CONSTRAINTS = "ServiceCode needs to be in the range of SC000-SC999";
     public static final String LEADING_ZEROES_REGEX = "^0+(?!$)";
-    public static final Predicate<ServiceCode> VALIDATION_PREDICATE = i -> i.value.substring(0, 2).equals("SC")
-        && i.value.length() == 5 && getIntFromServiceCode(i) < 1000 && getIntFromServiceCode(i) >= 0;
+    public static final Predicate<ServiceCode> VALIDATION_PREDICATE = i -> i.value.substring(0, 2)
+        .toUpperCase().equals("SC")
+        && i.value.length() == 5
+        && getIntFromServiceCode(i) < 1000
+        && getIntFromServiceCode(i) >= 0;
 
     /**
      * String representing a unique identification number for each Service object
      */
     public final String value;
 
+    /**
+     * Constructor to generate a service code which is a unique identification number for a service.
+     * @param value is the string to generate the service code.
+     */
     public ServiceCode(String value) {
+        requireNonNull(value);
         this.value = value;
     }
 
