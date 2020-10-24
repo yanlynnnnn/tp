@@ -4,6 +4,8 @@ import static java.util.Objects.requireNonNull;
 import static seedu.homerce.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -30,6 +32,7 @@ import seedu.homerce.model.manager.ServiceManager;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
+import seedu.homerce.model.util.attributes.Date;
 
 /**
  * Represents the in-memory model of the homerce data.
@@ -453,19 +456,33 @@ public class ModelManager implements Model {
 
     @Override
     public void nextSchedulePage() {
-        filteredSchedule.setPredicate(appointmentManager.getNextWeekPredicate());
+        Predicate<Appointment> nextWeekPredicate = appointmentManager.getNextWeekPredicate();
+        appointmentManager.setCalendarNextWeek();
+        filteredSchedule.setPredicate(nextWeekPredicate);
     }
 
     @Override
     public void previousSchedulePage() {
-        filteredSchedule.setPredicate(appointmentManager.getPreviousWeekPredicate());
+        Predicate<Appointment> previousWeekPredicate = appointmentManager.getPreviousWeekPredicate();
+        appointmentManager.setCalendarPreviousWeek();
+        filteredSchedule.setPredicate(previousWeekPredicate);
     }
 
     @Override
-    public void refreshScheduleAppointments() {
+    public void refreshSchedule() {
         filteredSchedule.clear();
         filteredSchedule.addAll(appointmentManager.getAppointmentListCopy());
         filteredSchedule.setPredicate(appointmentManager.getCurrentWeekPredicate());
+    }
+
+    @Override
+    public void updateFilteredSchedule(Predicate<Appointment> predicate) {
+        filteredSchedule.setPredicate(predicate);
+    }
+
+    @Override
+    public void setAppointmentManagerCalendar(Calendar calendar) {
+        appointmentManager.setCalendar(calendar);
     }
 
     @Override

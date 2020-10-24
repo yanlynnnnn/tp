@@ -24,7 +24,8 @@ public class HelpWindow extends UiPart<Stage> {
             + "findapt, listapt, done, undone, addcli, clearcli, deletecli, editcli, "
             + "findcli, listcli, addexp, clearexp, deleteexp, editexp, findexp, "
             + "listexp, addrev, clearrev, deleterev, findrev, listrev, addsvc, clearsvc, "
-            + "deletesvc, editsvc, findsvc, listsvc, help, exit, undo, breakdown.\n"
+            + "deletesvc, editsvc, findsvc, listsvc, schedule, nextweek, previousweek, "
+            + "help, exit, undo, breakdown.\n"
             + "For usage of these commands, refer to the to the user guide: "
             + USERGUIDE_URL;
 

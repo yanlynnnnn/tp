@@ -18,9 +18,10 @@ import seedu.homerce.logic.commands.appointment.DoneAppointmentCommand;
 import seedu.homerce.logic.commands.appointment.EditAppointmentCommand;
 import seedu.homerce.logic.commands.appointment.FindAppointmentCommand;
 import seedu.homerce.logic.commands.appointment.ListAppointmentCommand;
-import seedu.homerce.logic.commands.appointment.ListScheduleCommand;
-import seedu.homerce.logic.commands.appointment.NextPageCommand;
-import seedu.homerce.logic.commands.appointment.PreviousPageCommand;
+import seedu.homerce.logic.commands.schedule.AbstractWeekCommand;
+import seedu.homerce.logic.commands.schedule.NextWeekCommand;
+import seedu.homerce.logic.commands.schedule.PreviousWeekCommand;
+import seedu.homerce.logic.commands.schedule.CustomWeekCommand;
 import seedu.homerce.logic.commands.appointment.UnDoneAppointmentCommand;
 import seedu.homerce.logic.commands.client.AddClientCommand;
 import seedu.homerce.logic.commands.client.ClearClientCommand;
@@ -48,6 +49,7 @@ import seedu.homerce.logic.parser.appointment.DeleteAppointmentCommandParser;
 import seedu.homerce.logic.parser.appointment.DoneAppointmentCommandParser;
 import seedu.homerce.logic.parser.appointment.EditAppointmentCommandParser;
 import seedu.homerce.logic.parser.appointment.FindAppointmentCommandParser;
+import seedu.homerce.logic.parser.schedule.ScheduleCommandParser;
 import seedu.homerce.logic.parser.appointment.UnDoneAppointmentCommandParser;
 import seedu.homerce.logic.parser.client.AddClientCommandParser;
 import seedu.homerce.logic.parser.client.DeleteClientCommandParser;
@@ -191,14 +193,14 @@ public class HomerceParser {
         case BreakdownFinanceCommand.COMMAND_WORD:
             return new BreakdownFinanceCommandParser().parse(arguments);
 
-        case ListScheduleCommand.COMMAND_WORD:
-            return new ListScheduleCommand();
+        case AbstractWeekCommand.COMMAND_WORD:
+            return new ScheduleCommandParser().parse(arguments);
 
-        case NextPageCommand.COMMAND_WORD:
-            return new NextPageCommand();
+        case NextWeekCommand.COMMAND_WORD:
+            return new NextWeekCommand();
 
-        case PreviousPageCommand.COMMAND_WORD:
-            return new PreviousPageCommand();
+        case PreviousWeekCommand.COMMAND_WORD:
+            return new PreviousWeekCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

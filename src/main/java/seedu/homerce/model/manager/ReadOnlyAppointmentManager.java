@@ -21,10 +21,4 @@ public interface ReadOnlyAppointmentManager {
      * by the date stored in the appointment manager.
      */
     ObservableList<Appointment> getAppointmentListCopy();
-
-    Predicate<? super Appointment> getPreviousWeekPredicate();
-
-    Predicate<? super Appointment> getNextWeekPredicate();
-
-    Predicate<? super Appointment> getCurrentWeekPredicate();
 }

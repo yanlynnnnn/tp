@@ -149,28 +149,30 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
     }
 
     //// Used for pagination
+    public Predicate<Appointment> getPreviousWeekPredicate() {
+        return new AppointmentPaginationPredicate(calendar);
+    }
+
+    public Predicate<Appointment> getNextWeekPredicate() {
+        return new AppointmentPaginationPredicate(calendar);
+    }
+
+    public Predicate<Appointment> getCurrentWeekPredicate() {
+        return new AppointmentPaginationPredicate(calendar);
+    }
+
+    public void setCalendarNextWeek() {
+        calendar.add(Calendar.WEEK_OF_YEAR, 1);
+    }
+
+    public void setCalendarPreviousWeek() {
+        calendar.add(Calendar.WEEK_OF_YEAR, -1);
+    }
 
     /**
-     * Set calendar to maintain the state of the pagination.
+     * Set calendar to custom week for custom schedule command.
      */
-    private void setCalendar(Calendar calendar) {
+    public void setCalendar(Calendar calendar) {
         this.calendar = calendar;
-    }
-
-    @Override
-    public Predicate<Appointment> getPreviousWeekPredicate() {
-        calendar.add(Calendar.WEEK_OF_YEAR, -1);
-        return new AppointmentPaginationPredicate(calendar);
-    }
-
-    @Override
-    public Predicate<Appointment> getNextWeekPredicate() {
-        calendar.add(Calendar.WEEK_OF_YEAR, 1);
-        return new AppointmentPaginationPredicate(calendar);
-    }
-
-    @Override
-    public Predicate<? super Appointment> getCurrentWeekPredicate() {
-        return new AppointmentPaginationPredicate(calendar);
     }
 }

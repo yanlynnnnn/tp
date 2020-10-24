@@ -56,7 +56,7 @@ public class UnDoneAppointmentCommand extends Command {
             deletionOfRevenueResult = MESSAGE_FAILED_TO_DELETE_REVENUE;
         }
         model.updateFilteredAppointmentList(Model.PREDICATE_SHOW_ALL_APPOINTMENTS);
-        model.refreshScheduleAppointments();
+        model.refreshSchedule();
         return new CommandResult(
             String.format(MESSAGE_UNDONE_APPOINTMENT_SUCCESS, appointmentToMarkUnDone)
             + "\n" + deletionOfRevenueResult
