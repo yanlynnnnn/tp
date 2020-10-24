@@ -17,6 +17,9 @@ public class ServiceCodePredicate implements Predicate<Service> {
 
     @Override
     public boolean test(Service service) {
+        if (service == null) {
+            return false;
+        }
         return serviceCode.equals(service.getServiceCode());
     }
 
