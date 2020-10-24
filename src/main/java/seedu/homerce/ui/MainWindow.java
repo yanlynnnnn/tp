@@ -102,7 +102,7 @@ public class MainWindow extends UiPart<Stage> {
 
 
         // Default view for user on app startup
-        switchTab(ClientListPanel.TAB_NAME);
+        switchTab(SchedulePanel.TAB_NAME);
         sideTabsBarPlaceholder.getChildren().add(new SideTabsBar(this::switchTab).getRoot());
 
         resultDisplay = new ResultDisplay();

@@ -1,7 +1,5 @@
 package seedu.homerce.model.manager;
 
-import java.util.function.Predicate;
-
 import javafx.collections.ObservableList;
 import seedu.homerce.model.appointment.Appointment;
 

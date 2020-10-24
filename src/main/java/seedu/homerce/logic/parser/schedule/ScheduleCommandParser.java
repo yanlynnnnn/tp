@@ -1,11 +1,6 @@
 package seedu.homerce.logic.parser.schedule;
 
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DATE;
-import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_SERVICE_CODE;
-import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
-
-import java.util.Calendar;
-import java.util.stream.Stream;
 
 import seedu.homerce.logic.commands.schedule.AbstractWeekCommand;
 import seedu.homerce.logic.commands.schedule.CurrentWeekCommand;

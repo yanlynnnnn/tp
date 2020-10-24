@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.homerce.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
 import java.util.function.Predicate;
@@ -32,7 +31,6 @@ import seedu.homerce.model.manager.ServiceManager;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
-import seedu.homerce.model.util.attributes.Date;
 
 /**
  * Represents the in-memory model of the homerce data.

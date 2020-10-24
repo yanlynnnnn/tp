@@ -1,7 +1,6 @@
 package seedu.homerce.model;
 
 import java.nio.file.Path;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
 import java.util.function.Predicate;
@@ -20,7 +19,6 @@ import seedu.homerce.model.manager.ReadOnlyServiceManager;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
-import seedu.homerce.model.util.attributes.Date;
 
 /**
  * The API of the Model component.
