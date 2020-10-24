@@ -82,6 +82,7 @@ public class MainWindow extends UiPart<Stage> {
 
         helpWindow = new HelpWindow();
         financeWindow = new FinanceWindow();
+        financeWindow.setWindowDefaultSize(logic.getGuiSettings());
     }
 
     public Stage getPrimaryStage() {
@@ -177,7 +178,7 @@ public class MainWindow extends UiPart<Stage> {
      */
     @FXML
     public void handleFinance() {
-        if (!helpWindow.isShowing()) {
+        if (!financeWindow.isShowing()) {
             financeWindow.construct(logic.getFilteredExpenseList(), logic.getFilteredRevenueList());
             financeWindow.show();
         } else {

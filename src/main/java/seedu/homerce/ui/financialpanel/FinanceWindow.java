@@ -1,5 +1,7 @@
 package seedu.homerce.ui.financialpanel;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -11,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.PieChart;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+
+import seedu.homerce.commons.core.GuiSettings;
 import seedu.homerce.commons.core.LogsCenter;
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.revenue.Revenue;
@@ -55,6 +59,18 @@ public class FinanceWindow extends UiPart<Stage> {
     }
 
     /**
+     * Sets the default size based on {@code guiSettings}.
+     */
+    public void setWindowDefaultSize(GuiSettings guiSettings) {
+        this.getRoot().setHeight(guiSettings.getWindowHeight() * 0.85);
+        this.getRoot().setWidth(guiSettings.getWindowWidth() * 0.65);
+        if (guiSettings.getWindowCoordinates() != null) {
+            this.getRoot().setX(guiSettings.getWindowCoordinates().getX());
+            this.getRoot().setY(guiSettings.getWindowCoordinates().getY());
+        }
+    }
+
+    /**
      * Fills the data for the expense and revenue pie charts, and calculates the profit for the given month.
      *
      * @param expenseList the list of expenses for the month.
@@ -91,7 +107,7 @@ public class FinanceWindow extends UiPart<Stage> {
             .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         expenseChart.setData(expenseChartData);
-        expenseChart.setLegendVisible(false);
+        expenseChart.setLabelsVisible(false);
     }
 
     /**
@@ -118,7 +134,7 @@ public class FinanceWindow extends UiPart<Stage> {
             .collect(Collectors.toCollection(FXCollections::observableArrayList));
 
         revenueChart.setData(revenueChartData);
-        revenueChart.setLegendVisible(false);
+        revenueChart.setLabelsVisible(false);
     }
 
     /**
@@ -127,19 +143,19 @@ public class FinanceWindow extends UiPart<Stage> {
      * Revenue, expense and profit displays should be capped at 6 digits. Else it will overflow the container box.
      */
     private void setProfitDisplay(ObservableList<Expense> expenseList, ObservableList<Revenue> revenueList) {
-        double totalExpense = expenseList
+        BigDecimal totalExpense = expenseList
             .stream()
-            .reduce(0.0, (sum, expense) -> sum + expense.getValue().value.doubleValue(), (
-                sum, expenseAmount) -> sum + expenseAmount);
-        double totalRevenue = revenueList
+            .reduce(new BigDecimal(0), (sum, expense) ->  sum.add(expense.getValue().value), (
+                sum, expenseAmount) -> sum.add(expenseAmount));
+        BigDecimal totalRevenue = revenueList
             .stream()
-            .reduce(0.0, (sum, revenue) -> sum + revenue.getValue().value.doubleValue(), (
-                sum, revenueAmount) -> sum + revenueAmount);
-        double profit = totalRevenue - totalExpense;
+            .reduce(new BigDecimal(0), (sum, revenue) -> sum.add(revenue.getValue().value), (
+                sum, revenueAmount) -> sum.add(revenueAmount));
+        BigDecimal profit = totalRevenue.subtract(totalExpense);
 
-        profitText.setText("Total Profit: $" + String.valueOf(profit));
-        expenseText.setText("Total Expense: $" + String.valueOf(totalExpense));
-        revenueText.setText("Total Revenue: $" + String.valueOf(totalRevenue));
+        profitText.setText("Total Profit: $" + profit.setScale(2, RoundingMode.HALF_UP).toString());
+        expenseText.setText("Total Expense: $" + totalExpense.setScale(2, RoundingMode.HALF_UP).toString());
+        revenueText.setText("Total Revenue: $" + totalRevenue.setScale(2, RoundingMode.HALF_UP).toString());
     }
 
     /**
