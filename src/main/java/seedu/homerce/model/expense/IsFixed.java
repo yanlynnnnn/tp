@@ -28,6 +28,8 @@ public class IsFixed {
      * @param isRecurring
      */
     public IsFixed(String isFixed, boolean isRecurring) {
+        requireNonNull(isFixed);
+        AppUtil.checkArgument(isValidIsFixed(isFixed), MESSAGE_CONSTRAINTS);
         value = isFixed.equals("y");
         this.isRecurring = isRecurring;
     }
@@ -45,6 +47,14 @@ public class IsFixed {
 
     public static boolean isValidIsFixed(String test) {
         return (test.equals("y") || test.equals("n"));
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof IsFixed// instanceof handles nulls
+                && value == ((IsFixed) other).value
+                && isRecurring == ((IsFixed) other).getIsRecurring()); // state check
     }
 
     @Override
