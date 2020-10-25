@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
+import seedu.homerce.model.manager.HistoryManager;
 
 /**
  * Clears the appointment list.
@@ -15,12 +15,13 @@ import seedu.homerce.model.Model;
 public class ClearAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "clearapt";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": clears all appointments in Homerce.";
-    public static final String MESSAGE_SUCCESS = "Appointment list has been cleared!";
+    public static final String MESSAGE_CLEAR_APPOINTMENT_SUCCESS = "Appointment list has been cleared!";
 
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
         model.setAppointment(new ArrayList<>());
-        return new CommandResult(MESSAGE_SUCCESS);
+        model.updateFilteredAppointmentList(Model.PREDICATE_SHOW_ALL_APPOINTMENTS);
+        return new CommandResult(MESSAGE_CLEAR_APPOINTMENT_SUCCESS);
     }
 }

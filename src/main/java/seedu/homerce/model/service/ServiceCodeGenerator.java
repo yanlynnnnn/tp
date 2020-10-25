@@ -1,11 +1,9 @@
-package seedu.homerce.model.util.attributes.service;
+package seedu.homerce.model.service;
 
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import seedu.homerce.model.service.Duration;
-import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.exceptions.MaximumServiceException;
 import seedu.homerce.model.util.attributes.Amount;
 import seedu.homerce.model.util.attributes.Title;
@@ -21,6 +19,10 @@ public class ServiceCodeGenerator {
      * @return a unique identification code for a Service object.
      */
     public static String generateNewServiceCode(List<Service> serviceList) {
+        if (serviceList == null) {
+            return "SC000";
+        }
+
         Set<Service> set = new HashSet<>(serviceList);
         String serviceCode = "";
 

@@ -7,10 +7,40 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import javafx.collections.FXCollections;
 import seedu.homerce.model.service.exceptions.ServiceNotFoundException;
 import seedu.homerce.model.util.uniquelist.UniqueList;
 
 public class UniqueServiceList extends UniqueList<Service> {
+    private final ServiceComparator serviceComparator = new ServiceComparator();
+
+    @Override
+    public void add(Service toAdd) {
+        super.add(toAdd);
+        FXCollections.sort(internalList, serviceComparator);
+
+    }
+
+    @Override
+    public void setItem(Service target, Service edited) {
+        super.setItem(target, edited);
+        FXCollections.sort(internalList, serviceComparator);
+
+    }
+
+    @Override
+    public void setItems(UniqueList<Service> replacement) {
+        super.setItems(replacement);
+        FXCollections.sort(internalList, serviceComparator);
+
+    }
+
+    @Override
+    public void setItems(List<Service> items) {
+        super.setItems(items);
+        FXCollections.sort(internalList, serviceComparator);
+
+    }
 
     /**
      * Returns true if the list contains an equivalent item as the given argument.

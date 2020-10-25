@@ -32,7 +32,7 @@ import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
 
 /**
- * Represents the in-memory model of the homerce book data.
+ * Represents the in-memory model of the homerce data.
  */
 public class ModelManager implements Model {
 
@@ -46,7 +46,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
 
     private final FilteredList<Client> filteredClients;
-    private final FilteredList<Expense> filteredExpenses;
+    private FilteredList<Expense> filteredExpenses;
     private final FilteredList<Service> filteredServices;
     private final FilteredList<Revenue> filteredRevenue;
     private final FilteredList<Appointment> filteredAppointments;

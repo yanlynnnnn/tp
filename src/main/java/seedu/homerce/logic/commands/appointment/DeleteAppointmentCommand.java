@@ -9,12 +9,12 @@ import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.appointment.Appointment;
+import seedu.homerce.model.manager.HistoryManager;
 
 /**
- * Deletes an appointment identified using it's displayed index from the homerce book.
+ * Deletes an appointment identified using it's displayed index from the homerce.
  */
 public class DeleteAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "deleteapt";
@@ -23,8 +23,7 @@ public class DeleteAppointmentCommand extends Command {
         + ": Deletes the appointment identified by the index number used in the displayed appointment list.\n"
         + "Parameters: INDEX (must be a positive integer)\n"
         + "Example: " + COMMAND_WORD + " 1";
-
-    public static final String MESSAGE_DELETE_APPOINTMENT_SUCCESS = "Deleted Appointment: %1$s";
+    private static final String MESSAGE_DELETE_APPOINTMENT_SUCCESS = "Deleted Appointment: %1$s";
 
     private final Index targetIndex;
 

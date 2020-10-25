@@ -4,7 +4,7 @@ import javafx.collections.ObservableList;
 import seedu.homerce.model.service.Service;
 
 /**
- * Unmodifiable view of an homerce book
+ * Unmodifiable view of an homerce
  */
 public interface ReadOnlyServiceManager {
     /**

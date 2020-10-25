@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.homerce.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
@@ -109,6 +110,13 @@ public class NonUniqueList<T> implements Iterable<T> {
             itemsCopy.add(iterator.next());
         }
         return itemsCopy;
+    }
+
+    /**
+     * Sorts the Non Unique List.
+     */
+    public void sort(Comparator<T> comparator) {
+        FXCollections.sort(internalList, comparator);
     }
 }
 

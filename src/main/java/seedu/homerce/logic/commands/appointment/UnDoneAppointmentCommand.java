@@ -9,9 +9,10 @@ import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.appointment.Appointment;
+import seedu.homerce.model.manager.HistoryManager;
+import seedu.homerce.model.revenue.Revenue;
 
 public class UnDoneAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "undone";
@@ -21,8 +22,10 @@ public class UnDoneAppointmentCommand extends Command {
         + "Parameters: INDEX (must be a positive integer)\n"
         + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_UNDONE_APPOINTMENT_SUCCESS = "Marked Appointment as undone: %1$s";
-
+    private static final String MESSAGE_UNDONE_APPOINTMENT_SUCCESS = "Marked Appointment as undone: %1$s";
+    private static final String MESSAGE_DELETE_REVENUE_SUCCESS = "Deleted this ";
+    private static final String MESSAGE_FAILED_TO_DELETE_REVENUE =
+        "Failed to delete the revenue attached to this appointment. Check storage files for corruption.";
     private final Index targetIndex;
 
     public UnDoneAppointmentCommand(Index targetIndex) {
@@ -37,9 +40,26 @@ public class UnDoneAppointmentCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX);
         }
         Appointment appointmentToMarkUnDone = lastShownList.get(targetIndex.getZeroBased());
+        if (!appointmentToMarkUnDone.getStatus().isDone()) {
+            throw new CommandException(Messages.MESSAGE_APPOINTMENT_ALREADY_UNDONE);
+        }
         appointmentToMarkUnDone.markUnDone();
-        // TODO Add Revenue entry based on appointment.
-        return new CommandResult(String.format(MESSAGE_UNDONE_APPOINTMENT_SUCCESS, appointmentToMarkUnDone));
+        Revenue revenueToRemove = new Revenue(
+            appointmentToMarkUnDone.getService(),
+            appointmentToMarkUnDone.getAppointmentDate()
+        );
+        String deletionOfRevenueResult;
+        if (model.getFilteredRevenueList().contains(revenueToRemove)) {
+            model.deleteRevenue(revenueToRemove);
+            deletionOfRevenueResult = String.format(MESSAGE_DELETE_REVENUE_SUCCESS, revenueToRemove);
+        } else {
+            deletionOfRevenueResult = MESSAGE_FAILED_TO_DELETE_REVENUE;
+        }
+        model.updateFilteredAppointmentList(Model.PREDICATE_SHOW_ALL_APPOINTMENTS);
+        return new CommandResult(
+            String.format(MESSAGE_UNDONE_APPOINTMENT_SUCCESS, appointmentToMarkUnDone)
+            + "\n" + deletionOfRevenueResult
+        );
     }
 
     @Override

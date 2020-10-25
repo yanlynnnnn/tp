@@ -59,7 +59,7 @@ public class ClientManager implements ReadOnlyClientManager {
     //// client-level operations
 
     /**
-     * Returns true if a client with the same identity as {@code client} exists in the homerce book.
+     * Returns true if a client with the same identity as {@code client} exists in the homerce.
      */
     public boolean hasClient(Client client) {
         requireNonNull(client);
@@ -67,7 +67,7 @@ public class ClientManager implements ReadOnlyClientManager {
     }
 
     /**
-     * Returns true if a client with the same phone number as {@code phone} exists in the homerce book.
+     * Returns true if a client with the same phone number as {@code phone} exists in the homerce.
      */
     public boolean checkClientWithPhone(Phone phone) {
         requireNonNull(phone);
@@ -75,8 +75,8 @@ public class ClientManager implements ReadOnlyClientManager {
     }
 
     /**
-     * Adds a client to the homerce book.
-     * The client must not already exist in the homerce book.
+     * Adds a client to the homerce.
+     * The client must not already exist in the homerce.
      */
     public void addClient(Client p) {
         clients.add(p);
@@ -84,8 +84,8 @@ public class ClientManager implements ReadOnlyClientManager {
 
     /**
      * Replaces the given client {@code target} in the list with {@code editedClient}.
-     * {@code target} must exist in the homerce book.
-     * The client identity of {@code editedClient} must not be the same as another existing client in the homerce book.
+     * {@code target} must exist in the homerce.
+     * The client identity of {@code editedClient} must not be the same as another existing client in the homerce.
      */
     public void setClient(Client target, Client editedClient) {
         requireNonNull(editedClient);
@@ -100,7 +100,7 @@ public class ClientManager implements ReadOnlyClientManager {
 
     /**
      * Removes {@code key} from this {@code AddressBook}.
-     * {@code key} must exist in the homerce book.
+     * {@code key} must exist in the homerce.
      */
     public void removeClient(Client key) {
         clients.remove(key);
