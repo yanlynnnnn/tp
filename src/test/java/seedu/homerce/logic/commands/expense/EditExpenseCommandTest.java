@@ -15,6 +15,7 @@ import static seedu.homerce.testutil.expense.TypicalExpenseIndexes.INDEX_SECOND_
 import static seedu.homerce.testutil.expense.TypicalExpenses.getTypicalExpenseTracker;
 
 import org.junit.jupiter.api.Test;
+
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ModelManager;
@@ -80,7 +81,8 @@ public class EditExpenseCommandTest {
         final EditExpenseCommand standardCommand = new EditExpenseCommand(INDEX_FIRST_EXPENSE, DESC_CONDITIONER);
 
         // same values -> returns true
-        EditExpenseCommand.EditExpenseDescriptor copyDescriptor = new EditExpenseCommand.EditExpenseDescriptor(DESC_CONDITIONER);
+        EditExpenseCommand.EditExpenseDescriptor copyDescriptor =
+                new EditExpenseCommand.EditExpenseDescriptor(DESC_CONDITIONER);
         EditExpenseCommand commandWithSameValues = new EditExpenseCommand(INDEX_FIRST_EXPENSE, copyDescriptor);
         assertTrue(standardCommand.equals(commandWithSameValues));
 

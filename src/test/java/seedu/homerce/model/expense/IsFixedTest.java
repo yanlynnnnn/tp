@@ -36,7 +36,7 @@ public class IsFixedTest {
         assertThrows(IllegalArgumentException.class, () -> new IsFixed(invalidIsFixedLetters, false));
 
         String invalidIsFixedSymbol = "//";
-        assertThrows(IllegalArgumentException.class, () -> new IsFixed(invalidIsFixedSymbol, true ));
+        assertThrows(IllegalArgumentException.class, () -> new IsFixed(invalidIsFixedSymbol, true));
     }
 
     @Test

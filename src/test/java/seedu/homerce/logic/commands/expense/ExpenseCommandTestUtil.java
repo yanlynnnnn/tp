@@ -1,7 +1,6 @@
 package seedu.homerce.logic.commands.expense;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
@@ -10,16 +9,12 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.homerce.testutil.Assert.assertThrows;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.Model;
-import seedu.homerce.model.client.Client;
-import seedu.homerce.model.client.predicate.NameContainsKeywordsPredicate;
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.manager.ExpenseTracker;
 import seedu.homerce.model.manager.HistoryManager;
