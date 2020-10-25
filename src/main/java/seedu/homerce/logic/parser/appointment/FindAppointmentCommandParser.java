@@ -23,9 +23,8 @@ import seedu.homerce.model.appointment.predicate.AppointmentPhonePredicate;
 import seedu.homerce.model.appointment.predicate.AppointmentServiceCodePredicate;
 
 public class FindAppointmentCommandParser implements Parser<FindAppointmentCommand> {
-
-    public static final String MULTIPLE_PARAMETERS = "Please only input one parameter.";
-    public static final int NUM_ALLOWED_PARAMETERS = 1;
+    private static final String MULTIPLE_PARAMETERS = "Please only input one parameter.";
+    private static final int NUM_ALLOWED_PARAMETERS = 1;
 
     @Override
     public FindAppointmentCommand parse(String userInput) throws ParseException {

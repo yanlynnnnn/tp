@@ -1,6 +1,7 @@
 package seedu.homerce.model;
 
 import java.nio.file.Path;
+import java.util.Calendar;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -305,8 +306,23 @@ public interface Model {
 
     void setAppointmentManager(ReadOnlyAppointmentManager appointmentManager);
 
+    // ====================== Schedule ========================
+    ObservableList<Appointment> getFilteredSchedule();
+
+    void nextSchedulePage();
+
+    void previousSchedulePage();
+
+    void refreshSchedule();
+
+    void updateFilteredSchedule(Predicate<Appointment> predicate);
+
+    void setAppointmentManagerCalendar(Calendar calendar);
+
     // ====================== HistoryManager ========================
     void replaceModel(Model previousModel);
 
     Model deepCopy();
+
+
 }

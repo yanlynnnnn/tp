@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.homerce.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.Calendar;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -50,6 +51,7 @@ public class ModelManager implements Model {
     private final FilteredList<Service> filteredServices;
     private final FilteredList<Revenue> filteredRevenue;
     private final FilteredList<Appointment> filteredAppointments;
+    private FilteredList<Appointment> filteredSchedule;
 
     /**
      * Initializes a ModelManager with the given clientManager and userPrefs.
@@ -73,6 +75,7 @@ public class ModelManager implements Model {
         filteredExpenses = new FilteredList<>(this.expenseTracker.getExpenseList());
         filteredServices = new FilteredList<>(this.serviceManager.getServiceList());
         filteredAppointments = new FilteredList<>(this.appointmentManager.getAppointmentList());
+        filteredSchedule = new FilteredList<>(this.appointmentManager.getAppointmentList());
         filteredRevenue = new FilteredList<>(this.revenueTracker.getRevenueList());
     }
 
@@ -98,6 +101,7 @@ public class ModelManager implements Model {
         filteredExpenses = new FilteredList<>(this.expenseTracker.getExpenseList());
         filteredServices = new FilteredList<>(this.serviceManager.getServiceList());
         filteredAppointments = new FilteredList<>(this.appointmentManager.getAppointmentList());
+        filteredSchedule = new FilteredList<>(this.appointmentManager.getAppointmentList());
         filteredRevenue = new FilteredList<>(this.revenueTracker.getRevenueList());
     }
 
@@ -441,7 +445,43 @@ public class ModelManager implements Model {
         this.appointmentManager.resetData(appointmentManager);
     }
 
-    //================== AppointmentManager ==================
+    //================== Schedule ==================
+    @Override
+    public ObservableList<Appointment> getFilteredSchedule() {
+        filteredSchedule.setPredicate(appointmentManager.getCurrentWeekPredicate());
+        return filteredSchedule;
+    }
+
+    @Override
+    public void nextSchedulePage() {
+        Predicate<Appointment> nextWeekPredicate = appointmentManager.getNextWeekPredicate();
+        appointmentManager.setCalendarNextWeek();
+        filteredSchedule.setPredicate(nextWeekPredicate);
+    }
+
+    @Override
+    public void previousSchedulePage() {
+        Predicate<Appointment> previousWeekPredicate = appointmentManager.getPreviousWeekPredicate();
+        appointmentManager.setCalendarPreviousWeek();
+        filteredSchedule.setPredicate(previousWeekPredicate);
+    }
+
+    @Override
+    public void refreshSchedule() {
+        filteredSchedule = new FilteredList<>(appointmentManager.getAppointmentListCopy());
+        filteredSchedule.setPredicate(appointmentManager.getCurrentWeekPredicate());
+    }
+
+    @Override
+    public void updateFilteredSchedule(Predicate<Appointment> predicate) {
+        filteredSchedule.setPredicate(predicate);
+    }
+
+    @Override
+    public void setAppointmentManagerCalendar(Calendar calendar) {
+        appointmentManager.setCalendar(calendar);
+    }
+
     @Override
     public void replaceModel(Model previousModel) {
         this.setClientManager(previousModel.getClientManager());
@@ -482,6 +522,7 @@ public class ModelManager implements Model {
             && filteredClients.equals(other.filteredClients)
             && filteredServices.equals(other.filteredServices)
             && filteredAppointments.equals(other.filteredAppointments)
+            && filteredSchedule.equals(other.filteredSchedule)
             && filteredExpenses.equals(other.filteredExpenses);
     }
 }

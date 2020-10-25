@@ -104,7 +104,7 @@ public class MainWindow extends UiPart<Stage> {
         appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
 
         // Default view for user on app startup
-        switchTab(ClientListPanel.TAB_NAME);
+        switchTab(SchedulePanel.TAB_NAME);
         sideTabsBarPlaceholder.getChildren().add(new SideTabsBar(this::switchTab).getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -140,7 +140,7 @@ public class MainWindow extends UiPart<Stage> {
             tabPanelPlaceholder.getChildren().add(expenseListPanel.getRoot());
             break;
         case SchedulePanel.TAB_NAME:
-            schedulePanel = new SchedulePanel(logic.getFilteredAppointmentList());
+            schedulePanel = new SchedulePanel(logic.getFilteredSchedule());
             schedulePanel.construct();
             tabPanelPlaceholder.getChildren().add(schedulePanel.getRoot());
             break;
