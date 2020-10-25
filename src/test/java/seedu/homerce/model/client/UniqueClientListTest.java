@@ -1,12 +1,10 @@
 package seedu.homerce.model.client;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.homerce.testutil.Assert.assertThrows;
-import static seedu.homerce.testutil.TypicalClients.ALICE;
-import static seedu.homerce.testutil.TypicalClients.BOB;
+import static seedu.homerce.testutil.TypicalClients.*;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -22,10 +20,11 @@ public class UniqueClientListTest {
 
     private final UniqueClientList uniqueClientList = new UniqueClientList();
 
-    //    @Test
-    //    public void contains_nullClient_throwsNullPointerException() {
-    //        assertThrows(NullPointerException.class, () -> uniqueClientList.contains(null));
-    //    }
+    @Test
+    public void contains_null_throwsNullPointerException() {
+        assertThrows(NullPointerException.class, () -> uniqueClientList.containsPhone(null));
+        assertThrows(NullPointerException.class, () -> uniqueClientList.contains(null));
+    }
 
     @Test
     public void contains_clientNotInList_returnsFalse() {
@@ -165,5 +164,33 @@ public class UniqueClientListTest {
     public void asUnmodifiableObservableList_modifyList_throwsUnsupportedOperationException() {
         assertThrows(UnsupportedOperationException.class, ()
             -> uniqueClientList.asUnmodifiableObservableList().remove(0));
+    }
+
+    @Test
+    public void testHashCode() {
+        UniqueClientList firstList = new UniqueClientList();
+        UniqueClientList secondList = new UniqueClientList();
+        firstList.add(ALICE);
+        secondList.add(ALICE);
+
+        assertEquals(firstList.hashCode(), secondList.hashCode());
+
+        secondList.add(BOB);
+        assertNotEquals(firstList.hashCode(), secondList.hashCode());
+    }
+
+    @Test
+    public void getClientByPhone() {
+        uniqueClientList.add(BOB);
+        uniqueClientList.add(ALICE);
+        uniqueClientList.add(AMY);
+
+        Phone validPhone = new Phone("94351253");
+        Phone invalidPhone = new Phone("92121212");
+
+        assertEquals(uniqueClientList.getClientByPhone(validPhone), ALICE);
+        assertNotEquals(uniqueClientList.getClientByPhone(validPhone), BOB);
+
+        assertThrows(ClientNotFoundException.class, () -> uniqueClientList.getClientByPhone(invalidPhone));
     }
 }

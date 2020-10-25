@@ -40,7 +40,7 @@ public class UniqueClientList implements Iterable<Client> {
     /**
      * Returns true if the list contains a client with the provided phone number.
      */
-    public boolean contains(Phone toCheck) {
+    public boolean containsPhone(Phone toCheck) {
         requireNonNull(toCheck);
         return internalList.stream().anyMatch(x -> x.getPhone().equals(toCheck));
     }
