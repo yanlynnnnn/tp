@@ -15,7 +15,6 @@ public class AppointmentTemp {
     private final TimeOfDay timeOfDay;
     private final ServiceCode serviceCode;
     private final Phone phone;
-    private final Status status;
 
     /**
      * Constructor for an Temporary Appointment object to be parsed in Appointment parsers.
@@ -26,7 +25,6 @@ public class AppointmentTemp {
         this.timeOfDay = timeOfDay;
         this.phone = phone;
         this.serviceCode = serviceCode;
-        this.status = new Status("n");
     }
 
     public Phone getPhone() {
@@ -41,7 +39,7 @@ public class AppointmentTemp {
         return appointmentDate;
     }
 
-    public TimeOfDay getAppointmentTime() {
+    public TimeOfDay getAppointmentStartTime() {
         return timeOfDay;
     }
 }

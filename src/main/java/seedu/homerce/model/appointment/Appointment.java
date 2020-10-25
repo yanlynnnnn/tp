@@ -2,18 +2,22 @@ package seedu.homerce.model.appointment;
 
 import static seedu.homerce.commons.util.CollectionUtil.requireAllNonNull;
 
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 import seedu.homerce.model.client.Client;
+import seedu.homerce.model.service.Duration;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.util.attributes.Date;
 import seedu.homerce.model.util.uniquelist.UniqueListItem;
 
 /**
- * Represents an Appointment in the homerce book.
+ * Represents an Appointment in the homerce.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
 public class Appointment implements UniqueListItem {
+    private static final DateTimeFormatter FORMAT_INPUT = DateTimeFormatter.ofPattern("HHmm");
 
     private final Date appointmentDate;
     private final TimeOfDay timeOfDay;
@@ -46,12 +50,21 @@ public class Appointment implements UniqueListItem {
         return appointmentDate;
     }
 
-    public TimeOfDay getAppointmentTime() {
+    public TimeOfDay getAppointmentStartTime() {
         return timeOfDay;
     }
 
     public Status getStatus() {
         return status;
+    }
+
+    public TimeOfDay getAppointmentEndTime() {
+        // Duration time has intervals of 0.5h
+        double durationMinutes = service.getDuration().value * 60;
+        LocalTime endTime = timeOfDay.getTime().plusMinutes((long) durationMinutes);
+        String formattedEndTime = endTime.format(FORMAT_INPUT);
+
+        return new TimeOfDay(formattedEndTime);
     }
 
     public void markDone() {
@@ -81,7 +94,7 @@ public class Appointment implements UniqueListItem {
         return otherAppointment.getClient().equals(getClient())
                 && otherAppointment.getService().equals(getService())
                 && otherAppointment.getAppointmentDate().equals(getAppointmentDate())
-                && otherAppointment.getAppointmentTime().equals(getAppointmentTime());
+                && otherAppointment.getAppointmentStartTime().equals(getAppointmentStartTime());
     }
 
     @Override
@@ -95,7 +108,7 @@ public class Appointment implements UniqueListItem {
         final StringBuilder builder = new StringBuilder();
         builder.append(getAppointmentDate())
                 .append(" ")
-                .append(getAppointmentTime())
+                .append(getAppointmentStartTime())
                 .append(" Client: ")
                 .append(getClient())
                 .append(" Service ")
@@ -105,6 +118,9 @@ public class Appointment implements UniqueListItem {
         return builder.toString();
     }
 
+    /**
+     * Method to prevent duplicate appointments from being added into a UniqueAppointmentList.
+     */
     @Override
     public boolean isSame(UniqueListItem other) {
         if (other == this) {
@@ -114,11 +130,32 @@ public class Appointment implements UniqueListItem {
         if (!(other instanceof Appointment)) {
             return false;
         }
-
         Appointment otherAppointment = (Appointment) other;
-        return client.equals(otherAppointment.getClient())
-                && service.equals(otherAppointment.getService())
-                && appointmentDate.equals(otherAppointment.appointmentDate)
-                && timeOfDay.equals(otherAppointment.timeOfDay);
+        if (appointmentDate.equals(otherAppointment.appointmentDate)) {
+            return isClashing(otherAppointment);
+        } else {
+            return false;
+        }
+    }
+
+    private boolean isClashing(Appointment other) {
+        LocalTime startTimeOfThis = getAppointmentStartTime().getLocalTime();
+        LocalTime startTimeOfOther = other.getAppointmentStartTime().getLocalTime();
+        if (startTimeOfThis.equals(startTimeOfOther)) {
+            return true;
+        }
+        Duration durationThis = getService().getDuration();
+        Duration durationOther = other.getService().getDuration();
+        LocalTime endTimeOfThis = startTimeOfThis
+            .plusHours((long) Math.floor(durationThis.value))
+            .plusMinutes((long) ((durationThis.value % 1) * 60));
+        LocalTime endTimeOfOther = startTimeOfOther
+            .plusHours((long) Math.floor(durationOther.value))
+            .plusMinutes((long) ((durationOther.value % 1) * 60));
+        boolean result = (endTimeOfOther.isAfter(startTimeOfThis) && endTimeOfOther.isBefore(endTimeOfThis))
+                || (endTimeOfOther.isAfter(endTimeOfThis) && startTimeOfOther.isBefore(startTimeOfThis))
+                || (endTimeOfThis.isAfter(endTimeOfOther) && startTimeOfThis.isBefore(startTimeOfOther))
+                || (endTimeOfThis.isAfter(startTimeOfOther) && endTimeOfThis.isBefore(endTimeOfOther));
+        return result;
     }
 }

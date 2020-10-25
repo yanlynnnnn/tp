@@ -8,13 +8,13 @@ import java.util.function.Predicate;
 import seedu.homerce.commons.core.Messages;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.ui.revenuepanel.RevenueListPanel;
 
 /**
- * Finds and lists all revenue in homerce book whose name contains any of the argument keywords.
+ * Finds and lists all revenue in homerce whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
  */
 public class FindRevenueCommand extends Command {

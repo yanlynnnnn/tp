@@ -8,6 +8,7 @@ public class IsFixed {
     public static final String MESSAGE_CONSTRAINTS = "IsFixed must be in 'y' or 'n' format.";
 
     public final boolean value;
+    private boolean isRecurring;
 
     /**
      * Represents whether the expense is fixed.
@@ -16,7 +17,30 @@ public class IsFixed {
     public IsFixed(String isFixed) {
         requireNonNull(isFixed);
         AppUtil.checkArgument(isValidIsFixed(isFixed), MESSAGE_CONSTRAINTS);
-        value = (isFixed.equals("y")) ? true : false;
+        boolean isExpenseFixed = isFixed.equals("y");
+        value = isExpenseFixed;
+        isRecurring = isExpenseFixed;
+    }
+
+    /**
+     * Represents whether the expense is fixed and is recurring.
+     * @param isFixed
+     * @param isRecurring
+     */
+    public IsFixed(String isFixed, boolean isRecurring) {
+        value = isFixed.equals("y");
+        this.isRecurring = isRecurring;
+    }
+
+    /**
+     * Mark IsFixed as recurred.
+     */
+    public void markAsRecurred() {
+        this.isRecurring = false;
+    }
+
+    public boolean getIsRecurring() {
+        return this.isRecurring;
     }
 
     public static boolean isValidIsFixed(String test) {

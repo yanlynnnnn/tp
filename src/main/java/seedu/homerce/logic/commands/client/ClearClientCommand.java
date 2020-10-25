@@ -4,12 +4,12 @@ import static java.util.Objects.requireNonNull;
 
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.manager.ClientManager;
+import seedu.homerce.model.manager.HistoryManager;
 
 /**
- * Clears the homerce book.
+ * Clears the homerce.
  */
 public class ClearClientCommand extends Command {
 

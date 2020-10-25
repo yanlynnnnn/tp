@@ -54,13 +54,15 @@ public interface Logic {
     /** Returns an unmodifiable view of the filtered list of appointments */
     ObservableList<Appointment> getFilteredAppointmentList();
 
+    /** Returns an unmodifiable view of the filtered list of appointments for a particular week */
+    ObservableList<Appointment> getFilteredSchedule();
     /**
      * Returns an unmodifiable view of the filtered list of revenues
      */
     ObservableList<Revenue> getFilteredRevenueList();
 
     /**
-     * Returns the user prefs' homerce book file path.
+     * Returns the user prefs' homerce file path.
      */
     Path getClientManagerFilePath();
 

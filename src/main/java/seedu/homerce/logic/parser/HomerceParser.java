@@ -6,10 +6,10 @@ import static seedu.homerce.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import seedu.homerce.logic.commands.BreakdownFinanceCommand;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.ExitCommand;
 import seedu.homerce.logic.commands.HelpCommand;
-import seedu.homerce.logic.commands.ProfitCommand;
 import seedu.homerce.logic.commands.UndoCommand;
 import seedu.homerce.logic.commands.appointment.AddAppointmentCommand;
 import seedu.homerce.logic.commands.appointment.ClearAppointmentCommand;
@@ -26,15 +26,18 @@ import seedu.homerce.logic.commands.client.EditClientCommand;
 import seedu.homerce.logic.commands.client.FindClientCommand;
 import seedu.homerce.logic.commands.client.ListClientCommand;
 import seedu.homerce.logic.commands.expense.AddExpenseCommand;
-import seedu.homerce.logic.commands.expense.BreakdownExpenseCommand;
 import seedu.homerce.logic.commands.expense.ClearExpenseCommand;
 import seedu.homerce.logic.commands.expense.DeleteExpenseCommand;
 import seedu.homerce.logic.commands.expense.EditExpenseCommand;
 import seedu.homerce.logic.commands.expense.FindExpenseCommand;
 import seedu.homerce.logic.commands.expense.ListExpenseCommand;
+import seedu.homerce.logic.commands.expense.SortExpenseCommand;
 import seedu.homerce.logic.commands.revenue.ClearRevenueCommand;
 import seedu.homerce.logic.commands.revenue.FindRevenueCommand;
 import seedu.homerce.logic.commands.revenue.ListRevenueCommand;
+import seedu.homerce.logic.commands.schedule.AbstractWeekCommand;
+import seedu.homerce.logic.commands.schedule.NextWeekCommand;
+import seedu.homerce.logic.commands.schedule.PreviousWeekCommand;
 import seedu.homerce.logic.commands.service.AddServiceCommand;
 import seedu.homerce.logic.commands.service.ClearServiceCommand;
 import seedu.homerce.logic.commands.service.DeleteServiceCommand;
@@ -53,11 +56,12 @@ import seedu.homerce.logic.parser.client.EditClientCommandParser;
 import seedu.homerce.logic.parser.client.FindClientCommandParser;
 import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.logic.parser.expense.AddExpenseCommandParser;
-import seedu.homerce.logic.parser.expense.BreakdownExpenseCommandParser;
 import seedu.homerce.logic.parser.expense.DeleteExpenseCommandParser;
 import seedu.homerce.logic.parser.expense.EditExpenseCommandParser;
 import seedu.homerce.logic.parser.expense.FindExpenseCommandParser;
+import seedu.homerce.logic.parser.expense.SortExpenseCommandParser;
 import seedu.homerce.logic.parser.revenue.FindRevenueCommandParser;
+import seedu.homerce.logic.parser.schedule.ScheduleCommandParser;
 import seedu.homerce.logic.parser.service.AddServiceCommandParser;
 import seedu.homerce.logic.parser.service.DeleteServiceCommandParser;
 import seedu.homerce.logic.parser.service.EditServiceCommandParser;
@@ -133,8 +137,8 @@ public class HomerceParser {
         case ClearExpenseCommand.COMMAND_WORD:
             return new ClearExpenseCommand();
 
-        case BreakdownExpenseCommand.COMMAND_WORD:
-            return new BreakdownExpenseCommandParser().parse(arguments);
+        case SortExpenseCommand.COMMAND_WORD:
+            return new SortExpenseCommandParser().parse(arguments);
 
         case AddServiceCommand.COMMAND_WORD:
             return new AddServiceCommandParser().parse(arguments);
@@ -190,8 +194,17 @@ public class HomerceParser {
         case UndoCommand.COMMAND_WORD:
             return new UndoCommand();
 
-        case ProfitCommand.COMMAND_WORD:
-            return new ProfitCommandParser().parse(arguments);
+        case BreakdownFinanceCommand.COMMAND_WORD:
+            return new BreakdownFinanceCommandParser().parse(arguments);
+
+        case AbstractWeekCommand.COMMAND_WORD:
+            return new ScheduleCommandParser().parse(arguments);
+
+        case NextWeekCommand.COMMAND_WORD:
+            return new NextWeekCommand();
+
+        case PreviousWeekCommand.COMMAND_WORD:
+            return new PreviousWeekCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

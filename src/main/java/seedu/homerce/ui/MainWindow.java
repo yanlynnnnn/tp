@@ -16,7 +16,9 @@ import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 import seedu.homerce.ui.expensepanel.ExpenseListPanel;
+import seedu.homerce.ui.financialpanel.FinanceWindow;
 import seedu.homerce.ui.revenuepanel.RevenueListPanel;
+import seedu.homerce.ui.schedulepanel.SchedulePanel;
 import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
@@ -35,6 +37,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private FinanceWindow financeWindow;
 
     // Panels for each component
     private ServiceListPanel serviceListPanel;
@@ -42,6 +45,7 @@ public class MainWindow extends UiPart<Stage> {
     private AppointmentListPanel appointmentListPanel;
     private RevenueListPanel revenueListPanel;
     private ExpenseListPanel expenseListPanel;
+    private SchedulePanel schedulePanel;
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -77,6 +81,8 @@ public class MainWindow extends UiPart<Stage> {
         //setAccelerators();
 
         helpWindow = new HelpWindow();
+        financeWindow = new FinanceWindow();
+        financeWindow.setWindowDefaultSize(logic.getGuiSettings());
     }
 
     public Stage getPrimaryStage() {
@@ -98,7 +104,7 @@ public class MainWindow extends UiPart<Stage> {
         appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
 
         // Default view for user on app startup
-        switchTab(ClientListPanel.TAB_NAME);
+        switchTab(SchedulePanel.TAB_NAME);
         sideTabsBarPlaceholder.getChildren().add(new SideTabsBar(this::switchTab).getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -133,6 +139,11 @@ public class MainWindow extends UiPart<Stage> {
         case ExpenseListPanel.TAB_NAME:
             tabPanelPlaceholder.getChildren().add(expenseListPanel.getRoot());
             break;
+        case SchedulePanel.TAB_NAME:
+            schedulePanel = new SchedulePanel(logic.getFilteredSchedule());
+            schedulePanel.construct();
+            tabPanelPlaceholder.getChildren().add(schedulePanel.getRoot());
+            break;
         default:
             throw new AssertionError("No such tab name: " + tabName);
         }
@@ -159,6 +170,19 @@ public class MainWindow extends UiPart<Stage> {
             helpWindow.show();
         } else {
             helpWindow.focus();
+        }
+    }
+
+    /**
+     * Opens the finance breakdown window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleFinance() {
+        if (!financeWindow.isShowing()) {
+            financeWindow.construct(logic.getFilteredExpenseList(), logic.getFilteredRevenueList());
+            financeWindow.show();
+        } else {
+            financeWindow.focus();
         }
     }
 
@@ -199,7 +223,9 @@ public class MainWindow extends UiPart<Stage> {
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }
-
+            if (commandResult.isShowFinance()) {
+                handleFinance();
+            }
             if (commandResult.isExit()) {
                 handleExit();
             }
@@ -210,5 +236,9 @@ public class MainWindow extends UiPart<Stage> {
             resultDisplay.setFeedbackToUser(e.getMessage());
             throw e;
         }
+    }
+
+    public void showWelcomeText() {
+        resultDisplay.setFeedbackToUser("To see the list of commands, type and enter the command 'help'.");
     }
 }

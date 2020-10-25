@@ -19,16 +19,16 @@ import seedu.homerce.commons.util.CollectionUtil;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.client.Email;
 import seedu.homerce.model.client.Name;
 import seedu.homerce.model.client.Phone;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.util.attributes.Tag;
 
 /**
- * Edits the details of an existing client in the homerce book.
+ * Edits the details of an existing client in the homerce.
  */
 public class EditClientCommand extends Command {
 
@@ -48,7 +48,7 @@ public class EditClientCommand extends Command {
 
     public static final String MESSAGE_EDIT_CLIENT_SUCCESS = "Edited Client: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the homerce book.";
+    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the homerce.";
 
     private final Index index;
     private final EditClientDescriptor editClientDescriptor;

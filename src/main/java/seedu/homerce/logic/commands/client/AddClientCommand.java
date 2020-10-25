@@ -9,19 +9,19 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TAG;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.client.Client;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
- * Adds a client to the homerce book.
+ * Adds a client to the homerce.
  */
 public class AddClientCommand extends Command {
 
     public static final String COMMAND_WORD = "addcli";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a client to the homerce book. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a client to the homerce. "
             + "Parameters: "
             + PREFIX_NAME + "NAME "
             + PREFIX_PHONE + "PHONE "
@@ -35,7 +35,7 @@ public class AddClientCommand extends Command {
             + PREFIX_TAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New client added: %1$s";
-    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the homerce book";
+    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the homerce";
 
     private final Client toAdd;
 

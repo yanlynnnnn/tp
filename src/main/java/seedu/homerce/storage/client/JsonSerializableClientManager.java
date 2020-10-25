@@ -41,7 +41,7 @@ class JsonSerializableClientManager {
     }
 
     /**
-     * Converts this homerce book into the model's {@code AddressBook} object.
+     * Converts this homerce into the model's {@code AddressBook} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */

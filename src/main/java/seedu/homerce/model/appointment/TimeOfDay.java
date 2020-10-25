@@ -39,6 +39,10 @@ public class TimeOfDay {
         }
     }
 
+    public LocalTime getTime() {
+        return value;
+    }
+
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
@@ -58,5 +62,9 @@ public class TimeOfDay {
 
     public String toUiString() {
         return value.format(FORMAT_OUTPUT);
+    }
+
+    public LocalTime getLocalTime() {
+        return value;
     }
 }

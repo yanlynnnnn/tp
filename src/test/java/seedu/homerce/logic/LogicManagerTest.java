@@ -21,13 +21,13 @@ import seedu.homerce.logic.commands.client.AddClientCommand;
 import seedu.homerce.logic.commands.client.ListClientCommand;
 import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.logic.parser.exceptions.ParseException;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ModelManager;
 import seedu.homerce.model.UserPrefs;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.manager.AppointmentManager;
 import seedu.homerce.model.manager.ExpenseTracker;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.manager.ReadOnlyClientManager;
 import seedu.homerce.model.manager.RevenueTracker;
 import seedu.homerce.model.manager.ServiceManager;
@@ -68,7 +68,7 @@ public class LogicManagerTest {
         StorageManager storage = new StorageManager(userPrefsStorage, clientStorage, serviceStorage,
             revenueStorage, expenseStorage, appointmentStorage);
 
-        HistoryManager historyManager = new HistoryManager();
+        HistoryManager historyManager = HistoryManager.getInstance();
 
         logic = new LogicManager(model, storage, historyManager);
     }
@@ -107,7 +107,7 @@ public class LogicManagerTest {
         StorageManager storage = new StorageManager(userPrefsStorage, clientStorage, serviceStorage,
             revenueStorage, expenseStorage, appointmentStorage);
 
-        HistoryManager historyManager = new HistoryManager();
+        HistoryManager historyManager = HistoryManager.getInstance();
 
         logic = new LogicManager(model, storage, historyManager);
 

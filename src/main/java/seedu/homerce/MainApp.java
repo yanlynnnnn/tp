@@ -15,7 +15,6 @@ import seedu.homerce.commons.util.ConfigUtil;
 import seedu.homerce.commons.util.StringUtil;
 import seedu.homerce.logic.Logic;
 import seedu.homerce.logic.LogicManager;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ModelManager;
 import seedu.homerce.model.ReadOnlyUserPrefs;
@@ -23,6 +22,7 @@ import seedu.homerce.model.UserPrefs;
 import seedu.homerce.model.manager.AppointmentManager;
 import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.ExpenseTracker;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.manager.ReadOnlyAppointmentManager;
 import seedu.homerce.model.manager.ReadOnlyClientManager;
 import seedu.homerce.model.manager.ReadOnlyExpenseTracker;
@@ -87,7 +87,7 @@ public class MainApp extends Application {
 
         model = initModelManager(storage, userPrefs);
 
-        historyManager = new HistoryManager();
+        historyManager = HistoryManager.getInstance();
 
         logic = new LogicManager(model, storage, historyManager);
 
@@ -262,6 +262,7 @@ public class MainApp extends Application {
                 logger.info("Data file not found. Will be starting with a sample ExpenseTracker");
             }
             expenseTracker = expenseTrackerOptional.orElseGet(SampleDataUtil::getSampleExpenseTracker);
+            storage.saveExpenseTracker(expenseTracker);
         } catch (DataConversionException e) {
             logger.warning("Data file not in the correct format. Will be starting with an empty ExpenseTracker");
             expenseTracker = new ExpenseTracker();

@@ -9,6 +9,7 @@ import static seedu.homerce.testutil.Assert.assertThrows;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -18,7 +19,6 @@ import javafx.collections.ObservableList;
 import seedu.homerce.commons.core.GuiSettings;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.model.HistoryManager;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ReadOnlyUserPrefs;
 import seedu.homerce.model.appointment.Appointment;
@@ -26,6 +26,7 @@ import seedu.homerce.model.client.Client;
 import seedu.homerce.model.client.Phone;
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.manager.ClientManager;
+import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.manager.ReadOnlyAppointmentManager;
 import seedu.homerce.model.manager.ReadOnlyClientManager;
 import seedu.homerce.model.manager.ReadOnlyExpenseTracker;
@@ -48,7 +49,8 @@ public class AddClientCommandTest {
         ModelStubAcceptingClientAdded modelStub = new ModelStubAcceptingClientAdded();
         Client validClient = new ClientBuilder().build();
 
-        CommandResult commandResult = new AddClientCommand(validClient).execute(modelStub, new HistoryManager());
+        CommandResult commandResult = new AddClientCommand(validClient).execute(modelStub,
+            HistoryManager.getInstance());
 
         assertEquals(String.format(AddClientCommand.MESSAGE_SUCCESS, validClient), commandResult.getFeedbackToUser());
         assertEquals(Arrays.asList(validClient), modelStub.clientsAdded);
@@ -61,7 +63,7 @@ public class AddClientCommandTest {
         ModelStub modelStub = new ModelStubWithClient(validClient);
 
         assertThrows(CommandException.class, AddClientCommand.MESSAGE_DUPLICATE_CLIENT, () ->
-            addClientCommand.execute(modelStub, new HistoryManager()));
+            addClientCommand.execute(modelStub, HistoryManager.getInstance()));
     }
 
     @Test
@@ -360,6 +362,36 @@ public class AddClientCommandTest {
 
         @Override
         public void setAppointmentManager(ReadOnlyAppointmentManager appointmentManager) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Appointment> getFilteredSchedule() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void nextSchedulePage() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void previousSchedulePage() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void refreshSchedule() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredSchedule(Predicate<Appointment> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAppointmentManagerCalendar(Calendar calendar) {
             throw new AssertionError("This method should not be called.");
         }
 

@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox fx:id="sideTabsBar" layoutY="30.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox fx:id="sideTabsBar" layoutY="30.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="30.0" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
     <Button fx:id="clients" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSwitchToClientTab" text="Client" VBox.vgrow="NEVER">
         <padding>
             <Insets top="2.0" />
@@ -27,6 +27,11 @@
         </padding>
     </Button>
     <Button fx:id="expense" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSwitchToExpenseTab" text="Expense" VBox.vgrow="NEVER">
+        <padding>
+            <Insets top="2.0" />
+        </padding>
+    </Button>
+    <Button fx:id="schedule" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleSwitchToScheduleTab" text="Schedule" VBox.vgrow="NEVER">
         <padding>
             <Insets top="2.0" />
         </padding>

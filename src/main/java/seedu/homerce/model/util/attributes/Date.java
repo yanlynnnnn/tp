@@ -40,12 +40,21 @@ public class Date {
         }
     }
 
+
     public Month getMonth() {
         return date.getMonth();
     }
 
     public int getYear() {
         return date.getYear();
+    }
+
+    public int getDayOfMonth() {
+        return date.getDayOfMonth();
+    }
+
+    public LocalDate getLocalDate() {
+        return date;
     }
 
     @Override
