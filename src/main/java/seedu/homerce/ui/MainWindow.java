@@ -16,6 +16,7 @@ import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 import seedu.homerce.ui.expensepanel.ExpenseListPanel;
+import seedu.homerce.ui.financialpanel.FinanceWindow;
 import seedu.homerce.ui.revenuepanel.RevenueListPanel;
 import seedu.homerce.ui.schedulepanel.SchedulePanel;
 import seedu.homerce.ui.servicepanel.ServiceListPanel;
@@ -36,6 +37,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
+    private FinanceWindow financeWindow;
 
     // Panels for each component
     private ServiceListPanel serviceListPanel;
@@ -44,7 +46,6 @@ public class MainWindow extends UiPart<Stage> {
     private RevenueListPanel revenueListPanel;
     private ExpenseListPanel expenseListPanel;
     private SchedulePanel schedulePanel;
-
 
     @FXML
     private StackPane commandBoxPlaceholder;
@@ -80,6 +81,8 @@ public class MainWindow extends UiPart<Stage> {
         //setAccelerators();
 
         helpWindow = new HelpWindow();
+        financeWindow = new FinanceWindow();
+        financeWindow.setWindowDefaultSize(logic.getGuiSettings());
     }
 
     public Stage getPrimaryStage() {
@@ -99,7 +102,6 @@ public class MainWindow extends UiPart<Stage> {
         expenseListPanel = new ExpenseListPanel(logic.getFilteredExpenseList());
 
         appointmentListPanel = new AppointmentListPanel(logic.getFilteredAppointmentList());
-
 
         // Default view for user on app startup
         switchTab(ClientListPanel.TAB_NAME);
@@ -171,6 +173,19 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Opens the finance breakdown window or focuses on it if it's already opened.
+     */
+    @FXML
+    public void handleFinance() {
+        if (!financeWindow.isShowing()) {
+            financeWindow.construct(logic.getFilteredExpenseList(), logic.getFilteredRevenueList());
+            financeWindow.show();
+        } else {
+            financeWindow.focus();
+        }
+    }
+
     void show() {
         primaryStage.show();
     }
@@ -208,7 +223,9 @@ public class MainWindow extends UiPart<Stage> {
             if (commandResult.isShowHelp()) {
                 handleHelp();
             }
-
+            if (commandResult.isShowFinance()) {
+                handleFinance();
+            }
             if (commandResult.isExit()) {
                 handleExit();
             }

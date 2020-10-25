@@ -14,7 +14,6 @@ import seedu.homerce.model.expense.predicate.ExpenseMonthYearPredicate;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.revenue.predicate.RevenueMonthYearPredicate;
-import seedu.homerce.ui.expensepanel.ExpenseListPanel;
 
 public class BreakdownFinanceCommand extends Command {
 
@@ -48,6 +47,6 @@ public class BreakdownFinanceCommand extends Command {
         model.updateFilteredExpenseList(expensePredicate);
         model.updateFilteredRevenueList(revenuePredicate);
 
-        return new CommandResult(MESSAGE_SUCCESS, ExpenseListPanel.TAB_NAME);
+        return new CommandResult(MESSAGE_SUCCESS, false, false, true);
     }
 }
