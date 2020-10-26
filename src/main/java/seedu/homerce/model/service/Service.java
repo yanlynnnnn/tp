@@ -85,12 +85,12 @@ public class Service implements UniqueListItem {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
-            .append(" Duration: ")
-            .append(getDuration())
-            .append(" Amount: ")
-            .append(getAmount())
-            .append(" Service Code: ")
-            .append(getServiceCode().toString());
+                .append(" Duration: ")
+                .append(getDuration())
+                .append(" Amount: ")
+                .append(getAmount())
+                .append(" Service Code: ")
+                .append(getServiceCode().toString());
         return builder.toString();
     }
 
@@ -112,9 +112,9 @@ public class Service implements UniqueListItem {
 
         Service otherService = (Service) other;
         return title.equals(otherService.title)
-            && duration.equals(otherService.duration)
-            && price.equals(otherService.price)
-            && serviceCode.equals(otherService.serviceCode);
+                && duration.equals(otherService.duration)
+                && price.equals(otherService.price)
+                && serviceCode.equals(otherService.serviceCode);
     }
 
     /**
