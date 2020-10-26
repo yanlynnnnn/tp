@@ -73,12 +73,18 @@ public class DeleteServiceCommand extends Command {
         if (appointments == null) {
             return true;
         }
+        return appointments.stream().noneMatch((appointment) -> checkValidity(appointment, serviceToDelete));
+    }
+
+    /**
+     * Performs check for validity of deletion.
+     */
+    private boolean checkValidity(Appointment appointment, Service serviceToDelete) {
         LocalDate today = LocalDate.now();
-        return appointments.stream().noneMatch((appointment) -> {
-            LocalDate appointmentDate = appointment.getAppointmentDate().getLocalDate();
-            Service appointmentService = appointment.getService();
-            return (appointmentDate.isAfter(today) || appointmentDate.isEqual(today))
-                && appointmentService.equals(serviceToDelete);
-        });
+        LocalDate appointmentDate = appointment.getAppointmentDate().getLocalDate();
+        Service appointmentService = appointment.getService();
+        return (appointmentDate.isAfter(today) || appointmentDate.isEqual(today))
+            && appointmentService.equals(serviceToDelete);
+
     }
 }
