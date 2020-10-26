@@ -1084,54 +1084,93 @@ Outcome :
 
 {example of outcome screenshot}
 
-### 4.6 Schedule Manager
+### 4.6 Schedule Viewer
 
-Homerce knows that managing the contacts of your clients is a must for any business.
-Thus, this feature allows you to keep track of all the relevant information needed about your clients.
+Homerce knows how useful it is to be able to view all your weekly appointments at a glance. Thus, this feature
+consolidates all your appointments on a weekly basis and allows you to see it at a glance.
 
-#### 4.6.1. Schedule Manager Command Parameters
+#### 4.6.1. Schedule Viewer Command Parameters
 
 Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used.
 
 | Parameter Name | Description | Example
-|---------|---------|---------
-|`NAME`  | The name of the client. <br><br> It must be an alphanumeric word. | E.g. Typing `John Doe` would represent the name of the client saved in the client manager.
-|`EMAIL`| <br>The email of the client. <br> Emails should be in `local-part@domain format` <br><br /> The `local-part` can only contain alphanumeric characters, and the special characters <br >+!#$%&'*+/=?\`{}~^.-&#124;<br><br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.)<br>The domain name must also have at least 2 characters and start and end with alphanumeric characters|johnDoe97@example123.com 
-|`PHONE` | Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long. | E.g. `91234567` would represent the client's phone number.
-|`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend.
-|`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list.
+|----------------|-------------|---------
+|`DATE`| The date of the appointment. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
 
-#### 4.6.2. View next week `nextweek`
+#### 4.6.2. View appointments schedule `schedule`
 
-You can use this command to add a new client to Homerce.
+You can use this command to view your weekly appointments schedule.
 
-Format : `addcli n/NAME p/PHONE e/EMAIL [t/TAG]`
+Format : `schedule [dt/DATE]`
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:**<br>
  
-* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+* Refer to [Schedule Viewer Command Parameters](#461-schedule-viewer-command-parameters) for more details about the parameter.
 
 </div>
 
 Example :
 
-A new client just called in to make an appointment .
-
-You can follow the steps below to add the client to Homerce.
+Let's say you want to view your appointments schedule for today's week, which is the 27th of November, 2020.
+You can follow these instructions.
 
 Steps :
-1. Type `addcli n/John p/91234567 e/john@gmail.com t/new` into the _Command Box_.
+1. Type `schedule dt/27-10-2020` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
 1. Homerce will display a success message.
+2. Homerce will switch to the Schedule Tab.
+3. You can now see all the appointments in your schedule for today's week.
 
 {Example outcome screenshot}
 
-#### 4.6.3. View previous week `previousweek`
+#### 4.6.3. View schedule for next week `nextweek`
+
+You can use this command to view your appointments schedule for the next week after the week you are currently viewing.
+
+Format : `nextweek`
+
+Example :
+
+Let's say you are currently viewing the schedule for the week on 27th of November, 2020, and want to see the schedule
+for the following week. You can follow these instructions.
+
+Steps :
+1. Type `nextweek` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. Homerce will display a success message.
+2. Homerce will switch to the Schedule Tab.
+3. You can now see all the appointments in your schedule for the week after 27th of November, 2020.
+
+{Example outcome screenshot}
+
+#### 4.6.3. View schedule for previous week `previousweek`
+
+You can use this command to view your appointments schedule for the previous week before the week you are currently viewing.
+
+Format : `previousweek`
+
+Example :
+
+Let's say you are currently viewing the schedule for the week on 27th of November, 2020, and want to see the schedule
+for the previous week. You can follow these instructions.
+
+Steps :
+1. Type `previousweek` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. Homerce will display a success message.
+2. Homerce will switch to the Schedule Tab.
+3. You can now see all the appointments in your schedule for the week before 27th of November, 2020.
+
+{Example outcome screenshot}
 
 ### 4.7 Finance Tracker 
 
@@ -1358,7 +1397,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**List**       | `listcli` |
 |**Clear**      | `clearcli`| 
 
-### 6.6. Schedule Manager Commands
+### 6.6. Schedule Viewer Commands
 
 ### 6.7. Finance Tracker Commands
 
