@@ -212,6 +212,7 @@ Format: `deletesvc s/SERVICE_CODE`
 
 **:information_source: Note:**<br>
  
+* Homerce will not allow the deletion of a service which is already scheduled for an upcoming appointment.
 * Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
 
 </div>
@@ -1122,17 +1123,111 @@ Outcome :
 1. It will display a success message. 
 2. Homerce will list out all the clients with John in their name.
 
-### 4.6. Others
+### 4.6 Client Manager
+
+Homerce knows that managing the contacts of your clients is a must for any business.
+Thus, this feature allows you to keep track of all the relevant information needed about your clients.
+
+#### 4.6.1. Client Manager Command Parameters
+
+Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
+The table below shows a list of command parameters that will be used.
+
+| Parameter Name | Description | Example
+|---------|---------|---------
+|`NAME`  | The name of the client. <br><br> It must be an alphanumeric word. | E.g. Typing `John Doe` would represent the name of the client saved in the client manager.
+|`EMAIL`| <br>The email of the client. <br> Emails should be in `local-part@domain format` <br><br /> The `local-part` can only contain alphanumeric characters, and the special characters <br >+!#$%&'*+/=?\`{}~^.-&#124;<br><br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.)<br>The domain name must also have at least 2 characters and start and end with alphanumeric characters|johnDoe97@example123.com 
+|`PHONE` | Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long. | E.g. `91234567` would represent the client's phone number.
+|`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend.
+|`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list.
+
+#### 4.6.2. Add a client `addcli`
+
+You can use this command to add a new client to Homerce.
+
+Format : `addcli n/NAME p/PHONE e/EMAIL [t/TAG]`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+A new client just called in to make an appointment .
+
+You can follow the steps below to add the client to Homerce.
+
+Steps :
+1. Type `addcli n/John p/91234567 e/john@gmail.com t/new` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. Homerce will display a success message.
+
+{Example outcome screenshot}
+
+### 4.7 Client Manager
+
+Homerce knows that managing the contacts of your clients is a must for any business.
+Thus, this feature allows you to keep track of all the relevant information needed about your clients.
+
+#### 4.7.1. Client Manager Command Parameters
+
+Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
+The table below shows a list of command parameters that will be used.
+
+| Parameter Name | Description | Example
+|---------|---------|---------
+|`NAME`  | The name of the client. <br><br> It must be an alphanumeric word. | E.g. Typing `John Doe` would represent the name of the client saved in the client manager.
+|`EMAIL`| <br>The email of the client. <br> Emails should be in `local-part@domain format` <br><br /> The `local-part` can only contain alphanumeric characters, and the special characters <br >+!#$%&'*+/=?\`{}~^.-&#124;<br><br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.)<br>The domain name must also have at least 2 characters and start and end with alphanumeric characters|johnDoe97@example123.com 
+|`PHONE` | Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long. | E.g. `91234567` would represent the client's phone number.
+|`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend.
+|`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list.
+
+#### 4.7.2. Add a client `addcli`
+
+You can use this command to add a new client to Homerce.
+
+Format : `addcli n/NAME p/PHONE e/EMAIL [t/TAG]`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+A new client just called in to make an appointment .
+
+You can follow the steps below to add the client to Homerce.
+
+Steps :
+1. Type `addcli n/John p/91234567 e/john@gmail.com t/new` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. Homerce will display a success message.
+
+{Example outcome screenshot}
+
+### 4.8. Others
 
 {Description}
 
-#### 4.6.X. Others Command Parameter Template
+#### 4.8.X. Others Command Parameter Template
 
 {Description}
 
 {Command parameter explanation}
 
-#### 4.6.1. Undo previous change: `undo` 
+#### 4.8.1. Undo previous change: `undo` 
 
 Undo the last change you made to Homerce.
 
@@ -1151,7 +1246,7 @@ Outcome:
 
 {add example screenshot outcome}
 
-#### 4.6.2. Viewing help : `help`
+#### 4.8.2. Viewing help : `help`
 
 Show a message explaining how to access the help page.
 
@@ -1173,7 +1268,7 @@ Outcome:
 
 ![help message](images/helpMessage.png)
 
-#### 4.6.3. Exit Homerce : `exit`
+#### 4.8.3. Exit Homerce : `exit`
 
 Exits the program.
 
@@ -1193,19 +1288,19 @@ Outcome:
 
 {Example outcome screenshot}
 
-#### 4.6.4. Saving the Data - Can consider moving to about.
+#### 4.8.4. Saving the Data - Can consider moving to about.
 
 Homerce data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
-### 4.7. Future Feature Enhancement v2.0
+### 4.9. Future Feature Enhancement v2.0
 
 {Description} 
 
-#### 4.7.1. Feature 1
+#### 4.9.1. Feature 1
 
 {Description}
 
-##### 4.7.1.1. Feature command 1 `Feature command 1`
+##### 4.9.1.1. Feature command 1 `Feature command 1`
 
 {Description}
 
@@ -1242,6 +1337,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 ## 6. Command summary
 
 ### 6.1 Service Management Commands
+
 |Action | Format | Examples
 |---------|---------|---------
 |**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Lash Lift d/0.5 p/38`
