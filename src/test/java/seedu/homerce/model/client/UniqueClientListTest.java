@@ -1,10 +1,14 @@
 package seedu.homerce.model.client;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.homerce.testutil.Assert.assertThrows;
-import static seedu.homerce.testutil.TypicalClients.*;
+import static seedu.homerce.testutil.TypicalClients.ALICE;
+import static seedu.homerce.testutil.TypicalClients.AMY;
+import static seedu.homerce.testutil.TypicalClients.BOB;
 
 import java.util.Arrays;
 import java.util.Collections;

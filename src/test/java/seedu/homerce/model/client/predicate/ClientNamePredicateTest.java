@@ -1,11 +1,12 @@
 package seedu.homerce.model.client.predicate;
 
-import org.junit.jupiter.api.Test;
-import seedu.homerce.model.client.Name;
-import seedu.homerce.testutil.ClientBuilder;
-
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.homerce.model.client.Name;
+import seedu.homerce.testutil.ClientBuilder;
 
 public class ClientNamePredicateTest {
 
@@ -36,9 +37,9 @@ public class ClientNamePredicateTest {
 
     @Test
     public void test_clientContainsName_returnsTrue() {
-        Name Name = new Name("Alice");
+        Name name = new Name("Alice");
 
-        ClientNamePredicate predicate = new ClientNamePredicate(Name);
+        ClientNamePredicate predicate = new ClientNamePredicate(name);
         assertTrue(predicate.test(new ClientBuilder().withName("Alice").build()));
         assertTrue(predicate.test(new ClientBuilder().withName("Alice Lim").build()));
 
@@ -46,9 +47,9 @@ public class ClientNamePredicateTest {
 
     @Test
     public void test_clientContainsName_returnsFalse() {
-        Name Name = new Name("Alice");
+        Name name = new Name("Alice");
 
-        ClientNamePredicate predicate = new ClientNamePredicate(Name);
+        ClientNamePredicate predicate = new ClientNamePredicate(name);
         assertFalse(predicate.test(new ClientBuilder().withName("Bob").build()));
 
     }
