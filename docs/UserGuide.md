@@ -138,6 +138,7 @@ The table below shows a list of command parameters that will be used in this fea
 |`DURATION`| The duration of the service in hours. <br> <br> It be in half hour intervals.| E.g `1.5`
 |`PRICE`| The revenue received from the service. <br> <br> It must be in dollars.| E.g `5.50`
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
+|`INDEX`| The index number of the service in the displayed service list.<br> <br> The first entry of the list has an index number of `1` and all entries are listed in increasing index numbers. | E.g `5`
 
 #### 4.1.2. Add a new service: `addsvc`
 
@@ -267,14 +268,6 @@ You can use this command to navigate to the Services Tab and display all your ad
 
 Format: `listsvc`
 
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note:**<br>
- 
-* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
-
-</div>
-
 Example:
 Let's say you are in another tab and want to look at the list of all services. You can follow these instructions.
 
@@ -294,14 +287,6 @@ Outcome:
 You can use this command to clear and delete the all the services in Homerce.
 
 Format: `clearsvc`
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note:**<br>
- 
-* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
-
-</div>
 
 Example:
 Let's say you want to delete all the services from your list of services and start from an empty list of services. You can
@@ -384,14 +369,6 @@ Outcome:
 Use this command to see your list of all your upcoming appointments.
 
 Format : `listapt`
-
-<div markdown="block" class="alert alert-info"> 
-
-**:information_source: Note:**<br>
- 
-* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
-
-</div> 
  
 Example:
 
@@ -584,14 +561,6 @@ appointments with your clients.
 
 Format : `clearapt`
 
-<div markdown="block" class="alert alert-info"> 
-
-**:information_source: Note:**<br>
- 
-* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
-
-</div> 
-
 Example:
 
 Let's say you want to clear all appointments stored in Homerce.
@@ -624,6 +593,7 @@ The table below shows a list of command parameters that will be used in this fea
 |`DATE`  | The revenue earned date. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
+|`INDEX`| The index number of the revenue in the displayed revenue list.<br> <br> The first entry of the list has an index number of `1` and all entries are listed in increasing index numbers. | E.g `5`
 
 #### 4.3.2. Find a revenue : `findrev`
 
@@ -634,7 +604,7 @@ Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:**<br>
-* Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
+* Refer to [Revenue Tracker Command Parameters](#431-revenue-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -663,7 +633,7 @@ Format : `sortrev ORDER`
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:**<br>
-* Refer to [Revenue Tracker Command Parameters](#revenue-tracker-command-parameters) for more details about each parameter.
+* Refer to [Revenue Tracker Command Parameters](#431-revenue-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -727,28 +697,6 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.3.6. Breakdown revenue : `breakdownrev`
-
-You can use this command to breakdown revenue into their relevant categories, based on their 'service code'.
-
-Format : `breakdownrev`
-
-Example :
-
-You wish to see which type of service generated the most revenue for your business, to possibly determine the business direction for there. 
-
-You can follow the steps below to view a breakdown of your revenues.
-
-Steps :
-1. Type `breakdownrev` into the _Command Box_.
-1. Press `Enter` to execute. 
-
-Outcome : 
-1. It will display a successful message ~~in the _Dashboard_.~~
-1. Homerce will display a Pie Chart that categorizes revenues based on their 'service code', along with the total cost of all expenses in each category.
-
-{Example outcome screenshot}
-
 ### 4.4 Expense Tracker
 
 Homerce knows that expense tracking in important in managing business expenditure.
@@ -782,7 +730,7 @@ Format : `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`
 **:information_source: Note:**<br>
  
 * If no tag is entered, the expense will automatically be tagged under 'others'.
-* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+* Refer to [Expense Tracker Command Parameters](#441-expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -813,7 +761,7 @@ Format : `editexp INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]
  
 * You must enter at least one optional parameter.
 * The new value entered will overwrite the existing value.
-* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+* Refer to [Expense Tracker Command Parameters](#441-expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -842,7 +790,7 @@ Format : `deleteexp INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+* Refer to [Expense Tracker Command Parameters](#441-expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -872,7 +820,7 @@ Format : `findexp [d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*`
 **:information_source: Notes:**<br>
 
 * You must enter at least one optional parameter.
-* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+* Refer to [Expense Tracker Command Parameters](#441-expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -900,7 +848,7 @@ Format : `sortexp ORDER`
 
 **:information_source: Note:**<br>
  
-* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
+* Refer to [Expense Tracker Command Parameters](#441-expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -957,36 +905,6 @@ Steps :
 Outcome :
 1. It will display a success message.
 
-#### 4.4.9. Breakdown expenses `breakdownexp`
-
-You can use this command to breakdown expenses into their relevant categories, based on their 'tags'.
-
-Format : `breakdownexp m/MONTH y/YEAR`
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note:**<br>
- 
-* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-
-</div>
-
-Example :
-
-You wish to see which types of expenses incur the most cost to your business in December 2020.
-
-You can follow the steps below to view a breakdown of your expenses.
-
-Steps :
-1. Type `breakdownexp m/12 y/2020` into the _Command Box_.
-2. Press `Enter` to execute.
-
-Outcome :
-1. It will display a success message.
-2. Homerce will display a Pie Chart that categorizes expenses made in December 2020 based on their 'tags', 
-along with the total cost of all expenses in each category.
-
-
 ### 4.5 Client Manager
 
 Homerce knows that managing the contacts of your clients is a must for any business.
@@ -1015,7 +933,7 @@ Format : `addcli n/NAME p/PHONE e/EMAIL [t/TAG]`
 
 **:information_source: Note:**<br>
  
-* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+* Refer to [Client Manager Command Parameters](#451-client-manager-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -1046,7 +964,7 @@ Format : `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]`
  
 * You must enter at least one optional parameter.
 * The new value entered will overwrite the existing value.
-* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+* Refer to [Client Manager Command Parameters](#451-client-manager-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -1075,7 +993,7 @@ Format : `deletecli INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+* Refer to [Client Manager Command Parameters](#451-client-manager-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -1105,7 +1023,7 @@ Format : `findcli [n/NAME]* [p/PHONE]*`
 **:information_source: Notes:**<br>
 
 * You must enter at least one optional parameter.
-* Refer to [Client Manager Command Parameters](#client-manager-command-parameters) for more details about each parameter.
+* Refer to [Client Manager Command Parameters](#451-client-manager-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -1123,12 +1041,55 @@ Outcome :
 1. It will display a success message. 
 2. Homerce will list out all the clients with John in their name.
 
-### 4.6 Client Manager
+#### 4.5.6. List clients `listcli`
+
+You can use this command to list all your clients in Homerce.
+
+Format : `listcli`
+
+Example :
+
+You wish to list your clients to view all the client entries that you currently have.
+
+You can follow the steps below to list your clients.
+
+Steps :
+1. Type `listcli` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. It will display a success message.
+2. Homerce will list out all your expenses.
+
+{example of outcome screenshot}
+
+#### 4.5.7. Clear clients `clearcli`
+
+You can use this command to clear all clients in Homerce.
+
+Format : `clearcli`
+
+Example :
+
+You wish to remove all client entries in Homerce and restart your client management from scratch.
+
+You can follow the steps below to clear all your clients.
+
+Steps :
+1. Type `clearcli` into the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. It will display a success message.
+
+{example of outcome screenshot}
+
+### 4.6 Schedule Manager
 
 Homerce knows that managing the contacts of your clients is a must for any business.
 Thus, this feature allows you to keep track of all the relevant information needed about your clients.
 
-#### 4.6.1. Client Manager Command Parameters
+#### 4.6.1. Schedule Manager Command Parameters
 
 Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used.
@@ -1141,7 +1102,7 @@ The table below shows a list of command parameters that will be used.
 |`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend.
 |`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list.
 
-#### 4.6.2. Add a client `addcli`
+#### 4.6.2. View next week `nextweek`
 
 You can use this command to add a new client to Homerce.
 
@@ -1170,12 +1131,14 @@ Outcome :
 
 {Example outcome screenshot}
 
-### 4.7 Client Manager
+#### 4.6.3. View previous week `previousweek`
+
+### 4.7 Finance Tracker 
 
 Homerce knows that managing the contacts of your clients is a must for any business.
 Thus, this feature allows you to keep track of all the relevant information needed about your clients.
 
-#### 4.7.1. Client Manager Command Parameters
+#### 4.7.1. Finance Tracker Command Parameters
 
 Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used.
@@ -1188,7 +1151,7 @@ The table below shows a list of command parameters that will be used.
 |`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend.
 |`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list.
 
-#### 4.7.2. Add a client `addcli`
+#### 4.7.2. Breakdown finances `breakdownfinance`
 
 You can use this command to add a new client to Homerce.
 
@@ -1384,7 +1347,22 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**Clear**      | `clearexp`                                                       | 
 |**Breakdown**  | `breakdownexp m/MONTH y/YEAR`                                    | `breakdownexp m/12 y/2020`
 
-### 6.5. Other Commands
+### 6.5. Client Manager Commands
+
+|Action | Format | Examples
+|---------------|------------------------------------------------------------------|------------------------------------------------------------------
+|**Add**        | `addcli n/NAME p/PHONE e/EMAIL [t/TAG]` | `addcli n/John p/91234567 e/john@gmail.com t/new`
+|**Edit**       | `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]` | `editcli 2 n/Johnny`
+|**Delete**     | `deletecli INDEX` | `deletecli 3`
+|**Find**       | `findcli [n/NAME]* [p/PHONE]*` | `findcli n/John`
+|**List**       | `listcli` |
+|**Clear**      | `clearcli`| 
+
+### 6.6. Schedule Manager Commands
+
+### 6.7. Finance Tracker Commands
+
+### 6.8. Other Commands
 
 Action | Format | Examples
 --------|--------|----------
