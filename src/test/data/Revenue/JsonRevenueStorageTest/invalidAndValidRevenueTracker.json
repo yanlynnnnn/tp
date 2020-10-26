@@ -1,6 +1,5 @@
 {
-  "revenues": [
-    {
+  "revenues": [ {
       "title": "Invalid service code",
       "price": 18.50,
       "duration": 0.5,
@@ -12,6 +11,5 @@
       "duration": 0.5,
       "serviceCode": "SC003",
       "date": "22-10-2020"
-    }
-  ]
+    } ]
 }
