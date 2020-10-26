@@ -7,20 +7,30 @@ import seedu.homerce.model.util.attributes.Title;
 import seedu.homerce.model.util.uniquelist.UniqueListItem;
 
 public class Service implements UniqueListItem {
-    /** The name of the service */
+
+    /**
+     * The name of the service
+     */
     private Title title;
 
-    /** Amount of money in dollars that this Service brings in */
+    /**
+     * Amount of money in dollars that this Service brings in
+     */
     private Amount price;
 
-    /** Unique identification number for each Service */
+    /**
+     * Unique identification number for each Service
+     */
     private ServiceCode serviceCode;
 
-    /** How long the service takes */
+    /**
+     * How long the service takes
+     */
     private Duration duration;
 
     /**
      * Constructor for Service.
+     *
      * @param title The title of the service.
      * @param duration The duration of the service.
      * @param price The price of the service.
@@ -75,12 +85,12 @@ public class Service implements UniqueListItem {
     public String toString() {
         final StringBuilder builder = new StringBuilder();
         builder.append(getTitle())
-                .append(" Duration: ")
-                .append(getDuration())
-                .append(" Amount: ")
-                .append(getAmount())
-                .append(" Service Code: ")
-                .append(getServiceCode().toString());
+            .append(" Duration: ")
+            .append(getDuration())
+            .append(" Amount: ")
+            .append(getAmount())
+            .append(" Service Code: ")
+            .append(getServiceCode().toString());
         return builder.toString();
     }
 
@@ -102,9 +112,9 @@ public class Service implements UniqueListItem {
 
         Service otherService = (Service) other;
         return title.equals(otherService.title)
-                && duration.equals(otherService.duration)
-                && price.equals(otherService.price)
-                && serviceCode.equals(otherService.serviceCode);
+            && duration.equals(otherService.duration)
+            && price.equals(otherService.price)
+            && serviceCode.equals(otherService.serviceCode);
     }
 
     /**

@@ -20,7 +20,7 @@ import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.ReadOnlyClientManager;
 
 public class JsonClientStorageTest {
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "JsonClientStorageTest");
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "Client", "JsonClientStorageTest");
 
     @TempDir
     public Path testFolder;
