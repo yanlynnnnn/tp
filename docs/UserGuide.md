@@ -1370,7 +1370,6 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**Sort**       | `sortrev ORDER`                                                  | `sortexp desc`
 |**List**       | `listrev`                                                        | 
 |**Clear**      | `clearrev`                                                       | 
-|**Breakdown**  | `breakdownrev`                                                   | 
 
 ### 6.4. Expense Tracker Commands
 
@@ -1383,7 +1382,6 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**Sort**       | `sortexp ORDER`                                                  | `sortexp desc`
 |**List**       | `listexp`                                                        | 
 |**Clear**      | `clearexp`                                                       | 
-|**Breakdown**  | `breakdownexp m/MONTH y/YEAR`                                    | `breakdownexp m/12 y/2020`
 
 ### 6.5. Client Manager Commands
 
