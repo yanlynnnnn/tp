@@ -149,14 +149,6 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
     }
 
     //// Used for pagination
-    public Predicate<Appointment> getPreviousWeekPredicate() {
-        return new AppointmentPaginationPredicate(calendar);
-    }
-
-    public Predicate<Appointment> getNextWeekPredicate() {
-        return new AppointmentPaginationPredicate(calendar);
-    }
-
     public Predicate<Appointment> getCurrentWeekPredicate() {
         return new AppointmentPaginationPredicate(calendar);
     }
