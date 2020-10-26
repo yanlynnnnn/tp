@@ -1398,7 +1398,17 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 
 ### 6.6. Schedule Viewer Commands
 
+|Action | Format | Examples
+|---------------|------------------------------------------------------------------|------------------------------------------------------------------
+|**Schedule** | `schedule [dt/DATE]` | `schedule dt/27-10-2020`
+|**Next Week** | `nextweek` |
+|**Previous Week** | `previousweek` |
+
 ### 6.7. Finance Tracker Commands
+
+|Action | Format | Examples
+|---------------|------------------------------------------------------------------|------------------------------------------------------------------
+|**Breakdown Finances** | `breakdownfinance m/MONTH y/YEAR` | `breakdownfinance m/10 y/2020`
 
 ### 6.8. Other Commands
 
