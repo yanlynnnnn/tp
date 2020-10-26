@@ -19,7 +19,8 @@ public class NonUniqueListTest {
 
     @Test
     public void setItem_invalidItem_throwsItemNotFoundException() {
-        assertThrows(seedu.homerce.model.util.nonuniquelist.exceptions.ItemNotFoundException.class, () -> nonUniqueList.setItem(CHAIR, CONDITIONER));
+        assertThrows(seedu.homerce.model.util.nonuniquelist.exceptions.ItemNotFoundException.class, () -> nonUniqueList
+            .setItem(CHAIR, CONDITIONER));
     }
 
     @Test

@@ -12,7 +12,8 @@ import seedu.homerce.model.util.attributes.Title;
  */
 public class RevenueBuilder {
 
-    public static final Service DEFAULT_SERVICE = new Service(new Title("Hair Wash"), new Duration(5.0), new Amount(5.00));
+    public static final Service DEFAULT_SERVICE = new Service(new Title("Hair Wash"), new Duration(5.0),
+        new Amount(5.00));
 
     private Service service;
     private Date date;
