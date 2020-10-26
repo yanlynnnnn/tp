@@ -207,11 +207,11 @@ public class ParserUtil {
         order = order.trim();
         try {
             if (!order.equals("asc") && !order.equals("desc")) {
-                throw new ParseException("Order should be either 'asc' or 'desc'");
+                throw new ParseException("ORDER should be either 'asc' or 'desc'");
             }
             return order.equals("asc");
         } catch (NumberFormatException e) {
-            throw new ParseException("Order should be either 'asc' or 'desc'");
+            throw new ParseException("ORDER should be either 'asc' or 'desc'");
         }
     }
 
