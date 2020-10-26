@@ -71,7 +71,7 @@ public class ClientManager implements ReadOnlyClientManager {
      */
     public boolean checkClientWithPhone(Phone phone) {
         requireNonNull(phone);
-        return clients.contains(phone);
+        return clients.containsPhone(phone);
     }
 
     /**

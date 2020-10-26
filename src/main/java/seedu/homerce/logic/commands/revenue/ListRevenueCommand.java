@@ -18,10 +18,10 @@ public class ListRevenueCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Listed all revenue";
 
-
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
+        model.getRevenueTracker().sortDefaultRevenueList();
         model.updateFilteredRevenueList(PREDICATE_SHOW_ALL_REVENUE);
         return new CommandResult(MESSAGE_SUCCESS, RevenueListPanel.TAB_NAME);
     }

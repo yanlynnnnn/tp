@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.homerce.model.revenue.Revenue;
+import seedu.homerce.model.revenue.RevenueComparator;
+import seedu.homerce.model.revenue.RevenueDefaultComparator;
 import seedu.homerce.model.util.nonuniquelist.NonUniqueList;
 
 /**
@@ -28,6 +30,29 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
     public RevenueTracker(ReadOnlyRevenueTracker toBeCopied) {
         this.revenues = new NonUniqueList<>();
         resetData(toBeCopied);
+    }
+
+    /**
+     * Sorts the revenue list by value.
+     *
+     * @param isAscending
+     */
+    @Override
+    public void sortRevenueList(boolean isAscending) {
+        if (isAscending) {
+            revenues.sort(new RevenueComparator());
+        } else {
+            revenues.sort(new RevenueComparator().reversed());
+            ;
+        }
+    }
+
+    /**
+     * Sorts the revenue list by date (default).
+     */
+    @Override
+    public void sortDefaultRevenueList() {
+        revenues.sort(new RevenueDefaultComparator());
     }
 
     //// list overwrite operations
@@ -51,17 +76,7 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
     //// service-level operations
 
     /**
-     * Replaces the given revenue {@code target} in the list with {@code editedRevenue}.
-     * {@code target} must exist in the SuperSalon.
-     * The service identity of {@code editedService} must not be the same as another existing service in the SuperSalon.
-     */
-    public void setRevenues(Revenue target, Revenue editedRevenue) {
-        requireNonNull(editedRevenue);
-        revenues.setItem(target, editedRevenue);
-    }
-
-    /**
-     * Adds a revenues to the SuperSalon.
+     * Adds a revenues to the Homerce.
      */
     public void addRevenue(Revenue r) {
         revenues.add(r);
@@ -70,7 +85,7 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
 
     /**
      * Removes {@code key} from this {@code ServiceManager}.
-     * {@code key} must exist in the SuperSalon.
+     * {@code key} must exist in the Homerce.
      */
     public void removeRevenue(Revenue key) {
         revenues.remove(key);
@@ -79,6 +94,7 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
     public List<Revenue> filterByMonth(Predicate<Revenue> predicate) {
         return revenues.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
     }
+
     public List<Revenue> filterByYear(Predicate<Revenue> predicate) {
         return revenues.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
     }
@@ -88,8 +104,8 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
     @Override
     public String toString() {
         return "Service Manager:\n"
-                + revenues.stream().map(Revenue::toString).collect(Collectors.joining("\n"))
-                + "\n Total number of activities: " + revenues.size();
+            + revenues.stream().map(Revenue::toString).collect(Collectors.joining("\n"))
+            + "\n Total number of activities: " + revenues.size();
 
     }
 
@@ -101,8 +117,8 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-                || (other instanceof RevenueTracker // instanceof handles nulls
-                && revenues.equals(((RevenueTracker) other).revenues));
+            || (other instanceof RevenueTracker // instanceof handles nulls
+            && revenues.equals(((RevenueTracker) other).revenues));
     }
 
     @Override
