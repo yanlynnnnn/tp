@@ -36,6 +36,9 @@ import seedu.homerce.logic.commands.revenue.ClearRevenueCommand;
 import seedu.homerce.logic.commands.revenue.FindRevenueCommand;
 import seedu.homerce.logic.commands.revenue.ListRevenueCommand;
 import seedu.homerce.logic.commands.revenue.SortRevenueCommand;
+import seedu.homerce.logic.commands.schedule.AbstractWeekCommand;
+import seedu.homerce.logic.commands.schedule.NextWeekCommand;
+import seedu.homerce.logic.commands.schedule.PreviousWeekCommand;
 import seedu.homerce.logic.commands.service.AddServiceCommand;
 import seedu.homerce.logic.commands.service.ClearServiceCommand;
 import seedu.homerce.logic.commands.service.DeleteServiceCommand;
@@ -60,6 +63,7 @@ import seedu.homerce.logic.parser.expense.FindExpenseCommandParser;
 import seedu.homerce.logic.parser.expense.SortExpenseCommandParser;
 import seedu.homerce.logic.parser.revenue.FindRevenueCommandParser;
 import seedu.homerce.logic.parser.revenue.SortRevenueCommandParser;
+import seedu.homerce.logic.parser.schedule.ScheduleCommandParser;
 import seedu.homerce.logic.parser.service.AddServiceCommandParser;
 import seedu.homerce.logic.parser.service.DeleteServiceCommandParser;
 import seedu.homerce.logic.parser.service.EditServiceCommandParser;
@@ -197,6 +201,15 @@ public class HomerceParser {
 
         case BreakdownFinanceCommand.COMMAND_WORD:
             return new BreakdownFinanceCommandParser().parse(arguments);
+
+        case AbstractWeekCommand.COMMAND_WORD:
+            return new ScheduleCommandParser().parse(arguments);
+
+        case NextWeekCommand.COMMAND_WORD:
+            return new NextWeekCommand();
+
+        case PreviousWeekCommand.COMMAND_WORD:
+            return new PreviousWeekCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

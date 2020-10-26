@@ -9,6 +9,7 @@ import static seedu.homerce.testutil.Assert.assertThrows;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 import java.util.function.Predicate;
 
@@ -92,7 +93,7 @@ public class AddClientCommandTest {
     /**
      * A default model stub that have all of the methods failing.
      */
-    private class ModelStub implements Model {
+    public static class ModelStub implements Model {
 
         @Override
         public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
@@ -361,6 +362,36 @@ public class AddClientCommandTest {
 
         @Override
         public void setAppointmentManager(ReadOnlyAppointmentManager appointmentManager) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ObservableList<Appointment> getFilteredSchedule() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void nextSchedulePage() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void previousSchedulePage() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void refreshSchedule() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void updateFilteredSchedule(Predicate<Appointment> predicate) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void setAppointmentManagerCalendar(Calendar calendar) {
             throw new AssertionError("This method should not be called.");
         }
 

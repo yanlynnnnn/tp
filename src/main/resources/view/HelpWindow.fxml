@@ -14,7 +14,7 @@
   </icons>
   <scene>
     <Scene>
-         <VBox alignment="CENTER" prefHeight="240.0" prefWidth="400.0">
+         <VBox alignment="CENTER" prefHeight="280.0" prefWidth="400.0">
             <children>
                <Label fx:id="helpMessage" text="Label" textAlignment="JUSTIFY" wrapText="true">
                   <VBox.margin>

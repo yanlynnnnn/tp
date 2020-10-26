@@ -2,12 +2,16 @@ package seedu.homerce.model.manager;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
 import seedu.homerce.model.appointment.Appointment;
+import seedu.homerce.model.appointment.predicate.AppointmentPaginationPredicate;
 import seedu.homerce.model.appointment.uniquelist.UniqueAppointmentList;
 
 /**
@@ -15,10 +19,19 @@ import seedu.homerce.model.appointment.uniquelist.UniqueAppointmentList;
  * Duplicates are not allowed (by .equals comparison)
  */
 public class AppointmentManager implements ReadOnlyAppointmentManager {
-    private final UniqueAppointmentList appointments;
 
+    private final UniqueAppointmentList appointments;
+    private final Logger logger;
+    private Calendar calendar;
+
+    /**
+     * Constructor for Appointment Manager
+     */
     public AppointmentManager() {
         this.appointments = new UniqueAppointmentList();
+        this.logger = Logger.getLogger("Appointment Manager");
+        this.calendar = Calendar.getInstance();
+        logger.info("Initialized new Appointment Manager with system date.");
     }
 
     /**
@@ -26,7 +39,11 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
      */
     public AppointmentManager(ReadOnlyAppointmentManager toBeCopied) {
         this.appointments = new UniqueAppointmentList();
+        this.logger = Logger.getLogger("Appointment Manager");
         resetData(toBeCopied);
+        logger.info("Transferred contents from old appointment manager into this new one.");
+        this.calendar = Calendar.getInstance();
+        logger.info("Initialized new Appointment Manager with system date.");
     }
 
     //// list overwrite operations
@@ -99,6 +116,14 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
     }
 
     @Override
+    public ObservableList<Appointment> getAppointmentListCopy() {
+        UniqueAppointmentList appointmentListCopy = new UniqueAppointmentList();
+        List<Appointment> appointmentsItemsCopy = appointments.deepCopy();
+        appointmentListCopy.setItems(appointmentsItemsCopy);
+        return appointmentListCopy.asUnmodifiableObservableList();
+    }
+
+    @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof AppointmentManager // instanceof handles nulls
@@ -119,6 +144,35 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
         List<Appointment> internalListCopy = appointments.deepCopy();
         AppointmentManager appointmentManagerCopy = new AppointmentManager();
         appointmentManagerCopy.setAppointments(internalListCopy);
+        appointmentManagerCopy.setCalendar(calendar);
         return appointmentManagerCopy;
+    }
+
+    //// Used for pagination
+    public Predicate<Appointment> getPreviousWeekPredicate() {
+        return new AppointmentPaginationPredicate(calendar);
+    }
+
+    public Predicate<Appointment> getNextWeekPredicate() {
+        return new AppointmentPaginationPredicate(calendar);
+    }
+
+    public Predicate<Appointment> getCurrentWeekPredicate() {
+        return new AppointmentPaginationPredicate(calendar);
+    }
+
+    public void setCalendarNextWeek() {
+        calendar.add(Calendar.WEEK_OF_YEAR, 1);
+    }
+
+    public void setCalendarPreviousWeek() {
+        calendar.add(Calendar.WEEK_OF_YEAR, -1);
+    }
+
+    /**
+     * Set calendar to custom week for custom schedule command.
+     */
+    public void setCalendar(Calendar calendar) {
+        this.calendar = calendar;
     }
 }
