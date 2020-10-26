@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <VBox style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
-    <ScrollPane fx:id="scrollPane" VBox.vgrow="ALWAYS">
+    <ScrollPane fx:id="scrollPane" VBox.vgrow="ALWAYS" maxWidth="1700">
         <GridPane fx:id="gridPane" styleClass="calendar-grid" VBox.vgrow="ALWAYS" />
     </ScrollPane>
 </VBox>
