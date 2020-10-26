@@ -1,3 +1,6 @@
+## Table of Content
+{:toc}
+
 ## 1. Introduction
 
 Welcome to the User Guide of **Homerce**!
