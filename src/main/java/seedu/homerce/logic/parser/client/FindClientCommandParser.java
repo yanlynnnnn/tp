@@ -1,6 +1,7 @@
 package seedu.homerce.logic.parser.client;
 
 import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.homerce.commons.core.Messages.MESSAGE_MULTIPLE_PARAMETERS;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_PHONE;
 
@@ -23,7 +24,6 @@ import seedu.homerce.model.client.predicate.ClientPhonePredicate;
  */
 public class FindClientCommandParser implements Parser<FindClientCommand> {
 
-    public static final String MULTIPLE_PARAMETERS = "Please only input one parameter.";
     public static final int NUM_ALLOWED_PARAMETERS = 1;
     /**
      * Parses the given {@code String} of arguments in the context of the FindClientCommand
@@ -40,7 +40,7 @@ public class FindClientCommandParser implements Parser<FindClientCommand> {
         }
 
         if (areMultipleParametersPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE)) {
-            throw new ParseException(MULTIPLE_PARAMETERS);
+            throw new ParseException(MESSAGE_MULTIPLE_PARAMETERS);
         }
 
         Predicate<Client> predicate = null;
