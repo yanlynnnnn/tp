@@ -1,5 +1,5 @@
-
-# Homerce - User Guide
+## Table of Content
+{:toc}
 
 ## 1. Introduction
 
@@ -342,9 +342,13 @@ command to add details of the appointment into the appointment tracker.
 
 Format : `addapt dt/DATE t/TIME s/SERVICE_CODE p/PHONE_NUMBER`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br> 
+<div markdown="block" class="alert alert-info"> 
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+
+</div> 
 
 Example:
 
@@ -376,10 +380,14 @@ Use this command to see your list of all your upcoming appointments.
 
 Format : `listapt`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Appointment Tracker Command Parameters](#611-appointment-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br>
+<div markdown="block" class="alert alert-info"> 
 
+**:information_source: Note:**<br>
+ 
+* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+
+</div> 
+ 
 Example:
 
 Let's say you want to list all your appointments stored in Homerce.
@@ -403,9 +411,13 @@ to Homerce.
 
 Format : `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]* [m/MONTH]*`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Appointment Tracker Command Parameters](#611-appointment-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br>
+<div markdown="block" class="alert alert-info"> 
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+
+</div> 
 
 Example:
 
@@ -430,9 +442,13 @@ command to edit details of the appointment.
 
 Format : `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER]`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Appointment Tracker Command Parameters](#611-appointment-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br>
+<div markdown="block" class="alert alert-info"> 
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+
+</div> 
 
 Example:
 
@@ -465,9 +481,13 @@ as done.
 
 Format : `done INDEX`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Appointment Tracker Command Parameters](#611-appointment-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br>
+<div markdown="block" class="alert alert-info"> 
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+
+</div> 
 
 Example:
 
@@ -494,9 +514,13 @@ scheduled to take place.
 
 Format : `undone INDEX`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Appointment Tracker Command Parameters](#611-appointment-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br>
+<div markdown="block" class="alert alert-info"> 
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+
+</div> 
 
 Example:
 
@@ -522,9 +546,13 @@ use this command to delete that particular command from the appointment tracker.
 
 Format : `deleteapt INDEX`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Appointment Tracker Command Parameters](#611-appointment-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br>
+<div markdown="block" class="alert alert-info"> 
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+
+</div> 
 
 Example:
 
@@ -551,9 +579,13 @@ appointments with your clients.
 
 Format : `clearapt`
 
-|<div markdown="block" class="alert alert-info"> :information_source:</div> | Refer to [Appointment Tracker Command Parameters](#611-appointment-tracker-command-parameters) for more details about each parameter.
-|---------|---------
-<br>
+<div markdown="block" class="alert alert-info"> 
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+
+</div> 
 
 Example:
 
@@ -641,7 +673,7 @@ Steps :
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message ~~in the _Dashboard_.~~
+1. It will display a successful message in the _Dashboard_.
 1. Homerce will list out all the revenue entries sorted from highest to lowest cost in the _Revenue_ tab.
 
 {Example outcome screenshot}
@@ -1230,6 +1262,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 
 
 ### 6.3. Revenue Tracker Commands
+
 |Action | Format | Examples
 |---------|---------|---------
 |**Find** | `findrev [dt/DATE]* [sc/SERVICE_CODE]*` | `findrev dt\28-09-2020`
@@ -1239,6 +1272,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**Breakdown**  | `breakdownrev`                                                   | 
 
 ### 6.4. Expense Tracker Commands
+
 |Action | Format | Examples
 |---------------|------------------------------------------------------------------|------------------------------------------------------------------
 |**Add**        | `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`        | `addexp d/conditioner f/n v/15.00 dt/28-10-2020 t/hairsupplies`

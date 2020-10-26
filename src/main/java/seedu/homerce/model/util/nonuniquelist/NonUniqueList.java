@@ -11,7 +11,7 @@ import java.util.stream.Stream;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.homerce.model.expense.exceptions.ItemNotFoundException;
+import seedu.homerce.model.util.nonuniquelist.exceptions.ItemNotFoundException;
 
 public class NonUniqueList<T> implements Iterable<T> {
 

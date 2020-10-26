@@ -7,20 +7,30 @@ import seedu.homerce.model.util.attributes.Title;
 import seedu.homerce.model.util.uniquelist.UniqueListItem;
 
 public class Service implements UniqueListItem {
-    /** The name of the service */
+
+    /**
+     * The name of the service
+     */
     private Title title;
 
-    /** Amount of money in dollars that this Service brings in */
+    /**
+     * Amount of money in dollars that this Service brings in
+     */
     private Amount price;
 
-    /** Unique identification number for each Service */
+    /**
+     * Unique identification number for each Service
+     */
     private ServiceCode serviceCode;
 
-    /** How long the service takes */
+    /**
+     * How long the service takes
+     */
     private Duration duration;
 
     /**
      * Constructor for Service.
+     *
      * @param title The title of the service.
      * @param duration The duration of the service.
      * @param price The price of the service.

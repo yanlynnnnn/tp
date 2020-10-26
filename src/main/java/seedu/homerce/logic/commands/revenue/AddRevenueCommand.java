@@ -11,7 +11,7 @@ import seedu.homerce.ui.revenuepanel.RevenueListPanel;
 
 public class AddRevenueCommand extends Command {
 
-    private static final String MESSAGE_ADD_REVENUE_SUCCESS = "New Revenue added: %1$s";
+    public static final String MESSAGE_ADD_REVENUE_SUCCESS = "New Revenue added: %1$s";
     private final Revenue toAdd;
 
     /**
