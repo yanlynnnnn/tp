@@ -34,11 +34,4 @@ public class ListRevenueCommandTest {
     public void execute_listIsNotFiltered_showsSameList() {
         assertCommandSuccess(new ListRevenueCommand(), model, ListRevenueCommand.MESSAGE_SUCCESS, expectedModel);
     }
-
-    //        @Test
-    //        public void execute_listIsFiltered_showsEverything() {
-    //            showClientAtIndex(model, INDEX_FIRST_CLIENT);
-    //            assertCommandSuccess(new ListRevenueCommand(), model, ListRevenueCommand.MESSAGE_SUCCESS,
-    //            expectedModel);
-    //        }
 }
