@@ -16,6 +16,7 @@ public class Messages {
     public static final String MESSAGE_REVENUE_LISTED_OVERVIEW = "%1$d revenue listed!";
     public static final String MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX = "The appointment"
             + " index provided is invalid";
+    public static final String MESSAGE_MULTIPLE_PARAMETERS = "Please only input one parameter";
     public static final String MESSAGE_APPOINTMENTS_LISTED_OVERVIEW = "%1$d appointments listed!";
     public static final String MESSAGE_APPOINTMENT_ALREADY_DONE = "This appointment is already marked as done!";
     public static final String MESSAGE_APPOINTMENT_ALREADY_UNDONE = "This appointment is already marked as not done!";

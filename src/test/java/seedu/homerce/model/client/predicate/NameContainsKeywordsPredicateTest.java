@@ -1,4 +1,4 @@
-package seedu.homerce.model.client;
+package seedu.homerce.model.client.predicate;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.homerce.model.client.predicate.NameContainsKeywordsPredicate;
 import seedu.homerce.testutil.ClientBuilder;
 
 public class NameContainsKeywordsPredicateTest {

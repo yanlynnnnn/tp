@@ -50,6 +50,7 @@ public class AddExpenseCommand extends Command {
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
+        requireNonNull(historyManager);
 
         model.addExpense(toAdd);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ExpenseListPanel.TAB_NAME);

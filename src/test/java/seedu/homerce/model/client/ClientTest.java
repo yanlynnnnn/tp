@@ -1,6 +1,8 @@
 package seedu.homerce.model.client;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_NAME_BOB;
@@ -87,4 +89,50 @@ public class ClientTest {
         editedAlice = new ClientBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
         assertFalse(ALICE.equals(editedAlice));
     }
+
+    @Test
+    public void getName() {
+        assertEquals(ALICE.getName(), new Name("Alice Pauline"));
+
+        assertNotEquals(ALICE.getName(), new Name("Alice"));
+        assertNotEquals(ALICE.getName(), new Name("Alice Paul"));
+
+    }
+
+    @Test
+    public void getPhone() {
+        Client editedAlice = new ClientBuilder(ALICE).withPhone("91234567").build();
+
+        assertEquals(ALICE.getPhone(), new Phone("94351253"));
+        assertEquals(new Phone("91234567"), editedAlice.getPhone());
+
+        assertNotEquals(ALICE.getPhone(), new Phone("9123123"));
+
+    }
+
+    @Test
+    public void getEmail() {
+        assertEquals(ALICE.getEmail(), new Email("alice@example.com"));
+
+        assertNotEquals(ALICE.getEmail(), new Email("alice@gmail.com"));
+    }
+
+    @Test
+    public void testHashCode() {
+        Client editedAlice = new ClientBuilder(ALICE).withPhone("91234567").build();
+
+        assertEquals(ALICE.hashCode(), ALICE.hashCode());
+        assertNotEquals(ALICE.hashCode(), BOB.hashCode());
+
+        assertNotEquals(ALICE.hashCode(), editedAlice.hashCode());
+    }
+
+    @Test
+    public void testToString() {
+        assertEquals(ALICE.toString(), "Alice Pauline Phone: 94351253 Email: alice@example.com Tags: [friends]");
+
+        assertNotEquals(ALICE.toString(), "Alice Pauline");
+        assertNotEquals(ALICE.toString(), BOB.toString());
+    }
+
 }
