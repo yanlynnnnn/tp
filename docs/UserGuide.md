@@ -1,4 +1,8 @@
-## Table of Content
+---
+layout: page
+title: User Guide
+---
+* Table of Contents
 {:toc}
 
 ## 1. Introduction
@@ -145,7 +149,7 @@ Format: `addsvc t/TITLE d/DURATION p/PRICE`
 
 **:information_source: Note:**<br>
  
-* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -179,7 +183,7 @@ Format: `editsvc s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*`
 
 **:information_source: Note:**<br>
  
-* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -208,7 +212,7 @@ Format: `deletesvc s/SERVICE_CODE`
 
 **:information_source: Note:**<br>
  
-* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -237,7 +241,7 @@ Format: `findsvc [t/TITLE]* [s/SERVICE_CODE]`
 
 **:information_source: Note:**<br>
  
-* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -266,7 +270,7 @@ Format: `listsvc`
 
 **:information_source: Note:**<br>
  
-* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -294,7 +298,7 @@ Format: `clearsvc`
 
 **:information_source: Note:**<br>
  
-* Refer to [Service Management Command Parameters](#service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
