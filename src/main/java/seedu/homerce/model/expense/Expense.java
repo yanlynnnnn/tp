@@ -49,20 +49,6 @@ public class Expense {
     }
 
     /**
-     * Returns true if both expenses have the same identity fields.
-     * This defines a weaker notion of equality between two expenses.
-     */
-    public boolean isSameExpense(Expense otherExpense) {
-        if (otherExpense == this) {
-            return true;
-        }
-
-        return otherExpense != null
-                && otherExpense.getDescription().equals(getDescription())
-                && (otherExpense.getIsFixed().equals(getIsFixed()));
-    }
-
-    /**
      * Returns true if both expenses have the same identity and data fields.
      * This defines a stronger notion of equality between two expenses.
      */
