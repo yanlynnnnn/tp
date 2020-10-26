@@ -350,7 +350,8 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Services Management
 
-#### UC001: Add a Service
+<pre>
+UC001: Add a Service
 Add a service provided by the business into Homerce.
 
 **System: Homerce**
@@ -371,8 +372,10 @@ Use case ends.
 * 1a. Incomplete details provided.
   * 1a1. Homerce displays an error message.
   Use case resumes at step 1.
-
-#### UC002: Edit a Service
+</pre>
+<br>
+<pre>
+UC002: Edit a Service
 Edit the details of an existing service.
 
 **System: Homerce**
@@ -400,8 +403,10 @@ Use case ends.
 * 3b. Invalid details provided.
   * 3b1. Homerce displays an error message.
   Use case resumes at step 1.
-
-#### UC003: Delete a Service
+</pre>
+<br>
+<pre>
+UC003: Delete a Service
 Delete the selected service from the service list.
 
 **System: Homerce**
@@ -425,8 +430,10 @@ Use case ends.
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
-
-#### UC004: Find a Service
+</pre>
+<br>
+<pre>
+UC004: Find a Service
 Find a service in the service list.
 
 **System: Homerce**
@@ -448,8 +455,10 @@ Use case ends.
 * 2a. No service matches the search value.
   * 2a1. Homerce displays an empty list.
   Use case resumes at step 4.
-
-#### UC005: List Services
+</pre>
+<br>
+<pre>
+UC005: List Services
 List all the services in the service list.
 
 **System: Homerce**
@@ -470,8 +479,10 @@ Use case ends.
 * 1a. No service in service list.
   * 1a1. Homerce displays an empty list.
   Use case resumes at step 3.
-
-#### UC006: Clear Services
+</pre>
+<br>
+<pre>
+UC006: Clear Services
 Clear all services in the service list.
 
 **System: Homerce**
@@ -486,10 +497,12 @@ Clear all services in the service list.
 1. User requests to clear the list.
 1. Homerce displays an empty list and a successful message.
 Use case ends.
+</pre>
 
 ### Client Management
 
-#### UC007: Add a Client
+<pre>
+UC007: Add a Client
 Add a client into Homerce.
 
 **System: Homerce**
@@ -510,8 +523,10 @@ Use case ends.
 * 1a. Incomplete details provided.
   * 1a1. Homerce displays an error message.
   Use case resumes at step 1.
-
-#### UC008: Edit a Client's Details
+</pre>
+<br>
+<pre>
+UC008: Edit a Client's Details
 Edit the details of an existing client.
 
 **System: Homerce**
@@ -539,8 +554,10 @@ Use case ends.
 * 3b. Invalid details provided.
   * 3b1. Homerce displays an error message.
   Use case resumes at step 1.
-
-#### UC009: Delete a Client
+</pre>
+<br>
+<pre>
+UC009: Delete a Client
 Delete the selected client from the client list.
 
 **System: Homerce**
@@ -564,8 +581,10 @@ Use case ends.
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
-
-#### UC010: Find a Client
+</pre>
+<br>
+<pre>
+UC010: Find a Client
 Find a client in the client list.
 
 **System: Homerce**
@@ -587,8 +606,10 @@ Use case ends.
 * 2a. No client matches the search value.
   * 2a1. Homerce displays an empty list.
   Use case resumes at step 4.
-
-#### UC011: List Clients
+</pre>
+<br>
+<pre>
+UC011: List Clients
 List all the clients in the client list.
 
 **System: Homerce**
@@ -609,8 +630,10 @@ Use case ends.
 * 1a. No client in client list.
   * 1a1. Homerce displays an empty list.
   Use case resumes at step 3.
-
-#### UC012: Clear Clients
+</pre>
+<br>
+<pre>
+UC012: Clear Clients
 Clear all clients in the client list.
 
 **System: Homerce**
@@ -625,10 +648,12 @@ Clear all clients in the client list.
 1. User requests to clear the list.
 1. Homerce displays an empty list and a successful message.
 Use case ends.
+</pre>
 
 ### Appointment Management
 
-#### UC013: Add an Appointment
+<pre>
+UC013: Add an Appointment
 Schedule an appointment into Homerce.
 
 **System: Homerce**
@@ -649,8 +674,10 @@ Use case ends.
 * 1a. Incomplete details provided.
   * 1a1. Homerce displays an error message.
   Use case resumes at step 1.
-
-#### UC014: Edit an Appointment Details
+</pre>
+<br>
+<pre>
+UC014: Edit an Appointment Details
 Edit the details of an existing appointment.
 
 **System: Homerce**
@@ -678,8 +705,10 @@ Use case ends.
 * 3b. Invalid details provided.
   * 3b1. Homerce displays an error message.
   Use case resumes at step 1.
-
-#### UC015: Delete an Appointment
+</pre>
+<br>
+<pre>
+UC015: Delete an Appointment
 Delete the selected appointment from the appointment list.
 
 **System: Homerce**
@@ -703,8 +732,10 @@ Use case ends.
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
-
-#### UC016: Find an Appointment
+</pre>
+<br>
+<pre>
+UC016: Find an Appointment
 Find an appointment in the appointment list.
 
 **System: Homerce**
@@ -726,8 +757,10 @@ Use case ends.
 * 2a. No appointment matches the search value.
   * 2a1. Homerce displays an empty list.
   Use case resumes at step 4.
-
-#### UC017: List Appointments
+</pre>
+<br>
+<pre>
+UC017: List Appointments
 List all the appointments in the appointment list.
 
 **System: Homerce**
@@ -748,8 +781,10 @@ Use case ends.
 * 1a. No appointment in appointment list.
   * 1a1. Homerce displays an empty list.
   Use case resumes at step 3.
-
-#### UC018: Clear Appointments
+</pre>
+<br>
+<pre>
+UC018: Clear Appointments
 Clear all appointments in the appointment list.
 
 **System: Homerce**
@@ -764,8 +799,10 @@ Clear all appointments in the appointment list.
 1. User requests to clear the list.
 1. Homerce displays an empty list and a successful message.
 Use case ends.
-
-#### UC019: Appointment Done
+</pre>
+<br>
+<pre>
+UC019: Appointment Done
 Indicate that the appointment have been done.
 
 **System: Homerce**
@@ -789,8 +826,10 @@ Indicate that the appointment have been done.
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
-  
-#### UC020: Appointment Undone
+</pre>
+<br>
+<pre>  
+UC020: Appointment Undone
 Indicate that the appointment has not been completed.
  
 **System: Homerce**
@@ -814,10 +853,12 @@ Indicate that the appointment has not been completed.
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
+</pre>
 
 ### Expense Tracker
 
-#### UC021: Add an Expense
+<pre>
+UC021: Add an Expense
 Add an expense incurred by the business into Homerce.
 
 **System: Homerce**
@@ -838,8 +879,10 @@ Use case ends.
 * 1a. Incomplete details provided.
   * 1a1. Homerce displays an error message.
   Use case resumes at step 1.
-
-#### UC022: Edit an Expense
+</pre>
+<br>
+<pre>
+UC022: Edit an Expense
 Edit the details of an existing expense.
 
 **System: Homerce**
@@ -867,8 +910,10 @@ Use case ends.
 * 3b. Invalid details provided.
   * 3b1. Homerce displays an error message.
   Use case resumes at step 1.
-
-#### UC023: Delete an Expense
+</pre>
+<br>
+<pre>
+UC023: Delete an Expense
 Delete the selected expense from the expense list.
 
 **System: Homerce**
@@ -892,8 +937,10 @@ Use case ends.
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
-
-#### UC024: Find an Expense
+</pre>
+<br>
+<pre>
+UC024: Find an Expense
 Find an expense in the expense list.
 
 **System: Homerce**
@@ -915,8 +962,10 @@ Use case ends.
 * 2a. No expense matches the search value.
   * 2a1. Homerce displays an empty list.
   Use case resumes at step 4.
-
-#### UC025: List Expenses
+</pre>
+<br>
+<pre>
+UC025: List Expenses
 List all the expenses in the expense list.
 
 **System: Homerce**
@@ -937,8 +986,10 @@ Use case ends.
 * 1a. No expense in revenue list.
   * 1a1. Homerce displays an empty list.
   Use case resumes at step 3.
-
-#### UC026: Clear Expenses
+</pre>
+<br>
+<pre>
+UC026: Clear Expenses
 Clear all expenses in the expense list.
 
 **System: Homerce**
@@ -953,10 +1004,12 @@ Clear all expenses in the expense list.
 1. User requests to clear the list.
 1. Homerce displays an empty list and a successful message.
 Use case ends.
+</pre>
 
 ### Revenue Tracker
 
-#### UC027: Add a Revenue
+<pre>
+UC027: Add a Revenue
 Add a revenue earned by the business into Homerce.
 
 **System: Homerce**
@@ -972,8 +1025,10 @@ Add a revenue earned by the business into Homerce.
 1. Homerce adds the revenue generated from appointment to the revenue list.
 1. Homerce displays a successful message.
 Use case ends.
-
-#### UC028: Delete an Revenue
+</pre>
+<br>
+<pre>
+UC028: Delete an Revenue
 Delete the selected revenue from the revenue list.
 
 **System: Homerce**
@@ -989,8 +1044,10 @@ Delete the selected revenue from the revenue list.
 1. Homerce remove the revenue generated from appointment to the revenue list.
 1. Homerce displays a successful message.
 Use case ends.
-
-#### UC029: Find a Revenue
+</pre>
+<br>
+<pre>
+UC029: Find a Revenue
 Find a revenue in the revenue list.
 
 **System: Homerce**
@@ -1012,8 +1069,10 @@ Use case ends.
 * 2a. No revenue matches the search value.
   * 2a1. Homerce displays an empty list.
   Use case resumes at step 4.
-
-#### UC030: List Revenues
+</pre>
+<br>
+<pre>
+UC030: List Revenues
 List all the revenues in the revenue list.
 
 **System: Homerce**
@@ -1034,8 +1093,10 @@ Use case ends.
 * 1a. No revenue in revenue list.
   * 1a1. Homerce displays an empty list.
   Use case resumes at step 3.
-
-#### UC031: Clear Revenues
+</pre>
+<br>
+<pre>
+UC031: Clear Revenues
 Clear all revenues in the revenue list.
 
 **System: Homerce**
@@ -1050,7 +1111,7 @@ Clear all revenues in the revenue list.
 1. User requests to clear the list.
 1. Homerce displays an empty list and a successful message.
 Use case ends.
-
+</pre>
 
 ### Others
 
