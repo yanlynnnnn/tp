@@ -1,0 +1,60 @@
+@startuml
+!include ../style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":**AddServiceCommand**" as AddServiceCommand LOGIC_COLOR
+participant "**r:CommandResult**" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "**m:ModelManager**" as ModelManager MODEL_COLOR
+participant "**:ServiceCodeGenerator**" as ServiceCodeGenerator MODEL_COLOR
+participant "**:ServiceManager**" as ServiceManager MODEL_COLOR
+end box
+
+[-> AddServiceCommand : ""execute(m)""
+activate AddServiceCommand
+
+AddServiceCommand -> ModelManager : ""getFilteredServiceList()""
+activate ModelManager
+AddServiceCommand <-- ModelManager: ""services""
+deactivate ModelManager
+
+AddServiceCommand -> ServiceCodeGenerator: ""generateServiceCode(services)""
+
+note right
+""services"" is all the services
+which is currently stored in
+Homerce's list of services.
+end note
+
+activate ServiceCodeGenerator
+AddServiceCommand <-- ServiceCodeGenerator: ""serviceCode""
+deactivate ServiceCodeGenerator
+
+AddServiceCommand -> ModelManager : ""addService(s)""
+activate ModelManager
+
+ModelManager -> ServiceManager: ""addService(s)""
+activate ServiceManager
+
+ServiceManager --> ModelManager
+deactivate ServiceManager
+
+ModelManager --> AddServiceCommand
+deactivate ModelManager
+
+create CommandResult
+AddServiceCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> AddServiceCommand : ""r""
+deactivate CommandResult
+
+[<-- AddServiceCommand : ""r""
+deactivate AddServiceCommand
+
+AddServiceCommand -[hidden]> CommandResult
+destroy AddServiceCommand
+
+@enduml
