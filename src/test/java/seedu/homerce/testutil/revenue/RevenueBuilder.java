@@ -23,9 +23,9 @@ public class RevenueBuilder {
      * Creates a {@code RevenueBuilder} with the default details.
      */
     public RevenueBuilder() {
-        Service service = DEFAULT_SERVICE;
+        service = DEFAULT_SERVICE;
         service.addServiceCode(serviceCode);
-        Date date = new Date("25-10-2020");
+        date = new Date("25-10-2020");
     }
 
     /**

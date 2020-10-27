@@ -1,4 +1,4 @@
-package seedu.homerce.testutil;
+package seedu.homerce.testutil.client;
 
 import java.util.HashSet;
 import java.util.Set;

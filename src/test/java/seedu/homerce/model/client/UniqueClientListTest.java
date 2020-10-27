@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.homerce.testutil.Assert.assertThrows;
-import static seedu.homerce.testutil.TypicalClients.ALICE;
-import static seedu.homerce.testutil.TypicalClients.AMY;
-import static seedu.homerce.testutil.TypicalClients.BOB;
+import static seedu.homerce.testutil.client.TypicalClients.ALICE;
+import static seedu.homerce.testutil.client.TypicalClients.AMY;
+import static seedu.homerce.testutil.client.TypicalClients.BOB;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.homerce.model.client.exceptions.ClientNotFoundException;
 import seedu.homerce.model.client.exceptions.DuplicateClientException;
-import seedu.homerce.testutil.ClientBuilder;
+import seedu.homerce.testutil.client.ClientBuilder;
 
 public class UniqueClientListTest {
 

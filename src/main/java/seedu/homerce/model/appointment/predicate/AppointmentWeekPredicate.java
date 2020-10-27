@@ -11,7 +11,7 @@ import java.util.function.Predicate;
 
 import seedu.homerce.model.appointment.Appointment;
 
-public class AppointmentPaginationPredicate implements Predicate<Appointment> {
+public class AppointmentWeekPredicate implements Predicate<Appointment> {
     private static final DateTimeFormatter FORMAT_OUTPUT = DateTimeFormatter.ofPattern("dd MMM yyyy");
     private final LocalDate startOfWeekDate;
     private final LocalDate endOfWeekDate;
@@ -20,7 +20,7 @@ public class AppointmentPaginationPredicate implements Predicate<Appointment> {
      * Creates a Predicate that filters appointments such that only those in the same week as
      * {@code referenceDate} will be displayed.
      */
-    public AppointmentPaginationPredicate(Calendar calendar) {
+    public AppointmentWeekPredicate(Calendar calendar) {
         requireNonNull(calendar);
         this.startOfWeekDate = calculateStartDateOfWeek(calendar);
         this.endOfWeekDate = calculateEndDateOfWeek(calendar);
@@ -59,7 +59,11 @@ public class AppointmentPaginationPredicate implements Predicate<Appointment> {
         return startOfWeekDate.format(FORMAT_OUTPUT) + " to " + endOfWeekDate.format(FORMAT_OUTPUT);
     }
 
-    public LocalDate getStartOfWeekDate() {
-        return startOfWeekDate;
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+            || (other instanceof AppointmentWeekPredicate // instanceof handles nulls
+            && startOfWeekDate.equals(((AppointmentWeekPredicate) other).startOfWeekDate)
+            && endOfWeekDate.equals(((AppointmentWeekPredicate) other).endOfWeekDate)); // state check
     }
 }

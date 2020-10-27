@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 import seedu.homerce.commons.exceptions.IllegalValueException;
 import seedu.homerce.commons.util.JsonUtil;
 import seedu.homerce.model.manager.ClientManager;
-import seedu.homerce.testutil.TypicalClients;
+import seedu.homerce.testutil.client.TypicalClients;
 
 public class JsonSerializableClientManagerTest {
 

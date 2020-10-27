@@ -10,9 +10,9 @@ import static seedu.homerce.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.homerce.logic.commands.CommandTestUtil.showClientAtIndex;
-import static seedu.homerce.testutil.TypicalClients.getTypicalClientManager;
 import static seedu.homerce.testutil.TypicalIndexes.INDEX_FIRST_CLIENT;
 import static seedu.homerce.testutil.TypicalIndexes.INDEX_SECOND_CLIENT;
+import static seedu.homerce.testutil.client.TypicalClients.getTypicalClientManager;
 
 import org.junit.jupiter.api.Test;
 
@@ -27,8 +27,8 @@ import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.ExpenseTracker;
 import seedu.homerce.model.manager.RevenueTracker;
 import seedu.homerce.model.manager.ServiceManager;
-import seedu.homerce.testutil.ClientBuilder;
-import seedu.homerce.testutil.EditClientDescriptorBuilder;
+import seedu.homerce.testutil.client.ClientBuilder;
+import seedu.homerce.testutil.client.EditClientDescriptorBuilder;
 
 /**
  * Contains integration tests (interaction with the Model, UndoCommand and RedoCommand) and unit tests

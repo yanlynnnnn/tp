@@ -61,7 +61,7 @@ public class Appointment implements UniqueListItem {
     public TimeOfDay getAppointmentEndTime() {
         // Duration time has intervals of 0.5h
         double durationMinutes = service.getDuration().value * 60;
-        LocalTime endTime = timeOfDay.getTime().plusMinutes((long) durationMinutes);
+        LocalTime endTime = timeOfDay.getLocalTime().plusMinutes((long) durationMinutes);
         String formattedEndTime = endTime.format(FORMAT_INPUT);
 
         return new TimeOfDay(formattedEndTime);
@@ -86,7 +86,7 @@ public class Appointment implements UniqueListItem {
             return true;
         }
 
-        if (!(other instanceof Client)) {
+        if (!(other instanceof Appointment)) {
             return false;
         }
 
@@ -111,7 +111,7 @@ public class Appointment implements UniqueListItem {
                 .append(getAppointmentStartTime())
                 .append(" Client: ")
                 .append(getClient())
-                .append(" Service ")
+                .append(" Service: ")
                 .append(getService())
                 .append(" Done? ")
                 .append(getStatus());
@@ -131,10 +131,10 @@ public class Appointment implements UniqueListItem {
             return false;
         }
         Appointment otherAppointment = (Appointment) other;
-        if (appointmentDate.equals(otherAppointment.appointmentDate)) {
-            return isClashing(otherAppointment);
-        } else {
+        if (!appointmentDate.equals(otherAppointment.appointmentDate)) {
             return false;
+        } else {
+            return isClashing(otherAppointment);
         }
     }
 

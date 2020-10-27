@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.testutil.Assert.assertThrows;
 
+import java.time.LocalTime;
+
 import org.junit.jupiter.api.Test;
 
 public class TimeOfDayTest {
@@ -58,12 +60,19 @@ public class TimeOfDayTest {
     }
 
     @Test
-    public void equalityTest() {
+    public void equals() {
         TimeOfDay time1 = new TimeOfDay("0900");
         TimeOfDay time2 = new TimeOfDay("0900");
         TimeOfDay time3 = new TimeOfDay("2100");
         assertEquals(time1, time2);
         assertNotEquals(time2, time3);
+    }
+
+    @Test
+    public void getterMethod_returns_nonNullTime() {
+        TimeOfDay time = new TimeOfDay("1300");
+        LocalTime localTime = LocalTime.of(13, 0);
+        assertEquals(time.getLocalTime(), localTime);
     }
 
     @Test

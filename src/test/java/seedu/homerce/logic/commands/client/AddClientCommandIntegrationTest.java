@@ -2,7 +2,7 @@ package seedu.homerce.logic.commands.client;
 
 import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.homerce.testutil.TypicalClients.getTypicalClientManager;
+import static seedu.homerce.testutil.client.TypicalClients.getTypicalClientManager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,7 +15,7 @@ import seedu.homerce.model.manager.AppointmentManager;
 import seedu.homerce.model.manager.ExpenseTracker;
 import seedu.homerce.model.manager.RevenueTracker;
 import seedu.homerce.model.manager.ServiceManager;
-import seedu.homerce.testutil.ClientBuilder;
+import seedu.homerce.testutil.client.ClientBuilder;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code AddCommand}.

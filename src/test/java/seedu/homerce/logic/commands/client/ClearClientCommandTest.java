@@ -1,7 +1,7 @@
 package seedu.homerce.logic.commands.client;
 
 import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.homerce.testutil.TypicalClients.getTypicalClientManager;
+import static seedu.homerce.testutil.client.TypicalClients.getTypicalClientManager;
 
 import org.junit.jupiter.api.Test;
 

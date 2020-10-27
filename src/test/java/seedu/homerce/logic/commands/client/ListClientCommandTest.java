@@ -2,8 +2,8 @@ package seedu.homerce.logic.commands.client;
 
 import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.homerce.logic.commands.CommandTestUtil.showClientAtIndex;
-import static seedu.homerce.testutil.TypicalClients.getTypicalClientManager;
 import static seedu.homerce.testutil.TypicalIndexes.INDEX_FIRST_CLIENT;
+import static seedu.homerce.testutil.client.TypicalClients.getTypicalClientManager;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
