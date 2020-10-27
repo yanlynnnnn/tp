@@ -28,4 +28,6 @@ public class Messages {
     public static final String MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX = "The service index provided is invalid";
     public static final String MESSAGE_SERVICES_INVALID_SERVICE_DISPLAYED_INDEX = "The service index "
         + "provided is invalid";
+    public static final String MESSAGES_SERVICES_INVALID_DELETION = "The service you want to delete is being scheduled"
+        + " today or at a future appointment, it cannot be deleted.";
 }
