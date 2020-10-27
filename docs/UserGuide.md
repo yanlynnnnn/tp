@@ -699,8 +699,9 @@ Outcome :
 
 ### 4.4 Expense Tracker
 
-Homerce knows that expense tracking in important in managing business expenditure.
-Thus, this feature allows you to track all the expenses you may incur during your business operations.
+Homerce understands that Expense Tracking is extremely important in managing business expenditure.
+Thus, this feature allows you to track your operational expenses with ease.
+You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`. 
 
 #### 4.4.1. Expense Tracker Command Parameters
 
@@ -709,15 +710,13 @@ The table below shows a list of command parameters that will be used.
 
 | Parameter Name | Description | Example
 |---------|---------|---------
-|`DESCRIPTION`  | The description of the expense. <br><br> It must be alphanumeric words not more than 50 characters long. | E.g. Typing `conditioner` would mean an expense on a bottle of conditioner.
-|`IS_FIXED`| The indication of whether an expense is a fixed or variable expense. <br> <br> It must be in the format of `y` or `n`. | E.g. Typing `y` would mean the expense is fixed <br> <br> E.g. Typing `n` would mean the expense is variable.
-|`VALUE` | The value refers to the monetary value of the expense. <br> <br> It must consist only of numeric characters and a decimal point, and must have exactly two decimal places. | E.g. Typing `10.00` would mean the expense costs $10.00.
-|`DATE` | The date of the expense. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
-|`TAG` | The tag you want to attach to the expense. <br> <br> It must be a single alphanumeric word not more than 30 characters long. | E.g. Typing `equipment` would mean that the expense is tagged as an equipment.
+|`DESCRIPTION`  | The description of the expense. <br><br> It must be alphanumeric words not more than 50 characters long. | E.g. Typing `Conditioner` as the description indicates that the expense was made on a bottle of Conditioner.
+|`IS_FIXED`| The indication of whether an expense is fixed. <br> <br> It must be in the format of `y` or `n`. <br><br> *Note: A fixed expense is an expense that recurs monthly. For example, the monthly air-conditioning bill is a fixed expense as it recurs every month, while a box of tissues is a one-time expense and should not be indicated as fixed.* | E.g. Typing `y` would mean the expense is fixed. <br>You only have to add a fixed expense once, as Homerce will automatically record the expense for you every month. <br> <br> E.g. Typing `n` would mean the expense is not fixed.
+|`VALUE` | The value refers to the monetary value of the expense. <br> <br> It must consist only of numeric characters and have up to two decimal places. | E.g. Typing `10.00` would mean the expense costs $10.00.
+|`DATE` | The date of the expense. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean the expense was made on 28 September 2020.
+|`TAG` | The tag you want to attach to the expense. <br> <br> It must be a single alphanumeric word not more than 30 characters long. <br><br> *Note: Tags are used to categorise and organize your expenses. For example, an expense on eyelash glue can be tagged under 'lashsupplies'.<br> Tags are optional, and expenses without a tag specified will automatically be categorized under 'others'.*| E.g. Typing `equipment` would mean that the expense is tagged as an equipment.
 |`INDEX` | The index of the expense in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the expense with index-2 in the displayed list.
-|`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc`. | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
-|`MONTH`| The month the expense is made. <br> <br> It must be a valid integer between 1 - 12. | E.g. Typing '12' would refer to the month of December. 
-|`YEAR`| The year the expense is made. <br> <br> It must be a valid year. | E.g. Typing '2020' would refer to the year 2020.
+|`ORDER` | The order refers to ascending or descending. It is used to sort expenses based on their value. <br> <br> It must be in the format of `asc` or `desc`. | E.g. Typing `asc` would mean ascending. Expenses will be displayed from lowest to highest value. <br> <br> E.g. Typing `desc` would mean descending. Expenses will be displayed from highest to lowest value.
 
 #### 4.4.2. Add an expense `addexp`
 
