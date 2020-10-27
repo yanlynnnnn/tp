@@ -722,32 +722,11 @@ Outcome :
 
 {Example outcome screenshot}
 
-#### 4.3.6. Breakdown revenue : `breakdownrev`
-
-You can use this command to breakdown revenue into their relevant categories, based on their 'service code'.
-
-Format : `breakdownrev`
-
-Example :
-
-You wish to see which type of service generated the most revenue for your business, to possibly determine the business direction for there. 
-
-You can follow the steps below to view a breakdown of your revenues.
-
-Steps :
-1. Type `breakdownrev` into the _Command Box_.
-1. Press `Enter` to execute. 
-
-Outcome : 
-1. It will display a successful message ~~in the _Dashboard_.~~
-1. Homerce will display a Pie Chart that categorizes revenues based on their 'service code', along with the total cost of all expenses in each category.
-
-{Example outcome screenshot}
-
 ### 4.4 Expense Tracker
 
-Homerce knows that expense tracking in important in managing business expenditure.
-Thus, this feature allows you to track all the expenses you may incur during your business operations.
+Homerce understands that Expense Tracking is extremely important in managing business expenditure.
+Thus, this feature allows you to track your operational expenses with ease.
+You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`. 
 
 #### 4.4.1. Expense Tracker Command Parameters
 
@@ -756,15 +735,13 @@ The table below shows a list of command parameters that will be used.
 
 | Parameter Name | Description | Example
 |---------|---------|---------
-|`DESCRIPTION`  | The description of the expense. <br><br> It must be alphanumeric words not more than 50 characters long. | E.g. Typing `conditioner` would mean an expense on a bottle of conditioner.
-|`IS_FIXED`| The indication of whether an expense is a fixed or variable expense. <br> <br> It must be in the format of `y` or `n`. | E.g. Typing `y` would mean the expense is fixed <br> <br> E.g. Typing `n` would mean the expense is variable.
-|`VALUE` | The value refers to the monetary value of the expense. <br> <br> It must consist only of numeric characters and a decimal point, and must have exactly two decimal places. | E.g. Typing `10.00` would mean the expense costs $10.00.
-|`DATE` | The date of the expense. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
-|`TAG` | The tag you want to attach to the expense. <br> <br> It must be a single alphanumeric word not more than 30 characters long. | E.g. Typing `equipment` would mean that the expense is tagged as an equipment.
+|`DESCRIPTION`  | The description of the expense. <br><br> It must be alphanumeric words not more than 50 characters long. | E.g. Typing `Conditioner` as the description indicates that the expense was made on a bottle of Conditioner.
+|`IS_FIXED`| The indication of whether an expense is fixed. <br> <br> It must be in the format of `y` or `n`. <br><br> *Note: A fixed expense is an expense that recurs monthly. For example, the monthly air-conditioning bill is a fixed expense as it recurs every month, while a box of tissues is a one-time expense and should not be indicated as fixed.* | E.g. Typing `y` would mean the expense is fixed. <br>You only have to add a fixed expense once, as Homerce will automatically record the expense for you every month. <br> <br> E.g. Typing `n` would mean the expense is not fixed.
+|`VALUE` | The value refers to the monetary value of the expense. <br> <br> It must consist only of numeric characters and have up to two decimal places. | E.g. Typing `10.00` would mean the expense costs $10.00.
+|`DATE` | The date of the expense. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean the expense was made on 28 September 2020.
+|`TAG` | The tag you want to attach to the expense. <br> <br> It must be a single alphanumeric word not more than 30 characters long. <br><br> *Note: Tags are used to categorise and organize your expenses. For example, an expense on eyelash glue can be tagged under 'lashsupplies'.<br> Tags are optional, and expenses without a tag specified will automatically be categorized under 'others'.*| E.g. Typing `equipment` would mean that the expense is tagged as an equipment.
 |`INDEX` | The index of the expense in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the expense with index-2 in the displayed list.
-|`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc`. | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
-|`MONTH`| The month the expense is made. <br> <br> It must be a valid integer between 1 - 12. | E.g. Typing '12' would refer to the month of December. 
-|`YEAR`| The year the expense is made. <br> <br> It must be a valid year. | E.g. Typing '2020' would refer to the year 2020.
+|`ORDER` | The order refers to ascending or descending. It is used to sort expenses based on their value. <br> <br> It must be in the format of `asc` or `desc`. | E.g. Typing `asc` would mean ascending. Expenses will be displayed from lowest to highest value. <br> <br> E.g. Typing `desc` would mean descending. Expenses will be displayed from highest to lowest value.
 
 #### 4.4.2. Add an expense `addexp`
 
@@ -952,36 +929,6 @@ Steps :
 Outcome :
 1. It will display a success message.
 
-#### 4.4.9. Breakdown expenses `breakdownexp`
-
-You can use this command to breakdown expenses into their relevant categories, based on their 'tags'.
-
-Format : `breakdownexp m/MONTH y/YEAR`
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note:**<br>
- 
-* Refer to [Expense Tracker Command Parameters](#expense-tracker-command-parameters) for more details about each parameter.
-
-</div>
-
-Example :
-
-You wish to see which types of expenses incur the most cost to your business in December 2020.
-
-You can follow the steps below to view a breakdown of your expenses.
-
-Steps :
-1. Type `breakdownexp m/12 y/2020` into the _Command Box_.
-2. Press `Enter` to execute.
-
-Outcome :
-1. It will display a success message.
-2. Homerce will display a Pie Chart that categorizes expenses made in December 2020 based on their 'tags', 
-along with the total cost of all expenses in each category.
-
-
 ### 4.5 Client Manager
 
 Homerce knows that managing the contacts of your clients is a must for any business.
@@ -1128,7 +1075,35 @@ Outcome :
 
 {Command parameter explanation}
 
-#### 4.6.1. Undo previous change: `undo` 
+#### 4.6.1. Breakdown Finance: `breakdownfinance`
+
+You can use this command to breakdown revenue and expenses into their relevant categories, based on their 'service code' and 'tags' respectively.
+<br> The total monthly profit - total monthly revenue less total monthly expenses - will also be displayed.
+
+Format : `breakdownfinance m/MONTH y/YEAR
+
+| Parameter Name | Description | Example 
+|---------|---------|---------
+|`MONTH`| The month the expense is made. <br> <br> It must be a valid integer between 1 - 12. | E.g. Typing '12' would refer to the month of December. 
+|`YEAR`| The year the expense is made. <br> <br> It must be a valid year. | E.g. Typing '2020' would refer to the year 2020.`
+
+Example :
+
+You wish to view your total profit for the month of October 2020 to track your financial viability. At the same time, you wish to view a breakdown of your expenses by category to manage your business expenditure for the next month. 
+
+You can follow the steps below to view a breakdown of your revenues.
+
+Steps :
+1. Type `breakdownfinance m/10 y/2020` into the _Command Box_.
+1. Press `Enter` to execute. 
+
+Outcome : 
+1. It will display a successful message ~~in the _Dashboard_.~~
+1. Homerce will display two Pie Charts that categorizes revenues based on their 'service code' and expenses based on their 'tags'. The total monthly profit will also be displayed.
+
+{Example outcome screenshot}
+
+#### 4.6.2. Undo previous change: `undo` 
 
 Undo the last change you made to Homerce.
 
@@ -1147,7 +1122,7 @@ Outcome:
 
 {add example screenshot outcome}
 
-#### 4.6.2. Viewing help : `help`
+#### 4.6.3. Viewing help : `help`
 
 Show a message explaining how to access the help page.
 
@@ -1169,7 +1144,7 @@ Outcome:
 
 ![help message](images/helpMessage.png)
 
-#### 4.6.3. Exit Homerce : `exit`
+#### 4.6.4. Exit Homerce : `exit`
 
 Exits the program.
 
@@ -1269,7 +1244,6 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**Sort**       | `sortrev ORDER`                                                  | `sortexp desc`
 |**List**       | `listrev`                                                        | 
 |**Clear**      | `clearrev`                                                       | 
-|**Breakdown**  | `breakdownrev`                                                   | 
 
 ### 6.4. Expense Tracker Commands
 
@@ -1282,12 +1256,12 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**Sort**       | `sortexp ORDER`                                                  | `sortexp desc`
 |**List**       | `listexp`                                                        | 
 |**Clear**      | `clearexp`                                                       | 
-|**Breakdown**  | `breakdownexp m/MONTH y/YEAR`                                    | `breakdownexp m/12 y/2020`
 
 ### 6.5. Other Commands
 
 Action | Format | Examples
 --------|--------|----------
+|**Breakdown**  | `breakdownexp m/MONTH y/YEAR`                                    | `breakdownexp m/12 y/2020`
 **Undo** | `undo` | 
 **Help** | `help` |
 **Exit** | `exit` | 
