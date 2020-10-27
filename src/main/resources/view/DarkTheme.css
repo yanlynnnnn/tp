@@ -10,8 +10,8 @@
 }
 
 .panel-container {
-    -fx-background-color: #d9d9d9;
     -fx-background-radius: 0 20 20 0;
+    -fx-border-radius: 0 20 20 0;
 }
 
 .label {
@@ -127,23 +127,28 @@
 }
 
 .stack-pane {
-    -fx-background-color: #d9d9d9;
+    -fx-background-color: #e6e6e6;
+    -fx-background-radius: 0 0 20 0;
 }
 
 .pane-with-border {
      -fx-background-color: #d9d9d9;
-     -fx-border-top-width: 1px;
+    -fx-background-radius: 0 0 20 0;
 }
 
 .status-bar {
     -fx-background-color: #f2f2f2;
+    -fx-background-radius: 0 20 0 0;
 }
 
 .result-display {
+    -fx-padding: 10;
+    -fx-background-insets: 10;
+    -fx-border-insets: 10;
     -fx-background-color: transparent;
     -fx-font-family: "Segoe UI Light";
     -fx-font-size: 13pt;
-    -fx-text-fill: white;
+    -fx-background-radius: 10;
 }
 
 .result-display .label {
@@ -277,7 +282,7 @@
     -fx-background-radius: 10;
     -fx-font-family: "Segoe UI Light";
     -fx-font-size: 13pt;
-    -fx-background-color: #e6e6e6;
+    -fx-background-color: #f2f2f2;
     -fx-text-fill: black;
 }
 
@@ -286,8 +291,7 @@
 }
 
 #resultDisplay .content {
-    -fx-background-color: transparent, #d9d9d9, transparent, #d9d9d9;
-    -fx-background-radius: 0;
+    -fx-background-color: transparent, #f2f2f2, transparent, #f2f2f2;
 }
 
 #tags {
