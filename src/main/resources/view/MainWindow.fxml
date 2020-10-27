@@ -2,6 +2,7 @@
 
 <?import java.net.URL?>
 <?import javafx.scene.Scene?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.layout.StackPane?>
@@ -10,25 +11,28 @@
 <fx:root type="javafx.stage.Stage" xmlns="http://javafx.com/javafx/11.0" xmlns:fx="http://javafx.com/fxml/1"
          title="Homerce" minWidth="450" minHeight="600" onCloseRequest="#handleExit">
     <icons>
-        <Image url="@/images/homerce.png" />
+        <Image url="@/images/homerce.png"/>
     </icons>
     <scene>
         <Scene>
             <stylesheets>
-                <URL value="@DarkTheme.css" />
-                <URL value="@Extensions.css" />
-                <URL value="@stylesheets/default.css" />
+                <URL value="@DarkTheme.css"/>
+                <URL value="@Extensions.css"/>
+                <URL value="@stylesheets/default.css"/>
             </stylesheets>
-            <HBox>
-            <StackPane fx:id="sideTabsBarPlaceholder" styleClass="context-menu"/>
-            <VBox>
-                <VBox fx:id="personList" styleClass="pane-with-border" VBox.vgrow="ALWAYS">
-                    <StackPane fx:id="tabPanelPlaceholder" VBox.vgrow="ALWAYS"/>
-                </VBox>
-                <StackPane fx:id="resultDisplayPlaceholder"/>
-                <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER"/>
-                <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER"/>
-            </VBox>
+            <HBox styleClass="background">
+                <AnchorPane>
+                    <StackPane fx:id="sideTabsBarPlaceholder" styleClass="side-bar-container"
+                               prefHeight="80.0"
+                               AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0"/>
+                    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0"
+                          AnchorPane.topAnchor="0.0" styleClass="panel-container">
+                        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER"/>
+                        <StackPane fx:id="tabPanelPlaceholder" VBox.vgrow="ALWAYS"/>
+                        <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100.0" prefHeight="100.0"/>
+                        <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER"/>
+                    </VBox>
+                </AnchorPane>
             </HBox>
         </Scene>
     </scene>
