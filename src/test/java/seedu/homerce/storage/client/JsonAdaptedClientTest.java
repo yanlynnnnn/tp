@@ -3,7 +3,7 @@ package seedu.homerce.storage.client;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static seedu.homerce.storage.client.JsonAdaptedClient.MISSING_FIELD_MESSAGE_FORMAT;
 import static seedu.homerce.testutil.Assert.assertThrows;
-import static seedu.homerce.testutil.TypicalClients.BENSON;
+import static seedu.homerce.testutil.client.TypicalClients.BENSON;
 
 import java.util.ArrayList;
 import java.util.List;

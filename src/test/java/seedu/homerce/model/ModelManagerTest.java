@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.model.Model.PREDICATE_SHOW_ALL_CLIENTS;
 import static seedu.homerce.testutil.Assert.assertThrows;
-import static seedu.homerce.testutil.TypicalClients.ALICE;
-import static seedu.homerce.testutil.TypicalClients.BENSON;
+import static seedu.homerce.testutil.client.TypicalClients.ALICE;
+import static seedu.homerce.testutil.client.TypicalClients.BENSON;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -21,7 +21,7 @@ import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.ExpenseTracker;
 import seedu.homerce.model.manager.RevenueTracker;
 import seedu.homerce.model.manager.ServiceManager;
-import seedu.homerce.testutil.ClientManagerBuilder;
+import seedu.homerce.testutil.client.ClientManagerBuilder;
 
 public class ModelManagerTest {
 

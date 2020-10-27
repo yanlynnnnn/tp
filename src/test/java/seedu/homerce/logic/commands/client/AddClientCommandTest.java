@@ -35,7 +35,7 @@ import seedu.homerce.model.manager.ReadOnlyServiceManager;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
-import seedu.homerce.testutil.ClientBuilder;
+import seedu.homerce.testutil.client.ClientBuilder;
 
 public class AddClientCommandTest {
 

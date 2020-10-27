@@ -3,10 +3,10 @@ package seedu.homerce.storage.client;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static seedu.homerce.testutil.Assert.assertThrows;
-import static seedu.homerce.testutil.TypicalClients.ALICE;
-import static seedu.homerce.testutil.TypicalClients.HOON;
-import static seedu.homerce.testutil.TypicalClients.IDA;
-import static seedu.homerce.testutil.TypicalClients.getTypicalClientManager;
+import static seedu.homerce.testutil.client.TypicalClients.ALICE;
+import static seedu.homerce.testutil.client.TypicalClients.HOON;
+import static seedu.homerce.testutil.client.TypicalClients.IDA;
+import static seedu.homerce.testutil.client.TypicalClients.getTypicalClientManager;
 
 import java.io.IOException;
 import java.nio.file.Path;

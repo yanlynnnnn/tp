@@ -20,7 +20,7 @@ import seedu.homerce.model.client.Client;
 import seedu.homerce.model.client.predicate.NameContainsKeywordsPredicate;
 import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.HistoryManager;
-import seedu.homerce.testutil.EditClientDescriptorBuilder;
+import seedu.homerce.testutil.client.EditClientDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.

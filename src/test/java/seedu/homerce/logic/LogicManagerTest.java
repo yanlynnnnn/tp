@@ -7,7 +7,7 @@ import static seedu.homerce.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
 import static seedu.homerce.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.homerce.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.homerce.testutil.Assert.assertThrows;
-import static seedu.homerce.testutil.TypicalClients.AMY;
+import static seedu.homerce.testutil.client.TypicalClients.AMY;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -42,7 +42,7 @@ import seedu.homerce.storage.revenue.JsonRevenueStorage;
 import seedu.homerce.storage.revenue.RevenueStorage;
 import seedu.homerce.storage.service.JsonServiceStorage;
 import seedu.homerce.storage.service.ServiceStorage;
-import seedu.homerce.testutil.ClientBuilder;
+import seedu.homerce.testutil.client.ClientBuilder;
 
 public class LogicManagerTest {
 

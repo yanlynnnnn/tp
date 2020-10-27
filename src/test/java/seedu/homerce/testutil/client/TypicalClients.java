@@ -1,4 +1,4 @@
-package seedu.homerce.testutil;
+package seedu.homerce.testutil.client;
 
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_EMAIL_AMY;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;

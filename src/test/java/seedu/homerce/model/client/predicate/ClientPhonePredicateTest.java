@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 import seedu.homerce.model.client.Phone;
-import seedu.homerce.testutil.ClientBuilder;
+import seedu.homerce.testutil.client.ClientBuilder;
 
 public class ClientPhonePredicateTest {
 

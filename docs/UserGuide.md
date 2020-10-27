@@ -319,7 +319,6 @@ This feature uses a number of parameters, which are detailed below.
 |---------|---------|---------
 |`DATE`  | The date of the appointment. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
 |`TIME` | The time of the appointment. <br> <br> It must be in the format of `HHMM` | E.g. Typing `1730` would mean 5:30 PM.  <br> <br> E.g. Typing `0900` would mean 9:00 AM.
-|`MONTH` | The month of the appointment. <br> <br> It must be a valid integer between 1 - 12. | E.g. Typing '12' would refer to the month of December.
 |`SERVICE_CODE`| The service code is the code that identifies the type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`PHONE_NUMBER` | The phone number of the client. <br> <br> It must be a 8-digit number starting with 6, 8, or 9.| E.g. Typing `81281234` or `91235678` is a valid phone number.  <br> <br> E.g. Typing `999`or `800012345` would not be a recognised number.
 |`NAME` | The name of the client booking the appointment. <br> <br> It must consist alphanumeric characters not more than 100 characters long. | E.g. If a client with the name `Hartin Menz` called to book an appointment, the same name `Hartin Menz` would be used as the parameter for `NAME`.
@@ -389,9 +388,10 @@ Outcome:
 #### 4.2.4. Find an appointment: `findapt`
 
 Use this command to find a specific appointment which matches the description you provide
-to Homerce.
+to Homerce. To find all the appointments belonging to a particular week, use the `schedule`
+command instead.
 
-Format : `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]* [m/MONTH]*`
+Format : `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]*`
 
 <div markdown="block" class="alert alert-info"> 
 

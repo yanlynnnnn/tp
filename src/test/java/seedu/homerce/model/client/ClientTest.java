@@ -9,12 +9,12 @@ import static seedu.homerce.logic.commands.CommandTestUtil.VALID_NAME_BOB;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.homerce.testutil.Assert.assertThrows;
-import static seedu.homerce.testutil.TypicalClients.ALICE;
-import static seedu.homerce.testutil.TypicalClients.BOB;
+import static seedu.homerce.testutil.client.TypicalClients.ALICE;
+import static seedu.homerce.testutil.client.TypicalClients.BOB;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.homerce.testutil.ClientBuilder;
+import seedu.homerce.testutil.client.ClientBuilder;
 
 public class ClientTest {
 

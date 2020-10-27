@@ -5,10 +5,10 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.commons.core.Messages.MESSAGE_CLIENTS_LISTED_OVERVIEW;
 import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandSuccess;
-import static seedu.homerce.testutil.TypicalClients.CARL;
-import static seedu.homerce.testutil.TypicalClients.ELLE;
-import static seedu.homerce.testutil.TypicalClients.FIONA;
-import static seedu.homerce.testutil.TypicalClients.getTypicalClientManager;
+import static seedu.homerce.testutil.client.TypicalClients.CARL;
+import static seedu.homerce.testutil.client.TypicalClients.ELLE;
+import static seedu.homerce.testutil.client.TypicalClients.FIONA;
+import static seedu.homerce.testutil.client.TypicalClients.getTypicalClientManager;
 
 import java.util.Arrays;
 import java.util.Collections;

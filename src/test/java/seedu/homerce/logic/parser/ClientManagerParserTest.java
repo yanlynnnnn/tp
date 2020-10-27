@@ -19,9 +19,9 @@ import seedu.homerce.logic.commands.client.EditClientCommand.EditClientDescripto
 import seedu.homerce.logic.commands.client.ListClientCommand;
 import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.model.client.Client;
-import seedu.homerce.testutil.ClientBuilder;
-import seedu.homerce.testutil.ClientUtil;
-import seedu.homerce.testutil.EditClientDescriptorBuilder;
+import seedu.homerce.testutil.client.ClientBuilder;
+import seedu.homerce.testutil.client.ClientUtil;
+import seedu.homerce.testutil.client.EditClientDescriptorBuilder;
 
 public class ClientManagerParserTest {
 
