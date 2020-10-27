@@ -1411,7 +1411,6 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 
 Action | Format | Examples
 --------|--------|----------
-|**Breakdown**  | `breakdownexp m/MONTH y/YEAR`                                    | `breakdownexp m/12 y/2020`
 **Undo** | `undo` | 
 **Help** | `help` |
 **Exit** | `exit` | 
