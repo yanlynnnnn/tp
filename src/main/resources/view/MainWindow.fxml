@@ -27,10 +27,10 @@
                                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0"/>
                     <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="150.0" AnchorPane.rightAnchor="0.0"
                           AnchorPane.topAnchor="0.0" styleClass="panel-container">
+                        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER"/>
                         <StackPane fx:id="tabPanelPlaceholder" VBox.vgrow="ALWAYS"/>
                         <StackPane fx:id="resultDisplayPlaceholder" maxHeight="100.0" prefHeight="100.0"/>
                         <StackPane fx:id="commandBoxPlaceholder" styleClass="pane-with-border" VBox.vgrow="NEVER"/>
-                        <StackPane fx:id="statusbarPlaceholder" VBox.vgrow="NEVER"/>
                     </VBox>
                 </AnchorPane>
             </HBox>
