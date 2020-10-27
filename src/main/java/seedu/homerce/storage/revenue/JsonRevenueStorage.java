@@ -34,7 +34,7 @@ public class JsonRevenueStorage implements RevenueStorage {
 
     @Override
     public Optional<ReadOnlyRevenueTracker> readRevenueTracker() throws DataConversionException, IOException {
-        return Optional.empty();
+        return readRevenueTracker(filePath);
     }
 
     /**

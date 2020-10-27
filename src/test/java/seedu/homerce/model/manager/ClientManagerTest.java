@@ -5,8 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.homerce.testutil.Assert.assertThrows;
-import static seedu.homerce.testutil.TypicalClients.ALICE;
-import static seedu.homerce.testutil.TypicalClients.getTypicalClientManager;
+import static seedu.homerce.testutil.client.TypicalClients.ALICE;
+import static seedu.homerce.testutil.client.TypicalClients.getTypicalClientManager;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -20,7 +20,7 @@ import javafx.collections.ObservableList;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.client.exceptions.DuplicateClientException;
 import seedu.homerce.model.expense.Expense;
-import seedu.homerce.testutil.ClientBuilder;
+import seedu.homerce.testutil.client.ClientBuilder;
 
 public class ClientManagerTest {
 

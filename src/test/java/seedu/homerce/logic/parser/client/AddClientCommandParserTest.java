@@ -22,8 +22,8 @@ import static seedu.homerce.logic.commands.CommandTestUtil.VALID_TAG_FRIEND;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import static seedu.homerce.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.homerce.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.homerce.testutil.TypicalClients.AMY;
-import static seedu.homerce.testutil.TypicalClients.BOB;
+import static seedu.homerce.testutil.client.TypicalClients.AMY;
+import static seedu.homerce.testutil.client.TypicalClients.BOB;
 
 import org.junit.jupiter.api.Test;
 
@@ -33,7 +33,7 @@ import seedu.homerce.model.client.Email;
 import seedu.homerce.model.client.Name;
 import seedu.homerce.model.client.Phone;
 import seedu.homerce.model.util.attributes.Tag;
-import seedu.homerce.testutil.ClientBuilder;
+import seedu.homerce.testutil.client.ClientBuilder;
 
 public class AddClientCommandParserTest {
     private AddClientCommandParser parser = new AddClientCommandParser();

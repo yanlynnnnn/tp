@@ -35,7 +35,7 @@ import seedu.homerce.model.client.Email;
 import seedu.homerce.model.client.Name;
 import seedu.homerce.model.client.Phone;
 import seedu.homerce.model.util.attributes.Tag;
-import seedu.homerce.testutil.EditClientDescriptorBuilder;
+import seedu.homerce.testutil.client.EditClientDescriptorBuilder;
 
 public class EditClientCommandParserTest {
 

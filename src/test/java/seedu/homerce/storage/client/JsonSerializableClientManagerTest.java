@@ -11,11 +11,11 @@ import org.junit.jupiter.api.Test;
 import seedu.homerce.commons.exceptions.IllegalValueException;
 import seedu.homerce.commons.util.JsonUtil;
 import seedu.homerce.model.manager.ClientManager;
-import seedu.homerce.testutil.TypicalClients;
+import seedu.homerce.testutil.client.TypicalClients;
 
 public class JsonSerializableClientManagerTest {
 
-    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data",
+    private static final Path TEST_DATA_FOLDER = Paths.get("src", "test", "data", "Client",
             "JsonSerializableClientManagerTest");
     private static final Path TYPICAL_CLIENTS_FILE = TEST_DATA_FOLDER.resolve("typicalClientManager.json");
     private static final Path INVALID_CLIENT_FILE = TEST_DATA_FOLDER.resolve("invalidClientManager.json");

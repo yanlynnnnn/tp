@@ -1,4 +1,4 @@
-package seedu.homerce.testutil;
+package seedu.homerce.testutil.client;
 
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_NAME;

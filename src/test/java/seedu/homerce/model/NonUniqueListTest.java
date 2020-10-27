@@ -10,8 +10,8 @@ import static seedu.homerce.testutil.expense.TypicalExpenses.CONDITIONER;
 import org.junit.jupiter.api.Test;
 
 import seedu.homerce.model.expense.Expense;
-import seedu.homerce.model.expense.exceptions.ItemNotFoundException;
 import seedu.homerce.model.util.nonuniquelist.NonUniqueList;
+import seedu.homerce.model.util.nonuniquelist.exceptions.ItemNotFoundException;
 
 public class NonUniqueListTest {
 
@@ -19,7 +19,8 @@ public class NonUniqueListTest {
 
     @Test
     public void setItem_invalidItem_throwsItemNotFoundException() {
-        assertThrows(ItemNotFoundException.class, () -> nonUniqueList.setItem(CHAIR, CONDITIONER));
+        assertThrows(seedu.homerce.model.util.nonuniquelist.exceptions.ItemNotFoundException.class, () -> nonUniqueList
+            .setItem(CHAIR, CONDITIONER));
     }
 
     @Test

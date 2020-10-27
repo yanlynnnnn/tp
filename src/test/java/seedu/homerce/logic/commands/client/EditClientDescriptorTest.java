@@ -12,7 +12,7 @@ import static seedu.homerce.logic.commands.CommandTestUtil.VALID_TAG_HUSBAND;
 import org.junit.jupiter.api.Test;
 
 import seedu.homerce.logic.commands.client.EditClientCommand.EditClientDescriptor;
-import seedu.homerce.testutil.EditClientDescriptorBuilder;
+import seedu.homerce.testutil.client.EditClientDescriptorBuilder;
 
 public class EditClientDescriptorTest {
 

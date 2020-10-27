@@ -454,16 +454,14 @@ public class ModelManager implements Model {
 
     @Override
     public void nextSchedulePage() {
-        Predicate<Appointment> nextWeekPredicate = appointmentManager.getNextWeekPredicate();
         appointmentManager.setCalendarNextWeek();
-        filteredSchedule.setPredicate(nextWeekPredicate);
+        filteredSchedule.setPredicate(appointmentManager.getCurrentWeekPredicate());
     }
 
     @Override
     public void previousSchedulePage() {
-        Predicate<Appointment> previousWeekPredicate = appointmentManager.getPreviousWeekPredicate();
         appointmentManager.setCalendarPreviousWeek();
-        filteredSchedule.setPredicate(previousWeekPredicate);
+        filteredSchedule.setPredicate(appointmentManager.getCurrentWeekPredicate());
     }
 
     @Override

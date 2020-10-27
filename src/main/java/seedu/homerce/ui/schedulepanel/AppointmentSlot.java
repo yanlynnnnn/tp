@@ -33,7 +33,8 @@ public class AppointmentSlot extends SlotContainer {
 
         this.clientName = appointment.getClient().getName().fullName;
         this.dateText = appointment.getAppointmentDate().toString();
-        this.timeText = appointment.getAppointmentStartTime().getTime().toString();
+        this.timeText = appointment.getAppointmentStartTime().getLocalTime().toString() + " - "
+                + appointment.getAppointmentEndTime().getLocalTime().toString();
         this.descriptionText = appointment.getService().getTitle().value;
 
         setText();

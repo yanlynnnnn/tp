@@ -1,4 +1,4 @@
-package seedu.homerce.testutil;
+package seedu.homerce.testutil.client;
 
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.manager.ClientManager;

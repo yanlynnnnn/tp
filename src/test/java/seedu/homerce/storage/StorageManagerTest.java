@@ -2,7 +2,7 @@ package seedu.homerce.storage;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static seedu.homerce.testutil.TypicalClients.getTypicalClientManager;
+import static seedu.homerce.testutil.client.TypicalClients.getTypicalClientManager;
 
 import java.nio.file.Path;
 

@@ -49,8 +49,8 @@ public class EditExpenseCommand extends Command {
     public static final String MESSAGE_EDIT_EXPENSE_SUCCESS = "Edited Expense: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
 
-    private final Index index;
-    private final EditExpenseCommand.EditExpenseDescriptor editExpenseDescriptor;
+    public final Index index;
+    public final EditExpenseCommand.EditExpenseDescriptor editExpenseDescriptor;
 
     /**
      * @param index                 of the expense in the filtered expense list to edit

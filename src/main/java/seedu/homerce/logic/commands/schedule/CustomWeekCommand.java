@@ -5,7 +5,7 @@ import java.util.Calendar;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.Model;
-import seedu.homerce.model.appointment.predicate.AppointmentPaginationPredicate;
+import seedu.homerce.model.appointment.predicate.AppointmentWeekPredicate;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.util.attributes.Date;
 import seedu.homerce.ui.schedulepanel.SchedulePanel;
@@ -31,7 +31,7 @@ public class CustomWeekCommand extends AbstractWeekCommand {
         // Change state of current week in the Appointment Manager.
         model.setAppointmentManagerCalendar(calendar);
         // Create predicate to show only entries on the particular week.
-        AppointmentPaginationPredicate predicate = new AppointmentPaginationPredicate(calendar);
+        AppointmentWeekPredicate predicate = new AppointmentWeekPredicate(calendar);
         model.updateFilteredSchedule(predicate);
         return new CommandResult(
             MESSAGE_LIST_SCHEDULE_SUCCESS
