@@ -11,7 +11,6 @@
 
 .panel-container {
     -fx-background-color: #d9d9d9;
-    -fx-padding: 10;
     -fx-background-radius: 0 20 20 0;
 }
 
@@ -215,7 +214,6 @@
     -fx-background-insets: 10;
     -fx-border-insets: 10;
     -fx-padding: 10;
-
 }
 
 .button:hover {
@@ -314,4 +312,26 @@
     -fx-border-radius: 2;
     -fx-background-radius: 2;
     -fx-font-size: 11;
+}
+
+.schedule-container {
+    -fx-background-color: transparent;
+}
+
+.schedule-grid {
+    -fx-background-color: transparent;
+}
+
+.schedule-grid-cell {
+    -fx-background-color: #c2d6d6;
+    -fx-border-width: 0;
+    -fx-background-radius: 10;
+}
+
+.date-display-slot {
+    -fx-background-color: #e6e6e6;
+    -fx-padding: 10;
+    -fx-border-insets: 20;
+    -fx-background-insets: 5;
+    -fx-background-radius: 10;
 }

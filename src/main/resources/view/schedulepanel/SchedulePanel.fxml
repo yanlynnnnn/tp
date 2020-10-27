@@ -4,8 +4,8 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+<VBox styleClass="schedule-container" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
     <ScrollPane fx:id="scrollPane" VBox.vgrow="ALWAYS" maxWidth="1700">
-        <GridPane fx:id="gridPane" styleClass="calendar-grid" VBox.vgrow="ALWAYS" />
+        <GridPane fx:id="gridPane" styleClass="schedule-grid" VBox.vgrow="ALWAYS" />
     </ScrollPane>
 </VBox>
