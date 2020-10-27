@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
  */
 public class DisplayDateSlot extends SlotContainer {
 
-    private static final DateTimeFormatter DISPLAY_FORMAT = DateTimeFormatter.ofPattern("d/M/yyyy");
+    private static final DateTimeFormatter DISPLAY_FORMAT = DateTimeFormatter.ofPattern("d/M");
     private static final String FXML = "schedulepanel/DisplayDateSlot.fxml";
 
     @FXML

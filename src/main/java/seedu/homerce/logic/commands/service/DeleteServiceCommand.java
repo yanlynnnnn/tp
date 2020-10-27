@@ -2,6 +2,7 @@ package seedu.homerce.logic.commands.service;
 
 import static java.util.Objects.requireNonNull;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import seedu.homerce.commons.core.Messages;
@@ -10,6 +11,7 @@ import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.Model;
+import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.service.Service;
 
@@ -42,7 +44,13 @@ public class DeleteServiceCommand extends Command {
             throw new CommandException(Messages.MESSAGE_SERVICES_INVALID_SERVICE_DISPLAYED_INDEX);
         }
 
+        List<Appointment> appointments = model.getAppointmentManager().getAppointmentList();
         Service serviceToDelete = lastShownList.get(targetIndex.getZeroBased());
+
+        if (!isValidDeletion(serviceToDelete, appointments)) { // If service exists in appointment today or in future
+            throw new CommandException(Messages.MESSAGES_SERVICES_INVALID_DELETION);
+        }
+
         model.deleteService(serviceToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_SERVICE_SUCCESS, serviceToDelete));
     }
@@ -52,5 +60,31 @@ public class DeleteServiceCommand extends Command {
         return other == this // short circuit if same object
             || (other instanceof DeleteServiceCommand // instanceof handles nulls
             && targetIndex.equals(((DeleteServiceCommand) other).targetIndex)); // state check
+    }
+
+
+    /**
+     * Checks if the service that is about to be deleted exists in Homerce's future appointments.
+     *
+     * Deletion will be prevented if the service exists in Homerce's appointments dated today or in the future.
+     * This prevents two different services with the same service code existing in Homerce's upcoming appointments.
+     */
+    private boolean isValidDeletion(Service serviceToDelete, List<Appointment> appointments) {
+        if (appointments == null) {
+            return true;
+        }
+        return appointments.stream().noneMatch((appointment) -> checkValidity(appointment, serviceToDelete));
+    }
+
+    /**
+     * Performs check for validity of deletion.
+     */
+    private boolean checkValidity(Appointment appointment, Service serviceToDelete) {
+        LocalDate today = LocalDate.now();
+        LocalDate appointmentDate = appointment.getAppointmentDate().getLocalDate();
+        Service appointmentService = appointment.getService();
+        return (appointmentDate.isAfter(today) || appointmentDate.isEqual(today))
+            && appointmentService.equals(serviceToDelete);
+
     }
 }

@@ -83,23 +83,23 @@ public class SampleDataUtil {
         Service[] sampleServices = getSampleServices();
         return new Appointment[]{
             new Appointment(
-                new Date("21-10-2020"), new TimeOfDay("1300"),
+                new Date("27-10-2020"), new TimeOfDay("1200"),
                 sampleClients[0], sampleServices[4]
             ),
             new Appointment(
-                new Date("23-10-2020"), new TimeOfDay("1030"),
+                new Date("28-10-2020"), new TimeOfDay("1230"),
                 sampleClients[1], sampleServices[3]
             ),
             new Appointment(
-                new Date("25-10-2020"), new TimeOfDay("1030"),
-                sampleClients[2], sampleServices[2]
+                new Date("30-10-2020"), new TimeOfDay("1130"),
+                sampleClients[2], sampleServices[4]
             ),
             new Appointment(
-                new Date("25-10-2020"), new TimeOfDay("1400"),
+                new Date("1-11-2020"), new TimeOfDay("1030"),
                 sampleClients[3], sampleServices[1]
             ),
             new Appointment(
-                new Date("26-10-2020"), new TimeOfDay("1300"),
+                new Date("1-11-2020"), new TimeOfDay("1300"),
                 sampleClients[4], sampleServices[0]
             )
         };
