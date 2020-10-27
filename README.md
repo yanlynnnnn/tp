@@ -1,13 +1,13 @@
 [![CI Status](https://github.com/AY2021S1-CS2103T-W13-3/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103T-W13-3/tp/actions)
 
-# GrAB3
+# Homerce
 
 ![Ui](docs/images/Ui.png)
 
-- GrAB3 is an all-in-one application that helps home-based beauty salon owners consolidate their business details - 
+- Homerce is an all-in-one application that helps home-based beauty salon owners consolidate their business details - 
 such as their appointments, revenue, and expenses - into a single application. 
 
-- GrAB3 has a Graphical User Interface (GUI), but it is optimised for use with a Command Line Interface (CLI).
+- Homerce has a Graphical User Interface (GUI), but it is optimised for use with a Command Line Interface (CLI).
 
 ## Site Map
 - [User Guide](./docs/UserGuide.md)

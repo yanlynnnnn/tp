@@ -68,14 +68,4 @@ public class DeleteExpenseCommandTest {
         // different client -> returns false
         assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
     }
-
-    /**
-     * Updates {@code model}'s filtered list to show no one.
-     */
-    private void showNoExpense(Model model) {
-        model.updateFilteredExpenseList(p -> false);
-
-        assertTrue(model.getFilteredExpenseList().isEmpty());
-    }
-
 }

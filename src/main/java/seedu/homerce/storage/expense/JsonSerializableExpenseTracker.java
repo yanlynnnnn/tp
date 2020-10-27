@@ -87,7 +87,7 @@ public class JsonSerializableExpenseTracker {
     /**
      * Creates a duplicate expense of the original fixed recurring expense, with a date one month later.
      */
-    private Expense createDuplicateExpense(Expense expense, LocalDate date) {
+    public Expense createDuplicateExpense(Expense expense, LocalDate date) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
         Description duplicateDescription = new Description(expense.getDescription().value);
@@ -102,7 +102,7 @@ public class JsonSerializableExpenseTracker {
     /**
      * Checks if the recurring expense was made in the current month.
      */
-    private boolean isSameMonth(Expense expense, LocalDate date) {
+    public boolean isSameMonth(Expense expense, LocalDate date) {
         Month expenseMonth = expense.getDate().getMonth();
         if (expenseMonth != date.getMonth()) {
             return false;

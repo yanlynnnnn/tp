@@ -35,22 +35,6 @@ public class EditExpenseCommandTest {
             new RevenueTracker(), getTypicalExpenseTracker(), new AppointmentManager());
 
     @Test
-    public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        Expense editedExpense = new ExpenseBuilder().build();
-        EditExpenseCommand.EditExpenseDescriptor descriptor = new EditExpenseDescriptorBuilder(editedExpense).build();
-        EditExpenseCommand editExpenseCommand = new EditExpenseCommand(INDEX_FIRST_EXPENSE, descriptor);
-
-        String expectedMessage = String.format(EditExpenseCommand.MESSAGE_EDIT_EXPENSE_SUCCESS, editedExpense);
-
-        Model expectedModel = new ModelManager(new UserPrefs(), new ClientManager(),
-                new ServiceManager(), new RevenueTracker(), new ExpenseTracker(model.getExpenseTracker()),
-                new AppointmentManager());
-        expectedModel.setExpense(model.getFilteredExpenseList().get(0), editedExpense);
-
-        assertCommandSuccess(editExpenseCommand, model, expectedMessage, expectedModel);
-    }
-
-    @Test
     public void execute_someFieldsSpecifiedUnfilteredList_success() {
         Index indexLastExpense = Index.fromOneBased(model.getFilteredExpenseList().size());
         Expense lastExpense = model.getFilteredExpenseList().get(indexLastExpense.getZeroBased());

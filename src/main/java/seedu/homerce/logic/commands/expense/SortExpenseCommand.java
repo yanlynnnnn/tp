@@ -22,7 +22,7 @@ public class SortExpenseCommand extends Command {
             + "Parameters: ORDER\n"
             + "Example: " + COMMAND_WORD + " asc";
 
-    private final boolean isAscending;
+    public final boolean isAscending;
 
     /**
      * Constructs a SortExpenseCommand.

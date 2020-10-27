@@ -37,7 +37,7 @@ public class AddExpenseCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "New expense added: %1$s";
 
-    private final Expense toAdd;
+    public final Expense toAdd;
 
     /**
      * Creates an AddExpenseCommand to add the specified {@code Expense}

@@ -17,15 +17,14 @@ public class RevenueBuilder {
 
     private Service service;
     private Date date;
-    private String serviceCode = "SC996";
 
     /**
      * Creates a {@code RevenueBuilder} with the default details.
      */
     public RevenueBuilder() {
-        service = DEFAULT_SERVICE;
-        service.addServiceCode(serviceCode);
-        date = new Date("25-10-2020");
+        this.service = DEFAULT_SERVICE;
+        this.service.addServiceCode("SC996");
+        this.date = new Date("25-10-2020");
     }
 
     /**

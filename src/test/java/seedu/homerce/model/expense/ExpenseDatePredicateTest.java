@@ -45,7 +45,7 @@ public class ExpenseDatePredicateTest {
 
     @Test
     public void test_expenseContainSDate_returnsTrue() {
-        ExpenseDatePredicate predicate = new ExpenseDatePredicate(new Date("10-10-2020"));
+        ExpenseDatePredicate predicate = new ExpenseDatePredicate(new Date("10-12-2020"));
         assertTrue(predicate.test(CONDITIONER));
     }
 }
