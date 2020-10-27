@@ -14,8 +14,8 @@ public class ExpenseBuilder {
     public static final String DEFAULT_DESCRIPTION = "Conditioner";
     public static final String DEFAULT_ISFIXED = "n";
     public static final double DEFAULT_AMOUNT = 15.0;
-    public static final String DEFAULT_DATE = "10-10-2020";
-    public static final String DEFAULT_TAG = "hair";
+    public static final String DEFAULT_DATE = "10-12-2020";
+    public static final String DEFAULT_TAG = "Hairsupplies";
 
     private Description description;
     private IsFixed isFixed;
@@ -82,6 +82,14 @@ public class ExpenseBuilder {
      */
     public ExpenseBuilder withTag(String tag) {
         this.tag = new Tag(tag);
+        return this;
+    }
+
+    /**
+     * Sets the {@code Tag} of the {@code Expense} that we are building.
+     */
+    public ExpenseBuilder withTag() {
+        this.tag = new Tag();
         return this;
     }
 

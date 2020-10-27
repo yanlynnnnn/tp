@@ -19,6 +19,7 @@ import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.manager.ExpenseTracker;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.testutil.expense.EditExpenseDescriptorBuilder;
+import seedu.homerce.ui.expensepanel.ExpenseListPanel;
 
 /**
  * Contains helper methods for testing expense commands.
@@ -27,8 +28,8 @@ public class ExpenseCommandTestUtil {
 
     public static final String VALID_DESCRIPTION_CONDITIONER = "Conditioner";
     public static final String VALID_DESCRIPTION_AIRCON = "Aircon";
-    public static final String VALID_ISFIXED_CONDITIONER = "y";
-    public static final String VALID_ISFIXED_AIRCON = "n";
+    public static final String VALID_ISFIXED_CONDITIONER = "n";
+    public static final String VALID_ISFIXED_AIRCON = "y";
     public static final double VALID_VALUE_CONDITIONER = 15.00;
     public static final double VALID_VALUE_AIRCON = 100.00;
     public static final String VALID_DATE_DECEMBER = "10-12-2020";
@@ -53,7 +54,7 @@ public class ExpenseCommandTestUtil {
     public static final String INVALID_DESC_DATE = " " + PREFIX_DATE + "30-30-2020";
     public static final String INVALID_DESC_TAG = " " + PREFIX_TAG + "Equipment*";
 
-    public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
+    public static final String PREAMBLE_WHITESPACE = " ";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
     public static final EditExpenseCommand.EditExpenseDescriptor DESC_CONDITIONER;
@@ -91,6 +92,16 @@ public class ExpenseCommandTestUtil {
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
                                             Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
+        assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
+    }
+
+    /**
+     * Convenience wrapper to {@link #assertCommandSuccess(Command, Model, CommandResult, Model)}
+     * that takes a string {@code expectedMessage}.
+     */
+    public static void assertCommandSuccessTab(Command command, Model actualModel, String expectedMessage,
+                                            Model expectedModel) {
+        CommandResult expectedCommandResult = new CommandResult(expectedMessage, ExpenseListPanel.TAB_NAME);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }
 

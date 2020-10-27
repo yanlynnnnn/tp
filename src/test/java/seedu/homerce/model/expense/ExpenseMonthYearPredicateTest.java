@@ -36,13 +36,13 @@ public class ExpenseMonthYearPredicateTest {
 
     @Test
     public void test_expenseIsNotSameMonthYear_returnFalse() {
-        ExpenseMonthYearPredicate predicate = new ExpenseMonthYearPredicate(Month.DECEMBER, Year.of(2020));
+        ExpenseMonthYearPredicate predicate = new ExpenseMonthYearPredicate(Month.OCTOBER, Year.of(2020));
         assertFalse(predicate.test(CONDITIONER));
     }
 
     @Test
     public void test_expenseIsSameMonthYear_returnTrue() {
-        ExpenseMonthYearPredicate predicate = new ExpenseMonthYearPredicate(Month.OCTOBER, Year.of(2020));
+        ExpenseMonthYearPredicate predicate = new ExpenseMonthYearPredicate(Month.DECEMBER, Year.of(2020));
         assertTrue(predicate.test(CONDITIONER));
     }
 }
