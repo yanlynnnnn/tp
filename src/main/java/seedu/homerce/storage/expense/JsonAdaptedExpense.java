@@ -35,7 +35,10 @@ public class JsonAdaptedExpense {
     public JsonAdaptedExpense(@JsonProperty("value") Double value, @JsonProperty("date") String date,
                               @JsonProperty("description") String description,
                               @JsonProperty("isFixed") String isFixed, @JsonProperty("tag") JsonAdaptedTag tag,
-                              @JsonProperty("isRecurring") boolean isRecurring) {
+                              @JsonProperty("isRecurring") boolean isRecurring) throws IllegalValueException {
+        if (value == null) {
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Amount.class.getSimpleName()));
+        }
         this.value = new BigDecimal(value);
         this.date = date;
         this.description = description;

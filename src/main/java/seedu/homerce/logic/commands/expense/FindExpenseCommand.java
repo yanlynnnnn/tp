@@ -34,7 +34,7 @@ public class FindExpenseCommand extends Command {
         + "Example: " + COMMAND_WORD + " "
         + PREFIX_DESCRIPTION + "Conditioner ";
 
-    private final Predicate<Expense> predicate;
+    public final Predicate<Expense> predicate;
 
     public FindExpenseCommand(Predicate<Expense> predicate) {
         this.predicate = predicate;

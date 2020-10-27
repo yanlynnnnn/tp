@@ -27,7 +27,7 @@ public class DeleteExpenseCommand extends Command {
 
     public static final String MESSAGE_DELETE_EXPENSE_SUCCESS = "Deleted Expense: %1$s";
 
-    private final Index targetIndex;
+    public final Index targetIndex;
 
     public DeleteExpenseCommand(Index targetIndex) {
         this.targetIndex = targetIndex;

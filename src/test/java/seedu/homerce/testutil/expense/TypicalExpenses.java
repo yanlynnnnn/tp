@@ -13,19 +13,19 @@ import seedu.homerce.model.manager.ExpenseTracker;
 public class TypicalExpenses {
 
     public static final Expense CONDITIONER = new ExpenseBuilder().withDescription("Conditioner")
-            .withAmount(15.0)
+            .withAmount(15.00)
             .withIsFixed("n")
-            .withDate("10-10-2020")
-            .withTag("hairsupplies").build();
+            .withDate("10-12-2020")
+            .withTag("Hairsupplies").build();
 
     public static final Expense CHAIR = new ExpenseBuilder().withDescription("Chair")
-            .withAmount(50.0)
+            .withAmount(50.00)
             .withIsFixed("n")
             .withDate("10-12-2019")
             .withTag("others").build();
 
     public static final Expense AIRCON = new ExpenseBuilder().withDescription("Aircon")
-            .withAmount(100)
+            .withAmount(100.00)
             .withIsFixed("y")
             .withDate("30-10-2020")
             .withTag("utility").build();

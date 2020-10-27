@@ -39,7 +39,7 @@ public class ExpenseTest {
                 .append(" Value: ")
                 .append("15.00")
                 .append(" Date: ")
-                .append("10-10-2020")
+                .append("10-12-2020")
                 .append(" Tag: ")
                 .append("[hairsupplies]");
         assertEquals(builder.toString(), CONDITIONER.toString());
