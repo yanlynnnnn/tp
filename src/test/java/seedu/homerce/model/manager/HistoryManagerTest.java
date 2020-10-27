@@ -1,6 +1,5 @@
 package seedu.homerce.model.manager;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.testutil.service.TypicalServices.MANICURE;
 
@@ -35,12 +34,13 @@ public class HistoryManagerTest {
 
         BreakdownFinanceCommand breakdownFinanceCommand = new BreakdownFinanceCommand(Month.of(12),
             Year.of(2020));
+        assertTrue(historyTest.getPreviousHistory() == null);
 
         historyTest.addToHistory(modelTest, breakdownFinanceCommand);
-        assertThrows(NullPointerException.class, () -> historyTest.getPreviousHistory().getCommand());
+        assertTrue(historyTest.getPreviousHistory() == null);
 
         CustomWeekCommand customWeekCommandTest = new CustomWeekCommand(new Date("02-02-2020"));
         historyTest.addToHistory(modelTest, customWeekCommandTest);
-        assertThrows(NullPointerException.class, () -> historyTest.getPreviousHistory().getCommand());
+        assertTrue(historyTest.getPreviousHistory() == null);
     }
 }
