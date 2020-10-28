@@ -40,7 +40,7 @@ public class RevenueCard extends UiPart<Region> {
         this.revenue = revenue;
         id.setText("R" + displayedIndex);
         title.setText("Description: " + revenue.getService().getTitle().value);
-        price.setText("Amount: $" + revenue.getValue().value);
+        price.setText("Value: $" + revenue.getValue().value);
         date.setText(revenue.getDate().toUiString());
     }
 
