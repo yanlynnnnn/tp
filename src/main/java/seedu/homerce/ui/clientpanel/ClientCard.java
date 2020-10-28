@@ -48,8 +48,8 @@ public class ClientCard extends UiPart<Region> {
         this.client = client;
         id.setText("C" + displayedIndex);
         name.setText(client.getName().fullName);
-        phone.setText(client.getPhone().value);
-        email.setText(client.getEmail().value);
+        phone.setText("Contact: " + client.getPhone().value);
+        email.setText("Email: " + client.getEmail().value);
         client.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));
