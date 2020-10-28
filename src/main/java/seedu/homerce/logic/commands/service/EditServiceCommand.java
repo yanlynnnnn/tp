@@ -199,7 +199,8 @@ public class EditServiceCommand extends Command {
 
             return getTitle().equals(e.getTitle())
                 && getAmount().equals(e.getAmount())
-                && getDuration().equals(e.getDuration());
+                && getDuration().equals(e.getDuration())
+                && getServiceCode().equals(e.getServiceCode());
         }
     }
 }

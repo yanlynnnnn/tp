@@ -15,6 +15,7 @@ import java.util.List;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.client.EditClientCommand;
 import seedu.homerce.logic.commands.exceptions.CommandException;
+import seedu.homerce.logic.commands.service.EditServiceCommand;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.client.predicate.NameContainsKeywordsPredicate;
@@ -23,6 +24,7 @@ import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.predicate.ServiceTitlePredicate;
 import seedu.homerce.testutil.client.EditClientDescriptorBuilder;
+import seedu.homerce.testutil.service.EditServiceDescriptorBuilder;
 
 /**
  * Contains helper methods for testing commands.
@@ -55,6 +57,19 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
+    public static final String VALID_TITLE_LASH_LIFT = "Lash Lift";
+    public static final Double VALID_DURATION_LASH_LIFT = 0.5;
+    public static final Double VALID_AMOUNT_LASH_LIFT = 17.9;
+    public static final String VALID_SERVICE_CODE_LASH_LIFT = "SC000";
+
+    public static final String VALID_TITLE_MANICURE = "Manicure";
+    public static final Double VALID_DURATION_MANICURE = 1.5;
+    public static final Double VALID_AMOUNT_MANICURE = 19.5;
+    public static final String VALID_SERVICE_CODE_MANICURE = "SC001";
+
+    public static final EditServiceCommand.EditServiceDescriptor DESC_MANICURE;
+    public static final EditServiceCommand.EditServiceDescriptor DESC_LASH_LIFT;
+
     public static final EditClientCommand.EditClientDescriptor DESC_AMY;
     public static final EditClientCommand.EditClientDescriptor DESC_BOB;
 
@@ -65,6 +80,14 @@ public class CommandTestUtil {
         DESC_BOB = new EditClientDescriptorBuilder().withName(VALID_NAME_BOB)
                 .withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB)
                 .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+        DESC_MANICURE = new EditServiceDescriptorBuilder().withTitle(VALID_TITLE_MANICURE)
+            .withDuration(VALID_DURATION_MANICURE)
+            .withAmount(VALID_AMOUNT_MANICURE)
+            .withServiceCode(VALID_SERVICE_CODE_MANICURE).build();
+        DESC_LASH_LIFT = new EditServiceDescriptorBuilder().withTitle(VALID_TITLE_LASH_LIFT)
+            .withDuration(VALID_DURATION_LASH_LIFT)
+            .withAmount(VALID_AMOUNT_LASH_LIFT)
+            .withServiceCode(VALID_SERVICE_CODE_LASH_LIFT).build();
     }
 
     /**
@@ -73,7 +96,7 @@ public class CommandTestUtil {
      * - the {@code actualModel} matches {@code expectedModel}
      */
     public static void assertCommandSuccess(Command command, Model actualModel, CommandResult expectedCommandResult,
-            Model expectedModel) {
+                                            Model expectedModel) {
         try {
             CommandResult result = command.execute(actualModel, HistoryManager.getInstance());
             assertEquals(expectedCommandResult, result);
@@ -88,7 +111,7 @@ public class CommandTestUtil {
      * that takes a string {@code expectedMessage}.
      */
     public static void assertCommandSuccess(Command command, Model actualModel, String expectedMessage,
-            Model expectedModel) {
+                                            Model expectedModel) {
         CommandResult expectedCommandResult = new CommandResult(expectedMessage);
         assertCommandSuccess(command, actualModel, expectedCommandResult, expectedModel);
     }

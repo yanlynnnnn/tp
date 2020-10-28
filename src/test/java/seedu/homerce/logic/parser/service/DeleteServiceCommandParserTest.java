@@ -17,12 +17,11 @@ import seedu.homerce.logic.commands.service.DeleteServiceCommand;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ModelManager;
 import seedu.homerce.model.UserPrefs;
-import seedu.homerce.model.manager.ClientManager;
-import seedu.homerce.model.service.Service;
 import seedu.homerce.model.manager.AppointmentManager;
-import seedu.homerce.model.manager.ServiceManager;
+import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.ExpenseTracker;
 import seedu.homerce.model.manager.RevenueTracker;
+import seedu.homerce.model.service.Service;
 
 public class DeleteServiceCommandParserTest {
 

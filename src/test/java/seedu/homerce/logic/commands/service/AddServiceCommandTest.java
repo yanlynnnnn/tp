@@ -15,7 +15,6 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.client.AddClientCommandTest;
 import seedu.homerce.logic.commands.exceptions.CommandException;
