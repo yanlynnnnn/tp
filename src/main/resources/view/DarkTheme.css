@@ -96,7 +96,7 @@
 .list-view {
     -fx-background-insets: 0;
     -fx-padding: 0;
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: derive(#d9d9d9, 20%);
 }
 
 .list-cell {
@@ -345,7 +345,7 @@
     -fx-background-insets: 5;
     -fx-background-radius: 10;
     -fx-max-width:80;
-    -fx-min-height:70;
+    -fx-min-height:80;
 }
 
 .purple-cardPane {
