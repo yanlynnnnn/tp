@@ -5,8 +5,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<HBox id="slotPane" fx:id="slotPane" styleClass="schedule-grid-cell" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.geometry.Insets?>
+<HBox id="slotPane" fx:id="slotPane" styleClass="schedule-grid-cell-green" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
     <VBox alignment="TOP_LEFT" GridPane.columnIndex="0">
+        <padding>
+            <Insets top="5" right="0" bottom="0" left="10" />
+        </padding>
         <HBox alignment="CENTER_LEFT">
             <Label fx:id="title"  />
         </HBox>
