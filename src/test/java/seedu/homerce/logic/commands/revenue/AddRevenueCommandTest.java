@@ -81,7 +81,7 @@ public class AddRevenueCommandTest {
     }
 
     /**
-     * A Model stub that always accepts the expense being added.
+     * A Model stub that always accepts the revenue being added.
      */
     private class ModelStubAcceptingRevenueAdded extends AddClientCommandTest.ModelStub {
 

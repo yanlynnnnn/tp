@@ -20,6 +20,8 @@ import seedu.homerce.model.client.Client;
 import seedu.homerce.model.client.predicate.NameContainsKeywordsPredicate;
 import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.HistoryManager;
+import seedu.homerce.model.service.Service;
+import seedu.homerce.model.service.predicate.ServiceTitlePredicate;
 import seedu.homerce.testutil.client.EditClientDescriptorBuilder;
 
 /**
@@ -120,6 +122,19 @@ public class CommandTestUtil {
         model.updateFilteredClientList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredClientList().size());
+    }
+
+    /**
+     * Updates {@code model}'s filtered list to show only the service at the given {@code targetIndex} in the
+     * {@code model}'s homerce.
+     */
+    public static void showServiceAtIndex(Model model, Index targetIndex) {
+        assertTrue(targetIndex.getZeroBased() < model.getFilteredServiceList().size());
+
+        Service service = model.getFilteredServiceList().get(targetIndex.getZeroBased());
+        model.updateFilteredServiceList(new ServiceTitlePredicate(service.getTitle()));
+
+        assertEquals(1, model.getFilteredServiceList().size());
     }
 
 }

@@ -85,7 +85,7 @@ public class DeleteRevenueCommandTest {
         // null -> returns false
         assertFalse(deleteFirstCommand.equals(null));
 
-        // different client -> returns false
+        // different revenue -> returns false
         assertFalse(deleteFirstCommand.equals(deleteSecondCommand));
     }
 }

@@ -1,0 +1,123 @@
+{
+  "services" : [ {
+    "title" : "Lash Lift",
+    "price" : 38.00,
+    "duration" : 0.5,
+    "serviceCode" : "SC000"
+  }, {
+    "title" : "Nail Extension",
+    "price" : 28.90,
+    "duration" : 0.5,
+    "serviceCode" : "SC001"
+  }, {
+    "title" : "Pedicure",
+    "price" : 18.50,
+    "duration" : 0.5,
+    "serviceCode" : "SC003"
+  }, {
+    "title" : "Toner",
+    "price" : 18.50,
+    "duration" : 2.5,
+    "serviceCode" : "SC004"
+  }, {
+    "title" : "Manicure",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC005"
+  }, {
+    "title" : "Touch Up",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC006"
+  }, {
+    "title" : "Toenail Clipping",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC007"
+  }, {
+    "title" : "Hair stuff",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC008"
+  }, {
+    "title" : "Makeup",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC009"
+  }, {
+    "title" : "Touch up",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC010"
+  }, {
+    "title" : "Wasit measurement",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC011"
+  }, {
+    "title" : "Very very long servicename tlayout",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC012"
+  }, {
+    "title" : "shortname",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC013"
+  }, {
+    "title" : "Name with",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC014"
+  }, {
+    "title" : "Some more",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC015"
+  }, {
+    "title" : "Touch eyes",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC016"
+  }, {
+    "title" : "Clisoe",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC017"
+  }, {
+    "title" : "Name service",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC018"
+  }, {
+    "title" : "Service thing",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC019"
+  }, {
+    "title" : "Toenai Cping",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC020"
+  }, {
+    "title" : "Teil C",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC021"
+  }, {
+    "title" : "ToeClipping",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC022"
+  }, {
+    "title" : "pping",
+    "price" : 21.50,
+    "duration" : 1.0,
+    "serviceCode" : "SC023"
+  }, {
+    "title" : "Hair Treatment Xtra",
+    "price" : 88.90,
+    "duration" : 1.5,
+    "serviceCode" : "SC024"
+  } ]
+}
