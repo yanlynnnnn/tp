@@ -350,7 +350,7 @@
 .purple-cardPane {
     -fx-background-color: #ECE4F0;
     -fx-background-radius: 15;
-    -fx-opacity: 0.6;
+    -fx-opacity: 0.5;
 }
 
 .expense-tag {
