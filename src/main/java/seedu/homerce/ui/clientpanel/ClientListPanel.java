@@ -14,7 +14,7 @@ import seedu.homerce.ui.Panel;
  * Panel containing the list of clients.
  */
 public class ClientListPanel extends Panel {
-    public static final String TAB_NAME = "Client";
+    public static final String TAB_NAME = "Clients";
 
     private static final String FXML = "clientpanel/ClientListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ClientListPanel.class);

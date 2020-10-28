@@ -132,12 +132,13 @@
 }
 
 .pane-with-border {
-     -fx-background-color: #d9d9d9;
+    -fx-background-color: #d9d9d9;
     -fx-background-radius: 0 0 20 0;
 }
 
 .status-bar {
-    -fx-background-color: #f2f2f2;
+    -fx-padding: 5 0 5 10;
+    -fx-background-color: #ebebeb;
     -fx-background-radius: 0 20 0 0;
 }
 
@@ -240,7 +241,7 @@
 }
 
 .scroll-bar {
-    -fx-background-color: #b4b6b8;
+    -fx-background-color: #ebebeb;
 }
 
 .scroll-bar .thumb {
@@ -343,7 +344,7 @@
     -fx-border-insets: 20;
     -fx-background-insets: 5;
     -fx-background-radius: 10;
-    -fx-max-width:100;
+    -fx-max-width:80;
     -fx-min-height:70;
 }
 
