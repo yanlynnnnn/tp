@@ -311,7 +311,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 *Figure 4. Execution of an `addsvc` command*
 
-#### 4.3.2 Design Consideration
+#### 4.3.3 Design Consideration
 
 **Aspect: Identifying each service with a unique service code**
 
@@ -334,6 +334,59 @@ Reason for choosing option 2:
 Reason for choosing option 2:
 * If the user's home-based business has many services, automatic generation of service codes will provide a more seamless and convenient process when adding new services.
 * The user can find services by title to determine it's unique service code, allowing the user to quickly identify a service's service code.
+
+### 4.4 Finance Breakdown
+
+Homerce allows the user to keep track of the expenses and revenue that his or her home-based business provides. The finance breakdown 
+will provide a breakdown of the monthly expenses and revenue, as well as calculate profits based on the monthly expenses and revenue.
+
+#### 4.4.1 Rationale 
+
+Keeping track of the financials of a home-based business is important for the business owner to make better financial decisions that will
+potentially increase the profits of the home-based business. Thus, the finance breakdown is useful in assisting the user with the process of keeping
+track of all the expenses and revenue of his or her home-based business. This makes viewing the financial information of the home-based business
+simpler for the user as profits will be calculated automatically using information about the monthly expenses and revenue.
+
+#### 4.4.2 Current Implementation
+
+The current implementation of the finance breakdown makes use of the list of revenue and expenses as tracked by `RevenueTracker` and `ExpenseTracker`.
+The list of revenue and expenses will be filtered by their `Month` and `Year` attribute as indicated by the user. The filtered list will
+be used to create a breakdown of expenses and revenue, as well as to calculate the monthly profit of the home-based business.
+
+In this section, we will use the following Class Diagram to show the association between relevant classes of this feature.
+
+![Class diagram financial tracker](images/FinanceTrackerClassDiagram.png)
+
+*Figure 4. Structure of the `BreakdownFinanceCommand` and its relevant classes*
+
+When the user enters the `breakdownfinance` command to view the monthly breakdown, the user input command undergoes the same command parsing as described in 
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `breakdownfinance`, 
+
+The following steps will describe the execution of the `BreakdownFinanceCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `BreakdownFinanceCommand` is called, a new `ExpenseMonthYearPredicate` and `RevenueMonthYearPredicate` is created with the parsed `Month` and `Year`.
+2. The `ModelManager`'s `updateFilteredExpenseList()` and `updateFilteredRevenueList()` method is called using the `ExpenseMonthYearPredicate` and `RevenueMonthYearPredicate` respectively.
+3. The `Model`'s list of expenses and revenue is updated to contain only the expenses and revenue in the inputted `Month` and `Year`.
+4. The `Ui` component will detect this change and update the GUI by opening a pop-up window show the financial breakdown information.
+5. Assuming that the above steps are all successful, the `BreakdownFinanceCommand` will then create a `CommandResult` object and return the result.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram breakdownfiance](images/BreakdownFinanceSequenceDiagram.png)
+
+*Figure 5. Execution of an `breakdownfinance` command*
+
+#### 4.4.3 Design Consideration
+
+**Aspect: Which class to store Homerce's financial information**
+
+|              |  **Pros**  | **Cons** |
+| -------------|------------|----------|
+| **Option 1 (current choice)** <br> Use revenue and expenses from `RevenueTracker` and `ExpenseTracker` <br> in the `BreakdownFinance` command. Do not a new `FinanceTracker` class | Avoids duplication of code as the same list of expenses and services are used in `ExpenseTracker` and `RevenueTracker`| Increases coupling between `BreakdownFinanceCommand` code and `RevenueTracker` as well as `ExpenseTracker`|
+| **Option 2** <br> Place the revenue and expenses as fields in a new `FinanceTracker` class | Provides more freedom for manipulation of revenue and expense data as `FinanceTracker` maintains a separate state for the list of expenses and revenue. | Violates the Don't Repeat Yourself(DRY) principle as the information for `ExpenseTracker` and `RevenueTracker` is duplicated in a new `FinanceTracker` class|
+
+Reason for choosing option 1:
+* Using the same instance of `ExpenseTracker` and `RevenueTracker` to obtain the list of expenses and revenue ensures that expenses and revenue data are consistent without needing to update the lists in `ExpenseTracker`, `RevenueTracker` as well as `FinanceTracker`.
+* The `execute()` command of `BreakdownFinanceCommand` already takes in the `Model` which has `ExpenseTracker` and `RevenueTracker` as attributes. It is unnecessary to create a new `FinanceTrakcer` class as an attribute for `Model` to store and duplicate information that already exists.
 
 ## 5. **Documentation**
 
