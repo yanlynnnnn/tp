@@ -2,31 +2,8 @@
 layout: page
 title: Developer Guide
 ---
-
-## Table of Contents:
- * [1. **Introduction**](#1-introduction)
- * [2. **Setting up**](#2-setting-up)
- * [3. **Design**](#3-design)
-     * [3.1 Architecture](#3.1-architecture)
-     * [3.2 UI Component](#3.2-ui-component)
-     * [3.3 Logic Component](#3.3-logic-component)
-     * [3.4 Model Component](#3.4-model-component)
-     * [3.5 Storage Component](#3.5-storage-component)
-     * [3.6 Common Classes](#3.6-common-classes)
- * [4. **Implementation**](#4-implementation)
-     * [4.1 List Managers](#4.1-list-managers)
- * [5. **Documentation**](#5-documentation)
- * [6. **Logging**](#6-logging)
- * [7. **Testing**](#7-testing)
- * [8. **Configuration**](#8-configuration)
- * [9. **DevOps**](#9-dev-ops)
- * [**Appendix A: Product Scope**](#appendix-a-product-scope)
- * [**Appendix B: User Stories**](#appendix-b-user-stories)
- * [**Appendix C: Use Cases**](#appendix-c-use-cases)
- * [**Appendix D: Non Functional Requirements**](#appendix-d-non-functional-requirements)
- * [**Appendix E: Glossary**](#appendix-e-glossary)
- * [**Appendix F: Instructions for Manual Testing**](#appendix-f-instructions-for-manual-testing)
- * [**Appendix G: Effort**](#appendix-g-effort)
+* Table of Contents
+{:toc}
 
 ## 1. **Introduction**
 
@@ -214,6 +191,7 @@ The following class diagram models the structure of the `ListManager`.
 #### 4.1.3 Design Consideration 
 
 **Aspect: Implementation of a `ListManager`**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1 (current choice)** <br> Extract the common functionality of the <br> 3 `ListManager`s into one generic `UniqueList` class.<br> The `UniqueList` class is used as the base data structure <br> and all 3 `ListManager`s build additional functionality on top of it. | Makes use of the Don't Repeat Yourself (DRY) principle which guards against duplication of information and minimizes repeated code.| All `ListManager`s will have dependencies on `UniqueList`. Implementation of all `ListManager`s will require `UniqueList` to be finished implementing first.|
@@ -269,6 +247,7 @@ The following class diagram models the structure of the `ListTracker`.
 #### 4.2.3 Design Consideration 
 
 **Aspect: Separating a `ListManager` from a `ListTracker`**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1** <br> Make use of a `ListManager` to keep track of expenses and revenue as well | Reduces repeated code for certain functionalities such as `list`, `find` and `clear`. | A `ListManager` depends on a `UniqueList` which ensure that all *items* in the list are unique. However, revenue and expense entries may not be unique. This means that revenue and expense *item* entries can not be properly represented using a `ListManager`.|
@@ -279,6 +258,7 @@ Reason for choosing option 2:
 * Using `ListTracker` with a dependency on `NonUniqueList` allows for a different implementation when comparing two *items* in the list.
 
 **Aspect: Implementation of a `ListTracker`**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1 (current choice)** <br> Extract the common functionality of the <br> 3 `ListTracker`s into one generic `NonUniqueList` class.<br> The `NonUniqueList` class is used as the base data structure <br> and both `ListTracker`s build additional functionality on top of it. | Makes use of the Don't Repeat Yourself (DRY) principle which guards against duplication of information and minimizes repeated code.| Both `ListTracker`s will have dependencies on `NonUniqueList`. Implementation of both `ListTracker`s will require `NonUniqueList` to be finished implementing first.|
@@ -334,6 +314,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 #### 4.3.2 Design Consideration
 
 **Aspect: Identifying each service with a unique service code**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1** <br> Omit the use of service codes to identify a service. | Arguably more user-friendly to identify services by its title instead of a service code. | Unable to uniquely identify services, resulting in complications when executing commands which require services. <br> For example adding an appointment for a service "Manicure" when there are two "Manicure" services provided by Homerce but with different prices and durations. |
@@ -344,6 +325,7 @@ Reason for choosing option 2:
 * The current format of a service code allows for 1000 unique services to be created since service codes are recycled when a service is deleted. This would be more than sufficient all home-based businesses to add all the services that they provide.
 
 **Aspect: Service code generation**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1** <br> Allow the user to select his or her own service code. | Gives the user more freedom to select a service code that suits the user's liking. | Unnecessary burden for the user to keep track of and select an unique service codes for each new service to be created.|
