@@ -10,7 +10,7 @@ start
 if () then ([valid command])
       :Parses the
       ""addsvc"" command
-      and the keywords;
+      and the parameters;
 
       if () then ([less than 1000 services in Homerce])
       :Generate new unique service code;
