@@ -26,7 +26,7 @@ if () then ([valid command])
     endif
 
     :Displays the sorted list;
- 
+
     :Shows a success message;
 
 else ([else])
