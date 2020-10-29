@@ -315,6 +315,8 @@
 
 .schedule-grid {
     -fx-background-color: transparent;
+    -fx-background-insets: 0, 1 1 0 0 ;
+    -fx-padding: 1 ;
 }
 
 .schedule-grid-cell-red {

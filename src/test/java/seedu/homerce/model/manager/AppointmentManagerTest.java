@@ -12,6 +12,7 @@ import static seedu.homerce.testutil.client.TypicalClients.BENSON;
 import static seedu.homerce.testutil.service.TypicalServices.LASH_LIFT;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
@@ -20,6 +21,7 @@ import org.junit.jupiter.api.Test;
 
 import javafx.collections.ObservableList;
 import seedu.homerce.model.appointment.Appointment;
+import seedu.homerce.model.appointment.predicate.AppointmentWeekPredicate;
 import seedu.homerce.model.appointment.uniquelist.UniqueAppointmentList;
 import seedu.homerce.model.util.uniquelist.exceptions.DuplicateItemException;
 import seedu.homerce.testutil.appointment.AppointmentBuilder;
@@ -122,6 +124,16 @@ public class AppointmentManagerTest {
             List<Appointment> appointmentsItemsCopy = appointments.deepCopy();
             appointmentListCopy.setItems(appointmentsItemsCopy);
             return appointmentListCopy.asUnmodifiableObservableList();
+        }
+
+        @Override
+        public AppointmentWeekPredicate getCurrentWeek() {
+            throw new AssertionError("This method should not be called");
+        }
+
+        @Override
+        public Calendar getCalendar() {
+            throw new AssertionError("This method should not be called");
         }
     }
 }

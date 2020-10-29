@@ -10,6 +10,7 @@ import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.expense.Expense;
+import seedu.homerce.model.manager.ReadOnlyAppointmentManager;
 import seedu.homerce.model.manager.ReadOnlyClientManager;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.service.Service;
@@ -76,4 +77,5 @@ public interface Logic {
      */
     void setGuiSettings(GuiSettings guiSettings);
 
+    ReadOnlyAppointmentManager getAppointmentManager();
 }
