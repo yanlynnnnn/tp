@@ -42,4 +42,19 @@ public class AppointmentTemp {
     public TimeOfDay getAppointmentStartTime() {
         return timeOfDay;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) {
+            return true;
+        } else if (!(obj instanceof AppointmentTemp)) {
+            return false;
+        } else {
+            AppointmentTemp other = (AppointmentTemp) obj;
+            return phone.equals(other.phone)
+                && serviceCode.equals((other.serviceCode))
+                && appointmentDate.equals(other.appointmentDate)
+                && timeOfDay.equals(other.timeOfDay);
+        }
+    }
 }

@@ -33,9 +33,6 @@ public class FindAppointmentCommandParser implements Parser<FindAppointmentComma
             throw new ParseException(
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindAppointmentCommand.MESSAGE_USAGE));
         }
-        /* TODO For now findapt works with date, phone number, name and service code. Need to include
-           searching by month.
-         */
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(userInput, PREFIX_DATE, PREFIX_PHONE, PREFIX_SERVICE_SERVICE_CODE, PREFIX_NAME);
         if (areMultipleParametersPresent(argMultimap, PREFIX_DATE, PREFIX_PHONE, PREFIX_SERVICE_SERVICE_CODE,
