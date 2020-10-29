@@ -14,7 +14,7 @@ import seedu.homerce.ui.Panel;
  * Panel containing the list of services.
  */
 public class ServiceListPanel extends Panel {
-    public static final String TAB_NAME = "Service";
+    public static final String TAB_NAME = "Services";
 
     private static final String FXML = "servicepanel/ServiceListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ServiceListPanel.class);

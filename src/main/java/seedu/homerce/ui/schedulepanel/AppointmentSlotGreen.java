@@ -7,16 +7,16 @@ import seedu.homerce.model.appointment.Appointment;
 /**
  * A region of a calendar view that represents a single slot.
  */
-public class AppointmentSlot extends SlotContainer {
+public class AppointmentSlotGreen extends SlotContainer {
 
-    private static final String FXML = "schedulepanel/AppointmentSlot.fxml";
+    private static final String FXML = "schedulepanel/AppointmentSlotGreen.fxml";
 
-    private String clientName;
-    private String dateText;
-    private String timeText;
-    private String descriptionText;
+    protected String clientName;
+    protected String dateText;
+    protected String timeText;
+    protected String descriptionText;
 
-    @FXML
+    @javafx.fxml.FXML
     private Label title;
 
     @FXML
@@ -28,7 +28,7 @@ public class AppointmentSlot extends SlotContainer {
     /**
      * Constructor that creates a slot to be added to the schedule with relevant appointment information.
      */
-    public AppointmentSlot(Appointment appointment) {
+    public AppointmentSlotGreen(Appointment appointment) {
         super(FXML);
 
         this.clientName = appointment.getClient().getName().fullName;

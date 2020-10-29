@@ -131,8 +131,14 @@ public class SchedulePanel extends UiPart<Region> {
         for (int i = 0; i < appointments.size(); i++) {
             Appointment curr = appointments.get(i);
             LocalDate currAppointmentDate = curr.getAppointmentDate().getLocalDate();
-            AppointmentSlot appointmentSlot = new AppointmentSlot(curr);
-
+            SlotContainer appointmentSlot;
+            if (curr.getService().getAmount().value.doubleValue() <= 30) {
+                appointmentSlot = new AppointmentSlotRed(curr);
+            } else if (curr.getService().getAmount().value.doubleValue() <= 60) {
+                appointmentSlot = new AppointmentSlotBlue(curr);
+            } else {
+                appointmentSlot = new AppointmentSlotGreen(curr);
+            }
             if (!isSameDate(prevAppointmentDate, currAppointmentDate)) {
                 rowIndex++;
                 prevAppointmentDate = currAppointmentDate;
