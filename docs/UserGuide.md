@@ -50,8 +50,8 @@ This section gives you step-by-step instructions on how to download and open the
 ### 3.1. Structure of this document
 
 We have structured this User Guide in a way to help you find what you need easily and quickly. 
-In the next subsection, [Section 3.2 - Reading this document](#3.2-Reading-this-document), you can find several useful tips on how to read this guide.
-The following section, [Section 4 - Features](#4-features), documents the four main features in **Homerce**, namely:
+In the next subsection, [Section 3.2 - Reading this document](#32-reading-this-document), you can find several useful tips on how to read this guide.
+The following section, [Section 4 - Features](#4-features), documents the six main features in **Homerce**, namely:
 
 * Service Management
 
@@ -60,6 +60,10 @@ The following section, [Section 4 - Features](#4-features), documents the four m
 * Revenue Tracking
 
 * Expense Tracking
+
+* Client Management
+
+* Schedule Viewing
 
 ### 3.2. Reading this document
 
@@ -70,7 +74,7 @@ familiarize yourself with them before moving to the next section.
 
 Figure 2 shows the GUI of **Homerce**, annotated with a description of each GUI component.
 
-{Figure 2, screenshot of GUI with annotations} <br>
+![AnnotatedUI](images/AnnotatedUI.png) <br>
 _Figure 2 -  Annotated GUI of Homerce_
 
 #### 3.2.2. General Symbols and Syntax 
@@ -917,13 +921,13 @@ Thus, this feature allows you to keep track of all the relevant information need
 Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used.
 
-| Parameter Name | Description | Example
-|---------|---------|---------
-|`NAME`  | The name of the client. <br><br> It must be an alphanumeric word. | E.g. Typing `John Doe` would represent the name of the client saved in the client manager.
-|`EMAIL`| <br>The email of the client. <br> Emails should be in `local-part@domain format` <br><br/> The `local-part` can only contain alphanumeric characters, and the special characters <br>+!#$%&'*+/=?\`{}~^.-&#124;<br><br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.)<br>The domain name must also have at least 2 characters and start and end with alphanumeric characters | johnDoe97@example123.com 
-|`PHONE` | Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long. | E.g. `91234567` would represent the client's phone number.
-|`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend.
-|`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list.
+| Parameter Name | Description | Example |
+|---------|---------|--------- |
+|`NAME`  | The name of the client. <br><br> It must be an alphanumeric word. | E.g. Typing `John Doe` would represent the name of the client saved in the client manager. |
+|`EMAIL`  | The email of the client. <br> Emails should be in `local-part@domain format` <br> <br> The `local-part` can only contain alphanumeric characters, and the special characters <br> +!#$%&'*+/=?\`{}~^.-&#124 <br> <br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.) <br> The domain name must also have at least 2 characters and start and end with alphanumeric characters | johnDoe97@example123.com |
+|`PHONE` | Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long. | E.g. `91234567` would represent the client's phone number. |
+|`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend. |
+|`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list. |
 
 #### 4.5.2. Add a client `addcli`
 
