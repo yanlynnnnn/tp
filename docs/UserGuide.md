@@ -699,9 +699,12 @@ Outcome :
 
 ### 4.4 Expense Tracker
 
-Homerce understands that Expense Tracking is extremely important in managing business expenditure.
-Thus, this feature allows you to track your operational expenses with ease.
-You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`. 
+Homerce understands that expense tracking is essential in managing your business expenditure.
+Thus, this feature allows you to track your operational expenses with ease. <br>
+Our expense tracker supports both fixed expenses that recur monthly, and one-time expenses that are incurred only once.
+To reduce the hassle of recording the same fixed expense monthly, a fixed expense only has to be added once,
+and Homerce will automatically record the same expense for you every month.
+<br>You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`. 
 
 #### 4.4.1. Expense Tracker Command Parameters
 
