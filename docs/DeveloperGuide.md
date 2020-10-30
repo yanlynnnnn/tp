@@ -346,7 +346,7 @@ an expense tracker to assist the user with the process of keeping track of all t
 #### 4.4.2 Current Implementation
 
 The current implementation of the expense tracker allows the user to keep track of a list of expenses incurred by the home-based business. Users can specify the
-description, value, and date of the expense. Users can add an optional tag to categorize the expense, which will be used in `breakdownfinance` in [section 4.5](#45-breakdown-finance). 
+description, value, and date of the expense. Users can add an optional tag to categorize the expense, which will be used in `breakdownfinance` in [section 4.4](#44-finance-breakdown). 
 In addition, the user can indicate if the expense is a fixed expense that recurs monthly, or if it is a one-time expense. Fixed expenses will be automatically recorded by Homerce
 every month.
 
@@ -379,6 +379,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 #### 4.4.3 Design Consideration 
 
 **Aspect: Duplicating a fixed expense every month**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1** <br> Immediately create 12 duplicate expenses upon the creation of a fixed expense for the next 12 months, creating another 12 duplicate expenses after every 12 months. | Users can edit the fixed expense records in a period of 12 months by editing any one of the 12 duplicate expenses. | Users are unable to create a fixed expense that only recurs over a period of less than 12 months. <br> For example, a user might want to add a fixed expense that he will incur only for the next 6 months. However, the application will create 12 duplicate expenses in advance. |
@@ -389,6 +390,7 @@ Reason for choosing option 2:
 * Users can have more flexibility in creating fixed expenses that recur for a period that is not a multiple of 12 months.
 
 **Aspect: Duplicating a fixed expense on the date of the month it was created every month**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1** <br> Duplicate all fixed expenses on the 1st of every month. | Duplicate expenses will be created all together at one shot, making it easier for users to keep track of his fixed expenses. | The `breakdownfinance` command for the month, when entered before the end of the month, might include duplicate expenses that have not yet been incurred. <br> For example, if the user enters the `breakdownfinance` command in the middle of the month, it will take into account duplicate expenses that are only paid for only at the end of the month, such as the air-conditioning bill. |
