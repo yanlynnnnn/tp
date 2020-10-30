@@ -590,7 +590,7 @@ The table below shows a list of command parameters that will be used in this fea
 
 | Parameter Name | Description | Example
 |---------|---------|---------
-|`DATE`  | The revenue earned date. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
+|`DATE`  | The revenue earned date. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `22-10-2020` would mean 22 October 2020.
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
 |`INDEX`| The index number of the revenue in the displayed revenue list.<br> <br> The first entry of the list has an index number of `1` and all entries are listed in increasing index numbers. | E.g `5`
@@ -610,17 +610,17 @@ Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
 
 Example :
 
-You have just stopped operations for the day, and you wish to view all the revenues generated for today (29-09-2020).
+You have just stopped operations for the day, and you wish to view all the revenues generated for today (22-10-2020).
 
 You can follow the steps below to get the list of revenues for the day.
 
 Steps :
-1. Type `findrev dt/29-09-2020` into the _Command Box_.
+1. Type `findrev dt/22-10-2020` into the _Command Box_.
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a success message ~~in the _Dashboard_.~~
-1. Homerce will list out all the revenue for 29-09-2020 in the _Revenue_ tab.  
+1. It will display a success message in the _Dashboard_.
+1. Homerce will list out all the revenue for 22-10-2020 in the _Revenue_ tab.  
 
 {Example outcome screenshot}
 
@@ -655,7 +655,7 @@ Outcome :
 
 #### 4.3.4. List revenues : `listrev`
 
-You can use this command to list all your revenue entries in Homerce.
+You can use this command to list all your revenue entries in Homerce. The list will be sorted by descending chronological order.
 
 Format : `listrev`
 
@@ -670,7 +670,7 @@ Steps :
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message ~~in the _Dashboard_.~~
+1. It will display a successful message in the _Dashboard_.
 1. Homerce will list out all your revenue entries in the _Revenue_ tab.
 
 {Example outcome screenshot}
@@ -692,7 +692,7 @@ Steps :
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message ~~in the _Dashboard_.~~
+1. It will display a successful message in the _Dashboard_.
 1. Homerce will clear all the revenue data.
 
 {Example outcome screenshot}
