@@ -47,7 +47,7 @@ public class ServiceCard extends UiPart<Region> {
         title.setText(service.getTitle().value);
         duration.setText("Duration: " + service.getDuration().value + " hours");
         price.setText("Price: $" + service.getAmount().value);
-        code.setText("Code: " + service.getServiceCode().value);
+        code.setText(service.getServiceCode().value);
     }
 
     @Override

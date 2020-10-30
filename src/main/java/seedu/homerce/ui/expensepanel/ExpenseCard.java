@@ -49,9 +49,9 @@ public class ExpenseCard extends UiPart<Region> {
         super(FXML);
         this.expense = expense;
         id.setText("E" + displayedIndex);
-        description.setText("Expense: " + expense.getDescription().toString());
+        description.setText("Description: " + expense.getDescription().toString());
         //description.setStyle("-fx-font-weight: bold;");
-        isFixed.setText("Type: " + (expense.getIsFixed().value ? "Fixed" : "Variable"));
+        isFixed.setText("Type: " + (expense.getIsFixed().value ? "Fixed" : "Not Fixed"));
         value.setText("Value: " + expense.getValue().value);
         date.setText(expense.getDate().toUiString());
         tag.setText(expense.getTag().toUiString());

@@ -33,7 +33,7 @@
             <Label fx:id="clientName" style="-fx-text-fill: #000" text="\$first"/>
             <Label fx:id="clientPhone" style="-fx-text-fill: #000" text="\$clientPhone"/>
             <Label fx:id="service" style="-fx-text-fill: #000" text="\$service"/>
-            <Label fx:id="isDone" style="-fx-text-fill: #000" text="\$isDone"/>
+            <Label fx:id="isDone" styleClass="purple-tag" style="-fx-text-fill: #000" text="\$isDone"/>
         </VBox>
     </GridPane>
 </HBox>

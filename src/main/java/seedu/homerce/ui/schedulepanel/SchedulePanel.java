@@ -132,7 +132,7 @@ public class SchedulePanel extends UiPart<Region> {
             Appointment curr = appointments.get(i);
             LocalDate currAppointmentDate = curr.getAppointmentDate().getLocalDate();
             SlotContainer appointmentSlot;
-            if (curr.getService().getAmount().value.doubleValue() <= 30) {
+            if (curr.getService().getAmount().value.doubleValue() <= 25) {
                 appointmentSlot = new AppointmentSlotRed(curr);
             } else if (curr.getService().getAmount().value.doubleValue() <= 60) {
                 appointmentSlot = new AppointmentSlotBlue(curr);
