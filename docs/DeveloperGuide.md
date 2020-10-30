@@ -2,31 +2,8 @@
 layout: page
 title: Developer Guide
 ---
-
-## Table of Contents:
- * [1. **Introduction**](#1-introduction)
- * [2. **Setting up**](#2-setting-up)
- * [3. **Design**](#3-design)
-     * [3.1 Architecture](#3.1-architecture)
-     * [3.2 UI Component](#3.2-ui-component)
-     * [3.3 Logic Component](#3.3-logic-component)
-     * [3.4 Model Component](#3.4-model-component)
-     * [3.5 Storage Component](#3.5-storage-component)
-     * [3.6 Common Classes](#3.6-common-classes)
- * [4. **Implementation**](#4-implementation)
-     * [4.1 List Managers](#4.1-list-managers)
- * [5. **Documentation**](#5-documentation)
- * [6. **Logging**](#6-logging)
- * [7. **Testing**](#7-testing)
- * [8. **Configuration**](#8-configuration)
- * [9. **DevOps**](#9-dev-ops)
- * [**Appendix A: Product Scope**](#appendix-a-product-scope)
- * [**Appendix B: User Stories**](#appendix-b-user-stories)
- * [**Appendix C: Use Cases**](#appendix-c-use-cases)
- * [**Appendix D: Non Functional Requirements**](#appendix-d-non-functional-requirements)
- * [**Appendix E: Glossary**](#appendix-e-glossary)
- * [**Appendix F: Instructions for Manual Testing**](#appendix-f-instructions-for-manual-testing)
- * [**Appendix G: Effort**](#appendix-g-effort)
+* Table of Contents
+{:toc}
 
 ## 1. **Introduction**
 
@@ -111,7 +88,7 @@ The `UI` component,
 **API** :
 [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
 
-1. `Logic` uses the `AddressBookParser` class to parse the user command.
+1. `Logic` uses the `HomerceParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
 1. The command execution can affect the `Model` (e.g. adding a client).
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
@@ -138,7 +115,7 @@ The `Model`,
 * does not depend on any of the other three components.
 
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `AddressBook`, which `Client` references. This allows `AddressBook` to only require one `Tag` object per unique `Tag`, instead of each `Client` needing their own `Tag` object.<br>
+<div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `Homerce`, which `Client` references. This allows `Homerce` to only require one `Tag` object per unique `Tag`, instead of each `Client` needing their own `Tag` object.<br>
 ![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
 </div>
@@ -214,6 +191,7 @@ The following class diagram models the structure of the `ListManager`.
 #### 4.1.3 Design Consideration 
 
 **Aspect: Implementation of a `ListManager`**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1 (current choice)** <br> Extract the common functionality of the <br> 3 `ListManager`s into one generic `UniqueList` class.<br> The `UniqueList` class is used as the base data structure <br> and all 3 `ListManager`s build additional functionality on top of it. | Makes use of the Don't Repeat Yourself (DRY) principle which guards against duplication of information and minimizes repeated code.| All `ListManager`s will have dependencies on `UniqueList`. Implementation of all `ListManager`s will require `UniqueList` to be finished implementing first.|
@@ -239,7 +217,6 @@ Common commands for all list managers:
 * `list` - Shows all items in the list
 * `find` - Searches for item(s) in the list
 * `clear` - Removes all the items in the list
-* `breakdown` - Categorizes and gives an overview of the items in the list
 
 #### 4.2.1 Rationale 
 
@@ -269,6 +246,7 @@ The following class diagram models the structure of the `ListTracker`.
 #### 4.2.3 Design Consideration 
 
 **Aspect: Separating a `ListManager` from a `ListTracker`**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1** <br> Make use of a `ListManager` to keep track of expenses and revenue as well | Reduces repeated code for certain functionalities such as `list`, `find` and `clear`. | A `ListManager` depends on a `UniqueList` which ensure that all *items* in the list are unique. However, revenue and expense entries may not be unique. This means that revenue and expense *item* entries can not be properly represented using a `ListManager`.|
@@ -279,6 +257,7 @@ Reason for choosing option 2:
 * Using `ListTracker` with a dependency on `NonUniqueList` allows for a different implementation when comparing two *items* in the list.
 
 **Aspect: Implementation of a `ListTracker`**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1 (current choice)** <br> Extract the common functionality of the <br> 3 `ListTracker`s into one generic `NonUniqueList` class.<br> The `NonUniqueList` class is used as the base data structure <br> and both `ListTracker`s build additional functionality on top of it. | Makes use of the Don't Repeat Yourself (DRY) principle which guards against duplication of information and minimizes repeated code.| Both `ListTracker`s will have dependencies on `NonUniqueList`. Implementation of both `ListTracker`s will require `NonUniqueList` to be finished implementing first.|
@@ -331,9 +310,10 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 *Figure 4. Execution of an `addsvc` command*
 
-#### 4.3.2 Design Consideration
+#### 4.3.3 Design Consideration
 
 **Aspect: Identifying each service with a unique service code**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1** <br> Omit the use of service codes to identify a service. | Arguably more user-friendly to identify services by its title instead of a service code. | Unable to uniquely identify services, resulting in complications when executing commands which require services. <br> For example adding an appointment for a service "Manicure" when there are two "Manicure" services provided by Homerce but with different prices and durations. |
@@ -344,6 +324,7 @@ Reason for choosing option 2:
 * The current format of a service code allows for 1000 unique services to be created since service codes are recycled when a service is deleted. This would be more than sufficient all home-based businesses to add all the services that they provide.
 
 **Aspect: Service code generation**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1** <br> Allow the user to select his or her own service code. | Gives the user more freedom to select a service code that suits the user's liking. | Unnecessary burden for the user to keep track of and select an unique service codes for each new service to be created.|
@@ -418,6 +399,60 @@ Reason for choosing option 2:
 Reason for choosing option 2:
 * The expense should only be duplicated on the day of the month it has been incurred for better accounting purposes
 * The `breakdownfinance` command analysis should not include duplicate expenses that have not yet been incurred.
+
+### 4.5 Finance Breakdown
+
+Homerce allows the user to keep track of the expenses and revenue for his or her home-based business. The finance breakdown 
+will provide a breakdown of the monthly expenses and revenue based on tags for expenses and services for revenue. The finance breakdown will also 
+calculate profits based on the monthly expenses and revenue.
+
+#### 4.5.1 Rationale 
+
+Keeping track of the financials of a home-based business is important for the business owner to make better financial decisions such as reducing certain expenses or 
+increasing revenue by prioritizing certain services. This could potentially increase the profits of the home-based business. 
+Thus, the finance breakdown is useful in helping the user view the financial information of the home-based business in a 
+simpler way as monthly expenses and revenue will be categorized and profits will also be calculated automatically.
+
+#### 4.5.2 Current Implementation
+
+The current implementation of the finance breakdown makes use of the list of revenue and expenses as tracked by `RevenueTracker` and `ExpenseTracker`.
+The list of revenue and expenses will be filtered by their `Month` and `Year` attribute as indicated by the user. The filtered list will
+be used to create a breakdown of expenses and revenue, as well as to calculate the monthly profit of the home-based business.
+
+In this section, we will outline the `breakdownfinance` command using the following Activity Diagram.
+
+![Activity diagram of BreakdownFinance](images/BreakdownFinanceActivityDiagram.png)
+
+*Figure 4. Workflow of a `breakdownfinance` command*
+
+When the user enters the `breakdownfinance` command to view the monthly breakdown, the user input command undergoes the same command parsing as described in 
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `breakdownfinance`, 
+
+The following steps will describe the execution of the `BreakdownFinanceCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `BreakdownFinanceCommand` is called, a new `ExpenseMonthYearPredicate` and `RevenueMonthYearPredicate` is created with the parsed `Month` and `Year`.
+2. The `ModelManager`'s `updateFilteredExpenseList()` and `updateFilteredRevenueList()` method is called using the `ExpenseMonthYearPredicate` and `RevenueMonthYearPredicate` respectively.
+3. The `Model`'s list of expenses and revenue is updated to contain only the expenses and revenue in the inputted `Month` and `Year`.
+4. The `Ui` component will detect this change and update the GUI by opening a pop-up window to show the financial breakdown information.
+5. Assuming that the above steps are all successful, the `BreakdownFinanceCommand` will then create a `CommandResult` object and return the result.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram breakdownfiance](images/BreakdownFinanceSequenceDiagram.png)
+
+*Figure 5. Execution of an `breakdownfinance` command*
+
+#### 4.5.3 Design Consideration
+
+**Aspect: Which class to store Homerce's financial information**
+
+|              |  **Pros**  | **Cons** |
+| -------------|------------|----------|
+| **Option 1 (current choice)** <br> Use revenue and expenses from `RevenueTracker` and `ExpenseTracker` <br> in the `BreakdownFinance` command. Do not create a new `FinanceTracker` class | Avoids duplication of code as the same list of expenses and services are used in `ExpenseTracker` and `RevenueTracker`| Increases coupling between `BreakdownFinanceCommand` code and `RevenueTracker` as well as `ExpenseTracker`|
+| **Option 2** <br> Place the revenue and expenses as fields in a new `FinanceTracker` class | Provides more freedom for manipulation of revenue and expense data as `FinanceTracker` maintains a separate state for the list of expenses and revenue. | Violates the Don't Repeat Yourself(DRY) principle as the information for `ExpenseTracker` and `RevenueTracker` is duplicated in a new `FinanceTracker` class|
+
+Reason for choosing option 1:
+* Using the same instance of `ExpenseTracker` and `RevenueTracker` to obtain the list of expenses and revenue ensures that expenses and revenue data are consistent without needing to update the lists in `ExpenseTracker`, `RevenueTracker` as well as `FinanceTracker`.
+* The `execute()` command of `BreakdownFinanceCommand` already takes in the `Model` which has `ExpenseTracker` and `RevenueTracker` as attributes. It is unnecessary to create a new `FinanceTrakcer` class as an attribute for `Model` to store and duplicate information that already exists.
 
 ## 5. **Documentation**
 
