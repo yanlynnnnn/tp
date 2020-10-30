@@ -50,8 +50,8 @@ This section gives you step-by-step instructions on how to download and open the
 ### 3.1. Structure of this document
 
 We have structured this User Guide in a way to help you find what you need easily and quickly. 
-In the next subsection, [Section 3.2 - Reading this document](#3.2-Reading-this-document), you can find several useful tips on how to read this guide.
-The following section, [Section 4 - Features](#4-features), documents the four main features in **Homerce**, namely:
+In the next subsection, [Section 3.2 - Reading this document](#32-Reading-this-document), you can find several useful tips on how to read this guide.
+The following section, [Section 4 - Features](#4-features), documents the six main features in **Homerce**, namely:
 
 * Service Management
 
@@ -60,6 +60,10 @@ The following section, [Section 4 - Features](#4-features), documents the four m
 * Revenue Tracking
 
 * Expense Tracking
+
+* Client Management
+
+* Schedule Viewing
 
 ### 3.2. Reading this document
 
@@ -70,7 +74,7 @@ familiarize yourself with them before moving to the next section.
 
 Figure 2 shows the GUI of **Homerce**, annotated with a description of each GUI component.
 
-{Figure 2, screenshot of GUI with annotations} <br>
+![AnnotatedUI](images/AnnotatedUI.png) <br>
 _Figure 2 -  Annotated GUI of Homerce_
 
 #### 3.2.2. General Symbols and Syntax 
