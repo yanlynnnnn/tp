@@ -140,7 +140,7 @@ public class MainWindow extends UiPart<Stage> {
             tabPanelPlaceholder.getChildren().add(expenseListPanel.getRoot());
             break;
         case SchedulePanel.TAB_NAME:
-            schedulePanel = new SchedulePanel(logic.getFilteredSchedule());
+            schedulePanel = new SchedulePanel(logic.getFilteredSchedule(), logic.getAppointmentManager());
             schedulePanel.construct();
             tabPanelPlaceholder.getChildren().add(schedulePanel.getRoot());
             break;

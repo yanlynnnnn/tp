@@ -153,6 +153,17 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
         return new AppointmentWeekPredicate(calendar);
     }
 
+    //// Used for schedule to have knowledge of the current week when showing the appointments
+    @Override
+    public AppointmentWeekPredicate getCurrentWeek() {
+        return new AppointmentWeekPredicate(calendar);
+    }
+
+    @Override
+    public Calendar getCalendar() {
+        return this.calendar;
+    }
+
     public void setCalendarNextWeek() {
         calendar.add(Calendar.WEEK_OF_YEAR, 1);
     }
