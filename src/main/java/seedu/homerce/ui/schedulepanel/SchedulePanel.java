@@ -2,6 +2,7 @@ package seedu.homerce.ui.schedulepanel;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -14,6 +15,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import seedu.homerce.commons.core.LogsCenter;
 import seedu.homerce.model.appointment.Appointment;
+import seedu.homerce.model.appointment.predicate.AppointmentWeekPredicate;
+import seedu.homerce.model.manager.ReadOnlyAppointmentManager;
 import seedu.homerce.model.service.Duration;
 import seedu.homerce.ui.UiPart;
 
@@ -32,6 +35,9 @@ public class SchedulePanel extends UiPart<Region> {
 
     private final ObservableList<Appointment> appointments;
 
+    // Used to show dates in schedule view
+    private final LocalDate weekStartDate;
+
     @FXML
     private ScrollPane scrollPane;
 
@@ -41,22 +47,25 @@ public class SchedulePanel extends UiPart<Region> {
     /**
      * Creates a {@code AppointmentListPanel} with the given {@code ObservableList}.
      */
-    public SchedulePanel(ObservableList<Appointment> appointments) {
+    public SchedulePanel(ObservableList<Appointment> appointments, ReadOnlyAppointmentManager appointmentManager) {
         super(FXML);
         this.appointments = appointments;
+        Calendar calendar = appointmentManager.getCalendar();
+        AppointmentWeekPredicate predicate = appointmentManager.getCurrentWeek();
+        this.weekStartDate = predicate.calculateStartDateOfWeek(calendar);
     }
 
     /**
      * Fills the grid pane with the slots.
      */
     public void construct() {
+        constructGrid();
+        addDateDisplaySlotsToGrid();
         if (appointments.size() == 0) {
             System.out.println("No appointments in schedule");
             return;
         }
-        constructGrid();
         addAppointmentSlotsToGrid();
-        addDateDisplaySlotsToGrid();
     }
 
     private int getColSpan(Duration duration) {
@@ -113,8 +122,17 @@ public class SchedulePanel extends UiPart<Region> {
     }
 
     private void constructGrid() {
-        int earliestTimeIndex = getColIndex(getEarliestStartTime());
-        int latestTimeIndex = getColIndex(getLatestEndTime());
+        int earliestTimeIndex;
+        int latestTimeIndex;
+
+        // Prevents null pointer exception when appointment list is empty
+        if (appointments.size() == 0) {
+            earliestTimeIndex = getColIndex(LocalTime.of(8, 0));
+            latestTimeIndex = getColIndex(LocalTime.of(23, 0));
+        } else {
+            earliestTimeIndex = getColIndex(getEarliestStartTime());
+            latestTimeIndex = getColIndex(getLatestEndTime());
+        }
 
         int numColumns = NUM_OF_HALF_HOURS - earliestTimeIndex - (NUM_OF_HALF_HOURS - latestTimeIndex);
         for (int i = 0; i < numColumns + GRID_INDEX_BUFFER; i++) {
@@ -131,8 +149,14 @@ public class SchedulePanel extends UiPart<Region> {
         for (int i = 0; i < appointments.size(); i++) {
             Appointment curr = appointments.get(i);
             LocalDate currAppointmentDate = curr.getAppointmentDate().getLocalDate();
-            AppointmentSlot appointmentSlot = new AppointmentSlot(curr);
-
+            SlotContainer appointmentSlot;
+            if (curr.getService().getAmount().value.doubleValue() <= 25) {
+                appointmentSlot = new AppointmentSlotRed(curr);
+            } else if (curr.getService().getAmount().value.doubleValue() <= 60) {
+                appointmentSlot = new AppointmentSlotBlue(curr);
+            } else {
+                appointmentSlot = new AppointmentSlotGreen(curr);
+            }
             if (!isSameDate(prevAppointmentDate, currAppointmentDate)) {
                 rowIndex++;
                 prevAppointmentDate = currAppointmentDate;
@@ -144,9 +168,10 @@ public class SchedulePanel extends UiPart<Region> {
     }
 
     private void addDateDisplaySlotsToGrid() {
-        List<LocalDate> dates = getListOfUniqueDates();
-        for (int i = 0; i < dates.size(); i++) {
-            DisplayDateSlot slot = new DisplayDateSlot(dates.get(i));
+        LocalDate startWeek = weekStartDate;
+        for (int i = 0; i < 7; i++) { // Add date displays for entire week
+            DisplayDateSlot slot = new DisplayDateSlot(startWeek);
+            startWeek = startWeek.plusDays(1);
             gridPane.add(slot.getRoot(), 0, i, 1, ROW_SPAN);
         }
     }

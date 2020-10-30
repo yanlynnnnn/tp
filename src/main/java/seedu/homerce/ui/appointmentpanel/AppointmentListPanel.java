@@ -15,7 +15,7 @@ import seedu.homerce.ui.UiPart;
  * Panel containing list of Appointments.
  */
 public class AppointmentListPanel extends UiPart<Region> {
-    public static final String TAB_NAME = "Appointment";
+    public static final String TAB_NAME = "Appointments";
 
     private static final String FXML = "appointmentpanel/AppointmentListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(AppointmentListPanel.class);

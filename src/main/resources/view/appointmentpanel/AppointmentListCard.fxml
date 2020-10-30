@@ -9,28 +9,31 @@
 <?import javafx.scene.layout.VBox?>
 
 <HBox id="cardPane" fx:id="cardPane" xmlns="http://javafx.com/javafx/11" xmlns:fx="http://javafx.com/fxml/1">
-    <GridPane HBox.hgrow="ALWAYS">
+    <padding>
+        <Insets top="10" right="10" bottom="5" left="10" />
+    </padding>
+    <GridPane HBox.hgrow="ALWAYS" styleClass="purple-cardPane">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10" prefWidth="150"/>
         </columnConstraints>
         <VBox alignment="CENTER_LEFT" minHeight="105" GridPane.columnIndex="0">
             <padding>
-                <Insets top="5" right="5" bottom="5" left="15"/>
+                <Insets top="15" right="5" bottom="15" left="15"/>
             </padding>
             <HBox spacing="5" alignment="CENTER_LEFT">
-                <Label fx:id="id" styleClass="cell_big_label">
+                <Label fx:id="id" styleClass="purple-index" style="-fx-text-fill: #000">
                     <minWidth>
                         <!-- Ensures that the label text is never truncated -->
                         <Region fx:constant="USE_PREF_SIZE"/>
                     </minWidth>
                 </Label>
-                <Label fx:id="date" styleClass="cell_big_label" text="\$date"/>
+                <Label fx:id="date" style="-fx-text-fill: #000" styleClass="purple-date" text="\$date"/>
             </HBox>
-            <Label fx:id="timeOfDay" styleClass="cell_small_label" text="\$timeOfDay"/>
-            <Label fx:id="clientName" styleClass="cell_small_label" text="\$first"/>
-            <Label fx:id="clientPhone" styleClass="cell_small_label" text="\$clientPhone"/>
-            <Label fx:id="service" styleClass="cell_small_label" text="\$service"/>
-            <Label fx:id="isDone" styleClass="cell_small_label" text="\$isDone"/>
+            <Label fx:id="timeOfDay" style="-fx-text-fill: #000" text="\$timeOfDay"/>
+            <Label fx:id="clientName" style="-fx-text-fill: #000" text="\$first"/>
+            <Label fx:id="clientPhone" style="-fx-text-fill: #000" text="\$clientPhone"/>
+            <Label fx:id="service" style="-fx-text-fill: #000" text="\$service"/>
+            <Label fx:id="isDone" styleClass="purple-tag" style="-fx-text-fill: #000" text="\$isDone"/>
         </VBox>
     </GridPane>
 </HBox>

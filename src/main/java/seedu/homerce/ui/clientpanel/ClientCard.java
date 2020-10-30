@@ -46,10 +46,10 @@ public class ClientCard extends UiPart<Region> {
     public ClientCard(Client client, int displayedIndex) {
         super(FXML);
         this.client = client;
-        id.setText(displayedIndex + ". ");
+        id.setText("C" + displayedIndex);
         name.setText(client.getName().fullName);
-        phone.setText(client.getPhone().value);
-        email.setText(client.getEmail().value);
+        phone.setText("Contact: " + client.getPhone().value);
+        email.setText("Email: " + client.getEmail().value);
         client.getTags().stream()
                 .sorted(Comparator.comparing(tag -> tag.tagName))
                 .forEach(tag -> tags.getChildren().add(new Label(tag.tagName)));

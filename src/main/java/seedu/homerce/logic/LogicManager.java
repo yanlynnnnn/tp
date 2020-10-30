@@ -17,6 +17,7 @@ import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.manager.HistoryManager;
+import seedu.homerce.model.manager.ReadOnlyAppointmentManager;
 import seedu.homerce.model.manager.ReadOnlyClientManager;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.service.Service;
@@ -98,6 +99,11 @@ public class LogicManager implements Logic {
     @Override
     public void setGuiSettings(GuiSettings guiSettings) {
         model.setGuiSettings(guiSettings);
+    }
+
+    @Override
+    public ReadOnlyAppointmentManager getAppointmentManager() {
+        return model.getAppointmentManager();
     }
 
     @Override

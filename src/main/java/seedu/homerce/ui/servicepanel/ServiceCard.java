@@ -43,11 +43,11 @@ public class ServiceCard extends UiPart<Region> {
     public ServiceCard(Service service, int displayedIndex) {
         super(FXML);
         this.service = service;
-        id.setText(displayedIndex + ". ");
+        id.setText("S" + displayedIndex);
         title.setText(service.getTitle().value);
         duration.setText("Duration: " + service.getDuration().value + " hours");
         price.setText("Price: $" + service.getAmount().value);
-        code.setText("Code: " + service.getServiceCode().value);
+        code.setText(service.getServiceCode().value);
     }
 
     @Override

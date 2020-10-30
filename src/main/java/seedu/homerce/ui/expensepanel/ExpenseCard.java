@@ -48,12 +48,13 @@ public class ExpenseCard extends UiPart<Region> {
     public ExpenseCard(Expense expense, int displayedIndex) {
         super(FXML);
         this.expense = expense;
-        id.setText(displayedIndex + ". ");
+        id.setText("E" + displayedIndex);
         description.setText("Description: " + expense.getDescription().toString());
-        isFixed.setText("Fixed Expense? " + expense.getIsFixed().toString());
-        value.setText("Amount: " + expense.getValue().value);
+        //description.setStyle("-fx-font-weight: bold;");
+        isFixed.setText("Type: " + (expense.getIsFixed().value ? "Fixed" : "Not Fixed"));
+        value.setText("Value: " + expense.getValue().value);
         date.setText(expense.getDate().toUiString());
-        tag.setText(expense.getTag().toString());
+        tag.setText(expense.getTag().toUiString());
     }
 
     @Override

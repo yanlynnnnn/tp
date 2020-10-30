@@ -439,7 +439,7 @@ You searched for the appointment in Homerce with `listapt` or `findapt`, see tha
 and you want to edit it with the following details:
 
 | Appointment | |
-|---------|--------- |
+|---------|-------- |
 |`INDEX`| 1 |
 |`DATE`| 28-10-2020 |
 |`TIME`| 1300 |
@@ -590,7 +590,7 @@ The table below shows a list of command parameters that will be used in this fea
 
 | Parameter Name | Description | Example
 |---------|---------|---------
-|`DATE`  | The revenue earned date. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
+|`DATE`  | The revenue earned date. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `22-10-2020` would mean 22 October 2020.
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
 |`INDEX`| The index number of the revenue in the displayed revenue list.<br> <br> The first entry of the list has an index number of `1` and all entries are listed in increasing index numbers. | E.g `5`
@@ -610,17 +610,17 @@ Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
 
 Example :
 
-You have just stopped operations for the day, and you wish to view all the revenues generated for today (29-09-2020).
+You have just stopped operations for the day, and you wish to view all the revenues generated for today (22-10-2020).
 
 You can follow the steps below to get the list of revenues for the day.
 
 Steps :
-1. Type `findrev dt/29-09-2020` into the _Command Box_.
+1. Type `findrev dt/22-10-2020` into the _Command Box_.
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a success message ~~in the _Dashboard_.~~
-1. Homerce will list out all the revenue for 29-09-2020 in the _Revenue_ tab.  
+1. It will display a success message in the _Dashboard_.
+1. Homerce will list out all the revenue for 22-10-2020 in the _Revenue_ tab.  
 
 {Example outcome screenshot}
 
@@ -655,7 +655,7 @@ Outcome :
 
 #### 4.3.4. List revenues : `listrev`
 
-You can use this command to list all your revenue entries in Homerce.
+You can use this command to list all your revenue entries in Homerce. The list will be sorted by descending chronological order.
 
 Format : `listrev`
 
@@ -670,7 +670,7 @@ Steps :
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message ~~in the _Dashboard_.~~
+1. It will display a successful message in the _Dashboard_.
 1. Homerce will list out all your revenue entries in the _Revenue_ tab.
 
 {Example outcome screenshot}
@@ -692,16 +692,19 @@ Steps :
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message ~~in the _Dashboard_.~~
+1. It will display a successful message in the _Dashboard_.
 1. Homerce will clear all the revenue data.
 
 {Example outcome screenshot}
 
 ### 4.4 Expense Tracker
 
-Homerce understands that Expense Tracking is extremely important in managing business expenditure.
-Thus, this feature allows you to track your operational expenses with ease.
-You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`. 
+Homerce understands that expense tracking is essential in managing your business expenditure.
+Thus, this feature allows you to track your operational expenses with ease. <br>
+Our expense tracker supports both fixed expenses that recur monthly, and one-time expenses that are incurred only once.
+To reduce the hassle of recording the same fixed expense monthly, a fixed expense only has to be added once,
+and Homerce will automatically record the same expense for you every month.
+<br>You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`. 
 
 #### 4.4.1. Expense Tracker Command Parameters
 
@@ -914,13 +917,13 @@ Thus, this feature allows you to keep track of all the relevant information need
 Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used.
 
-| Parameter Name | Description | Example
-|---------|---------|---------
-|`NAME`  | The name of the client. <br><br> It must be an alphanumeric word. | E.g. Typing `John Doe` would represent the name of the client saved in the client manager.
-|`EMAIL`| <br>The email of the client. <br> Emails should be in `local-part@domain format` <br><br /> The `local-part` can only contain alphanumeric characters, and the special characters <br >+!#$%&'*+/=?\`{}~^.-&#124;<br><br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.)<br>The domain name must also have at least 2 characters and start and end with alphanumeric characters|johnDoe97@example123.com 
-|`PHONE` | Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long. | E.g. `91234567` would represent the client's phone number.
-|`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend.
-|`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list.
+| Parameter Name | Description | Example |
+|---------|---------|--------- |
+|`NAME`  | The name of the client. <br><br> It must be an alphanumeric word. | E.g. Typing `John Doe` would represent the name of the client saved in the client manager. |
+|`EMAIL`  | The email of the client. <br> Emails should be in `local-part@domain format` <br> <br> The `local-part` can only contain alphanumeric characters, and the special characters <br> +!#$%&'*+/=?\`{}~^.-&#124 <br> <br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.) <br> The domain name must also have at least 2 characters and start and end with alphanumeric characters | johnDoe97@example123.com |
+|`PHONE` | Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long. | E.g. `91234567` would represent the client's phone number. |
+|`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend. |
+|`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list. |
 
 #### 4.5.2. Add a client `addcli`
 

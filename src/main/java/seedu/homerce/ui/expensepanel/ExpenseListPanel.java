@@ -12,7 +12,7 @@ import seedu.homerce.model.expense.Expense;
 import seedu.homerce.ui.UiPart;
 
 public class ExpenseListPanel extends UiPart<Region> {
-    public static final String TAB_NAME = "Expense";
+    public static final String TAB_NAME = "Expenses";
 
     private static final String FXML = "expensepanel/ExpenseListPanel.fxml";
     private final Logger logger = LogsCenter.getLogger(ExpenseListPanel.class);
