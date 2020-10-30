@@ -20,8 +20,8 @@ public class DoneAppointmentCommand extends Command {
         + ": Marks the appointment identified by the index number used in the displayed appointment list as done.\n"
         + "Parameters: INDEX (must be a positive integer)\n"
         + "Example: " + COMMAND_WORD + " 1";
-    private static final String MESSAGE_DONE_APPOINTMENT_SUCCESS = "Marked Appointment as done: %1$s";
-    private static final String MESSAGE_ADD_REVENUE_SUCCESS = "Added this %1$s";
+    public static final String MESSAGE_DONE_APPOINTMENT_SUCCESS = "Marked Appointment as done: %1$s";
+    public static final String MESSAGE_ADD_REVENUE_SUCCESS = "Added this %1$s";
 
     private final Index targetIndex;
 

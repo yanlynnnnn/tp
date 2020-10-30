@@ -28,6 +28,7 @@ public class ListRevenueCommandTest {
             getTypicalRevenueTracker(), new ExpenseTracker(), new AppointmentManager());
         expectedModel = new ModelManager(new UserPrefs(), new ClientManager(), new ServiceManager(), model
             .getRevenueTracker(), new ExpenseTracker(), new AppointmentManager());
+        expectedModel.getRevenueTracker().sortDefaultRevenueList();
     }
 
     @Test

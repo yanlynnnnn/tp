@@ -2,27 +2,25 @@ package seedu.homerce.logic.parser.appointment;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static seedu.homerce.testutil.expense.TypicalExpenses.CONDITIONER;
 
 import org.junit.jupiter.api.Test;
 
 import seedu.homerce.logic.commands.appointment.AddAppointmentCommand;
 import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.model.appointment.AppointmentTemp;
-import seedu.homerce.model.appointment.TimeOfDay;
-import seedu.homerce.model.client.Phone;
-import seedu.homerce.model.service.ServiceCode;
-import seedu.homerce.model.util.attributes.Date;
+import seedu.homerce.testutil.appointment.AppointmentTempBuilder;
 
 public class AddAppointmentCommandParserTest {
     private AddAppointmentCommandParser parser = new AddAppointmentCommandParser();
 
     @Test
     public void parse_allFieldsPresent_success() throws ParseException {
-        AppointmentTemp expectedAppointment = new AppointmentTemp(
-            new Date("25-10-2020"), new TimeOfDay("1400"),
-            new Phone("83222666"), new ServiceCode("SC001")
-        );
+        AppointmentTemp expectedAppointment = new AppointmentTempBuilder()
+            .withDate("25-10-2020")
+            .withTimeOfDay("1400")
+            .withPhone("83222666")
+            .withServiceCode("SC001")
+            .build();
         AddAppointmentCommand expectedCommand = new AddAppointmentCommand(expectedAppointment);
 
         // whitespace only preamble
