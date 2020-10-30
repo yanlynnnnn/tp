@@ -96,13 +96,14 @@
 .list-view {
     -fx-background-insets: 0;
     -fx-padding: 0;
-    -fx-background-color: derive(#1d1d1d, 20%);
+    -fx-background-color: derive(#d9d9d9, 20%);
 }
 
 .list-cell {
     -fx-label-padding: 0 0 0 0;
     -fx-graphic-text-gap : 0;
     -fx-padding: 0 0 0 0;
+    -fx-background-color: #d9d9d9;
 }
 
 .list-cell:filled:even {
@@ -345,7 +346,7 @@
     -fx-background-insets: 5;
     -fx-background-radius: 10;
     -fx-max-width:80;
-    -fx-min-height:70;
+    -fx-min-height:80;
 }
 
 .purple-cardPane {
@@ -354,8 +355,15 @@
     -fx-opacity: 0.5;
 }
 
-.expense-tag {
+.purple-tag {
     -fx-background-color: #E7CFE9;
+    -fx-padding: 0 3 0 3;
+    -fx-background-radius: 2;
+    -fx-opacity: 0.7;
+}
+
+.green-tag {
+    -fx-background-color: #B7D3BA;
     -fx-padding: 0 3 0 3;
     -fx-background-radius: 2;
     -fx-opacity: 0.7;

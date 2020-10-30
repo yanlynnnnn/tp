@@ -31,7 +31,7 @@
             </HBox>
             <Label fx:id="duration" style="-fx-text-fill: #000" text="\$duration" />
             <Label fx:id="price" style="-fx-text-fill: #000" text="\$price" />
-            <Label fx:id="code" style="-fx-text-fill: #000" text="\$code" />
+            <Label fx:id="code" styleClass="green-tag" style="-fx-text-fill: #000" text="\$code" />
         </VBox>
     </GridPane>
 </HBox>

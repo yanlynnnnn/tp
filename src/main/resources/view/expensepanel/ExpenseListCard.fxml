@@ -32,7 +32,7 @@
             <Label fx:id="description" style="-fx-text-fill: #000" text="\$first"/>
             <Label fx:id="value" style="-fx-text-fill: #000" text="\$value" />
             <Label fx:id="isFixed" style="-fx-text-fill: #000" text="\$isFixed" />
-            <Label fx:id="tag" styleClass="expense-tag" style="-fx-text-fill: #000" text="\$tag" />
+            <Label fx:id="tag" styleClass="purple-tag" style="-fx-text-fill: #000" text="\$tag" />
         </VBox>
     </GridPane>
 </HBox>

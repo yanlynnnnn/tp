@@ -353,6 +353,70 @@ Reason for choosing option 2:
 * If the user's home-based business has many services, automatic generation of service codes will provide a more seamless and convenient process when adding new services.
 * The user can find services by title to determine it's unique service code, allowing the user to quickly identify a service's service code.
 
+### 4.4 Expense Tracker
+
+Homerce allows the user to keep track of the expenses that his or her home-based business incurs. The expense tracker is one of the `ListTracker`s elaborated in [section 4.2](#42-list-trackers).
+
+#### 4.4.1 Rationale 
+
+The expense tracker is essential to keep track of the operational expenses of any home-based business. With many expenses to keep track of, we decided to create
+an expense tracker to assist the user with the process of keeping track of all the expenses that his or her home-based business incurs.
+
+#### 4.4.2 Current Implementation
+
+The current implementation of the expense tracker allows the user to keep track of a list of expenses incurred by the home-based business. Users can specify the
+description, value, and date of the expense. Users can add an optional tag to categorize the expense, which will be used in `breakdownfinance` in [section 4.5](#45-breakdown-finance). 
+In addition, the user can indicate if the expense is a fixed expense that recurs monthly, or if it is a one-time expense. Fixed expenses will be automatically recorded by Homerce
+every month.
+
+In this section, we will use the following Activity Diagram to outline the sorting of the expense list when the `sortexp` command of the expense tracker is executed.
+
+![Activity diagram for expense_tracker sortexp command](images/SortExpenseActivityDiagram.png)
+
+*Figure 5. Workflow of a `sortexp` command*
+
+When the user enters the `sortexp` command to sort the expense list, the user input command undergoes the same command parsing as described in
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `SortExpenseCommand`, Homerce will access the expense tracker
+and sort the expense list based on the value of the expenses. For example, if the user specifies the order as "asc", the expense list will
+be sorted in ascending order based on value, from lowest to highest value.
+
+The following steps will describe the execution of the `SortExpenseCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `SortExpenseCommand` is called, the `ModelManager`'s `getExpenseTracker()` method is called.
+2. The `ModelManager` will return the existing `ExpenseTracker` to the `SortExpenseCommand`.
+3. The `ModelManager` will call the `sort(isAsceding)` method on the `ExpenseTracker`.
+4. The `ExpenseTracker` then calls the `sort(isAscending)` method on `NonUniqueList`, which sorts the expense list based on the order specified.
+5. The `ObservableList` of expenses is updated to reflect the newly sorted list.
+6. The `Ui` component will detect this change and update the GUI.
+7. Assuming that the above steps are all successful, the `SortExpenseCommand` will then create a `CommandResult` object and return the result.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram for sortexp command](images/SortExpenseSD.png)
+
+*Figure 6. Execution of an `sortexp` command*
+
+#### 4.4.3 Design Consideration 
+
+**Aspect: Duplicating a fixed expense every month**
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Immediately create 12 duplicate expenses upon the creation of a fixed expense for the next 12 months, creating another 12 duplicate expenses after every 12 months. | Users can edit the fixed expense records in a period of 12 months by editing any one of the 12 duplicate expenses. | Users are unable to create a fixed expense that only recurs over a period of less than 12 months. <br> For example, a user might want to add a fixed expense that he will incur only for the next 6 months. However, the application will create 12 duplicate expenses in advance. |
+| **Option 2 (current choice)** <br> Create one duplicate expense for each fixed expense per month. | Duplicate expenses are only recorded when the month comes or the month has passed. | Users can only edit the next duplicate expense by editing the most recent duplicate expense. |
+
+Reason for choosing option 2:
+* It is more intuitive to the user to record an expense only when it has been incurred.
+* Users can have more flexibility in creating fixed expenses that recur for a period that is not a multiple of 12 months.
+
+**Aspect: Duplicating a fixed expense on the date of the month it was created every month**
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Duplicate all fixed expenses on the 1st of every month. | Duplicate expenses will be created all together at one shot, making it easier for users to keep track of his fixed expenses. | The `breakdownfinance` command for the month, when entered before the end of the month, might include duplicate expenses that have not yet been incurred. <br> For example, if the user enters the `breakdownfinance` command in the middle of the month, it will take into account duplicate expenses that are only paid for only at the end of the month, such as the air-conditioning bill. |
+| **Option 2 (current choice)** <br> Duplicate each fixed expense on the exact date of the month it was created. | Duplicate expenses are only recorded on the date of the month they have been incurred, such that they will not be included in the `breakdownfinance` analysis when the command is entered before the end of the month.  | It may be difficult for the user to keep track of individual duplicate expenses as they are created one by one. |
+
+Reason for choosing option 2:
+* The expense should only be duplicated on the day of the month it has been incurred for better accounting purposes
+* The `breakdownfinance` command analysis should not include duplicate expenses that have not yet been incurred.
+
 ## 5. **Documentation**
 
 Refer to the guide [here](Documentation.md).
