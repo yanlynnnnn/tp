@@ -50,7 +50,7 @@ This section gives you step-by-step instructions on how to download and open the
 ### 3.1. Structure of this document
 
 We have structured this User Guide in a way to help you find what you need easily and quickly. 
-In the next subsection, [Section 3.2 - Reading this document](#32-Reading-this-document), you can find several useful tips on how to read this guide.
+In the next subsection, [Section 3.2 - Reading this document](#32-reading-this-document), you can find several useful tips on how to read this guide.
 The following section, [Section 4 - Features](#4-features), documents the six main features in **Homerce**, namely:
 
 * Service Management
