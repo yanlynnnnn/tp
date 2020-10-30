@@ -22,6 +22,7 @@ import seedu.homerce.model.util.attributes.Title;
 import seedu.homerce.storage.JsonAdaptedTag;
 import seedu.homerce.storage.client.JsonAdaptedClient;
 import seedu.homerce.storage.service.JsonAdaptedService;
+import seedu.homerce.testutil.appointment.AppointmentBuilder;
 
 public class JsonAdaptedAppointmentTest {
 
@@ -53,7 +54,7 @@ public class JsonAdaptedAppointmentTest {
 
     @Test
     public void toModelType_validAppointmentDetailsMarkedDone_returnsAppointment() throws Exception {
-        Appointment appointmentToJsonify = OCT_25_2020_2PM_HAIR_TREATMENT_ALICE;
+        Appointment appointmentToJsonify = new AppointmentBuilder(OCT_25_2020_2PM_HAIR_TREATMENT_ALICE).build();
         appointmentToJsonify.markDone();
         JsonAdaptedAppointment appointment = new JsonAdaptedAppointment(appointmentToJsonify);
         assertEquals(appointmentToJsonify, appointment.toModelType());
