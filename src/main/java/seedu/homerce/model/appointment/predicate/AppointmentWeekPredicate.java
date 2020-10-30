@@ -34,7 +34,12 @@ public class AppointmentWeekPredicate implements Predicate<Appointment> {
             || endOfWeekDate.isEqual(appointment.getAppointmentDate().getLocalDate()));
     }
 
-    private LocalDate calculateStartDateOfWeek(Calendar inputCalendar) {
+    /**
+     * Get the start date of the current week.
+     * @param inputCalendar the calendar used to determine the start date.
+     * @return a LocalDate representing the start date of the current week.
+     */
+    public LocalDate calculateStartDateOfWeek(Calendar inputCalendar) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(inputCalendar.getTime());
         calendar.setFirstDayOfWeek(Calendar.MONDAY);
@@ -44,7 +49,12 @@ public class AppointmentWeekPredicate implements Predicate<Appointment> {
         return LocalDate.ofInstant(calendar.toInstant(), zid);
     }
 
-    private LocalDate calculateEndDateOfWeek(Calendar inputCalendar) {
+    /**
+     *Get the end date of the current week.
+     * @param inputCalendar the calendar used to determine the end date.
+     * @return a LocalDate representing the end date of the current week.
+     */
+    public LocalDate calculateEndDateOfWeek(Calendar inputCalendar) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(inputCalendar.getTime());
         calendar.setFirstDayOfWeek(Calendar.MONDAY);

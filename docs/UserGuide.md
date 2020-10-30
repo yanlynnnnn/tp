@@ -439,7 +439,7 @@ You searched for the appointment in Homerce with `listapt` or `findapt`, see tha
 and you want to edit it with the following details:
 
 | Appointment | |
-|---------|--------- |
+|---------|-------- |
 |`INDEX`| 1 |
 |`DATE`| 28-10-2020 |
 |`TIME`| 1300 |
@@ -699,9 +699,12 @@ Outcome :
 
 ### 4.4 Expense Tracker
 
-Homerce understands that Expense Tracking is extremely important in managing business expenditure.
-Thus, this feature allows you to track your operational expenses with ease.
-You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`. 
+Homerce understands that expense tracking is essential in managing your business expenditure.
+Thus, this feature allows you to track your operational expenses with ease. <br>
+Our expense tracker supports both fixed expenses that recur monthly, and one-time expenses that are incurred only once.
+To reduce the hassle of recording the same fixed expense monthly, a fixed expense only has to be added once,
+and Homerce will automatically record the same expense for you every month.
+<br>You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`. 
 
 #### 4.4.1. Expense Tracker Command Parameters
 
@@ -917,7 +920,7 @@ The table below shows a list of command parameters that will be used.
 | Parameter Name | Description | Example
 |---------|---------|---------
 |`NAME`  | The name of the client. <br><br> It must be an alphanumeric word. | E.g. Typing `John Doe` would represent the name of the client saved in the client manager.
-|`EMAIL`| <br>The email of the client. <br> Emails should be in `local-part@domain format` <br><br /> The `local-part` can only contain alphanumeric characters, and the special characters <br >+!#$%&'*+/=?\`{}~^.-&#124;<br><br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.)<br>The domain name must also have at least 2 characters and start and end with alphanumeric characters|johnDoe97@example123.com 
+|`EMAIL`| <br>The email of the client. <br> Emails should be in `local-part@domain format` <br><br/> The `local-part` can only contain alphanumeric characters, and the special characters <br>+!#$%&'*+/=?\`{}~^.-&#124;<br><br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.)<br>The domain name must also have at least 2 characters and start and end with alphanumeric characters | johnDoe97@example123.com 
 |`PHONE` | Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long. | E.g. `91234567` would represent the client's phone number.
 |`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend.
 |`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list.
