@@ -66,7 +66,7 @@ public class ServiceTest {
     @Test
     public void addServiceCode() {
         // Prior to adding service code
-        assertTrue(LASH_LIFT.getServiceCode().value == "SC000");
+        assertTrue(LASH_LIFT.getServiceCode().value.equals("SC000"));
         // After adding service code
         Service editedService = new ServiceBuilder(LASH_LIFT).build().addServiceCode("SC005");
         assertTrue(editedService.getServiceCode().value == "SC005");
