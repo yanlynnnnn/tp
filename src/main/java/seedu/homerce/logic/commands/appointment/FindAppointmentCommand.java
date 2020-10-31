@@ -26,6 +26,10 @@ public class FindAppointmentCommand extends Command {
         this.predicate = predicate;
     }
 
+    public Predicate<Appointment> getPredicate() {
+        return predicate;
+    }
+
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
