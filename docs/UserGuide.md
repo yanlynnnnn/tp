@@ -102,8 +102,8 @@ The table below explains some important technical terms to help you understand a
 
 **Breakdown:** 
 * Command Word - `addexp` <br>
-* Prefixes - `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE`, `TAG` <br>
-* Parameters - `d/`, `f/`, `v/`, `dt/`, `t/`
+* Prefixes - `d/`, `f/`, `v/`, `dt/`, `t/`  <br>
+* Parameters - `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE`, `TAG`
 
 The following points explain the format of a command. 
 More examples will be provided for each command in [Section 4 - Features](#4-features).
@@ -139,7 +139,7 @@ The table below shows a list of command parameters that will be used in this fea
 | Parameter Name | Description | Example
 |---------|---------|---------
 |`TITLE`| The title of the service you are providing. It must be alphanumeric words not more than 50 characters long.|E.g `Lash Lift`
-|`DURATION`| The duration of the service in hours. <br> <br> It be in half hour intervals.| E.g `1.5`
+|`DURATION`| The duration of the service must be in half hour intervals.| E.g `1.5`
 |`PRICE`| The revenue received from the service. <br> <br> It must be in dollars.| E.g `5.50`
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`INDEX`| The index number of the service in the displayed service list.<br> <br> The first entry of the list has an index number of `1` and all entries are listed in increasing index numbers. | E.g `5`
@@ -148,7 +148,7 @@ The table below shows a list of command parameters that will be used in this fea
 
 You can use this command to add a new service Homerce.
 
-Format: `addsvc t/TITLE d/DURATION p/PRICE`
+Format: `addsvc t/TITLE du/DURATION p/PRICE`
 
 <div markdown="block" class="alert alert-info">
 
@@ -168,7 +168,7 @@ Let's say you have a service with the following information you want to add into
 |`PRICE`| 38 |
 
 Adding the above service:
-1. Type `addsvc t/Lash Lift d/0.5 p/38` into the *Command Box*.
+1. Type `addsvc t/Lash Lift du/0.5 p/38` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -182,7 +182,7 @@ Outcome:
 
 You can use this command to edit an existing service in Homerce.
 
-Format: `editsvc s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*`
+Format: `editsvc INDEX [t/TITLE]* [du/DURATION]* [p/PRICE]*`
 
 <div markdown="block" class="alert alert-info">
 
@@ -197,7 +197,7 @@ Let's say you have entered the wrong duration for an added service and want to c
 of 1 hour. You can follow these instructions.
 
 Editing an existing service:
-1. Type `editsvc s/SC001 d/0.5` into the *Command Box*.
+1. Type `editsvc 1 du/0.5` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -211,7 +211,7 @@ Outcome:
 
 You can use this command to delete an existing service in Homerce.
 
-Format: `deletesvc s/SERVICE_CODE`
+Format: `deletesvc INDEX`
 
 <div markdown="block" class="alert alert-info">
 
@@ -227,7 +227,7 @@ Let's say you are no longer providing a particular service and want to delete it
 instructions.
 
 Deleting an existing service:
-1. Type `deletesvc s/SC001` into the *Command Box*.
+1. Type `deletesvc 1` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -323,7 +323,7 @@ This feature uses a number of parameters, which are detailed below.
 |---------|---------|---------
 |`DATE`  | The date of the appointment. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
 |`TIME` | The time of the appointment. <br> <br> It must be in the format of `HHMM` | E.g. Typing `1730` would mean 5:30 PM.  <br> <br> E.g. Typing `0900` would mean 9:00 AM.
-|`SERVICE_CODE`| The service code is the code that identifies the type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
+|`SERVICE_CODE`| The service code is the code that identifies the type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refer to the eyelash extension service.
 |`PHONE_NUMBER` | The phone number of the client. <br> <br> It must be a 8-digit number starting with 6, 8, or 9.| E.g. Typing `81281234` or `91235678` is a valid phone number.  <br> <br> E.g. Typing `999`or `800012345` would not be a recognised number.
 |`NAME` | The name of the client booking the appointment. <br> <br> It must consist alphanumeric characters not more than 100 characters long. | E.g. If a client with the name `Hartin Menz` called to book an appointment, the same name `Hartin Menz` would be used as the parameter for `NAME`.
 |`INDEX` | The index of the appointment in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the appointment with index-2 in the displayed list.
@@ -1124,7 +1124,7 @@ Let's say you want to view your appointments schedule for today's week, which is
 You can follow these instructions.
 
 Steps :
-1. Type `schedule dt/27-10-2020` into the _Command Box_.
+1. Type `schedule dt/27-11-2020` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
@@ -1240,7 +1240,7 @@ Undo the last change you made to Homerce.
 
 Example:
 
-If you have accidently deleted an appointment from Homerce, and wish to undo that mistake, you can follow the steps below
+If you have accidentally deleted an appointment from Homerce, and wish to undo that mistake, you can follow the steps below
 to do so.
 
 Steps: 
