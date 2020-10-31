@@ -148,7 +148,7 @@ The table below shows a list of command parameters that will be used in this fea
 
 You can use this command to add a new service Homerce.
 
-Format: `addsvc t/TITLE d/DURATION p/PRICE`
+Format: `addsvc t/TITLE du/DURATION p/PRICE`
 
 <div markdown="block" class="alert alert-info">
 
@@ -168,7 +168,7 @@ Let's say you have a service with the following information you want to add into
 |`PRICE`| 38 |
 
 Adding the above service:
-1. Type `addsvc t/Lash Lift d/0.5 p/38` into the *Command Box*.
+1. Type `addsvc t/Lash Lift du/0.5 p/38` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -182,7 +182,7 @@ Outcome:
 
 You can use this command to edit an existing service in Homerce.
 
-Format: `editsvc s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*`
+Format: `editsvc INDEX [t/TITLE]* [du/DURATION]* [p/PRICE]*`
 
 <div markdown="block" class="alert alert-info">
 
@@ -197,7 +197,7 @@ Let's say you have entered the wrong duration for an added service and want to c
 of 1 hour. You can follow these instructions.
 
 Editing an existing service:
-1. Type `editsvc s/SC001 d/0.5` into the *Command Box*.
+1. Type `editsvc 1 du/0.5` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -211,7 +211,7 @@ Outcome:
 
 You can use this command to delete an existing service in Homerce.
 
-Format: `deletesvc s/SERVICE_CODE`
+Format: `deletesvc INDEX`
 
 <div markdown="block" class="alert alert-info">
 
@@ -227,7 +227,7 @@ Let's say you are no longer providing a particular service and want to delete it
 instructions.
 
 Deleting an existing service:
-1. Type `deletesvc s/SC001` into the *Command Box*.
+1. Type `deletesvc 1` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
