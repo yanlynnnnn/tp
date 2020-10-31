@@ -2,6 +2,7 @@ package seedu.homerce.model.manager;
 
 import java.util.LinkedList;
 
+import seedu.homerce.logic.commands.BreakdownFinanceCommand;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.HelpCommand;
 import seedu.homerce.logic.commands.UndoCommand;
@@ -13,6 +14,9 @@ import seedu.homerce.logic.commands.expense.FindExpenseCommand;
 import seedu.homerce.logic.commands.expense.ListExpenseCommand;
 import seedu.homerce.logic.commands.revenue.FindRevenueCommand;
 import seedu.homerce.logic.commands.revenue.ListRevenueCommand;
+import seedu.homerce.logic.commands.schedule.AbstractWeekCommand;
+import seedu.homerce.logic.commands.schedule.NextWeekCommand;
+import seedu.homerce.logic.commands.schedule.PreviousWeekCommand;
 import seedu.homerce.logic.commands.service.FindServiceCommand;
 import seedu.homerce.logic.commands.service.ListServiceCommand;
 import seedu.homerce.model.Model;
@@ -72,7 +76,9 @@ public class HistoryManager {
             && !(command instanceof FindExpenseCommand) && !(command instanceof ListExpenseCommand)
             && !(command instanceof FindServiceCommand) && !(command instanceof ListServiceCommand)
             && !(command instanceof FindRevenueCommand) && !(command instanceof ListRevenueCommand)
-            && !(command instanceof FindAppointmentCommand) && !(command instanceof ListAppointmentCommand);
+            && !(command instanceof FindAppointmentCommand) && !(command instanceof ListAppointmentCommand)
+            && !(command instanceof AbstractWeekCommand) && !(command instanceof BreakdownFinanceCommand)
+            && !(command instanceof PreviousWeekCommand) && !(command instanceof NextWeekCommand);
     }
 
     public History getPreviousHistory() {
