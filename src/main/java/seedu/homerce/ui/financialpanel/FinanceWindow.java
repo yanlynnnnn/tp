@@ -61,8 +61,8 @@ public class FinanceWindow extends UiPart<Stage> {
      * Sets the default size based on {@code guiSettings}.
      */
     public void setWindowDefaultSize(GuiSettings guiSettings) {
-        this.getRoot().setHeight(guiSettings.getWindowHeight() * 0.85);
-        this.getRoot().setWidth(guiSettings.getWindowWidth() * 0.75);
+        this.getRoot().setHeight(guiSettings.getWindowHeight() * 0.65);
+        this.getRoot().setWidth(guiSettings.getWindowWidth() * 0.85);
         if (guiSettings.getWindowCoordinates() != null) {
             this.getRoot().setX(guiSettings.getWindowCoordinates().getX());
             this.getRoot().setY(guiSettings.getWindowCoordinates().getY());
