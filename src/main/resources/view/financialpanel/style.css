@@ -21,23 +21,23 @@
     -fx-background-radius: 10;
 }
 
-.default-color0.chart-pie { 
+.default-color0.chart-pie {
     -fx-pie-color: #F1E0E0;
 }
 
-.default-color1.chart-pie { 
+.default-color1.chart-pie {
     -fx-pie-color: #ECE4F0;
 }
 
-.default-color2.chart-pie { 
+.default-color2.chart-pie {
     -fx-pie-color: #E0E7F1;
 }
 
-.default-color3.chart-pie { 
+.default-color3.chart-pie {
     -fx-pie-color: #faf4d7;
 }
 
-.default-color4.chart-pie { 
+.default-color4.chart-pie {
     -fx-pie-color: #DEEEDC;
 }
 
