@@ -144,34 +144,46 @@ public class SchedulePanel extends UiPart<Region> {
 
     private void addAppointmentSlotsToGrid() {
         int rowIndex = 0;
-        LocalDate prevAppointmentDate = appointments.get(0).getAppointmentDate().getLocalDate();
+        int count = 0;
+        LocalDate currentDate = weekStartDate;
 
-        for (int i = 0; i < appointments.size(); i++) {
-            Appointment curr = appointments.get(i);
+        while (count < appointments.size()) {
+            Appointment curr = appointments.get(count);
             LocalDate currAppointmentDate = curr.getAppointmentDate().getLocalDate();
-            SlotContainer appointmentSlot;
-            if (curr.getService().getAmount().value.doubleValue() <= 25) {
-                appointmentSlot = new AppointmentSlotRed(curr);
-            } else if (curr.getService().getAmount().value.doubleValue() <= 60) {
-                appointmentSlot = new AppointmentSlotBlue(curr);
-            } else {
-                appointmentSlot = new AppointmentSlotGreen(curr);
-            }
-            if (!isSameDate(prevAppointmentDate, currAppointmentDate)) {
+            SlotContainer appointmentSlot = setSlotColor(curr);
+
+            if (!isSameDate(currentDate, currAppointmentDate)) {
                 rowIndex++;
-                prevAppointmentDate = currAppointmentDate;
+                currentDate = currentDate.plusDays(1);
+
             }
             int colIndex = getAdjustedColIndex(curr);
             int colSpan = getColSpan(curr.getService().getDuration());
-            gridPane.add(appointmentSlot.getRoot(), colIndex, rowIndex, colSpan, ROW_SPAN);
+            if (currentDate.isEqual(currAppointmentDate)) {
+                gridPane.add(appointmentSlot.getRoot(), colIndex, rowIndex, colSpan, ROW_SPAN);
+                count++;
+            }
+
         }
     }
 
+    private SlotContainer setSlotColor(Appointment curr) {
+        SlotContainer appointmentSlot;
+        if (curr.getService().getAmount().value.doubleValue() <= 25) {
+            appointmentSlot = new AppointmentSlotRed(curr);
+        } else if (curr.getService().getAmount().value.doubleValue() <= 60) {
+            appointmentSlot = new AppointmentSlotBlue(curr);
+        } else {
+            appointmentSlot = new AppointmentSlotGreen(curr);
+        }
+        return appointmentSlot;
+    }
+
     private void addDateDisplaySlotsToGrid() {
-        LocalDate startWeek = weekStartDate;
+        LocalDate startDate = weekStartDate;
         for (int i = 0; i < 7; i++) { // Add date displays for entire week
-            DisplayDateSlot slot = new DisplayDateSlot(startWeek);
-            startWeek = startWeek.plusDays(1);
+            DisplayDateSlot slot = new DisplayDateSlot(startDate);
+            startDate = startDate.plusDays(1);
             gridPane.add(slot.getRoot(), 0, i, 1, ROW_SPAN);
         }
     }
