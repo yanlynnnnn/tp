@@ -7,6 +7,7 @@ import static seedu.homerce.testutil.Assert.assertThrows;
 import static seedu.homerce.testutil.appointment.TypicalAppointments.OCT_25_2020_230PM_LASH_LIFT_BENSON;
 import static seedu.homerce.testutil.appointment.TypicalAppointments.OCT_25_2020_2PM_HAIR_TREATMENT_ALICE;
 import static seedu.homerce.testutil.appointment.TypicalAppointments.OCT_26_2020_11AM_MANICURE_CARL;
+import static seedu.homerce.testutil.appointment.TypicalAppointments.OCT_27_2020_12PM_LASH_LIFT_BENSON;
 import static seedu.homerce.testutil.appointment.TypicalAppointments.getTypicalAppointmentManager;
 import static seedu.homerce.testutil.client.TypicalClients.BENSON;
 import static seedu.homerce.testutil.service.TypicalServices.LASH_LIFT;
@@ -23,8 +24,11 @@ import javafx.collections.ObservableList;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.appointment.predicate.AppointmentWeekPredicate;
 import seedu.homerce.model.appointment.uniquelist.UniqueAppointmentList;
+import seedu.homerce.model.client.Client;
+import seedu.homerce.model.client.Name;
 import seedu.homerce.model.util.uniquelist.exceptions.DuplicateItemException;
 import seedu.homerce.testutil.appointment.AppointmentBuilder;
+import seedu.homerce.testutil.client.ClientBuilder;
 
 public class AppointmentManagerTest {
     private final AppointmentManager appointmentManager = new AppointmentManager();
@@ -100,6 +104,20 @@ public class AppointmentManagerTest {
                 + "25-10-2020 1400 Client: Alice Pauline Phone: 94351253 Email: alice@example.com Tags: [friends] "
                 + "Service: Hair Treatment Duration: 2.0 Amount: 55.50 Service Code: SC001 Done? No\n"
                 + " Total number of appointments: 1");
+    }
+
+    @Test
+    public void testReplaceClientsInAppointments() {
+        appointmentManager.addAppointment(OCT_25_2020_230PM_LASH_LIFT_BENSON);
+        appointmentManager.addAppointment(OCT_26_2020_11AM_MANICURE_CARL);
+        appointmentManager.addAppointment(OCT_27_2020_12PM_LASH_LIFT_BENSON);
+
+        Client editedBenson = new ClientBuilder(BENSON).withName("Benny").build();
+        appointmentManager.replaceClientsInAppointments(BENSON, editedBenson);
+
+        assertTrue(appointmentManager.getAppointmentList().get(0).getClient().getName().equals(new Name("Benny")));
+        assertTrue(appointmentManager.getAppointmentList().get(2).getClient().getName().equals(new Name("Benny")));
+
     }
 
     /**

@@ -12,6 +12,7 @@ import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.manager.HistoryManager;
+import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
  * Deletes a client identified using it's displayed index from the homerce.
@@ -44,7 +45,8 @@ public class DeleteClientCommand extends Command {
 
         Client clientToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteClient(clientToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_CLIENT_SUCCESS, clientToDelete));
+        return new CommandResult(String.format(MESSAGE_DELETE_CLIENT_SUCCESS, clientToDelete),
+                ClientListPanel.TAB_NAME);
     }
 
     @Override
