@@ -37,7 +37,6 @@ public class Appointment implements UniqueListItem {
         this.status = new Status("n");
     }
 
-
     public Client getClient() {
         return client;
     }
