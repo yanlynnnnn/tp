@@ -5,7 +5,6 @@ import java.util.function.Predicate;
 
 import seedu.homerce.commons.util.StringUtil;
 import seedu.homerce.model.client.Client;
-import seedu.homerce.model.client.Name;
 
 public class ClientNamePredicate implements Predicate<Client> {
     private final List<String> keywords;

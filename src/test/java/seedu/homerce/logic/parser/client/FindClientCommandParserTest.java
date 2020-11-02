@@ -2,7 +2,6 @@ package seedu.homerce.logic.parser.client;
 
 import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.homerce.commons.core.Messages.MESSAGE_MULTIPLE_PARAMETERS;
-import static seedu.homerce.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
 import static seedu.homerce.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
 import static seedu.homerce.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.homerce.logic.commands.CommandTestUtil.NAME_DESC_BOB;
@@ -13,10 +12,11 @@ import static seedu.homerce.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
 import static seedu.homerce.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.homerce.logic.parser.CommandParserTestUtil.assertParseSuccess;
 
+import java.util.Arrays;
+
 import org.junit.jupiter.api.Test;
 
 import seedu.homerce.logic.commands.client.FindClientCommand;
-import seedu.homerce.model.client.Name;
 import seedu.homerce.model.client.Phone;
 import seedu.homerce.model.client.predicate.ClientNamePredicate;
 import seedu.homerce.model.client.predicate.ClientPhonePredicate;
@@ -34,7 +34,7 @@ public class FindClientCommandParserTest {
     @Test
     public void parse_validArgs_returnsFindCommand() {
         // Name field
-        ClientNamePredicate namePredicate = new ClientNamePredicate(new ("Amy", "Bee"));
+        ClientNamePredicate namePredicate = new ClientNamePredicate(Arrays.asList("Amy", "Bee"));
 
         assertParseSuccess(parser, NAME_DESC_AMY,
                 new FindClientCommand(namePredicate));
@@ -60,9 +60,6 @@ public class FindClientCommandParserTest {
 
     @Test
     public void parse_invalidValue_failure() {
-        // invalid name
-        assertParseFailure(parser, INVALID_NAME_DESC, Name.MESSAGE_CONSTRAINTS);
-
         // invalid phone
         assertParseFailure(parser, INVALID_PHONE_DESC, Phone.MESSAGE_CONSTRAINTS);
 

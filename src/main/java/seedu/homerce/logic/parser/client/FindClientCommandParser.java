@@ -71,7 +71,7 @@ public class FindClientCommandParser implements Parser<FindClientCommand> {
 
     private Predicate<Client> createPredicate(ArgumentMultimap argMultimap) throws ParseException {
         Predicate<Client> predicate = null;
-        if (argMultimap.getValue(PREFIX_NAME).isPresent()){
+        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
             if (!argMultimap.getValue(PREFIX_NAME).get().trim().isEmpty()) { // Check for empty user input
                 String [] nameKeywords = argMultimap.getValue(PREFIX_NAME).get().trim().split("\\s+");
                 predicate = new ClientNamePredicate(Arrays.asList(nameKeywords));

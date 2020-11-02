@@ -3,14 +3,13 @@ package seedu.homerce.model.client.predicate;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
-
-import seedu.homerce.model.client.Name;
-import seedu.homerce.testutil.client.ClientBuilder;
-
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
+import seedu.homerce.testutil.client.ClientBuilder;
 
 public class ClientNamePredicateTest {
 
@@ -35,12 +34,12 @@ public class ClientNamePredicateTest {
         // null -> returns false
         assertFalse(firstPredicate.equals(null));
 
-        // different Client -> returns false
+        // different client -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
     }
 
     @Test
-    public void test_Clientname_returnsTrue() {
+    public void test_nameContainsKeywords_returnsTrue() {
         // One keyword
         ClientNamePredicate predicate = new ClientNamePredicate(Collections.singletonList("Alice"));
         assertTrue(predicate.test(new ClientBuilder().withName("Alice Bob").build()));
@@ -68,10 +67,9 @@ public class ClientNamePredicateTest {
         predicate = new ClientNamePredicate(Arrays.asList("Carol"));
         assertFalse(predicate.test(new ClientBuilder().withName("Alice Bob").build()));
 
-        // Keywords match phone, email and address, but does not match name
+        // Keywords match phone, email and homerce, but does not match name
         predicate = new ClientNamePredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
         assertFalse(predicate.test(new ClientBuilder().withName("Alice").withPhone("12345")
                 .withEmail("alice@email.com").build()));
     }
 }
-
