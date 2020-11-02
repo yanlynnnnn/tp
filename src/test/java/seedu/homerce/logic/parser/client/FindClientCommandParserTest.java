@@ -34,7 +34,7 @@ public class FindClientCommandParserTest {
     @Test
     public void parse_validArgs_returnsFindCommand() {
         // Name field
-        ClientNamePredicate namePredicate = new ClientNamePredicate(new Name("Amy Bee"));
+        ClientNamePredicate namePredicate = new ClientNamePredicate(new ("Amy", "Bee"));
 
         assertParseSuccess(parser, NAME_DESC_AMY,
                 new FindClientCommand(namePredicate));

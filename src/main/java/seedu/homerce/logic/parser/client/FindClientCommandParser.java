@@ -5,6 +5,7 @@ import static seedu.homerce.commons.core.Messages.MESSAGE_MULTIPLE_PARAMETERS;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_PHONE;
 
+import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -31,6 +32,8 @@ public class FindClientCommandParser implements Parser<FindClientCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public FindClientCommand parse(String args) throws ParseException {
+
+        // Checks for prefixes
         ArgumentMultimap argMultimap =
             ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE);
 
@@ -44,10 +47,15 @@ public class FindClientCommandParser implements Parser<FindClientCommand> {
         }
 
         Predicate<Client> predicate = null;
-        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            predicate = new ClientNamePredicate(ParserUtil.parseName(
-                argMultimap.getValue(PREFIX_NAME).get()));
+        // Create predicate for name
+        if (!argMultimap.getValue(PREFIX_NAME).get().trim().isEmpty()) {
+            String [] nameKeywords = argMultimap.getValue(PREFIX_NAME).get().trim().split("\\s+");
+            predicate = new ClientNamePredicate(Arrays.asList(nameKeywords));
+        } else {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindClientCommand.MESSAGE_USAGE));
         }
+
+        // Create predicate for phone
         if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
             predicate = new ClientPhonePredicate(ParserUtil
                 .parsePhone(argMultimap.getValue(PREFIX_PHONE)

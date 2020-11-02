@@ -8,21 +8,25 @@ import org.junit.jupiter.api.Test;
 import seedu.homerce.model.client.Name;
 import seedu.homerce.testutil.client.ClientBuilder;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class ClientNamePredicateTest {
 
     @Test
     public void equals() {
-        Name firstName = new Name("Alice");
-        Name secondName = new Name("Bob");
+        List<String> firstPredicateKeywordList = Collections.singletonList("first");
+        List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
-        ClientNamePredicate firstPredicate = new ClientNamePredicate(firstName);
-        ClientNamePredicate secondPredicate = new ClientNamePredicate(secondName);
+        ClientNamePredicate firstPredicate = new ClientNamePredicate(firstPredicateKeywordList);
+        ClientNamePredicate secondPredicate = new ClientNamePredicate(secondPredicateKeywordList);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        ClientNamePredicate firstPredicateCopy = new ClientNamePredicate(firstName);
+        ClientNamePredicate firstPredicateCopy = new ClientNamePredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -31,26 +35,43 @@ public class ClientNamePredicateTest {
         // null -> returns false
         assertFalse(firstPredicate.equals(null));
 
-        // different client -> returns false
+        // different Client -> returns false
         assertFalse(firstPredicate.equals(secondPredicate));
     }
 
     @Test
-    public void test_clientContainsName_returnsTrue() {
-        Name name = new Name("Alice");
+    public void test_Clientname_returnsTrue() {
+        // One keyword
+        ClientNamePredicate predicate = new ClientNamePredicate(Collections.singletonList("Alice"));
+        assertTrue(predicate.test(new ClientBuilder().withName("Alice Bob").build()));
 
-        ClientNamePredicate predicate = new ClientNamePredicate(name);
-        assertTrue(predicate.test(new ClientBuilder().withName("Alice").build()));
-        assertTrue(predicate.test(new ClientBuilder().withName("Alice Lim").build()));
+        // Multiple keywords
+        predicate = new ClientNamePredicate(Arrays.asList("Alice", "Bob"));
+        assertTrue(predicate.test(new ClientBuilder().withName("Alice Bob").build()));
 
+        // Only one matching keyword
+        predicate = new ClientNamePredicate(Arrays.asList("Bob", "Carol"));
+        assertTrue(predicate.test(new ClientBuilder().withName("Alice Carol").build()));
+
+        // Mixed-case keywords
+        predicate = new ClientNamePredicate(Arrays.asList("aLIce", "bOB"));
+        assertTrue(predicate.test(new ClientBuilder().withName("Alice Bob").build()));
     }
 
     @Test
-    public void test_clientContainsName_returnsFalse() {
-        Name name = new Name("Alice");
+    public void test_nameDoesNotContainKeywords_returnsFalse() {
+        // Zero keywords
+        ClientNamePredicate predicate = new ClientNamePredicate(Collections.emptyList());
+        assertFalse(predicate.test(new ClientBuilder().withName("Alice").build()));
 
-        ClientNamePredicate predicate = new ClientNamePredicate(name);
-        assertFalse(predicate.test(new ClientBuilder().withName("Bob").build()));
+        // Non-matching keyword
+        predicate = new ClientNamePredicate(Arrays.asList("Carol"));
+        assertFalse(predicate.test(new ClientBuilder().withName("Alice Bob").build()));
 
+        // Keywords match phone, email and address, but does not match name
+        predicate = new ClientNamePredicate(Arrays.asList("12345", "alice@email.com", "Main", "Street"));
+        assertFalse(predicate.test(new ClientBuilder().withName("Alice").withPhone("12345")
+                .withEmail("alice@email.com").build()));
     }
 }
+
