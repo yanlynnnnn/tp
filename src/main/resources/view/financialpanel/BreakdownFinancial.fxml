@@ -15,18 +15,18 @@
       <Scene>
          <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
             <children>
-               <SplitPane orientation="VERTICAL" prefHeight="515.0" prefWidth="700.0">
+               <SplitPane orientation="VERTICAL" prefHeight="385.0" prefWidth="700.0">
                   <items>
                      <SplitPane dividerPositions="0.5" prefHeight="233.0" prefWidth="598.0">
                         <items>
                            <VBox prefHeight="200.0" prefWidth="100.0">
                               <children>
-                                 <PieChart fx:id="expenseChart" prefHeight="295.0" prefWidth="304.0" stylesheets="@style.css" title="Expense" />
+                                 <PieChart fx:id="revenueChart" prefHeight="825.0" prefWidth="296.0" stylesheets="@style.css" title="Revenue" />
                               </children>
                            </VBox>
                            <VBox prefHeight="200.0" prefWidth="100.0">
                               <children>
-                                 <PieChart fx:id="revenueChart" prefHeight="825.0" prefWidth="296.0" stylesheets="@style.css" title="Revenue" />
+                                 <PieChart fx:id="expenseChart" prefHeight="825.0" prefWidth="296.0" stylesheets="@style.css" title="Expense" />
                               </children>
                            </VBox>
                         </items>

@@ -17,7 +17,7 @@ public class ExpenseDescriptionPredicate implements Predicate<Expense> {
 
     @Override
     public boolean test(Expense expense) {
-        return description.equals(expense.getDescription());
+        return expense.getDescription().value.toLowerCase().contains(description.value.toLowerCase());
     }
 
     @Override
