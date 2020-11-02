@@ -190,6 +190,8 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedClient);
 
         clientManager.setClient(target, editedClient);
+        appointmentManager.replaceClientsInAppointments(target, editedClient);
+        filteredSchedule = new FilteredList<>(appointmentManager.getAppointmentList());
     }
 
     @Override

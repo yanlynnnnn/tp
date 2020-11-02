@@ -13,6 +13,7 @@ import seedu.homerce.model.util.uniquelist.UniqueList;
  */
 public class UniqueAppointmentList extends UniqueList<Appointment> {
     private final AppointmentComparator appointmentComparator = new AppointmentComparator();
+
     @Override
     public void add(Appointment toAdd) {
         super.add(toAdd);

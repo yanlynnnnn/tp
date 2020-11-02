@@ -13,6 +13,7 @@ import javafx.collections.ObservableList;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.appointment.predicate.AppointmentWeekPredicate;
 import seedu.homerce.model.appointment.uniquelist.UniqueAppointmentList;
+import seedu.homerce.model.client.Client;
 
 /**
  * Wraps all data at the AppointmentManager level
@@ -91,6 +92,18 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
     public void setAppointments(Appointment target, Appointment editedAppointment) {
         requireNonNull(editedAppointment);
         appointments.setItem(target, editedAppointment);
+    }
+
+    /**
+     * Updates appointment information after a client's details in the appointment get edited.
+     */
+    public void replaceClientsInAppointments(Client target, Client editedClient) {
+        List<Appointment> editedList = appointments.stream().map(curr -> curr.getClient().isSameClient(target)
+                ? new Appointment(curr.getAppointmentDate(), curr.getAppointmentStartTime(), curr.getService(),
+                    editedClient, curr.getStatus())
+                : curr
+        ).collect(Collectors.toList());
+        setAppointments(editedList);
     }
 
     /**
