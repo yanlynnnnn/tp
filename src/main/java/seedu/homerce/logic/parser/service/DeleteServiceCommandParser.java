@@ -3,7 +3,6 @@ package seedu.homerce.logic.parser.service;
 import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 
 import seedu.homerce.commons.core.index.Index;
-import seedu.homerce.logic.commands.client.DeleteClientCommand;
 import seedu.homerce.logic.commands.service.DeleteServiceCommand;
 import seedu.homerce.logic.parser.Parser;
 import seedu.homerce.logic.parser.ParserUtil;

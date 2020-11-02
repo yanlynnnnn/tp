@@ -243,7 +243,7 @@ Outcome:
 
 #### 4.1.5. Find a service by keyword: `findsvc`
 
-You can use this command to find specific services which matches the description you provide. 
+You can use this command to find specific services which matches either the title or service code that you provide.
 
 Format: `findsvc [t/TITLE]* [s/SERVICE_CODE]*`
 
