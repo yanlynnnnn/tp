@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import seedu.homerce.model.expense.predicate.ExpenseDescriptionPredicate;
 import seedu.homerce.model.util.attributes.Description;
+import seedu.homerce.testutil.expense.ExpenseBuilder;
 
 public class ExpenseDescriptionPredicateTest {
     @Test
@@ -45,6 +46,18 @@ public class ExpenseDescriptionPredicateTest {
     public void test_expenseContainsDescription_returnsTrue() {
         ExpenseDescriptionPredicate predicate = new ExpenseDescriptionPredicate(new Description("Conditioner"));
         assertTrue(predicate.test(CONDITIONER));
+    }
+
+    @Test
+    public void test_expenseContainsKeyword_returnsTrue() {
+        ExpenseDescriptionPredicate predicate = new ExpenseDescriptionPredicate(new Description("extension"));
+        assertTrue(predicate.test(new ExpenseBuilder().withDescription("Lash Extension Glue").build()));
+    }
+
+    @Test
+    public void test_expenseContainsKeywords_returnsTrue() {
+        ExpenseDescriptionPredicate predicate = new ExpenseDescriptionPredicate(new Description("lash extension"));
+        assertTrue(predicate.test(new ExpenseBuilder().withDescription("Lash Extension Glue").build()));
     }
 }
 
