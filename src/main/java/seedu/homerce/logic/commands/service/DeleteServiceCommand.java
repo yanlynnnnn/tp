@@ -1,6 +1,7 @@
 package seedu.homerce.logic.commands.service;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.homerce.model.Model.PREDICATE_SHOW_ALL_APPOINTMENTS;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -44,7 +45,8 @@ public class DeleteServiceCommand extends Command {
             throw new CommandException(Messages.MESSAGE_SERVICES_INVALID_SERVICE_DISPLAYED_INDEX);
         }
 
-        List<Appointment> appointments = model.getAppointmentManager().getAppointmentList();
+        model.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_APPOINTMENTS); // Show all appointments first
+        List<Appointment> appointments = model.getFilteredAppointmentList();
         Service serviceToDelete = lastShownList.get(targetIndex.getZeroBased());
 
         if (!isValidDeletion(serviceToDelete, appointments)) { // If service exists in appointment today or in future
@@ -62,14 +64,17 @@ public class DeleteServiceCommand extends Command {
             && targetIndex.equals(((DeleteServiceCommand) other).targetIndex)); // state check
     }
 
-
     /**
      * Checks if the service that is about to be deleted exists in Homerce's future appointments.
      *
      * Deletion will be prevented if the service exists in Homerce's appointments dated today or in the future.
      * This prevents two different services with the same service code existing in Homerce's upcoming appointments.
+     *
+     * @param serviceToDelete the service to be deleted.
+     * @param appointments all the appointments that have been scheduled in Homerce.
+     * @return a boolean indicating whether or not the service is safe to delete.
      */
-    private boolean isValidDeletion(Service serviceToDelete, List<Appointment> appointments) {
+    public static boolean isValidDeletion(Service serviceToDelete, List<Appointment> appointments) {
         if (appointments == null) {
             return true;
         }
@@ -78,8 +83,12 @@ public class DeleteServiceCommand extends Command {
 
     /**
      * Performs check for validity of deletion.
+     *
+     * @param appointment is a specific appointment that has been scheduled in Homerce.
+     * @param serviceToDelete the service to be deleted.
+     * @return a boolean indicating whether or not the service is safe to delete.
      */
-    private boolean checkValidity(Appointment appointment, Service serviceToDelete) {
+    private static boolean checkValidity(Appointment appointment, Service serviceToDelete) {
         LocalDate today = LocalDate.now();
         LocalDate appointmentDate = appointment.getAppointmentDate().getLocalDate();
         Service appointmentService = appointment.getService();

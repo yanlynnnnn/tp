@@ -55,9 +55,9 @@ public class AddServiceCommand extends Command {
         // Generate unique ServiceCode for the Service before adding it to model
         model.updateFilteredServiceList(PREDICATE_SHOW_ALL_SERVICES);
         model.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_APPOINTMENTS);
-        List<Service> lastShownList = model.getFilteredServiceList();
+        List<Service> allServices = model.getFilteredServiceList();
         List<Appointment> allAppointments = model.getFilteredAppointmentList();
-        String serviceCode = ServiceCodeGenerator.generateNewServiceCode(lastShownList, allAppointments);
+        String serviceCode = ServiceCodeGenerator.generateNewServiceCode(allServices, allAppointments);
         toAdd.addServiceCode(serviceCode);
 
         model.addService(toAdd);
