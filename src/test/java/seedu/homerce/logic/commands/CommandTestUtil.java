@@ -18,7 +18,7 @@ import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.logic.commands.service.EditServiceCommand;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.client.Client;
-import seedu.homerce.model.client.predicate.NameContainsKeywordsPredicate;
+import seedu.homerce.model.client.predicate.ClientNamePredicate;
 import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.service.Service;
@@ -142,7 +142,7 @@ public class CommandTestUtil {
 
         Client client = model.getFilteredClientList().get(targetIndex.getZeroBased());
         final String[] splitName = client.getName().fullName.split("\\s+");
-        model.updateFilteredClientList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        model.updateFilteredClientList(new ClientNamePredicate(Arrays.asList(splitName[0])));
 
         assertEquals(1, model.getFilteredClientList().size());
     }

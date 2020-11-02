@@ -15,7 +15,7 @@ public class ClientPhonePredicate implements Predicate<Client> {
 
     @Override
     public boolean test(Client client) {
-        return phoneOfClient.equals(client.getPhone());
+        return client.getPhone().value.contains(phoneOfClient.value);
     }
 
     @Override
