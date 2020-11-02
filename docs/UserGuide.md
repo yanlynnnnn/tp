@@ -9,7 +9,6 @@ title: User Guide
 
 Welcome to the User Guide of **Homerce**!
 
-
 Are you an independent home-based beauty salon owner, scrambling between your calendar, client contacts, 
 and notebook to keep track of all your appointments, revenue and expenses? 
 Do you spend hours tabulating all your revenue and expenses just to get an idea of how your business is doing?
@@ -115,7 +114,7 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
     - `v/VALUE [t/TAG]` can be used as `v/15 t/equipment` or as `v/15`.
 
 3. Items with `…​` after them can be used multiple times, including zero times.<br>
-    - `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/blacklist`, `t/VIP t/friend` etc.
+    - `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/blacklist`, `t/VIP t/friend` etc.
 
 4. Parameters can be in any order.<br>
     - if the command specifies `d/DESCRIPTION dt/DATE`, `dt/DATE d/DESCRIPTION` is also acceptable.
@@ -1421,4 +1420,3 @@ Action | Format | Examples
 **Undo** | `undo` | 
 **Help** | `help` |
 **Exit** | `exit` | 
-

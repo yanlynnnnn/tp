@@ -202,7 +202,6 @@ public class MainWindow extends UiPart<Stage> {
         primaryStage.hide();
     }
 
-
     /**
      * Executes the command and returns the result.
      *
