@@ -21,7 +21,7 @@ public class AddExpenseCommand extends Command {
 
     public static final String COMMAND_WORD = "addexp";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an expense to GrAB3. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds an expense to Homerce. "
             + "Parameters: "
             + PREFIX_DESCRIPTION + "DESCRIPTION "
             + PREFIX_ISFIXED + "IS_FIXED "
