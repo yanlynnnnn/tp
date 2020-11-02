@@ -26,6 +26,7 @@ import seedu.homerce.model.client.Name;
 import seedu.homerce.model.client.Phone;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.util.attributes.Tag;
+import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
  * Edits the details of an existing client in the homerce.
@@ -83,7 +84,7 @@ public class EditClientCommand extends Command {
 
         model.setClient(clientToEdit, editedClient);
         model.updateFilteredClientList(PREDICATE_SHOW_ALL_CLIENTS);
-        return new CommandResult(String.format(MESSAGE_EDIT_CLIENT_SUCCESS, editedClient));
+        return new CommandResult(String.format(MESSAGE_EDIT_CLIENT_SUCCESS, editedClient), ClientListPanel.TAB_NAME);
     }
 
     /**

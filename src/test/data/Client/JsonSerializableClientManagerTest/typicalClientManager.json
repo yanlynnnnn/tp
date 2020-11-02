@@ -1,5 +1,5 @@
 {
-  "_comment": "AddressBook save file which contains the same Client values as in TypicalClients#getTypicalAddressBook()",
+  "_comment": "Homerece save file which contains the same Client values as in TypicalClients#getTypicalClientManager()",
   "clients" : [ {
     "name" : "Alice Pauline",
     "phone" : "94351253",

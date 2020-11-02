@@ -23,6 +23,8 @@ public class Messages {
     public static final String MESSAGE_DUPLICATE_APPOINTMENT = "This appointment already exists in the homerce.";
     public static final String MESSAGE_INVALID_PHONE = "The phone number does not refer to an existing client.";
     public static final String MESSAGE_INVALID_SERVICE_CODE = "The service code specified does not exist in Homerce.";
+    public static final String MESSAGE_CLIENT_INVALID_DELETION = "The client you want to delete is being scheduled"
+            + " today or at a future appointment, it cannot be deleted.";
 
     // ============== Service related messages ===========
     public static final String MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX = "The service index provided is invalid";

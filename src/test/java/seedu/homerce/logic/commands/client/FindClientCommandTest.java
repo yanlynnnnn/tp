@@ -18,7 +18,7 @@ import org.junit.jupiter.api.Test;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ModelManager;
 import seedu.homerce.model.UserPrefs;
-import seedu.homerce.model.client.predicate.NameContainsKeywordsPredicate;
+import seedu.homerce.model.client.predicate.ClientNamePredicate;
 import seedu.homerce.model.manager.AppointmentManager;
 import seedu.homerce.model.manager.ExpenseTracker;
 import seedu.homerce.model.manager.RevenueTracker;
@@ -35,10 +35,10 @@ public class FindClientCommandTest {
 
     @Test
     public void equals() {
-        NameContainsKeywordsPredicate firstPredicate =
-                new NameContainsKeywordsPredicate(Collections.singletonList("first"));
-        NameContainsKeywordsPredicate secondPredicate =
-                new NameContainsKeywordsPredicate(Collections.singletonList("second"));
+        ClientNamePredicate firstPredicate =
+                new ClientNamePredicate(Collections.singletonList("first"));
+        ClientNamePredicate secondPredicate =
+                new ClientNamePredicate(Collections.singletonList("second"));
 
         FindClientCommand findFirstCommand = new FindClientCommand(firstPredicate);
         FindClientCommand findSecondCommand = new FindClientCommand(secondPredicate);
@@ -63,7 +63,7 @@ public class FindClientCommandTest {
     @Test
     public void execute_zeroKeywords_noClientFound() {
         String expectedMessage = String.format(MESSAGE_CLIENTS_LISTED_OVERVIEW, 0);
-        NameContainsKeywordsPredicate predicate = preparePredicate(" ");
+        ClientNamePredicate predicate = preparePredicate(" ");
         FindClientCommand command = new FindClientCommand(predicate);
         expectedModel.updateFilteredClientList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -73,7 +73,7 @@ public class FindClientCommandTest {
     @Test
     public void execute_multipleKeywords_multipleClientsFound() {
         String expectedMessage = String.format(MESSAGE_CLIENTS_LISTED_OVERVIEW, 3);
-        NameContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
+        ClientNamePredicate predicate = preparePredicate("Kurz Elle Kunz");
         FindClientCommand command = new FindClientCommand(predicate);
         expectedModel.updateFilteredClientList(predicate);
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
@@ -81,9 +81,9 @@ public class FindClientCommandTest {
     }
 
     /**
-     * Parses {@code userInput} into a {@code NameContainsKeywordsPredicate}.
+     * Parses {@code userInput} into a {@code ClientNamePredicate}.
      */
-    private NameContainsKeywordsPredicate preparePredicate(String userInput) {
-        return new NameContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
+    private ClientNamePredicate preparePredicate(String userInput) {
+        return new ClientNamePredicate(Arrays.asList(userInput.split("\\s+")));
     }
 }
