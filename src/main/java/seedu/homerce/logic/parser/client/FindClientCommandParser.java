@@ -5,6 +5,7 @@ import static seedu.homerce.commons.core.Messages.MESSAGE_MULTIPLE_PARAMETERS;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_PHONE;
 
+import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -31,29 +32,9 @@ public class FindClientCommandParser implements Parser<FindClientCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public FindClientCommand parse(String args) throws ParseException {
-        ArgumentMultimap argMultimap =
-            ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE);
-
-        if (!anyPrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE)
-            || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindClientCommand.MESSAGE_USAGE));
-        }
-
-        if (areMultipleParametersPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE)) {
-            throw new ParseException(MESSAGE_MULTIPLE_PARAMETERS);
-        }
-
-        Predicate<Client> predicate = null;
-        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            predicate = new ClientNamePredicate(ParserUtil.parseName(
-                argMultimap.getValue(PREFIX_NAME).get()));
-        }
-        if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            predicate = new ClientPhonePredicate(ParserUtil
-                .parsePhone(argMultimap.getValue(PREFIX_PHONE)
-                    .get()));
-        }
-
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE);
+        checkIfValidPrefix(args);
+        Predicate<Client> predicate = createPredicate(argMultimap);
         return new FindClientCommand(predicate);
     }
 
@@ -71,5 +52,38 @@ public class FindClientCommandParser implements Parser<FindClientCommand> {
     private static boolean areMultipleParametersPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).filter(prefix -> argumentMultimap.getValue(prefix).isPresent()).count()
             > NUM_ALLOWED_PARAMETERS;
+    }
+
+    private boolean checkIfValidPrefix(String args) throws ParseException {
+        ArgumentMultimap argMultimap =
+                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_PHONE);
+
+        if (!anyPrefixesPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE)
+                || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindClientCommand.MESSAGE_USAGE));
+        }
+
+        if (areMultipleParametersPresent(argMultimap, PREFIX_NAME, PREFIX_PHONE)) {
+            throw new ParseException(MESSAGE_MULTIPLE_PARAMETERS);
+        }
+        return true;
+    }
+
+    private Predicate<Client> createPredicate(ArgumentMultimap argMultimap) throws ParseException {
+        Predicate<Client> predicate = null;
+        if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
+            if (!argMultimap.getValue(PREFIX_NAME).get().trim().isEmpty()) { // Check for empty user input
+                String [] nameKeywords = argMultimap.getValue(PREFIX_NAME).get().trim().split("\\s+");
+                predicate = new ClientNamePredicate(Arrays.asList(nameKeywords));
+            } else {
+                throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                        FindClientCommand.MESSAGE_USAGE));
+            }
+        }
+
+        if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
+            predicate = new ClientPhonePredicate(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
+        }
+        return predicate;
     }
 }

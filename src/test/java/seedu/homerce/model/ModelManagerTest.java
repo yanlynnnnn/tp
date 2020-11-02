@@ -15,7 +15,7 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.homerce.commons.core.GuiSettings;
-import seedu.homerce.model.client.predicate.NameContainsKeywordsPredicate;
+import seedu.homerce.model.client.predicate.ClientNamePredicate;
 import seedu.homerce.model.manager.AppointmentManager;
 import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.ExpenseTracker;
@@ -131,7 +131,7 @@ public class ModelManagerTest {
 
         // different filteredList -> returns false
         String[] keywords = ALICE.getName().fullName.split("\\s+");
-        modelManager.updateFilteredClientList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
+        modelManager.updateFilteredClientList(new ClientNamePredicate(Arrays.asList(keywords)));
         assertFalse(modelManager.equals(new ModelManager(userPrefs, clientManager,
                 serviceManager, revenueTracker, expenseTracker, appointmentManager)));
 

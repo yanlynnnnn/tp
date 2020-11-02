@@ -44,6 +44,12 @@ public class TypicalAppointments {
         .withService(LASH_LIFT)
         .build();
 
+    public static final Appointment OCT_27_2020_12PM_LASH_LIFT_BENSON = new AppointmentBuilder()
+            .withDate("27-10-2020")
+            .withTimeOfDay("1200")
+            .withClient(BENSON)
+            .withService(LASH_LIFT)
+            .build();
 
     private TypicalAppointments() {
     } // prevents instantiation

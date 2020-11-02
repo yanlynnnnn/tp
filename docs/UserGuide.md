@@ -746,7 +746,7 @@ Format : `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`
 
 Example :
 
-You just purchased a bottle of conditioner for your client's hair treatment today for $15 (28-10-2020).
+You just purchased a bottle of conditioner today for $15 (28-10-2020).
 
 You can follow the steps below to add the expense to Homerce.
 
@@ -755,9 +755,10 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
+1. Homerce will display a success message, as shown below.
 
-{Example outcome screenshot}
+![addexp](images/addexp.png) <br>
+Figure x - GUI for `addexp`
 
 #### 4.4.3. Edit an expense `editexp`
 
@@ -777,7 +778,7 @@ Format : `editexp INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]
 
 Example :
 
-You misspelled the description of an expense when adding it into Homerce and wish to change it to "Eyelash Curler".
+You misspelled the description of an expense when adding it into Homerce, and wish to change it to "Eyelash Curler".
 
 You can follow the steps below to edit the expense.
 
@@ -786,9 +787,10 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
+1. Homerce will display a success message, as shown below.
 
-{Example outcome screenshot}
+![editexp](images/editexp.png) <br>
+Figure x - GUI for `editexp`
 
 #### 4.4.4. Delete an expense `deleteexp`
 
@@ -815,9 +817,10 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
+1. Homerce will display a success message, as shown below.
 
-{Example outcome screenshot}
+![deleteexp](images/deleteexp.png) <br>
+Figure x - GUI for `deleteexp`
 
 #### 4.4.5. Find an expense `findexp`
 
@@ -836,17 +839,20 @@ Format : `findexp [d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*`
 
 Example :
 
-You have just stopped operations for the day, and wish to check the total expenses incurred today (08-09-2020).
+You wish to view all the expenses you incurred today (10-10-2020).
 
 You can follow the steps below to get a list of expenses for the day.
 
 Steps :
-1. Type `findexp dt/08-09-2020` into the _Command Box_.
+1. Type `findexp dt/10-10-2020` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message. 
-2. Homerce will list out all the expenses for 08-09-2020.
+1. It will display a success message, as shown below.
+2. Homerce will list out all the expenses for 10-10-2020.
+
+![findexp](images/findexp.png) <br>
+Figure x - GUI for `findexp`
 
 #### 4.4.6. Sort expenses `sortexp`
 
@@ -873,8 +879,11 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message.
+1. It will display a success message, as shown below.
 2. Homerce will list out all the expenses sorted from highest to lowest cost.
+
+![sortexp](images/sortexp.png) <br>
+Figure x - GUI for `sortexp`
 
 #### 4.4.7. List expenses `listexp`
 
@@ -893,8 +902,11 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message.
+1. It will display a success message, as shown below.
 2. Homerce will list out all your expenses.
+
+![listexp](images/listexp.png) <br>
+Figure x - GUI for `listexp`
 
 #### 4.4.8. Clear expenses `clearexp`
 
@@ -904,7 +916,7 @@ Format : `clearexp`
 
 Example :
 
-You wish to remove all expense entries in Homerce and restart your expense management from scratch.
+You wish to remove all expense entries in Homerce and restart your expense tracking from scratch.
 
 You can follow the steps below to clear all your expenses.
 
@@ -913,7 +925,10 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message.
+1. It will display a success message, as shown below.
+
+![clearexp](images/clearexp.png) <br>
+Figure x - GUI for `clearexp`
 
 ### 4.5 Client Manager
 
@@ -1226,7 +1241,8 @@ Outcome :
 3. You can now see the breakdown of your revenue and expenses for October 2020, and see how much profit your home-based
 business brought in.
 
-{Example outcome screenshot}
+![breakdownfinance](images/breakdownfinance.png) <br>
+Figure x - GUI for `breakdownfinance`
 
 ### 4.8. Others
 

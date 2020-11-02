@@ -49,6 +49,12 @@ public class ExpenseDescriptionPredicateTest {
     }
 
     @Test
+    public void test_expenseDoesNotContainFullKeyword_returnsFalse() {
+        ExpenseDescriptionPredicate predicate = new ExpenseDescriptionPredicate(new Description("exten"));
+        assertFalse(predicate.test(new ExpenseBuilder().withDescription("Lash Extension Glue").build()));
+    }
+
+    @Test
     public void test_expenseContainsKeyword_returnsTrue() {
         ExpenseDescriptionPredicate predicate = new ExpenseDescriptionPredicate(new Description("extension"));
         assertTrue(predicate.test(new ExpenseBuilder().withDescription("Lash Extension Glue").build()));
