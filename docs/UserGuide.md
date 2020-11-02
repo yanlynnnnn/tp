@@ -50,7 +50,7 @@ This section gives you step-by-step instructions on how to download and open the
 ### 3.1. Structure of this document
 
 We have structured this User Guide in a way to help you find what you need easily and quickly. 
-In the next subsection, [Section 3.2 - Reading this document](#32-reading-this-document), you can find several useful tips on how to read this guide.
+In the next subsection, [Section 3.2 - reading this document](#32-reading-this-document), you can find several useful tips on how to read this guide.
 The following section, [Section 4 - Features](#4-features), documents the six main features in **Homerce**, namely:
 
 * Service Management
@@ -64,6 +64,8 @@ The following section, [Section 4 - Features](#4-features), documents the six ma
 * Client Management
 
 * Schedule Viewing
+
+* Finance Tracking
 
 ### 3.2. Reading this document
 
@@ -108,7 +110,7 @@ The table below explains some important technical terms to help you understand a
 The following points explain the format of a command. 
 More examples will be provided for each command in [Section 4 - Features](#4-features).
 
-1. Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+1. Words in `UPPER_CASE` are the parameters to be supplied<br>
     - In `deletesvc s/SERVICE_CODE`, `SERVICE_CODE` is a parameter and the command can be used as `deletesvc s/SC001`.
 
 2. Items in square brackets are optional.<br>
@@ -118,7 +120,10 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
     - `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/blacklist`, `t/VIP t/friend` etc.
 
 4. Parameters can be in any order.<br>
-    - if the command specifies `d/DESCRIPTION dt/DATE`, `dt/DATE d/DESCRIPTION` is also acceptable.
+    - If the command specifies `d/DESCRIPTION dt/DATE`, `dt/DATE d/DESCRIPTION` is also acceptable.
+    
+5. Square brackets with asterisks indicate that only one of the parameters should be specified<br>
+    - Only one parameter among `[t/TITLE]* [d/DURATION]* [p/PRICE]*` should be entered.
 
 
 ## 4. Features
@@ -239,9 +244,9 @@ Outcome:
 
 #### 4.1.5. Find a service by keyword: `findsvc`
 
-You can use this command to find specefic services which matches the description you provide. 
+You can use this command to find specific services which matches the description you provide. 
 
-Format: `findsvc [t/TITLE]* [s/SERVICE_CODE]`
+Format: `findsvc [t/TITLE]* [s/SERVICE_CODE]*`
 
 <div markdown="block" class="alert alert-info">
 
@@ -704,11 +709,10 @@ Outcome :
 ### 4.4 Expense Tracker
 
 Homerce understands that expense tracking is essential in managing your business expenditure.
-Thus, this feature allows you to track your operational expenses with ease. <br>
+Thus, this feature allows you to track your operational expenses seamlessly and with ease. <br><br>
 Our expense tracker supports both fixed expenses that recur monthly, and one-time expenses that are incurred only once.
-To reduce the hassle of recording the same fixed expense monthly, a fixed expense only has to be added once,
-and Homerce will automatically record the same expense for you every month.
-<br>You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`. 
+A fixed expense only has to be added once, and Homerce will automatically record the same fixed expense for you every month.
+<br><br> You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`. 
 
 #### 4.4.1. Expense Tracker Command Parameters
 
