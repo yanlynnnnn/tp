@@ -296,6 +296,15 @@ You can use this command to clear and delete the all the services in Homerce.
 
 Format: `clearsvc`
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Homerce will only clear services which are not scheduled in any upcoming appointment. Services that are scheduled in an upcoming appointment will not be deleted using
+the `clearsvc` command.
+
+</div>
+
 Example:
 Let's say you want to delete all the services from your list of services and start from an empty list of services. You can
 follow these instructions.
