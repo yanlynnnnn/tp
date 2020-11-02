@@ -400,6 +400,56 @@ Reason for choosing option 2:
 * The expense should only be duplicated on the day of the month it has been incurred for better accounting purposes
 * The `breakdownfinance` command analysis should not include duplicate expenses that have not yet been incurred.
 
+### 4.4 Client Manager
+
+Homerce allows the user to keep track of the clients that his or her home-based business serves. The client manager is one of the `ListManagers`s elaborated in [section 4.1](#41-list-managers).
+
+#### 4.4.1 Rationale 
+
+The client manager is essential to keep track of all the client's relevant details the home-based business has. With many clients to keep track of, we decided to create
+a client manager so that the user can store and quickly get the information he/she needs about a certain client.
+
+#### 4.4.2 Current Implementation
+
+The current implementation of the client manager allows the user to keep track a list of clients for their home-based business. Users
+have to include the name, phone and email for the client and ensure at least 2 of the fields specified are unique to avoid duplicate client entries.
+Users have an option to add a tag to the client to better identify the client as well. 
+
+In this section, we will use the following Activity Diagram to outline the filtering of the list when the `findcli` command of the client manager is executed.
+
+![Activity diagram for client manager find client](images/FindClientActivityDiagram.png)
+
+*Figure 7. Workflow of a `findcli` command*
+
+When the user enters the `findcli` command to sort the client list, the user input command undergoes the same command parsing as described in
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `FindClientCommand`, Homerce will access the client manager
+and filter the client list based on the predicate created when the user input gets parsed. For example, if the user specifies 
+<br>
+The following steps will describe the execution of the `FindClientCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `FindClientCommand` is called, the `Model`'s `updateFilteredClientList()` method is called.
+2. The predicate gets checked against the client list in the model and filters the list accordingly.
+3. The `FindClientCommand` returns a `CommandResult` with a success message
+6. The `Ui` component will detect this change and update the GUI.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram for findcli command](images/FindClientSequenceDiagram.png)
+
+*Figure 8. Execution of an `findcli` command*
+
+#### 4.4.3 Design Consideration 
+
+**Aspect: FindClientCommand implementation**
+
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Allow the user to find a client just by name without the use of any prefixes | Easier to implement and also more convenient for the user | Not consistent with the other commands that all have the use of prefixes and there might be clients with the same names|
+| **Option 2 (current choice)** <br> Allow the user to find a client by phone number or name using prefixes. | Gives the user more freedom to find a client through relevant fields such as phone and name. | Does not allow for multiple prefix find. |
+
+Reason for choosing option 2:
+* It is more intuitive to the user where all commands have a similar format
+* Users can have more flexibility when finding a client using phone or name.
+
 ### 4.5 Finance Breakdown
 
 Homerce allows the user to keep track of the expenses and revenue for his or her home-based business. The finance breakdown 
