@@ -13,7 +13,7 @@ import seedu.homerce.commons.util.AppUtil;
  */
 public class Amount {
     public static final String MESSAGE_CONSTRAINTS = "Amount (in dollars and cents - eg: 15.00) "
-            + "must be a valid double greater than 0";
+            + "must be a valid value greater than 0";
 
     private static final double MIN_VALUE = 0.0;
     private static final double MAX_VALUE = Double.MAX_VALUE;
