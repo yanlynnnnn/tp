@@ -6,7 +6,6 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_ISFIXED;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.homerce.model.Model.PREDICATE_SHOW_ALL_EXPENSES;
 
 import java.util.List;
 import java.util.Optional;
@@ -81,7 +80,6 @@ public class EditExpenseCommand extends Command {
         }
 
         model.setExpense(expenseToEdit, editedExpense);
-        model.updateFilteredExpenseList(PREDICATE_SHOW_ALL_EXPENSES);
         return new CommandResult(String.format(MESSAGE_EDIT_EXPENSE_SUCCESS, editedExpense));
     }
 

@@ -101,11 +101,7 @@ public class EditClientCommandTest {
 
         String expectedMessage = String.format(EditClientCommand.MESSAGE_EDIT_CLIENT_SUCCESS, editedClient);
 
-        Model expectedModel = new ModelManager(new UserPrefs(), new ClientManager(model.getClientManager()),
-            new ServiceManager(), new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
-        expectedModel.setClient(model.getFilteredClientList().get(0), editedClient);
-
-        assertCommandSuccess(editClientCommand, model, expectedMessage, expectedModel);
+        assertCommandSuccess(editClientCommand, model, expectedMessage, model);
     }
 
     @Test
