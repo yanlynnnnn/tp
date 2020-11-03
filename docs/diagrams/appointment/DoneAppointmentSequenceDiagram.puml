@@ -16,6 +16,12 @@ end box
 [-> DoneAppointmentCommand : ""execute(m, h)""
 activate DoneAppointmentCommand
 
+note right
+""h"" refers to the HistoryManager
+which keeps track of the history of
+commands executed.
+end note
+
 DoneAppointmentCommand -> Model : ""getFilteredAppointmentList()""
 activate Model
 
@@ -57,7 +63,6 @@ activate Model
 
 Model --> DoneAppointmentCommand
 deactivate Model
-
 
 create CommandResult
 DoneAppointmentCommand -> CommandResult

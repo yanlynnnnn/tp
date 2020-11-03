@@ -12,8 +12,14 @@ participant "**:ExpenseMonthYearPredicate**" as ExpenseMonthYearPredicate MODEL_
 participant "**:RevenueMonthYearPredicate**" as RevenueMonthYearPredicate MODEL_COLOR
 end box
 
-[-> BreakdownFinanceCommand : ""execute(m)""
+[-> BreakdownFinanceCommand : ""execute(m, h)""
 activate BreakdownFinanceCommand
+
+note right
+""h"" refers to the HistoryManager
+which keeps track of the history of
+commands executed.
+end note
 
 create ExpenseMonthYearPredicate
 BreakdownFinanceCommand -> ExpenseMonthYearPredicate: ""ExpenseMonthYearPredicate(month, year)""

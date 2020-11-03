@@ -12,8 +12,14 @@ participant "**:ServiceCodeGenerator**" as ServiceCodeGenerator MODEL_COLOR
 participant "**:ServiceManager**" as ServiceManager MODEL_COLOR
 end box
 
-[-> AddServiceCommand : ""execute(m)""
+[-> AddServiceCommand : ""execute(m, h)""
 activate AddServiceCommand
+
+note right
+""h"" refers to the HistoryManager
+which keeps track of the history of
+commands executed.
+end note
 
 AddServiceCommand -> ModelManager : ""getFilteredServiceList()""
 activate ModelManager
