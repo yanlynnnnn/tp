@@ -4,8 +4,10 @@ import java.util.Optional;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.StackPane;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import seedu.homerce.commons.core.GuiSettings;
 import seedu.homerce.commons.core.LogsCenter;
@@ -76,8 +78,11 @@ public class MainWindow extends UiPart<Stage> {
         this.logic = logic;
 
         // Configure the UI
-        setWindowDefaultSize(logic.getGuiSettings());
+        //setWindowDefaultSize(logic.getGuiSettings());
         primaryStage.setResizable(false);
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        primaryStage.setWidth((primScreenBounds.getWidth() * 0.55));
+        primaryStage.setHeight((primScreenBounds.getHeight() * 0.90));
 
         //setAccelerators();
 
