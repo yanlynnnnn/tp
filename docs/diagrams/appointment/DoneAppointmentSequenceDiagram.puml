@@ -52,11 +52,7 @@ activate Model
 Model --> DoneAppointmentCommand
 deactivate Model
 
-DoneAppointmentCommand -> Model : updateFilteredAppointmentList()
-activate Model
 
-Model --> DoneAppointmentCommand
-deactivate Model
 
 DoneAppointmentCommand -> Model : refreshSchedule()
 activate Model
