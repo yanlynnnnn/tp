@@ -399,7 +399,7 @@ it does not clashing with another appointment to avoid clashing entries in the a
 
 In this section, we will use the following Activity Diagram to outline what happens when the `done` command of the appointment manager is executed.
 
-![Activity diagram for appointment manager done command](images/DoneAptActivityDiagram.png)
+![Activity diagram for appointment manager done command](images/DoneAppointmentActivityDiagram.png)
 
 *Figure 7. Workflow of a `done` command*
 

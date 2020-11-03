@@ -50,10 +50,11 @@ public class DoneAppointmentCommand extends Command {
         model.addRevenue(revenueToAdd);
         model.updateFilteredAppointmentList(Model.PREDICATE_SHOW_ALL_APPOINTMENTS);
         model.refreshSchedule();
-        return new CommandResult(
+        CommandResult r = new CommandResult(
             String.format(MESSAGE_DONE_APPOINTMENT_SUCCESS, appointmentToMarkDone)
                 + "\n" + String.format(MESSAGE_ADD_REVENUE_SUCCESS, revenueToAdd)
         );
+        return r;
     }
 
     @Override
