@@ -23,6 +23,7 @@ public class ServiceCodeGenerator {
         if (serviceList == null && appointmentList == null) {
             return "SC000";
         }
+        // Check against appointment list as well
 
         Set<Service> serviceSet = new HashSet<>(serviceList);
         Set<Service> serviceInAppointmentSet = new HashSet<>();

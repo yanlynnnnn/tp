@@ -185,9 +185,11 @@ public class ParserUtil {
     public static Amount parseAmount(String amount) throws ParseException {
         requireNonNull(amount);
         amount = amount.trim();
+        int integerPlaces = amount.indexOf('.');
+        int decimalPlaces = amount.length() - integerPlaces - 1;
         try {
             Double doubleAmount = Double.parseDouble(amount);
-            if (!Amount.isValidAmount(doubleAmount)) {
+            if (!Amount.isValidAmount(doubleAmount) || decimalPlaces > 2) {
                 throw new ParseException(Amount.MESSAGE_CONSTRAINTS);
             }
             return new Amount(doubleAmount);
