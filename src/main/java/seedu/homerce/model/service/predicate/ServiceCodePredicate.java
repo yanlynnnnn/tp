@@ -20,7 +20,7 @@ public class ServiceCodePredicate implements Predicate<Service> {
         if (service == null) {
             return false;
         }
-        return serviceCode.equals(service.getServiceCode());
+        return service.getServiceCode().value.contains(serviceCode.value);
     }
 
     @Override

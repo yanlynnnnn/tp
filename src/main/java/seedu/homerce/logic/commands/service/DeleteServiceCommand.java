@@ -62,7 +62,6 @@ public class DeleteServiceCommand extends Command {
             && targetIndex.equals(((DeleteServiceCommand) other).targetIndex)); // state check
     }
 
-
     /**
      * Checks if the service that is about to be deleted exists in Homerce's future appointments.
      *
