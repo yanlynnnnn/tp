@@ -1,19 +1,16 @@
 ---
 layout: page
-title: AddressBook Level-3
+title: Homerce
 ---
+[![CI Status](https://github.com/AY2021S1-CS2103T-W13-3/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103T-W13-3/tp/actions)
 
-[![CI Status](https://github.com/se-edu/addressbook-level3/workflows/Java%20CI/badge.svg)](https://github.com/se-edu/addressbook-level3/actions)
-[![codecov](https://codecov.io/gh/se-edu/addressbook-level3/branch/master/graph/badge.svg)](https://codecov.io/gh/se-edu/addressbook-level3)
+# Homerce
 
-![Ui](images/Ui.png)
+![Ui](./images/Ui.png)
 
-**AddressBook is a desktop application for managing your contact details.** While it has a GUI, most of the user interactions happen using a CLI (Command Line Interface).
+- Homerce is an all-in-one application that helps home-based beauty salon owners consolidate their business details - 
+such as their appointments, revenue, and expenses - into a single application. 
 
-* If you are interested in using AddressBook, head over to the [_Quick Start_ section of the **User Guide**](UserGuide.html#quick-start).
-* If you are interested about developing AddressBook, the [**Developer Guide**](DeveloperGuide.html) is a good place to start.
+- Homerce has a Graphical User Interface (GUI), but it is optimised for use with a Command Line Interface (CLI).
 
-
-**Acknowledgements**
-
-* Libraries used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
+- Click the links at the top right to view the user guide or developer guide.

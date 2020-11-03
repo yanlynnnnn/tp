@@ -5,7 +5,7 @@ title: Developer Guide
 * Table of Contents
 {:toc}
 
-## 1. **Introduction**
+## 1. Introduction
 
 **Homerce** is a desktop business management application meant for home-based beauty salon owners who want to consolidate all
 the information related to their business, such as upcoming appointments, their list of clients, as well as profits recorded.
@@ -22,11 +22,11 @@ The features of Homerce include:
 The purpose of this Developer Guide is to help you understand the design and implementation of **Homerce**,
 so that you can get started on your contributions to **Homerce**.
 
-## 2. **Setting up**
+## 2. Setting up
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
-## 3. **Design**
+## 3. Design
 
 This section will help you learn more about the design and structure of Homerce.
 
@@ -72,7 +72,7 @@ The sections below give more details of each component.
 **API** :
 [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ClientListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
@@ -137,7 +137,7 @@ Classes used by multiple components are in the `seedu.homerce.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 4. **Implementation**
+## 4. Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
 
@@ -448,14 +448,14 @@ Reason for choosing option 2:
 * Use of well-tested libraries like `FXCollections` lowers the chance making mistakes during the implementation of this feature. 
 
 ### 4.6 Revenue Tracker
-
+To be added...
 #### 4.6.1 Rationale
-
+To be added...
 #### 4.6.2 Current Implementation
-Figure 9
-Figure 10
+To be added...
+(Figure 9, Figure 10)
 #### 4.6.3 Design Consideration
-
+To be added...
 
 ### 4.7 Expense Tracker
 
@@ -577,23 +577,23 @@ Reason for choosing option 1:
 * Using the same instance of `ExpenseTracker` and `RevenueTracker` to obtain the list of expenses and revenue ensures that expenses and revenue data are consistent without needing to update the lists in `ExpenseTracker`, `RevenueTracker` as well as `FinanceTracker`.
 * The `execute()` command of `BreakdownFinanceCommand` already takes in the `Model` which has `ExpenseTracker` and `RevenueTracker` as attributes. It is unnecessary to create a new `FinanceTracker` class as an attribute for `Model` to store and duplicate information that already exists.
 
-## 5. **Documentation**
+## 5. Documentation
 
 Refer to the guide [here](Documentation.md).
 
-## 6. **Logging**
+## 6. Logging
 Refer to the guide [here](Logging.md).
 
-## 7. **Testing**
+## 7. Testing
 Refer to the guide [here](Testing.md).
 
-## 8. **Configuration**
+## 8. Configuration
 Refer to the guide [here](Configuration.md).
 
-## 9. **Dev-ops**
+## 9. Dev-ops
 Refer to the guide [here](DevOps.md).
 
-## **Appendix A: Product Scope**
+## Appendix A: Product Scope
 
 **Target user profile**:
 * Independent home-based business owner.
@@ -608,7 +608,7 @@ Refer to the guide [here](DevOps.md).
 * Does not require extensive technical knowledge compared to other business management software.
 * Displays expenses and revenue in a simple format for users to view.
 
-## **Appendix B: User Stories**
+## Appendix B: User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -646,7 +646,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*    `  | Resourceful home-based beauty salon owner       | Have a breakdown of my total monthly revenue based on the type of service provided                                      | Have an idea of which services generate more revenue and adjust the services I provide accordingly                  |
 
 
-## **Appendix C: Use Cases**
+## Appendix C: Use Cases
 
 (For all use cases below, the **System** is `Homerce` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -1416,10 +1416,46 @@ Use case ends.
 </pre>
 
 ### Others
+<pre>
+UC032: View appointment schedule
+View the schedule of appointments for the current week.
+
+**System: Homerce**
+
+**Actor: User**
+
+**Preconditions: Appointments list must exist.**
+
+**Guarantees: A view of the schedule of appointments.**
+
+**MSS**
+1. User requests to view the schedule of appointments.
+1. Homerce navigates to the schedule tab and displays a successful message.
+Use case ends.
+</pre>
+<br>
+<pre>
+UC033: Breakdown finances
+Creates a breakdown of revenues, expenses and profit for a given month of a year.
+
+**System: Homerce**
+
+**Actor: User**
+
+**Preconditions: Revenue and Expense lists must exist.**
+
+**Guarantees: A breakdown of revenue, expenses, and profit for the specified time period.**
+
+**MSS**
+1. User requests to view a breakdown of finances for a particular month of a year.
+1. Homerce displays a new window which shows the breakdown of finances.
+Use case ends.
+</pre>
+
 
 *{More to be added}*
 
-## **Appendix D: Non-Functional Requirements**
+## Appendix D: Non-Functional Requirements
 
 * System Requirements:
     * Homerce should work on any _mainstream OS_ as long as it has Java `11` or above installed.
@@ -1440,14 +1476,14 @@ Use case ends.
     * Homerce should be able to handle thousands of appointments, clients, expenses and all other recorded entries by a user.
      No expansion of hardware capabilities or software modifications should be required.
 
-## **Appendix E: Glossary**
+## Appendix E: Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **JVM**: Java Virtual Machine - Java code that is compiled is run in the virtual machine.
 * **CRUD**: In computer programming, create, read, update, and delete (CRUD) are the four basic functions of persistent storage
 
-## **Appendix F: Instructions for manual testing**
+## Appendix F: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 
