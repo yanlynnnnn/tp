@@ -26,13 +26,12 @@ activate ModelManager
 AddServiceCommand <-- ModelManager: ""services""
 deactivate ModelManager
 
-AddServiceCommand -> ServiceCodeGenerator: ""generateServiceCode(services)""
+AddServiceCommand -> ModelManager : ""getFilteredAppointmentList()""
+activate ModelManager
+AddServiceCommand <-- ModelManager: ""appointments""
+deactivate ModelManager
 
-note right
-""services"" is all the services
-which is currently stored in
-Homerce's list of services.
-end note
+AddServiceCommand -> ServiceCodeGenerator: ""generateServiceCode(services, appointments)""
 
 activate ServiceCodeGenerator
 AddServiceCommand <-- ServiceCodeGenerator: ""serviceCode""
