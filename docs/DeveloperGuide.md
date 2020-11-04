@@ -438,6 +438,7 @@ Reason for choosing option 2:
 * Prevention of situations where a revenue entry is modified in the revenue tracker but not reflected in the associated appointment.
 
 **Aspect: Sorting of appointments by chronological order is done whenever there are modifications to `UniqueAppointmentList`**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1** <br> Implement a `PriorityQueue` that is fits the observer design pattern similar to `ObservableList` in the JavaFX library. | Better performance as the data structure for the list of appointments is optimized to be chronologically ordered whenever changes are made. | High technical knowledge and effort required to implement the data structures when time could be better used to develop and test other features.|
