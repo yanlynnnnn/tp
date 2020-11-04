@@ -79,7 +79,6 @@ public class MainWindow extends UiPart<Stage> {
 
         // Configure the UI
         //setWindowDefaultSize(logic.getGuiSettings());
-        primaryStage.setResizable(false);
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         primaryStage.setWidth((primScreenBounds.getWidth() * 0.55));
         primaryStage.setHeight((primScreenBounds.getHeight() * 0.90));
