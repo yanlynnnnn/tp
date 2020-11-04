@@ -637,10 +637,11 @@ Steps :
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a success message in the _Dashboard_.
+1. It will display a success message in the _Result  Display_.
 1. Homerce will list out all the revenue for 22-10-2020 in the _Revenue_ tab.  
 
-{Example outcome screenshot}
+![addexp](images/revenue/FindRevenue.png) <br>
+*Figure 4.3.2.1 - GUI outcome for `findrev`*
 
 #### 4.3.3. Sort revenues: `sortrev`
 
@@ -666,10 +667,11 @@ Steps :
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message in the _Dashboard_.
+1. It will display a successful message in the _Result Display_.
 1. Homerce will list out all the revenue entries sorted from highest to lowest cost in the _Revenue_ tab.
 
-{Example outcome screenshot}
+![addexp](images/revenue/SortRevenue(Desc).png) <br>
+*Figure x - GUI outcome for `sortrev`*
 
 #### 4.3.4. List revenues : `listrev`
 
@@ -688,10 +690,11 @@ Steps :
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message in the _Dashboard_.
+1. It will display a successful message in the _Result Display_.
 1. Homerce will list out all your revenue entries in the _Revenue_ tab.
 
-{Example outcome screenshot}
+![addexp](images/revenue/ListRevenue.png) <br>
+*Figure x - GUI outcome for `listrev`*
 
 #### 4.3.5. Clear revenue : `clearrev`
 
@@ -710,10 +713,11 @@ Steps :
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message in the _Dashboard_.
+1. It will display a successful message in the _Result Display_.
 1. Homerce will clear all the revenue data.
 
-{Example outcome screenshot}
+![addexp](images/revenue/ClearRevenue.png) <br>
+*Figure x - GUI outcome for `clearrev`*
 
 ### 4.4 Expense Tracker
 
@@ -767,7 +771,7 @@ Outcome :
 1. Homerce will display a success message, as shown below.
 
 ![addexp](images/addexp.png) <br>
-Figure x - GUI for `addexp`
+*Figure x - GUI outcome for `addexp`*
 
 #### 4.4.3. Edit an expense `editexp`
 
@@ -799,7 +803,7 @@ Outcome :
 1. Homerce will display a success message, as shown below.
 
 ![editexp](images/editexp.png) <br>
-Figure x - GUI for `editexp`
+*Figure x - GUI outcome for `editexp`*
 
 #### 4.4.4. Delete an expense `deleteexp`
 
@@ -829,7 +833,7 @@ Outcome :
 1. Homerce will display a success message, as shown below.
 
 ![deleteexp](images/deleteexp.png) <br>
-Figure x - GUI for `deleteexp`
+*Figure x - GUI outcome for `deleteexp`*
 
 #### 4.4.5. Find an expense `findexp`
 
@@ -861,7 +865,7 @@ Outcome :
 2. Homerce will list out all the expenses for 10-10-2020.
 
 ![findexp](images/findexp.png) <br>
-Figure x - GUI for `findexp`
+*Figure x - GUI outcome for `findexp`*
 
 #### 4.4.6. Sort expenses `sortexp`
 
@@ -892,7 +896,7 @@ Outcome :
 2. Homerce will list out all the expenses sorted from highest to lowest cost.
 
 ![sortexp](images/sortexp.png) <br>
-Figure x - GUI for `sortexp`
+*Figure x - GUI outcome for `sortexp`*
 
 #### 4.4.7. List expenses `listexp`
 
@@ -915,7 +919,7 @@ Outcome :
 2. Homerce will list out all your expenses.
 
 ![listexp](images/listexp.png) <br>
-Figure x - GUI for `listexp`
+*Figure x - GUI outcome for `listexp`*
 
 #### 4.4.8. Clear expenses `clearexp`
 
@@ -937,7 +941,7 @@ Outcome :
 1. It will display a success message, as shown below.
 
 ![clearexp](images/clearexp.png) <br>
-Figure x - GUI for `clearexp`
+*Figure x - GUI outcome for `clearexp`*
 
 ### 4.5 Client Manager
 
