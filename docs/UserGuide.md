@@ -34,7 +34,9 @@ This section gives you step-by-step instructions on how to download and open the
 
 3. Copy the file to the folder you want to use as the _home folder_ for Homerce.
 
-4. Double-click the file to start the app. A GUI similar to Figure 1 below should appear in a few seconds. Note how the app contains some sample data. <br> <br>
+4. Double-click the file to start the app. If you are using Windows, please ensure that your Computer's Display Settings are set to 100%. 
+
+5. A GUI similar to Figure 1 below should appear in a few seconds. Note how the app contains some sample data. <br><br>
    ![Ui](images/Ui.png)
    _Figure 1 - GUI of Homerce_
    
@@ -50,7 +52,7 @@ This section gives you step-by-step instructions on how to download and open the
 
 We have structured this User Guide in a way to help you find what you need easily and quickly. 
 In the next subsection, [Section 3.2 - reading this document](#32-reading-this-document), you can find several useful tips on how to read this guide.
-The following section, [Section 4 - Features](#4-features), documents the six main features in **Homerce**, namely:
+The following section, [Section 4 - Features](#4-features), documents the seven main features in **Homerce**, namely:
 
 * Service Management
 
@@ -121,7 +123,7 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 4. Parameters can be in any order.<br>
     - If the command specifies `d/DESCRIPTION dt/DATE`, `dt/DATE d/DESCRIPTION` is also acceptable.
     
-5. Square brackets with asterisks indicate that only one of the parameters should be specified<br>
+5. Square brackets with asterisks indicate that only one of the parameters in them should be specified<br>
     - Only one parameter among `[t/TITLE]* [d/DURATION]* [p/PRICE]*` should be entered.
 
 
