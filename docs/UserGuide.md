@@ -34,7 +34,9 @@ This section gives you step-by-step instructions on how to download and open the
 
 3. Copy the file to the folder you want to use as the _home folder_ for Homerce.
 
-4. Double-click the file to start the app. A GUI similar to Figure 1 below should appear in a few seconds. Note how the app contains some sample data. <br> <br>
+4. Double-click the file to start the app. If you are using Windows, please ensure that your Computer's Display Settings are set to 100%. 
+
+5. A GUI similar to Figure 1 below should appear in a few seconds. Note how the app contains some sample data. <br><br>
    ![Ui](images/Ui.png)
    _Figure 1 - GUI of Homerce_
    
