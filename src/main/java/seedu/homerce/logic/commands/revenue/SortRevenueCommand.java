@@ -17,10 +17,8 @@ public class SortRevenueCommand extends Command {
 
     public static final String MESSAGE_SUCCESS = "Sorted all revenues";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-        + ": Sorts the revenue based on value.\n"
-        + "Parameters: ORDER\n"
-        + "Example: " + COMMAND_WORD + " asc";
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the revenue based on value.\n"
+            + "Parameters: ORDER\n" + "Example: " + COMMAND_WORD + " asc" + " or " + COMMAND_WORD + " desc";
 
     private final boolean isAscending;
 
