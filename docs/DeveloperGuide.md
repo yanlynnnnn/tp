@@ -5,7 +5,7 @@ title: Developer Guide
 * Table of Contents
 {:toc}
 
-## 1. **Introduction**
+## 1. Introduction
 
 **Homerce** is a desktop business management application meant for home-based beauty salon owners who want to consolidate all
 the information related to their business, such as upcoming appointments, their list of clients, as well as profits recorded.
@@ -22,11 +22,11 @@ The features of Homerce include:
 The purpose of this Developer Guide is to help you understand the design and implementation of **Homerce**,
 so that you can get started on your contributions to **Homerce**.
 
-## 2. **Setting up**
+## 2. Setting up
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md).
 
-## 3. **Design**
+## 3. Design
 
 This section will help you learn more about the design and structure of Homerce.
 
@@ -72,7 +72,7 @@ The sections below give more details of each component.
 **API** :
 [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
 
-The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `ClientListPanel`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
+The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
 The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
 
@@ -110,7 +110,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 The `Model`,
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores the address book data.
+* stores the data in Homerce.
 * exposes an unmodifiable `ObservableList<Client>` that can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.
 * does not depend on any of the other three components.
 
@@ -133,11 +133,11 @@ The `Storage` component,
 
 ### 3.6 Common Classes
 
-Classes used by multiple components are in the `seedu.addressbook.commons` package.
+Classes used by multiple components are in the `seedu.homerce.commons` package.
 
 --------------------------------------------------------------------------------------------------------------------
 
-## 4. **Implementation**
+## 4. Implementation
 
 This section describes some noteworthy details on how certain features are implemented.
 
@@ -334,16 +334,139 @@ Reason for choosing option 2:
 * If the user's home-based business has many services, automatic generation of service codes will provide a more seamless and convenient process when adding new services.
 * The user can find services by title to determine it's unique service code, allowing the user to quickly identify a service's service code.
 
-### 4.4 Expense Tracker
+### 4.4 Client Manager
+
+Homerce allows the user to keep track of the clients that his or her home-based business serves. The client manager is one of the `ListManagers`s elaborated in [section 4.1](#41-list-managers).
+
+#### 4.4.1 Rationale 
+
+The client manager is essential to keep track of all the client's relevant details the home-based business has. With many clients to keep track of, we decided to create
+a client manager so that the user can store and quickly get the information he/she needs about a certain client.
+
+#### 4.4.2 Current Implementation
+
+The current implementation of the client manager allows the user to keep track a list of clients for their home-based business. Users
+have to include the name, phone and email for the client and ensure at least 2 of the fields specified are unique to avoid duplicate client entries.
+Users have an option to add a tag to the client to better identify the client as well. 
+
+In this section, we will use the following Activity Diagram to outline the filtering of the list when the `findcli` command of the client manager is executed.
+
+![Activity diagram for client manager find client](images/FindClientActivityDiagram.png)
+
+*Figure 5. Workflow of a `findcli` command*
+
+When the user enters the `findcli` command to sort the client list, the user input command undergoes the same command parsing as described in
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `FindClientCommand`, Homerce will access the client manager
+and filter the client list based on the predicate created when the user input gets parsed. 
+<br>
+The following steps will describe the execution of the `FindClientCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `FindClientCommand` is called, the `Model`'s `updateFilteredClientList()` method is called.
+2. The predicate gets checked against the client list in the model and filters the list accordingly.
+3. The `FindClientCommand` returns a `CommandResult` with a success message
+4. The `Ui` component will detect this change and update the GUI.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram for findcli command](images/FindClientSequenceDiagram.png)
+
+*Figure 6. Execution of an `findcli` command*
+
+#### 4.4.3 Design Consideration 
+
+**Aspect: FindClientCommand implementation**
+
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Allow the user to find a client just by name without the use of any prefixes | Easier to implement and also more convenient for the user | Not consistent with the other commands that all have the use of prefixes and there might be clients with the same names|
+| **Option 2 (current choice)** <br> Allow the user to find a client by phone number or name using prefixes. | Gives the user more freedom to find a client through relevant fields such as phone and name. | Does not allow for multiple prefix find. |
+
+Reason for choosing option 2:
+* It is more intuitive to the user where all commands have a similar format
+* Users can have more flexibility when finding a client using phone or name.
+
+### 4.5 Appointment Manager
+Homerce allows the user to keep track of the appointments of his or her home-based business. The appointment manager is one of the `ListManagers`s elaborated in [section 4.1](#41-list-managers).
+
+#### 4.5.1 Rationale
+The appointment manager is a core feature which enables tracking of all past and upcoming appointments the home-based business owner has.
+With many appointments to keep track of, we decided to create an appointment manager so that the user can store and quickly get the information
+he/she needs about a certain appointment.
+
+#### 4.5.2 Current Implementation
+The current implementation of the appointment manager allows the user to keep track a list of appointments for their home-based business. Users
+have to include the date, time of day, client phone number, and service code for the appointment. The date and time specified must be such that
+it does not clashing with another appointment to avoid clashing entries in the appointment schedule.
+
+In this section, we will use the following Activity Diagram to outline what happens when the `done` command of the appointment manager is executed.
+
+![Activity diagram for appointment manager done command](images/DoneAppointmentActivityDiagram.png)
+
+*Figure 7. Workflow of a `done` command*
+
+When the user enters the `done` command to mark an appointment in the list as done, the user input command undergoes the same command parsing as described in
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `DoneAppointmentCommand`, Homerce will access the appointment manager to
+get the appointment which matches the index specified. The appointment's `Status` is marked as done, and a `Revenue` entry
+is created and stored in the Revenue Tracker.
+<br>
+The following steps will describe the execution of the `DoneAppointmentCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `DoneAppointmentCommand` is called, the `Model`'s `getFilteredAppointmentList` method
+is called to retrieve the current list of `Appointment`s.
+2. Using the index supplied by the user, the appointment to be marked done is selected.
+3. The `Appointment` is marked as done using the `markDone` method.
+4. A new `Revenue` entry is created with the `Appointment`'s `Service` and `Date` supplied as parameters to the constructor.
+5. The `Revenue` is added into the Revenue Tracker using the `Model`'s `addRevenue` method.
+6. The list of `Appointment`s in the `Model` is updated and the schedule is refreshed using the `Model`'s `updateFilteredAppointmentList`
+and `refreshSchedule` methods.
+7. The `Ui` component will reflect these changes in the GUI.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram for done command](images/DoneAppointmentSequenceDiagram.png)
+
+*Figure 8. Execution of an `done` command*
+
+#### 4.5.3 Design Consideration
+**Aspect: Revenue entries are created and deleted via `DoneAppointmentCommand` and `UnDoneAppointmentCommand`**
+
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Allow the user to add, delete and edit revenue attached to an appointment independently, using revenue-related commands. | Flexibility is given to the user to customize how revenues are recorded while the home-based business is run.  | Revenues may not be in sync up with the appointments which are marked as done. Users who are not mindful might end up being confused by conflicting data in both the appointment tab and revenue tab. |
+| **Option 2 (current choice)** <br> Revenue entries in the revenue tracker are only created or deleted by the `DoneAppointmentCommand` and `UnDoneAppointmentCommand`. Editing of revenue entries are not allowed.| Revenue entries are guaranteed to be added only when appointments are marked as done, which improves consistency. | Increased coupling of classes between `Appointment` class and `Revenue` class. |
+
+Reason for choosing option 2:
+* It is more intuitive to the user when Homerce automatically adds/removes the revenue associated with an appointment the moment the latter is marked as done/undone.
+* Prevention of situations where a revenue entry is modified in the revenue tracker but not reflected in the associated appointment.
+
+**Aspect: Sorting of appointments by chronological order is done whenever there are modifications to `UniqueAppointmentList`**
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Implement a `PriorityQueue` that is fits the observer design pattern similar to `ObservableList` in the JavaFX library. | Better performance as the data structure for the list of appointments is optimized to be chronologically ordered whenever changes are made. | High technical knowledge and effort required to implement the data structures when time could be better used to develop and test other features.|
+| **Option 2 (current choice)** <br> `FXCollections` library is used to sort the `ObservableList` of appointments, using a `Comparator` object. | No need for huge modifications to the generic `UniqueList`. Convenient usage of built-in library. | Higher number of internal computations as sorting is done for every change to the list of appointments. Might not scale well for large number of appointments (n > 1000)|
+
+Reason for choosing option 2:
+* The effort needed to implement option 1 is too great to justify the improvements in performance.
+* Use of well-tested libraries like `FXCollections` lowers the chance making mistakes during the implementation of this feature. 
+
+### 4.6 Revenue Tracker
+To be added...
+#### 4.6.1 Rationale
+To be added...
+#### 4.6.2 Current Implementation
+To be added...
+(Figure 9, Figure 10)
+#### 4.6.3 Design Consideration
+To be added...
+
+### 4.7 Expense Tracker
 
 Homerce allows the user to keep track of the expenses that his or her home-based business incurs. The expense tracker is one of the `ListTracker`s elaborated in [section 4.2](#42-list-trackers).
 
-#### 4.4.1 Rationale 
+#### 4.7.1 Rationale 
 
 The expense tracker is essential to keep track of the operational expenses of any home-based business. With many expenses to keep track of, we decided to create
 an expense tracker to assist the user with the process of keeping track of all the expenses that his or her home-based business incurs.
 
-#### 4.4.2 Current Implementation
+#### 4.7.2 Current Implementation
 
 The current implementation of the expense tracker allows the user to keep track of a list of expenses incurred by the home-based business. Users can specify the
 description, value, and date of the expense. Users can add an optional tag to categorize the expense, which will be used in `breakdownfinance` in [section 4.4](#44-finance-breakdown). 
@@ -354,7 +477,7 @@ In this section, we will use the following Activity Diagram to outline the sorti
 
 ![Activity diagram for expense_tracker sortexp command](images/SortExpenseActivityDiagram.png)
 
-*Figure 5. Workflow of a `sortexp` command*
+*Figure 11. Workflow of a `sortexp` command*
 
 When the user enters the `sortexp` command to sort the expense list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `SortExpenseCommand`, Homerce will access the expense tracker
@@ -374,9 +497,9 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for sortexp command](images/SortExpenseSD.png)
 
-*Figure 6. Execution of an `sortexp` command*
+*Figure 12. Execution of an `sortexp` command*
 
-#### 4.4.3 Design Consideration 
+#### 4.7.3 Design Consideration 
 
 **Aspect: Duplicating a fixed expense every month**
 
@@ -400,70 +523,20 @@ Reason for choosing option 2:
 * The expense should only be duplicated on the day of the month it has been incurred for better accounting purposes
 * The `breakdownfinance` command analysis should not include duplicate expenses that have not yet been incurred.
 
-### 4.4 Client Manager
-
-Homerce allows the user to keep track of the clients that his or her home-based business serves. The client manager is one of the `ListManagers`s elaborated in [section 4.1](#41-list-managers).
-
-#### 4.4.1 Rationale 
-
-The client manager is essential to keep track of all the client's relevant details the home-based business has. With many clients to keep track of, we decided to create
-a client manager so that the user can store and quickly get the information he/she needs about a certain client.
-
-#### 4.4.2 Current Implementation
-
-The current implementation of the client manager allows the user to keep track a list of clients for their home-based business. Users
-have to include the name, phone and email for the client and ensure at least 2 of the fields specified are unique to avoid duplicate client entries.
-Users have an option to add a tag to the client to better identify the client as well. 
-
-In this section, we will use the following Activity Diagram to outline the filtering of the list when the `findcli` command of the client manager is executed.
-
-![Activity diagram for client manager find client](images/FindClientActivityDiagram.png)
-
-*Figure 7. Workflow of a `findcli` command*
-
-When the user enters the `findcli` command to sort the client list, the user input command undergoes the same command parsing as described in
-[Section 3.3 Logic Component](#33-logic-component). During the execution of `FindClientCommand`, Homerce will access the client manager
-and filter the client list based on the predicate created when the user input gets parsed. For example, if the user specifies 
-<br>
-The following steps will describe the execution of the `FindClientCommand` in detail, assuming that no errors are encountered.
-1. When the `execute()` method of the `FindClientCommand` is called, the `Model`'s `updateFilteredClientList()` method is called.
-2. The predicate gets checked against the client list in the model and filters the list accordingly.
-3. The `FindClientCommand` returns a `CommandResult` with a success message
-6. The `Ui` component will detect this change and update the GUI.
-
-The following Sequence Diagram summarises the aforementioned steps. 
-
-![Sequence diagram for findcli command](images/FindClientSequenceDiagram.png)
-
-*Figure 8. Execution of an `findcli` command*
-
-#### 4.4.3 Design Consideration 
-
-**Aspect: FindClientCommand implementation**
-
-|              | **Pros**   | **Cons** |
-| -------------|-------------| -----|
-| **Option 1** <br> Allow the user to find a client just by name without the use of any prefixes | Easier to implement and also more convenient for the user | Not consistent with the other commands that all have the use of prefixes and there might be clients with the same names|
-| **Option 2 (current choice)** <br> Allow the user to find a client by phone number or name using prefixes. | Gives the user more freedom to find a client through relevant fields such as phone and name. | Does not allow for multiple prefix find. |
-
-Reason for choosing option 2:
-* It is more intuitive to the user where all commands have a similar format
-* Users can have more flexibility when finding a client using phone or name.
-
-### 4.5 Finance Breakdown
+### 4.8 Finance Breakdown
 
 Homerce allows the user to keep track of the expenses and revenue for his or her home-based business. The finance breakdown 
 will provide a breakdown of the monthly expenses and revenue based on tags for expenses and services for revenue. The finance breakdown will also 
 calculate profits based on the monthly expenses and revenue.
 
-#### 4.5.1 Rationale 
+#### 4.8.1 Rationale 
 
 Keeping track of the financials of a home-based business is important for the business owner to make better financial decisions such as reducing certain expenses or 
 increasing revenue by prioritizing certain services. This could potentially increase the profits of the home-based business. 
 Thus, the finance breakdown is useful in helping the user view the financial information of the home-based business in a 
 simpler way as monthly expenses and revenue will be categorized and profits will also be calculated automatically.
 
-#### 4.5.2 Current Implementation
+#### 4.8.2 Current Implementation
 
 The current implementation of the finance breakdown makes use of the list of revenue and expenses as tracked by `RevenueTracker` and `ExpenseTracker`.
 The list of revenue and expenses will be filtered by their `Month` and `Year` attribute as indicated by the user. The filtered list will
@@ -473,7 +546,7 @@ In this section, we will outline the `breakdownfinance` command using the follow
 
 ![Activity diagram of BreakdownFinance](images/BreakdownFinanceActivityDiagram.png)
 
-*Figure 4. Workflow of a `breakdownfinance` command*
+*Figure 13. Workflow of a `breakdownfinance` command*
 
 When the user enters the `breakdownfinance` command to view the monthly breakdown, the user input command undergoes the same command parsing as described in 
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `breakdownfinance`, 
@@ -489,9 +562,9 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram breakdownfiance](images/BreakdownFinanceSequenceDiagram.png)
 
-*Figure 5. Execution of an `breakdownfinance` command*
+*Figure 14. Execution of an `breakdownfinance` command*
 
-#### 4.5.3 Design Consideration
+#### 4.8.3 Design Consideration
 
 **Aspect: Which class to store Homerce's financial information**
 
@@ -502,25 +575,25 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 Reason for choosing option 1:
 * Using the same instance of `ExpenseTracker` and `RevenueTracker` to obtain the list of expenses and revenue ensures that expenses and revenue data are consistent without needing to update the lists in `ExpenseTracker`, `RevenueTracker` as well as `FinanceTracker`.
-* The `execute()` command of `BreakdownFinanceCommand` already takes in the `Model` which has `ExpenseTracker` and `RevenueTracker` as attributes. It is unnecessary to create a new `FinanceTrakcer` class as an attribute for `Model` to store and duplicate information that already exists.
+* The `execute()` command of `BreakdownFinanceCommand` already takes in the `Model` which has `ExpenseTracker` and `RevenueTracker` as attributes. It is unnecessary to create a new `FinanceTracker` class as an attribute for `Model` to store and duplicate information that already exists.
 
-## 5. **Documentation**
+## 5. Documentation
 
 Refer to the guide [here](Documentation.md).
 
-## 6. **Logging**
+## 6. Logging
 Refer to the guide [here](Logging.md).
 
-## 7. **Testing**
+## 7. Testing
 Refer to the guide [here](Testing.md).
 
-## 8. **Configuration**
+## 8. Configuration
 Refer to the guide [here](Configuration.md).
 
-## 9. **Dev-ops**
+## 9. Dev-ops
 Refer to the guide [here](DevOps.md).
 
-## **Appendix A: Product Scope**
+## Appendix A: Product Scope
 
 **Target user profile**:
 * Independent home-based business owner.
@@ -535,7 +608,7 @@ Refer to the guide [here](DevOps.md).
 * Does not require extensive technical knowledge compared to other business management software.
 * Displays expenses and revenue in a simple format for users to view.
 
-## **Appendix B: User Stories**
+## Appendix B: User Stories
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
@@ -573,7 +646,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 | `*    `  | Resourceful home-based beauty salon owner       | Have a breakdown of my total monthly revenue based on the type of service provided                                      | Have an idea of which services generate more revenue and adjust the services I provide accordingly                  |
 
 
-## **Appendix C: Use Cases**
+## Appendix C: Use Cases
 
 (For all use cases below, the **System** is `Homerce` and the **Actor** is the `user`, unless specified otherwise)
 
@@ -1343,10 +1416,46 @@ Use case ends.
 </pre>
 
 ### Others
+<pre>
+UC032: View appointment schedule
+View the schedule of appointments for the current week.
+
+**System: Homerce**
+
+**Actor: User**
+
+**Preconditions: Appointments list must exist.**
+
+**Guarantees: A view of the schedule of appointments.**
+
+**MSS**
+1. User requests to view the schedule of appointments.
+1. Homerce navigates to the schedule tab and displays a successful message.
+Use case ends.
+</pre>
+<br>
+<pre>
+UC033: Breakdown finances
+Creates a breakdown of revenues, expenses and profit for a given month of a year.
+
+**System: Homerce**
+
+**Actor: User**
+
+**Preconditions: Revenue and Expense lists must exist.**
+
+**Guarantees: A breakdown of revenue, expenses, and profit for the specified time period.**
+
+**MSS**
+1. User requests to view a breakdown of finances for a particular month of a year.
+1. Homerce displays a new window which shows the breakdown of finances.
+Use case ends.
+</pre>
+
 
 *{More to be added}*
 
-## **Appendix D: Non-Functional Requirements**
+## Appendix D: Non-Functional Requirements
 
 * System Requirements:
     * Homerce should work on any _mainstream OS_ as long as it has Java `11` or above installed.
@@ -1367,14 +1476,14 @@ Use case ends.
     * Homerce should be able to handle thousands of appointments, clients, expenses and all other recorded entries by a user.
      No expansion of hardware capabilities or software modifications should be required.
 
-## **Appendix E: Glossary**
+## Appendix E: Glossary
 
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Private contact detail**: A contact detail that is not meant to be shared with others
 * **JVM**: Java Virtual Machine - Java code that is compiled is run in the virtual machine.
 * **CRUD**: In computer programming, create, read, update, and delete (CRUD) are the four basic functions of persistent storage
 
-## **Appendix F: Instructions for manual testing**
+## Appendix F: Instructions for manual testing
 
 Given below are instructions to test the app manually.
 

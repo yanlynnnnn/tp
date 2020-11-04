@@ -8,7 +8,7 @@ import seedu.homerce.commons.util.AppUtil;
 
 public class Duration {
     public static final String MESSAGE_CONSTRAINTS = "Duration (in half hours intervals - 0.5) must be a valid double "
-            + "more than 0.5 and at most 24.0";
+            + "between 0.5 and 24.0";
 
     private static final double MAX_VALUE = 24.0;
     private static final double MIN_VALUE = 0.5;
