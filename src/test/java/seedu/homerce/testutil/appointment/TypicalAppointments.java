@@ -44,6 +44,12 @@ public class TypicalAppointments {
         .withService(LASH_LIFT)
         .build();
 
+    public static final Appointment OCT_27_2020_12PM_LASH_LIFT_BENSON = new AppointmentBuilder()
+            .withDate("27-10-2020")
+            .withTimeOfDay("1200")
+            .withClient(BENSON)
+            .withService(LASH_LIFT)
+            .build();
 
     private TypicalAppointments() {
     } // prevents instantiation
@@ -58,9 +64,9 @@ public class TypicalAppointments {
 
     public static AppointmentManager getTypicalAppointmentManager() {
         AppointmentManager appointmentManager = new AppointmentManager();
-        appointmentManager.addAppointment(OCT_25_2020_2PM_HAIR_TREATMENT_ALICE);
-        appointmentManager.addAppointment(OCT_26_2020_11AM_MANICURE_CARL);
-        appointmentManager.addAppointment(NOV_11_2020_12PM_LASH_LIFT_BENSON);
+        appointmentManager.addAppointment(new AppointmentBuilder(OCT_25_2020_2PM_HAIR_TREATMENT_ALICE).build());
+        appointmentManager.addAppointment(new AppointmentBuilder(OCT_26_2020_11AM_MANICURE_CARL).build());
+        appointmentManager.addAppointment(new AppointmentBuilder(NOV_11_2020_12PM_LASH_LIFT_BENSON).build());
         return appointmentManager;
     }
 }

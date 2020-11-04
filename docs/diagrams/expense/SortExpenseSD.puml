@@ -12,8 +12,14 @@ participant "**e:ExpenseTracker**" as ExpenseTracker MODEL_COLOR
 participant "**:NonUniqueList**" as NonUniqueList MODEL_COLOR
 end box
 
-[-> SortExpenseCommand : ""execute(m)""
+[-> SortExpenseCommand : ""execute(m, h)""
 activate SortExpenseCommand
+
+note right
+""h"" refers to the HistoryManager
+which keeps track of the history of
+commands executed.
+end note
 
 SortExpenseCommand -> ModelManager : ""getExpenseTracker()""
 activate ModelManager

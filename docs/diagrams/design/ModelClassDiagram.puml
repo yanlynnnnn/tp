@@ -5,18 +5,18 @@ skinparam arrowColor MODEL_COLOR
 skinparam classBackgroundColor MODEL_COLOR
 
 Package Model <<Rectangle>>{
-Interface ReadOnlyAddressBook <<Interface>>
+Interface ReadOnlyClientManager <<Interface>>
 Interface Model <<Interface>>
 Interface ObservableList <<Interface>>
-Class AddressBook
-Class ReadOnlyAddressBook
+Class ClientManager
+Class ReadOnlyClientManager
 Class Model
 Class ModelManager
 Class UserPrefs
 Class ReadOnlyUserPrefs
 
 Package Client {
-ClassClient
+Class Client
 Class Address
 Class Email
 Class Name
@@ -32,15 +32,15 @@ Class Tag
 Class HiddenOutside #FFFFFF
 HiddenOutside ..> Model
 
-AddressBook .up.|> ReadOnlyAddressBook
+ClientManager .up.|> ReadOnlyClientManager
 
 ModelManager .up.|> Model
 Model .right.> ObservableList
-ModelManager o--> "1" AddressBook
+ModelManager o--> "1" ClientManager
 ModelManager o-left-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 
-AddressBook *--> "1" UniqueClientList
+ClientManager *--> "1" UniqueClientList
 UniqueClientList o--> "*"Client
 Client *--> Name
 Client *--> Phone
@@ -51,6 +51,8 @@ Client *--> "*" Tag
 Name -[hidden]right-> Phone
 Phone -[hidden]right-> Address
 Address -[hidden]right-> Email
+
+note right of ClientManager : Manager classes also exist for Service,\n Appointment, Revenue and Expense.
 
 ModelManager -->"1" Client : filtered list
 @enduml

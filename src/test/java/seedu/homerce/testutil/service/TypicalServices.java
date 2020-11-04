@@ -27,6 +27,17 @@ public class TypicalServices {
         .withAmount(25.9)
         .withServiceCode("SC002").build();
 
+    // Manually added
+    public static final Service TOE_MASSAGE = new ServiceBuilder().withTitle("Toe Massage")
+        .withDuration(1.5)
+        .withAmount(49.9)
+        .withServiceCode("SC003").build();
+
+    public static final Service EYE_WASH = new ServiceBuilder().withTitle("Eye Wash")
+        .withDuration(0.5)
+        .withAmount(55.5)
+        .withServiceCode("SC005").build();
+
     private TypicalServices() {
     } // prevents instantiation
 

@@ -24,7 +24,6 @@ public class ServiceCodeTest {
         assertFalse(ServiceCode.isValidServiceCode("SC1999")); // Greater than 999
         assertFalse(ServiceCode.isValidServiceCode("SC00")); // Two digits
         assertFalse(ServiceCode.isValidServiceCode("ST000")); // Does not begin with "SC"
-        assertThrows(StringIndexOutOfBoundsException.class, () -> ServiceCode.isValidServiceCode(""));
 
         // valid service code
         assertTrue(ServiceCode.isValidServiceCode("SC000"));

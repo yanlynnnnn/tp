@@ -37,6 +37,17 @@ public class Appointment implements UniqueListItem {
         this.status = new Status("n");
     }
 
+    /**
+     * Overloaded constructor for creating an appointment with edited client information.
+     */
+    public Appointment(Date appointmentDate, TimeOfDay timeOfDay, Service service, Client client, Status status) {
+        requireAllNonNull(client, status);
+        this.appointmentDate = appointmentDate;
+        this.timeOfDay = timeOfDay;
+        this.service = service;
+        this.client = client;
+        this.status = status;
+    }
 
     public Client getClient() {
         return client;
@@ -74,7 +85,6 @@ public class Appointment implements UniqueListItem {
     public void markUnDone() {
         status.markUnDone();
     }
-
 
     /**
      * Returns true if both appointments have the same identity and data fields.

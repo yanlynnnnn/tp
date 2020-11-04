@@ -12,7 +12,7 @@ import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 public class ListAppointmentCommand extends Command {
 
     public static final String COMMAND_WORD = "listapt";
-    private static final String MESSAGE_LIST_APPOINTMENT_SUCCESS = "Listed all appointments.";
+    public static final String MESSAGE_LIST_APPOINTMENT_SUCCESS = "Listed all appointments.";
 
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) {

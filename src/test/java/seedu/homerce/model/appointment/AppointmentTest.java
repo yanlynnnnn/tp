@@ -52,7 +52,7 @@ public class AppointmentTest {
 
     @Test
     public void markDone_andMarkUndone() {
-        Appointment toTest = OCT_25_2020_2PM_HAIR_TREATMENT_ALICE;
+        Appointment toTest = new AppointmentBuilder(OCT_25_2020_2PM_HAIR_TREATMENT_ALICE).build();
         assertFalse(toTest.getStatus().isDone());
         toTest.markDone();
         assertTrue(toTest.getStatus().isDone());

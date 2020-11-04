@@ -9,7 +9,6 @@ title: User Guide
 
 Welcome to the User Guide of **Homerce**!
 
-
 Are you an independent home-based beauty salon owner, scrambling between your calendar, client contacts, 
 and notebook to keep track of all your appointments, revenue and expenses? 
 Do you spend hours tabulating all your revenue and expenses just to get an idea of how your business is doing?
@@ -50,7 +49,7 @@ This section gives you step-by-step instructions on how to download and open the
 ### 3.1. Structure of this document
 
 We have structured this User Guide in a way to help you find what you need easily and quickly. 
-In the next subsection, [Section 3.2 - Reading this document](#32-reading-this-document), you can find several useful tips on how to read this guide.
+In the next subsection, [Section 3.2 - reading this document](#32-reading-this-document), you can find several useful tips on how to read this guide.
 The following section, [Section 4 - Features](#4-features), documents the six main features in **Homerce**, namely:
 
 * Service Management
@@ -64,6 +63,8 @@ The following section, [Section 4 - Features](#4-features), documents the six ma
 * Client Management
 
 * Schedule Viewing
+
+* Finance Tracking
 
 ### 3.2. Reading this document
 
@@ -102,23 +103,26 @@ The table below explains some important technical terms to help you understand a
 
 **Breakdown:** 
 * Command Word - `addexp` <br>
-* Prefixes - `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE`, `TAG` <br>
-* Parameters - `d/`, `f/`, `v/`, `dt/`, `t/`
+* Prefixes - `d/`, `f/`, `v/`, `dt/`, `t/`  <br>
+* Parameters - `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE`, `TAG`
 
 The following points explain the format of a command. 
 More examples will be provided for each command in [Section 4 - Features](#4-features).
 
-1. Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+1. Words in `UPPER_CASE` are the parameters to be supplied<br>
     - In `deletesvc s/SERVICE_CODE`, `SERVICE_CODE` is a parameter and the command can be used as `deletesvc s/SC001`.
 
 2. Items in square brackets are optional.<br>
     - `v/VALUE [t/TAG]` can be used as `v/15 t/equipment` or as `v/15`.
 
 3. Items with `…​` after them can be used multiple times, including zero times.<br>
-    - `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/blacklist`, `t/VIP t/friend` etc.
+    - `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/blacklist`, `t/VIP t/friend` etc.
 
 4. Parameters can be in any order.<br>
-    - if the command specifies `d/DESCRIPTION dt/DATE`, `dt/DATE d/DESCRIPTION` is also acceptable.
+    - If the command specifies `d/DESCRIPTION dt/DATE`, `dt/DATE d/DESCRIPTION` is also acceptable.
+    
+5. Square brackets with asterisks indicate that only one of the parameters should be specified<br>
+    - Only one parameter among `[t/TITLE]* [d/DURATION]* [p/PRICE]*` should be entered.
 
 
 ## 4. Features
@@ -139,16 +143,16 @@ The table below shows a list of command parameters that will be used in this fea
 | Parameter Name | Description | Example
 |---------|---------|---------
 |`TITLE`| The title of the service you are providing. It must be alphanumeric words not more than 50 characters long.|E.g `Lash Lift`
-|`DURATION`| The duration of the service in hours. <br> <br> It be in half hour intervals.| E.g `1.5`
+|`DURATION`| The duration of the service must be in half hour intervals.| E.g `1.5`
 |`PRICE`| The revenue received from the service. <br> <br> It must be in dollars.| E.g `5.50`
-|`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
+|`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long.| E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`INDEX`| The index number of the service in the displayed service list.<br> <br> The first entry of the list has an index number of `1` and all entries are listed in increasing index numbers. | E.g `5`
 
 #### 4.1.2. Add a new service: `addsvc`
 
 You can use this command to add a new service Homerce.
 
-Format: `addsvc t/TITLE d/DURATION p/PRICE`
+Format: `addsvc t/TITLE du/DURATION p/PRICE`
 
 <div markdown="block" class="alert alert-info">
 
@@ -168,7 +172,7 @@ Let's say you have a service with the following information you want to add into
 |`PRICE`| 38 |
 
 Adding the above service:
-1. Type `addsvc t/Lash Lift d/0.5 p/38` into the *Command Box*.
+1. Type `addsvc t/Lash Lift du/0.5 p/38` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -182,12 +186,13 @@ Outcome:
 
 You can use this command to edit an existing service in Homerce.
 
-Format: `editsvc s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*`
+Format: `editsvc INDEX [t/TITLE]* [du/DURATION]* [p/PRICE]*`
 
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:**<br>
  
+* You are unable to edit an existing service's service code. Service codes are automatically generated by Homerce when adding a new service.
 * Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
 
 </div>
@@ -197,7 +202,7 @@ Let's say you have entered the wrong duration for an added service and want to c
 of 1 hour. You can follow these instructions.
 
 Editing an existing service:
-1. Type `editsvc s/SC001 d/0.5` into the *Command Box*.
+1. Type `editsvc 1 du/0.5` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -211,7 +216,7 @@ Outcome:
 
 You can use this command to delete an existing service in Homerce.
 
-Format: `deletesvc s/SERVICE_CODE`
+Format: `deletesvc INDEX`
 
 <div markdown="block" class="alert alert-info">
 
@@ -227,7 +232,7 @@ Let's say you are no longer providing a particular service and want to delete it
 instructions.
 
 Deleting an existing service:
-1. Type `deletesvc s/SC001` into the *Command Box*.
+1. Type `deletesvc 1` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -239,9 +244,9 @@ Outcome:
 
 #### 4.1.5. Find a service by keyword: `findsvc`
 
-You can use this command to find specefic services which matches the description you provide. 
+You can use this command to find specific services which matches either the title or service code that you provide.
 
-Format: `findsvc [t/TITLE]* [s/SERVICE_CODE]`
+Format: `findsvc [t/TITLE]* [s/SERVICE_CODE]*`
 
 <div markdown="block" class="alert alert-info">
 
@@ -292,6 +297,15 @@ You can use this command to clear and delete the all the services in Homerce.
 
 Format: `clearsvc`
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Homerce will only clear services which are not scheduled in any upcoming appointment. Services that are scheduled in an upcoming appointment will not be deleted using
+the `clearsvc` command.
+
+</div>
+
 Example:
 Let's say you want to delete all the services from your list of services and start from an empty list of services. You can
 follow these instructions.
@@ -323,7 +337,7 @@ This feature uses a number of parameters, which are detailed below.
 |---------|---------|---------
 |`DATE`  | The date of the appointment. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
 |`TIME` | The time of the appointment. <br> <br> It must be in the format of `HHMM` | E.g. Typing `1730` would mean 5:30 PM.  <br> <br> E.g. Typing `0900` would mean 9:00 AM.
-|`SERVICE_CODE`| The service code is the code that identifies the type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
+|`SERVICE_CODE`| The service code is the code that identifies the type of service provided. <br> <br> It must be alphanumeric words of 5 characters long. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refer to the eyelash extension service.
 |`PHONE_NUMBER` | The phone number of the client. <br> <br> It must be a 8-digit number starting with 6, 8, or 9.| E.g. Typing `81281234` or `91235678` is a valid phone number.  <br> <br> E.g. Typing `999`or `800012345` would not be a recognised number.
 |`NAME` | The name of the client booking the appointment. <br> <br> It must consist alphanumeric characters not more than 100 characters long. | E.g. If a client with the name `Hartin Menz` called to book an appointment, the same name `Hartin Menz` would be used as the parameter for `NAME`.
 |`INDEX` | The index of the appointment in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the appointment with index-2 in the displayed list.
@@ -704,11 +718,10 @@ Outcome :
 ### 4.4 Expense Tracker
 
 Homerce understands that expense tracking is essential in managing your business expenditure.
-Thus, this feature allows you to track your operational expenses with ease. <br>
+Thus, this feature allows you to track your operational expenses seamlessly and with ease. <br><br>
 Our expense tracker supports both fixed expenses that recur monthly, and one-time expenses that are incurred only once.
-To reduce the hassle of recording the same fixed expense monthly, a fixed expense only has to be added once,
-and Homerce will automatically record the same expense for you every month.
-<br>You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`. 
+A fixed expense only has to be added once, and Homerce will automatically record the same fixed expense for you every month.
+<br><br> You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`. 
 
 #### 4.4.1. Expense Tracker Command Parameters
 
@@ -742,7 +755,7 @@ Format : `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`
 
 Example :
 
-You just purchased a bottle of conditioner for your client's hair treatment today for $15 (28-10-2020).
+You just purchased a bottle of conditioner today for $15 (28-10-2020).
 
 You can follow the steps below to add the expense to Homerce.
 
@@ -751,9 +764,10 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
+1. Homerce will display a success message, as shown below.
 
-{Example outcome screenshot}
+![addexp](images/addexp.png) <br>
+Figure x - GUI for `addexp`
 
 #### 4.4.3. Edit an expense `editexp`
 
@@ -773,7 +787,7 @@ Format : `editexp INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]
 
 Example :
 
-You misspelled the description of an expense when adding it into Homerce and wish to change it to "Eyelash Curler".
+You misspelled the description of an expense when adding it into Homerce, and wish to change it to "Eyelash Curler".
 
 You can follow the steps below to edit the expense.
 
@@ -782,9 +796,10 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
+1. Homerce will display a success message, as shown below.
 
-{Example outcome screenshot}
+![editexp](images/editexp.png) <br>
+Figure x - GUI for `editexp`
 
 #### 4.4.4. Delete an expense `deleteexp`
 
@@ -811,9 +826,10 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
+1. Homerce will display a success message, as shown below.
 
-{Example outcome screenshot}
+![deleteexp](images/deleteexp.png) <br>
+Figure x - GUI for `deleteexp`
 
 #### 4.4.5. Find an expense `findexp`
 
@@ -832,17 +848,20 @@ Format : `findexp [d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*`
 
 Example :
 
-You have just stopped operations for the day, and wish to check the total expenses incurred today (08-09-2020).
+You wish to view all the expenses you incurred today (10-10-2020).
 
 You can follow the steps below to get a list of expenses for the day.
 
 Steps :
-1. Type `findexp dt/08-09-2020` into the _Command Box_.
+1. Type `findexp dt/10-10-2020` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message. 
-2. Homerce will list out all the expenses for 08-09-2020.
+1. It will display a success message, as shown below.
+2. Homerce will list out all the expenses for 10-10-2020.
+
+![findexp](images/findexp.png) <br>
+Figure x - GUI for `findexp`
 
 #### 4.4.6. Sort expenses `sortexp`
 
@@ -869,8 +888,11 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message.
+1. It will display a success message, as shown below.
 2. Homerce will list out all the expenses sorted from highest to lowest cost.
+
+![sortexp](images/sortexp.png) <br>
+Figure x - GUI for `sortexp`
 
 #### 4.4.7. List expenses `listexp`
 
@@ -889,8 +911,11 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message.
+1. It will display a success message, as shown below.
 2. Homerce will list out all your expenses.
+
+![listexp](images/listexp.png) <br>
+Figure x - GUI for `listexp`
 
 #### 4.4.8. Clear expenses `clearexp`
 
@@ -900,7 +925,7 @@ Format : `clearexp`
 
 Example :
 
-You wish to remove all expense entries in Homerce and restart your expense management from scratch.
+You wish to remove all expense entries in Homerce and restart your expense tracking from scratch.
 
 You can follow the steps below to clear all your expenses.
 
@@ -909,7 +934,10 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message.
+1. It will display a success message, as shown below.
+
+![clearexp](images/clearexp.png) <br>
+Figure x - GUI for `clearexp`
 
 ### 4.5 Client Manager
 
@@ -1124,7 +1152,7 @@ Let's say you want to view your appointments schedule for today's week, which is
 You can follow these instructions.
 
 Steps :
-1. Type `schedule dt/27-10-2020` into the _Command Box_.
+1. Type `schedule dt/27-11-2020` into the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
@@ -1222,7 +1250,8 @@ Outcome :
 3. You can now see the breakdown of your revenue and expenses for October 2020, and see how much profit your home-based
 business brought in.
 
-{Example outcome screenshot}
+![breakdownfinance](images/breakdownfinance.png) <br>
+Figure x - GUI for `breakdownfinance`
 
 ### 4.8. Others
 
@@ -1240,7 +1269,7 @@ Undo the last change you made to Homerce.
 
 Example:
 
-If you have accidently deleted an appointment from Homerce, and wish to undo that mistake, you can follow the steps below
+If you have accidentally deleted an appointment from Homerce, and wish to undo that mistake, you can follow the steps below
 to do so.
 
 Steps: 
@@ -1421,4 +1450,3 @@ Action | Format | Examples
 **Undo** | `undo` | 
 **Help** | `help` |
 **Exit** | `exit` | 
-

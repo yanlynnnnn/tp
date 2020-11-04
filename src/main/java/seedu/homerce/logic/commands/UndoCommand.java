@@ -25,6 +25,7 @@ import seedu.homerce.model.undo.History;
 import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 import seedu.homerce.ui.expensepanel.ExpenseListPanel;
+import seedu.homerce.ui.schedulepanel.SchedulePanel;
 import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
@@ -70,8 +71,7 @@ public class UndoCommand extends Command {
             return ClientListPanel.TAB_NAME;
 
         } else { // Unknown command, default switch to schedule view
-            // TODO: Add code for schedule panel
-            return "Schedule Panel";
+            return SchedulePanel.TAB_NAME;
 
         }
     }

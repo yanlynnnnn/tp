@@ -1,7 +1,10 @@
 package seedu.homerce.model.expense.predicate;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
+import seedu.homerce.commons.util.StringUtil;
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.util.attributes.Description;
 
@@ -17,7 +20,9 @@ public class ExpenseDescriptionPredicate implements Predicate<Expense> {
 
     @Override
     public boolean test(Expense expense) {
-        return description.equals(expense.getDescription());
+        List<String> keywords = Arrays.asList(description.value.toLowerCase().split(" "));
+        return keywords.stream()
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(expense.getDescription().value, keyword));
     }
 
     @Override

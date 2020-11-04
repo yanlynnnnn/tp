@@ -1,28 +1,28 @@
 package seedu.homerce.model.client.predicate;
 
+import java.util.List;
 import java.util.function.Predicate;
 
+import seedu.homerce.commons.util.StringUtil;
 import seedu.homerce.model.client.Client;
-import seedu.homerce.model.client.Name;
 
 public class ClientNamePredicate implements Predicate<Client> {
-    private final Name clientName;
+    private final List<String> keywords;
 
-    public ClientNamePredicate(Name clientName) {
-        this.clientName = clientName;
+    public ClientNamePredicate(List<String> keywords) {
+        this.keywords = keywords;
     }
 
     @Override
     public boolean test(Client client) {
-        // As long as part of the client's name matches, it is a match.
-        return client.getName().fullName.toLowerCase()
-            .contains(clientName.fullName.toLowerCase());
+        return keywords.stream()
+                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(client.getName().fullName, keyword));
     }
 
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof ClientNamePredicate// instanceof handles nulls
-            && clientName.equals(((ClientNamePredicate) other).clientName)); // state check
+                || (other instanceof ClientNamePredicate // instanceof handles nulls
+                && keywords.equals(((ClientNamePredicate) other).keywords)); // state check
     }
 }

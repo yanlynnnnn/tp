@@ -8,12 +8,15 @@ import org.junit.jupiter.api.Test;
 import seedu.homerce.model.client.Phone;
 import seedu.homerce.model.service.ServiceCode;
 import seedu.homerce.model.util.attributes.Date;
+import seedu.homerce.testutil.appointment.AppointmentTempBuilder;
 
 public class AppointmentTempTest {
     @Test
     public void constructor_null_throwsNullPointerException() {
         assertThrows(NullPointerException.class, () ->
-            new AppointmentTemp(null, null, null, null)
+            new AppointmentTempBuilder()
+                .withDate(null).withTimeOfDay(null)
+                .withPhone(null).withServiceCode(null).build()
         );
     }
 
@@ -23,9 +26,11 @@ public class AppointmentTempTest {
         TimeOfDay timeOfDay = new TimeOfDay("1300");
         Phone phone = new Phone("98887777");
         ServiceCode serviceCode = new ServiceCode("SC001");
-        AppointmentTemp appointmentTemp = new AppointmentTemp(
-            date, timeOfDay, phone, serviceCode
-        );
+        AppointmentTemp appointmentTemp = new AppointmentTempBuilder()
+            .withDate("25-10-2020")
+            .withTimeOfDay("1300")
+            .withPhone("98887777")
+            .withServiceCode("SC001").build();
         assertEquals(appointmentTemp.getAppointmentDate(), date);
         assertEquals(appointmentTemp.getAppointmentStartTime(), timeOfDay);
         assertEquals(appointmentTemp.getPhone(), phone);

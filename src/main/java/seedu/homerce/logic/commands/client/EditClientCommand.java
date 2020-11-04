@@ -5,7 +5,6 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.homerce.model.Model.PREDICATE_SHOW_ALL_CLIENTS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -26,6 +25,7 @@ import seedu.homerce.model.client.Name;
 import seedu.homerce.model.client.Phone;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.util.attributes.Tag;
+import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
  * Edits the details of an existing client in the homerce.
@@ -48,7 +48,7 @@ public class EditClientCommand extends Command {
 
     public static final String MESSAGE_EDIT_CLIENT_SUCCESS = "Edited Client: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the homerce.";
+    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the Homerce.";
 
     private final Index index;
     private final EditClientDescriptor editClientDescriptor;
@@ -82,8 +82,7 @@ public class EditClientCommand extends Command {
         }
 
         model.setClient(clientToEdit, editedClient);
-        model.updateFilteredClientList(PREDICATE_SHOW_ALL_CLIENTS);
-        return new CommandResult(String.format(MESSAGE_EDIT_CLIENT_SUCCESS, editedClient));
+        return new CommandResult(String.format(MESSAGE_EDIT_CLIENT_SUCCESS, editedClient), ClientListPanel.TAB_NAME);
     }
 
     /**

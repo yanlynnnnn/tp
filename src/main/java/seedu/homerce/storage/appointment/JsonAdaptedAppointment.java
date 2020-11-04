@@ -7,7 +7,6 @@ import seedu.homerce.commons.exceptions.IllegalValueException;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.appointment.TimeOfDay;
 import seedu.homerce.model.client.Client;
-import seedu.homerce.model.client.Name;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.util.attributes.Date;
 import seedu.homerce.storage.client.JsonAdaptedClient;
@@ -60,7 +59,7 @@ public class JsonAdaptedAppointment {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Date.class.getSimpleName()));
         }
         if (!Date.isValidDate(date)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Date.MESSAGE_CONSTRAINTS);
         }
 
         final Date modelDate = new Date(date);
@@ -72,7 +71,13 @@ public class JsonAdaptedAppointment {
             throw new IllegalValueException(TimeOfDay.MESSAGE_CONSTRAINTS);
         }
         final TimeOfDay modelTimeOfDay = new TimeOfDay(timeOfDay);
+        if (client == null) {
+            throw new IllegalValueException("Appointment's Client field is missing!");
+        }
         final Client modelClient = client.toModelType();
+        if (service == null) {
+            throw new IllegalValueException("Appointment's Service field is missing!");
+        }
         final Service modelService = service.toModelType();
         Appointment result = new Appointment(modelDate, modelTimeOfDay, modelClient, modelService);
         if (status) {

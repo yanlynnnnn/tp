@@ -190,6 +190,8 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedClient);
 
         clientManager.setClient(target, editedClient);
+        appointmentManager.replaceClientsInAppointments(target, editedClient);
+        filteredSchedule = new FilteredList<>(appointmentManager.getAppointmentList());
     }
 
     @Override
@@ -516,11 +518,14 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return clientManager.equals(other.clientManager)
+            && appointmentManager.equals(other.appointmentManager)
+            && serviceManager.equals(other.serviceManager)
+            && revenueTracker.equals(other.revenueTracker)
+            && expenseTracker.equals(other.expenseTracker)
             && userPrefs.equals(other.userPrefs)
             && filteredClients.equals(other.filteredClients)
             && filteredServices.equals(other.filteredServices)
             && filteredAppointments.equals(other.filteredAppointments)
-            && filteredSchedule.equals(other.filteredSchedule)
             && filteredExpenses.equals(other.filteredExpenses);
     }
 }

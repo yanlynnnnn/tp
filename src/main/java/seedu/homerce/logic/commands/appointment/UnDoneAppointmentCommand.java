@@ -22,9 +22,9 @@ public class UnDoneAppointmentCommand extends Command {
         + "Parameters: INDEX (must be a positive integer)\n"
         + "Example: " + COMMAND_WORD + " 1";
 
-    private static final String MESSAGE_UNDONE_APPOINTMENT_SUCCESS = "Marked Appointment as undone: %1$s";
-    private static final String MESSAGE_DELETE_REVENUE_SUCCESS = "Deleted this ";
-    private static final String MESSAGE_FAILED_TO_DELETE_REVENUE =
+    public static final String MESSAGE_UNDONE_APPOINTMENT_SUCCESS = "Marked Appointment as undone: %1$s";
+    public static final String MESSAGE_DELETE_REVENUE_SUCCESS = "Deleted this ";
+    public static final String MESSAGE_FAILED_TO_DELETE_REVENUE =
         "Failed to delete the revenue attached to this appointment. Check storage files for corruption.";
     private final Index targetIndex;
 
@@ -55,7 +55,6 @@ public class UnDoneAppointmentCommand extends Command {
         } else {
             deletionOfRevenueResult = MESSAGE_FAILED_TO_DELETE_REVENUE;
         }
-        model.updateFilteredAppointmentList(Model.PREDICATE_SHOW_ALL_APPOINTMENTS);
         model.refreshSchedule();
         return new CommandResult(
             String.format(MESSAGE_UNDONE_APPOINTMENT_SUCCESS, appointmentToMarkUnDone)

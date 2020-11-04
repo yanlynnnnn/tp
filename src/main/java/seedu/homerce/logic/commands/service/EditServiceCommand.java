@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_DURATION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_PRICE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
-import static seedu.homerce.model.Model.PREDICATE_SHOW_ALL_SERVICES;
 
 import java.util.List;
 import java.util.Optional;
@@ -78,7 +77,6 @@ public class EditServiceCommand extends Command {
         }
 
         model.setService(serviceToEdit, editedService);
-        model.updateFilteredServiceList(PREDICATE_SHOW_ALL_SERVICES);
         return new CommandResult(String.format(MESSAGE_EDIT_SERVICE_SUCCESS, editedService));
     }
 
@@ -199,7 +197,8 @@ public class EditServiceCommand extends Command {
 
             return getTitle().equals(e.getTitle())
                 && getAmount().equals(e.getAmount())
-                && getDuration().equals(e.getDuration());
+                && getDuration().equals(e.getDuration())
+                && getServiceCode().equals(e.getServiceCode());
         }
     }
 }

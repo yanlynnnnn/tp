@@ -7,6 +7,7 @@ import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.homerce.logic.commands.CommandTestUtil.showClientAtIndex;
 import static seedu.homerce.testutil.TypicalIndexes.INDEX_FIRST_CLIENT;
 import static seedu.homerce.testutil.TypicalIndexes.INDEX_SECOND_CLIENT;
+import static seedu.homerce.testutil.appointment.TypicalAppointments.NOV_11_2020_12PM_LASH_LIFT_BENSON;
 import static seedu.homerce.testutil.client.TypicalClients.getTypicalClientManager;
 
 import org.junit.jupiter.api.Test;
@@ -84,6 +85,15 @@ public class DeleteClientCommandTest {
     }
 
     @Test
+    public void execute_deleteClientScheduledForAppointment_throwsCommandException() {
+        model.addAppointment(NOV_11_2020_12PM_LASH_LIFT_BENSON);
+
+        DeleteClientCommand deleteClientCommand = new DeleteClientCommand(INDEX_SECOND_CLIENT);
+
+        assertCommandFailure(deleteClientCommand, model, Messages.MESSAGE_CLIENT_INVALID_DELETION);
+    }
+
+    @Test
     public void equals() {
         DeleteClientCommand deleteFirstCommand = new DeleteClientCommand(INDEX_FIRST_CLIENT);
         DeleteClientCommand deleteSecondCommand = new DeleteClientCommand(INDEX_SECOND_CLIENT);
@@ -108,6 +118,7 @@ public class DeleteClientCommandTest {
     /**
      * Updates {@code model}'s filtered list to show no one.
      */
+    @Test
     private void showNoClient(Model model) {
         model.updateFilteredClientList(p -> false);
 

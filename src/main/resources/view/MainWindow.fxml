@@ -21,7 +21,7 @@
                 <URL value="@stylesheets/default.css"/>
             </stylesheets>
             <HBox styleClass="background">
-                <AnchorPane>
+                <AnchorPane HBox.hgrow="ALWAYS">
                     <StackPane fx:id="sideTabsBarPlaceholder" styleClass="side-bar-container"
                                prefHeight="80.0"
                                AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0"/>
