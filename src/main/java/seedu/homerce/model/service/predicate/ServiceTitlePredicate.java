@@ -1,7 +1,10 @@
 package seedu.homerce.model.service.predicate;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.function.Predicate;
 
+import seedu.homerce.commons.util.StringUtil;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.util.attributes.Title;
 
@@ -17,7 +20,9 @@ public class ServiceTitlePredicate implements Predicate<Service> {
 
     @Override
     public boolean test(Service service) {
-        return title.equals(service.getTitle());
+        List<String> keywords = Arrays.asList(title.value.toLowerCase().split(" "));
+        return keywords.stream()
+            .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(service.getTitle().value, keyword));
     }
 
     @Override

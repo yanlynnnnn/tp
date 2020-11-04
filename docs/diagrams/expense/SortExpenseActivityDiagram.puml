@@ -17,7 +17,7 @@ if () then ([valid command])
     in ascending order
     based on value;
 
-    else ([else])
+    else ([parameter is "desc"])
 
     :Sorts the expense list
     in descending order

@@ -15,6 +15,7 @@ import seedu.homerce.logic.parser.ParserUtil;
 import seedu.homerce.logic.parser.Prefix;
 import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.model.service.Service;
+import seedu.homerce.model.service.ServiceCode;
 import seedu.homerce.model.service.predicate.ServiceCodePredicate;
 import seedu.homerce.model.service.predicate.ServiceTitlePredicate;
 
@@ -50,9 +51,9 @@ public class FindServiceCommandParser implements Parser<FindServiceCommand> {
                 argMultimap.getValue(PREFIX_SERVICE_TITLE).get()));
         }
         if (argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).isPresent()) {
-            predicate = new ServiceCodePredicate(ParserUtil
-                .parseServiceCode(argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE)
-                    .get()));
+            ServiceCode sc = new ServiceCode(argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE)
+                .get().trim().toUpperCase());
+            predicate = new ServiceCodePredicate(sc);
         }
 
         return new FindServiceCommand(predicate);

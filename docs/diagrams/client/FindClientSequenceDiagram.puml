@@ -10,12 +10,16 @@ box Model MODEL_COLOR_T1
 participant "**m:Model**" as Model MODEL_COLOR
 end box
 
-[-> FindClientCommand : ""execute(m)""
+[-> FindClientCommand : ""execute(m, h)""
 activate FindClientCommand
 
 note right
-""p"" is the Predicate
-that checks if the given
+""h"" refers to the HistoryManager
+which keeps track of the history of
+commands executed.
+
+""p"" is the Predicate that filters
+for the desired Clients.
 end note
 
 FindClientCommand -> Model : ""updateFilteredClientList(p)""
