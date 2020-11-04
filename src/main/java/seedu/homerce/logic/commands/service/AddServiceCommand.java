@@ -18,7 +18,7 @@ import seedu.homerce.model.service.ServiceCodeGenerator;
 import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
- * Adds a service to SuperSalon.
+ * Adds a service to homerce.
  */
 public class AddServiceCommand extends Command {
 

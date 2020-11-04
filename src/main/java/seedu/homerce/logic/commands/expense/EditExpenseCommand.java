@@ -26,7 +26,7 @@ import seedu.homerce.model.util.attributes.Description;
 import seedu.homerce.model.util.attributes.Tag;
 
 /**
- * Edits the details of an existing expense in GrAB3.
+ * Edits the details of an existing expense in homerce.
  */
 public class EditExpenseCommand extends Command {
 

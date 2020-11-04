@@ -15,7 +15,7 @@ import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
- * Adds a client to the homerce.
+ * Adds a client to homerce.
  */
 public class AddClientCommand extends Command {
 

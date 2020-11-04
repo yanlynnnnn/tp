@@ -14,7 +14,7 @@ import seedu.homerce.model.manager.ServiceManager;
 import seedu.homerce.model.service.Service;
 
 /**
- * Clears the homerce.
+ * Clears the service list.
  */
 public class ClearServiceCommand extends Command {
 

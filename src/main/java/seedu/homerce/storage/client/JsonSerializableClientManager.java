@@ -14,9 +14,9 @@ import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.ReadOnlyClientManager;
 
 /**
- * An Immutable AddressBook that is serializable to JSON format.
+ * An Immutable client manager that is serializable to JSON format.
  */
-@JsonRootName(value = "addressbook")
+@JsonRootName(value = "clientmanager")
 class JsonSerializableClientManager {
 
     public static final String MESSAGE_DUPLICATE_CLIENT = "Clients list contains duplicate client(s).";
@@ -24,7 +24,7 @@ class JsonSerializableClientManager {
     private final List<JsonAdaptedClient> clients = new ArrayList<>();
 
     /**
-     * Constructs a {@code JsonSerializableAddressBook} with the given clients.
+     * Constructs a {@code JsonSerializableClientManager} with the given clients.
      */
     @JsonCreator
     public JsonSerializableClientManager(@JsonProperty("clients") List<JsonAdaptedClient> clients) {
@@ -32,16 +32,16 @@ class JsonSerializableClientManager {
     }
 
     /**
-     * Converts a given {@code ReadOnlyAddressBook} into this class for Jackson use.
+     * Converts a given {@code ReadOnlyClientManager} into this class for Jackson use.
      *
-     * @param source future changes to this will not affect the created {@code JsonSerializableAddressBook}.
+     * @param source future changes to this will not affect the created {@code JsonSerializableClientManager}.
      */
     public JsonSerializableClientManager(ReadOnlyClientManager source) {
         clients.addAll(source.getClientList().stream().map(JsonAdaptedClient::new).collect(Collectors.toList()));
     }
 
     /**
-     * Converts this homerce into the model's {@code AddressBook} object.
+     * Converts this homerce into the model's {@code ClientManager} object.
      *
      * @throws IllegalValueException if there were any data constraints violated.
      */
