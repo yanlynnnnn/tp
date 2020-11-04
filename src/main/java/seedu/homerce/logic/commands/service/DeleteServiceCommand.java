@@ -1,7 +1,6 @@
 package seedu.homerce.logic.commands.service;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.homerce.model.Model.PREDICATE_SHOW_ALL_APPOINTMENTS;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -45,8 +44,7 @@ public class DeleteServiceCommand extends Command {
             throw new CommandException(Messages.MESSAGE_SERVICES_INVALID_SERVICE_DISPLAYED_INDEX);
         }
 
-        model.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_APPOINTMENTS); // Show all appointments first
-        List<Appointment> appointments = model.getFilteredAppointmentList();
+        List<Appointment> appointments = model.getAppointmentManager().getAppointmentList();
         Service serviceToDelete = lastShownList.get(targetIndex.getZeroBased());
 
         if (!isValidDeletion(serviceToDelete, appointments)) { // If service exists in appointment today or in future

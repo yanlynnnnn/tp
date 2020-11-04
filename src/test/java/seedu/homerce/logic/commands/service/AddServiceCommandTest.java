@@ -20,7 +20,9 @@ import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.client.AddClientCommandTest;
 import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.appointment.Appointment;
+import seedu.homerce.model.manager.AppointmentManager;
 import seedu.homerce.model.manager.HistoryManager;
+import seedu.homerce.model.manager.ReadOnlyAppointmentManager;
 import seedu.homerce.model.manager.ReadOnlyServiceManager;
 import seedu.homerce.model.manager.ServiceManager;
 import seedu.homerce.model.service.Service;
@@ -90,6 +92,11 @@ public class AddServiceCommandTest {
         @Override
         public ReadOnlyServiceManager getServiceManager() {
             return new ServiceManager();
+        }
+
+        @Override
+        public ReadOnlyAppointmentManager getAppointmentManager() {
+            return new AppointmentManager();
         }
 
         @Override

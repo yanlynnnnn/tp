@@ -4,8 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_DURATION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_PRICE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
-import static seedu.homerce.model.Model.PREDICATE_SHOW_ALL_APPOINTMENTS;
-import static seedu.homerce.model.Model.PREDICATE_SHOW_ALL_SERVICES;
 
 import java.util.List;
 
@@ -52,11 +50,8 @@ public class AddServiceCommand extends Command {
     public CommandResult execute(Model model, HistoryManager historyManager) throws CommandException {
         requireNonNull(model);
 
-        // Generate unique ServiceCode for the Service before adding it to model
-        model.updateFilteredServiceList(PREDICATE_SHOW_ALL_SERVICES);
-        model.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_APPOINTMENTS);
-        List<Service> allServices = model.getFilteredServiceList();
-        List<Appointment> allAppointments = model.getFilteredAppointmentList();
+        List<Service> allServices = model.getServiceManager().getServiceList();
+        List<Appointment> allAppointments = model.getAppointmentManager().getAppointmentList();
         String serviceCode = ServiceCodeGenerator.generateNewServiceCode(allServices, allAppointments);
         toAdd.addServiceCode(serviceCode);
 
