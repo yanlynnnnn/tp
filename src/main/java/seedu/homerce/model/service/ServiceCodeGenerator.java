@@ -42,7 +42,7 @@ public class ServiceCodeGenerator {
 
         if (serviceCode.equals("")) { // No suitable service code found from codeNum 0 - 999
             throw new MaximumServiceException("You have reached the maximum number of services that you can add"
-                + "for SuperSalon");
+                + "for homerce");
         }
 
         return serviceCode;

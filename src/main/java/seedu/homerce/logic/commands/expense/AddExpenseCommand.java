@@ -15,7 +15,7 @@ import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.ui.expensepanel.ExpenseListPanel;
 
 /**
- * Adds an expense to GrAB3.
+ * Adds an expense to homerce.
  */
 public class AddExpenseCommand extends Command {
 

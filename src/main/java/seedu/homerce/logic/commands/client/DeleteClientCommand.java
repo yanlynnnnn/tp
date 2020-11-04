@@ -1,7 +1,6 @@
 package seedu.homerce.logic.commands.client;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.homerce.model.Model.PREDICATE_SHOW_ALL_APPOINTMENTS;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,7 +17,7 @@ import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
- * Deletes a client identified using it's displayed index from the homerce.
+ * Deletes a client identified using it's displayed index from homerce .
  */
 public class DeleteClientCommand extends Command {
 
@@ -46,7 +45,6 @@ public class DeleteClientCommand extends Command {
             throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
         }
 
-        model.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_APPOINTMENTS);
         List<Appointment> appointments = model.getAppointmentManager().getAppointmentList();
         Client clientToDelete = lastShownList.get(targetIndex.getZeroBased());
 

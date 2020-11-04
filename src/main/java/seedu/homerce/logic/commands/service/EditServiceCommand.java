@@ -23,7 +23,7 @@ import seedu.homerce.model.util.attributes.Amount;
 import seedu.homerce.model.util.attributes.Title;
 
 /**
- * Edits the details of an existing service in SuperSalon.
+ * Edits the details of an existing service in homerce.
  * EditServiceCommand does not allow users to edit the service code of services.
  */
 public class EditServiceCommand extends Command {

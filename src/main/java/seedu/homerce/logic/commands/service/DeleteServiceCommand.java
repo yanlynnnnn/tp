@@ -16,7 +16,7 @@ import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.service.Service;
 
 /**
- * Deletes a service identified using it's displayed index from SuperSalon's service list.
+ * Deletes a service identified using it's displayed index from homerce's service list.
  */
 public class DeleteServiceCommand extends Command {
 

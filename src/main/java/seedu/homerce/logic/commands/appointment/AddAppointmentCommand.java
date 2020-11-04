@@ -38,7 +38,7 @@ public class AddAppointmentCommand extends Command {
     public static final String MESSAGE_INVALID_PHONE = "The phone number specified does not refer "
         + "to an existing client.";
     public static final String MESSAGE_INVALID_SERVICE_CODE = "The service code specified does"
-        + " not exist in SuperSalon.";
+        + " not exist in Homerce.";
     private static final String MESSAGE_ADD_APPOINTMENT_SUCCESS = "New appointment added: %1$s";
     private final AppointmentTemp toAdd;
 

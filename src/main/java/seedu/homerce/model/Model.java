@@ -137,7 +137,7 @@ public interface Model {
 
     /**
      * Deletes the given expense.
-     * The expense must exist in GrAB3.
+     * The expense must exist in homerce.
      */
     void deleteExpense(Expense target);
 
@@ -148,7 +148,7 @@ public interface Model {
 
     /**
      * Replaces the given expense {@code target} with {@code editedExpense}.
-     * {@code target} must exist in the GrAB3.
+     * {@code target} must exist in homerce.
      */
     void setExpense(Expense target, Expense editedExpense);
 
@@ -194,7 +194,7 @@ public interface Model {
     void addService(Service toAdd);
 
     /**
-     * Returns true if a service with the same service code as {@code code} exists in SuperSalon.
+     * Returns true if a service with the same service code as {@code code} exists in homerce.
      */
     boolean hasService(ServiceCode code);
 
@@ -202,14 +202,14 @@ public interface Model {
 
     /**
      * Deletes the given Service.
-     * The Service must exist in SuperSalon.
+     * The Service must exist in homerce.
      */
     void deleteService(Service target);
 
     /**
      * Replaces the given service {@code target} with {@code editedService}.
-     * {@code target} must exist in SuperSalon's service list.
-     * The service identity of {@code editedService} must not be the same as another existing service in SuperSalon.
+     * {@code target} must exist in homerce's service list.
+     * The service identity of {@code editedService} must not be the same as another existing service in homerce.
      */
     void setService(Service target, Service editedService);
 
@@ -237,7 +237,7 @@ public interface Model {
 
     /**
      * Deletes the given revenue.
-     * The revenue must exist in GrAB3.
+     * The revenue must exist in homerce.
      */
     void deleteRevenue(Revenue target);
 
@@ -290,7 +290,7 @@ public interface Model {
 
     /**
      * Replaces the given appointment {@code target} with {@code editedAppointment}.
-     * {@code target} must exist in the SuperSalon.
+     * {@code target} must exist in homerce.
      */
     void setAppointment(Appointment target, Appointment editedAppointment);
 

@@ -1,8 +1,6 @@
 package seedu.homerce.logic.commands.client;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.homerce.model.Model.PREDICATE_SHOW_ALL_APPOINTMENTS;
-import static seedu.homerce.model.Model.PREDICATE_SHOW_ALL_CLIENTS;
 
 import java.util.List;
 
@@ -15,10 +13,8 @@ import seedu.homerce.model.client.Client;
 import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.HistoryManager;
 
-
-
 /**
- * Clears the homerce.
+ * Clears the client list.
  */
 public class ClearClientCommand extends Command {
 
@@ -30,11 +26,8 @@ public class ClearClientCommand extends Command {
     public CommandResult execute(Model model, HistoryManager historyManager) throws CommandException {
         requireNonNull(model);
 
-        model.updateFilteredClientList(PREDICATE_SHOW_ALL_CLIENTS);
-        model.updateFilteredAppointmentList(PREDICATE_SHOW_ALL_APPOINTMENTS);
-
-        List<Client> allClients = model.getFilteredClientList();
-        List<Appointment> allAppointments = model.getFilteredAppointmentList();
+        List<Client> allClients = model.getClientManager().getClientList();
+        List<Appointment> allAppointments = model.getAppointmentManager().getAppointmentList();
 
         boolean isAnyClientScheduled = allClients.stream()
                 .anyMatch(client -> !DeleteClientCommand.isValidDeletion(client, allAppointments));
