@@ -303,8 +303,8 @@ Format: `clearsvc`
 
 **:information_source: Note:**<br>
  
-* Homerce will only clear services which are not scheduled in any upcoming appointment. Services that are scheduled in an upcoming appointment will not be deleted using
-the `clearsvc` command.
+* You are unable to clear services if there are any existing services that have been scheduled in your upcoming appointments. Please remove these
+appointments before proceeding to clear your services.
 
 </div>
 

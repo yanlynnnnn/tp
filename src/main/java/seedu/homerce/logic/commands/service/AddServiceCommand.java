@@ -11,6 +11,7 @@ import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.Model;
+import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCodeGenerator;
@@ -49,9 +50,9 @@ public class AddServiceCommand extends Command {
     public CommandResult execute(Model model, HistoryManager historyManager) throws CommandException {
         requireNonNull(model);
 
-        // Generate unique ServiceCode for the Service before adding it to model
-        List<Service> lastShownList = model.getFilteredServiceList();
-        String serviceCode = ServiceCodeGenerator.generateNewServiceCode(lastShownList);
+        List<Service> allServices = model.getServiceManager().getServiceList();
+        List<Appointment> allAppointments = model.getAppointmentManager().getAppointmentList();
+        String serviceCode = ServiceCodeGenerator.generateNewServiceCode(allServices, allAppointments);
         toAdd.addServiceCode(serviceCode);
 
         model.addService(toAdd);
