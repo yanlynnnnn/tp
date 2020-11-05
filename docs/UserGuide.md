@@ -1223,7 +1223,7 @@ The table below shows a list of command parameters that will be used.
 | Parameter Name | Description | Example
 |---------|---------|---------
 |`MONTH` | The month on which the revenue and expenses are added. <br> <br> It must be a valid integer between 1 - 12. | E.g. Typing '12' would refer to the month of December.
-|`YEAR`| The year on which the revenue and expenses are added. <br> <br> It must be a valid year. | E.g. Typing '2020' would refer to the year 2020.
+|`YEAR`| The year on which the revenue and expenses are added. <br> <br> It must be a valid year. A valid year is defined as a year with 1 - 4 digits, from 0 - 9999 | E.g. Typing '2020' would refer to the year 2020.
 
 #### 4.7.2. Breakdown finances `breakdownfinance`
 

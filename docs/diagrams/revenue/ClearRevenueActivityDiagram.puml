@@ -13,8 +13,6 @@ start
 
 :Shows a success message;
 
-:Shows an invalid command message;
-
 stop
 
 @enduml

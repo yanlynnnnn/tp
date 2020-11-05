@@ -476,12 +476,12 @@ be sorted in ascending order based on value, from lowest to highest value.
 
 The following steps will describe the execution of the `SortRevenueCommand` in detail, assuming that no errors are encountered.
 1. When the `execute()` method of the `SortRevenueCommand` is called, the `ModelManager`'s `getRevenueTracker()` method is called.
-2. The `ModelManager` will return the existing `ReveneueTracker` to the `SortRevenueCommand`.
-3. The `ModelManager` will call the `sort(isAsceding)` method on the `RevenueTracker`.
-4. The `RevenueTracker` then calls the `sort(isAscending)` method on `NonUniqueList`, which sorts the revenue list based on the order specified.
-5. The `ObservableList` of revenues is updated to reflect the newly sorted list.
-6. The `Ui` component will detect this change and update the GUI.
-7. Assuming that the above steps are all successful, the `SortRevenueCommand` will then create a `CommandResult` object and return the result.
+1. The `ModelManager` will return the existing `ReveneueTracker` to the `SortRevenueCommand`.
+1. The `ModelManager` will call the `sort(isAsceding)` method on the `RevenueTracker`.
+1. The `RevenueTracker` then calls the `sort(isAscending)` method on `NonUniqueList`, which sorts the revenue list based on the order specified.
+1. The `ObservableList` of revenues is updated to reflect the newly sorted list.
+1. The `Ui` component will detect this change and update the GUI.
+1. Assuming that the above steps are all successful, the `SortRevenueCommand` will then create a `CommandResult` object and return the result.
 
 The following Sequence Diagram summarises the aforementioned steps. 
 
@@ -504,15 +504,11 @@ When the user enters the `clearrev` command to sort the revenue list, the user i
 and clear the revenue list. For example, if there are 5 entries in the list, all the revenues will be cleared.
 
 The following steps will describe the execution of the `ClearRevenueCommand` in detail, assuming that no errors are encountered.
-1. When the `execute()` method of the `ClearRevenueCommand` is called, the `ModelManager`'s `setRevenueTracker()` method is called.
-1. 
-
-2. The `ModelManager` will return the existing `ReveneueTracker` to the `SortRevenueCommand`.
-3. The `ModelManager` will call the `sort(isAsceding)` method on the `RevenueTracker`.
-4. The `RevenueTracker` then calls the `sort(isAscending)` method on `NonUniqueList`, which sorts the revenue list based on the order specified.
-5. The `ObservableList` of revenues is updated to reflect the newly sorted list.
-6. The `Ui` component will detect this change and update the GUI.
-7. Assuming that the above steps are all successful, the `SortRevenueCommand` will then create a `CommandResult` object and return the result.
+1. When the `execute()` method of the `ClearRevenueCommand` is called, the `ModelManager`'s `setRevenues()` method is called.
+1. The `RevenueTracker` then calls the `setItems()` method on `NonUniqueList`, which set the revenue entries in the revenue list.
+1. The `ObservableList` of revenues is updated to reflect the newly sorted list.
+1. The `Ui` component will detect this change and update the GUI.
+1. Assuming that the above steps are all successful, the `ClearRevenueCommand` will then create a `CommandResult` object and return the result.
 
 The following Sequence Diagram summarises the aforementioned steps. 
 
@@ -524,7 +520,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 **Sort Revenue**
 
-**Aspect: Sorting of revenues by value is done whenever `sortrev` is done**
+**Aspect: Sorting of revenues by value is executed whenever `sortrev` is done**
 
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
@@ -535,6 +531,18 @@ Reason for choosing option 2:
 * The effort needed to implement option 1 is too great to justify the improvements in performance.
 * Use of well-tested libraries like `FXCollections` lowers the chance making mistakes during the implementation of this feature. 
 
+**Clear Revenue**
+
+**Aspect: Clear all revenue entries from revenue list when `clearrev` is called**
+
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Retrieve the revenue list and run build it arraylist clear method | Convenient usage of built-in Java method. | Performance might be slow when there is a huge data set. |
+| **Option 2 (current choice)** <br> Creates a new empty list to replace the current list | Convenient usage of`NonUniqueList` method. Implementation effort is minimum. | A totally new object have to be created. |
+
+Reason for choosing option 2:
+* The effort needed to implement option 1 is too great.
+* Performance will be improved when having big data set.
 
 ### 4.7 Expense Tracker
 
