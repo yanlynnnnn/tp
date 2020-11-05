@@ -679,43 +679,51 @@ command errors.
 
 The current implementation of undo makes use of a `HistoryManager`. A `HistoryManager` maintains a `History` list, where
 each `History` object holds a particular state of the `Model` and `Command` that was executed to change the state of that
-`Model`. When the user executes the `undo` command, the `HistoryManager` will update the current state of Homerce
-to the previous state in the `History` list.
+`Model`. When the user executes the `undo` command, the `HistoryManager` will give the previous `History` of Homerce,
+and `Model#replaceModel()` will be called to update the current state of Homerce to the previous `Model` in the `History`.
 
-In this section, we will outline the `breakdownfinance` command using the following Activity Diagram.
+In this section, we will show an example usage scenario and how the `undo` mechanism behaves at each step:
 
-![Activity diagram of BreakdownFinance](images/BreakdownFinanceActivityDiagram.png)
+Step 1: The user launches the application for the first time. The `HistoryManager` will be initialized with an empty list of histories.
 
-*Figure 13. Workflow of a `breakdownfinance` command*
+Step 2: The user executes `deletesvc 5` command to delete the 5th service in Homerce's service list. When the `LogicManager`
+executes the `CommandResult` from `DeleteServiceCommand`, `LogicManager#execute()` will call `HistoryManager#addToHistory()`,
+causing the state initial state of the `Model` prior to the execution of `deletesvc 5` to be saved in the `History` of
+`HistoryManager`.
 
-When the user enters the `breakdownfinance` command to view the monthly breakdown, the user input command undergoes the same command parsing as described in 
-[Section 3.3 Logic Component](#33-logic-component). During the execution of `breakdownfinance`, 
+![Undo State 0](images/UndoState0.png)
 
-The following steps will describe the execution of the `BreakdownFinanceCommand` in detail, assuming that no errors are encountered.
-1. When the `execute()` method of the `BreakdownFinanceCommand` is called, a new `ExpenseMonthYearPredicate` and `RevenueMonthYearPredicate` is created with the parsed `Month` and `Year`.
-2. The `ModelManager`'s `updateFilteredExpenseList()` and `updateFilteredRevenueList()` method is called using the `ExpenseMonthYearPredicate` and `RevenueMonthYearPredicate` respectively.
-3. The `Model`'s list of expenses and revenue is updated to contain only the expenses and revenue in the inputted `Month` and `Year`.
-4. The `Ui` component will detect this change and update the GUI by opening a pop-up window to show the financial breakdown information.
-5. Assuming that the above steps are all successful, the `BreakdownFinanceCommand` will then create a `CommandResult` object and return the result.
+*Figure 15. State HistoryManager after `deletesvc 5` command*
 
-The following Sequence Diagram summarises the aforementioned steps. 
+Step 3: The user executes `deletecli 5` command to delete the 5th person in Homerce's client list. When the `LogicManager`
+executes the `CommandResult` from `DeleteClientCommand`, `LogicManager#execute()` will call `HistoryManager#addToHistory()`,
+causing the state initial state of the `Model` prior to the execution of `deletecli 5` to be saved in the `History` of
+`HistoryManager`.
 
-![Sequence diagram breakdownfiance](images/BreakdownFinanceSequenceDiagram.png)
+![Undo State 1](images/UndoState1.png)
 
-*Figure 14. Execution of an `breakdownfinance` command*
+*Figure 16. State HistoryManager after `deletecli 5` command*
+
+Step 4: The user now decides that deleting the client was a mistake, and decides to undo that action by executing the `undo`
+command. The `undo` command will call `HistoryManager#getPreviousHistory()`, which will return the `History` object which stores
+the previous state of Homerce's `Model`, as well as the command that caused the change of the previous state to the current one.
+The current state of Homerce's `Model` will be updated to the state of the `Model` in the `History` object from the `HistoryManager`.
+
+![Undo State 2](images/UndoState2.png)
+
+*Figure 17. State HistoryManager after `undo` command*
 
 #### 4.8.3 Design Consideration
 
-**Aspect: Which class to store Homerce's financial information**
+**Aspect: How undo executes**
 
 |              |  **Pros**  | **Cons** |
 | -------------|------------|----------|
-| **Option 1 (current choice)** <br> Use revenue and expenses from `RevenueTracker` and `ExpenseTracker` <br> in the `BreakdownFinance` command. Do not create a new `FinanceTracker` class | Avoids duplication of code as the same list of expenses and services are used in `ExpenseTracker` and `RevenueTracker`| Increases coupling between `BreakdownFinanceCommand` code and `RevenueTracker` as well as `ExpenseTracker`|
-| **Option 2** <br> Place the revenue and expenses as fields in a new `FinanceTracker` class | Provides more freedom for manipulation of revenue and expense data as `FinanceTracker` maintains a separate state for the list of expenses and revenue. | Violates the Don't Repeat Yourself(DRY) principle as the information for `ExpenseTracker` and `RevenueTracker` is duplicated in a new `FinanceTracker` class|
+| **Option 1 (current choice)** <br> Saves the entire model. | Easy to implement. | May have performance issues in terms of memory usage. |
+| **Option 2** <br> Individual command knows how to undo itself. | Will use less memory (e.g. for `deletecli`, just save the client being deleted). | We must ensure that the implementation of each individual command are correct. |
 
 Reason for choosing option 1:
-* Using the same instance of `ExpenseTracker` and `RevenueTracker` to obtain the list of expenses and revenue ensures that expenses and revenue data are consistent without needing to update the lists in `ExpenseTracker`, `RevenueTracker` as well as `FinanceTracker`.
-* The `execute()` command of `BreakdownFinanceCommand` already takes in the `Model` which has `ExpenseTracker` and `RevenueTracker` as attributes. It is unnecessary to create a new `FinanceTracker` class as an attribute for `Model` to store and duplicate information that already exists.
+* Saving the entire model allows the undo feature to be easily extendable to future addition of new commands that change the state of the model in different ways. 
 
 ## 5. Documentation
 Refer to the guide [here](Documentation.md).
