@@ -744,21 +744,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 UC001: Add a Service
 Add a service provided by the business into Homerce.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Appointment list must exist.**
+<b>Preconditions: Appointment list must exist.</b>
 
-**Guarantees: A new service will be added to the service list upon successful command.**
+<b>Guarantees: A new service will be added to the service list upon successful command.</b>
 
-**MSS**
+<b>MSS</b>
 1. User adds a service by providing details.
 1. Homerce adds the service to the service list.
 1. Homerce displays the updated list and a successful message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 1a. Incomplete details provided.
   * 1a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -768,15 +768,15 @@ Use case ends.
 UC002: Edit a Service
 Edit the details of an existing service.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Service exists in service list.**
+<b>Preconditions: Service exists in service list.</b>
 
-**Guarantees: Updated service list with new service details.**
+<b>Guarantees: Updated service list with new service details.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all services.
 1. Homerce shows a list of services.
 1. User edits an existing service by providing the details.
@@ -785,7 +785,7 @@ Edit the details of an existing service.
 1. Homerce displays the updated list and a successful message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -799,15 +799,15 @@ Use case ends.
 UC003: Delete a Service
 Delete the selected service from the service list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Service exists in service list.**
+<b>Preconditions: Service exists in service list.</b>
 
-**Guarantees: Updated service list with service specified by user deleted.**
+<b>Guarantees: Updated service list with service specified by user deleted.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all services.
 1. Homerce shows a list of services.
 1. User requests to delete a specific service.
@@ -816,7 +816,7 @@ Delete the selected service from the service list.
 1. Homerce displays a successful message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -826,22 +826,22 @@ Use case ends.
 UC004: Find a Service
 Find a service in the service list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Service exists in service list.**
+<b>Preconditions: Service exists in service list.</b>
 
-**Guarantees: Display all services in the service list that matches the search value.**
+<b>Guarantees: Display all services in the service list that matches the search value.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all services that match the search value.
 1. Homerce searches for services that match search value.
 1. Homerce shows a list of all services that match the search value.
 1. Homerce displays a message stating the amount of services listed.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 2a. No service matches the search value.
   * 2a1. Homerce displays an empty list.
   Use case resumes at step 4.
@@ -851,21 +851,21 @@ Use case ends.
 UC005: List Services
 List all the services in the service list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Service exists in service list.**
+<b>Preconditions: Service exists in service list.</b>
 
-**Guarantees: All services in the service list will be displayed.**
+<b>Guarantees: All services in the service list will be displayed.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all services.
 1. Homerce displays all services in the service list.
 1. Homerce displays a successful listed message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 1a. No service in service list.
   * 1a1. Homerce displays an empty list.
   Use case resumes at step 3.
@@ -875,15 +875,15 @@ Use case ends.
 UC006: Clear Services
 Clear all services in the service list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Service list must exist.**
+<b>Preconditions: Service list must exist.</b>
 
-**Guarantees: An empty service list.**
+<b>Guarantees: An empty service list.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to clear the list.
 1. Homerce displays an empty list and a successful message.
 Use case ends.
@@ -895,21 +895,21 @@ Use case ends.
 UC007: Add a Client
 Add a client into Homerce.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Client list must exist.**
+<b>Preconditions: Client list must exist.</b>
 
-**Guarantees: A new client will be added to the client list upon successful command.**
+<b>Guarantees: A new client will be added to the client list upon successful command.</b>
 
-**MSS**
+<b>MSS</b>
 1. User adds a client by providing details.
 1. Homerce adds the client to the client list.
 1. Homerce displays the updated list and a successful message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 1a. Incomplete details provided.
   * 1a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -919,15 +919,15 @@ Use case ends.
 UC008: Edit a Client's Details
 Edit the details of an existing client.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Client exists in client list.**
+<b>Preconditions: Client exists in client list.</b>
 
-**Guarantees: Updated client list with new client details.**
+<b>Guarantees: Updated client list with new client details.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all clients.
 1. Homerce shows a list of clients.
 1. User edits an existing client's details by providing the updated details.
@@ -936,7 +936,7 @@ Edit the details of an existing client.
 1. Homerce displays the updated list and a successful message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -950,15 +950,15 @@ Use case ends.
 UC009: Delete a Client
 Delete the selected client from the client list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Client exists in client list.**
+<b>Preconditions: Client exists in client list.</b>
 
-**Guarantees: Updated client list with client specified by user deleted.**
+<b>Guarantees: Updated client list with client specified by user deleted.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all clients.
 1. Homerce shows a list of clients.
 1. User requests to delete a specific clients.
@@ -967,7 +967,7 @@ Delete the selected client from the client list.
 1. Homerce displays a successful message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -977,22 +977,22 @@ Use case ends.
 UC010: Find a Client
 Find a client in the client list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Client exists in client list.**
+<b>Preconditions: Client exists in client list.</b>
 
-**Guarantees: Display all clients in the client list that matches the search value.**
+<b>Guarantees: Display all clients in the client list that matches the search value.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all clients that match the search value.
 1. Homerce searches for clients that match search value.
 1. Homerce shows a list of all clients that match the search value.
 1. Homerce displays a message stating the amount of clients listed.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 2a. No client matches the search value.
   * 2a1. Homerce displays an empty list.
   Use case resumes at step 4.
@@ -1002,21 +1002,21 @@ Use case ends.
 UC011: List Clients
 List all the clients in the client list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Clients exists in client list.**
+<b>Preconditions: Clients exists in client list.</b>
 
-**Guarantees: All clients in the client list will be displayed.**
+<b>Guarantees: All clients in the client list will be displayed.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all clients.
 1. Homerce displays all clients in the client list.
 1. Homerce displays a successful listed message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 1a. No client in client list.
   * 1a1. Homerce displays an empty list.
   Use case resumes at step 3.
@@ -1026,15 +1026,15 @@ Use case ends.
 UC012: Clear Clients
 Clear all clients in the client list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Client list must exist.**
+<b>Preconditions: Client list must exist.</b>
 
-**Guarantees: An empty client list.**
+<b>Guarantees: An empty client list.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to clear the list.
 1. Homerce displays an empty list and a successful message.
 Use case ends.
@@ -1046,21 +1046,21 @@ Use case ends.
 UC013: Add an Appointment
 Schedule an appointment into Homerce.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Appointment list must exist.**
+<b>Preconditions: Appointment list must exist.</b>
 
-**Guarantees: A new appointment will be added to the appointment list upon successful command.**
+<b>Guarantees: A new appointment will be added to the appointment list upon successful command.</b>
 
-**MSS**
+<b>MSS</b>
 1. User adds an appointment by providing details.
 1. Homerce adds the appointment to the appointment list.
 1. Homerce displays the updated list and a successful message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 1a. Incomplete details provided.
   * 1a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -1070,15 +1070,15 @@ Use case ends.
 UC014: Edit an Appointment Details
 Edit the details of an existing appointment.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Appointment exists in appointment list.**
+<b>Preconditions: Appointment exists in appointment list.</b>
 
-**Guarantees: Updated appointment list with new appointment details.**
+<b>Guarantees: Updated appointment list with new appointment details.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all appointments.
 1. Homerce shows a list of appointments.
 1. User edits an existing appointment details by providing the updated details.
@@ -1087,7 +1087,7 @@ Edit the details of an existing appointment.
 1. Homerce displays the updated list and a successful message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -1101,15 +1101,15 @@ Use case ends.
 UC015: Delete an Appointment
 Delete the selected appointment from the appointment list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Appointment exists in appointment list.**
+<b>Preconditions: Appointment exists in appointment list.**
 
-**Guarantees: Updated appointment list with appointment specified by user deleted.**
+<b>Guarantees: Updated appointment list with appointment specified by user deleted.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all appointments.
 1. Homerce shows a list of appointments.
 1. User requests to delete a specific appointments.
@@ -1118,7 +1118,7 @@ Delete the selected appointment from the appointment list.
 1. Homerce displays a successful message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -1128,22 +1128,22 @@ Use case ends.
 UC016: Find an Appointment
 Find an appointment in the appointment list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Appointment exists in appointment list.**
+<b>Preconditions: Appointment exists in appointment list.**
 
-**Guarantees: Display all appointments in the appointment list that matches the search value.**
+<b>Guarantees: Display all appointments in the appointment list that matches the search value.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all appointments that match the search value.
 1. Homerce searches for appointments that match search value.
 1. Homerce shows a list of all appointments that match the search value.
 1. Homerce displays a message stating the amount of appointments listed.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 2a. No appointment matches the search value.
   * 2a1. Homerce displays an empty list.
   Use case resumes at step 4.
@@ -1153,21 +1153,21 @@ Use case ends.
 UC017: List Appointments
 List all the appointments in the appointment list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Appointments exists in appointment list.**
+<b>Preconditions: Appointments exists in appointment list.</b>
 
-**Guarantees: All appointments in the appointment list will be displayed.**
+<b>Guarantees: All appointments in the appointment list will be displayed.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all appointments.
 1. Homerce displays all appointments in the appointment list.
 1. Homerce displays a successful listed message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 1a. No appointment in appointment list.
   * 1a1. Homerce displays an empty list.
   Use case resumes at step 3.
@@ -1177,15 +1177,15 @@ Use case ends.
 UC018: Clear Appointments
 Clear all appointments in the appointment list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Appointment list must exist.**
+<b>Preconditions: Appointment list must exist.</b>
 
-**Guarantees: An empty appointment list.**
+<b>Guarantees: An empty appointment list.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to clear the list.
 1. Homerce displays an empty list and a successful message.
 Use case ends.
@@ -1195,15 +1195,15 @@ Use case ends.
 UC019: Appointment Done
 Indicate that the appointment have been done.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Appointment exists in appointment list.**
+<b>Preconditions: Appointment exists in appointment list.</b>
 
-**Guarantees: Appointment indicated as done.**
+<b>Guarantees: Appointment indicated as done.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all appointments.
 1. Homerce shows a list of appointments.
 1. User requests to mark a specific appointment as done.
@@ -1212,7 +1212,7 @@ Indicate that the appointment have been done.
 1. Homerce displays all appointments in the appointment list.
 1. Homerce displays a successful listed message.
 
-**Extensions**
+<b>Extensions</b>
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -1222,15 +1222,15 @@ Indicate that the appointment have been done.
 UC020: Appointment Undone
 Indicate that the appointment has not been completed.
  
-**System: Homerce**
+<b>System: Homerce</b>
   
-**Actor: User**
+<b>Actor: User</b>
   
-**Preconditions: Appointment exists in appointment list, and it is indicated as done.**
+<b>Preconditions: Appointment exists in appointment list, and it is indicated as done.</b>
   
-**Guarantees: Appointment indicated as undone.**
+<b>Guarantees: Appointment indicated as undone.**
  
-**MSS**
+<b>MSS</b>
 1. User requests to list all appointments.
 1. Homerce shows a list of appointments.
 1. User requests to mark a specific appointment as undone.
@@ -1239,7 +1239,7 @@ Indicate that the appointment has not been completed.
 1. Homerce displays all appointments in the appointment list.
 1. Homerce displays a successful listed message.
   
-**Extensions**
+<b>Extensions</b>
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -1251,21 +1251,21 @@ Indicate that the appointment has not been completed.
 UC021: Add an Expense
 Add an expense incurred by the business into Homerce.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Expense list must exist.**
+<b>Preconditions: Expense list must exist.</b>
 
-**Guarantees: A new expense will be added to the expense list upon successful command.**
+<b>Guarantees: A new expense will be added to the expense list upon successful command.</b>
 
-**MSS**
+<b>MSS</b>
 1. User adds an expense by providing details.
 1. Homerce adds the expense to the expense list.
 1. Homerce displays the updated list and a successful message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 1a. Incomplete details provided.
   * 1a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -1275,15 +1275,15 @@ Use case ends.
 UC022: Edit an Expense
 Edit the details of an existing expense.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Expense exists in expense list.**
+<b>Preconditions: Expense exists in expense list.</b>
 
-**Guarantees: Updated expense list with new expense details.**
+<b>Guarantees: Updated expense list with new expense details.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all expenses.
 1. Homerce shows a list of expenses.
 1. User edits an existing expense by providing the details.
@@ -1292,7 +1292,7 @@ Edit the details of an existing expense.
 1. Homerce displays the updated list and a successful message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -1306,15 +1306,15 @@ Use case ends.
 UC023: Delete an Expense
 Delete the selected expense from the expense list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Expense exists in expense list.**
+<b>Preconditions: Expense exists in expense list.</b>
 
-**Guarantees: Updated expense list with expense specified by user deleted.**
+<b>Guarantees: Updated expense list with expense specified by user deleted.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all expenses.
 1. Homerce shows a list of expenses.
 1. User requests to delete a specific expenses.
@@ -1323,7 +1323,7 @@ Delete the selected expense from the expense list.
 1. Homerce displays a successful message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
@@ -1333,22 +1333,22 @@ Use case ends.
 UC024: Find an Expense
 Find an expense in the expense list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Expense exists in expense list.**
+<b>Preconditions: Expense exists in expense list.</b>
 
-**Guarantees: Display all expenses in the expense list that matches the search value.**
+<b>Guarantees: Display all expenses in the expense list that matches the search value.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all expenses that match the search value.
 1. Homerce searches for expenses that match search value.
 1. Homerce shows a list of all expenses that match the search value.
 1. Homerce displays a message stating the amount of expenses listed.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 2a. No expense matches the search value.
   * 2a1. Homerce displays an empty list.
   Use case resumes at step 4.
@@ -1358,21 +1358,21 @@ Use case ends.
 UC025: List Expenses
 List all the expenses in the expense list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Expense exists in expense list.**
+<b>Preconditions: Expense exists in expense list.</b>
 
-**Guarantees: All expenses in the expense list will be displayed.**
+<b>Guarantees: All expenses in the expense list will be displayed.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all expenses.
 1. Homerce displays all expenses in the expense list.
 1. Homerce displays a successful listed message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 1a. No expense in revenue list.
   * 1a1. Homerce displays an empty list.
   Use case resumes at step 3.
@@ -1382,15 +1382,15 @@ Use case ends.
 UC026: Clear Expenses
 Clear all expenses in the expense list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Expense list must exist.**
+<b>Preconditions: Expense list must exist.</b>
 
-**Guarantees: An empty expense list.**
+<b>Guarantees: An empty expense list.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to clear the list.
 1. Homerce displays an empty list and a successful message.
 Use case ends.
@@ -1402,15 +1402,15 @@ Use case ends.
 UC027: Add a Revenue
 Add a revenue earned by the business into Homerce.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Revenue list must exist.**
+<b>Preconditions: Revenue list must exist.</b>
 
-**Guarantees: A new revenue will be added to the revenue list upon marking the appointment as done.**
+<b>Guarantees: A new revenue will be added to the revenue list upon marking the appointment as done.</b>
 
-**MSS**
+<b>MSS</b>
 1. User <ins>mark appointment as done(UC019)</ins>.
 1. Homerce adds the revenue generated from appointment to the revenue list.
 1. Homerce displays a successful message.
@@ -1421,15 +1421,15 @@ Use case ends.
 UC028: Delete an Revenue
 Delete the selected revenue from the revenue list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Revenue exists in revenue list.**
+<b>Preconditions: Revenue exists in revenue list.</b>
 
-**Guarantees: Revenue specified by user deleted upon marking the appointment as undone.**
+<b>Guarantees: Revenue specified by user deleted upon marking the appointment as undone.</b>
 
-**MSS**
+<b>MSS</b>
 1. User <ins>mark appointment as done(UC019)</ins>.
 1. Homerce remove the revenue generated from appointment to the revenue list.
 1. Homerce displays a successful message.
@@ -1440,22 +1440,22 @@ Use case ends.
 UC029: Find a Revenue
 Find a revenue in the revenue list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Revenue exists in revenue list.**
+<b>Preconditions: Revenue exists in revenue list.</b>
 
-**Guarantees: Display all revenues in the revenue list that matches the search value.**
+<b>Guarantees: Display all revenues in the revenue list that matches the search value.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all revenues that match the search value.
 1. Homerce searches for revenues that match search value.
 1. Homerce shows a list of all revenues that match the search value.
 1. Homerce displays a message stating the amount of revenues listed.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 2a. No revenue matches the search value.
   * 2a1. Homerce displays an empty list.
   Use case resumes at step 4.
@@ -1465,21 +1465,21 @@ Use case ends.
 UC030: List Revenues
 List all the revenues in the revenue list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Revenue exists in revenue list.**
+<b>Preconditions: Revenue exists in revenue list.</b>
 
-**Guarantees: All revenues in the revenue list will be displayed.**
+<b>Guarantees: All revenues in the revenue list will be displayed.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to list all revenues.
 1. Homerce displays all revenues in the revenue list.
 1. Homerce displays a successful listed message.
 Use case ends.
 
-**Extensions**
+<b>Extensions</b>
 * 1a. No revenue in revenue list.
   * 1a1. Homerce displays an empty list.
   Use case resumes at step 3.
@@ -1489,15 +1489,15 @@ Use case ends.
 UC031: Clear Revenues
 Clear all revenues in the revenue list.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Revenue list must exist.**
+<b>Preconditions: Revenue list must exist.</b>
 
-**Guarantees: An empty revenue list.**
+<b>Guarantees: An empty revenue list.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to clear the list.
 1. Homerce displays an empty list and a successful message.
 Use case ends.
@@ -1508,15 +1508,15 @@ Use case ends.
 UC032: View appointment schedule
 View the schedule of appointments for the current week.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Appointments list must exist.**
+<b>Preconditions: Appointments list must exist.</b>
 
-**Guarantees: A view of the schedule of appointments.**
+<b>Guarantees: A view of the schedule of appointments.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to view the schedule of appointments.
 1. Homerce navigates to the schedule tab and displays a successful message.
 Use case ends.
@@ -1526,22 +1526,19 @@ Use case ends.
 UC033: Breakdown finances
 Creates a breakdown of revenues, expenses and profit for a given month of a year.
 
-**System: Homerce**
+<b>System: Homerce</b>
 
-**Actor: User**
+<b>Actor: User</b>
 
-**Preconditions: Revenue and Expense lists must exist.**
+<b>Preconditions: Revenue and Expense lists must exist.</b>
 
-**Guarantees: A breakdown of revenue, expenses, and profit for the specified time period.**
+<b>Guarantees: A breakdown of revenue, expenses, and profit for the specified time period.</b>
 
-**MSS**
+<b>MSS</b>
 1. User requests to view a breakdown of finances for a particular month of a year.
 1. Homerce displays a new window which shows the breakdown of finances.
 Use case ends.
 </pre>
-
-
-*{More to be added}*
 
 ## Appendix D: Non-Functional Requirements
 
