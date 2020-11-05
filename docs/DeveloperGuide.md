@@ -289,16 +289,16 @@ In this section, we will use the following Activity Diagram to outline the gener
 *Figure 3. Workflow of a `addsvc` command*
 
 When the user enters the `addsvc` command to add a new service, the user input command undergoes the same command parsing as described in 
-[Section 3.3 Logic Component](#33-logic-component). During the execution of `AddServiceCommand`, Homerce will check the existing list
-of services and all the service codes assigned to it. From the existing list of service codes, Homerce will then generate the
-next smallest service code ranging from "SC000" to "SC999". For example, if Homerce already has an existing list of services with
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `AddServiceCommand`, Homerce will check the existing service codes from the
+services in both the list of services and appointments. From the existing list of service codes, Homerce will then generate the
+next smallest service code ranging from "SC000" to "SC999". For example, if Homerce already has an existing list of services from the service or appointments list  with
 service codes "SC000", "SC001", and "SC005", the next service code generated during the execution of `AddServiceCommand` would be
 "SC002".
 
 The following steps will describe the execution of the `AddServiceCommand` in detail, assuming that no errors are encountered.
-1. When the `execute()` method of the `AddServiceCommand` is called, the `ModelManager`'s `getFilteredServiceList()` method is called.
-2. The `ModelManager` will return a list of services provided by Homerce to the `AddServiceCommand`.
-3. The `ServiceCodeGenerator` will use the list of services provided and call the `generateServiceCode()` method.
+1. When the `execute()` method of the `AddServiceCommand` is called, the `ModelManager`'s `getFilteredServiceList()` and `getFilteredAppointmentList()` method are called.
+2. The `ModelManager` will return a list of services and appointments provided by Homerce to the `AddServiceCommand`.
+3. The `ServiceCodeGenerator` will use the list of services and appointments provided and call the `generateServiceCode()` method.
 4. The `ServiceCodeGenerator` will return a unique service code, which is assigned to the service being added.
 5. The `Model` is updated to include the newly added service by calling the `addService()` method of the `ModelManager`, which proceeds to call the `addService()` method of the `ServiceManager`.
 6. The `Ui` component will detect this change and update the GUI.
@@ -438,6 +438,7 @@ Reason for choosing option 2:
 * Prevention of situations where a revenue entry is modified in the revenue tracker but not reflected in the associated appointment.
 
 **Aspect: Sorting of appointments by chronological order is done whenever there are modifications to `UniqueAppointmentList`**
+
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
 | **Option 1** <br> Implement a `PriorityQueue` that is fits the observer design pattern similar to `ObservableList` in the JavaFX library. | Better performance as the data structure for the list of appointments is optimized to be chronologically ordered whenever changes are made. | High technical knowledge and effort required to implement the data structures when time could be better used to develop and test other features.|

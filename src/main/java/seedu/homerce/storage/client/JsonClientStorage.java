@@ -45,14 +45,14 @@ public class JsonClientStorage implements ClientStorage {
     public Optional<ReadOnlyClientManager> readClientManager(Path filePath) throws DataConversionException {
         requireNonNull(filePath);
 
-        Optional<JsonSerializableClientManager> jsonAddressBook = JsonUtil.readJsonFile(
+        Optional<JsonSerializableClientManager> jsonClientManager = JsonUtil.readJsonFile(
                 filePath, JsonSerializableClientManager.class);
-        if (!jsonAddressBook.isPresent()) {
+        if (!jsonClientManager.isPresent()) {
             return Optional.empty();
         }
 
         try {
-            return Optional.of(jsonAddressBook.get().toModelType());
+            return Optional.of(jsonClientManager.get().toModelType());
         } catch (IllegalValueException ive) {
             logger.info("Illegal values found in " + filePath + ": " + ive.getMessage());
             throw new DataConversionException(ive);
@@ -60,8 +60,8 @@ public class JsonClientStorage implements ClientStorage {
     }
 
     @Override
-    public void saveClientManager(ReadOnlyClientManager addressBook) throws IOException {
-        saveClientManager(addressBook, filePath);
+    public void saveClientManager(ReadOnlyClientManager clientManager) throws IOException {
+        saveClientManager(clientManager, filePath);
     }
 
     /**
@@ -69,12 +69,12 @@ public class JsonClientStorage implements ClientStorage {
      *
      * @param filePath location of the data. Cannot be null.
      */
-    public void saveClientManager(ReadOnlyClientManager addressBook, Path filePath) throws IOException {
-        requireNonNull(addressBook);
+    public void saveClientManager(ReadOnlyClientManager clientManager, Path filePath) throws IOException {
+        requireNonNull(clientManager);
         requireNonNull(filePath);
 
         FileUtil.createIfMissing(filePath);
-        JsonUtil.saveJsonFile(new JsonSerializableClientManager(addressBook), filePath);
+        JsonUtil.saveJsonFile(new JsonSerializableClientManager(clientManager), filePath);
     }
 
 }

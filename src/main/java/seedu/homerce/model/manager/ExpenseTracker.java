@@ -48,7 +48,7 @@ public class ExpenseTracker implements ReadOnlyExpenseTracker {
     //// expense-level operations
 
     /**
-     * Adds an expense to the SuperSalon.
+     * Adds an expense to the homerce.
      */
     public void addExpense(Expense e) {
         expenses.add(e);
@@ -56,7 +56,7 @@ public class ExpenseTracker implements ReadOnlyExpenseTracker {
 
     /**
      * Replaces the given service {@code target} in the list with {@code editedExpense}.
-     * {@code target} must exist in the SuperSalon.
+     * {@code target} must exist in the homerce.
      */
     public void setExpense(Expense target, Expense editedExpense) {
         requireNonNull(editedExpense);
@@ -74,7 +74,7 @@ public class ExpenseTracker implements ReadOnlyExpenseTracker {
 
     /**
      * Removes {@code key} from this {@code ExpenseTracker}.
-     * {@code key} must exist in the SuperSalon.
+     * {@code key} must exist in homerce.
      */
     public void removeExpense(Expense key) {
         expenses.remove(key);

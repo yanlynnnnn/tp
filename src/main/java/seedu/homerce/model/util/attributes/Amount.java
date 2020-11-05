@@ -9,7 +9,7 @@ import java.util.function.Predicate;
 import seedu.homerce.commons.util.AppUtil;
 
 /**
- * The price of a service provided by SuperSalon.
+ * The price of a service provided by homerce.
  */
 public class Amount {
     public static final String MESSAGE_CONSTRAINTS = "Amount (in dollars and cents - eg: 15.00) "

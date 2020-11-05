@@ -52,7 +52,7 @@ public class ServiceManager implements ReadOnlyServiceManager {
     //// service-level operations
 
     /**
-     * Returns true if a service with the same identity as {@code service} exists in the SuperSalon.
+     * Returns true if a service with the same identity as {@code service} exists in the homerce.
      */
     public boolean hasService(Service service) {
         requireNonNull(service);
@@ -60,7 +60,7 @@ public class ServiceManager implements ReadOnlyServiceManager {
     }
 
     /**
-     * Returns true if a service with the same service code as {@code service code} exists in the SuperSalon.
+     * Returns true if a service with the same service code as {@code service code} exists in the homerce.
      */
     public boolean hasService(ServiceCode serviceCode) {
         requireNonNull(serviceCode);
@@ -69,8 +69,8 @@ public class ServiceManager implements ReadOnlyServiceManager {
 
 
     /**
-     * Adds a service to the SuperSalon.
-     * The service must not already exist in SuperSalon.
+     * Adds a service to homerce.
+     * The service must not already exist in homerce.
      */
     public void addService(Service p) {
         services.add(p);
@@ -78,8 +78,8 @@ public class ServiceManager implements ReadOnlyServiceManager {
 
     /**
      * Replaces the given service {@code target} in the list with {@code editedService}.
-     * {@code target} must exist in the SuperSalon.
-     * The service identity of {@code editedService} must not be the same as another existing service in the SuperSalon.
+     * {@code target} must exist in homerce.
+     * The service identity of {@code editedService} must not be the same as another existing service in homerce.
      */
     public void setService(Service target, Service editedService) {
         requireNonNull(editedService);
@@ -89,7 +89,7 @@ public class ServiceManager implements ReadOnlyServiceManager {
 
     /**
      * Removes {@code key} from this {@code ServiceManager}.
-     * {@code key} must exist in the SuperSalon.
+     * {@code key} must exist in the homerce.
      */
     public void removeService(Service key) {
         services.remove(key);

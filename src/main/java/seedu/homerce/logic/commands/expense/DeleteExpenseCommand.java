@@ -14,7 +14,7 @@ import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.manager.HistoryManager;
 
 /**
- * Deletes an expense identified using it's displayed index from GrAB3.
+ * Deletes an expense identified using it's displayed index from homerce.
  */
 public class DeleteExpenseCommand extends Command {
 

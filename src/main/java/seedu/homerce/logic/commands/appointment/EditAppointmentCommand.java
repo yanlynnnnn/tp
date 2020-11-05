@@ -26,7 +26,7 @@ import seedu.homerce.model.service.ServiceCode;
 import seedu.homerce.model.util.attributes.Date;
 
 /**
- * Edits the details of an existing client in Homerce.
+ * Edits the details of an existing appointment in Homerce.
  */
 public class EditAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "editapt";

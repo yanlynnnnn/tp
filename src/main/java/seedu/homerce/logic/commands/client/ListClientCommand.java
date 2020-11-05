@@ -10,7 +10,7 @@ import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
- * Lists all clients in the homerce to the user.
+ * Lists all clients in homerce to the user.
  */
 public class ListClientCommand extends Command {
 

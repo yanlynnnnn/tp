@@ -28,7 +28,7 @@ import seedu.homerce.model.util.attributes.Tag;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
- * Edits the details of an existing client in the homerce.
+ * Edits the details of an existing client in homerce.
  */
 public class EditClientCommand extends Command {
 
