@@ -820,6 +820,10 @@ Use case ends.
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
+
+* 3b. Service is in use by one or more upcoming appointment.
+    * 3b1. Homerce displays an error message.
+    Use case resumes at step 1.
 </pre>
 <br>
 <pre>
@@ -887,6 +891,11 @@ Clear all services in the service list.
 1. User requests to clear the list.
 1. Homerce displays an empty list and a successful message.
 Use case ends.
+
+<b>Extensions</b>
+* 1a. Service is in use by one or more upcoming appointment.
+    * 1a1. Homerce displays an error message.
+    Use case resumes at step 1.
 </pre>
 
 ### Client Management
@@ -971,6 +980,10 @@ Use case ends.
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
+
+* 3b. Client is in use by one or more upcoming appointment.
+   * 3b1. Homerce displays an error message.
+   Use case resumes at step 1.
 </pre>
 <br>
 <pre>
@@ -1038,6 +1051,11 @@ Clear all clients in the client list.
 1. User requests to clear the list.
 1. Homerce displays an empty list and a successful message.
 Use case ends.
+
+<b>Extensions</b>
+* 1a. Service is in use by one or more upcoming appointment.
+    * 1a1. Homerce displays an error message.
+    Use case resumes at step 1.
 </pre>
 
 ### Appointment Management
@@ -1094,6 +1112,10 @@ Use case ends.
 
 * 3b. Invalid details provided.
   * 3b1. Homerce displays an error message.
+  Use case resumes at step 1.
+  
+* 3c. Appointment is marked as done.
+  * 3c1. Homerce displays an error message.
   Use case resumes at step 1.
 </pre>
 <br>
@@ -1207,7 +1229,7 @@ Indicate that the appointment have been done.
 1. User requests to list all appointments.
 1. Homerce shows a list of appointments.
 1. User requests to mark a specific appointment as done.
-1. Homerce indicate that the appointment have be completed.
+1. Homerce indicate that the appointment have been completed.
 1. Homerce <ins>adds a revenue (UC027)</ins>.
 1. Homerce displays all appointments in the appointment list.
 1. Homerce displays a successful listed message.
@@ -1234,7 +1256,7 @@ Indicate that the appointment has not been completed.
 1. User requests to list all appointments.
 1. Homerce shows a list of appointments.
 1. User requests to mark a specific appointment as undone.
-1. Homerce indicate that the appointment have be completed.
+1. Homerce indicate that the appointment have not been completed.
 1. Homerce <ins>deletes a revenue (UC028)</ins>.
 1. Homerce displays all appointments in the appointment list.
 1. Homerce displays a successful listed message.
@@ -1243,6 +1265,10 @@ Indicate that the appointment has not been completed.
 * 3a. Invalid index provided.
   * 3a1. Homerce displays an error message.
   Use case resumes at step 1.
+  
+* 5a. No revenue matches found.
+  * 5a1. Homerce displays an error message.
+  Use case resumes at step 6.
 </pre>
 
 ### Expense Tracker
