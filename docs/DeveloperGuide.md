@@ -666,7 +666,6 @@ Reason for choosing option 1:
 * The `execute()` command of `BreakdownFinanceCommand` already takes in the `Model` which has `ExpenseTracker` and `RevenueTracker` as attributes. It is unnecessary to create a new `FinanceTracker` class as an attribute for `Model` to store and duplicate information that already exists.
 
 ## 5. Documentation
-
 Refer to the guide [here](Documentation.md).
 
 ## 6. Logging
