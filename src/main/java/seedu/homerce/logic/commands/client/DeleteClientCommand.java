@@ -17,7 +17,7 @@ import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
- * Deletes a client identified using it's displayed index from the homerce.
+ * Deletes a client identified using it's displayed index from homerce .
  */
 public class DeleteClientCommand extends Command {
 
@@ -48,7 +48,7 @@ public class DeleteClientCommand extends Command {
         List<Appointment> appointments = model.getAppointmentManager().getAppointmentList();
         Client clientToDelete = lastShownList.get(targetIndex.getZeroBased());
 
-        if (!isValidDeletion(clientToDelete, appointments)) { // If service exists in appointment today or in future
+        if (!isValidDeletion(clientToDelete, appointments)) { // If client exists in appointment today or in future
             throw new CommandException(Messages.MESSAGE_CLIENT_INVALID_DELETION);
         }
 
@@ -68,7 +68,7 @@ public class DeleteClientCommand extends Command {
      * Checks if the client that is about to be deleted exists in Homerce's future appointments.
      * Deletion will be prevented if the client exists in Homerce's appointments dated today or in the future.
      */
-    private boolean isValidDeletion(Client clientToDelete, List<Appointment> appointments) {
+    public static boolean isValidDeletion(Client clientToDelete, List<Appointment> appointments) {
         if (appointments == null) {
             return true;
         }
@@ -78,7 +78,7 @@ public class DeleteClientCommand extends Command {
     /**
      * Performs check for validity of deletion.
      */
-    private boolean checkValidity(Appointment appointment, Client clientToDelete) {
+    private static boolean checkValidity(Appointment appointment, Client clientToDelete) {
         LocalDate today = LocalDate.now();
         LocalDate appointmentDate = appointment.getAppointmentDate().getLocalDate();
         Client appointmentClient = appointment.getClient();

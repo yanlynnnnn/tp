@@ -7,7 +7,7 @@ import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.ui.schedulepanel.SchedulePanel;
 
 public class CurrentWeekCommand extends AbstractWeekCommand {
-    private static final String MESSAGE_CURRENT_WEEK_SUCCESS = "Showing schedule of appointments for the current week.";
+    private static final String MESSAGE_CURRENT_WEEK_SUCCESS = "Showing schedule of appointments";
 
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) throws CommandException {

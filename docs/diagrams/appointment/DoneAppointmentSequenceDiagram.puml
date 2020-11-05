@@ -71,6 +71,5 @@ deactivate CommandResult
 deactivate DoneAppointmentCommand
 
 DoneAppointmentCommand -[hidden]> CommandResult
-destroy DoneAppointmentCommand
 
 @enduml

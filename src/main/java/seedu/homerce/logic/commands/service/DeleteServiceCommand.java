@@ -16,7 +16,7 @@ import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.service.Service;
 
 /**
- * Deletes a service identified using it's displayed index from SuperSalon's service list.
+ * Deletes a service identified using it's displayed index from homerce's service list.
  */
 public class DeleteServiceCommand extends Command {
 
@@ -67,8 +67,12 @@ public class DeleteServiceCommand extends Command {
      *
      * Deletion will be prevented if the service exists in Homerce's appointments dated today or in the future.
      * This prevents two different services with the same service code existing in Homerce's upcoming appointments.
+     *
+     * @param serviceToDelete the service to be deleted.
+     * @param appointments all the appointments that have been scheduled in Homerce.
+     * @return a boolean indicating whether or not the service is safe to delete.
      */
-    private boolean isValidDeletion(Service serviceToDelete, List<Appointment> appointments) {
+    public static boolean isValidDeletion(Service serviceToDelete, List<Appointment> appointments) {
         if (appointments == null) {
             return true;
         }
@@ -77,8 +81,12 @@ public class DeleteServiceCommand extends Command {
 
     /**
      * Performs check for validity of deletion.
+     *
+     * @param appointment is a specific appointment that has been scheduled in Homerce.
+     * @param serviceToDelete the service to be deleted.
+     * @return a boolean indicating whether or not the service is safe to delete.
      */
-    private boolean checkValidity(Appointment appointment, Service serviceToDelete) {
+    private static boolean checkValidity(Appointment appointment, Service serviceToDelete) {
         LocalDate today = LocalDate.now();
         LocalDate appointmentDate = appointment.getAppointmentDate().getLocalDate();
         Service appointmentService = appointment.getService();

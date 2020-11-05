@@ -30,7 +30,6 @@ AddServiceCommand -> ModelManager : ""getFilteredAppointmentList()""
 activate ModelManager
 AddServiceCommand <-- ModelManager: ""appointments""
 deactivate ModelManager
-
 AddServiceCommand -> ServiceCodeGenerator: ""generateServiceCode(services, appointments)""
 
 activate ServiceCodeGenerator
@@ -60,6 +59,5 @@ deactivate CommandResult
 deactivate AddServiceCommand
 
 AddServiceCommand -[hidden]> CommandResult
-destroy AddServiceCommand
 
 @enduml
