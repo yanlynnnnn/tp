@@ -174,9 +174,3 @@ Outcome :
 </pre>
 
 _Extract 1. One of the feature command content._
-
-
-
-
-        
-        
