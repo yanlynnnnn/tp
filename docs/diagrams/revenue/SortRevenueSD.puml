@@ -42,9 +42,6 @@ SortRevenueCommand <-- CommandResult: ""r""
 deactivate CommandResult
 
 [<-- SortRevenueCommand: ""r""
-destroy SortRevenueCommand
-
-
 
 @enduml
 

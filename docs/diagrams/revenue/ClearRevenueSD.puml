@@ -41,9 +41,6 @@ ClearRevenueCommand <-- CommandResult: ""r""
 deactivate CommandResult
 
 [<-- ClearRevenueCommand: ""r""
-destroy ClearRevenueCommand
-
-
 
 @enduml
 

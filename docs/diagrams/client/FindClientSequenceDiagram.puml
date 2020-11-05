@@ -39,6 +39,5 @@ deactivate CommandResult
 deactivate FindClientCommand
 
 FindClientCommand -[hidden]> CommandResult
-destroy FindClientCommand
 
 @enduml

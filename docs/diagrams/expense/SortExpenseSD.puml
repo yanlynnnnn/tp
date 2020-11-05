@@ -42,8 +42,6 @@ SortExpenseCommand <-- CommandResult: ""r""
 deactivate CommandResult
 
 [<-- SortExpenseCommand: ""r""
-destroy SortExpenseCommand
-
 
 
 @enduml

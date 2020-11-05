@@ -56,6 +56,5 @@ deactivate CommandResult
 deactivate BreakdownFinanceCommand
 
 BreakdownFinanceCommand -[hidden]> CommandResult
-destroy BreakdownFinanceCommand
 
 @enduml
