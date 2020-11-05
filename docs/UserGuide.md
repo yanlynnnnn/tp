@@ -94,8 +94,6 @@ The table below explains the general syntax used throughout the user guide.
 
 Important cautions that needs to be known before using the feature.
 
-
-
 #### 3.2.3. Command Syntax and Usage
 
 The table below explains some important technical terms to help you understand and use commands in Homerce.
