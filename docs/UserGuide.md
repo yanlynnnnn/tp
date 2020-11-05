@@ -87,8 +87,14 @@ The table below explains the general syntax used throughout the user guide.
 | Syntax |  What it means |
 |----------|-------------|
 | `command` |  A grey highlighted block specifies a executable command that can be entered into the command box.  |
-| _italics_ | Italicised text indicates that the text has a definition specific to Homerce. |
-|<div markdown="block" class="alert alert-info"> :information_source: </div>  | An exclamation mark indicates that the following text is important. |
+| _italics_ | Italicised text indicates that the text has a definition specific to Homerce, or it is a caption for a Figure in the guide. |
+|<div markdown="block" class="alert alert-info"> :information_source: </div>  | An exclamation mark indicates that the following text is a tip. |
+|<div markdown="block" class="alert alert-danger"> :warning: </div> | A warning sign indicates that the following text is important. |
+
+
+Important cautions that needs to be known before using the feature.
+
+
 
 #### 3.2.3. Command Syntax and Usage
 
@@ -178,8 +184,8 @@ Adding the above service:
 2. Press `Enter` to execute.
 
 Outcome:
-1. The Result Display will show success message.
-2. Homerce will switch to the Services Tab.
+1. The *Result Display* will show success message.
+2. Homerce will switch to the *Services Tab*.
 3. You can now see all your services including the newly added service.
 
 {Example outcome screenshot}
@@ -208,8 +214,8 @@ Editing an existing service:
 2. Press `Enter` to execute.
 
 Outcome:
-1. The Result Display will show a success message.
-2. Homerce will switch to the Services Tab.
+1. The *Result Display* will show a success message.
+2. Homerce will switch to the *Services Tab*.
 3. You can now see all your services including the edited service.
 
 {Example outcome screenshot}
@@ -238,8 +244,8 @@ Deleting an existing service:
 2. Press `Enter` to execute.
 
 Outcome:
-1. The Result Display will show a success message.
-2. Homerce will switch to the Services Tab.
+1. The *Result Display* will show a success message.
+2. Homerce will switch to the *Services Tab*.
 3. You can now see that the service with service code SC001 has been deleted from Homerce.
 
 {Example outcome screenshot}
@@ -267,15 +273,15 @@ Finding a service:
 2. Press `Enter` to execute.
 
 Outcome:
-1. The Result Display will show a success message.
-2. Homerce will switch to the Services Tab.
+1. The *Result Display* will show a success message.
+2. Homerce will switch to the *Services Tab*.
 3. You can now see the services in your list of services that contain nail in its title.
 
 {Example outcome screenshot}
 
 #### 4.1.6. List all existing services: `listsvc`
 
-You can use this command to navigate to the Services Tab and display all your added services in Homerce.
+You can use this command to navigate to the *Services Tab* and display all your added services in Homerce.
 
 Format: `listsvc`
 
@@ -287,8 +293,8 @@ Listing all services:
 2. Press `Enter` to execute.
 
 Outcome:
-1. The Result Display will show a success message.
-2. Homerce will switch to the Services Tab.
+1. The *Result Display* will show a success message.
+2. Homerce will switch to the *Services Tab*.
 3. You can now see all your services.
 
 {Example outcome screenshot}
@@ -302,7 +308,7 @@ Format: `clearsvc`
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:**<br>
- 
+
 * You are unable to clear services if there are any existing services that have been scheduled in your upcoming appointments. Please remove these
 appointments before proceeding to clear your services.
 
@@ -317,8 +323,8 @@ Clearing all services:
 2. Press `Enter` to execute.
 
 Outcome:
-1. The Result Display will show a success message.
-2. Homerce will switch to the Services Tab.
+1. The *Result Display* will show a success message.
+2. Homerce will switch to the *Services Tab*.
 3. You can see that the list of services is now empty.
 
 {Example outcome screenshot}
@@ -372,12 +378,12 @@ You can follow these instructions to add his/her appointment details into Homerc
 |`PHONE_NUMBER`| 83232656 |
 
 Steps:
-1. Type `addapt dt/28-10-2020 t/1300 s/SC001 p/83232656` in the command box.
+1. Type `addapt dt/28-10-2020 t/1300 s/SC001 p/83232656` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
-1. The Result Display will show a success message.
-1. Homerce will switch to the appointment tab.
+1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Appointment Tab*.
 1. You can now see all your appointments including the newly added appointment.
 
 
@@ -395,12 +401,12 @@ Let's say you want to list all your appointments stored in Homerce.
 You can follow these instructions.
 
 Steps:
-1. Type `listapt`.
+1. Type `listapt` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
-1. The Result Display will show a success message.
-1. Homerce will switch to the appointment tab.
+1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Appointment Tab*.
 1. You can now see all your appointments stored in Homerce.
 
 {Example outcome screenshot}
@@ -427,12 +433,12 @@ Let's say you have a number of appointments stored in Homerce and you want to se
 number 82341245. You can follow these instructions to list all the appointments which match your search criteria.
 
 Steps:
-1. Type `findapt p/82341245` in the command box.
+1. Type `findapt p/82341245` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
-1. The Result Display will show a success message.
-1. Homerce will switch to the appointment tab.
+1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Appointment Tab*.
 1. You can now see all your appointments made by the number `82341245`.
 
 {Example outcome screenshot}
@@ -466,12 +472,12 @@ and you want to edit it with the following details:
 |`PHONE_NUMBER`| 93451222 |
 
 Steps:
-1. Type `editapt 1 dt/28-10-2020 t/1300 p/93451222` in the command box.
+1. Type `editapt 1 dt/28-10-2020 t/1300 p/93451222` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
-1. The Result Display will show a success message.
-1. Homerce will switch to the appointment tab.
+1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Appointment Tab*.
 1. You will see your edited appointment displayed alongside other appointments in your tracker.
 
 {Example outcome screenshot}
@@ -498,12 +504,12 @@ with `listapt` or `findapt`, you see that the appointment has index 5. You can f
 to mark that appointment as done.
 
 Steps:
-1. Type `done 5` in the command box.
+1. Type `done 5` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
-1. The Result Display will show a success message.
-1. Homerce will switch to the appointment tab.
+1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Appointment Tab*.
 1. You will see your appointment marked as done, displayed alongside other appointments in your tracker.
 
 {Example outcome screenshot}
@@ -531,12 +537,12 @@ appointment with `listapt` or `findapt` and the one you want to change has index
 You then follow these instructions to undo it.
 
 Steps:
-1. Type `undone 3` in the command box.
+1. Type `undone 3` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
-1. The Result Display will show a success message.
-1. Homerce will switch to the appointment tab.
+1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Appointment Tab*.
 1. You will see your appointment marked as not done, alongside other appointments in your tracker.
 
 {Example outcome screenshot}
@@ -563,12 +569,12 @@ with `listapt` or `findapt`, you see that the appointment to delete has index 2.
 to delete that appointment.
 
 Steps:
-1. Type `deleteapt 2` in the command box.
+1. Type `deleteapt 2` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
-1. The Result Display will show a success message.
-1. Homerce will switch to the appointment tab.
+1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Appointment Tab*.
 1. You will see the rest of your appointments in your tracker, with the one with index 2 removed.
 
 {Example outcome screenshot}
@@ -587,12 +593,12 @@ Let's say you want to clear all appointments stored in Homerce.
 You can follow these instructions to do so.
 
 Steps:
-1. Type `clearapt` in the command box.
+1. Type `clearapt` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
-1. The Result Display will show a success message.
-1. Homerce will switch to the appointment tab.
+1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Appointment Tab*.
 1. You will no appointments listed in the tracker.
 
 {Example outcome screenshot}
@@ -635,12 +641,13 @@ You have just stopped operations for the day, and you wish to view all the reven
 You can follow the steps below to get the list of revenues for the day.
 
 Steps :
-1. Type `findrev dt/22-10-2020` into the _Command Box_.
+1. Type `findrev dt/22-10-2020` in the _Command Box_.
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a success message in the _Result  Display_.
+1. The *Result Display* will show a success message.
 1. Homerce will list out all the revenue for 22-10-2020 in the _Revenue_ tab.  
+1. You can now see all your revenues earned on `22-10-2020`.
 
 ![addexp](images/revenue/FindRevenue.png) <br>
 *Figure 4.3.2.1 - GUI outcome for `findrev`*
@@ -665,12 +672,13 @@ You wish to view your revenue from highest to lowest cost to determine which rev
 You can follow the steps below to sort your list of revenues.
 
 Steps :
-1. Type `sortrev desc` into the _Command Box_.
+1. Type `sortrev desc` in the _Command Box_.
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message in the _Result Display_.
+1. The *Result Display* will show a success message.
 1. Homerce will list out all the revenue entries sorted from highest to lowest cost in the _Revenue_ tab.
+1. You can now see your revenues sort by descending order.
 
 ![addexp](images/revenue/SortRevenue(Desc).png) <br>
 *Figure x - GUI outcome for `sortrev`*
@@ -688,12 +696,13 @@ You wish to list your revenues to view all the earnings that you currently have.
 You can follow the steps below to list your all your revenue entries.
 
 Steps :
-1. Type `listrev` into the _Command Box_.
+1. Type `listrev` in the _Command Box_.
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message in the _Result Display_.
+1. The *Result Display* will show a success message.
 1. Homerce will list out all your revenue entries in the _Revenue_ tab.
+1. You can now see all your revenues sort by descending chronological order.
 
 ![addexp](images/revenue/ListRevenue.png) <br>
 *Figure x - GUI outcome for `listrev`*
@@ -715,8 +724,9 @@ Steps :
 1. Press `Enter` to execute. 
 
 Outcome : 
-1. It will display a successful message in the _Result Display_.
+1. The *Result Display* will show a success message.
 1. Homerce will clear all the revenue data.
+1. You will no revenues listed in the tracker.
 
 ![addexp](images/revenue/ClearRevenue.png) <br>
 *Figure x - GUI outcome for `clearrev`*
@@ -766,11 +776,11 @@ You just purchased a bottle of conditioner today for $15 (28-10-2020).
 You can follow the steps below to add the expense to Homerce.
 
 Steps :
-1. Type `addexp d/conditioner f/n v/15.00 dt/28-10-2020 t/hairsupplies` into the _Command Box_.
+1. Type `addexp d/conditioner f/n v/15.00 dt/28-10-2020 t/hairsupplies` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message, as shown below.
+1. The *Result Display* will show a success message.
 
 ![addexp](images/addexp.png) <br>
 *Figure x - GUI outcome for `addexp`*
@@ -798,11 +808,11 @@ You misspelled the description of an expense when adding it into Homerce, and wi
 You can follow the steps below to edit the expense.
 
 Steps :
-1. Type `editexp 2 d/Eyelash Curler` into the _Command Box_.
+1. Type `editexp 2 d/Eyelash Curler` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message, as shown below.
+1. The *Result Display* will show a success message.
 
 ![editexp](images/editexp.png) <br>
 *Figure x - GUI outcome for `editexp`*
@@ -828,11 +838,11 @@ You mistakenly entered the same expense twice and wish to delete one of the entr
 You can follow the steps below to delete the expense.
 
 Steps :
-1. Type `deleteexp 3` into the _Command Box_.
+1. Type `deleteexp 3` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message, as shown below.
+1. The *Result Display* will show a success message.
 
 ![deleteexp](images/deleteexp.png) <br>
 *Figure x - GUI outcome for `deleteexp`*
@@ -859,11 +869,11 @@ You wish to view all the expenses you incurred today (10-10-2020).
 You can follow the steps below to get a list of expenses for the day.
 
 Steps :
-1. Type `findexp dt/10-10-2020` into the _Command Box_.
+1. Type `findexp dt/10-10-2020` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message, as shown below.
+1. The *Result Display* will show a success message.
 2. Homerce will list out all the expenses for 10-10-2020.
 
 ![findexp](images/findexp.png) <br>
@@ -890,11 +900,11 @@ You wish to view your expenses from highest to lowest cost to determine which ex
 You can follow the steps below to sort your list of expenses.
 
 Steps :
-1. Type `sortexp desc` into the _Command Box_.
+1. Type `sortexp desc` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message, as shown below.
+1. The *Result Display* will show a success message.
 2. Homerce will list out all the expenses sorted from highest to lowest cost.
 
 ![sortexp](images/sortexp.png) <br>
@@ -913,11 +923,11 @@ You wish to list your expenses to view all the expense entries that you currentl
 You can follow the steps below to list your expenses.
 
 Steps :
-1. Type `listexp` into the _Command Box_.
+1. Type `listexp` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message, as shown below.
+1. The *Result Display* will show a success message.
 2. Homerce will list out all your expenses.
 
 ![listexp](images/listexp.png) <br>
@@ -936,11 +946,11 @@ You wish to remove all expense entries in Homerce and restart your expense track
 You can follow the steps below to clear all your expenses.
 
 Steps :
-1. Type `clearexp` into the _Command Box_.
+1. Type `clearexp` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message, as shown below.
+1. The *Result Display* will show a success message.
 
 ![clearexp](images/clearexp.png) <br>
 *Figure x - GUI outcome for `clearexp`*
@@ -984,11 +994,11 @@ A new client just called in to make an appointment .
 You can follow the steps below to add the client to Homerce.
 
 Steps :
-1. Type `addcli n/John p/91234567 e/john@gmail.com t/new` into the _Command Box_.
+1. Type `addcli n/John p/91234567 e/john@gmail.com t/new` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
+1. The *Result Display* will show a success message.
 
 {Example outcome screenshot}
 
@@ -1015,11 +1025,11 @@ You misspelled the name of a client when adding it into Homerce and wish to chan
 You can follow the steps below to edit the client.
 
 Steps :
-1. Type `editcli 2 n/Johnny` into the _Command Box_.
+1. Type `editcli 2 n/Johnny` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
+1. The *Result Display* will show a success message.
 
 {Example outcome screenshot}
 
@@ -1044,11 +1054,11 @@ A client repeatedly fails to turn up for his appointments and you wish to delete
 You can follow the steps below to delete the client.
 
 Steps :
-1. Type `deletecli 3` into the _Command Box_.
+1. Type `deletecli 3` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
+1. The *Result Display* will show a success message.
 
 {Example outcome screenshot}
 
@@ -1074,11 +1084,11 @@ You have many clients in your client list and wish to find more information on t
 You can follow the steps below to get a list of clients named John
 
 Steps :
-1. Type `findcli n/John` into the _Command Box_.
+1. Type `findcli n/John` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message. 
+1. The *Result Display* will show a success message.
 2. Homerce will list out all the clients with John in their name.
 
 #### 4.5.6. List clients `listcli`
@@ -1094,11 +1104,11 @@ You wish to list your clients to view all the client entries that you currently 
 You can follow the steps below to list your clients.
 
 Steps :
-1. Type `listcli` into the _Command Box_.
+1. Type `listcli` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message.
+1. The *Result Display* will show a success message.
 2. Homerce will list out all your expenses.
 
 {example of outcome screenshot}
@@ -1116,11 +1126,11 @@ You wish to remove all client entries in Homerce and restart your client managem
 You can follow the steps below to clear all your clients.
 
 Steps :
-1. Type `clearcli` into the _Command Box_.
+1. Type `clearcli` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. It will display a success message.
+1. The *Result Display* will show a success message.
 
 {example of outcome screenshot}
 
@@ -1162,8 +1172,8 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
-2. Homerce will switch to the Schedule Tab.
+1. The *Result Display* will show a success message.
+2. Homerce will switch to the *Schedule Tab*.
 3. You can now see all the appointments in your schedule for today's week.
 
 {Example outcome screenshot}
@@ -1184,8 +1194,8 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
-2. Homerce will switch to the Schedule Tab.
+1. The *Result Display* will show a success message.
+2. Homerce will switch to the *Schedule Tab*.
 3. You can now see all the appointments in your schedule for the week after 27th of November 2020.
 
 {Example outcome screenshot}
@@ -1206,8 +1216,8 @@ Steps :
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
-2. Homerce will switch to the Schedule Tab.
+1. The *Result Display* will show a success message.
+2. Homerce will switch to the *Schedule Tab*.
 3. You can now see all the appointments in your schedule for the week before 27th of November 2020.
 
 {Example outcome screenshot}
@@ -1247,27 +1257,22 @@ You want to see the breakdown of your revenue and expenses for the month of Octo
 home-based business brought in. You can follow the steps below to do so.
 
 Steps :
-1. Type `breakdownfinance m/10 y/2020` into the _Command Box_.
+1. Type `breakdownfinance m/10 y/2020` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
-1. Homerce will display a success message.
-2. Homerce will open up the financial breakdown window.
+1. The *Result Display* will show a success message.
+2. Homerce will open up the *Financial Breakdown* window.
 3. You can now see the breakdown of your revenue and expenses for October 2020, and see how much profit your home-based
 business brought in.
 
 ![breakdownfinance](images/breakdownfinance.png) <br>
 Figure x - GUI for `breakdownfinance`
 
-### 4.8. Others
+### 4.8 Others
 
-{Description}
-
-#### 4.8.X. Others Command Parameter Template
-
-{Description}
-
-{Command parameter explanation}
+This section provides an overview of the miscellaneous commands in Homerce. These commands include `undo`,
+`help`, and `exit`.
 
 #### 4.8.1. Undo previous change: `undo` 
 
@@ -1279,7 +1284,7 @@ If you have accidentally deleted an appointment from Homerce, and wish to undo t
 to do so.
 
 Steps: 
-1. Type `undo` into the _Command Box_.
+1. Type `undo` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome: 
@@ -1301,12 +1306,12 @@ Example:
 If you are unsure of the commands that Homerce offered. You can follow the steps below to get a full list of all the commands.
 
 Steps: 
-1. Type `help` into the _Command Box_.
-2. Press `Enter` to execute.
+1. Type `help` in the _Command Box_.
+1. Press `Enter` to execute.
 
 Outcome: 
 
-1. Homerce will switch to the _Help_ tab.
+1. Homerce will open up the *Financial Breakdown* window.
 
 ![help message](images/helpMessage.png)
 
@@ -1330,7 +1335,7 @@ Outcome:
 
 {Example outcome screenshot}
 
-#### 4.8.4. Saving the Data - Can consider moving to about.
+#### 4.8.4. Saving the Data
 
 Homerce data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
