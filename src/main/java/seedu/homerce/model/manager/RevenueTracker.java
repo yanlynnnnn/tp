@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
@@ -58,7 +57,7 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
     //// list overwrite operations
 
     /**
-     * Resets the existing data of this {@code ServiceManager} with {@code newData}.
+     * Resets the existing data of this {@code RevenueTracker} with {@code newData}.
      */
     public void resetData(ReadOnlyRevenueTracker newData) {
         requireNonNull(newData);
@@ -91,21 +90,13 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
         revenues.remove(key);
     }
 
-    public List<Revenue> filterByMonth(Predicate<Revenue> predicate) {
-        return revenues.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
-    }
-
-    public List<Revenue> filterByYear(Predicate<Revenue> predicate) {
-        return revenues.stream().filter(x -> predicate.test(x)).collect(Collectors.toList());
-    }
-
     //// util methods
 
     @Override
     public String toString() {
-        return "Service Manager:\n"
-            + revenues.stream().map(Revenue::toString).collect(Collectors.joining("\n"))
-            + "\n Total number of activities: " + revenues.size();
+        return "Revenue Tracker:\n"
+                + revenues.stream().map(Revenue::toString).collect(Collectors.joining("\n"))
+                + "\n Total number of revenues: " + revenues.size();
 
     }
 
@@ -117,8 +108,8 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof RevenueTracker // instanceof handles nulls
-            && revenues.equals(((RevenueTracker) other).revenues));
+                || (other instanceof RevenueTracker // instanceof handles nulls
+                && revenues.equals(((RevenueTracker) other).revenues));
     }
 
     @Override

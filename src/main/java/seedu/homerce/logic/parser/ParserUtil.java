@@ -299,7 +299,7 @@ public class ParserUtil {
 
     private static boolean isValidYear(String year) {
         // Checks if its a String contains numbers only
-        if (!year.matches("\\d+")) {
+        if (!year.matches("\\d{1,4}")) {
             return false;
         }
         int intYear = Integer.parseInt(year);
@@ -310,7 +310,7 @@ public class ParserUtil {
 
     private static boolean isValidMonth(String month) {
         // Checks if its a String contains numbers only
-        if (!month.matches("\\d+")) {
+        if (!month.matches("\\d{1,2}")) {
             return false;
         }
         int intMonth = Integer.parseInt(month);

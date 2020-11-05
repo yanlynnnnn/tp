@@ -449,14 +449,101 @@ Reason for choosing option 2:
 * Use of well-tested libraries like `FXCollections` lowers the chance making mistakes during the implementation of this feature. 
 
 ### 4.6 Revenue Tracker
-To be added...
+
+Homerce allows the user to keep track of the revenues that his or her home-based business earned. The revenue tracker is one of the `ListTracker`s elaborated in [section 4.2](#42-list-trackers).
+
 #### 4.6.1 Rationale
-To be added...
+
+The revenue tracker is essential to keep track of the operational revenues of any home-based business. With many revenues to keep track of, we decided to create
+a revenue tracker to assist the user with the process of keeping track of all the revenues that his or her home-based business earned.
+
 #### 4.6.2 Current Implementation
-To be added...
-(Figure 9, Figure 10)
+
+The current implementation of the revenue tracker allows the user to keep track of a list of revenues earned by the home-based business.
+The revenues will be categorized based on the service provided and it will be used in `breakdownfinance` in [section 4.8](#48-finance-breakdown). 
+
+**Sort Revenue**
+
+In this section, we will use the following Activity Diagram to outline the sorting of the revenue list when the `sortrev` command of the revenue tracker is executed.
+
+![Activity diagram for revenue_tracker sortrev command](images/revenue/SortRevenueActivityDiagram.png)
+
+*Figure 11. Workflow of a `sortrev` command*
+
+When the user enters the `sortrev` command to sort the revenue list, the user input command undergoes the same command parsing as described in
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `SortRevenueCommand`, Homerce will access the revenue tracker
+and sort the revenue list based on the value of the revenues. For example, if the user specifies the order as "asc", the revenue list will
+be sorted in ascending order based on value, from lowest to highest value.
+
+The following steps will describe the execution of the `SortRevenueCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `SortRevenueCommand` is called, the `ModelManager`'s `getRevenueTracker()` method is called.
+1. The `ModelManager` will return the existing `ReveneueTracker` to the `SortRevenueCommand`.
+1. The `ModelManager` will call the `sort(isAsceding)` method on the `RevenueTracker`.
+1. The `RevenueTracker` then calls the `sort(isAscending)` method on `NonUniqueList`, which sorts the revenue list based on the order specified.
+1. The `ObservableList` of revenues is updated to reflect the newly sorted list.
+1. The `Ui` component will detect this change and update the GUI.
+1. Assuming that the above steps are all successful, the `SortRevenueCommand` will then create a `CommandResult` object and return the result.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram for sortrev command](images/revenue/SortRevenueSD.png)
+
+*Figure 12. Execution of an `sortrev` command*
+
+<br>
+
+**Clear Revenue**
+
+In this section, we will use the following Activity Diagram to outline the clearing of the revenue list when the `clearrev` command of the revenue tracker is executed.
+
+![Activity diagram for revenue_tracker clearrev command](images/revenue/ClearRevenueActivityDiagram.png)
+
+*Figure 11. Workflow of a `clearrev` command*
+
+When the user enters the `clearrev` command to sort the revenue list, the user input command undergoes the same command parsing as described in
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `ClearRevenueCommand`, Homerce will access the revenue tracker
+and clear the revenue list. For example, if there are 5 entries in the list, all the revenues will be cleared.
+
+The following steps will describe the execution of the `ClearRevenueCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `ClearRevenueCommand` is called, the `ModelManager`'s `setRevenues()` method is called.
+1. The `RevenueTracker` then calls the `setItems()` method on `NonUniqueList`, which set the revenue entries in the revenue list.
+1. The `ObservableList` of revenues is updated to reflect the newly sorted list.
+1. The `Ui` component will detect this change and update the GUI.
+1. Assuming that the above steps are all successful, the `ClearRevenueCommand` will then create a `CommandResult` object and return the result.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram for clearrev command](images/revenue/ClearRevenueSD.png)
+
+*Figure 12. Execution of an `clearrev` command*
+
 #### 4.6.3 Design Consideration
-To be added...
+
+**Sort Revenue**
+
+**Aspect: Sorting of revenues by value is executed whenever `sortrev` is done**
+
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Implement a `PriorityQueue` that is fits the observer design pattern similar to `ObservableList` in the JavaFX library. | Better performance as the data structure for the list of appointments is optimized to be chronologically ordered whenever changes are made. | High technical knowledge and effort required to implement the data structures when time could be better used to develop and test other features.|
+| **Option 2 (current choice)** <br> `FXCollections` library is used to sort the `ObservableList` of appointments, using a `Comparator` object. | No need for huge modifications to the generic `NonUniqueList`. Convenient usage of built-in library. | Higher number of internal computations as sorting is done for every change to the list of appointments. Might not scale well for large number of appointments (n > 1000)|
+
+Reason for choosing option 2:
+* The effort needed to implement option 1 is too great to justify the improvements in performance.
+* Use of well-tested libraries like `FXCollections` lowers the chance making mistakes during the implementation of this feature. 
+
+**Clear Revenue**
+
+**Aspect: Clear all revenue entries from revenue list when `clearrev` is called**
+
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Retrieve the revenue list and run build it arraylist clear method | Convenient usage of built-in Java method. | Performance might be slow when there is a huge data set. |
+| **Option 2 (current choice)** <br> Creates a new empty list to replace the current list | Convenient usage of`NonUniqueList` method. Implementation effort is minimum. | A totally new object have to be created. |
+
+Reason for choosing option 2:
+* The effort needed to implement option 1 is too great.
+* Performance will be improved when having big data set.
 
 ### 4.7 Expense Tracker
 
@@ -470,7 +557,7 @@ an expense tracker to assist the user with the process of keeping track of all t
 #### 4.7.2 Current Implementation
 
 The current implementation of the expense tracker allows the user to keep track of a list of expenses incurred by the home-based business. Users can specify the
-description, value, and date of the expense. Users can add an optional tag to categorize the expense, which will be used in `breakdownfinance` in [section 4.4](#44-finance-breakdown). 
+description, value, and date of the expense. Users can add an optional tag to categorize the expense, which will be used in `breakdownfinance` in [section 4.8](#48-finance-breakdown). 
 In addition, the user can indicate if the expense is a fixed expense that recurs monthly, or if it is a one-time expense. Fixed expenses will be automatically recorded by Homerce
 every month.
 

@@ -110,7 +110,7 @@ public class ModelManager implements Model {
      */
     public ModelManager() {
         this(new UserPrefs(), new ClientManager(), new ServiceManager(), new RevenueTracker(), new ExpenseTracker(),
-            new AppointmentManager());
+                new AppointmentManager());
     }
 
     //=========== UserPrefs ==================================================================================
@@ -222,16 +222,6 @@ public class ModelManager implements Model {
     @Override
     public void setExpenses(List<Expense> expenses) {
         expenseTracker.setExpenses(expenses);
-    }
-
-    @Override
-    public List<Expense> filterExpenseByYear(Predicate<Expense> predicate) {
-        return expenseTracker.filterByYear(predicate);
-    }
-
-    @Override
-    public List<Expense> filterExpenseByMonth(Predicate<Expense> predicate) {
-        return expenseTracker.filterByMonth(predicate);
     }
 
     /**
@@ -356,16 +346,6 @@ public class ModelManager implements Model {
     @Override
     public void setRevenues(List<Revenue> revenues) {
         revenueTracker.setRevenues(revenues);
-    }
-
-    @Override
-    public List<Revenue> filterRevenueByMonth(Predicate<Revenue> predicate) {
-        return revenueTracker.filterByMonth(predicate);
-    }
-
-    @Override
-    public List<Revenue> filterRevenueByYear(Predicate<Revenue> predicate) {
-        return revenueTracker.filterByYear(predicate);
     }
 
     @Override
@@ -500,7 +480,7 @@ public class ModelManager implements Model {
         AppointmentManager appointmentManagerCopy = appointmentManager.deepCopy();
 
         return new ModelManager(clientManagerCopy, serviceManagerCopy, revenueTrackerCopy,
-            expenseTrackerCopy, appointmentManagerCopy, userPrefs);
+                expenseTrackerCopy, appointmentManagerCopy, userPrefs);
     }
 
     @Override
@@ -518,14 +498,14 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return clientManager.equals(other.clientManager)
-            && appointmentManager.equals(other.appointmentManager)
-            && serviceManager.equals(other.serviceManager)
-            && revenueTracker.equals(other.revenueTracker)
-            && expenseTracker.equals(other.expenseTracker)
-            && userPrefs.equals(other.userPrefs)
-            && filteredClients.equals(other.filteredClients)
-            && filteredServices.equals(other.filteredServices)
-            && filteredAppointments.equals(other.filteredAppointments)
-            && filteredExpenses.equals(other.filteredExpenses);
+                && appointmentManager.equals(other.appointmentManager)
+                && serviceManager.equals(other.serviceManager)
+                && revenueTracker.equals(other.revenueTracker)
+                && expenseTracker.equals(other.expenseTracker)
+                && userPrefs.equals(other.userPrefs)
+                && filteredClients.equals(other.filteredClients)
+                && filteredServices.equals(other.filteredServices)
+                && filteredAppointments.equals(other.filteredAppointments)
+                && filteredExpenses.equals(other.filteredExpenses);
     }
 }

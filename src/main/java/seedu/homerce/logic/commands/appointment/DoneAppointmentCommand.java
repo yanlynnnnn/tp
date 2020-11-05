@@ -17,9 +17,9 @@ import seedu.homerce.model.revenue.Revenue;
 public class DoneAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "done";
     public static final String MESSAGE_USAGE = COMMAND_WORD
-        + ": Marks the appointment identified by the index number used in the displayed appointment list as done.\n"
-        + "Parameters: INDEX (must be a positive integer)\n"
-        + "Example: " + COMMAND_WORD + " 1";
+            + ": Marks the appointment identified by the index number used in the displayed appointment list as done.\n"
+            + "Parameters: INDEX (must be a positive integer)\n"
+            + "Example: " + COMMAND_WORD + " 1";
     public static final String MESSAGE_DONE_APPOINTMENT_SUCCESS = "Marked Appointment as done: %1$s";
     public static final String MESSAGE_ADD_REVENUE_SUCCESS = "Added this %1$s";
 
@@ -44,8 +44,8 @@ public class DoneAppointmentCommand extends Command {
         }
         appointmentToMarkDone.markDone();
         Revenue revenueToAdd = new Revenue(
-            appointmentToMarkDone.getService(),
-            appointmentToMarkDone.getAppointmentDate()
+                appointmentToMarkDone.getService(),
+                appointmentToMarkDone.getAppointmentDate()
         );
         model.addRevenue(revenueToAdd);
         model.refreshSchedule();
@@ -59,7 +59,7 @@ public class DoneAppointmentCommand extends Command {
     @Override
     public boolean equals(Object other) {
         return other == this // short circuit if same object
-            || (other instanceof DoneAppointmentCommand // instanceof handles nulls
-            && targetIndex.equals(((DoneAppointmentCommand) other).targetIndex)); // state check
+                || (other instanceof DoneAppointmentCommand // instanceof handles nulls
+                && targetIndex.equals(((DoneAppointmentCommand) other).targetIndex)); // state check
     }
 }

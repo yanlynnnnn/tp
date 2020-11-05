@@ -137,7 +137,7 @@ public interface Model {
 
     /**
      * Deletes the given expense.
-     * The expense must exist in homerce.
+     * The expense must exist in Homerce.
      */
     void deleteExpense(Expense target);
 
@@ -148,7 +148,7 @@ public interface Model {
 
     /**
      * Replaces the given expense {@code target} with {@code editedExpense}.
-     * {@code target} must exist in homerce.
+     * {@code target} must exist in the Homerce.
      */
     void setExpense(Expense target, Expense editedExpense);
 
@@ -156,16 +156,6 @@ public interface Model {
      * Replaces the contents of the expense list with {@code expenses}.
      */
     void setExpenses(List<Expense> expenses);
-
-    /**
-     * Returns a List of expenses filtered by month.
-     */
-    List<Expense> filterExpenseByMonth(Predicate<Expense> predicate);
-
-    /**
-     * Returns a List of expenses filtered by year.
-     */
-    List<Expense> filterExpenseByYear(Predicate<Expense> predicate);
 
     /**
      * Returns an unmodifiable view of the filtered expense list
@@ -194,7 +184,7 @@ public interface Model {
     void addService(Service toAdd);
 
     /**
-     * Returns true if a service with the same service code as {@code code} exists in homerce.
+     * Returns true if a service with the same service code as {@code code} exists in Homerce.
      */
     boolean hasService(ServiceCode code);
 
@@ -202,14 +192,14 @@ public interface Model {
 
     /**
      * Deletes the given Service.
-     * The Service must exist in homerce.
+     * The Service must exist in Homerce.
      */
     void deleteService(Service target);
 
     /**
      * Replaces the given service {@code target} with {@code editedService}.
-     * {@code target} must exist in homerce's service list.
-     * The service identity of {@code editedService} must not be the same as another existing service in homerce.
+     * {@code target} must exist in Homerce's service list.
+     * The service identity of {@code editedService} must not be the same as another existing service in Homerce.
      */
     void setService(Service target, Service editedService);
 
@@ -237,7 +227,7 @@ public interface Model {
 
     /**
      * Deletes the given revenue.
-     * The revenue must exist in homerce.
+     * The revenue must exist in Homerce.
      */
     void deleteRevenue(Revenue target);
 
@@ -245,16 +235,6 @@ public interface Model {
      * Replaces the contents of the revenue list with {@code expenses}.
      */
     void setRevenues(List<Revenue> revenues);
-
-    /**
-     * Returns a List of revenue filtered by month.
-     */
-    List<Revenue> filterRevenueByYear(Predicate<Revenue> predicate);
-
-    /**
-     * Returns a list of revenue filtered by year
-     */
-    List<Revenue> filterRevenueByMonth(Predicate<Revenue> predicate);
 
     void updateFilteredRevenueList(Predicate<Revenue> predicate);
 
@@ -290,7 +270,7 @@ public interface Model {
 
     /**
      * Replaces the given appointment {@code target} with {@code editedAppointment}.
-     * {@code target} must exist in homerce.
+     * {@code target} must exist in the Homerce.
      */
     void setAppointment(Appointment target, Appointment editedAppointment);
 
