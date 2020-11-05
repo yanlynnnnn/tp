@@ -1000,7 +1000,8 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 
-{Example outcome screenshot}
+![addcli](images/addcli.png) <br>
+Figure x - GUI for `addcli`
 
 #### 4.5.3. Edit a client's details `editcli`
 
@@ -1031,7 +1032,8 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 
-{Example outcome screenshot}
+![editcli](images/editcli.png) <br>
+Figure x - GUI for `editcli`
 
 #### 4.5.4. Delete a client `deletecli`
 
@@ -1060,7 +1062,8 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 
-{Example outcome screenshot}
+![deletecli](images/deletecli.png) <br>
+Figure x - GUI for `deletecli`
 
 #### 4.5.5. Find a client `findcli`
 
@@ -1091,6 +1094,9 @@ Outcome :
 1. The *Result Display* will show a success message.
 2. Homerce will list out all the clients with John in their name.
 
+![findcli](images/findcli.png) <br>
+Figure x - GUI for `findcli`
+
 #### 4.5.6. List clients `listcli`
 
 You can use this command to list all your clients in Homerce.
@@ -1111,7 +1117,8 @@ Outcome :
 1. The *Result Display* will show a success message.
 2. Homerce will list out all your expenses.
 
-{example of outcome screenshot}
+![listcli](images/listcli.png) <br>
+Figure x - GUI for `listcli`
 
 #### 4.5.7. Clear clients `clearcli`
 
@@ -1132,7 +1139,8 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 
-{example of outcome screenshot}
+![clearcli](images/clearcli.png) <br>
+Figure x - GUI for `clearcli`
 
 ### 4.6 Schedule Viewer
 
