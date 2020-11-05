@@ -336,7 +336,7 @@ Reason for choosing option 2:
 
 ### 4.4 Client Manager
 
-Homerce allows the user to keep track of the clients that his or her home-based business serves. The client manager is one of the `ListManagers`s elaborated in [section 4.1](#41-list-managers).
+Homerce allows the user to keep track of the clients that his or her home-based business serves. The client manager is one of the `ListManager`s elaborated in [section 4.1](#41-list-managers).
 
 #### 4.4.1 Rationale 
 
@@ -385,7 +385,7 @@ Reason for choosing option 2:
 * Users can have more flexibility when finding a client using phone or name.
 
 ### 4.5 Appointment Manager
-Homerce allows the user to keep track of the appointments of his or her home-based business. The appointment manager is one of the `ListManagers`s elaborated in [section 4.1](#41-list-managers).
+Homerce allows the user to keep track of the appointments of his or her home-based business. The appointment manager is one of the `ListManager`s elaborated in [section 4.1](#41-list-managers).
 
 #### 4.5.1 Rationale
 The appointment manager is a core feature which enables tracking of all past and upcoming appointments the home-based business owner has.
@@ -629,6 +629,58 @@ simpler way as monthly expenses and revenue will be categorized and profits will
 The current implementation of the finance breakdown makes use of the list of revenue and expenses as tracked by `RevenueTracker` and `ExpenseTracker`.
 The list of revenue and expenses will be filtered by their `Month` and `Year` attribute as indicated by the user. The filtered list will
 be used to create a breakdown of expenses and revenue, as well as to calculate the monthly profit of the home-based business.
+
+In this section, we will outline the `breakdownfinance` command using the following Activity Diagram.
+
+![Activity diagram of BreakdownFinance](images/BreakdownFinanceActivityDiagram.png)
+
+*Figure 13. Workflow of a `breakdownfinance` command*
+
+When the user enters the `breakdownfinance` command to view the monthly breakdown, the user input command undergoes the same command parsing as described in 
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `breakdownfinance`, 
+
+The following steps will describe the execution of the `BreakdownFinanceCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `BreakdownFinanceCommand` is called, a new `ExpenseMonthYearPredicate` and `RevenueMonthYearPredicate` is created with the parsed `Month` and `Year`.
+2. The `ModelManager`'s `updateFilteredExpenseList()` and `updateFilteredRevenueList()` method is called using the `ExpenseMonthYearPredicate` and `RevenueMonthYearPredicate` respectively.
+3. The `Model`'s list of expenses and revenue is updated to contain only the expenses and revenue in the inputted `Month` and `Year`.
+4. The `Ui` component will detect this change and update the GUI by opening a pop-up window to show the financial breakdown information.
+5. Assuming that the above steps are all successful, the `BreakdownFinanceCommand` will then create a `CommandResult` object and return the result.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram breakdownfiance](images/BreakdownFinanceSequenceDiagram.png)
+
+*Figure 14. Execution of an `breakdownfinance` command*
+
+#### 4.8.3 Design Consideration
+
+**Aspect: Which class to store Homerce's financial information**
+
+|              |  **Pros**  | **Cons** |
+| -------------|------------|----------|
+| **Option 1 (current choice)** <br> Use revenue and expenses from `RevenueTracker` and `ExpenseTracker` <br> in the `BreakdownFinance` command. Do not create a new `FinanceTracker` class | Avoids duplication of code as the same list of expenses and services are used in `ExpenseTracker` and `RevenueTracker`| Increases coupling between `BreakdownFinanceCommand` code and `RevenueTracker` as well as `ExpenseTracker`|
+| **Option 2** <br> Place the revenue and expenses as fields in a new `FinanceTracker` class | Provides more freedom for manipulation of revenue and expense data as `FinanceTracker` maintains a separate state for the list of expenses and revenue. | Violates the Don't Repeat Yourself(DRY) principle as the information for `ExpenseTracker` and `RevenueTracker` is duplicated in a new `FinanceTracker` class|
+
+Reason for choosing option 1:
+* Using the same instance of `ExpenseTracker` and `RevenueTracker` to obtain the list of expenses and revenue ensures that expenses and revenue data are consistent without needing to update the lists in `ExpenseTracker`, `RevenueTracker` as well as `FinanceTracker`.
+* The `execute()` command of `BreakdownFinanceCommand` already takes in the `Model` which has `ExpenseTracker` and `RevenueTracker` as attributes. It is unnecessary to create a new `FinanceTracker` class as an attribute for `Model` to store and duplicate information that already exists.
+
+### 4.9 Undo Previous Command
+
+Homerce allows the user to undo previous commands to restore the state of Homerce to before the execution of the command.
+
+#### 4.8.1 Rationale 
+
+There may be situations where the user unintentionally uses a command that was not intended. In these situations, it is very useful
+to allow the user to restore the previous state of the application, making it easy for the user to recover from accidental
+command errors.
+
+#### 4.8.2 Current Implementation
+
+The current implementation of undo makes use of a `HistoryManager`. A `HistoryManager` maintains a `History` list, where
+each `History` object holds a particular state of the `Model` and `Command` that was executed to change the state of that
+`Model`. When the user executes the `undo` command, the `HistoryManager` will update the current state of Homerce
+to the previous state in the `History` list.
 
 In this section, we will outline the `breakdownfinance` command using the following Activity Diagram.
 
