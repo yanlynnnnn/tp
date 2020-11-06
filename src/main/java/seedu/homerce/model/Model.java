@@ -300,9 +300,6 @@ public interface Model {
     /** Update schedule view to reflect new changes. */
     void refreshSchedule();
 
-    /** Update appointments view to reflect change when marking done or undone.*/
-    void refreshAppointments();
-
     /** Set predicate for the schedule view to change the week currently in view. */
     void updateFilteredSchedule(Predicate<Appointment> predicate);
 
