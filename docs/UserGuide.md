@@ -1143,8 +1143,8 @@ consolidates all your appointments on a weekly basis and allows you to see it at
 
 #### 4.6.1. Schedule Viewer Command Parameters
 
-Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
-The table below shows a list of command parameters that will be used.
+Before you dive into using the feature, you may want to have a look at the common parameter(s) used in this feature.
+The table below shows a list of command parameter(s) that will be used.
 
 | Parameter Name | Description | Example
 |----------------|-------------|---------
@@ -1152,7 +1152,9 @@ The table below shows a list of command parameters that will be used.
 
 #### 4.6.2. View appointments schedule `schedule`
 
-You can use this command to view your weekly appointments schedule.
+You can use this command to view your weekly appointments schedule. When Homerce is first booted up, `schedule` will show the appointments
+scheduled for the current week based on system date. As you navigate to other weeks, the week is remembered by Homerce and using `schedule`
+will show you the schedule of appointments belonging to the remembered week.
 
 Format : `schedule [dt/DATE]`
 
@@ -1166,7 +1168,7 @@ Format : `schedule [dt/DATE]`
 
 Example :
 
-Let's say you want to view your appointments schedule for today's week, which is the 27th of November 2020.
+Let's say you want to view your appointments schedule for a particular week, such as the week containing the 27th of November 2020.
 You can follow these instructions.
 
 Steps :
