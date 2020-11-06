@@ -94,8 +94,6 @@ The table below explains the general syntax used throughout the user guide.
 
 Important cautions that needs to be known before using the feature.
 
-
-
 #### 3.2.3. Command Syntax and Usage
 
 The table below explains some important technical terms to help you understand and use commands in Homerce.
@@ -726,7 +724,7 @@ Steps :
 Outcome : 
 1. The *Result Display* will show a success message.
 1. Homerce will clear all the revenue data.
-1. You will no revenues listed in the tracker.
+1. You will have no revenues listed in the tracker.
 
 ![addexp](images/revenue/ClearRevenue.png) <br>
 *Figure x - GUI outcome for `clearrev`*
@@ -763,7 +761,8 @@ Format : `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:**<br>
- 
+
+* Expenses will only have one tag. The last tag will be used if multiple tags are entered 
 * If no tag is entered, the expense will automatically be tagged under 'others'.
 * Refer to [Expense Tracker Command Parameters](#441-expense-tracker-command-parameters) for more details about each parameter.
 
@@ -777,10 +776,11 @@ You can follow the steps below to add the expense to Homerce.
 
 Steps :
 1. Type `addexp d/conditioner f/n v/15.00 dt/28-10-2020 t/hairsupplies` in the _Command Box_.
-2. Press `Enter` to execute.
+1. Press `Enter` to execute.
 
 Outcome :
 1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Expense Tab*.
 
 ![addexp](images/addexp.png) <br>
 *Figure x - GUI outcome for `addexp`*
@@ -813,6 +813,8 @@ Steps :
 
 Outcome :
 1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Expense Tab*.
+1. You will see your edited expense displayed alongside other expenses in your tracker.
 
 ![editexp](images/editexp.png) <br>
 *Figure x - GUI outcome for `editexp`*
@@ -839,10 +841,11 @@ You can follow the steps below to delete the expense.
 
 Steps :
 1. Type `deleteexp 3` in the _Command Box_.
-2. Press `Enter` to execute.
+1. Press `Enter` to execute.
 
 Outcome :
 1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Expense Tab*.
 
 ![deleteexp](images/deleteexp.png) <br>
 *Figure x - GUI outcome for `deleteexp`*
@@ -874,7 +877,8 @@ Steps :
 
 Outcome :
 1. The *Result Display* will show a success message.
-2. Homerce will list out all the expenses for 10-10-2020.
+1. Homerce will switch to the *Expense Tab*.
+1. Homerce will list out all the expenses for 10-10-2020.
 
 ![findexp](images/findexp.png) <br>
 *Figure x - GUI outcome for `findexp`*
@@ -905,7 +909,8 @@ Steps :
 
 Outcome :
 1. The *Result Display* will show a success message.
-2. Homerce will list out all the expenses sorted from highest to lowest cost.
+1. Homerce will switch to the *Expense Tab*.
+1. Homerce will list out all the expenses sorted from highest to lowest cost.
 
 ![sortexp](images/sortexp.png) <br>
 *Figure x - GUI outcome for `sortexp`*
@@ -928,7 +933,8 @@ Steps :
 
 Outcome :
 1. The *Result Display* will show a success message.
-2. Homerce will list out all your expenses.
+1. Homerce will switch to the *Expense Tab*.
+1. Homerce will list out all your expenses.
 
 ![listexp](images/listexp.png) <br>
 *Figure x - GUI outcome for `listexp`*
@@ -947,10 +953,11 @@ You can follow the steps below to clear all your expenses.
 
 Steps :
 1. Type `clearexp` in the _Command Box_.
-2. Press `Enter` to execute.
+1. Press `Enter` to execute.
 
 Outcome :
 1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Expense Tab*.
 
 ![clearexp](images/clearexp.png) <br>
 *Figure x - GUI outcome for `clearexp`*
@@ -968,7 +975,7 @@ The table below shows a list of command parameters that will be used.
 | Parameter Name | Description | Example |
 |---------|---------|--------- |
 |`NAME`  | The name of the client. <br><br> It must be an alphanumeric word. | E.g. Typing `John Doe` would represent the name of the client saved in the client manager. |
-|`EMAIL`  | The email of the client. <br> Emails should be in `local-part@domain format` <br> <br> The `local-part` can only contain alphanumeric characters, and the special characters <br> +!#$%&'*+/=?\`{}~^.-&#124 <br> <br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.) <br> The domain name must also have at least 2 characters and start and end with alphanumeric characters | johnDoe97@example123.com |
+|`EMAIL`  | The email of the client. <br> Emails should be in `local-part@domain format` <br> <br> The `local-part` can only contain alphanumeric characters, and the special characters <br> +!#$%&'*+/=?\`{}~^.-&#124; <br> <br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.) <br> The domain name must also have at least 2 characters and start and end with alphanumeric characters | johnDoe97@example123.com |
 |`PHONE` | Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long. | E.g. `91234567` would represent the client's phone number. |
 |`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend. |
 |`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list. |
@@ -977,7 +984,7 @@ The table below shows a list of command parameters that will be used.
 
 You can use this command to add a new client to Homerce.
 
-Format : `addcli n/NAME p/PHONE e/EMAIL [t/TAG]`
+Format : `addcli n/NAME p/PHONE e/EMAIL [t/TAG]…​`
 
 <div markdown="block" class="alert alert-info">
 
@@ -1000,7 +1007,8 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 
-{Example outcome screenshot}
+![addcli](images/addcli.png) <br>
+Figure x - GUI for `addcli`
 
 #### 4.5.3. Edit a client's details `editcli`
 
@@ -1014,6 +1022,8 @@ Format : `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]`
  
 * You must enter at least one optional parameter.
 * The new value entered will overwrite the existing value.
+* When editing tags, the existing tags of the client will be removed i.e adding of tags is not cumulative.
+* You can remove all the client’s tags by typing t/ without specifying any tags after it.
 * Refer to [Client Manager Command Parameters](#451-client-manager-command-parameters) for more details about each parameter.
 
 </div>
@@ -1031,7 +1041,8 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 
-{Example outcome screenshot}
+![editcli](images/editcli.png) <br>
+Figure x - GUI for `editcli`
 
 #### 4.5.4. Delete a client `deletecli`
 
@@ -1047,6 +1058,14 @@ Format : `deletecli INDEX`
 
 </div>
 
+<div markdown="block" class="alert alert-danger">
+
+**:warning: Warning:**<br>
+
+* A client will not be deleted if he/she is scheduled in an appointment happening today or at a later date.
+
+ </div>
+
 Example :
 
 A client repeatedly fails to turn up for his appointments and you wish to delete his contact. 
@@ -1060,7 +1079,8 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 
-{Example outcome screenshot}
+![deletecli](images/deletecli.png) <br>
+Figure x - GUI for `deletecli`
 
 #### 4.5.5. Find a client `findcli`
 
@@ -1072,7 +1092,12 @@ Format : `findcli [n/NAME]* [p/PHONE]*`
 
 **:information_source: Notes:**<br>
 
-* You must enter at least one optional parameter.
+* You must enter one of the optional parameter.
+* The search using name is case-insensitive. e.g hans will match Hans.
+* The order of the keywords does not matter. e.g. Hans Bo will match Bo Hans.
+* Only full words will be matched e.g. Han will not match Hans.
+* Persons matching at least one keyword will be returned (i.e. OR search). e.g. Hans Bo will return Hans Gruber, Bo Yang.
+* The search using phone will match if the number sequence entered (at least 3 digits long) is part of a client's phone number. e.g. 123 will return clients with phone number 91234567 and 98765123.
 * Refer to [Client Manager Command Parameters](#451-client-manager-command-parameters) for more details about each parameter.
 
 </div>
@@ -1090,6 +1115,9 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 2. Homerce will list out all the clients with John in their name.
+
+![findcli](images/findcli.png) <br>
+Figure x - GUI for `findcli`
 
 #### 4.5.6. List clients `listcli`
 
@@ -1111,7 +1139,8 @@ Outcome :
 1. The *Result Display* will show a success message.
 2. Homerce will list out all your expenses.
 
-{example of outcome screenshot}
+![listcli](images/listcli.png) <br>
+Figure x - GUI for `listcli`
 
 #### 4.5.7. Clear clients `clearcli`
 
@@ -1119,6 +1148,14 @@ You can use this command to clear all clients in Homerce.
 
 Format : `clearcli`
 
+<div markdown="block" class="alert alert-danger">
+
+**:warning: Warning:**<br>
+
+* The client list will not be cleared if there is at least one client scheduled in an appointment happening today or at a later date.
+
+</div>
+ 
 Example :
 
 You wish to remove all client entries in Homerce and restart your client management from scratch.
@@ -1132,7 +1169,8 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 
-{example of outcome screenshot}
+![clearcli](images/clearcli.png) <br>
+Figure x - GUI for `clearcli`
 
 ### 4.6 Schedule Viewer
 
@@ -1433,7 +1471,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 
 |Action | Format | Examples
 |---------------|------------------------------------------------------------------|------------------------------------------------------------------
-|**Add**        | `addcli n/NAME p/PHONE e/EMAIL [t/TAG]` | `addcli n/John p/91234567 e/john@gmail.com t/new`
+|**Add**        | `addcli n/NAME p/PHONE e/EMAIL [t/TAG]…​` | `addcli n/John p/91234567 e/john@gmail.com t/new`
 |**Edit**       | `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]` | `editcli 2 n/Johnny`
 |**Delete**     | `deletecli INDEX` | `deletecli 3`
 |**Find**       | `findcli [n/NAME]* [p/PHONE]*` | `findcli n/John`

@@ -122,7 +122,7 @@ This section gives you step-by-step instructions on how to download and open the
 ```
 We have structured this User Guide in a way to help you find what you need easily and quickly. 
 In the next subsection, [Section 3.2 - reading this document](#32-reading-this-document), you can find several useful tips on how to read this guide.
-The following section, [Section 4 - Features](#4-features), documents the six main features in **Homerce**, namely:
+The following section, [Section 4 - Features](#4-features), documents the seven main features in **Homerce**, namely:
 ```
 ```$xslt
 The table below explains some important technical terms to help you understand and use commands in Homerce.

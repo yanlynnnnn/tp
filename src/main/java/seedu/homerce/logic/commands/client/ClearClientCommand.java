@@ -19,8 +19,8 @@ import seedu.homerce.model.manager.HistoryManager;
 public class ClearClientCommand extends Command {
 
     public static final String COMMAND_WORD = "clearcli";
-    public static final String MESSAGE_SUCCESS = "All clients have been cleared!";
 
+    public static final String MESSAGE_SUCCESS = "Client list has been cleared!";
 
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) throws CommandException {
