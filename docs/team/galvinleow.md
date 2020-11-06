@@ -9,21 +9,18 @@ such as their schedule, appointments, clients, and services - into a single appl
 revenue and expenses, and supports simple visualization of monthly finances.
 The application uses a Command Line Interface (CLI).
 
-## Overview
+### Overview
 This portfolio aims to document the contributions that I have made to Homerce. In this project, our team - Homerce,
 will enhance a basic CLI Address Book 3 (AB3) and repurpose it to create our application: Homerce.
 
-## Summary of contributions
-
+### Summary of contributions
 Click [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=galvinleow&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&tabAuthor=galvinleow&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
 to view Galvin Leow's code contributions.
 
-### Enhancement Implemented
-
+#### Enhancement Implemented
 A summary of the enhancements you implemented.
 
-#### 1. Implementation of Revenue Tracker
-
+##### 1. Implementation of Revenue Tracker
 Revenue Tracker was implemented as it is an essential part of operating a business. Revenue tracking is bonded to the breakdown fiance feature, 
 in which this feature gives useful insights to the user.
 
@@ -38,19 +35,16 @@ in which this feature gives useful insights to the user.
 
 All features built will include the implementation of the components from _Logic_, _Storage_ and _Model_.
 
-#### 2. Testing
-
+##### 2. Testing
 1. Included JUnit Test for Revenue Tracker, with over 90% line of code coverage on average.  (Issue [#208](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/208), Pull Request [#209](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/209))
     1. Included Integration Tests across logic, model and storage components for the Revenue Tracker.
 1. Create test cases to be tested from the GUI.
 1. Conduct session to test from GUI.
 
-### Contributions to documentation
-
+#### Contributions to documentation
 Section of which contributions were made in the documentation.
 
-#### User Guide
-
+**User Guide**
 1. Structure of the documentation.  (Pull Request [#44](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/44))
 1. Terminology related to the GUI - the creation of the _AnnotatedUI_ image. (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
 1. General symbols and syntax - consolidating and documenting.
@@ -60,9 +54,7 @@ Section of which contributions were made in the documentation.
     1. Screenshot images for commands' outcome. (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
 1. Command summary - the revenue tracker commands table.
 
-
-#### Developer Guide
-
+**Developer Guide**
 1. Implementation - Revenue Tracker (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
     1. Rationale.
     1. Current implementation
@@ -79,24 +71,21 @@ Section of which contributions were made in the documentation.
     1. `Add`, `Edit` and `Delete` use cases were created for _Service_, _Client_, _Appointment_, _Revenue_ and _Expense_.
     1. `Done` and `Undone` use cases were created for _Appointment_.
     
-### Contributions to team-based tasks
-
+#### Contributions to team-based tasks
 1. Maintaining the issue tracker - ensure that issues are up-to-date and PR are linked correctly. (Issue [#76](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/76))
 1. Update config file (Pull request [#46](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/46))
 1. Helping my teammate fix their branch when they make a mistake in committing and merging which issues when wanting to create a pull request.
 
 <div style="page-break-after: always;"></div>
 
-## Contribution to the documentation (Extracts)
-
+### Contribution to the documentation (Extracts)
 Reproduce of the parts in the guides that I have contributed. 
 The contributions listed in this section will not be extensive, 
 please refer to the respective documents for the full contributions.
 
-### Developer Guide
+**Developer Guide**
 
-#### Diagrams
-
+<u>Diagrams</u>
 ![Activity diagram for revenue_tracker clearrev command](../images/revenue/ClearRevenueActivityDiagram.png)
 
 _Figure 1. One of the activity diagram that was added to the guide_
@@ -105,8 +94,7 @@ _Figure 1. One of the activity diagram that was added to the guide_
 
 _Figure 2. One of the sequence diagram that was added to the guide_
 
-#### Contents
-
+<u>Contents</u>
 ```
 When the user enters the `clearrev` command to sort the revenue list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `ClearRevenueCommand`, Homerce will access the revenue tracker
@@ -148,16 +136,14 @@ Use case ends.
 
 _Extract 2. One of the use case for Service._
 
-### User Guide
+**User Guide**
 
-#### Diagram
-
+<u>Diagram</u>
 ![addexp](../images/revenue/FindRevenue.png)
 
 _Figure 1. One of the outcome screenshot that was added to the guide_
 
-#### Content
-
+<u>Content</u>
 <pre>
 You can use this command to list all your revenue entries in Homerce. The list will be sorted by descending chronological order.
 
