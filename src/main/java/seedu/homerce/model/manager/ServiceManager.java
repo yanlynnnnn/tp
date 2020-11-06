@@ -124,7 +124,9 @@ public class ServiceManager implements ReadOnlyServiceManager {
 
     public Service getServiceByServiceCode(ServiceCode serviceCode) {
         requireNonNull(serviceCode);
-        return services.getServiceByServiceCode(serviceCode);
+        Service service = services.getServiceByServiceCode(serviceCode);
+        // Return a deep copy so that there will not be issues when services are cleared.
+        return new Service(service.getTitle(), service.getDuration(), service.getAmount());
     }
 
     /**
