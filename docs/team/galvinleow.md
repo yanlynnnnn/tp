@@ -24,7 +24,8 @@ A summary of the enhancements you implemented.
 
 #### 1. Implementation of Revenue Tracker
 
-Revenue Tracker was implemented as it is an essential part of operating a business. 
+Revenue Tracker was implemented as it is an essential part of operating a business. Revenue tracking is bonded to the breakdown fiance feature, 
+in which this feature gives useful insights to the user.
 
 1. The creation of 4 user-facing commands and they are the `findrev`, `sortrev`,`list` and `clearrev` commands. (Pull Request [#122](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/122))
     1. `findrev` command will enable the user to find revenues by date or by service code. (Issue [#120](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/120))
@@ -82,6 +83,7 @@ Section of which contributions were made in the documentation.
 
 1. Maintaining the issue tracker - ensure that issues are up-to-date and PR are linked correctly. (Issue [#76](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/76))
 1. Update config file (Pull request [#46](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/46))
+1. Helping my teammate fix their branch when they make a mistake in committing and merging which issues when wanting to create a pull request.
 
 <div style="page-break-after: always;"></div>
 
