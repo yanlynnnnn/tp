@@ -24,20 +24,23 @@ A summary of the enhancements you implemented.
 
 #### 1. Implementation of Revenue Tracker
 
-1. The creation of 3 user-facing commands and they are the `findrev`, `sortrev` and `clearrev` commands.
-    1. `findrev` command will enable the user to find revenues by date or by service code.
-    1. `sortrev` command will sort the revenue list in descending or ascending order based on the user's input.
+Revenue Tracker was implemented as it is an essential part of operating a business. 
+
+1. The creation of 4 user-facing commands and they are the `findrev`, `sortrev`,`list` and `clearrev` commands. (Pull Request [#122](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/122))
+    1. `findrev` command will enable the user to find revenues by date or by service code. (Issue [#120](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/120))
+    1. `sortrev` command will sort the revenue list in descending or ascending order based on the user's input. (Issue [#193](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/193), Pull Request [#194](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/194))
+    1. `listrev`command will list all revenue entries in the revenue list. (Issue [#119](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/119))
     1. `clearev`command will clear all revenue entries in the revenue list.
 2. The creation of 2 backend capabilities that is used by the appointment manager.
-    1. Appointment manager will be able to use the method to add revenue into the revenue list when its appointment is done.
+    1. Appointment manager will be able to use the method to add revenue into the revenue list when its appointment is done. (Issue [#98](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/98))
     1. Appointment manager will be able to use the method to delete revenue into the revenue list when its appointment is undone.
 
 All features built will include the implementation of the components from _Logic_, _Storage_ and _Model_.
 
 #### 2. Testing
 
-1. Included JUnit Test for Revenue Tracker, with over 90% line of code coverage on average.
-1. Included Integration Tests across logic, model and storage components for the Revenue Tracker.
+1. Included JUnit Test for Revenue Tracker, with over 90% line of code coverage on average.  (Issue [#208](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/208), Pull Request [#209](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/209))
+    1. Included Integration Tests across logic, model and storage components for the Revenue Tracker.
 1. Create test cases to be tested from the GUI.
 1. Conduct session to test from GUI.
 
@@ -47,19 +50,19 @@ Section of which contributions were made in the documentation.
 
 #### User Guide
 
-1. Structure of the documentation.
-1. Terminology related to the GUI - the creation of the _AnnotatedUI_ image.
+1. Structure of the documentation.  (Pull Request [#44](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/44))
+1. Terminology related to the GUI - the creation of the _AnnotatedUI_ image. (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
 1. General symbols and syntax - consolidating and documenting.
-1. Revenue Tracker
-    1. Revenue Tracker Command Parameters section.
+1. Revenue Tracker 
+    1. Revenue Tracker Command Parameters section. 
     1. Commands documentation.
-    1. Screenshot images for commands' outcome.
+    1. Screenshot images for commands' outcome. (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
 1. Command summary - the revenue tracker commands table.
 
 
 #### Developer Guide
 
-1. Implementation - Revenue Tracker
+1. Implementation - Revenue Tracker (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
     1. Rationale.
     1. Current implementation
         1. Sort revenue command
@@ -71,13 +74,14 @@ Section of which contributions were made in the documentation.
     1. Design consideration
         1. Sort revenue command
         1. Clear revenue command
-1. Use cases
+1. Use cases (Pull Request [#176](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/176) , Issue [#175](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/175))
     1. `Add`, `Edit` and `Delete` use cases were created for _Service_, _Client_, _Appointment_, _Revenue_ and _Expense_.
     1. `Done` and `Undone` use cases were created for _Appointment_.
     
 ### Contributions to team-based tasks
 
-1. Maintaining the issue tracker - ensure that issues are up-to-date and PR are linked correctly.
+1. Maintaining the issue tracker - ensure that issues are up-to-date and PR are linked correctly. (Issue [#76](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/76))
+1. Update config file (Pull request [#46](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/46))
 
 <div style="page-break-after: always;"></div>
 
