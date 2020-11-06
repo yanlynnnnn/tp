@@ -23,7 +23,7 @@ public class FindClientCommand extends Command {
     public static final String COMMAND_WORD = "findcli";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all clients by either their name or phone "
-        + "(case-sensitive) and displays them as a list with index numbers.\n"
+        + "(case-insensitive) and displays them as a list with index numbers.\n"
         + "Parameters: "
         + PREFIX_NAME + "NAME or "
         + PREFIX_PHONE + "PHONE "
