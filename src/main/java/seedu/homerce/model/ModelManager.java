@@ -453,6 +453,12 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void refreshAppointments() {
+        ObservableList<Appointment> copy = appointmentManager.getAppointmentListCopy();
+        appointmentManager.setAppointments(copy);
+    }
+
+    @Override
     public void updateFilteredSchedule(Predicate<Appointment> predicate) {
         filteredSchedule.setPredicate(predicate);
     }
