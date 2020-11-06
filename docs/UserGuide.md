@@ -370,13 +370,6 @@ Example:
 Let's say your client called to make an appointment.
 You can follow these instructions to add his/her appointment details into Homerce.
 
-| Appointment | |
-|---------|--------- |
-|`DATE`| 28-10-2020 |
-|`TIME`| 1300 |
-|`SERVICE_CODE`| SC001 |
-|`PHONE_NUMBER`| 83232656 |
-
 Steps:
 1. Type `addapt dt/28-10-2020 t/1300 s/SC001 p/83232656` in the *Command Box*.
 1. Press `Enter` on your keyboard.
@@ -448,7 +441,7 @@ Outcome:
 When a new or existing client calls to edit a booking he or she had made, use this
 command to edit details of the appointment.
 
-Format : `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER]`
+Format : `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER] [s/SERVICE_CODE]`
 
 <div markdown="block" class="alert alert-info"> 
 
@@ -463,13 +456,6 @@ Example:
 Let's say you searched for the appointment which you want to edit in Homerce.
 You searched for the appointment in Homerce with `listapt` or `findapt`, see that it's index is 1,
 and you want to edit it with the following details:
-
-| Appointment | |
-|---------|-------- |
-|`INDEX`| 1 |
-|`DATE`| 28-10-2020 |
-|`TIME`| 1300 |
-|`PHONE_NUMBER`| 93451222 |
 
 Steps:
 1. Type `editapt 1 dt/28-10-2020 t/1300 p/93451222` in the *Command Box*.
