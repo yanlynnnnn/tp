@@ -50,7 +50,7 @@ public class UnDoneAppointmentCommand extends Command {
             appointmentToMarkUnDone.getAppointmentDate()
         );
         String deletionOfRevenueResult;
-        if (model.getFilteredRevenueList().contains(revenueToRemove)) {
+        if (model.getRevenueTracker().getRevenueList().contains(revenueToRemove)) {
             model.deleteRevenue(revenueToRemove);
             deletionOfRevenueResult = String.format(MESSAGE_DELETE_REVENUE_SUCCESS, revenueToRemove);
         } else {
