@@ -507,7 +507,7 @@ and clear the revenue list. For example, if there are 5 entries in the list, all
 The following steps will describe the execution of the `ClearRevenueCommand` in detail, assuming that no errors are encountered.
 1. When the `execute()` method of the `ClearRevenueCommand` is called, the `ModelManager`'s `setRevenues()` method is called.
 1. The `RevenueTracker` then calls the `setItems()` method on `NonUniqueList`, which set the revenue entries in the revenue list.
-1. The `ObservableList` of revenues is updated to reflect the newly sorted list.
+1. The `ObservableList` of revenues is updated to reflect the empty list.
 1. The `Ui` component will detect this change and update the GUI.
 1. Assuming that the above steps are all successful, the `ClearRevenueCommand` will then create a `CommandResult` object and return the result.
 
@@ -754,8 +754,8 @@ Add a service provided by the business into Homerce.
 
 <b>MSS</b>
 1. User adds a service by providing details.
-1. Homerce adds the service to the service list.
-1. Homerce displays the updated list and a successful message.
+2. Homerce adds the service to the service list.
+3. Homerce displays the updated list and a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -778,11 +778,11 @@ Edit the details of an existing service.
 
 <b>MSS</b>
 1. User requests to list all services.
-1. Homerce shows a list of services.
-1. User edits an existing service by providing the details.
-1. Homerce updates the details of the selected service.
-1. Homerce updates the service list.
-1. Homerce displays the updated list and a successful message.
+2. Homerce shows a list of services.
+3. User edits an existing service by providing the details.
+4. Homerce updates the details of the selected service.
+5. Homerce updates the service list.
+6. Homerce displays the updated list and a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -809,11 +809,11 @@ Delete the selected service from the service list.
 
 <b>MSS</b>
 1. User requests to list all services.
-1. Homerce shows a list of services.
-1. User requests to delete a specific service.
-1. Homerce deletes a service.
-1. Homerce displays the updated list.
-1. Homerce displays a successful message.
+2. Homerce shows a list of services.
+3. User requests to delete a specific service.
+4. Homerce deletes a service.
+5. Homerce displays the updated list.
+6. Homerce displays a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -840,9 +840,9 @@ Find a service in the service list.
 
 <b>MSS</b>
 1. User requests to list all services that match the search value.
-1. Homerce searches for services that match search value.
-1. Homerce shows a list of all services that match the search value.
-1. Homerce displays a message stating the amount of services listed.
+2. Homerce searches for services that match search value.
+3. Homerce shows a list of all services that match the search value.
+4. Homerce displays a message stating the amount of services listed.
 Use case ends.
 
 <b>Extensions</b>
@@ -865,8 +865,8 @@ List all the services in the service list.
 
 <b>MSS</b>
 1. User requests to list all services.
-1. Homerce displays all services in the service list.
-1. Homerce displays a successful listed message.
+2. Homerce displays all services in the service list.
+3. Homerce displays a successful listed message.
 Use case ends.
 
 <b>Extensions</b>
@@ -889,7 +889,7 @@ Clear all services in the service list.
 
 <b>MSS</b>
 1. User requests to clear the list.
-1. Homerce displays an empty list and a successful message.
+2. Homerce displays an empty list and a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -914,8 +914,8 @@ Add a client into Homerce.
 
 <b>MSS</b>
 1. User adds a client by providing details.
-1. Homerce adds the client to the client list.
-1. Homerce displays the updated list and a successful message.
+2. Homerce adds the client to the client list.
+3. Homerce displays the updated list and a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -938,11 +938,11 @@ Edit the details of an existing client.
 
 <b>MSS</b>
 1. User requests to list all clients.
-1. Homerce shows a list of clients.
-1. User edits an existing client's details by providing the updated details.
-1. Homerce updates the details of the selected client.
-1. Homerce updates the client list.
-1. Homerce displays the updated list and a successful message.
+2. Homerce shows a list of clients.
+3. User edits an existing client's details by providing the updated details.
+4. Homerce updates the details of the selected client.
+5. Homerce updates the client list.
+6. Homerce displays the updated list and a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -969,11 +969,11 @@ Delete the selected client from the client list.
 
 <b>MSS</b>
 1. User requests to list all clients.
-1. Homerce shows a list of clients.
-1. User requests to delete a specific clients.
-1. Homerce deletes a client.
-1. Homerce displays the updated list.
-1. Homerce displays a successful message.
+2. Homerce shows a list of clients.
+3. User requests to delete a specific clients.
+4. Homerce deletes a client.
+5. Homerce displays the updated list.
+6. Homerce displays a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -1000,9 +1000,9 @@ Find a client in the client list.
 
 <b>MSS</b>
 1. User requests to list all clients that match the search value.
-1. Homerce searches for clients that match search value.
-1. Homerce shows a list of all clients that match the search value.
-1. Homerce displays a message stating the amount of clients listed.
+2. Homerce searches for clients that match search value.
+3. Homerce shows a list of all clients that match the search value.
+4. Homerce displays a message stating the amount of clients listed.
 Use case ends.
 
 <b>Extensions</b>
@@ -1025,8 +1025,8 @@ List all the clients in the client list.
 
 <b>MSS</b>
 1. User requests to list all clients.
-1. Homerce displays all clients in the client list.
-1. Homerce displays a successful listed message.
+2. Homerce displays all clients in the client list.
+3. Homerce displays a successful listed message.
 Use case ends.
 
 <b>Extensions</b>
@@ -1049,7 +1049,7 @@ Clear all clients in the client list.
 
 <b>MSS</b>
 1. User requests to clear the list.
-1. Homerce displays an empty list and a successful message.
+2. Homerce displays an empty list and a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -1074,8 +1074,8 @@ Schedule an appointment into Homerce.
 
 <b>MSS</b>
 1. User adds an appointment by providing details.
-1. Homerce adds the appointment to the appointment list.
-1. Homerce displays the updated list and a successful message.
+2. Homerce adds the appointment to the appointment list.
+3. Homerce displays the updated list and a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -1098,11 +1098,11 @@ Edit the details of an existing appointment.
 
 <b>MSS</b>
 1. User requests to list all appointments.
-1. Homerce shows a list of appointments.
-1. User edits an existing appointment details by providing the updated details.
-1. Homerce updates the details of the selected appointment.
-1. Homerce updates the appointment list.
-1. Homerce displays the updated list and a successful message.
+2. Homerce shows a list of appointments.
+3. User edits an existing appointment details by providing the updated details.
+4. Homerce updates the details of the selected appointment.
+5. Homerce updates the appointment list.
+6. Homerce displays the updated list and a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -1127,17 +1127,17 @@ Delete the selected appointment from the appointment list.
 
 <b>Actor: User</b>
 
-<b>Preconditions: Appointment exists in appointment list.**
+<b>Preconditions: Appointment exists in appointment list.</b>
 
 <b>Guarantees: Updated appointment list with appointment specified by user deleted.</b>
 
 <b>MSS</b>
 1. User requests to list all appointments.
-1. Homerce shows a list of appointments.
-1. User requests to delete a specific appointments.
-1. Homerce deletes an appointment.
-1. Homerce displays the updated list.
-1. Homerce displays a successful message.
+2. Homerce shows a list of appointments.
+3. User requests to delete a specific appointments.
+4. Homerce deletes an appointment.
+5. Homerce displays the updated list.
+6. Homerce displays a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -1154,15 +1154,15 @@ Find an appointment in the appointment list.
 
 <b>Actor: User</b>
 
-<b>Preconditions: Appointment exists in appointment list.**
+<b>Preconditions: Appointment exists in appointment list.</b>
 
 <b>Guarantees: Display all appointments in the appointment list that matches the search value.</b>
 
 <b>MSS</b>
 1. User requests to list all appointments that match the search value.
-1. Homerce searches for appointments that match search value.
-1. Homerce shows a list of all appointments that match the search value.
-1. Homerce displays a message stating the amount of appointments listed.
+2. Homerce searches for appointments that match search value.
+3. Homerce shows a list of all appointments that match the search value.
+4. Homerce displays a message stating the amount of appointments listed.
 Use case ends.
 
 <b>Extensions</b>
@@ -1185,8 +1185,8 @@ List all the appointments in the appointment list.
 
 <b>MSS</b>
 1. User requests to list all appointments.
-1. Homerce displays all appointments in the appointment list.
-1. Homerce displays a successful listed message.
+2. Homerce displays all appointments in the appointment list.
+3. Homerce displays a successful listed message.
 Use case ends.
 
 <b>Extensions</b>
@@ -1209,7 +1209,7 @@ Clear all appointments in the appointment list.
 
 <b>MSS</b>
 1. User requests to clear the list.
-1. Homerce displays an empty list and a successful message.
+2. Homerce displays an empty list and a successful message.
 Use case ends.
 </pre>
 <br>
@@ -1227,12 +1227,12 @@ Indicate that the appointment have been done.
 
 <b>MSS</b>
 1. User requests to list all appointments.
-1. Homerce shows a list of appointments.
-1. User requests to mark a specific appointment as done.
-1. Homerce indicate that the appointment have been completed.
-1. Homerce <ins>adds a revenue (UC027)</ins>.
-1. Homerce displays all appointments in the appointment list.
-1. Homerce displays a successful listed message.
+2. Homerce shows a list of appointments.
+3. User requests to mark a specific appointment as done.
+4. Homerce indicate that the appointment have been completed.
+5. Homerce <ins>adds a revenue (UC027)</ins>.
+6. Homerce displays all appointments in the appointment list.
+7. Homerce displays a successful listed message.
 
 <b>Extensions</b>
 * 3a. Invalid index provided.
@@ -1254,12 +1254,12 @@ Indicate that the appointment has not been completed.
  
 <b>MSS</b>
 1. User requests to list all appointments.
-1. Homerce shows a list of appointments.
-1. User requests to mark a specific appointment as undone.
-1. Homerce indicate that the appointment have not been completed.
-1. Homerce <ins>deletes a revenue (UC028)</ins>.
-1. Homerce displays all appointments in the appointment list.
-1. Homerce displays a successful listed message.
+2. Homerce shows a list of appointments.
+3. User requests to mark a specific appointment as undone.
+4. Homerce indicate that the appointment have not been completed.
+5. Homerce <ins>deletes a revenue (UC028)</ins>.
+6. Homerce displays all appointments in the appointment list.
+7. Homerce displays a successful listed message.
   
 <b>Extensions</b>
 * 3a. Invalid index provided.
@@ -1287,8 +1287,8 @@ Add an expense incurred by the business into Homerce.
 
 <b>MSS</b>
 1. User adds an expense by providing details.
-1. Homerce adds the expense to the expense list.
-1. Homerce displays the updated list and a successful message.
+2. Homerce adds the expense to the expense list.
+3. Homerce displays the updated list and a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -1311,11 +1311,11 @@ Edit the details of an existing expense.
 
 <b>MSS</b>
 1. User requests to list all expenses.
-1. Homerce shows a list of expenses.
-1. User edits an existing expense by providing the details.
-1. Homerce updates the details of the selected expense.
-1. Homerce updates the expense list.
-1. Homerce displays the updated list and a successful message.
+2. Homerce shows a list of expenses.
+3. User edits an existing expense by providing the details.
+4. Homerce updates the details of the selected expense.
+5. Homerce updates the expense list.
+6. Homerce displays the updated list and a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -1342,11 +1342,11 @@ Delete the selected expense from the expense list.
 
 <b>MSS</b>
 1. User requests to list all expenses.
-1. Homerce shows a list of expenses.
-1. User requests to delete a specific expenses.
-1. Homerce deletes a expense.
-1. Homerce displays the updated list.
-1. Homerce displays a successful message.
+2. Homerce shows a list of expenses.
+3. User requests to delete a specific expenses.
+4. Homerce deletes a expense.
+5. Homerce displays the updated list.
+6. Homerce displays a successful message.
 Use case ends.
 
 <b>Extensions</b>
@@ -1369,9 +1369,9 @@ Find an expense in the expense list.
 
 <b>MSS</b>
 1. User requests to list all expenses that match the search value.
-1. Homerce searches for expenses that match search value.
-1. Homerce shows a list of all expenses that match the search value.
-1. Homerce displays a message stating the amount of expenses listed.
+2. Homerce searches for expenses that match search value.
+3. Homerce shows a list of all expenses that match the search value.
+4. Homerce displays a message stating the amount of expenses listed.
 Use case ends.
 
 <b>Extensions</b>
@@ -1394,8 +1394,8 @@ List all the expenses in the expense list.
 
 <b>MSS</b>
 1. User requests to list all expenses.
-1. Homerce displays all expenses in the expense list.
-1. Homerce displays a successful listed message.
+2. Homerce displays all expenses in the expense list.
+3. Homerce displays a successful listed message.
 Use case ends.
 
 <b>Extensions</b>
@@ -1418,7 +1418,7 @@ Clear all expenses in the expense list.
 
 <b>MSS</b>
 1. User requests to clear the list.
-1. Homerce displays an empty list and a successful message.
+2. Homerce displays an empty list and a successful message.
 Use case ends.
 </pre>
 
@@ -1438,8 +1438,8 @@ Add a revenue earned by the business into Homerce.
 
 <b>MSS</b>
 1. User <ins>mark appointment as done(UC019)</ins>.
-1. Homerce adds the revenue generated from appointment to the revenue list.
-1. Homerce displays a successful message.
+2. Homerce adds the revenue generated from appointment to the revenue list.
+3. Homerce displays a successful message.
 Use case ends.
 </pre>
 <br>
@@ -1457,8 +1457,8 @@ Delete the selected revenue from the revenue list.
 
 <b>MSS</b>
 1. User <ins>mark appointment as done(UC019)</ins>.
-1. Homerce remove the revenue generated from appointment to the revenue list.
-1. Homerce displays a successful message.
+2. Homerce remove the revenue generated from appointment to the revenue list.
+3. Homerce displays a successful message.
 Use case ends.
 </pre>
 <br>
@@ -1476,9 +1476,9 @@ Find a revenue in the revenue list.
 
 <b>MSS</b>
 1. User requests to list all revenues that match the search value.
-1. Homerce searches for revenues that match search value.
-1. Homerce shows a list of all revenues that match the search value.
-1. Homerce displays a message stating the amount of revenues listed.
+2. Homerce searches for revenues that match search value.
+3. Homerce shows a list of all revenues that match the search value.
+4. Homerce displays a message stating the amount of revenues listed.
 Use case ends.
 
 <b>Extensions</b>
@@ -1501,8 +1501,8 @@ List all the revenues in the revenue list.
 
 <b>MSS</b>
 1. User requests to list all revenues.
-1. Homerce displays all revenues in the revenue list.
-1. Homerce displays a successful listed message.
+2. Homerce displays all revenues in the revenue list.
+3. Homerce displays a successful listed message.
 Use case ends.
 
 <b>Extensions</b>
@@ -1525,7 +1525,7 @@ Clear all revenues in the revenue list.
 
 <b>MSS</b>
 1. User requests to clear the list.
-1. Homerce displays an empty list and a successful message.
+2. Homerce displays an empty list and a successful message.
 Use case ends.
 </pre>
 
@@ -1544,7 +1544,7 @@ View the schedule of appointments for the current week.
 
 <b>MSS</b>
 1. User requests to view the schedule of appointments.
-1. Homerce navigates to the schedule tab and displays a successful message.
+2. Homerce navigates to the schedule tab and displays a successful message.
 Use case ends.
 </pre>
 <br>
@@ -1562,7 +1562,7 @@ Creates a breakdown of revenues, expenses and profit for a given month of a year
 
 <b>MSS</b>
 1. User requests to view a breakdown of finances for a particular month of a year.
-1. Homerce displays a new window which shows the breakdown of finances.
+2. Homerce displays a new window which shows the breakdown of finances.
 Use case ends.
 </pre>
 
