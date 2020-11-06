@@ -726,7 +726,7 @@ Steps :
 Outcome : 
 1. The *Result Display* will show a success message.
 1. Homerce will clear all the revenue data.
-1. You will no revenues listed in the tracker.
+1. You will have no revenues listed in the tracker.
 
 ![addexp](images/revenue/ClearRevenue.png) <br>
 *Figure x - GUI outcome for `clearrev`*
@@ -777,10 +777,11 @@ You can follow the steps below to add the expense to Homerce.
 
 Steps :
 1. Type `addexp d/conditioner f/n v/15.00 dt/28-10-2020 t/hairsupplies` in the _Command Box_.
-2. Press `Enter` to execute.
+1. Press `Enter` to execute.
 
 Outcome :
 1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Expense Tab*.
 
 ![addexp](images/addexp.png) <br>
 *Figure x - GUI outcome for `addexp`*
@@ -813,6 +814,8 @@ Steps :
 
 Outcome :
 1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Expense Tab*.
+1. You will see your edited expense displayed alongside other expenses in your tracker.
 
 ![editexp](images/editexp.png) <br>
 *Figure x - GUI outcome for `editexp`*
@@ -839,10 +842,11 @@ You can follow the steps below to delete the expense.
 
 Steps :
 1. Type `deleteexp 3` in the _Command Box_.
-2. Press `Enter` to execute.
+1. Press `Enter` to execute.
 
 Outcome :
 1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Expense Tab*.
 
 ![deleteexp](images/deleteexp.png) <br>
 *Figure x - GUI outcome for `deleteexp`*
@@ -874,7 +878,8 @@ Steps :
 
 Outcome :
 1. The *Result Display* will show a success message.
-2. Homerce will list out all the expenses for 10-10-2020.
+1. Homerce will switch to the *Expense Tab*.
+1. Homerce will list out all the expenses for 10-10-2020.
 
 ![findexp](images/findexp.png) <br>
 *Figure x - GUI outcome for `findexp`*
@@ -905,7 +910,8 @@ Steps :
 
 Outcome :
 1. The *Result Display* will show a success message.
-2. Homerce will list out all the expenses sorted from highest to lowest cost.
+1. Homerce will switch to the *Expense Tab*.
+1. Homerce will list out all the expenses sorted from highest to lowest cost.
 
 ![sortexp](images/sortexp.png) <br>
 *Figure x - GUI outcome for `sortexp`*
@@ -928,7 +934,8 @@ Steps :
 
 Outcome :
 1. The *Result Display* will show a success message.
-2. Homerce will list out all your expenses.
+1. Homerce will switch to the *Expense Tab*.
+1. Homerce will list out all your expenses.
 
 ![listexp](images/listexp.png) <br>
 *Figure x - GUI outcome for `listexp`*
@@ -947,10 +954,11 @@ You can follow the steps below to clear all your expenses.
 
 Steps :
 1. Type `clearexp` in the _Command Box_.
-2. Press `Enter` to execute.
+1. Press `Enter` to execute.
 
 Outcome :
 1. The *Result Display* will show a success message.
+1. Homerce will switch to the *Expense Tab*.
 
 ![clearexp](images/clearexp.png) <br>
 *Figure x - GUI outcome for `clearexp`*
@@ -1000,7 +1008,8 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 
-{Example outcome screenshot}
+![addcli](images/addcli.png) <br>
+Figure x - GUI for `addcli`
 
 #### 4.5.3. Edit a client's details `editcli`
 
@@ -1031,7 +1040,8 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 
-{Example outcome screenshot}
+![editcli](images/editcli.png) <br>
+Figure x - GUI for `editcli`
 
 #### 4.5.4. Delete a client `deletecli`
 
@@ -1060,7 +1070,8 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 
-{Example outcome screenshot}
+![deletecli](images/deletecli.png) <br>
+Figure x - GUI for `deletecli`
 
 #### 4.5.5. Find a client `findcli`
 
@@ -1091,6 +1102,9 @@ Outcome :
 1. The *Result Display* will show a success message.
 2. Homerce will list out all the clients with John in their name.
 
+![findcli](images/findcli.png) <br>
+Figure x - GUI for `findcli`
+
 #### 4.5.6. List clients `listcli`
 
 You can use this command to list all your clients in Homerce.
@@ -1111,7 +1125,8 @@ Outcome :
 1. The *Result Display* will show a success message.
 2. Homerce will list out all your expenses.
 
-{example of outcome screenshot}
+![listcli](images/listcli.png) <br>
+Figure x - GUI for `listcli`
 
 #### 4.5.7. Clear clients `clearcli`
 
@@ -1132,7 +1147,8 @@ Steps :
 Outcome :
 1. The *Result Display* will show a success message.
 
-{example of outcome screenshot}
+![clearcli](images/clearcli.png) <br>
+Figure x - GUI for `clearcli`
 
 ### 4.6 Schedule Viewer
 
