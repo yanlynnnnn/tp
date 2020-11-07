@@ -2,7 +2,6 @@
 layout: page
 title: Galvin's Project Portfolio
 ---
-
 ## Project: Homerce
 Homerce is an all-in-one application that helps home-based beauty salon owners consolidate their business details - 
 such as their schedule, appointments, clients, and services - into a single application. It also keeps track of the business's
@@ -54,16 +53,12 @@ Section of which contributions were made in the documentation.
 **Developer Guide**
 1. Implementation - Revenue Tracker (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
     1. Rationale.
-    1. Current implementation
-        1. Sort revenue command
+    1. Sort & Clear revenue command
+        1. Current implementation
             1. Activity diagram included.
             1. Sequence diagram included.
-        1. Clear revenue command
-            1. Activity diagram included.
-            1. Sequence diagram included.
-    1. Design consideration
-        1. Sort revenue command
-        1. Clear revenue command
+        1. Design consideration
+
 1. Use cases (Pull Request [#176](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/176) , Issue [#175](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/175))
     1. `Add`, `Edit` and `Delete` use cases were created for _Service_, _Client_, _Appointment_, _Revenue_ and _Expense_.
     1. `Done` and `Undone` use cases were created for _Appointment_.
@@ -82,7 +77,7 @@ please refer to the respective documents for the full contributions.
 
 **Developer Guide**
 
-<u>Diagrams</u>
+<u>Diagrams</u>  
 ![Activity diagram for revenue_tracker clearrev command](../images/revenue/ClearRevenueActivityDiagram.png)
 
 _Figure 1. One of the activity diagrams that was added to the guide_
