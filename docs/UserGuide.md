@@ -432,9 +432,9 @@ You can use this command to delete an existing service in the Service Manager.
 
 Format: `deletesvc INDEX`
 
-<div markdown="block" class="alert alert-danger"> 
+<div markdown="block" class="alert alert-danger">
 
-**:warning:**<br>
+**:warning: Warning:**<br>
 
 * Homerce will not allow the deletion of a service which is already scheduled for an upcoming appointment.
 
