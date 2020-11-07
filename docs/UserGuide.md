@@ -524,9 +524,9 @@ You can use this command to clear and delete the all the services in the Service
 
 Format: `clearsvc`
 
-<div markdown="block" class="alert alert-danger"> 
+<div markdown="block" class="alert alert-danger">
 
-**:warning:**<br>
+**:warning: Warning:**<br>
 
 * You are unable to clear services if there are any existing services that have been scheduled in your upcoming appointments. Please remove these
 appointments before proceeding to clear your services.
