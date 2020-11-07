@@ -55,7 +55,7 @@ Included JUnit Tests for the Appointment Manager, with over 90% line coverage on
 #### Contributions to the User Guide:
 1. Appointment Manager (Pull Request [#72](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/72/files))
     * Command Parameter Summary Table
-    * Commands Documentation, including command parameters, command format, command examples, and command outcomes with annotated screenshots (Pull Request [#324](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/324))
+    * Commands Documentation, including command parameters, command format, command examples, and command outcomes with annotated screenshots (Pull Request [#330](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/330))
     * Command Summary 
 1. Help Command (Pull request [#177](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/177))
     * Command documentation and summary
