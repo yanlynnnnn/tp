@@ -9,83 +9,72 @@ such as their schedule, appointments, clients, and services - into a single appl
 revenue and expenses, and supports simple visualization of monthly finances.
 The application uses a Command Line Interface (CLI).
 
-This portfolio aims to document Wei Kit's contributions to Homerce. In this project, our team - Homerce,
+This portfolio aims to document my contributions to Homerce. In this project, our team - Homerce,
 will enhance a basic CLI Address Book 3 (AB3) and repurpose it to create our application: Homerce.
 
-## Summary of contributions
-Click [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=khoongwk&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other)
-to view Wei Kit's code contributions.
+Given below is a summary of my contributions.
 
-####Enhancements Implemented:
-##### 1. Implementation of Appointment Manager
-The appointment manager is a core feature of Homerce. It uses the features of the service manager, client manager,
+* **Code contributions**: [Reposense Link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=khoongwk&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code~other)
+* **New feature**: Implementation of Appointment Manager
+    * The appointment manager is a core feature of Homerce. It uses the features of the service manager, client manager,
 and revenue tracker to create a cohesive experience for users to keep track of upcoming appointments with their clients
-and to record revenues from services once these appointments are done. 
-
-1. Implemented 6 basic commands which form the core features of the appointment manager: `addapt`, `editapt`, `deleteapt`,
+and to record revenues from services once these appointments are done.
+    * Implemented 6 basic commands which form the core features of the appointment manager: `addapt`, `editapt`, `deleteapt`,
 `clearapt`, `listapt` and `findapt` to perform CRUD operations on appointments. (Pull request [#101](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/101))
-        
-1. Additional commands for extra functionality (Pull request [#163](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/163)):
-    * `done` command to mark an appointment as done and record the revenue associated with the service into the revenue tracker.
-    * `undone` command to mark an appointment as not done and delete the revenue associated with the service from the revenue tracker.   
-    
-##### 2. Enhancement of Appointment Manager
-* Implemented the logic to order appointments chronologically when changes are made to the list of appointments stored in the appointment manager.
+    * Additional commands for extra functionality (Pull request [#163](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/163)):
+        * `done` command to mark an appointment as done and record the revenue associated with the service into the revenue tracker.
+        * `undone` command to mark an appointment as not done and delete the revenue associated with the service from the revenue tracker.   
+    * Implemented the logic to order appointments chronologically when changes are made to the list of appointments stored in the appointment manager.
 (Pull request [#161](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/161))
-
-* Implemented the logic to check for clashing appointments when an appointment to be added or edited is clashing with the date and time
+    * Implemented the logic to check for clashing appointments when an appointment to be added or edited is clashing with the date and time
 of another existing appointment. (Pull request [#174](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/174))
-
-##### 3. Pagination of Appointments Schedule
+* **New feature**: Pagination of Appointments Schedule
 Implemented 3 commands to handle pagination of the schedule view (Pull request [#200](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/200)):
-* `schedule` command to navigate to the schedule tab and display the updated view of appointments for the specified week.
-* `nextweek` and `previousweek` commands to navigate to the next week or previous week of appointments in the schedule view.
-
-##### 4. Tab Switching in the UI
+    * `schedule` command to navigate to the schedule tab and display the updated view of appointments for the specified week.
+    * `nextweek` and `previousweek` commands to navigate to the next week or previous week of appointments in the schedule view.
+* **New feature**: Tab Switching in the UI (Pull request [#160](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/160)).
 Implemented the logic which causes Homerce to navigate to the relevant view in the user interface when a command is called.
-For example, a command to add an appointment will cause Homerce to navigate to the Appointment tab after execution. (Pull request [#160](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/160))
+For example, a command to add an appointment will cause Homerce to navigate to the Appointment tab after execution. 
 
-##### 5. Enhancement of Help Command
-Added in more details to the help command to reflect the features of Homerce and to provide a link to our user guide. (Pull request [#168](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/168)) 
+* **Enhancement**: Help Command (Pull request [#168](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/168))
+Added in more details to the help command to reflect the features of Homerce and to provide a link to our user guide.  
 
-##### 6. Testing
-Included JUnit Tests for the Appointment Manager, with over 90% line coverage on average and including integration tests across logic, model and storage components. (Pull request [#217](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/217), [#236](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/236))
+* **Testing**: (Pull request [#217](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/217), [#236](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/236))
+Included JUnit Tests for the Appointment Manager, with over 90% line coverage on average and including integration tests across logic, model and storage components.
 
-#### Contributions to the User Guide:
-1. Appointment Manager (Pull Request [#72](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/72/files))
-    * Command Parameter Summary Table
-    * Commands Documentation, including command parameters, command format, command examples, and command outcomes with annotated screenshots (Pull Request [#330](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/330))
-    * Command Summary 
-1. Help Command (Pull request [#177](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/177))
-    * Command documentation and summary
+* **Contributions to the User Guide**:
+    * Appointment Manager (Pull Request [#72](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/72/files))
+        * Command Parameter Summary Table
+        * Commands Documentation, including command parameters, command format, command examples, and command outcomes with annotated screenshots (Pull Request [#330](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/330))
+        * Command Summary 
+    * Help Command (Pull request [#177](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/177))
+        * Command documentation and summary
 
-#### Contributions to the Developer Guide:
-1. Overall structure, product scope and non-functional requirements. (Pull request [#73](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/73))
-1. Appointment Manager - Rationale, current implementation, design considerations as well as sequence and activity diagrams for the `done` command. (Pull request [#307](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/307))
-1. Update UML diagrams for other managers to include the history manager as a parameter when `execute` is called. (Pull request [#307](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/307))
+* **Contributions to the Developer Guide**:
+    1. Overall structure, product scope and non-functional requirements. (Pull request [#73](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/73))
+    1. Appointment Manager - Rationale, current implementation, design considerations as well as sequence and activity diagrams for the `done` command. (Pull request [#307](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/307))
+    1. Update UML diagrams for other managers to include the history manager as a parameter when `execute` is called. (Pull request [#307](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/307))
 
-#### Contributions to team-based tasks :
-1. Management of project milestones and maintenance of the issue tracker.
-1. Changed the original AB3 icon to the current icon used by Homerce.
-   
-#### Review/mentoring contributions:
-Commented and/or reviewed 40+ pull requests in the repository. See the full list [here](https://github.com/AY2021S1-CS2103T-W13-3/tp/pulls?q=is%3Apr+is%3Aclosed+commenter%3Akhoongwk+).
+* **Contributions to team-based tasks**:
+    1. Management of project milestones and maintenance of the issue tracker.
+    1. Changed the original AB3 icon to the current icon used by Homerce.
 
-#### Contributions beyond the project team:
-Made several forum posts on the module repository to provide help to other students. (Issue [#214](https://github.com/nus-cs2103-AY2021S1/forum/issues/214))
+* **Community**:
+    * Made several forum posts on the module repository to provide help to other students. (Issue [#214](https://github.com/nus-cs2103-AY2021S1/forum/issues/214))
+    * Commented and/or reviewed 40+ pull requests in the repository. See the full list [here](https://github.com/AY2021S1-CS2103T-W13-3/tp/pulls?q=is%3Apr+is%3Aclosed+commenter%3Akhoongwk+).
 
-#### Contributions to documentation (extracts):
+* **Contributions to documentation (extracts)**:
 The contributions listed in this section will not be extensive, please refer to the respective documents for the full contributions.
 
-**Developer Guide**
+    * **Developer Guide**
     
 ![Activity diagram for done command](../images/DoneAppointmentActivityDiagram.png)
 
-_Figure 1. Activity Diagram for `done` command_
+* _Figure 1. Activity Diagram for `done` command_
 
 ![Sequence diagram for done command](../images/DoneAppointmentSequenceDiagram.png)
 
-_Figure 2. Sequence Diagram for `done` command_
+* _Figure 2. Sequence Diagram for `done` command_
 
 ```
 When the user enters the `done` command to mark an appointment in the list as done, the user input command undergoes the same command parsing as described in
@@ -104,9 +93,9 @@ is called to retrieve the current list of `Appointment`s.
 and `refreshSchedule` methods.
 7. The `Ui` component will reflect these changes in the GUI.
 ```
-_Extract 1. Workflow of a `done` command_
+   * _Extract 1. Workflow of a `done` command_
 
-**User Guide**
+   * **User Guide**
 
 ```$xslt
 #### 4.2.2. Add an appointment: `addapt`
@@ -145,4 +134,4 @@ Outcome:
 1. Homerce will switch to the *Appointment Tab*.
 1. You can now see all your appointments including the newly added appointment.
 ```
-_Extract 2. Guide to adding an appointment into Homerce._
+* _Extract 2. Guide to adding an appointment into Homerce._
