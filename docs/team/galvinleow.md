@@ -17,7 +17,7 @@ to view Galvin Leow's code contributions.
 A summary of the enhancements you implemented.
 
 ##### 1. Implementation of Revenue Tracker
-Revenue Tracker was implemented as it is an essential part of operating a business. Revenue tracking is bonded to the breakdown fiance feature, 
+Revenue Tracker was implemented as it is an essential part of operating a business. Revenue tracking is bonded to the breakdown finance feature, 
 in which this feature gives useful insights to the user.
 
 1. The creation of 4 user-facing commands and they are the `findrev`, `sortrev`,`list` and `clearrev` commands. (Pull Request [#122](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/122))
@@ -80,11 +80,11 @@ please refer to the respective documents for the full contributions.
 <u>Diagrams</u>  
 ![Activity diagram for revenue_tracker clearrev command](../images/revenue/ClearRevenueActivityDiagram.png)
 
-_Figure 1. One of the activity diagram that was added to the guide_
+_Figure 1. One of the activity diagrams that was added to the guide_
 
 ![Sequence diagram for clearrev command](../images/revenue/ClearRevenueSD.png)
 
-_Figure 2. One of the sequence diagram that was added to the guide_
+_Figure 2. One of the sequence diagrams that was added to the guide_
 
 <u>Contents</u>
 ```

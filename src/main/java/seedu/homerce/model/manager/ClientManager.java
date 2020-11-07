@@ -95,7 +95,9 @@ public class ClientManager implements ReadOnlyClientManager {
 
     public Client getClientByPhone(Phone phone) {
         requireNonNull(phone);
-        return clients.getClientByPhone(phone);
+        Client client = clients.getClientByPhone(phone);
+        // Return a deep copy so that clearing clients has no issue.
+        return new Client(client.getName(), client.getPhone(), client.getEmail(), client.getTags());
     }
 
     /**

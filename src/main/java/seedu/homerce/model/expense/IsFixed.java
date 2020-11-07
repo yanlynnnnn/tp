@@ -5,7 +5,7 @@ import static java.util.Objects.requireNonNull;
 import seedu.homerce.commons.util.AppUtil;
 
 public class IsFixed {
-    public static final String MESSAGE_CONSTRAINTS = "IsFixed must be in 'y' or 'n' format.";
+    public static final String MESSAGE_CONSTRAINTS = "Is Fixed must be in 'y' or 'n' format.";
 
     public final boolean value;
     private boolean isRecurring;

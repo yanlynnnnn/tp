@@ -12,6 +12,7 @@ import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.client.Client;
 import seedu.homerce.model.manager.ClientManager;
 import seedu.homerce.model.manager.HistoryManager;
+import seedu.homerce.ui.clientpanel.ClientListPanel;
 
 /**
  * Clears the client list.
@@ -38,6 +39,6 @@ public class ClearClientCommand extends Command {
         }
 
         model.setClientManager(new ClientManager());
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, ClientListPanel.TAB_NAME);
     }
 }

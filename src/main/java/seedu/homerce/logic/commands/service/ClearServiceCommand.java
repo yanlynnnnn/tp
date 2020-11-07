@@ -12,6 +12,7 @@ import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.manager.ServiceManager;
 import seedu.homerce.model.service.Service;
+import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
  * Clears the service list.
@@ -38,8 +39,6 @@ public class ClearServiceCommand extends Command {
         }
 
         model.setServiceManager(new ServiceManager());
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, ServiceListPanel.TAB_NAME);
     }
-
-
 }

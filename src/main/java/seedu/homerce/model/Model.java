@@ -284,25 +284,32 @@ public interface Model {
      */
     boolean hasAppointment(Appointment appointment);
 
+    /** Replace appointment manager with a new one. */
     void setAppointmentManager(ReadOnlyAppointmentManager appointmentManager);
 
     // ====================== Schedule ========================
+    /** Get view of appointment schedule filtered for a week specified in the appointment manager.*/
     ObservableList<Appointment> getFilteredSchedule();
 
+    /** Navigate to schedule of appointments for the subsequent week. */
     void nextSchedulePage();
 
+    /** Navigate to schedule of appointments for the previous week. */
     void previousSchedulePage();
 
+    /** Update schedule view to reflect new changes. */
     void refreshSchedule();
 
+    /** Set predicate for the schedule view to change the week currently in view. */
     void updateFilteredSchedule(Predicate<Appointment> predicate);
 
+    /** Change the date stored in the appointment manager. */
     void setAppointmentManagerCalendar(Calendar calendar);
 
     // ====================== HistoryManager ========================
+    /** Replace Model with a new one.*/
     void replaceModel(Model previousModel);
 
+    /** Make a deep copy of this model.*/
     Model deepCopy();
-
-
 }

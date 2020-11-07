@@ -17,7 +17,6 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.homerce.logic.commands.CommandResult;
-import seedu.homerce.logic.commands.client.AddClientCommandTest;
 import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.manager.AppointmentManager;
@@ -26,6 +25,7 @@ import seedu.homerce.model.manager.ReadOnlyAppointmentManager;
 import seedu.homerce.model.manager.ReadOnlyServiceManager;
 import seedu.homerce.model.manager.ServiceManager;
 import seedu.homerce.model.service.Service;
+import seedu.homerce.testutil.ModelStub;
 
 public class AddServiceCommandTest {
 
@@ -44,7 +44,7 @@ public class AddServiceCommandTest {
     @Test
     public void execute_serviceAcceptedByModel_addSuccessful() throws CommandException {
         AddServiceCommandTest.ModelStubAcceptingServiceAdded modelStub =
-            new AddServiceCommandTest.ModelStubAcceptingServiceAdded();
+            new ModelStubAcceptingServiceAdded();
         Service validService = LASH_LIFT;
 
         CommandResult commandResult = new AddServiceCommand(validService).execute(modelStub,
@@ -80,7 +80,7 @@ public class AddServiceCommandTest {
     /**
      * A Model stub that always accepts the service being added.
      */
-    private class ModelStubAcceptingServiceAdded extends AddClientCommandTest.ModelStub {
+    private static class ModelStubAcceptingServiceAdded extends ModelStub {
         final ArrayList<Service> servicesAdded = new ArrayList<>();
 
         @Override

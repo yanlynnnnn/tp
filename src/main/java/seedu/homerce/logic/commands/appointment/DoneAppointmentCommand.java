@@ -48,6 +48,7 @@ public class DoneAppointmentCommand extends Command {
                 appointmentToMarkDone.getAppointmentDate()
         );
         model.addRevenue(revenueToAdd);
+        model.setAppointment(appointmentToMarkDone, appointmentToMarkDone);
         model.refreshSchedule();
         CommandResult r = new CommandResult(
             String.format(MESSAGE_DONE_APPOINTMENT_SUCCESS, appointmentToMarkDone)

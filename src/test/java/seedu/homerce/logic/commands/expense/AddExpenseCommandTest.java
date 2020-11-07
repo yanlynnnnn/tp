@@ -12,11 +12,11 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.homerce.logic.commands.CommandResult;
-import seedu.homerce.logic.commands.client.AddClientCommandTest;
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.manager.ExpenseTracker;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.manager.ReadOnlyExpenseTracker;
+import seedu.homerce.testutil.ModelStub;
 import seedu.homerce.testutil.expense.ExpenseBuilder;
 
 public class AddExpenseCommandTest {
@@ -36,7 +36,7 @@ public class AddExpenseCommandTest {
     @Test
     public void execute_expenseAcceptedByModel_addSuccessful() {
         AddExpenseCommandTest.ModelStubAcceptingExpenseAdded modelStub =
-                new AddExpenseCommandTest.ModelStubAcceptingExpenseAdded();
+            new ModelStubAcceptingExpenseAdded();
         Expense validExpense = new ExpenseBuilder().build();
 
         CommandResult commandResult = new AddExpenseCommand(validExpense).execute(modelStub,
@@ -69,7 +69,7 @@ public class AddExpenseCommandTest {
     /**
      * A Model stub that always accepts the expense being added.
      */
-    private class ModelStubAcceptingExpenseAdded extends AddClientCommandTest.ModelStub {
+    private static class ModelStubAcceptingExpenseAdded extends ModelStub {
 
         final ArrayList<Expense> expensesAdded = new ArrayList<>();
 

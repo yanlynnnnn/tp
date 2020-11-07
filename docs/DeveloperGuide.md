@@ -94,7 +94,7 @@ The `UI` component,
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("deleteexp 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
 
@@ -284,7 +284,7 @@ service.
 
 In this section, we will use the following Activity Diagram to outline the generation of service code when the `addsvc` command of the service manager is executed.
 
-![Activity diagram for service manager addsvc command](images/AddServiceActivityDiagram.png)
+![Activity diagram for service manager addsvc command](images/service/AddServiceActivityDiagram.png)
 
 *Figure 3. Workflow of a `addsvc` command*
 
@@ -306,7 +306,7 @@ The following steps will describe the execution of the `AddServiceCommand` in de
 
 The following Sequence Diagram summarises the aforementioned steps. 
 
-![Sequence diagram for addsvc command](images/AddServiceSequenceDiagram.png)
+![Sequence diagram for addsvc command](images/service/AddServiceSequenceDiagram.png)
 
 *Figure 4. Execution of an `addsvc` command*
 
@@ -336,7 +336,7 @@ Reason for choosing option 2:
 
 ### 4.4 Client Manager
 
-Homerce allows the user to keep track of the clients that his or her home-based business serves. The client manager is one of the `ListManagers`s elaborated in [section 4.1](#41-list-managers).
+Homerce allows the user to keep track of the clients that his or her home-based business serves. The client manager is one of the `ListManager`s elaborated in [section 4.1](#41-list-managers).
 
 #### 4.4.1 Rationale 
 
@@ -349,13 +349,37 @@ The current implementation of the client manager allows the user to keep track a
 have to include the name, phone and email for the client and ensure at least 2 of the fields specified are unique to avoid duplicate client entries.
 Users have an option to add a tag to the client to better identify the client as well. 
 
+In this section, we will use the following Activity Diagram to outline the deletion of a client when the `deletecli` command of the client manager is executed.
+
+![Activity diagram for deleting of client](images/DeleteClientActivityDiagram.png)
+
+*Figure 5. Workflow of a `deletecli` command*
+
+When the user enters the `deletecli` command to delete a client from the client list, the user input command undergoes the same command parsing as described in
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `DeleteClientCommand`, Homerce will access the client manager
+and delete the client based on the index specified by the user. 
+<br>
+The following steps will describe the execution of the `DeleteClientCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `DeleteClientCommand` is called, the `Model`'s `getFilteredClientList()` method is called.
+2. The `get()` method of the `ObservableList` is called returning the client at the `index` specifed by the user.
+3. The list of appointments gets retrieved from by calling the `getAppointmentList` method of the `AppointmentManager`
+4. The `isValidDeletion` method of the `DeleteClientCommand` is called to check if the client specified by index is scheduled in an upcoming appointment
+    * If the client is scheduled in an upcoming appointment, a `CommandException` is thrown
+    * If the client is not scheduled in an upominga appointment, the `DeleteClientCommand` returns a `CommandResult` with a success message
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram for cliennt manager delete client](images/DeleteClientSequenceDiagram.png)
+
+*Figure 6. Execution of an `deletecli` command*
+
 In this section, we will use the following Activity Diagram to outline the filtering of the list when the `findcli` command of the client manager is executed.
 
 ![Activity diagram for client manager find client](images/FindClientActivityDiagram.png)
 
-*Figure 5. Workflow of a `findcli` command*
+*Figure 7. Workflow of a `findcli` command*
 
-When the user enters the `findcli` command to sort the client list, the user input command undergoes the same command parsing as described in
+When the user enters the `findcli` command to find the client in the client list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `FindClientCommand`, Homerce will access the client manager
 and filter the client list based on the predicate created when the user input gets parsed. 
 <br>
@@ -369,9 +393,19 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for findcli command](images/FindClientSequenceDiagram.png)
 
-*Figure 6. Execution of an `findcli` command*
+*Figure 8. Execution of an `findcli` command*
 
 #### 4.4.3 Design Consideration 
+**Aspect: DeleteClientCommand implementation**
+
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Deleting a client scheduled in an upcoming appointment would delete the corresponding appointment as well | More convenient for the user | Introduces more coupling between an appointment and a client and might create more bugs. Also might result in unwanted outcomes for the user.  |
+| **Option 2 (current choice)** <br> Allow users to delete a client only if the client is not scheduled in an upcoming appointment. | Easier to implement and reduces coupling. User will be clearer of the expected outcome as well. | If the user wants to delete a client scheduled in an upcoming appointment he/she must delete that appointment first making it a bit more troublesome for the user. |
+
+Reason for choosing option 2:
+* It is good coding practice to reduce the amount of coupling between classes
+* It will be clearly communicate to the user what he/she can and cannot when deleting a client.
 
 **Aspect: FindClientCommand implementation**
 
@@ -385,7 +419,7 @@ Reason for choosing option 2:
 * Users can have more flexibility when finding a client using phone or name.
 
 ### 4.5 Appointment Manager
-Homerce allows the user to keep track of the appointments of his or her home-based business. The appointment manager is one of the `ListManagers`s elaborated in [section 4.1](#41-list-managers).
+Homerce allows the user to keep track of the appointments of his or her home-based business. The appointment manager is one of the `ListManager`s elaborated in [section 4.1](#41-list-managers).
 
 #### 4.5.1 Rationale
 The appointment manager is a core feature which enables tracking of all past and upcoming appointments the home-based business owner has.
@@ -665,8 +699,67 @@ Reason for choosing option 1:
 * Using the same instance of `ExpenseTracker` and `RevenueTracker` to obtain the list of expenses and revenue ensures that expenses and revenue data are consistent without needing to update the lists in `ExpenseTracker`, `RevenueTracker` as well as `FinanceTracker`.
 * The `execute()` command of `BreakdownFinanceCommand` already takes in the `Model` which has `ExpenseTracker` and `RevenueTracker` as attributes. It is unnecessary to create a new `FinanceTracker` class as an attribute for `Model` to store and duplicate information that already exists.
 
-## 5. Documentation
+### 4.9 Undo Previous Command
 
+Homerce allows the user to undo previous commands to restore the state of Homerce to before the execution of the command.
+
+#### 4.8.1 Rationale 
+
+There may be situations where the user unintentionally uses a command that was not intended. In these situations, it is very useful
+to allow the user to restore the previous state of the application, making it easy for the user to recover from accidental
+command errors.
+
+#### 4.8.2 Current Implementation
+
+The current implementation of undo makes use of a `HistoryManager`. A `HistoryManager` maintains a `History` list, where
+each `History` object holds a particular state of the `Model` and `Command` that was executed to change the state of that
+`Model`. When the user executes the `undo` command, the `HistoryManager` will give the previous `History` of Homerce,
+and `Model#replaceModel()` will be called to update the current state of Homerce to the previous `Model` in the `History`.
+
+In this section, we will show an example usage scenario and how the `undo` mechanism behaves at each step:
+
+Step 1: The user launches the application for the first time. The `HistoryManager` will be initialized with an empty list of histories.
+
+Step 2: The user executes `deletesvc 5` command to delete the 5th service in Homerce's service list. When the `LogicManager`
+executes the `CommandResult` from `DeleteServiceCommand`, `LogicManager#execute()` will call `HistoryManager#addToHistory()`,
+causing the state initial state of the `Model` prior to the execution of `deletesvc 5` to be saved in the `History` of
+`HistoryManager`.
+
+![Undo State 0](images/UndoState0.png)
+
+*Figure 15. State HistoryManager after `deletesvc 5` command*
+
+Step 3: The user executes `deletecli 5` command to delete the 5th person in Homerce's client list. When the `LogicManager`
+executes the `CommandResult` from `DeleteClientCommand`, `LogicManager#execute()` will call `HistoryManager#addToHistory()`,
+causing the state initial state of the `Model` prior to the execution of `deletecli 5` to be saved in the `History` of
+`HistoryManager`.
+
+![Undo State 1](images/UndoState1.png)
+
+*Figure 16. State HistoryManager after `deletecli 5` command*
+
+Step 4: The user now decides that deleting the client was a mistake, and decides to undo that action by executing the `undo`
+command. The `undo` command will call `HistoryManager#getPreviousHistory()`, which will return the `History` object which stores
+the previous state of Homerce's `Model`, as well as the command that caused the change of the previous state to the current one.
+The current state of Homerce's `Model` will be updated to the state of the `Model` in the `History` object from the `HistoryManager`.
+
+![Undo State 2](images/UndoState2.png)
+
+*Figure 17. State HistoryManager after `undo` command*
+
+#### 4.8.3 Design Consideration
+
+**Aspect: How undo executes**
+
+|              |  **Pros**  | **Cons** |
+| -------------|------------|----------|
+| **Option 1 (current choice)** <br> Saves the entire model. | Easy to implement. | May have performance issues in terms of memory usage. |
+| **Option 2** <br> Individual command knows how to undo itself. | Will use less memory (e.g. for `deletecli`, just save the client being deleted). | We must ensure that the implementation of each individual command are correct. |
+
+Reason for choosing option 1:
+* Saving the entire model allows the undo feature to be easily extendable to future addition of new commands that change the state of the model in different ways. 
+
+## 5. Documentation
 Refer to the guide [here](Documentation.md).
 
 ## 6. Logging
@@ -1608,6 +1701,8 @@ testers are expected to do more *exploratory* testing.
 1. Initial launch
 
    1. Download the jar file and copy into an empty folder
+   
+   1. If you are using Windows, ensure display settings is set to 100% to prevent GUI scaling issues.
 
    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
