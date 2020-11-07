@@ -7,6 +7,7 @@ import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.manager.ExpenseTracker;
 import seedu.homerce.model.manager.HistoryManager;
+import seedu.homerce.ui.expensepanel.ExpenseListPanel;
 
 /**
  * Clears the expense list.
@@ -21,6 +22,6 @@ public class ClearExpenseCommand extends Command {
     public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);
         model.setExpenseTracker(new ExpenseTracker());
-        return new CommandResult(MESSAGE_SUCCESS);
+        return new CommandResult(MESSAGE_SUCCESS, ExpenseListPanel.TAB_NAME);
     }
 }
