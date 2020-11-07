@@ -336,7 +336,7 @@ Reason for choosing option 2:
 
 ### 4.4 Client Manager
 
-Homerce allows the user to keep track of the clients that his or her home-based business serves. The client manager is one of the `ListManagers`s elaborated in [section 4.1](#41-list-managers).
+Homerce allows the user to keep track of the clients that his or her home-based business serves. The client manager is one of the `ListManager`s elaborated in [section 4.1](#41-list-managers).
 
 #### 4.4.1 Rationale 
 
@@ -385,7 +385,7 @@ Reason for choosing option 2:
 * Users can have more flexibility when finding a client using phone or name.
 
 ### 4.5 Appointment Manager
-Homerce allows the user to keep track of the appointments of his or her home-based business. The appointment manager is one of the `ListManagers`s elaborated in [section 4.1](#41-list-managers).
+Homerce allows the user to keep track of the appointments of his or her home-based business. The appointment manager is one of the `ListManager`s elaborated in [section 4.1](#41-list-managers).
 
 #### 4.5.1 Rationale
 The appointment manager is a core feature which enables tracking of all past and upcoming appointments the home-based business owner has.
@@ -665,8 +665,67 @@ Reason for choosing option 1:
 * Using the same instance of `ExpenseTracker` and `RevenueTracker` to obtain the list of expenses and revenue ensures that expenses and revenue data are consistent without needing to update the lists in `ExpenseTracker`, `RevenueTracker` as well as `FinanceTracker`.
 * The `execute()` command of `BreakdownFinanceCommand` already takes in the `Model` which has `ExpenseTracker` and `RevenueTracker` as attributes. It is unnecessary to create a new `FinanceTracker` class as an attribute for `Model` to store and duplicate information that already exists.
 
-## 5. Documentation
+### 4.9 Undo Previous Command
 
+Homerce allows the user to undo previous commands to restore the state of Homerce to before the execution of the command.
+
+#### 4.8.1 Rationale 
+
+There may be situations where the user unintentionally uses a command that was not intended. In these situations, it is very useful
+to allow the user to restore the previous state of the application, making it easy for the user to recover from accidental
+command errors.
+
+#### 4.8.2 Current Implementation
+
+The current implementation of undo makes use of a `HistoryManager`. A `HistoryManager` maintains a `History` list, where
+each `History` object holds a particular state of the `Model` and `Command` that was executed to change the state of that
+`Model`. When the user executes the `undo` command, the `HistoryManager` will give the previous `History` of Homerce,
+and `Model#replaceModel()` will be called to update the current state of Homerce to the previous `Model` in the `History`.
+
+In this section, we will show an example usage scenario and how the `undo` mechanism behaves at each step:
+
+Step 1: The user launches the application for the first time. The `HistoryManager` will be initialized with an empty list of histories.
+
+Step 2: The user executes `deletesvc 5` command to delete the 5th service in Homerce's service list. When the `LogicManager`
+executes the `CommandResult` from `DeleteServiceCommand`, `LogicManager#execute()` will call `HistoryManager#addToHistory()`,
+causing the state initial state of the `Model` prior to the execution of `deletesvc 5` to be saved in the `History` of
+`HistoryManager`.
+
+![Undo State 0](images/UndoState0.png)
+
+*Figure 15. State HistoryManager after `deletesvc 5` command*
+
+Step 3: The user executes `deletecli 5` command to delete the 5th person in Homerce's client list. When the `LogicManager`
+executes the `CommandResult` from `DeleteClientCommand`, `LogicManager#execute()` will call `HistoryManager#addToHistory()`,
+causing the state initial state of the `Model` prior to the execution of `deletecli 5` to be saved in the `History` of
+`HistoryManager`.
+
+![Undo State 1](images/UndoState1.png)
+
+*Figure 16. State HistoryManager after `deletecli 5` command*
+
+Step 4: The user now decides that deleting the client was a mistake, and decides to undo that action by executing the `undo`
+command. The `undo` command will call `HistoryManager#getPreviousHistory()`, which will return the `History` object which stores
+the previous state of Homerce's `Model`, as well as the command that caused the change of the previous state to the current one.
+The current state of Homerce's `Model` will be updated to the state of the `Model` in the `History` object from the `HistoryManager`.
+
+![Undo State 2](images/UndoState2.png)
+
+*Figure 17. State HistoryManager after `undo` command*
+
+#### 4.8.3 Design Consideration
+
+**Aspect: How undo executes**
+
+|              |  **Pros**  | **Cons** |
+| -------------|------------|----------|
+| **Option 1 (current choice)** <br> Saves the entire model. | Easy to implement. | May have performance issues in terms of memory usage. |
+| **Option 2** <br> Individual command knows how to undo itself. | Will use less memory (e.g. for `deletecli`, just save the client being deleted). | We must ensure that the implementation of each individual command are correct. |
+
+Reason for choosing option 1:
+* Saving the entire model allows the undo feature to be easily extendable to future addition of new commands that change the state of the model in different ways. 
+
+## 5. Documentation
 Refer to the guide [here](Documentation.md).
 
 ## 6. Logging
