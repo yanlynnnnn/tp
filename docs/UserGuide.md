@@ -453,7 +453,7 @@ Let's say you are no longer providing a particular service and want to delete it
 instructions.
 
 Deleting an existing service:
-1. Type `deletesvc 1` into the *Command Box*.
+1. Type `deletesvc 3` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -463,7 +463,7 @@ Outcome:
 ![deletesvc](images/deletesvc.png) <br>
 *Figure 11 - GUI outcome for `deletesvc`*
 
-3. You can now see that the service with service code SC001 has been deleted from Homerce.
+3. You can now see that the service that was previously on the third index in the service list has been deleted from Homerce.
 
 #### 4.2.5. Find a service by keyword: `findsvc`
 
@@ -484,7 +484,7 @@ Let's say you want to find all the services that contain nail in its title from 
 follow these instructions.
 
 Finding a service:
-1. Type `findsvc t/lash` into the *Command Box*.
+1. Type `findsvc t/nail` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
