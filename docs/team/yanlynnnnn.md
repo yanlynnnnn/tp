@@ -3,22 +3,20 @@ layout: page
 title: Tan Yan Lyn's Project Portfolio
 ---
 
-### Project: Homerce
+#### Project: Homerce
 Homerce is an all-in-one application that helps home-based beauty salon owners consolidate their business details - 
 such as their schedule, appointments, clients, and services - into a single application. It also keeps track of the business's
 revenue and expenses, and supports simple visualization of monthly finances.
 The application uses a Command Line Interface (CLI).
 
-#### Overview
-This portfolio aims to document the contributions that I have made to Homerce
-
+**Overview** <br>
+This portfolio aims to document the contributions that I have made to Homerce. <br>
 Click [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=yanlynnnnn&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
-to view Yan Lyn's code contributions.
+to view my code contributions.
 
 **Enhancements Implemented:** <br>
-A summary of the enhancements implemented.
 
-<u>Implementation of Expense Tracker</u> <br>
+<u>1. Implementation of Expense Tracker</u> <br>
 The Expense Tracker was implemented to help users keep track of their expenses and manage their expenditure.
 
 1. Implementation of 5 basic commands (Pull Request [#68](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/68),
@@ -69,7 +67,7 @@ Expense Tracker, and Revenue Tracker panels (Pull Request [#223](https://github.
     * Commands Documentation, including command parameters, command format, command examples, 
     and command outcomes with annotated screenshots (Pull Request [#301](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/301), Pull Request [#315](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/315))
     * Command Summary 
-1. Future Enhancements
+1. Future Enhancements 
 1. FAQ section (Pull Request [#169](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/169))
 
 **Contributions to Developer Guide:** <br>
@@ -81,7 +79,7 @@ Expense Tracker, and Revenue Tracker panels (Pull Request [#223](https://github.
     * Design considerations for Recurring Expenses
 1. Appendix B: User Stories (Pull Request [#52](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/52))
 
-**Contributions to documentation (Extracts)**
+**Contributions to documentation (Extracts)** <br>
 The contributions listed in this section will not be extensive, please refer to the respective documents for the full contributions.
 
 **Developer Guide**
