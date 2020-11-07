@@ -6,6 +6,7 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_DURATION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_PRICE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
 
+import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.service.EditServiceCommand;
 import seedu.homerce.logic.parser.ArgumentMultimap;
@@ -52,7 +53,7 @@ public class EditServiceCommandParser implements Parser<EditServiceCommand> {
             editServiceDescriptor.setAmount(ParserUtil.parseAmount(argMultimap.getValue(PREFIX_SERVICE_PRICE).get()));
         }
         if (!editServiceDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditServiceCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(Messages.MESSAGE_NOT_EDITED);
         }
 
         return new EditServiceCommand(index, editServiceDescriptor);

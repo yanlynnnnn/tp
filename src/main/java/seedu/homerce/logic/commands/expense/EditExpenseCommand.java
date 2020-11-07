@@ -1,6 +1,7 @@
 package seedu.homerce.logic.commands.expense;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.homerce.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
@@ -47,8 +48,6 @@ public class EditExpenseCommand extends Command {
             + PREFIX_AMOUNT + "20.00";
 
     public static final String MESSAGE_EDIT_EXPENSE_SUCCESS = "Edited Expense: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-
     public final Index index;
     public final EditExpenseCommand.EditExpenseDescriptor editExpenseDescriptor;
 

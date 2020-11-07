@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.Set;
 
+import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.client.EditClientCommand;
 import seedu.homerce.logic.commands.client.EditClientCommand.EditClientDescriptor;
@@ -59,7 +60,7 @@ public class EditClientCommandParser implements Parser<EditClientCommand> {
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editClientDescriptor::setTags);
 
         if (!editClientDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditClientCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(Messages.MESSAGE_NOT_EDITED);
         }
 
         return new EditClientCommand(index, editClientDescriptor);

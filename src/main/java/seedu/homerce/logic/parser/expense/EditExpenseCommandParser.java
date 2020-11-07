@@ -8,6 +8,7 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_ISFIXED;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TAG;
 
+import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.expense.EditExpenseCommand;
 import seedu.homerce.logic.parser.ArgumentMultimap;
@@ -58,7 +59,7 @@ public class EditExpenseCommandParser implements Parser<EditExpenseCommand> {
             editExpenseDescriptor.setTag(ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get()));
         }
         if (!editExpenseDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditExpenseCommand.MESSAGE_NOT_EDITED);
+            throw new ParseException(Messages.MESSAGE_NOT_EDITED);
         }
 
         return new EditExpenseCommand(index, editExpenseDescriptor);

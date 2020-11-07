@@ -1,6 +1,7 @@
 package seedu.homerce.logic.commands.appointment;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.homerce.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static seedu.homerce.logic.commands.appointment.AddAppointmentCommand.MESSAGE_INVALID_TIME_AND_DURATION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -46,7 +47,6 @@ public class EditAppointmentCommand extends Command {
         + PREFIX_PHONE + "91234567 "
         + PREFIX_SERVICE_SERVICE_CODE + "SC002";
     public static final String MESSAGE_EDIT_APPOINTMENT_SUCCESS = "Edited Appointment: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_CLASHING_APPOINTMENT = "This appointment clashes with an existing appointment.";
     public static final String MESSAGE_INVALID_PHONE = "The phone number does not refer to an existing client.";
     public static final String MESSAGE_INVALID_SERVICE_CODE = "The service code specified does not exist in Homerce.";

@@ -28,6 +28,7 @@ import static seedu.homerce.testutil.TypicalIndexes.INDEX_THIRD_CLIENT;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.client.EditClientCommand;
 import seedu.homerce.logic.commands.client.EditClientCommand.EditClientDescriptor;
@@ -52,7 +53,7 @@ public class EditClientCommandParserTest {
         assertParseFailure(parser, VALID_NAME_AMY, MESSAGE_INVALID_FORMAT);
 
         // no field specified
-        assertParseFailure(parser, "1", EditClientCommand.MESSAGE_NOT_EDITED);
+        assertParseFailure(parser, "1", Messages.MESSAGE_NOT_EDITED);
 
         // no index and no field specified
         assertParseFailure(parser, "", MESSAGE_INVALID_FORMAT);

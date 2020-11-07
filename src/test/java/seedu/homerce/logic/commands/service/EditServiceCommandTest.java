@@ -90,7 +90,7 @@ public class EditServiceCommandTest {
             new ServiceManager(model.getServiceManager()), new RevenueTracker(),
             new ExpenseTracker(), new AppointmentManager());
 
-        assertCommandFailure(editServiceCommand, model, EditServiceCommand.MESSAGE_NOT_EDITED);
+        assertCommandFailure(editServiceCommand, model, Messages.MESSAGE_NOT_EDITED);
     }
 
     @Test
