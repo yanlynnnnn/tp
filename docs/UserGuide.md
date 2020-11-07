@@ -1456,9 +1456,9 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |Action | Format | Examples
 |---------|---------|---------
 |**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Lash Lift d/0.5 p/38`
-|**Edit** | `editsvc INDEX s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc s/SC001 d/0.5`
-|**Delete** | `deletesvc INDEX s/SERVICE_CODE` | `deletesvc s/SC001`
-|**Find** | `findsvc KEYWORD` | `findsvc t/nail`
+|**Edit** | `editsvc INDEX s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc 1 d/0.5`
+|**Delete** | `deletesvc INDEX s/SERVICE_CODE` | `deletesvc 1`
+|**Find** | `findsvc KEYWORD` | `findsvc t/lash`
 |**List** | `listsvc` | 
 |**Clear** | `clearsvc` | 
 
