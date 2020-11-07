@@ -432,9 +432,9 @@ You can use this command to delete an existing service in the Service Manager.
 
 Format: `deletesvc INDEX`
 
-<div markdown="block" class="alert alert-danger"> 
+<div markdown="block" class="alert alert-danger">
 
-**:warning:**<br>
+**:warning: Warning:**<br>
 
 * Homerce will not allow the deletion of a service which is already scheduled for an upcoming appointment.
 
@@ -453,7 +453,7 @@ Let's say you are no longer providing a particular service and want to delete it
 instructions.
 
 Deleting an existing service:
-1. Type `deletesvc 1` into the *Command Box*.
+1. Type `deletesvc 3` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -463,7 +463,7 @@ Outcome:
 ![deletesvc](images/deletesvc.png) <br>
 *Figure 11 - GUI outcome for `deletesvc`*
 
-3. You can now see that the service with service code SC001 has been deleted from Homerce.
+3. You can now see that the service that was previously on the third index in the service list has been deleted from Homerce.
 
 #### 4.2.5. Find a service by keyword: `findsvc`
 
@@ -484,7 +484,7 @@ Let's say you want to find all the services that contain nail in its title from 
 follow these instructions.
 
 Finding a service:
-1. Type `findsvc t/lash` into the *Command Box*.
+1. Type `findsvc t/nail` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -524,9 +524,9 @@ You can use this command to clear and delete the all the services in the Service
 
 Format: `clearsvc`
 
-<div markdown="block" class="alert alert-danger"> 
+<div markdown="block" class="alert alert-danger">
 
-**:warning:**<br>
+**:warning: Warning:**<br>
 
 * You are unable to clear services if there are any existing services that have been scheduled in your upcoming appointments. Please remove these
 appointments before proceeding to clear your services.
@@ -1229,14 +1229,15 @@ You can follow these instructions.
 
 Steps :
 1. Type `schedule dt/27-11-2020` into the _Command Box_.
-2. Press `Enter` to execute.
+1. Press `Enter` to execute.
 
 Outcome :
 1. The *Result Display* will show a success message.
-2. Homerce will switch to the *Schedule Tab*.
-3. You can now see all the appointments in your schedule for today's week.
+1. Homerce will switch to the *Schedule Tab*.
+1. You can now see all the appointments in your schedule for today's week.
 
-{Example outcome screenshot}
+![schedule](images/schedule.png) <br>
+*Figure 34 - GUI outcome for `schedule`*
 
 #### 4.6.3. View schedule for next week `nextweek`
 
@@ -1246,19 +1247,20 @@ Format : `nextweek`
 
 Example :
 
-Let's say you are currently viewing the schedule for the week on 27th of November 2020, and want to see the schedule
+Let's say you are currently viewing the schedule for the week on 13th of November 2020, and want to see the schedule
 for the following week. You can follow these instructions.
 
 Steps :
 1. Type `nextweek` into the _Command Box_.
-2. Press `Enter` to execute.
+1. Press `Enter` to execute.
 
 Outcome :
 1. The *Result Display* will show a success message.
-2. Homerce will switch to the *Schedule Tab*.
-3. You can now see all the appointments in your schedule for the week after 27th of November 2020.
+1. Homerce will switch to the *Schedule Tab*.
+1. You can now see all the appointments in your schedule for the week after 13th of November 2020.
 
-{Example outcome screenshot}
+![nextweek](images/nextweek.png) <br>
+*Figure 35 - GUI outcome for `nextweek`*
 
 #### 4.6.3. View schedule for previous week `previousweek`
 
@@ -1268,19 +1270,20 @@ Format : `previousweek`
 
 Example :
 
-Let's say you are currently viewing the schedule for the week on 27th of November 2020, and want to see the schedule
+Let's say you are currently viewing the schedule for the week on 20th of November 2020, and want to see the schedule
 for the previous week. You can follow these instructions.
 
 Steps :
 1. Type `previousweek` into the _Command Box_.
-2. Press `Enter` to execute.
+1. Press `Enter` to execute.
 
 Outcome :
 1. The *Result Display* will show a success message.
-2. Homerce will switch to the *Schedule Tab*.
-3. You can now see all the appointments in your schedule for the week before 27th of November 2020.
+1. Homerce will switch to the *Schedule Tab*.
+1. You can now see all the appointments in your schedule for the week before 20th of November 2020.
 
-{Example outcome screenshot}
+![previousweek](images/previousweek.png) <br>
+*Figure 36 - GUI outcome for `previousweek`*
 
 ### 4.7 Finance Tracker 
 
