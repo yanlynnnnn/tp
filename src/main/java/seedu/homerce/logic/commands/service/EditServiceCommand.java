@@ -10,13 +10,11 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
 import java.util.List;
 import java.util.Optional;
 
-import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.commons.util.CollectionUtil;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
-import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.service.Duration;

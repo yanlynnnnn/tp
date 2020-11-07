@@ -8,7 +8,6 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_ISFIXED;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TAG;
 
-import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.expense.EditExpenseCommand;
 import seedu.homerce.logic.parser.ArgumentMultimap;

@@ -28,7 +28,6 @@ import static seedu.homerce.testutil.TypicalIndexes.INDEX_THIRD_CLIENT;
 
 import org.junit.jupiter.api.Test;
 
-import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.client.EditClientCommand;
 import seedu.homerce.logic.commands.client.EditClientCommand.EditClientDescriptor;

@@ -7,7 +7,6 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_SERVICE_CODE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TIME_OF_DAY;
 
-import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.logic.commands.appointment.EditAppointmentCommand;
 import seedu.homerce.logic.parser.ArgumentMultimap;
