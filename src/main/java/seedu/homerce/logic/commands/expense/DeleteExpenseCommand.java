@@ -12,6 +12,7 @@ import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.manager.HistoryManager;
+import seedu.homerce.ui.expensepanel.ExpenseListPanel;
 
 /**
  * Deletes an expense identified using it's displayed index from homerce.
@@ -44,7 +45,10 @@ public class DeleteExpenseCommand extends Command {
 
         Expense expenseToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteExpense(expenseToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_EXPENSE_SUCCESS, expenseToDelete));
+        return new CommandResult(
+            String.format(MESSAGE_DELETE_EXPENSE_SUCCESS, expenseToDelete),
+            ExpenseListPanel.TAB_NAME
+        );
     }
 
     @Override

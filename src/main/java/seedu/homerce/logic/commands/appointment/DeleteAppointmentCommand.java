@@ -12,6 +12,7 @@ import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.manager.HistoryManager;
+import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 
 /**
  * Deletes an appointment identified using it's displayed index from the homerce.
@@ -43,7 +44,10 @@ public class DeleteAppointmentCommand extends Command {
         Appointment appointmentToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteAppointment(appointmentToDelete);
         model.refreshSchedule();
-        return new CommandResult(String.format(MESSAGE_DELETE_APPOINTMENT_SUCCESS, appointmentToDelete));
+        return new CommandResult(
+            String.format(MESSAGE_DELETE_APPOINTMENT_SUCCESS, appointmentToDelete),
+            AppointmentListPanel.TAB_NAME
+        );
     }
 
     @Override
