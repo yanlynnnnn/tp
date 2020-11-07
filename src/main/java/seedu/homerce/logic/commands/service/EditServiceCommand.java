@@ -21,6 +21,7 @@ import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
 import seedu.homerce.model.util.attributes.Amount;
 import seedu.homerce.model.util.attributes.Title;
+import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
  * Edits the details of an existing service in homerce.
@@ -77,7 +78,10 @@ public class EditServiceCommand extends Command {
         }
 
         model.setService(serviceToEdit, editedService);
-        return new CommandResult(String.format(MESSAGE_EDIT_SERVICE_SUCCESS, editedService));
+        return new CommandResult(
+            String.format(MESSAGE_EDIT_SERVICE_SUCCESS, editedService),
+            ServiceListPanel.TAB_NAME
+        );
     }
 
     /**
