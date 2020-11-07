@@ -94,7 +94,7 @@ The `UI` component,
 1. The result of the command execution is encapsulated as a `CommandResult` object which is passed back to the `Ui`.
 1. In addition, the `CommandResult` object can also instruct the `Ui` to perform certain actions, such as displaying help to the user.
 
-Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("delete 1")` API call.
+Given below is the Sequence Diagram for interactions within the `Logic` component for the `execute("deleteexp 1")` API call.
 
 ![Interactions Inside the Logic Component for the `delete 1` Command](images/DeleteSequenceDiagram.png)
 
@@ -349,13 +349,37 @@ The current implementation of the client manager allows the user to keep track a
 have to include the name, phone and email for the client and ensure at least 2 of the fields specified are unique to avoid duplicate client entries.
 Users have an option to add a tag to the client to better identify the client as well. 
 
+In this section, we will use the following Activity Diagram to outline the deletion of a client when the `deletecli` command of the client manager is executed.
+
+![Activity diagram for deleting of client](images/DeleteClientActivityDiagram.png)
+
+*Figure 5. Workflow of a `deletecli` command*
+
+When the user enters the `deletecli` command to delete a client from the client list, the user input command undergoes the same command parsing as described in
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `DeleteClientCommand`, Homerce will access the client manager
+and delete the client based on the index specified by the user. 
+<br>
+The following steps will describe the execution of the `DeleteClientCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `DeleteClientCommand` is called, the `Model`'s `getFilteredClientList()` method is called.
+2. The `get()` method of the `ObservableList` is called returning the client at the `index` specifed by the user.
+3. The list of appointments gets retrieved from by calling the `getAppointmentList` method of the `AppointmentManager`
+4. The `isValidDeletion` method of the `DeleteClientCommand` is called to check if the client specified by index is scheduled in an upcoming appointment
+    * If the client is scheduled in an upcoming appointment, a `CommandException` is thrown
+    * If the client is not scheduled in an upominga appointment, the `DeleteClientCommand` returns a `CommandResult` with a success message
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram for cliennt manager delete client](images/DeleteClientSequenceDiagram.png)
+
+*Figure 6. Execution of an `deletecli` command*
+
 In this section, we will use the following Activity Diagram to outline the filtering of the list when the `findcli` command of the client manager is executed.
 
 ![Activity diagram for client manager find client](images/FindClientActivityDiagram.png)
 
-*Figure 5. Workflow of a `findcli` command*
+*Figure 7. Workflow of a `findcli` command*
 
-When the user enters the `findcli` command to sort the client list, the user input command undergoes the same command parsing as described in
+When the user enters the `findcli` command to find the client in the client list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `FindClientCommand`, Homerce will access the client manager
 and filter the client list based on the predicate created when the user input gets parsed. 
 <br>
@@ -369,9 +393,19 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for findcli command](images/FindClientSequenceDiagram.png)
 
-*Figure 6. Execution of an `findcli` command*
+*Figure 8. Execution of an `findcli` command*
 
 #### 4.4.3 Design Consideration 
+**Aspect: DeleteClientCommand implementation**
+
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Deleting a client scheduled in an upcoming appointment would delete the corresponding appointment as well | More convenient for the user | Introduces more coupling between an appointment and a client and might create more bugs. Also might result in unwanted outcomes for the user.  |
+| **Option 2 (current choice)** <br> Allow users to delete a client only if the client is not scheduled in an upcoming appointment. | Easier to implement and reduces coupling. User will be clearer of the expected outcome as well. | If the user wants to delete a client scheduled in an upcoming appointment he/she must delete that appointment first making it a bit more troublesome for the user. |
+
+Reason for choosing option 2:
+* It is good coding practice to reduce the amount of coupling between classes
+* It will be clearly communicate to the user what he/she can and cannot when deleting a client.
 
 **Aspect: FindClientCommand implementation**
 
