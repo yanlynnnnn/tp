@@ -176,20 +176,22 @@ Let's say you have a service with the following information you want to add into
 
 | Service | |
 |---------|--------- |
-|`TITLE`| Lash Lift |
-|`DURATION`| 0.5 |
-|`PRICE`| 38 |
+|`TITLE`| Microdermabrasion |
+|`DURATION`| 2.0 |
+|`PRICE`| 68 |
 
 Adding the above service:
-1. Type `addsvc t/Lash Lift du/0.5 p/38` into the *Command Box*.
+1. Type `addsvc t/Microdermabrasion du/2.0 p/68` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
 1. The *Result Display* will show success message.
 2. Homerce will switch to the *Services Tab*.
-3. You can now see all your services including the newly added service.
 
-{Example outcome screenshot}
+![addsvc](images/addsvc.png) <br>
+*Figure x - GUI outcome for `addsvc`*
+
+3. You can now see all your services including the newly added service.
 
 #### 4.1.3. Edit an existing service: `editsvc`
 
@@ -211,15 +213,17 @@ Let's say you have entered the wrong duration for an added service and want to c
 of 1 hour. You can follow these instructions.
 
 Editing an existing service:
-1. Type `editsvc 1 du/0.5` into the *Command Box*.
+1. Type `editsvc 1 t/Microderm Abrasion` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
 1. The *Result Display* will show a success message.
 2. Homerce will switch to the *Services Tab*.
-3. You can now see all your services including the edited service.
 
-{Example outcome screenshot}
+![editsvc](images/editsvc.png) <br>
+*Figure x - GUI outcome for `editsvc`*
+
+3. You can now see all your services including the edited service.
 
 #### 4.1.4. Delete an existing service: `deletesvc`
 
@@ -227,11 +231,18 @@ You can use this command to delete an existing service in the Service Manager.
 
 Format: `deletesvc INDEX`
 
+<div markdown="block" class="alert alert-danger"> 
+
+**:warning:**<br>
+
+* Homerce will not allow the deletion of a service which is already scheduled for an upcoming appointment.
+
+</div>
+
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:**<br>
  
-* The Service Manager will not allow the deletion of a service which is already scheduled for an upcoming appointment.
 * Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
 
 </div>
@@ -247,9 +258,11 @@ Deleting an existing service:
 Outcome:
 1. The *Result Display* will show a success message.
 2. Homerce will switch to the *Services Tab*.
-3. You can now see that the service with service code SC001 has been deleted from Homerce.
 
-{Example outcome screenshot}
+![deletesvc](images/deletesvc.png) <br>
+*Figure x - GUI outcome for `deletesvc`*
+
+3. You can now see that the service with service code SC001 has been deleted from Homerce.
 
 #### 4.1.5. Find a service by keyword: `findsvc`
 
@@ -270,15 +283,17 @@ Let's say you want to find all the services that contain nail in its title from 
 follow these instructions.
 
 Finding a service:
-1. Type `findsvc t/nail` into the *Command Box*.
+1. Type `findsvc t/lash` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
 1. The *Result Display* will show a success message.
 2. Homerce will switch to the *Services Tab*.
-3. You can now see the services in your list of services that contain nail in its title.
 
-{Example outcome screenshot}
+![findsvc](images/findsvc.png) <br>
+*Figure x - GUI outcome for `findsvc`*
+
+3. You can now see the services in your list of services that contain nail in its title.
 
 #### 4.1.6. List all existing services: `listsvc`
 
@@ -296,9 +311,11 @@ Listing all services:
 Outcome:
 1. The *Result Display* will show a success message.
 2. Homerce will switch to the *Services Tab*.
-3. You can now see all your services.
 
-{Example outcome screenshot}
+![listsvc](images/listsvc.png) <br>
+*Figure x - GUI outcome for `listsvc`*
+
+3. You can now see all your services.
 
 #### 4.1.7. Clear all existing services: `clearsvc`
 
@@ -306,9 +323,9 @@ You can use this command to clear and delete the all the services in the Service
 
 Format: `clearsvc`
 
-<div markdown="block" class="alert alert-info">
+<div markdown="block" class="alert alert-danger"> 
 
-**:information_source: Note:**<br>
+**:warning:**<br>
 
 * You are unable to clear services if there are any existing services that have been scheduled in your upcoming appointments. Please remove these
 appointments before proceeding to clear your services.
@@ -324,11 +341,13 @@ Clearing all services:
 2. Press `Enter` to execute.
 
 Outcome:
-1. The *Result Display* will show a success message.
+1. The *Result Display* will show a success message if you have no services scheduled in your upcoming appointments.
 2. Homerce will switch to the *Services Tab*.
-3. You can see that the list of services is now empty.
 
-{Example outcome screenshot}
+![clearsvc](images/clearsvc.png) <br>
+*Figure x - GUI outcome for `clearsvc`*
+
+3. You can see that the list of services is now empty.
 
 ### 4.2. Appointment Tracker
 
@@ -1325,8 +1344,10 @@ Steps:
 Outcome: 
 
 1. Homerce will undo the last change you made.
+1. The *Result Display* will show a success message.
 
-{add example screenshot outcome}
+![undo](images/undo.png) <br>
+*Figure x - GUI outcome for `undo`*
 
 #### 4.8.2. Viewing help : `help`
 
@@ -1429,9 +1450,9 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |Action | Format | Examples
 |---------|---------|---------
 |**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Lash Lift d/0.5 p/38`
-|**Edit** | `editsvc INDEX s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc s/SC001 d/0.5`
-|**Delete** | `deletesvc INDEX s/SERVICE_CODE` | `deletesvc s/SC001`
-|**Find** | `findsvc [t/TITLE]* [s/SERVICE_CODE]*` | `findsvc t/nail`
+|**Edit** | `editsvc INDEX s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc 1 d/0.5`
+|**Delete** | `deletesvc INDEX s/SERVICE_CODE` | `deletesvc 1`
+|**Find** | `findsvc KEYWORD` | `findsvc t/lash`
 |**List** | `listsvc` | 
 |**Clear** | `clearsvc` | 
 

@@ -284,7 +284,7 @@ service.
 
 In this section, we will use the following Activity Diagram to outline the generation of service code when the `addsvc` command of the service manager is executed.
 
-![Activity diagram for service manager addsvc command](images/AddServiceActivityDiagram.png)
+![Activity diagram for service manager addsvc command](images/service/AddServiceActivityDiagram.png)
 
 *Figure 3. Workflow of a `addsvc` command*
 
@@ -306,7 +306,7 @@ The following steps will describe the execution of the `AddServiceCommand` in de
 
 The following Sequence Diagram summarises the aforementioned steps. 
 
-![Sequence diagram for addsvc command](images/AddServiceSequenceDiagram.png)
+![Sequence diagram for addsvc command](images/service/AddServiceSequenceDiagram.png)
 
 *Figure 4. Execution of an `addsvc` command*
 

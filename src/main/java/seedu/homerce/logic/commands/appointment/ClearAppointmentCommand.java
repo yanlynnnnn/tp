@@ -8,6 +8,7 @@ import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.manager.HistoryManager;
+import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 
 /**
  * Clears the appointment list.
@@ -23,6 +24,6 @@ public class ClearAppointmentCommand extends Command {
         model.setAppointment(new ArrayList<>());
         model.updateFilteredAppointmentList(Model.PREDICATE_SHOW_ALL_APPOINTMENTS);
         model.refreshSchedule();
-        return new CommandResult(MESSAGE_CLEAR_APPOINTMENT_SUCCESS);
+        return new CommandResult(MESSAGE_CLEAR_APPOINTMENT_SUCCESS, AppointmentListPanel.TAB_NAME);
     }
 }
