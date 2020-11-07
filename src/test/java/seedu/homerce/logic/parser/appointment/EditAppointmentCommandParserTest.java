@@ -122,10 +122,4 @@ public class EditAppointmentCommandParserTest {
         EditAppointmentCommand command = parser.parse(userInput);
         assertTrue(expectedCommand.equals(command));
     }
-
-    @Test
-    public void parse_noFieldsEdited_failure() throws ParseException {
-        String userInput = "2"; // No fields edited
-        assertThrows(ParseException.class, () -> parser.parse(userInput));
-    }
 }

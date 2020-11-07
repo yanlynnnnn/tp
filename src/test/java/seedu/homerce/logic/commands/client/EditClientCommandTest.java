@@ -2,6 +2,7 @@ package seedu.homerce.logic.commands.client;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.homerce.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static seedu.homerce.logic.commands.CommandTestUtil.DESC_AMY;
 import static seedu.homerce.logic.commands.CommandTestUtil.DESC_BOB;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_NAME_BOB;
@@ -77,17 +78,10 @@ public class EditClientCommandTest {
     }
 
     @Test
-    public void execute_noFieldSpecifiedUnfilteredList_success() {
+    public void execute_noFieldSpecifiedUnfilteredList_failure() {
         EditClientCommand editClientCommand = new EditClientCommand(INDEX_FIRST_CLIENT,
                 new EditClientCommand.EditClientDescriptor());
-        Client editedClient = model.getFilteredClientList().get(INDEX_FIRST_CLIENT.getZeroBased());
-
-        String expectedMessage = String.format(EditClientCommand.MESSAGE_EDIT_CLIENT_SUCCESS, editedClient);
-
-        Model expectedModel = new ModelManager(new UserPrefs(), new ClientManager(model.getClientManager()),
-            new ServiceManager(), new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
-
-        assertCommandSuccess(editClientCommand, model, expectedMessage, expectedModel);
+        assertCommandFailure(editClientCommand, model, MESSAGE_NOT_EDITED);
     }
 
     @Test

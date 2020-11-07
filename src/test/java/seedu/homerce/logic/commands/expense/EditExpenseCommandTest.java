@@ -2,6 +2,8 @@ package seedu.homerce.logic.commands.expense;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.homerce.commons.core.Messages.MESSAGE_NOT_EDITED;
+import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.homerce.logic.commands.expense.ExpenseCommandTestUtil.DESC_AIRCON;
 import static seedu.homerce.logic.commands.expense.ExpenseCommandTestUtil.DESC_CONDITIONER;
@@ -10,13 +12,16 @@ import static seedu.homerce.logic.commands.expense.ExpenseCommandTestUtil.VALID_
 import static seedu.homerce.logic.commands.expense.ExpenseCommandTestUtil.VALID_ISFIXED_CONDITIONER;
 import static seedu.homerce.logic.commands.expense.ExpenseCommandTestUtil.VALID_TAG_HAIRSUPPLIES;
 import static seedu.homerce.logic.commands.expense.ExpenseCommandTestUtil.VALID_VALUE_CONDITIONER;
+import static seedu.homerce.testutil.TypicalIndexes.INDEX_FIRST_SERVICE;
 import static seedu.homerce.testutil.expense.TypicalExpenseIndexes.INDEX_FIRST_EXPENSE;
 import static seedu.homerce.testutil.expense.TypicalExpenseIndexes.INDEX_SECOND_EXPENSE;
 import static seedu.homerce.testutil.expense.TypicalExpenses.getTypicalExpenseTracker;
 
 import org.junit.jupiter.api.Test;
 
+import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
+import seedu.homerce.logic.commands.service.EditServiceCommand;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ModelManager;
 import seedu.homerce.model.UserPrefs;
@@ -81,5 +86,12 @@ public class EditExpenseCommandTest {
 
         // different index -> returns false
         assertFalse(standardCommand.equals(new EditExpenseCommand(INDEX_SECOND_EXPENSE, DESC_AIRCON)));
+    }
+
+    @Test
+    public void execute_noFieldSpecifiedUnfilteredList_success() {
+        EditExpenseCommand editExpenseCommand = new EditExpenseCommand(INDEX_FIRST_EXPENSE,
+            new EditExpenseCommand.EditExpenseDescriptor());
+        assertCommandFailure(editExpenseCommand, model, MESSAGE_NOT_EDITED);
     }
 }
