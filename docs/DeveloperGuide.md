@@ -1701,6 +1701,8 @@ testers are expected to do more *exploratory* testing.
 1. Initial launch
 
    1. Download the jar file and copy into an empty folder
+   
+   1. If you are using Windows, ensure display settings is set to 100% to prevent GUI scaling issues.
 
    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
 
