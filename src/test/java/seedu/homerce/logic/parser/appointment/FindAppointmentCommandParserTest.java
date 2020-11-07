@@ -3,6 +3,7 @@ package seedu.homerce.logic.parser.appointment;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.testutil.Assert.assertThrows;
 
+import java.util.Arrays;
 import java.util.function.Predicate;
 
 import org.junit.jupiter.api.Test;
@@ -14,7 +15,6 @@ import seedu.homerce.model.appointment.predicate.AppointmentDatePredicate;
 import seedu.homerce.model.appointment.predicate.AppointmentNamePredicate;
 import seedu.homerce.model.appointment.predicate.AppointmentPhonePredicate;
 import seedu.homerce.model.appointment.predicate.AppointmentServiceCodePredicate;
-import seedu.homerce.model.client.Name;
 import seedu.homerce.model.client.Phone;
 import seedu.homerce.model.service.ServiceCode;
 import seedu.homerce.model.util.attributes.Date;
@@ -59,9 +59,6 @@ public class FindAppointmentCommandParserTest {
         //invalid date
         assertThrows(ParseException.class, () -> parser.parse(" dt/32-20-2020"));
 
-        //invalid name
-        assertThrows(ParseException.class, () -> parser.parse(" n/pet^*er"));
-
         //invalid phone
         assertThrows(ParseException.class, () -> parser.parse(" p/9asd999a9"));
 
@@ -81,7 +78,7 @@ public class FindAppointmentCommandParserTest {
     public void parse_validName_success() throws ParseException {
         FindAppointmentCommand command = parser.parse(" n/test name");
         Predicate<Appointment> namePredicate =
-            new AppointmentNamePredicate(new Name("test name"));
+            new AppointmentNamePredicate(Arrays.asList("test", "name"));
         assertTrue(command.getPredicate().equals(namePredicate));
     }
 
