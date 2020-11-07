@@ -391,7 +391,7 @@ Let's say your client called to make an appointment.
 You can follow these instructions to add his/her appointment details into Homerce.
 
 Steps:
-1. Type `addapt dt/28-10-2020 t/1300 s/SC001 p/83232656` in the *Command Box*.
+1. Type `addapt dt/28-10-2020 t/1300 s/SC001 p/87438807` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
@@ -399,8 +399,8 @@ Outcome:
 1. Homerce will switch to the *Appointment Tab*.
 1. You can now see all your appointments including the newly added appointment.
 
-
-{Example outcome screenshot}
+![addapt](images/addapt.png) <br>
+*Figure x - GUI outcome for `addapt`*
 
 #### 4.2.3. List all appointments: `listapt`
 
@@ -422,7 +422,9 @@ Outcome:
 1. Homerce will switch to the *Appointment Tab*.
 1. You can now see all your appointments stored in Homerce.
 
-{Example outcome screenshot}
+![listapt](images/listapt.png) <br>
+*Figure x - GUI outcome for `listapt`*
+
 
 #### 4.2.4. Find an appointment: `findapt`
 
@@ -443,10 +445,10 @@ Format : `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]*`
 Example:
 
 Let's say you have a number of appointments stored in Homerce and you want to search for those booked by the phone
-number 82341245. You can follow these instructions to list all the appointments which match your search criteria.
+number 87438807. You can follow these instructions to list all the appointments which match your search criteria.
 
 Steps:
-1. Type `findapt p/82341245` in the *Command Box*.
+1. Type `findapt p/87438807` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
@@ -454,7 +456,9 @@ Outcome:
 1. Homerce will switch to the *Appointment Tab*.
 1. You can now see all your appointments made by the number `82341245`.
 
-{Example outcome screenshot}
+![findapt](images/findapt.png) <br>
+*Figure x - GUI outcome for `findapt`*
+
 
 #### 4.2.5. Edit an appointment: `editapt`
 
@@ -478,7 +482,7 @@ You searched for the appointment in Homerce with `listapt` or `findapt`, see tha
 and you want to edit it with the following details:
 
 Steps:
-1. Type `editapt 1 dt/28-10-2020 t/1300 p/93451222` in the *Command Box*.
+1. Type `editapt 1 dt/30-10-2020 t/1030` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
@@ -486,7 +490,9 @@ Outcome:
 1. Homerce will switch to the *Appointment Tab*.
 1. You will see your edited appointment displayed alongside other appointments in your tracker.
 
-{Example outcome screenshot}
+![editapt](images/editapt.png) <br>
+*Figure x - GUI outcome for `editapt`*
+
 
 #### 4.2.6. Mark an appointment as done: `done`
 
@@ -506,11 +512,11 @@ Format : `done INDEX`
 Example:
 
 Let's say you just finished an appointment with a client. After finding the appointment in Homerce
-with `listapt` or `findapt`, you see that the appointment has index 5. You can follow these instructions 
+with `listapt` or `findapt`, you see that the appointment has index 1. You can follow these instructions 
 to mark that appointment as done.
 
 Steps:
-1. Type `done 5` in the *Command Box*.
+1. Type `done 1` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
@@ -518,7 +524,9 @@ Outcome:
 1. Homerce will switch to the *Appointment Tab*.
 1. You will see your appointment marked as done, displayed alongside other appointments in your tracker.
 
-{Example outcome screenshot}
+![done](images/doneapt.png) <br>
+*Figure x - GUI outcome for `done`*
+
 
 #### 4.2.7. Mark an appointment as not done: `undone`
 
@@ -539,11 +547,11 @@ Format : `undone INDEX`
 Example:
 
 Let's say you just marked an appointment as done by accident. You searched for that
-appointment with `listapt` or `findapt` and the one you want to change has index 3.
+appointment with `listapt` or `findapt` and the one you want to change has index 1.
 You then follow these instructions to undo it.
 
 Steps:
-1. Type `undone 3` in the *Command Box*.
+1. Type `undone 1` in the *Command Box*.
 1. Press `Enter` on your keyboard.
 
 Outcome:
@@ -551,7 +559,9 @@ Outcome:
 1. Homerce will switch to the *Appointment Tab*.
 1. You will see your appointment marked as not done, alongside other appointments in your tracker.
 
-{Example outcome screenshot}
+![undone](images/undoneapt.png) <br>
+*Figure x - GUI outcome for `undoneapt`*
+
 
 #### 4.2.8. Delete an existing appointment: `deleteapt`
 
@@ -583,7 +593,9 @@ Outcome:
 1. Homerce will switch to the *Appointment Tab*.
 1. You will see the rest of your appointments in your tracker, with the one with index 2 removed.
 
-{Example outcome screenshot}
+![deleteapt](images/deleteapt.png) <br>
+*Figure x - GUI outcome for `deleteapt`*
+
 
 #### 4.2.9. Clear all appointments: `clearapt`
 
@@ -607,7 +619,9 @@ Outcome:
 1. Homerce will switch to the *Appointment Tab*.
 1. You will no appointments listed in the tracker.
 
-{Example outcome screenshot}
+![clearapt](images/clearapt.png) <br>
+*Figure x - GUI outcome for `clearapt`*
+
 
 ### 4.3. Revenue Tracker
 
@@ -1449,9 +1463,9 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |Action | Format | Examples
 |---------|---------|---------
 |**Add** | `addapt dt/DATE t/TIME s/SERVICE_CODE p/PHONE_NUMBER` | `addapt dt/15-10-2020 t/1300 s/SC001 p/98429700`
-|**Edit** | `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER] [s/SERVICE_CODE]` | `editapt 1 dt/28-10-2020 t/1300 p/93451222`
+|**Edit** | `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER] [s/SERVICE_CODE]` | `editapt 1 dt/30-10-2020 t/1300 p/87438807`
 |**Delete** | `deleteapt INDEX` | `deleteapt 1`
-|**Find** | `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]* [m/MONTH]* ` | `findapt p/82341245`
+|**Find** | `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]*` | `findapt p/87438807`
 |**List** | `listapt` |
 |**Clear** | `clearapt`| 
 |**Done** | `done INDEX` | `done 1`
