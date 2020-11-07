@@ -12,7 +12,6 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import seedu.homerce.logic.commands.CommandResult;
-import seedu.homerce.logic.commands.client.AddClientCommandTest;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.manager.ReadOnlyRevenueTracker;
 import seedu.homerce.model.manager.RevenueTracker;
@@ -21,6 +20,7 @@ import seedu.homerce.model.service.Duration;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.util.attributes.Amount;
 import seedu.homerce.model.util.attributes.Title;
+import seedu.homerce.testutil.ModelStub;
 import seedu.homerce.testutil.revenue.RevenueBuilder;
 
 public class AddRevenueCommandTest {
@@ -83,7 +83,7 @@ public class AddRevenueCommandTest {
     /**
      * A Model stub that always accepts the revenue being added.
      */
-    private class ModelStubAcceptingRevenueAdded extends AddClientCommandTest.ModelStub {
+    private static class ModelStubAcceptingRevenueAdded extends ModelStub {
 
         final ArrayList<Revenue> revenuesAdded = new ArrayList<>();
 
