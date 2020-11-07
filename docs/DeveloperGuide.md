@@ -267,16 +267,100 @@ Reason for choosing option 1:
 * Follow good coding standards by applying design principles such as the DRY principle.
 * Reduce total man-hours required to create each `ListTracker` once the common dependency of `NonUniqueList` has been created.
 
-### 4.3 Service Manager 
+### 4.3 Client Manager
+
+Homerce allows the user to keep track of the clients that his or her home-based business serves. The client manager is one of the `ListManager`s elaborated in [section 4.1](#41-list-managers).
+
+#### 4.3.1 Rationale 
+
+The client manager is essential to keep track of all the client's relevant details the home-based business has. With many clients to keep track of, we decided to create
+a client manager so that the user can store and quickly get the information he/she needs about a certain client.
+
+#### 4.3.2 Current Implementation
+
+The current implementation of the client manager allows the user to keep track a list of clients for their home-based business. Users
+have to include the name, phone and email for the client and ensure at least 2 of the fields specified are unique to avoid duplicate client entries.
+Users have an option to add a tag to the client to better identify the client as well. 
+
+In this section, we will use the following Activity Diagram to outline the deletion of a client when the `deletecli` command of the client manager is executed.
+
+![Activity diagram for deleting of client](images/DeleteClientActivityDiagram.png)
+
+*Figure 3. Workflow of a `deletecli` command*
+
+When the user enters the `deletecli` command to delete a client from the client list, the user input command undergoes the same command parsing as described in
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `DeleteClientCommand`, Homerce will access the client manager
+and delete the client based on the index specified by the user. 
+<br>
+The following steps will describe the execution of the `DeleteClientCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `DeleteClientCommand` is called, the `Model`'s `getFilteredClientList()` method is called.
+2. The `get()` method of the `ObservableList` is called returning the client at the `index` specifed by the user.
+3. The list of appointments gets retrieved from by calling the `getAppointmentList` method of the `AppointmentManager`
+4. The `isValidDeletion` method of the `DeleteClientCommand` is called to check if the client specified by index is scheduled in an upcoming appointment
+    * If the client is scheduled in an upcoming appointment, a `CommandException` is thrown
+    * If the client is not scheduled in an upominga appointment, the `DeleteClientCommand` returns a `CommandResult` with a success message
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram for cliennt manager delete client](images/DeleteClientSequenceDiagram.png)
+
+*Figure 4. Execution of an `deletecli` command*
+
+In this section, we will use the following Activity Diagram to outline the filtering of the list when the `findcli` command of the client manager is executed.
+
+![Activity diagram for client manager find client](images/FindClientActivityDiagram.png)
+
+*Figure 5. Workflow of a `findcli` command*
+
+When the user enters the `findcli` command to find the client in the client list, the user input command undergoes the same command parsing as described in
+[Section 3.3 Logic Component](#33-logic-component). During the execution of `FindClientCommand`, Homerce will access the client manager
+and filter the client list based on the predicate created when the user input gets parsed. 
+<br>
+The following steps will describe the execution of the `FindClientCommand` in detail, assuming that no errors are encountered.
+1. When the `execute()` method of the `FindClientCommand` is called, the `Model`'s `updateFilteredClientList()` method is called.
+2. The predicate gets checked against the client list in the model and filters the list accordingly.
+3. The `FindClientCommand` returns a `CommandResult` with a success message
+4. The `Ui` component will detect this change and update the GUI.
+
+The following Sequence Diagram summarises the aforementioned steps. 
+
+![Sequence diagram for findcli command](images/FindClientSequenceDiagram.png)
+
+*Figure 6. Execution of an `findcli` command*
+
+#### 4.3.3 Design Consideration 
+**Aspect: DeleteClientCommand implementation**
+
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Deleting a client scheduled in an upcoming appointment would delete the corresponding appointment as well | More convenient for the user | Introduces more coupling between an appointment and a client and might create more bugs. Also might result in unwanted outcomes for the user.  |
+| **Option 2 (current choice)** <br> Allow users to delete a client only if the client is not scheduled in an upcoming appointment. | Easier to implement and reduces coupling. User will be clearer of the expected outcome as well. | If the user wants to delete a client scheduled in an upcoming appointment he/she must delete that appointment first making it a bit more troublesome for the user. |
+
+Reason for choosing option 2:
+* It is good coding practice to reduce the amount of coupling between classes
+* It will be clearly communicate to the user what he/she can and cannot when deleting a client.
+
+**Aspect: FindClientCommand implementation**
+
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Allow the user to find a client just by name without the use of any prefixes | Easier to implement and also more convenient for the user | Not consistent with the other commands that all have the use of prefixes and there might be clients with the same names|
+| **Option 2 (current choice)** <br> Allow the user to find a client by phone number or name using prefixes. | Gives the user more freedom to find a client through relevant fields such as phone and name. | Does not allow for multiple prefix find. |
+
+Reason for choosing option 2:
+* It is more intuitive to the user where all commands have a similar format
+* Users can have more flexibility when finding a client using phone or name.
+
+### 4.4 Service Manager 
 
 Homerce allows the user to keep track of the services that his or her home-based business provides. The service manager is one of the `ListManager`s elaborated in [section 4.1](#41-list-managers).
 
-#### 4.3.1 Rationale 
+#### 4.4.1 Rationale 
 
 The service manager is essential to any home-based business that provides services for its customers. With many services to keep track of, we decided to create
 a service manager to assist the user with the process of keeping track of all the services that his or her home-based business provides.
 
-#### 4.3.2 Current Implementation
+#### 4.4.2 Current Implementation
 
 The current implementation of the service manager allows the user to keep track of a list of services that is provided by the home-based business. Each service
 added into the list will have a unique service code to identify it. The service code will be automatically generated by Homerce when the user adds a new
@@ -286,7 +370,7 @@ In this section, we will use the following Activity Diagram to outline the gener
 
 ![Activity diagram for service manager addsvc command](images/service/AddServiceActivityDiagram.png)
 
-*Figure 3. Workflow of a `addsvc` command*
+*Figure 7. Workflow of a `addsvc` command*
 
 When the user enters the `addsvc` command to add a new service, the user input command undergoes the same command parsing as described in 
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `AddServiceCommand`, Homerce will check the existing service codes from the
@@ -308,9 +392,9 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for addsvc command](images/service/AddServiceSequenceDiagram.png)
 
-*Figure 4. Execution of an `addsvc` command*
+*Figure 8. Execution of an `addsvc` command*
 
-#### 4.3.3 Design Consideration
+#### 4.4.3 Design Consideration
 
 **Aspect: Identifying each service with a unique service code**
 
@@ -334,90 +418,6 @@ Reason for choosing option 2:
 * If the user's home-based business has many services, automatic generation of service codes will provide a more seamless and convenient process when adding new services.
 * The user can find services by title to determine it's unique service code, allowing the user to quickly identify a service's service code.
 
-### 4.4 Client Manager
-
-Homerce allows the user to keep track of the clients that his or her home-based business serves. The client manager is one of the `ListManager`s elaborated in [section 4.1](#41-list-managers).
-
-#### 4.4.1 Rationale 
-
-The client manager is essential to keep track of all the client's relevant details the home-based business has. With many clients to keep track of, we decided to create
-a client manager so that the user can store and quickly get the information he/she needs about a certain client.
-
-#### 4.4.2 Current Implementation
-
-The current implementation of the client manager allows the user to keep track a list of clients for their home-based business. Users
-have to include the name, phone and email for the client and ensure at least 2 of the fields specified are unique to avoid duplicate client entries.
-Users have an option to add a tag to the client to better identify the client as well. 
-
-In this section, we will use the following Activity Diagram to outline the deletion of a client when the `deletecli` command of the client manager is executed.
-
-![Activity diagram for deleting of client](images/DeleteClientActivityDiagram.png)
-
-*Figure 5. Workflow of a `deletecli` command*
-
-When the user enters the `deletecli` command to delete a client from the client list, the user input command undergoes the same command parsing as described in
-[Section 3.3 Logic Component](#33-logic-component). During the execution of `DeleteClientCommand`, Homerce will access the client manager
-and delete the client based on the index specified by the user. 
-<br>
-The following steps will describe the execution of the `DeleteClientCommand` in detail, assuming that no errors are encountered.
-1. When the `execute()` method of the `DeleteClientCommand` is called, the `Model`'s `getFilteredClientList()` method is called.
-2. The `get()` method of the `ObservableList` is called returning the client at the `index` specifed by the user.
-3. The list of appointments gets retrieved from by calling the `getAppointmentList` method of the `AppointmentManager`
-4. The `isValidDeletion` method of the `DeleteClientCommand` is called to check if the client specified by index is scheduled in an upcoming appointment
-    * If the client is scheduled in an upcoming appointment, a `CommandException` is thrown
-    * If the client is not scheduled in an upominga appointment, the `DeleteClientCommand` returns a `CommandResult` with a success message
-
-The following Sequence Diagram summarises the aforementioned steps. 
-
-![Sequence diagram for cliennt manager delete client](images/DeleteClientSequenceDiagram.png)
-
-*Figure 6. Execution of an `deletecli` command*
-
-In this section, we will use the following Activity Diagram to outline the filtering of the list when the `findcli` command of the client manager is executed.
-
-![Activity diagram for client manager find client](images/FindClientActivityDiagram.png)
-
-*Figure 7. Workflow of a `findcli` command*
-
-When the user enters the `findcli` command to find the client in the client list, the user input command undergoes the same command parsing as described in
-[Section 3.3 Logic Component](#33-logic-component). During the execution of `FindClientCommand`, Homerce will access the client manager
-and filter the client list based on the predicate created when the user input gets parsed. 
-<br>
-The following steps will describe the execution of the `FindClientCommand` in detail, assuming that no errors are encountered.
-1. When the `execute()` method of the `FindClientCommand` is called, the `Model`'s `updateFilteredClientList()` method is called.
-2. The predicate gets checked against the client list in the model and filters the list accordingly.
-3. The `FindClientCommand` returns a `CommandResult` with a success message
-4. The `Ui` component will detect this change and update the GUI.
-
-The following Sequence Diagram summarises the aforementioned steps. 
-
-![Sequence diagram for findcli command](images/FindClientSequenceDiagram.png)
-
-*Figure 8. Execution of an `findcli` command*
-
-#### 4.4.3 Design Consideration 
-**Aspect: DeleteClientCommand implementation**
-
-|              | **Pros**   | **Cons** |
-| -------------|-------------| -----|
-| **Option 1** <br> Deleting a client scheduled in an upcoming appointment would delete the corresponding appointment as well | More convenient for the user | Introduces more coupling between an appointment and a client and might create more bugs. Also might result in unwanted outcomes for the user.  |
-| **Option 2 (current choice)** <br> Allow users to delete a client only if the client is not scheduled in an upcoming appointment. | Easier to implement and reduces coupling. User will be clearer of the expected outcome as well. | If the user wants to delete a client scheduled in an upcoming appointment he/she must delete that appointment first making it a bit more troublesome for the user. |
-
-Reason for choosing option 2:
-* It is good coding practice to reduce the amount of coupling between classes
-* It will be clearly communicate to the user what he/she can and cannot when deleting a client.
-
-**Aspect: FindClientCommand implementation**
-
-|              | **Pros**   | **Cons** |
-| -------------|-------------| -----|
-| **Option 1** <br> Allow the user to find a client just by name without the use of any prefixes | Easier to implement and also more convenient for the user | Not consistent with the other commands that all have the use of prefixes and there might be clients with the same names|
-| **Option 2 (current choice)** <br> Allow the user to find a client by phone number or name using prefixes. | Gives the user more freedom to find a client through relevant fields such as phone and name. | Does not allow for multiple prefix find. |
-
-Reason for choosing option 2:
-* It is more intuitive to the user where all commands have a similar format
-* Users can have more flexibility when finding a client using phone or name.
-
 ### 4.5 Appointment Manager
 Homerce allows the user to keep track of the appointments of his or her home-based business. The appointment manager is one of the `ListManager`s elaborated in [section 4.1](#41-list-managers).
 
@@ -435,7 +435,7 @@ In this section, we will use the following Activity Diagram to outline what happ
 
 ![Activity diagram for appointment manager done command](images/DoneAppointmentActivityDiagram.png)
 
-*Figure 7. Workflow of a `done` command*
+*Figure 9. Workflow of a `done` command*
 
 When the user enters the `done` command to mark an appointment in the list as done, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `DoneAppointmentCommand`, Homerce will access the appointment manager to
@@ -457,7 +457,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for done command](images/DoneAppointmentSequenceDiagram.png)
 
-*Figure 8. Execution of an `done` command*
+*Figure 10. Execution of an `done` command*
 
 #### 4.5.3 Design Consideration
 **Aspect: Revenue entries are created and deleted via `DoneAppointmentCommand` and `UnDoneAppointmentCommand`**
@@ -532,7 +532,7 @@ In this section, we will use the following Activity Diagram to outline the clear
 
 ![Activity diagram for revenue_tracker clearrev command](images/revenue/ClearRevenueActivityDiagram.png)
 
-*Figure 11. Workflow of a `clearrev` command*
+*Figure 13. Workflow of a `clearrev` command*
 
 When the user enters the `clearrev` command to sort the revenue list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `ClearRevenueCommand`, Homerce will access the revenue tracker
@@ -549,7 +549,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for clearrev command](images/revenue/ClearRevenueSD.png)
 
-*Figure 12. Execution of an `clearrev` command*
+*Figure 14. Execution of an `clearrev` command*
 
 #### 4.6.3 Design Consideration
 
@@ -599,7 +599,7 @@ In this section, we will use the following Activity Diagram to outline the sorti
 
 ![Activity diagram for expense_tracker sortexp command](images/SortExpenseActivityDiagram.png)
 
-*Figure 11. Workflow of a `sortexp` command*
+*Figure 15. Workflow of a `sortexp` command*
 
 When the user enters the `sortexp` command to sort the expense list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `SortExpenseCommand`, Homerce will access the expense tracker
@@ -619,7 +619,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for sortexp command](images/SortExpenseSD.png)
 
-*Figure 12. Execution of an `sortexp` command*
+*Figure 16. Execution of an `sortexp` command*
 
 #### 4.7.3 Design Consideration 
 
@@ -668,7 +668,7 @@ In this section, we will outline the `breakdownfinance` command using the follow
 
 ![Activity diagram of BreakdownFinance](images/BreakdownFinanceActivityDiagram.png)
 
-*Figure 13. Workflow of a `breakdownfinance` command*
+*Figure 17. Workflow of a `breakdownfinance` command*
 
 When the user enters the `breakdownfinance` command to view the monthly breakdown, the user input command undergoes the same command parsing as described in 
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `breakdownfinance`, 
@@ -684,7 +684,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram breakdownfiance](images/BreakdownFinanceSequenceDiagram.png)
 
-*Figure 14. Execution of an `breakdownfinance` command*
+*Figure 18. Execution of an `breakdownfinance` command*
 
 #### 4.8.3 Design Consideration
 
@@ -727,7 +727,7 @@ causing the state initial state of the `Model` prior to the execution of `delete
 
 ![Undo State 0](images/UndoState0.png)
 
-*Figure 15. State HistoryManager after `deletesvc 5` command*
+*Figure 19. State HistoryManager after `deletesvc 5` command*
 
 Step 3: The user executes `deletecli 5` command to delete the 5th person in Homerce's client list. When the `LogicManager`
 executes the `CommandResult` from `DeleteClientCommand`, `LogicManager#execute()` will call `HistoryManager#addToHistory()`,
@@ -736,7 +736,7 @@ causing the state initial state of the `Model` prior to the execution of `delete
 
 ![Undo State 1](images/UndoState1.png)
 
-*Figure 16. State HistoryManager after `deletecli 5` command*
+*Figure 20. State HistoryManager after `deletecli 5` command*
 
 Step 4: The user now decides that deleting the client was a mistake, and decides to undo that action by executing the `undo`
 command. The `undo` command will call `HistoryManager#getPreviousHistory()`, which will return the `History` object which stores
@@ -745,7 +745,7 @@ The current state of Homerce's `Model` will be updated to the state of the `Mode
 
 ![Undo State 2](images/UndoState2.png)
 
-*Figure 17. State HistoryManager after `undo` command*
+*Figure 21. State HistoryManager after `undo` command*
 
 #### 4.8.3 Design Consideration
 
