@@ -11,6 +11,7 @@ public class CurrentWeekCommand extends AbstractWeekCommand {
 
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) throws CommandException {
+        model.refreshSchedule();
         return new CommandResult(MESSAGE_CURRENT_WEEK_SUCCESS, SchedulePanel.TAB_NAME);
     }
 }
