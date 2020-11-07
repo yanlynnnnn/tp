@@ -1,11 +1,13 @@
 package seedu.homerce.logic.commands.appointment;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.homerce.logic.commands.appointment.AddAppointmentCommand.MESSAGE_INVALID_TIME_AND_DURATION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_SERVICE_CODE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TIME_OF_DAY;
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -79,13 +81,15 @@ public class EditAppointmentCommand extends Command {
 
         if (appointmentToEdit.equals(editedAppointment)) {
             throw new CommandException(MESSAGE_NOT_EDITED);
+        } else if (!isValidTimeAndDuration(editedAppointment)) {
+            // Check if appointment runs past midnight.
+            throw new CommandException(MESSAGE_INVALID_TIME_AND_DURATION);
         }
         Model modelCopy = model.deepCopy();
         modelCopy.deleteAppointment(appointmentToEdit);
         if (modelCopy.hasAppointment(editedAppointment)) {
             throw new CommandException(MESSAGE_CLASHING_APPOINTMENT);
         }
-
         model.setAppointment(appointmentToEdit, editedAppointment);
         model.refreshSchedule();
         return new CommandResult(
@@ -136,6 +140,13 @@ public class EditAppointmentCommand extends Command {
         EditAppointmentCommand e = (EditAppointmentCommand) other;
         return index.equals(e.index)
             && editAppointmentDescriptor.equals(e.editAppointmentDescriptor);
+    }
+
+    private boolean isValidTimeAndDuration(Appointment appointmentToTest) {
+        /// Check if timeOfDay + duration overflows past midnight.
+        LocalTime startTime = appointmentToTest.getAppointmentStartTime().getLocalTime();
+        LocalTime endTime = appointmentToTest.getAppointmentEndTime().getLocalTime();
+        return endTime.compareTo(startTime) > 0; // End time must be after start time.
     }
 
     /**
