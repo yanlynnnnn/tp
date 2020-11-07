@@ -69,6 +69,7 @@ Expense Tracker, and Revenue Tracker panels (Pull Request [#223](https://github.
     * Commands Documentation, including command parameters, command format, command examples, 
     and command outcomes with annotated screenshots (Pull Request [#301](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/301), Pull Request [#315](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/315))
     * Command Summary 
+1. Future Enhancements
 1. FAQ section (Pull Request [#169](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/169))
 
 **Contributions to Developer Guide:** <br>
