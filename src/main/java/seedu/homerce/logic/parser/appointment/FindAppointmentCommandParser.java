@@ -6,6 +6,7 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_SERVICE_CODE;
 
+import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
@@ -28,13 +29,22 @@ public class FindAppointmentCommandParser implements Parser<FindAppointmentComma
 
     @Override
     public FindAppointmentCommand parse(String userInput) throws ParseException {
-        String trimmedArgs = userInput.trim();
+        ArgumentMultimap argMultimap =
+            ArgumentTokenizer.tokenize(userInput, PREFIX_DATE, PREFIX_PHONE, PREFIX_SERVICE_SERVICE_CODE, PREFIX_NAME);
+        checkValidPrefixes(userInput);
+        Predicate<Appointment> predicate = createPredicate(argMultimap);
+        return new FindAppointmentCommand(predicate);
+    }
+
+    private void checkValidPrefixes(String args) throws ParseException {
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(
+            args, PREFIX_DATE, PREFIX_PHONE, PREFIX_SERVICE_SERVICE_CODE, PREFIX_NAME
+        );
+        String trimmedArgs = args.trim();
         if (trimmedArgs.isEmpty()) {
             throw new ParseException(
                 String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindAppointmentCommand.MESSAGE_USAGE));
         }
-        ArgumentMultimap argMultimap =
-            ArgumentTokenizer.tokenize(userInput, PREFIX_DATE, PREFIX_PHONE, PREFIX_SERVICE_SERVICE_CODE, PREFIX_NAME);
         if (areMultipleParametersPresent(argMultimap, PREFIX_DATE, PREFIX_PHONE, PREFIX_SERVICE_SERVICE_CODE,
             PREFIX_NAME)) {
             throw new ParseException(MULTIPLE_PARAMETERS);
@@ -47,27 +57,12 @@ public class FindAppointmentCommandParser implements Parser<FindAppointmentComma
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT,
                 FindAppointmentCommand.MESSAGE_USAGE));
         }
-
-        Predicate<Appointment> predicate = null;
-        if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
-            predicate = new AppointmentDatePredicate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
-        } else if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
-            predicate = new AppointmentPhonePredicate(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
-        } else if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
-            predicate = new AppointmentNamePredicate(ParserUtil.parseName(argMultimap.getValue(PREFIX_NAME).get()));
-            // TODO Not sure if this works if user enters name with multiple words.
-        } else if (argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).isPresent()) {
-            predicate = new AppointmentServiceCodePredicate(ParserUtil
-                .parseServiceCode(argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).get()));
-        }
-
-        return new FindAppointmentCommand(predicate);
     }
 
     /**
      * Returns true if there is more than one input parameter.
      */
-    private static boolean areMultipleParametersPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+    private boolean areMultipleParametersPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
         return Stream.of(prefixes).filter(prefix -> argumentMultimap.getValue(prefix).isPresent()).count()
             > NUM_ALLOWED_PARAMETERS;
     }
@@ -75,7 +70,30 @@ public class FindAppointmentCommandParser implements Parser<FindAppointmentComma
     /**
      * Returns true if the prefix is present in the user's command.
      */
-    private static boolean isPrefixPresent(ArgumentMultimap argumentMultimap, Prefix prefix) {
+    private boolean isPrefixPresent(ArgumentMultimap argumentMultimap, Prefix prefix) {
         return argumentMultimap.getValue(prefix).isPresent();
+    }
+
+    private Predicate<Appointment> createPredicate(ArgumentMultimap argMultimap) throws ParseException {
+        Predicate<Appointment> predicate = null;
+        if (argMultimap.getValue(PREFIX_DATE).isPresent()) {
+            predicate = new AppointmentDatePredicate(ParserUtil.parseDate(argMultimap.getValue(PREFIX_DATE).get()));
+        } else if (argMultimap.getValue(PREFIX_PHONE).isPresent()) {
+            predicate = new AppointmentPhonePredicate(ParserUtil.parsePhone(argMultimap.getValue(PREFIX_PHONE).get()));
+        } else if (argMultimap.getValue(PREFIX_NAME).isPresent()) {
+            if (!argMultimap.getValue(PREFIX_NAME).get().trim().isEmpty()) { // Check for empty user input
+                String[] nameKeywords = argMultimap.getValue(PREFIX_NAME).get().trim().split("\\s+");
+                predicate = new AppointmentNamePredicate(Arrays.asList(nameKeywords));
+            } else {
+                throw new ParseException(
+                    String.format(MESSAGE_INVALID_COMMAND_FORMAT,
+                    FindAppointmentCommand.MESSAGE_USAGE)
+                );
+            }
+        } else if (argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).isPresent()) {
+            predicate = new AppointmentServiceCodePredicate(ParserUtil
+                .parseServiceCode(argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).get()));
+        }
+        return predicate;
     }
 }
