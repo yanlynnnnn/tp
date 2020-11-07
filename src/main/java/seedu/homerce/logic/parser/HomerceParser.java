@@ -3,6 +3,7 @@ package seedu.homerce.logic.parser;
 import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.homerce.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -79,6 +80,10 @@ public class HomerceParser {
      * Used for initial separation of command word and args.
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
+    /**
+     * Used to record the user input.
+     */
+    private Logger logger = Logger.getLogger("Homer Parser");
 
     /**
      * Parses user input into command for execution.
@@ -95,6 +100,8 @@ public class HomerceParser {
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
+        logger.info("Command Word: " + commandWord);
+        logger.info("Arguments: " + arguments);
         switch (commandWord) {
 
         case AddClientCommand.COMMAND_WORD:
@@ -212,6 +219,7 @@ public class HomerceParser {
             return new PreviousWeekCommand();
 
         default:
+            logger.warning(MESSAGE_UNKNOWN_COMMAND);
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
         }
     }

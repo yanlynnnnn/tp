@@ -711,6 +711,14 @@ You can use this command to clear all revenue entries in Homerce.
 
 Format : `clearrev`
 
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes:**<br>
+ 
+* Clearing the revenue entries will not affect the status of the appointments.
+
+</div>
+
 Example :
 
 You wish to remove all revenues entries in Homerce and restart your revenue management from scratch.
@@ -972,21 +980,13 @@ Thus, this feature allows you to keep track of all the relevant information need
 Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used.
 
-| Parameter Name | Description | Example |
-|---------|---------|--------- |
-|`NAME`  | The name of the client. <br><br> It must be an alphanumeric word. | E.g. Typing `John Doe` would represent the name of the client saved in the client manager. |
-|`EMAIL`  | The email of the client. <br> Emails should be in `local-part@domain format` <br> <br> The `local-part` can only contain alphanumeric characters, and the special characters <br> +!#$%&'*+/=?\`{}~^.-&#124; <br> <br> The `domain` can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.) <br> The domain name must also have at least 2 characters and start and end with alphanumeric characters | johnDoe97@example123.com |
-|`PHONE` | Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long. | E.g. `91234567` would represent the client's phone number. |
-|`TAG` | The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. | E.g. Typing `friend` would mean that the client is tagged as a friend. |
-|`INDEX` | The index of the client in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the client with index-2 in the displayed list. |
-
 <table>
 <tr><th>Parameter Name</th><th>Description</th><th>Example</th></tr>
 <tr><td><pre>NAME</pre></td><td>The name of the client. <br><br> It must be an alphanumeric word.</td><td>E.g. Typing <pre>John Doe</pre> would represent the name of the client saved in the client manager.</td></tr>
-<tr><td><pre>EMAIL</pre></td><td>The email of the client. <br> Emails should be in <pre>local-part@domain format</pre> <br> <br> The <pre>local-part</pre> can only contain alphanumeric characters, and the special characters <br> +!#$%&'*+/=?\`{}~^.-&#124; <br> <br> The <pre>domain</pre> can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.) <br> The domain name must also have at least 2 characters and start and end with alphanumeric characters</td><td>johnDoe97@example123.com</td></tr>
-<tr><td><pre>PHONE</pre></td><td>Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long.</td><td>E.g. <pre>91234567</pre> would represent the client's phone number.</td></tr>
-<tr><td><pre>TAG</pre></td><td>The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. </td><td>E.g. Typing <pre>2</pre> would mean the client with index-2 in the displayed list.</td></tr>
-<tr><td><pre>INDEX</pre></td><td>The index of the client in the displayed list. <br> <br> It must be a valid index number.</td><td>E.g. Typing <pre>2</pre> would mean the client with index-2 in the displayed list.</td></tr>
+<tr><td><pre>EMAIL</pre></td><td>The email of the client. <br> Emails should be in <code>local-part@domain format</code> <br> <br> The <code>local-part</code> can only contain alphanumeric characters, and the special characters <br> +!#$%&'*+/=?\`{}~^.-&#124; <br> <br> The <code>domain</code> can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.) <br> The domain name must also have at least 2 characters and start and end with alphanumeric characters</td><td>johnDoe97@example123.com</td></tr>
+<tr><td><pre>PHONE</pre></td><td>Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long.</td><td>E.g. <code>91234567</code> would represent the client's phone number.</td></tr>
+<tr><td><pre>TAG</pre></td><td>The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. </td><td>E.g. Typing <code>2</code> would mean the client with index-2 in the displayed list.</td></tr>
+<tr><td><pre>INDEX</pre></td><td>The index of the client in the displayed list. <br> <br> It must be a valid index number.</td><td>E.g. Typing <code>2</code> would mean the client with index-2 in the displayed list.</td></tr>
 </table>
 
 #### 4.5.2. Add a client `addcli`
@@ -1459,7 +1459,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 
 |Action | Format | Examples
 |---------|---------|---------
-|**Find** | `findrev [dt/DATE]* [sc/SERVICE_CODE]*` | `findrev dt\28-09-2020`
+|**Find** | `findrev [dt/DATE]* [sc/SERVICE_CODE]*` | `findrev dt\22-10-2020`
 |**Sort**       | `sortrev ORDER`                                                  | `sortexp desc`
 |**List**       | `listrev`                                                        | 
 |**Clear**      | `clearrev`                                                       | 

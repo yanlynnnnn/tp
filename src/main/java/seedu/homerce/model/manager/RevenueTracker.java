@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 import javafx.collections.ObservableList;
@@ -18,9 +19,14 @@ import seedu.homerce.model.util.nonuniquelist.NonUniqueList;
 public class RevenueTracker implements ReadOnlyRevenueTracker {
 
     private final NonUniqueList<Revenue> revenues;
+    private final Logger logger;
 
+    /**
+     * Revenue Tracker Constructor
+     */
     public RevenueTracker() {
         this.revenues = new NonUniqueList<>();
+        this.logger = Logger.getLogger("Revenue Tracker");
     }
 
     /**
@@ -28,6 +34,7 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
      */
     public RevenueTracker(ReadOnlyRevenueTracker toBeCopied) {
         this.revenues = new NonUniqueList<>();
+        this.logger = Logger.getLogger("Revenue Tracker");
         resetData(toBeCopied);
     }
 
@@ -42,8 +49,8 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
             revenues.sort(new RevenueComparator());
         } else {
             revenues.sort(new RevenueComparator().reversed());
-            ;
         }
+        logger.info("Revenue List is sorted in ascending order by value: " + isAscending);
     }
 
     /**
@@ -52,6 +59,7 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
     @Override
     public void sortDefaultRevenueList() {
         revenues.sort(new RevenueDefaultComparator());
+        logger.info("Revenue List is sorted in descending chronological order");
     }
 
     //// list overwrite operations
@@ -70,6 +78,7 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
      */
     public void setRevenues(List<Revenue> revenues) {
         this.revenues.setItems(revenues);
+        logger.info("Revenue List is updated to new list");
     }
 
     //// service-level operations
@@ -79,6 +88,7 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
      */
     public void addRevenue(Revenue r) {
         revenues.add(r);
+        logger.info("Added revenue entry to Revenue List");
     }
 
 
@@ -87,7 +97,9 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
      * {@code key} must exist in the Homerce.
      */
     public void removeRevenue(Revenue key) {
+        assert key.getClass().equals(Revenue.class);
         revenues.remove(key);
+        logger.info("Remove revenue entry tin Revenue List");
     }
 
     //// util methods
