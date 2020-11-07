@@ -13,6 +13,7 @@ import seedu.homerce.model.Model;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.revenue.Revenue;
+import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 
 public class DoneAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "done";
@@ -52,7 +53,8 @@ public class DoneAppointmentCommand extends Command {
         model.refreshSchedule();
         CommandResult r = new CommandResult(
             String.format(MESSAGE_DONE_APPOINTMENT_SUCCESS, appointmentToMarkDone)
-                + "\n" + String.format(MESSAGE_ADD_REVENUE_SUCCESS, revenueToAdd)
+                + "\n" + String.format(MESSAGE_ADD_REVENUE_SUCCESS, revenueToAdd),
+            AppointmentListPanel.TAB_NAME
         );
         return r;
     }

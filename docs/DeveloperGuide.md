@@ -1343,7 +1343,7 @@ Indicate that the appointment has not been completed.
   
 <b>Preconditions: Appointment exists in appointment list, and it is indicated as done.</b>
   
-<b>Guarantees: Appointment indicated as undone.**
+<b>Guarantees: Appointment indicated as undone.</b>
  
 <b>MSS</b>
 1. User requests to list all appointments.

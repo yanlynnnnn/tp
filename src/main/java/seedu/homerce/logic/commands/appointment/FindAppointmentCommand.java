@@ -17,7 +17,7 @@ public class FindAppointmentCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all appointments of which its details contains "
         + "exactly one of the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-        + "Parameters: [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]* [m/MONTH]*\n"
+        + "Parameters: [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]*\n"
         + "Example: " + COMMAND_WORD + " p/98429700";
 
     private final Predicate<Appointment> predicate;

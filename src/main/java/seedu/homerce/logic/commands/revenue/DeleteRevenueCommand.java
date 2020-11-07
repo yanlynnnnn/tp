@@ -8,6 +8,7 @@ import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.revenue.Revenue;
+import seedu.homerce.ui.revenuepanel.RevenueListPanel;
 
 public class DeleteRevenueCommand extends Command {
 
@@ -22,7 +23,10 @@ public class DeleteRevenueCommand extends Command {
     public CommandResult execute(Model model, HistoryManager historyManager) throws CommandException {
         requireNonNull(model);
         model.deleteRevenue(targetRevenue);
-        return new CommandResult(String.format(MESSAGE_DELETE_REVENUE_SUCCESS, targetRevenue));
+        return new CommandResult(
+            String.format(MESSAGE_DELETE_REVENUE_SUCCESS, targetRevenue),
+            RevenueListPanel.TAB_NAME
+        );
     }
 
     @Override
