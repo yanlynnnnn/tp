@@ -139,12 +139,217 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
 This section contains all the information about the features of **Homerce**. 
 You may enter a command into the _Command Box_ to use each feature or sub-feature.
 
-### 4.1. Service Management
+### 4.1 Client Manager
+
+Homerce knows that managing the contacts of your clients is a must for any business.
+Thus, this feature allows you to keep track of all the relevant information needed about your clients.
+
+#### 4.1.1. Client Manager Command Parameters
+
+Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
+The table below shows a list of command parameters that will be used.
+
+<table>
+<tr><th>Parameter Name</th><th>Description</th><th>Example</th></tr>
+<tr><td><pre>NAME</pre></td><td>The name of the client. <br><br> It must be an alphanumeric word.</td><td>E.g. Typing <code>John Doe</code> would represent the name of the client saved in the client manager.</td></tr>
+<tr><td><pre>EMAIL</pre></td><td>The email of the client. <br> Emails should be in <code>local-part@domain format</code> <br> <br> The <code>local-part</code> can only contain alphanumeric characters, and the special characters <br> +!#$%&'*+/=?\`{}~^.-&#124; <br> <br> The <code>domain</code> can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.) <br> The domain name must also have at least 2 characters and start and end with alphanumeric characters</td><td>johnDoe97@example123.com</td></tr>
+<tr><td><pre>PHONE</pre></td><td>Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long.</td><td>E.g. <code>91234567</code> would represent the client's phone number.</td></tr>
+<tr><td><pre>TAG</pre></td><td>The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. </td><td>E.g. Typing <code>2</code> would mean the client with index-2 in the displayed list.</td></tr>
+<tr><td><pre>INDEX</pre></td><td>The index of the client in the displayed list. <br> <br> It must be a valid index number.</td><td>E.g. Typing <code>2</code> would mean the client with index-2 in the displayed list.</td></tr>
+</table>
+
+#### 4.1.2. Add a client `addcli`
+
+You can use this command to add a new client to the Client Manager.
+
+Format : `addcli n/NAME p/PHONE e/EMAIL [t/TAG]…​`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Client Manager Command Parameters](#411-client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+Let's say a new client just called in to make an appointment. <br>
+You can follow the steps below to add the client to the Client Manager.
+
+Steps :
+1. Type `addcli n/John p/91234567 e/john@gmail.com t/new` in the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. The *Result Display* will show a success message.
+
+![addcli](images/addcli.png) <br>
+_Figure 3 - GUI for `addcli`_
+
+#### 4.1.3. Edit a client's details `editcli`
+
+You can use this command to edit an expense in the Client Manager.
+
+Format : `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes:**<br>
+ 
+* You must enter at least one optional parameter.
+* The new parameter entered will overwrite the existing parameter.
+* When editing tags, the existing tags of the client will be removed i.e adding of tags is not cumulative.
+* You can remove all the client’s tags by typing t/ without specifying any tags after it.
+* Refer to [Client Manager Command Parameters](#411-client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+Let's say you misspelled the name of a client when adding it into the Client Manager and wish to change it to "Johnny". <br>
+You can follow the steps below to edit the client.
+
+Steps :
+1. Type `editcli 2 n/Johnny` in the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. The *Result Display* will show a success message.
+
+![editcli](images/editcli.png) <br>
+_Figure 4 - GUI for `editcli`_
+
+#### 4.1.4. Delete a client `deletecli`
+
+You can use this command to delete a client in the Client Manager.
+
+Format : `deletecli INDEX`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+ 
+* Refer to [Client Manager Command Parameters](#411-client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+<div markdown="block" class="alert alert-danger">
+
+**:warning: Warning:**<br>
+
+* A client will not be deleted if he/she is scheduled in an appointment happening today or at a later date.
+
+ </div>
+
+Example :
+
+Let's say a client repeatedly fails to turn up for his appointments and you wish to delete his contact. <br>
+You can follow the steps below to delete the client.
+
+Steps :
+1. Type `deletecli 3` in the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. The *Result Display* will show a success message.
+
+![deletecli](images/deletecli.png) <br>
+_Figure 5 - GUI for `deletecli`_
+
+#### 4.1.5. Find a client `findcli`
+
+You can use this command to find a client in the Client Manager.
+
+Format : `findcli [n/NAME]* [p/PHONE]*`
+
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Notes:**<br>
+
+* You must enter one of the optional parameter.
+* The search using name is case-insensitive. e.g hans will match Hans.
+* The order of the keywords does not matter. e.g. Hans Bo will match Bo Hans.
+* Only full words will be matched e.g. Han will not match Hans.
+* Persons matching at least one keyword will be returned (i.e. OR search). e.g. Hans Bo will return Hans Gruber, Bo Yang.
+* The search using phone will match if the number sequence entered (at least 3 digits long) is part of a client's phone number. e.g. 123 will return clients with phone number 91234567 and 98765123.
+* Refer to [Client Manager Command Parameters](#411-client-manager-command-parameters) for more details about each parameter.
+
+</div>
+
+Example :
+
+Let's say you have many clients in your client list and wish to find more information on the client named John. <br>
+You can follow the steps below to get a list of clients named John
+
+Steps :
+1. Type `findcli n/John` in the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. The *Result Display* will show a success message.
+2. Homerce will list out all the clients with John in their name.
+
+![findcli](images/findcli.png) <br>
+_Figure 6 - GUI for `findcli`_
+
+#### 4.1.6. List clients `listcli`
+
+You can use this command to list all your clients in the Client Manager.
+
+Format : `listcli`
+
+Example :
+
+Let's say you wish to list your clients to view all the client entries that you currently have. <br>
+You can follow the steps below to list your clients.
+
+Steps :
+1. Type `listcli` in the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. The *Result Display* will show a success message.
+2. Homerce will list out all your expenses.
+
+![listcli](images/listcli.png) <br>
+_Figure 7 - GUI for `listcli`_
+
+#### 4.1.7. Clear clients `clearcli`
+
+You can use this command to clear all clients in the Client Manager.
+
+Format : `clearcli`
+
+<div markdown="block" class="alert alert-danger">
+
+**:warning: Warning:**<br>
+
+* The client list will not be cleared if there is at least one client scheduled in an appointment happening today or at a later date.
+
+</div>
+ 
+Example :
+
+Let's say you wish to remove all client entries in the Client Manager and restart your client management from scratch. <br>
+You can follow the steps below to clear all your clients.
+
+Steps :
+1. Type `clearcli` in the _Command Box_.
+2. Press `Enter` to execute.
+
+Outcome :
+1. The *Result Display* will show a success message.
+
+![clearcli](images/clearcli.png) <br>
+_Figure 8 - GUI for `clearcli`_
+
+### 4.2. Service Management
 
 This feature allows you to manage the services that your home-based beauty salon provides. You can record the 
 following information about your services: `TITLE`, `DURATION` and `PRICE`.
 
-#### 4.1.1. Service Management Command Parameters
+#### 4.2.1. Service Management Command Parameters
 
 Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used in this feature.
@@ -157,7 +362,7 @@ The table below shows a list of command parameters that will be used in this fea
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long.| E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`INDEX`| The index number of the service in the displayed service list.<br> <br> The first entry of the list has an index number of `1` and all entries are listed in increasing index numbers. | E.g `5`
 
-#### 4.1.2. Add a new service: `addsvc`
+#### 4.2.2. Add a new service: `addsvc`
 
 You can use this command to add a new service into the Service Manager.
 
@@ -167,7 +372,7 @@ Format: `addsvc t/TITLE du/DURATION p/PRICE`
 
 **:information_source: Note:**<br>
  
-* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Management Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -183,11 +388,11 @@ Outcome:
 2. Homerce will switch to the *Services Tab*.
 
 ![addsvc](images/addsvc.png) <br>
-*Figure x - GUI outcome for `addsvc`*
+*Figure 9 - GUI outcome for `addsvc`*
 
 3. You can now see all your services including the newly added service.
 
-#### 4.1.3. Edit an existing service: `editsvc`
+#### 4.2.3. Edit an existing service: `editsvc`
 
 You can use this command to edit an existing service in the Service Manager.
 
@@ -198,7 +403,7 @@ Format: `editsvc INDEX [t/TITLE]* [du/DURATION]* [p/PRICE]*`
 **:information_source: Note:**<br>
  
 * You are unable to edit an existing service's service code. Service codes are automatically generated by the Service Manager when adding a new service.
-* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Management Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
 * Editing a service in the service manager will not change the details of any appointments associated with that service as they are
  kept as separate records. Edit the appointment if you want the service's edited details to be reflected.
 
@@ -217,11 +422,11 @@ Outcome:
 2. Homerce will switch to the *Services Tab*.
 
 ![editsvc](images/editsvc.png) <br>
-*Figure x - GUI outcome for `editsvc`*
+*Figure 10 - GUI outcome for `editsvc`*
 
 3. You can now see all your services including the edited service.
 
-#### 4.1.4. Delete an existing service: `deletesvc`
+#### 4.2.4. Delete an existing service: `deletesvc`
 
 You can use this command to delete an existing service in the Service Manager.
 
@@ -239,7 +444,7 @@ Format: `deletesvc INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Management Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -256,11 +461,11 @@ Outcome:
 2. Homerce will switch to the *Services Tab*.
 
 ![deletesvc](images/deletesvc.png) <br>
-*Figure x - GUI outcome for `deletesvc`*
+*Figure 11 - GUI outcome for `deletesvc`*
 
 3. You can now see that the service with service code SC001 has been deleted from Homerce.
 
-#### 4.1.5. Find a service by keyword: `findsvc`
+#### 4.2.5. Find a service by keyword: `findsvc`
 
 You can use this command to find specific services which matches either the title or service code that you provide.
 
@@ -270,7 +475,7 @@ Format: `findsvc [t/TITLE]* [s/SERVICE_CODE]*`
 
 **:information_source: Note:**<br>
  
-* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Management Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -287,11 +492,11 @@ Outcome:
 2. Homerce will switch to the *Services Tab*.
 
 ![findsvc](images/findsvc.png) <br>
-*Figure x - GUI outcome for `findsvc`*
+*Figure 12 - GUI outcome for `findsvc`*
 
 3. You can now see the services in your list of services that contain nail in its title.
 
-#### 4.1.6. List all existing services: `listsvc`
+#### 4.2.6. List all existing services: `listsvc`
 
 You can use this command to navigate to the *Services Tab* and display all your added services in the Service Manager.
 
@@ -309,11 +514,11 @@ Outcome:
 2. Homerce will switch to the *Services Tab*.
 
 ![listsvc](images/listsvc.png) <br>
-*Figure x - GUI outcome for `listsvc`*
+*Figure 13 - GUI outcome for `listsvc`*
 
 3. You can now see all your services.
 
-#### 4.1.7. Clear all existing services: `clearsvc`
+#### 4.2.7. Clear all existing services: `clearsvc`
 
 You can use this command to clear and delete the all the services in the Service Manager.
 
@@ -341,11 +546,11 @@ Outcome:
 2. Homerce will switch to the *Services Tab*.
 
 ![clearsvc](images/clearsvc.png) <br>
-*Figure x - GUI outcome for `clearsvc`*
+*Figure 14 - GUI outcome for `clearsvc`*
 
 3. You can see that the list of services is now empty.
 
-### 4.2. Appointment Tracker
+### 4.3. Appointment Tracker
 
 Scheduling appointments is an essential part of your beauty salon and
 Homerce makes it easy to keep track of your upcoming appointments with
@@ -353,7 +558,7 @@ your customers. You can add appointments for a particular service and
 client, mark it as done, and Homerce will automatically credit the revenue
 into the revenue tracker.
 
-#### 4.2.1. Appointment Tracker Command Parameters
+#### 4.3.1. Appointment Tracker Command Parameters
 
 This feature uses a number of parameters, which are detailed below.
 
@@ -366,7 +571,7 @@ This feature uses a number of parameters, which are detailed below.
 |`NAME` | The name of the client booking the appointment. <br> <br> It must be a alphanumeric word and incomplete words are not accepted. | E.g. If a client with the name `Hartin Menz` called to book an appointment, the word `Hartin` would be accepted as a parameter for `NAME` but not `Hart`.
 |`INDEX` | The index of the appointment in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the appointment with index-2 in the displayed list.
 
-#### 4.2.2. Add an appointment: `addapt`
+#### 4.3.2. Add an appointment: `addapt`
 
 When a new or existing client calls to make a booking for your services, use this
 command to add details of the appointment into the appointment tracker.
@@ -377,7 +582,7 @@ Format : `addapt dt/DATE t/TIME s/SERVICE_CODE p/PHONE_NUMBER`
 
 **:information_source: Note:**<br>
  
-* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+* Refer to [Appointment Tracker Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
 
 </div> 
 
@@ -396,9 +601,9 @@ Outcome:
 1. You can now see all your appointments including the newly added appointment.
 
 ![addapt](images/addapt.png) <br>
-*Figure x - GUI outcome for `addapt`*
+*Figure 15 - GUI outcome for `addapt`*
 
-#### 4.2.3. List all appointments: `listapt`
+#### 4.3.3. List all appointments: `listapt`
 
 Use this command to see your list of all your upcoming appointments.
 
@@ -419,10 +624,10 @@ Outcome:
 1. You can now see all your appointments stored in Homerce.
 
 ![listapt](images/listapt.png) <br>
-*Figure x - GUI outcome for `listapt`*
+*Figure 16 - GUI outcome for `listapt`*
 
 
-#### 4.2.4. Find an appointment: `findapt`
+#### 4.3.4. Find an appointment: `findapt`
 
 Use this command to find a specific appointment which matches the description you provide
 to Homerce. To find all the appointments belonging to a particular week, use the `schedule`
@@ -434,7 +639,7 @@ Format : `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]*`
 
 **:information_source: Note:**<br>
  
-* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+* Refer to [Appointment Tracker Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
 
 </div> 
 
@@ -453,10 +658,10 @@ Outcome:
 1. You can now see all your appointments made by the number `82341245`.
 
 ![findapt](images/findapt.png) <br>
-*Figure x - GUI outcome for `findapt`*
+*Figure 17 - GUI outcome for `findapt`*
 
 
-#### 4.2.5. Edit an appointment: `editapt`
+#### 4.3.5. Edit an appointment: `editapt`
 
 When a new or existing client calls to edit a booking he or she had made, use this
 command to edit details of the appointment.
@@ -467,7 +672,7 @@ Format : `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER] [s/SERVICE_CODE]`
 
 **:information_source: Note:**<br>
  
-* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+* Refer to [Appointment Tracker Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
 
 </div> 
 
@@ -487,10 +692,9 @@ Outcome:
 1. You will see your edited appointment displayed alongside other appointments in your tracker.
 
 ![editapt](images/editapt.png) <br>
-*Figure x - GUI outcome for `editapt`*
+*Figure 18 - GUI outcome for `editapt`*
 
-
-#### 4.2.6. Mark an appointment as done: `done`
+#### 4.3.6. Mark an appointment as done: `done`
 
 After an appointment with a client has been completed, use this command to credit the revenue from the service and mark the appointment
 as done.
@@ -501,7 +705,7 @@ Format : `done INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+* Refer to [Appointment Tracker Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
 
 </div> 
 
@@ -521,10 +725,10 @@ Outcome:
 1. You will see your appointment marked as done, displayed alongside other appointments in your tracker.
 
 ![done](images/doneapt.png) <br>
-*Figure x - GUI outcome for `done`*
+*Figure 19 - GUI outcome for `done`*
 
 
-#### 4.2.7. Mark an appointment as not done: `undone`
+#### 4.3.7. Mark an appointment as not done: `undone`
 
 In the event that an appointment was marked as done by accident, you can
 use this command to revert this and ensure your appointment is still
@@ -536,7 +740,7 @@ Format : `undone INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+* Refer to [Appointment Tracker Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
 
 </div> 
 
@@ -565,10 +769,9 @@ Outcome:
 1. You will see your appointment marked as not done, alongside other appointments in your tracker.
 
 ![undone](images/undoneapt.png) <br>
-*Figure x - GUI outcome for `undoneapt`*
+*Figure 20 - GUI outcome for `undoneapt`*
 
-
-#### 4.2.8. Delete an existing appointment: `deleteapt`
+#### 4.3.8. Delete an existing appointment: `deleteapt`
 
 If a client informs you that he or she wants to cancel an appointment, you can
 use this command to delete that particular command from the appointment tracker.
@@ -579,7 +782,7 @@ Format : `deleteapt INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Appointment Tracker Command Parameters](#421-appointment-tracker-command-parameters) for more details about each parameter.
+* Refer to [Appointment Tracker Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
 
 </div> 
 
@@ -599,10 +802,9 @@ Outcome:
 1. You will see the rest of your appointments in your tracker, with the one with index 2 removed.
 
 ![deleteapt](images/deleteapt.png) <br>
-*Figure x - GUI outcome for `deleteapt`*
+*Figure 21 - GUI outcome for `deleteapt`*
 
-
-#### 4.2.9. Clear all appointments: `clearapt`
+#### 4.3.9. Clear all appointments: `clearapt`
 
 In the event that you want to reset the entire list of appointments
 in Homerce, you may use this command to delete all prior and upcoming
@@ -625,16 +827,15 @@ Outcome:
 1. You will no appointments listed in the tracker.
 
 ![clearapt](images/clearapt.png) <br>
-*Figure x - GUI outcome for `clearapt`*
+*Figure 22 - GUI outcome for `clearapt`*
 
-
-### 4.3. Revenue Tracker
+### 4.4. Revenue Tracker
 
 Homerce knows that revenue tracking is very important for your business.
 Thus, this feature allows you to track the revenue that you have generated effortlessly.
 Revenue will be automatically recorded when an appointment is indicated as done.
 
-#### 4.3.1. Revenue Tracker Command Parameters
+#### 4.4.1. Revenue Tracker Command Parameters
 
 Before you dive into using the feature, you may want to have a look at the common parameter used in this feature.
 The table below shows a list of command parameters that will be used in this feature.
@@ -646,7 +847,7 @@ The table below shows a list of command parameters that will be used in this fea
 |`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc` | E.g. Typing `asc` would mean ascending.  <br> <br> E.g. Typing `desc` would mean descending.
 |`INDEX`| The index number of the revenue in the displayed revenue list.<br> <br> The first entry of the list has an index number of `1` and all entries are listed in increasing index numbers. | E.g `5`
 
-#### 4.3.2. Find a revenue : `findrev`
+#### 4.4.2. Find a revenue : `findrev`
 
 You can use this command to find revenues by 'date' or 'service code' in the Revenue Tracker.
 
@@ -655,7 +856,7 @@ Format : `findrev [dt/DATE]* [s/SERVICE_CODE]*`
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:**<br>
-* Refer to [Revenue Tracker Command Parameters](#431-revenue-tracker-command-parameters) for more details about each parameter.
+* Refer to [Revenue Tracker Command Parameters](#441-revenue-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -673,10 +874,10 @@ Outcome :
 1. Homerce will list out all the revenue for 22-10-2020 in the _Revenue_ tab.  
 1. You can now see all your revenues earned on `22-10-2020`.
 
-![addexp](images/revenue/FindRevenue.png) <br>
-*Figure 4.3.2.1 - GUI outcome for `findrev`*
+![addrev](images/revenue/FindRevenue.png) <br>
+*Figure 23 - GUI outcome for `findrev`*
 
-#### 4.3.3. Sort revenues: `sortrev`
+#### 4.4.3. Sort revenues: `sortrev`
 
 You can use this command to sort the list of revenue in ascending or descending order by value in the Revenue Tracker.
 
@@ -685,7 +886,7 @@ Format : `sortrev ORDER`
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:**<br>
-* Refer to [Revenue Tracker Command Parameters](#431-revenue-tracker-command-parameters) for more details about each parameter.
+* Refer to [Revenue Tracker Command Parameters](#441-revenue-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -703,10 +904,10 @@ Outcome :
 1. Homerce will list out all the revenue entries sorted from highest to lowest cost in the _Revenue_ tab.
 1. You can now see your revenues sort by descending order.
 
-![addexp](images/revenue/SortRevenue(Desc).png) <br>
-*Figure x - GUI outcome for `sortrev`*
+![sortrev](images/revenue/SortRevenue(Desc).png) <br>
+*Figure 24 - GUI outcome for `sortrev`*
 
-#### 4.3.4. List revenues : `listrev`
+#### 4.4.4. List revenues : `listrev`
 
 You can use this command to list all your revenue entries in the Revenue Tracker. The list will be sorted by descending chronological order.
 
@@ -726,10 +927,10 @@ Outcome :
 1. Homerce will list out all your revenue entries in the _Revenue_ tab.
 1. You can now see all your revenues sort by descending chronological order.
 
-![addexp](images/revenue/ListRevenue.png) <br>
-*Figure x - GUI outcome for `listrev`*
+![listrev](images/revenue/ListRevenue.png) <br>
+*Figure 25 - GUI outcome for `listrev`*
 
-#### 4.3.5. Clear revenue : `clearrev`
+#### 4.4.5. Clear revenue : `clearrev`
 
 You can use this command to clear all revenue entries in the Revenue Tracker.
 
@@ -757,10 +958,10 @@ Outcome :
 1. Homerce will clear all the revenue data.
 1. You will have no revenues listed in the tracker.
 
-![addexp](images/revenue/ClearRevenue.png) <br>
-*Figure x - GUI outcome for `clearrev`*
+![clearrev](images/revenue/ClearRevenue.png) <br>
+*Figure 26 - GUI outcome for `clearrev`*
 
-### 4.4 Expense Tracker
+### 4.5 Expense Tracker
 
 Homerce understands that expense tracking is essential in managing your business expenditure.
 Thus, this feature allows you to track your expenses seamlessly and with ease. <br><br>
@@ -768,7 +969,7 @@ Our expense tracker supports both fixed expenses that recur monthly, and one-tim
 A fixed expense only has to be added to the tracker once, as Homerce will automatically record the same fixed expense for you every month.
 <br><br> You can record the following information about your expenses: `DESCRIPTION`, `ISFIXED`, `VALUE`, `DATE` and `TAG`.
 
-#### 4.4.1. Expense Tracker Command Parameters
+#### 4.5.1. Expense Tracker Command Parameters
 
 Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used.
@@ -783,7 +984,7 @@ The table below shows a list of command parameters that will be used.
 |`INDEX` | The index of the expense in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would refer to the expense with the second index in the displayed list.
 |`ORDER` | The order refers to ascending or descending. <br> <br> It must be in the format of `asc` or `desc`. <br><br> *Note: Order is used in the `sortexp` command, to indicate whether you want the list to be sorted from lowest to highest value (ascending), or from highest to lowest value (descending).*| E.g. Typing `asc` would mean ascending. Expenses will be displayed from lowest to highest value. <br> <br> E.g. Typing `desc` would mean descending. Expenses will be displayed from highest to lowest value.
 
-#### 4.4.2. Add an expense `addexp`
+#### 4.5.2. Add an expense `addexp`
 
 Use this command to add a new expense to the Expense Tracker.
 
@@ -795,7 +996,7 @@ Format : `addexp d/DESCRIPTION f/IS_FIXED v/VALUE dt/DATE [t/TAG]`
 
 * Tags are optional, and only one tag is allowed per expense. The last tag will be used if multiple tags are entered.
 * If no tag is entered, the expense will automatically be tagged under 'others'.
-* Refer to [Expense Tracker Command Parameters](#441-expense-tracker-command-parameters) for more details about each parameter.
+* Refer to [Expense Tracker Command Parameters](#451-expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -813,9 +1014,9 @@ Outcome :
 1. Homerce will switch to the *Expense Tab*.
 
 ![addexp](images/addexp.png) <br>
-*Figure x - GUI outcome for `addexp`*
+*Figure 27 - GUI outcome for `addexp`*
 
-#### 4.4.3. Edit an expense `editexp`
+#### 4.5.3. Edit an expense `editexp`
 
 Use this command to edit an expense in the Expense Tracker.
 
@@ -827,7 +1028,7 @@ Format : `editexp INDEX [d/DESCRIPTION] [f/IS_FIXED] [v/VALUE] [dt/DATE] [t/TAG]
  
 * You must enter at least one optional parameter.
 * The new parameter entered will overwrite the existing parameter.
-* Refer to [Expense Tracker Command Parameters](#441-expense-tracker-command-parameters) for more details about each parameter.
+* Refer to [Expense Tracker Command Parameters](#451-expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -846,9 +1047,9 @@ Outcome :
 1. You will see your edited expense displayed alongside other expenses in your tracker.
 
 ![editexp](images/editexp.png) <br>
-*Figure x - GUI outcome for `editexp`*
+*Figure 28 - GUI outcome for `editexp`*
 
-#### 4.4.4. Delete an expense `deleteexp`
+#### 4.5.4. Delete an expense `deleteexp`
 
 Use this command to delete an expense from the Expense Tracker.
 
@@ -858,7 +1059,7 @@ Format : `deleteexp INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Expense Tracker Command Parameters](#441-expense-tracker-command-parameters) for more details about each parameter.
+* Refer to [Expense Tracker Command Parameters](#451-expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -876,9 +1077,9 @@ Outcome :
 1. The *Result Display* will show a success message.
 
 ![deleteexp](images/deleteexp.png) <br>
-*Figure x - GUI outcome for `deleteexp`*
+*Figure 29 - GUI outcome for `deleteexp`*
 
-#### 4.4.5. Find an expense `findexp`
+#### 4.5.5. Find an expense `findexp`
 
 Use this command to find specific expenses in the Expense Tracker.
 
@@ -889,8 +1090,11 @@ Format : `findexp [d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*`
 **:information_source: Notes:**<br>
 
 * You must enter exactly one parameter.
-* The description parameter is case-insensitive, and at least one keyword from the full description of the expense has to be entered to find the expense.
-* Refer to [Expense Tracker Command Parameters](#441-expense-tracker-command-parameters) for more details about each parameter.
+* The search using description is case-insensitive. e.g conditioner will match Conditioner.
+* The order of the keywords in the description does not matter. e.g. Lash Extensions Kit will match Kit Lash Extensions.
+* Only full words in the description will be matched e.g. Las will not match Lash.
+* Expenses matching at least one keyword will be returned. e.g. Lash will return Lash Extensions Kit
+* Refer to [Expense Tracker Command Parameters](#451-expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -909,9 +1113,9 @@ Outcome :
 1. Homerce will list out all the expenses made on 10 October 2020.
 
 ![findexp](images/findexp.png) <br>
-*Figure x - GUI outcome for `findexp`*
+*Figure 30 - GUI outcome for `findexp`*
 
-#### 4.4.6. Sort expenses `sortexp`
+#### 4.5.6. Sort expenses `sortexp`
 
 Use this command to sort your expenses based on their value.
 
@@ -921,7 +1125,7 @@ Format : `sortexp ORDER`
 
 **:information_source: Note:**<br>
  
-* Refer to [Expense Tracker Command Parameters](#441-expense-tracker-command-parameters) for more details about each parameter.
+* Refer to [Expense Tracker Command Parameters](#451-expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -940,9 +1144,9 @@ Outcome :
 1. Homerce will list out all the expenses sorted from highest to lowest cost.
 
 ![sortexp](images/sortexp.png) <br>
-*Figure x - GUI outcome for `sortexp`*
+*Figure 31 - GUI outcome for `sortexp`*
 
-#### 4.4.7. List expenses `listexp`
+#### 4.5.7. List expenses `listexp`
 
 Use this command to list all your expenses in the Expense Tracker. 
 By default, the expenses will be sorted in reverse chronological order, with the most recent expenses at the top and the least recent expenses at the bottom.
@@ -964,9 +1168,9 @@ Outcome :
 1. Homerce will list out all your expenses.
 
 ![listexp](images/listexp.png) <br>
-*Figure x - GUI outcome for `listexp`*
+*Figure 32 - GUI outcome for `listexp`*
 
-#### 4.4.8. Clear expenses `clearexp`
+#### 4.5.8. Clear expenses `clearexp`
 
 Use this command to clear all your expenses from the Expense Tracker.
 
@@ -986,214 +1190,7 @@ Outcome :
 1. Homerce will switch to the *Expense Tab*.
 
 ![clearexp](images/clearexp.png) <br>
-*Figure x - GUI outcome for `clearexp`*
-
-### 4.5 Client Manager
-
-Homerce knows that managing the contacts of your clients is a must for any business.
-Thus, this feature allows you to keep track of all the relevant information needed about your clients.
-
-#### 4.5.1. Client Manager Command Parameters
-
-Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
-The table below shows a list of command parameters that will be used.
-
-<table>
-<tr><th>Parameter Name</th><th>Description</th><th>Example</th></tr>
-<tr><td><pre>NAME</pre></td><td>The name of the client. <br><br> It must be an alphanumeric word.</td><td>E.g. Typing <pre>John Doe</pre> would represent the name of the client saved in the client manager.</td></tr>
-<tr><td><pre>EMAIL</pre></td><td>The email of the client. <br> Emails should be in <code>local-part@domain format</code> <br> <br> The <code>local-part</code> can only contain alphanumeric characters, and the special characters <br> +!#$%&'*+/=?\`{}~^.-&#124; <br> <br> The <code>domain</code> can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.) <br> The domain name must also have at least 2 characters and start and end with alphanumeric characters</td><td>johnDoe97@example123.com</td></tr>
-<tr><td><pre>PHONE</pre></td><td>Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long.</td><td>E.g. <code>91234567</code> would represent the client's phone number.</td></tr>
-<tr><td><pre>TAG</pre></td><td>The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. </td><td>E.g. Typing <code>2</code> would mean the client with index-2 in the displayed list.</td></tr>
-<tr><td><pre>INDEX</pre></td><td>The index of the client in the displayed list. <br> <br> It must be a valid index number.</td><td>E.g. Typing <code>2</code> would mean the client with index-2 in the displayed list.</td></tr>
-</table>
-
-#### 4.5.2. Add a client `addcli`
-
-You can use this command to add a new client to the Client Manager.
-
-Format : `addcli n/NAME p/PHONE e/EMAIL [t/TAG]…​`
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note:**<br>
- 
-* Refer to [Client Manager Command Parameters](#451-client-manager-command-parameters) for more details about each parameter.
-
-</div>
-
-Example :
-
-Let's say a new client just called in to make an appointment. <br>
-You can follow the steps below to add the client to the Client Manager.
-
-Steps :
-1. Type `addcli n/John p/91234567 e/john@gmail.com t/new` in the _Command Box_.
-2. Press `Enter` to execute.
-
-Outcome :
-1. The *Result Display* will show a success message.
-
-![addcli](images/addcli.png) <br>
-Figure x - GUI for `addcli`
-
-#### 4.5.3. Edit a client's details `editcli`
-
-You can use this command to edit an expense in the Client Manager.
-
-Format : `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]`
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Notes:**<br>
- 
-* You must enter at least one optional parameter.
-* The new parameter entered will overwrite the existing parameter.
-* When editing tags, the existing tags of the client will be removed i.e adding of tags is not cumulative.
-* You can remove all the client’s tags by typing t/ without specifying any tags after it.
-* Refer to [Client Manager Command Parameters](#451-client-manager-command-parameters) for more details about each parameter.
-* Editing a client in the client manager will not change the details of any appointments associated with that client as they are
- kept as separate records. Edit the appointment if you want the client's edited details to be reflected.
-
-</div>
-
-Example :
-
-Let's say you misspelled the name of a client when adding it into the Client Manager and wish to change it to "Johnny". <br>
-You can follow the steps below to edit the client.
-
-Steps :
-1. Type `editcli 2 n/Johnny` in the _Command Box_.
-2. Press `Enter` to execute.
-
-Outcome :
-1. The *Result Display* will show a success message.
-
-![editcli](images/editcli.png) <br>
-Figure x - GUI for `editcli`
-
-#### 4.5.4. Delete a client `deletecli`
-
-You can use this command to delete a client in the Client Manager.
-
-Format : `deletecli INDEX`
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Note:**<br>
- 
-* Refer to [Client Manager Command Parameters](#451-client-manager-command-parameters) for more details about each parameter.
-
-</div>
-
-<div markdown="block" class="alert alert-danger">
-
-**:warning: Warning:**<br>
-
-* A client will not be deleted if he/she is scheduled in an appointment happening today or at a later date.
-
- </div>
-
-Example :
-
-Let's say a client repeatedly fails to turn up for his appointments and you wish to delete his contact. <br>
-You can follow the steps below to delete the client.
-
-Steps :
-1. Type `deletecli 3` in the _Command Box_.
-2. Press `Enter` to execute.
-
-Outcome :
-1. The *Result Display* will show a success message.
-
-![deletecli](images/deletecli.png) <br>
-Figure x - GUI for `deletecli`
-
-#### 4.5.5. Find a client `findcli`
-
-You can use this command to find a client in the Client Manager.
-
-Format : `findcli [n/NAME]* [p/PHONE]*`
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Notes:**<br>
-
-* You must enter one of the optional parameter.
-* The search using name is case-insensitive. e.g hans will match Hans.
-* The order of the keywords does not matter. e.g. Hans Bo will match Bo Hans.
-* Only full words will be matched e.g. Han will not match Hans.
-* Persons matching at least one keyword will be returned (i.e. OR search). e.g. Hans Bo will return Hans Gruber, Bo Yang.
-* The search using phone will match if the number sequence entered (at least 3 digits long) is part of a client's phone number. e.g. 123 will return clients with phone number 91234567 and 98765123.
-* Refer to [Client Manager Command Parameters](#451-client-manager-command-parameters) for more details about each parameter.
-
-</div>
-
-Example :
-
-Let's say you have many clients in your client list and wish to find more information on the client named John. <br>
-You can follow the steps below to get a list of clients named John
-
-Steps :
-1. Type `findcli n/John` in the _Command Box_.
-2. Press `Enter` to execute.
-
-Outcome :
-1. The *Result Display* will show a success message.
-2. Homerce will list out all the clients with John in their name.
-
-![findcli](images/findcli.png) <br>
-Figure x - GUI for `findcli`
-
-#### 4.5.6. List clients `listcli`
-
-You can use this command to list all your clients in the Client Manager.
-
-Format : `listcli`
-
-Example :
-
-Let's say you wish to list your clients to view all the client entries that you currently have. <br>
-You can follow the steps below to list your clients.
-
-Steps :
-1. Type `listcli` in the _Command Box_.
-2. Press `Enter` to execute.
-
-Outcome :
-1. The *Result Display* will show a success message.
-2. Homerce will list out all your expenses.
-
-![listcli](images/listcli.png) <br>
-Figure x - GUI for `listcli`
-
-#### 4.5.7. Clear clients `clearcli`
-
-You can use this command to clear all clients in the Client Manager.
-
-Format : `clearcli`
-
-<div markdown="block" class="alert alert-danger">
-
-**:warning: Warning:**<br>
-
-* The client list will not be cleared if there is at least one client scheduled in an appointment happening today or at a later date.
-
-</div>
- 
-Example :
-
-Let's say you wish to remove all client entries in the Client Manager and restart your client management from scratch. <br>
-You can follow the steps below to clear all your clients.
-
-Steps :
-1. Type `clearcli` in the _Command Box_.
-2. Press `Enter` to execute.
-
-Outcome :
-1. The *Result Display* will show a success message.
-
-![clearcli](images/clearcli.png) <br>
-Figure x - GUI for `clearcli`
+*Figure 33 - GUI outcome for `clearexp`*
 
 ### 4.6 Schedule Viewer
 
@@ -1330,7 +1327,7 @@ Outcome :
 business brought in.
 
 ![breakdownfinance](images/breakdownfinance.png) <br>
-Figure x - GUI for `breakdownfinance`
+*Figure 37 - GUI for `breakdownfinance`*
 
 ### 4.8 Others
 
@@ -1343,8 +1340,8 @@ Undo the last change you made to Homerce.
 
 Example:
 
-If you have accidentally deleted an appointment from Homerce, and wish to undo that mistake, you can follow the steps below
-to do so.
+Let's say you accidentally deleted an appointment from Homerce and wish to undo that mistake. You can follow the steps below
+to undo the command.
 
 Steps: 
 1. Type `undo` in the _Command Box_.
@@ -1356,7 +1353,7 @@ Outcome:
 1. The *Result Display* will show a success message.
 
 ![undo](images/undo.png) <br>
-*Figure x - GUI outcome for `undo`*
+*Figure 38 - GUI outcome for `undo`*
 
 #### 4.8.2. Viewing help : `help`
 
@@ -1364,11 +1361,9 @@ Show a message explaining how to access the help page.
 
 Format : `help`
 
-{Format explanation / limitation}
-
 Example:
 
-If you are unsure of the commands that Homerce offered. You can follow the steps below to get a full list of all the commands.
+Let's say you are unsure of the commands that Homerce offers. You can follow the steps below to get a full list of all the commands.
 
 Steps: 
 1. Type `help` in the _Command Box_.
@@ -1388,7 +1383,7 @@ Format : `exit`
 
 Example:
 
-If you wish to exit Homerce. 
+Let's say you wish to exit Homerce.
 
 Steps: 
 1. Type `exit` into the _Command Box_.
@@ -1398,18 +1393,16 @@ Outcome:
 
 1. Homerce will close its window.
 
-{Example outcome screenshot}
-
 #### 4.8.4. Saving the Data
 
 Homerce data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.
 
 ### 4.9. Features coming in v2.0
 
-We have some exciting updates planned for Version 2.0 of *Homerce*, to better facilitate your business needs
+We have some exciting updates planned for Version 2.0 of **Homerce**, to better facilitate your business needs
 and further enhance your experience with us. This section provides an overview of the various features we have in mind.
 
-#### 4.9.1. Create Reminder for Appointments `reminder` `v2.0`
+#### 4.9.1. Reminder for Appointments `v2.0`
 
 This feature will allow you to create reminders for your appointments. 
 Homerce will send you a notification before each appointment, to keep you up-to-date with your appointment schedule. <br>
@@ -1421,7 +1414,7 @@ you want the reminder for a specific appointment or for all appointments.
 This feature will employ complex algorithms to analyze trends in your revenue, expenses and profits over a given time period, 
 and recommend ways for you to adjust your revenue model or better manage your business expenditure to maximise profitability.
 This feature also provides you with a more in-depth visualization of your business finances, to help you better
-understand your business finances and optimize your operational efficiency.
+understand your business and optimize your operational efficiency.
 
 #### 4.9.3. Export of Service List `v2.0`
 
@@ -1454,7 +1447,18 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 
 ## 6. Command summary
 
-### 6.1 Service Management Commands
+### 6.1. Client Manager Commands
+
+|Action | Format | Examples
+|---------------|------------------------------------------------------------------|------------------------------------------------------------------
+|**Add**        | `addcli n/NAME p/PHONE e/EMAIL [t/TAG]…​` | `addcli n/John p/91234567 e/john@gmail.com t/new`
+|**Edit**       | `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]` | `editcli 2 n/Johnny`
+|**Delete**     | `deletecli INDEX` | `deletecli 3`
+|**Find**       | `findcli [n/NAME]* [p/PHONE]*` | `findcli n/John`
+|**List**       | `listcli` |
+|**Clear**      | `clearcli`| 
+
+### 6.2. Service Management Commands
 
 |Action | Format | Examples
 |---------|---------|---------
@@ -1465,7 +1469,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**List** | `listsvc` | 
 |**Clear** | `clearsvc` | 
 
-### 6.2. Appointment Tracker Commands
+### 6.3. Appointment Tracker Commands
 
 |Action | Format | Examples
 |---------|---------|---------
@@ -1478,8 +1482,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**Done** | `done INDEX` | `done 1`
 |**Undone** | `undone INDEX` | `undone 3` 
 
-
-### 6.3. Revenue Tracker Commands
+### 6.4. Revenue Tracker Commands
 
 |Action | Format | Examples
 |---------|---------|---------
@@ -1488,7 +1491,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**List**       | `listrev`                                                        | 
 |**Clear**      | `clearrev`                                                       | 
 
-### 6.4. Expense Tracker Commands
+### 6.5. Expense Tracker Commands
 
 |Action | Format | Examples
 |---------------|------------------------------------------------------------------|------------------------------------------------------------------
@@ -1499,17 +1502,6 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**Sort**       | `sortexp ORDER`                                                  | `sortexp desc`
 |**List**       | `listexp`                                                        | 
 |**Clear**      | `clearexp`                                                       | 
-
-### 6.5. Client Manager Commands
-
-|Action | Format | Examples
-|---------------|------------------------------------------------------------------|------------------------------------------------------------------
-|**Add**        | `addcli n/NAME p/PHONE e/EMAIL [t/TAG]…​` | `addcli n/John p/91234567 e/john@gmail.com t/new`
-|**Edit**       | `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]` | `editcli 2 n/Johnny`
-|**Delete**     | `deletecli INDEX` | `deletecli 3`
-|**Find**       | `findcli [n/NAME]* [p/PHONE]*` | `findcli n/John`
-|**List**       | `listcli` |
-|**Clear**      | `clearcli`| 
 
 ### 6.6. Schedule Viewer Commands
 
