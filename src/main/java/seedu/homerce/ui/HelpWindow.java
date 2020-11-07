@@ -16,7 +16,7 @@ import seedu.homerce.commons.core.LogsCenter;
 public class HelpWindow extends UiPart<Stage> {
 
     public static final String USERGUIDE_URL =
-        "https://github.com/AY2021S1-CS2103T-W13-3/tp/blob/master/docs/UserGuide.md";
+        "https://ay2021s1-cs2103t-w13-3.github.io/tp/UserGuide.html";
     public static final String HELP_MESSAGE =
             "Homerce is a business-management application which "
             + "tracks your revenues, expenses and manages your appointments.\n"

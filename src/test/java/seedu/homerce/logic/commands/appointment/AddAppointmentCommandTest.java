@@ -13,7 +13,6 @@ import java.util.function.Predicate;
 import org.junit.jupiter.api.Test;
 
 import seedu.homerce.logic.commands.CommandResult;
-import seedu.homerce.logic.commands.client.AddClientCommandTest;
 import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.appointment.AppointmentTemp;
@@ -24,6 +23,7 @@ import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.manager.ReadOnlyAppointmentManager;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
+import seedu.homerce.testutil.ModelStub;
 import seedu.homerce.testutil.appointment.AppointmentBuilder;
 import seedu.homerce.testutil.appointment.AppointmentTempBuilder;
 import seedu.homerce.testutil.client.TypicalClients;
@@ -95,7 +95,7 @@ public class AddAppointmentCommandTest {
     /**
      * A Model stub that always accepts the expense being added.
      */
-    private static class ModelStubAcceptingAppointmentAdded extends AddClientCommandTest.ModelStub {
+    private static class ModelStubAcceptingAppointmentAdded extends ModelStub {
 
         final ArrayList<Appointment> appointmentsAdded = new ArrayList<>();
 

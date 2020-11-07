@@ -390,13 +390,6 @@ Example:
 Let's say your client called to make an appointment.
 You can follow these instructions to add his/her appointment details into Homerce.
 
-| Appointment | |
-|---------|--------- |
-|`DATE`| 28-10-2020 |
-|`TIME`| 1300 |
-|`SERVICE_CODE`| SC001 |
-|`PHONE_NUMBER`| 83232656 |
-
 Steps:
 1. Type `addapt dt/28-10-2020 t/1300 s/SC001 p/83232656` in the *Command Box*.
 1. Press `Enter` on your keyboard.
@@ -468,7 +461,7 @@ Outcome:
 When a new or existing client calls to edit a booking he or she had made, use this
 command to edit details of the appointment.
 
-Format : `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER]`
+Format : `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER] [s/SERVICE_CODE]`
 
 <div markdown="block" class="alert alert-info"> 
 
@@ -483,13 +476,6 @@ Example:
 Let's say you searched for the appointment which you want to edit in Homerce.
 You searched for the appointment in Homerce with `listapt` or `findapt`, see that it's index is 1,
 and you want to edit it with the following details:
-
-| Appointment | |
-|---------|-------- |
-|`INDEX`| 1 |
-|`DATE`| 28-10-2020 |
-|`TIME`| 1300 |
-|`PHONE_NUMBER`| 93451222 |
 
 Steps:
 1. Type `editapt 1 dt/28-10-2020 t/1300 p/93451222` in the *Command Box*.
@@ -1195,8 +1181,8 @@ consolidates all your appointments on a weekly basis and allows you to see it at
 
 #### 4.6.1. Schedule Viewer Command Parameters
 
-Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
-The table below shows a list of command parameters that will be used.
+Before you dive into using the feature, you may want to have a look at the common parameter(s) used in this feature.
+The table below shows a list of command parameter(s) that will be used.
 
 | Parameter Name | Description | Example
 |----------------|-------------|---------
@@ -1204,7 +1190,9 @@ The table below shows a list of command parameters that will be used.
 
 #### 4.6.2. View appointments schedule `schedule`
 
-You can use this command to view your weekly appointments schedule.
+You can use this command to view your weekly appointments schedule. When Homerce is first booted up, `schedule` will show the appointments
+scheduled for the current week based on system date. As you navigate to other weeks, the week is remembered by Homerce and using `schedule`
+will show you the schedule of appointments belonging to the remembered week.
 
 Format : `schedule [dt/DATE]`
 
@@ -1218,7 +1206,7 @@ Format : `schedule [dt/DATE]`
 
 Example :
 
-Let's say you want to view your appointments schedule for today's week, which is the 27th of November 2020.
+Let's say you want to view your appointments schedule for a particular week, such as the week containing the 27th of November 2020.
 You can follow these instructions.
 
 Steps :

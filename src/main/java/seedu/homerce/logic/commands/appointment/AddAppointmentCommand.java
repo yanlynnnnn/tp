@@ -6,6 +6,8 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_SERVICE_CODE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TIME_OF_DAY;
 
+import java.time.LocalTime;
+
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
@@ -35,6 +37,7 @@ public class AddAppointmentCommand extends Command {
         + PREFIX_SERVICE_SERVICE_CODE + "SC001 "
         + PREFIX_PHONE + "94759600";
     public static final String MESSAGE_CLASHING_APPOINTMENT = "This appointment clashes with an existing appointment.";
+    public static final String MESSAGE_INVALID_TIME_AND_DURATION = "The appointment cannot be conducted past midnight.";
     public static final String MESSAGE_INVALID_PHONE = "The phone number specified does not refer "
         + "to an existing client.";
     public static final String MESSAGE_INVALID_SERVICE_CODE = "The service code specified does"
@@ -69,6 +72,9 @@ public class AddAppointmentCommand extends Command {
         // Check if appointment is already present.
         if (model.hasAppointment(resultToAdd)) {
             throw new CommandException(MESSAGE_CLASHING_APPOINTMENT);
+        } else if (!isValidTimeAndDuration(resultToAdd)) {
+            // Check if appointment runs past midnight.
+            throw new CommandException(MESSAGE_INVALID_TIME_AND_DURATION);
         } else {
             model.addAppointment(resultToAdd);
         }
@@ -85,5 +91,12 @@ public class AddAppointmentCommand extends Command {
         return other == this // short circuit if same object
             || (other instanceof AddAppointmentCommand // instanceof handles nulls
             && toAdd.equals(((AddAppointmentCommand) other).toAdd));
+    }
+
+    private boolean isValidTimeAndDuration(Appointment appointmentToTest) {
+        /// Check if timeOfDay + duration overflows past midnight.
+        LocalTime startTime = appointmentToTest.getAppointmentStartTime().getLocalTime();
+        LocalTime endTime = appointmentToTest.getAppointmentEndTime().getLocalTime();
+        return endTime.compareTo(startTime) > 0; // End time must be after start time.
     }
 }
