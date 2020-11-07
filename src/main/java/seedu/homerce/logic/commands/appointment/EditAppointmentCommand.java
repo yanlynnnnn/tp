@@ -1,6 +1,7 @@
 package seedu.homerce.logic.commands.appointment;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX;
 import static seedu.homerce.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static seedu.homerce.logic.commands.appointment.AddAppointmentCommand.MESSAGE_INVALID_TIME_AND_DURATION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DATE;
@@ -12,7 +13,6 @@ import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
-import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.commons.util.CollectionUtil;
 import seedu.homerce.logic.commands.Command;
@@ -65,7 +65,7 @@ public class EditAppointmentCommand extends Command {
 
         this.index = index;
         this.editAppointmentDescriptor =
-            new EditAppointmentCommand.EditAppointmentDescriptor(editAppointmentDescriptor);
+            new EditAppointmentDescriptor(editAppointmentDescriptor);
     }
 
     @Override
@@ -74,11 +74,12 @@ public class EditAppointmentCommand extends Command {
         List<Appointment> lastShownList = model.getFilteredAppointmentList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX);
+            throw new CommandException(MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX);
+        } else if (!editAppointmentDescriptor.isAnyFieldEdited()) {
+            throw new CommandException(MESSAGE_NOT_EDITED);
         }
         Appointment appointmentToEdit = lastShownList.get(index.getZeroBased());
         Appointment editedAppointment = createEditedAppointment(appointmentToEdit, editAppointmentDescriptor, model);
-
         if (appointmentToEdit.equals(editedAppointment)) {
             throw new CommandException(MESSAGE_NOT_EDITED);
         } else if (!isValidTimeAndDuration(editedAppointment)) {

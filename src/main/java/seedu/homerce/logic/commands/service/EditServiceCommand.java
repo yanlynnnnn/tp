@@ -1,6 +1,7 @@
 package seedu.homerce.logic.commands.service;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX;
 import static seedu.homerce.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_DURATION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_PRICE;
@@ -15,6 +16,7 @@ import seedu.homerce.commons.util.CollectionUtil;
 import seedu.homerce.logic.commands.Command;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
+import seedu.homerce.logic.parser.exceptions.ParseException;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.service.Duration;
@@ -65,7 +67,9 @@ public class EditServiceCommand extends Command {
         List<Service> lastShownList = model.getFilteredServiceList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX);
+            throw new CommandException(MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX);
+        } else if (!editServiceDescriptor.isAnyFieldEdited()) {
+            throw new CommandException(MESSAGE_NOT_EDITED);
         }
 
         Service serviceToEdit = lastShownList.get(index.getZeroBased());

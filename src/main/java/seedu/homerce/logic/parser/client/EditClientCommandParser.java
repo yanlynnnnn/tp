@@ -58,11 +58,6 @@ public class EditClientCommandParser implements Parser<EditClientCommand> {
             editClientDescriptor.setEmail(ParserUtil.parseEmail(argMultimap.getValue(PREFIX_EMAIL).get()));
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editClientDescriptor::setTags);
-
-        if (!editClientDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(Messages.MESSAGE_NOT_EDITED);
-        }
-
         return new EditClientCommand(index, editClientDescriptor);
     }
 

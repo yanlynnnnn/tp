@@ -55,11 +55,6 @@ public class EditAppointmentCommandParser implements Parser<EditAppointmentComma
             editAppointmentDescriptor.setServiceCode(ParserUtil.parseServiceCode(
                 argMultimap.getValue(PREFIX_SERVICE_SERVICE_CODE).get()));
         }
-
-        if (!editAppointmentDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(Messages.MESSAGE_NOT_EDITED);
-        }
-
         return new EditAppointmentCommand(index, editAppointmentDescriptor);
     }
 }

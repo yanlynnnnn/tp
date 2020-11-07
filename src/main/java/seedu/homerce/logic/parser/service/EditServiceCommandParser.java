@@ -52,10 +52,6 @@ public class EditServiceCommandParser implements Parser<EditServiceCommand> {
         if (argMultimap.getValue(PREFIX_SERVICE_PRICE).isPresent()) {
             editServiceDescriptor.setAmount(ParserUtil.parseAmount(argMultimap.getValue(PREFIX_SERVICE_PRICE).get()));
         }
-        if (!editServiceDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(Messages.MESSAGE_NOT_EDITED);
-        }
-
         return new EditServiceCommand(index, editServiceDescriptor);
     }
 }
