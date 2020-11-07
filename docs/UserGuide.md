@@ -151,7 +151,7 @@ The table below shows a list of command parameters that will be used.
 
 <table>
 <tr><th>Parameter Name</th><th>Description</th><th>Example</th></tr>
-<tr><td><pre>NAME</pre></td><td>The name of the client. <br><br> It must be an alphanumeric word.</td><td>E.g. Typing <pre>John Doe</pre> would represent the name of the client saved in the client manager.</td></tr>
+<tr><td><pre>NAME</pre></td><td>The name of the client. <br><br> It must be an alphanumeric word.</td><td>E.g. Typing <code>John Doe</code> would represent the name of the client saved in the client manager.</td></tr>
 <tr><td><pre>EMAIL</pre></td><td>The email of the client. <br> Emails should be in <code>local-part@domain format</code> <br> <br> The <code>local-part</code> can only contain alphanumeric characters, and the special characters <br> +!#$%&'*+/=?\`{}~^.-&#124; <br> <br> The <code>domain</code> can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.) <br> The domain name must also have at least 2 characters and start and end with alphanumeric characters</td><td>johnDoe97@example123.com</td></tr>
 <tr><td><pre>PHONE</pre></td><td>Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long.</td><td>E.g. <code>91234567</code> would represent the client's phone number.</td></tr>
 <tr><td><pre>TAG</pre></td><td>The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. </td><td>E.g. Typing <code>2</code> would mean the client with index-2 in the displayed list.</td></tr>
@@ -1096,7 +1096,10 @@ Format : `findexp [d/DESCRIPTION]* [dt/DATE]* [f/IS_FIXED]* [t/TAG]*`
 **:information_source: Notes:**<br>
 
 * You must enter exactly one parameter.
-* The description parameter is case-insensitive, and at least one keyword from the full description of the expense has to be entered to find the expense.
+* The search using description is case-insensitive. e.g conditioner will match Conditioner.
+* The order of the keywords in the description does not matter. e.g. Lash Extensions Kit will match Kit Lash Extensions.
+* Only full words in the description will be matched e.g. Las will not match Lash.
+* Expenses matching at least one keyword will be returned. e.g. Lash will return Lash Extensions Kit
 * Refer to [Expense Tracker Command Parameters](#451-expense-tracker-command-parameters) for more details about each parameter.
 
 </div>
