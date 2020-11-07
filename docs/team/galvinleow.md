@@ -2,7 +2,6 @@
 layout: page
 title: Galvin's Project Portfolio
 ---
-
 ## Project: Homerce
 Homerce is an all-in-one application that helps home-based beauty salon owners consolidate their business details - 
 such as their schedule, appointments, clients, and services - into a single application. It also keeps track of the business's
@@ -10,10 +9,7 @@ revenue and expenses, and supports simple visualization of monthly finances.
 The application uses a Command Line Interface (CLI).
 
 ### Overview
-This portfolio aims to document the contributions that I have made to Homerce. In this project, our team - Homerce,
-will enhance a basic CLI Address Book 3 (AB3) and repurpose it to create our application: Homerce.
-
-### Summary of contributions
+This portfolio aims to document the contributions that I have made to Homerce.
 Click [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=galvinleow&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&tabAuthor=galvinleow&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
 to view Galvin Leow's code contributions.
 
@@ -57,16 +53,12 @@ Section of which contributions were made in the documentation.
 **Developer Guide**
 1. Implementation - Revenue Tracker (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
     1. Rationale.
-    1. Current implementation
-        1. Sort revenue command
+    1. Sort & Clear revenue command
+        1. Current implementation
             1. Activity diagram included.
             1. Sequence diagram included.
-        1. Clear revenue command
-            1. Activity diagram included.
-            1. Sequence diagram included.
-    1. Design consideration
-        1. Sort revenue command
-        1. Clear revenue command
+        1. Design consideration
+
 1. Use cases (Pull Request [#176](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/176) , Issue [#175](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/175))
     1. `Add`, `Edit` and `Delete` use cases were created for _Service_, _Client_, _Appointment_, _Revenue_ and _Expense_.
     1. `Done` and `Undone` use cases were created for _Appointment_.
@@ -85,7 +77,7 @@ please refer to the respective documents for the full contributions.
 
 **Developer Guide**
 
-<u>Diagrams</u>
+<u>Diagrams</u>  
 ![Activity diagram for revenue_tracker clearrev command](../images/revenue/ClearRevenueActivityDiagram.png)
 
 _Figure 1. One of the activity diagram that was added to the guide_
