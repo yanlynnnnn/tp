@@ -553,7 +553,7 @@ Outcome:
 ### 4.3. Appointment Tracker
 
 Scheduling appointments is an essential part of your beauty salon and
-Homerce makes it easy to keep track of your upcoming appointments with
+Homerce makes it easy to keep track of your appointments with
 your customers. You can add appointments for a particular service and
 client, mark it as done, and Homerce will automatically credit the revenue
 into the revenue tracker.
@@ -605,7 +605,7 @@ Outcome:
 
 #### 4.3.3. List all appointments: `listapt`
 
-Use this command to see your list of all your upcoming appointments.
+Use this command to see your list of all your appointments, sorted by chronological order.
 
 Format : `listapt`
  
