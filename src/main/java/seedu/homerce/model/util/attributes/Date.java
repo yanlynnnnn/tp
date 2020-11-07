@@ -10,7 +10,7 @@ import java.time.format.DateTimeParseException;
 
 public class Date {
 
-    public static final String MESSAGE_CONSTRAINTS = "Date entered must be in the format of <dd-MM-yyyy>.";
+    public static final String MESSAGE_CONSTRAINTS = "Date entered must be in the format of <dd-MM-yyyy>, and must be a valid date";
 
     private static final DateTimeFormatter FORMAT_INPUT = DateTimeFormatter.ofPattern("d-M-yyyy");
     private static final DateTimeFormatter FORMAT_OUTPUT = DateTimeFormatter.ofPattern("dd MMM yyyy");

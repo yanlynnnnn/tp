@@ -10,18 +10,15 @@ revenue and expenses, and supports simple visualization of monthly finances.
 The application uses a Command Line Interface (CLI).
 
 #### Overview
-This portfolio aims to document the contributions that I have made to Homerce. In this project, our team - Homerce,
-will enhance a basic CLI Address Book 3 (AB3) and repurpose it to create our application: Homerce.
-
-#### Summary of contributions
+This portfolio aims to document the contributions that I have made to Homerce
 
 Click [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=yanlynnnnn&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
 to view Yan Lyn's code contributions.
 
-##### Enhancements Implemented: <br>
-A summary of the enhancements you implemented.
+**Enhancements Implemented:** <br>
+A summary of the enhancements implemented.
 
-###### 1. Implementation of Expense Tracker <br>
+<u>Implementation of Expense Tracker</u> <br>
 The Expense Tracker was implemented to help users keep track of their expenses and manage their expenditure.
 
 1. Implementation of 5 basic commands (Pull Request [#68](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/68),
@@ -44,18 +41,18 @@ Pull Request [#99](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/99))
 
 All the above features include the implementation of components from __Logic__, __Storage__, and __Model__.
 
-###### 2. Enhancement of GUI
+<u>2. Enhancement of GUI</u>
 1. Customized the GUI for the Client Manager, Service Manager, Appointment Tracker,
 Expense Tracker, and Revenue Tracker panels (Pull Request [#223](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/223))
 1. Customized the GUI for the `breakdownfinance` window (Pull Request [#298](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/298))
 1. Creation of Expense Card and Expense Panel (Pull Request [#134](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/134))
 
-###### 3. Testing 
+<u>3. Testing</u>
 1. Included JUnit Tests for the Expense Tracker, with over 90% line coverage on average (Pull Request [#203](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/203), Pull Request [#212](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/212))
 1. Included Integration Tests across logic, model and storage components for the Expense Tracker (Pull Request [#203](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/203), Pull Request [#212](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/212))
 1. Direct testing from GUI
 
-###### 4. Others
+<u>4. Others</u>
 1. Implemented the logic to generate revenue and expense lists filtered by month and year,
   for use in the `breakdownfinance` feature (Pull Request [#187](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/187))
 1. Designed the GUI Mock-Up for all panels (Pull Request [#25](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/25))
@@ -72,6 +69,7 @@ Expense Tracker, and Revenue Tracker panels (Pull Request [#223](https://github.
     * Commands Documentation, including command parameters, command format, command examples, 
     and command outcomes with annotated screenshots (Pull Request [#301](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/301), Pull Request [#315](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/315))
     * Command Summary 
+1. FAQ section (Pull Request [#169](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/169))
 
 **Contributions to Developer Guide:** <br>
 1. Expense Tracker (Pull Request [#228](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/228))
@@ -82,17 +80,17 @@ Expense Tracker, and Revenue Tracker panels (Pull Request [#223](https://github.
     * Design considerations for Recurring Expenses
 1. Appendix B: User Stories (Pull Request [#52](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/52))
 
-##### Contributions to documentation (Extracts)
+**Contributions to documentation (Extracts)**
 The contributions listed in this section will not be extensive, please refer to the respective documents for the full contributions.
 
 **Developer Guide**
 
 <u>Diagrams</u>
-![Activity diagram for sortexp_command](../images/expense/SortExpenseActivityDiagram.png)
+![Activity diagram for sortexp_command](../images/SortExpenseActivityDiagram.png)
 
 _Figure 1. Activity Diagram for `sortexp` command_
 
-![Sequence diagram for sortexp command](../images/expense/SortExpenseSD.png)
+![Sequence diagram for sortexp command](../images/SortExpenseSD.png)
 
 _Figure 2. Sequence Diagram for `sortexp` command_
 

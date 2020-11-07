@@ -5,7 +5,7 @@ import static seedu.homerce.commons.util.AppUtil.checkArgument;
 
 public class Description {
 
-    public static final String MESSAGE_CONSTRAINTS = "Description should not be empty.";
+    public static final String MESSAGE_CONSTRAINTS = "Description should not be empty or more than 50 characters long.";
 
     public final String value;
 
@@ -20,7 +20,7 @@ public class Description {
     }
 
     public static boolean isValidDescription(String test) {
-        return (test.trim().equals("")) ? false : true;
+        return ((test.trim().equals("")) || test.length() > 50) ? false : true;
     }
 
     @Override
