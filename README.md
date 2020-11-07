@@ -10,6 +10,6 @@ such as their appointments, revenue, and expenses - into a single application.
 - Homerce has a Graphical User Interface (GUI), but it is optimised for use with a Command Line Interface (CLI).
 
 ## Site Map
-- [User Guide](./docs/UserGuide.md)
-- [Developer Guide](./docs/DeveloperGuide.md)
-- [About Us](./docs/AboutUs.md)
+- [User Guide](https://ay2021s1-cs2103t-w13-3.github.io/tp/UserGuide.html)
+- [Developer Guide](https://ay2021s1-cs2103t-w13-3.github.io/tp/DeveloperGuide.html)
+- [About Us](https://ay2021s1-cs2103t-w13-3.github.io/tp/AboutUs.html)
