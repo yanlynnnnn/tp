@@ -34,7 +34,7 @@ ModelManager <-- RevenueTracker: """"
 deactivate RevenueTracker
 
 create CommandResult
-ModelManager -> CommandResult: """"
+ModelManager --> CommandResult: """"
 deactivate ModelManager
 activate CommandResult
 ClearRevenueCommand <-- CommandResult: ""r""
