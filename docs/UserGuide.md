@@ -174,12 +174,6 @@ Format: `addsvc t/TITLE du/DURATION p/PRICE`
 Example:
 Let's say you have a service with the following information you want to add into the Service Manager. You can follow these instructions.
 
-| Service | |
-|---------|--------- |
-|`TITLE`| Microdermabrasion |
-|`DURATION`| 2.0 |
-|`PRICE`| 68 |
-
 Adding the above service:
 1. Type `addsvc t/Microdermabrasion du/2.0 p/68` into the *Command Box*.
 2. Press `Enter` to execute.
@@ -1306,7 +1300,7 @@ The table below shows a list of command parameters that will be used.
 |`MONTH` | The month on which the revenue and expenses are added. <br> <br> It must be a valid integer between 1 - 12. | E.g. Typing '12' would refer to the month of December.
 |`YEAR`| The year on which the revenue and expenses are added. <br> <br> It must be a valid year. A valid year is defined as a year with 1 - 4 digits, from 0 - 9999 | E.g. Typing '2020' would refer to the year 2020.
 
-#### 4.7.2. Breakdown finances `breakdownfinance`
+#### 4.7.2. Breakdown Finances `breakdownfinance`
 
 You can use this command to view the monthly breakdown of your finances.
 

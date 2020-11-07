@@ -9,7 +9,6 @@ such as their schedule, appointments, clients, and services - into a single appl
 revenue and expenses, and supports simple visualization of monthly finances.
 The application uses a Command Line Interface (CLI).
 
-#### Overview
 This portfolio aims to document the contributions that I have made to Homerce
 
 Click [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=yanlynnnnn&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)

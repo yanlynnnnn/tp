@@ -9,7 +9,6 @@ such as their schedule, appointments, clients, and services - into a single appl
 revenue and expenses, and supports simple visualization of monthly finances.
 The application uses a Command Line Interface (CLI).
 
-#### Overview
 This portfolio aims to document the contributions that I have made to Homerce. In this project, our team - Homerce,
 will enhance a basic CLI Address Book 3 (AB3) and repurpose it to create our application: Homerce.
 
