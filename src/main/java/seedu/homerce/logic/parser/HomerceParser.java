@@ -83,7 +83,7 @@ public class HomerceParser {
     /**
      * Used to record the user input.
      */
-    private Logger logger = Logger.getLogger("Homer Parser");
+    private Logger logger = Logger.getLogger("Homerce Parser");
 
     /**
      * Parses user input into command for execution.
