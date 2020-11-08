@@ -15,6 +15,7 @@ import seedu.homerce.logic.commands.expense.AddExpenseCommand;
 import seedu.homerce.logic.commands.expense.ClearExpenseCommand;
 import seedu.homerce.logic.commands.expense.DeleteExpenseCommand;
 import seedu.homerce.logic.commands.expense.EditExpenseCommand;
+import seedu.homerce.logic.commands.revenue.ClearRevenueCommand;
 import seedu.homerce.logic.commands.service.AddServiceCommand;
 import seedu.homerce.logic.commands.service.ClearServiceCommand;
 import seedu.homerce.logic.commands.service.DeleteServiceCommand;
@@ -25,6 +26,7 @@ import seedu.homerce.model.undo.History;
 import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 import seedu.homerce.ui.clientpanel.ClientListPanel;
 import seedu.homerce.ui.expensepanel.ExpenseListPanel;
+import seedu.homerce.ui.revenuepanel.RevenueListPanel;
 import seedu.homerce.ui.schedulepanel.SchedulePanel;
 import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
@@ -70,6 +72,8 @@ public class UndoCommand extends Command {
         } else if (isClientCommand(previousCommand)) {
             return ClientListPanel.TAB_NAME;
 
+        } else if (isRevenueCommand(previousCommand)) {
+            return RevenueListPanel.TAB_NAME;
         } else { // Unknown command, default switch to schedule view
             return SchedulePanel.TAB_NAME;
 
@@ -98,5 +102,9 @@ public class UndoCommand extends Command {
     private boolean isClientCommand(Command command) {
         return (command instanceof AddClientCommand) || (command instanceof DeleteClientCommand)
             || (command instanceof EditClientCommand) || (command instanceof ClearClientCommand);
+    }
+
+    private boolean isRevenueCommand(Command command) {
+        return (command instanceof ClearRevenueCommand);
     }
 }
