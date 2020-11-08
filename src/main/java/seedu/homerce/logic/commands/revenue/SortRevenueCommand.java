@@ -31,6 +31,10 @@ public class SortRevenueCommand extends Command {
         this.isAscending = isAscending;
     }
 
+    public boolean isAscending() {
+        return isAscending;
+    }
+
     @Override
     public CommandResult execute(Model model, HistoryManager historyManager) {
         requireNonNull(model);

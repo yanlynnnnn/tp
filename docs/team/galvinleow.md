@@ -12,10 +12,10 @@ This portfolio aims to document the contributions that I have made to Homerce.
 Click [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=galvinleow&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&tabAuthor=galvinleow&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
 to view Galvin Leow's code contributions.
 
-#### Enhancement Implemented
+**Enhancement Implemented**  
 A summary of the enhancements you implemented.
 
-##### 1. Implementation of Revenue Tracker
+<u>1. Implementation of Revenue Tracker</u>  
 Revenue Tracker was implemented as it is an essential part of operating a business. Revenue tracking is bonded to the breakdown finance feature, 
 in which this feature gives useful insights to the user.
 
@@ -30,16 +30,16 @@ in which this feature gives useful insights to the user.
 
 All features built will include the implementation of the components from _Logic_, _Storage_ and _Model_.
 
-##### 2. Testing
+<u>2. Testing</u>  
 1. Included JUnit Test for Revenue Tracker, with over 90% line of code coverage on average.  (Issue [#208](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/208), Pull Request [#209](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/209))
     1. Included Integration Tests across logic, model and storage components for the Revenue Tracker.
 1. Create test cases to be tested from the GUI.
 1. Conduct session to test from GUI.
 
-#### Contributions to documentation
+**Contributions to documentation**
 Section of which contributions were made in the documentation.
 
-**User Guide**
+<u>User Guide</u>  
 1. Structure of the documentation.  (Pull Request [#44](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/44))
 1. Terminology related to the GUI - the creation of the _AnnotatedUI_ image. (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
 1. General symbols and syntax - consolidating and documenting.
@@ -49,7 +49,7 @@ Section of which contributions were made in the documentation.
     1. Screenshot images for commands' outcome. (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
 1. Command summary - the revenue tracker commands table.
 
-**Developer Guide**
+<u>Developer Guide</u>  
 1. Implementation - Revenue Tracker (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
     1. Rationale.
     1. Sort & Clear revenue command
@@ -62,7 +62,7 @@ Section of which contributions were made in the documentation.
     1. `Add`, `Edit` and `Delete` use cases were created for _Service_, _Client_, _Appointment_, _Revenue_ and _Expense_.
     1. `Done` and `Undone` use cases were created for _Appointment_.
     
-#### Contributions to team-based tasks
+**Contributions to team-based tasks**
 1. Maintaining the issue tracker - ensure that issues are up-to-date and PR are linked correctly. (Issue [#76](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/76))
 1. Update config file (Pull request [#46](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/46))
 1. Helping my teammate fix their branch when they make a mistake in committing and merging which issues when wanting to create a pull request.
@@ -102,30 +102,33 @@ The following steps will describe the execution of the `ClearRevenueCommand` in 
 _Extract 1. Part of the implementation content for `ClearRevenueCommand`._
 
 <pre>
-UC001: Add a Service
-Add a service provided by the business into Homerce.
+UC005: Appointment Done
+Indicate that the appointment have been done.
 
-<b>System: Homerce</b> 
+<b>System: Homerce</b>
 
 <b>Actor: User</b>
 
-<b>Preconditions: Appointment list must exist.</b>
+<b>Preconditions: Appointment exists in appointment list.</b>
 
-<b>Guarantees: A new service will be added to the service list upon successful command.</b>
+<b>Guarantees: Appointment indicated as done.</b>
 
 <b>MSS</b>
-1. User adds a service by providing details.
-1. Homerce adds the service to the service list.
-1. Homerce displays the updated list and a successful message.
-Use case ends.
+1. User requests to list all appointments.
+2. Homerce shows a list of appointments.
+3. User requests to mark a specific appointment as done.
+4. Homerce indicate that the appointment have been completed.
+5. Homerce <ins>adds a revenue (UC027)</ins>.
+6. Homerce displays all appointments in the appointment list.
+7. Homerce displays a successful listed message.
 
 <b>Extensions</b>
-* 1a. Incomplete details provided.
-  * 1a1. Homerce displays an error message.
-  Use case resumes at step 1.
+3a. Invalid index provided.
+  3a1. Homerce displays an error message.
+  Use case ends.
 </pre>
 
-_Extract 2. One of the use case for Service._
+_Extract 2. One of the use case for Appointment._
 
 **User Guide**
 
