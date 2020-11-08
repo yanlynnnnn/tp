@@ -400,7 +400,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
-| **Option 1** <br> Omit the use of service codes to identify a service. | Arguably more user-friendly to identify services by its title instead of a service code. | Unable to uniquely identify services, resulting in complications when executing commands which require services. <br> For example adding an appointment for a service "Manicure" when there are two "Manicure" services provided by Homerce but with different prices and durations. |
+| **Option 1** <br> Omit the use of service codes to identify a service. | User does not need to remember an additional service code for each service to identify the service. | Require user to refer to services by its title, which may be less convenient for certain service titles. |
 | **Option 2 (current choice)** <br> Tag each service with a unique service code. | Allows users to easily identify services uniquely. | Limits the number of services that can be added to Homerce depending on the format of the service code |
 
 Reason for choosing option 2:

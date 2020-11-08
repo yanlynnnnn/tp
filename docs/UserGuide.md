@@ -368,7 +368,7 @@ The table below shows a list of command parameters that will be used in this fea
 
 | Parameter Name | Description | Example
 |---------|---------|---------
-|`TITLE`| The title of the service you are providing. It must be alphanumeric words not more than 50 characters long.|E.g `Lash Lift`
+|`TITLE`| The title of the service you are providing. It must be alphanumeric words not more than 50 characters long. You can not have two services with the same title. |E.g `Lash Lift`
 |`DURATION`| The duration of the service must be in half hour intervals.| E.g `1.5`
 |`PRICE`| The revenue received from the service. <br> <br> It must be a positive number above 0.00 and below 1,000,000.00 and must have two decimal places. | E.g `5.50`
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long.| E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
