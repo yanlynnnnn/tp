@@ -12,70 +12,50 @@ The application uses a Command Line Interface (CLI).
 This portfolio aims to document the contributions that I have made to Homerce. In this project, our team - Homerce,
 will enhance a basic CLI Address Book 3 (AB3) and repurpose it to create our application: Homerce.
 
-Click [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=RuiFengg&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
-to view Rui Feng's code contributions.
+Given below is a summary of my contributions.
 
-**Enhancements Implemented:** <br>
-A summary of the enhancements you implemented.
+* **Code contributions**: [Reposense Link](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=RuiFengg&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
 
-<u>Refactoring of project </u> <br>
-1. Refactoring the Person class to Client class (Pull Request [#67](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/67))
-    * Renamed all instances of person in addressbook to client
-    * Removed the address field of a client
-    * Updated Command names to correspond with the client class Pull Request [#110](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/110)
-    * Set up the skeletal structure of the project (Pull Request [#49](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/49))
-    
-2. Removing instances of AddressBook 
-    * Renaming of project package name to homerce  (Pull Request [#149](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/149)
-    * Replaced AddressBook implementation with ClientManager, a component of Homerce (Pull Request [#132](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/132) 
-
-4. Updating the original delete, edit, find and clear commands
-    * Delete and clear commands for clients will take into account whether a client is scheduled in an upcoming appointment (Pull Request [#311](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/311), Pull Request [#296](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/296))
-    * Find command for clients will include prefixes allowing users to search using name or phone (Pull Request [#136](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/136), Pull Request [#299](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/299))
-    * Edit command for clients will update the client in an appointment as well (Pull Request [#296](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/296))
-    
-<u> Enhancement of GUI </u> <br>
-
-1. Linked up the client, expense, appointment, revenue, service and schedule components to the GUI (Pull Request [#137](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/137))
-
-2. Created the schedule view of appointments for Homerce (Pull Request [#181](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/181))
-
-3. Enhanced the UI of the schedule view, side tab bar and background of Homerce to match with the UI mockup (Pull Request [#214](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/214), Pull Request [#230](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/230))
-
-<u>Testing </u>
-
-1. Included JUnit Tests for the Client Manager, with over 90% line coverage on average (Pull Request [#207](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/207))
-
-2. Included Integration Tests across logic, model and storage components for the Expense Tracker (Pull Request [#207](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/207))
-
-3. Direct testing from GUI
-
-<u> Others </u> <br>
-
-1. Helped resolve a non-trivial merge conflict (Pull Request [#130](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/130))
-
-**Contributions to User Guide:** <br>
-1. Client Manager (Pull Request [#185](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/185))
-    * Command Parameter Summary Table
-    * Commands Documentation, including command parameters, command format, command examples
-    * Command Summary 
-
-**Contributions to Developer Guide:** <br>
-1. Client Manager (Pull Request [#328](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/328))
-    * Rationale
-    * Current implementation
-    * Activity Diagram for `findcli` command
-    * Sequence Diagram for `findcli` command
-    * Activity Diagram for `deletecli` command
-    * Sequence Diagram for `deletecli` command
-    * Design considerations for `findcli` and `deletecli` commands
-
-**Contributions to documentation (Extracts)**
+* **Refactoring**: 
+    * Refactored the Person class to Client class (Pull Request [#67](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/67))
+        * Renamed all instances of person in addressbook to client
+        * Removed the address field of a client
+        * Updated Command names to correspond with the client class Pull Request [#110](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/110)
+        * Set up the skeletal structure of the project (Pull Request [#49](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/49))
+    * Removing instances of AddressBook 
+        * Renaming of project package name to homerce  (Pull Request [#149](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/149)
+        * Replaced AddressBook implementation with ClientManager, a component of Homerce (Pull Request [#132](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/132) 
+    * Updating the original delete, edit, find and clear commands
+        * Delete and clear commands for clients will take into account whether a client is scheduled in an upcoming appointment (Pull Request [#311](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/311), Pull Request [#296](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/296))
+        * Find command for clients will include prefixes allowing users to search using name or phone (Pull Request [#136](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/136), Pull Request [#299](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/299))
+        * Edit command for clients will update the client in an appointment as well (Pull Request [#296](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/296))
+* **Enhancement of GUI**
+    * Linked up the client, expense, appointment, revenue, service and schedule components to the GUI (Pull Request [#137](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/137))
+    * Created the schedule view of appointments for Homerce (Pull Request [#181](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/181))
+    * Enhanced the UI of the schedule view, side tab bar and background of Homerce to match with the UI mockup (Pull Request [#214](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/214), Pull Request [#230](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/230))
+* **Testing** (Pull Request [#207](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/207))
+Included JUnit Tests for the Client Manager, with over 90% line coverage on average, and including Integration Tests across logic, model and storage components for the Client Manager. Did manual testing of all UI components as well.
+* **Contributions to User Guide:** <br>
+    * Client Manager (Pull Request [#185](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/185))
+        * Command Parameter Summary Table
+        * Commands Documentation, including command parameters, command format, command examples
+        * Command Summary 
+* **Contributions to Developer Guide:** <br>
+    * Client Manager (Pull Request [#328](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/328))
+        * Rationale
+        * Current implementation
+        * Activity Diagrams for `findcli` and `deletecli` command
+        * Sequence Diagram for `findcli` and `deletecli` command
+        * Design considerations for `findcli` and `deletecli` commands
+* **Contributions to team-based tasks**
+    * Helped out with resolving a non-trivial merge conflict (Pull Request [#130](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/130))
+    * Management of the project milestones and maintenance of the issue tracker
+    * Commented and/or reviewed 50+ pull requests in the repository. See the full list [here](https://github.com/AY2021S1-CS2103T-W13-3/tp/pulls?page=2&q=is%3Apr+is%3Aclosed+commenter%3ARuiFengg)
+* **Contributions to documentation (Extracts)**
 The contributions listed in this section will not be extensive, please refer to the respective documents for the full contributions.
 
-**Developer Guide**
+    * **Developer Guide**
 
-<u>Diagrams</u>
 ![Activity diagram for deletecli_command](../images/DeleteClientActivityDiagram.png)
 
 _Figure 1. Activity Diagram for `deletecli` command_
