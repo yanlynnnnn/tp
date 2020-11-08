@@ -13,7 +13,7 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("deleteexp 1")
+[-> LogicManager : execute("deleteexp 1", historyManager)
 activate LogicManager
 
 LogicManager -> HomerceParser : parseCommand("deleteexp 1")

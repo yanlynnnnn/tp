@@ -17,5 +17,4 @@ Client -up-> "*" Tag
 Client *--> Name
 Client *--> Phone
 Client *--> Email
-Client *--> Address
 @enduml
