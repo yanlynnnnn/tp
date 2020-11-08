@@ -54,15 +54,15 @@ We have structured this User Guide in a way to help you find what you need easil
 In the next subsection, [Section 3.2 - reading this document](#32-reading-this-document), you can find several useful tips on how to read this guide.
 The following section, [Section 4 - Features](#4-features), documents the seven main features in **Homerce**, namely:
 
+* Client Management
+
 * Service Management
 
-* Appointment Tracking
+* Appointment Management
 
 * Revenue Tracking
 
 * Expense Tracking
-
-* Client Management
 
 * Schedule Viewing
 
@@ -132,6 +132,16 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
     
 6. If the same parameter is entered multiple times within the same command, only the last entry will be used. (excludes items with `…​` after them in Point #3)
     - If `v/20.00 v/25.00` is entered, the value will be taken as 25.00.
+    
+<div markdown="block" class="alert alert-info">
+
+**:information_source: Note:**<br>
+
+* Since Homerce is optimized for CLI-based usage, it is recommended to rely purely on CLI commands rather than using a
+mouse to navigate between the different managers of Homerce. For example, it is better to do `listapt` rather than clicking
+on the appointments tab as `listapt` will sort appointments by chronological order if there are changes made by previous commands.
+
+</div>
 
 
 ## 4. Features
@@ -153,8 +163,8 @@ The table below shows a list of command parameters that will be used.
 <tr><th>Parameter Name</th><th>Description</th><th>Example</th></tr>
 <tr><td><pre>NAME</pre></td><td>The name of the client. <br><br> It must be an alphanumeric word.</td><td>E.g. Typing <code>John Doe</code> would represent the name of the client saved in the client manager.</td></tr>
 <tr><td><pre>EMAIL</pre></td><td>The email of the client. <br> Emails should be in <code>local-part@domain format</code> <br> <br> The <code>local-part</code> can only contain alphanumeric characters, and the special characters <br> +!#$%&'*+/=?\`{}~^.-&#124; <br> <br> The <code>domain</code> can only contain:  Alphanumeric characters The following special characters in between: +  dash (-) period (.) <br> The domain name must also have at least 2 characters and start and end with alphanumeric characters</td><td>johnDoe97@example123.com</td></tr>
-<tr><td><pre>PHONE</pre></td><td>Phone is the contact number of the client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long.</td><td>E.g. <code>91234567</code> would represent the client's phone number.</td></tr>
-<tr><td><pre>TAG</pre></td><td>The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. </td><td>E.g. Typing <code>2</code> would mean the client with index-2 in the displayed list.</td></tr>
+<tr><td><pre>PHONE</pre></td><td>Phone is the contact number of the client and is the indicator used to uniquely identify a client. <br> <br> It must consist only of numeric characters, and be at least 3 digits long.</td><td>E.g. <code>91234567</code> would represent the client's phone number.<br><br> Another client with the same number <code>91234567</code> will not be allowed to get added into the client list. </td></tr>
+<tr><td><pre>TAG</pre></td><td>The tag you want to attach to the client. <br> <br> It must be a single alphanumeric word. </td><td>E.g. Typing <code>friend</code> would mean that friend is the additional information associated with the client.</td></tr>
 <tr><td><pre>INDEX</pre></td><td>The index of the client in the displayed list. <br> <br> It must be a valid index number.</td><td>E.g. Typing <code>2</code> would mean the client with index-2 in the displayed list.</td></tr>
 </table>
 
@@ -191,7 +201,7 @@ _Figure 3 - GUI for `addcli`_
 
 You can use this command to edit an expense in the Client Manager.
 
-Format : `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]`
+Format : `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]…​`
 
 <div markdown="block" class="alert alert-info">
 
@@ -202,6 +212,7 @@ Format : `editcli INDEX [n/NAME] [p/PHONE] [e/EMAIL] [t/TAG]`
 * When editing tags, the existing tags of the client will be removed i.e adding of tags is not cumulative.
 * You can remove all the client’s tags by typing t/ without specifying any tags after it.
 * Refer to [Client Manager Command Parameters](#411-client-manager-command-parameters) for more details about each parameter.
+* Editing a client in the client manager will change the details of any appointments associated with that client.
 
 </div>
 
@@ -248,7 +259,7 @@ Let's say a client repeatedly fails to turn up for his appointments and you wish
 You can follow the steps below to delete the client.
 
 Steps :
-1. Type `deletecli 3` in the _Command Box_.
+1. Type `deletecli 6` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
@@ -271,7 +282,7 @@ Format : `findcli [n/NAME]* [p/PHONE]*`
 * The search using name is case-insensitive. e.g hans will match Hans.
 * The order of the keywords does not matter. e.g. Hans Bo will match Bo Hans.
 * Only full words will be matched e.g. Han will not match Hans.
-* Persons matching at least one keyword will be returned (i.e. OR search). e.g. Hans Bo will return Hans Gruber, Bo Yang.
+* Clients matching at least one keyword will be returned (i.e. OR search). e.g. Hans Bo will return Hans Gruber, Bo Yang.
 * The search using phone will match if the number sequence entered (at least 3 digits long) is part of a client's phone number. e.g. 123 will return clients with phone number 91234567 and 98765123.
 * Refer to [Client Manager Command Parameters](#411-client-manager-command-parameters) for more details about each parameter.
 
@@ -279,11 +290,11 @@ Format : `findcli [n/NAME]* [p/PHONE]*`
 
 Example :
 
-Let's say you have many clients in your client list and wish to find more information on the client named John. <br>
+Let's say you have many clients in your client list and wish to find more information on the client named David. <br>
 You can follow the steps below to get a list of clients named John
 
 Steps :
-1. Type `findcli n/John` in the _Command Box_.
+1. Type `findcli n/David` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
@@ -344,12 +355,12 @@ Outcome :
 ![clearcli](images/clearcli.png) <br>
 _Figure 8 - GUI for `clearcli`_
 
-### 4.2. Service Management
+### 4.2. Service Manager
 
 This feature allows you to manage the services that your home-based beauty salon provides. You can record the 
 following information about your services: `TITLE`, `DURATION` and `PRICE`.
 
-#### 4.2.1. Service Management Command Parameters
+#### 4.2.1. Service Manager Command Parameters
 
 Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used in this feature.
@@ -362,7 +373,7 @@ The table below shows a list of command parameters that will be used in this fea
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long.| E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`INDEX`| The index number of the service in the displayed service list.<br> <br> The first entry of the list has an index number of `1` and all entries are listed in increasing index numbers. | E.g `5`
 
-#### 4.2.2. Add a new service: `addsvc`
+#### 4.2.2. Add a service: `addsvc`
 
 You can use this command to add a new service into the Service Manager.
 
@@ -372,7 +383,7 @@ Format: `addsvc t/TITLE du/DURATION p/PRICE`
 
 **:information_source: Note:**<br>
  
-* Refer to [Service Management Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Manager Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -392,7 +403,7 @@ Outcome:
 
 3. You can now see all your services including the newly added service.
 
-#### 4.2.3. Edit an existing service: `editsvc`
+#### 4.2.3. Edit a service: `editsvc`
 
 You can use this command to edit an existing service in the Service Manager.
 
@@ -403,9 +414,10 @@ Format: `editsvc INDEX [t/TITLE]* [du/DURATION]* [p/PRICE]*`
 **:information_source: Note:**<br>
  
 * You are unable to edit an existing service's service code. Service codes are automatically generated by the Service Manager when adding a new service.
-* Refer to [Service Management Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Manager Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
 * Editing a service in the service manager will not change the details of any appointments associated with that service as they are
- kept as separate records. Edit the appointment if you want the service's edited details to be reflected.
+ kept as separate records and might result in unwanted side effects to the revenues and clients. Please edit the appointment after editing the service if you want the service's edited details to be reflected.
+
 
 </div>
 
@@ -426,7 +438,7 @@ Outcome:
 
 3. You can now see all your services including the edited service.
 
-#### 4.2.4. Delete an existing service: `deletesvc`
+#### 4.2.4. Delete a service: `deletesvc`
 
 You can use this command to delete an existing service in the Service Manager.
 
@@ -444,7 +456,7 @@ Format: `deletesvc INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Service Management Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Manager Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -474,8 +486,11 @@ Format: `findsvc [t/TITLE]* [s/SERVICE_CODE]*`
 <div markdown="block" class="alert alert-info">
 
 **:information_source: Note:**<br>
- 
-* Refer to [Service Management Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
+* The search using title is case-insensitive. e.g nail will match Nail.
+* The order of the keywords does not matter. e.g. Nail Hair will match Hair.
+* Only full words will be matched e.g. Nail will not match Nails.
+* Services matching at least one keyword will be returned (i.e. OR search). e.g. Hair Lash will return Lash Extension, Hair Coloring.
+* Refer to [Service Manager Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
@@ -496,7 +511,7 @@ Outcome:
 
 3. You can now see the services in your list of services that contain nail in its title.
 
-#### 4.2.6. List all existing services: `listsvc`
+#### 4.2.6. List all services: `listsvc`
 
 You can use this command to navigate to the *Services Tab* and display all your added services in the Service Manager.
 
@@ -518,7 +533,7 @@ Outcome:
 
 3. You can now see all your services.
 
-#### 4.2.7. Clear all existing services: `clearsvc`
+#### 4.2.7. Clear all services: `clearsvc`
 
 You can use this command to clear and delete the all the services in the Service Manager.
 
@@ -550,15 +565,15 @@ Outcome:
 
 3. You can see that the list of services is now empty.
 
-### 4.3. Appointment Tracker
+### 4.3. Appointment Manager
 
 Scheduling appointments is an essential part of your beauty salon and
-Homerce makes it easy to keep track of your upcoming appointments with
+Homerce makes it easy to keep track of your appointments with
 your customers. You can add appointments for a particular service and
 client, mark it as done, and Homerce will automatically credit the revenue
 into the revenue tracker.
 
-#### 4.3.1. Appointment Tracker Command Parameters
+#### 4.3.1. Appointment Manager Command Parameters
 
 This feature uses a number of parameters, which are detailed below.
 
@@ -567,14 +582,14 @@ This feature uses a number of parameters, which are detailed below.
 |`DATE`  | The date of the appointment. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean 28 September 2020.
 |`TIME` | The time of the appointment. <br> <br> It must be in the format of `HHMM` and the appointment cannot be conducted past midnight. | E.g. Typing `1730` would mean 5:30 PM.  <br> <br> E.g. Typing `0900` would mean 9:00 AM.
 |`SERVICE_CODE`| The service code is the code that identifies the type of service provided. <br> <br> It must be alphanumeric words of 5 characters long which corresponds to an existing service. | E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refer to the eyelash extension service.
-|`PHONE_NUMBER` | The phone number of the client. <br> <br> It must be a 8-digit number starting with 6, 8, or 9 which corresponds to an existing client.| E.g. Typing `81281234` or `91235678` is a valid phone number.  <br> <br> E.g. Typing `999`or `800012345` would not be a recognised number.
+|`PHONE_NUMBER` | The phone number of the client. <br> <br> It must be at least 3 digits which corresponds to the phone number of an existing client.| E.g. Typing `81281234` or `91235678` is a valid phone number.  <br> <br> E.g. Typing `99` would not be a recognised number.
 |`NAME` | The name of the client booking the appointment. <br> <br> It must be a alphanumeric word and incomplete words are not accepted. | E.g. If a client with the name `Hartin Menz` called to book an appointment, the word `Hartin` would be accepted as a parameter for `NAME` but not `Hart`.
 |`INDEX` | The index of the appointment in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would mean the appointment with index-2 in the displayed list.
 
 #### 4.3.2. Add an appointment: `addapt`
 
 When a new or existing client calls to make a booking for your services, use this
-command to add details of the appointment into the appointment tracker.
+command to add details of the appointment into the appointment manager.
 
 Format : `addapt dt/DATE t/TIME s/SERVICE_CODE p/PHONE_NUMBER`
 
@@ -582,7 +597,7 @@ Format : `addapt dt/DATE t/TIME s/SERVICE_CODE p/PHONE_NUMBER`
 
 **:information_source: Note:**<br>
  
-* Refer to [Appointment Tracker Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
+* Refer to [Appointment Manager Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
 
 </div> 
 
@@ -605,7 +620,7 @@ Outcome:
 
 #### 4.3.3. List all appointments: `listapt`
 
-Use this command to see your list of all your upcoming appointments.
+Use this command to see your list of all your appointments, sorted by chronological order.
 
 Format : `listapt`
  
@@ -638,8 +653,12 @@ Format : `findapt [p/PHONE_NUMBER]* [n/NAME]* [dt/DATE]* [s/SERVICE_CODE]*`
 <div markdown="block" class="alert alert-info"> 
 
 **:information_source: Note:**<br>
- 
-* Refer to [Appointment Tracker Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
+* The search using name is case-insensitive. e.g hans will match Hans.
+* The order of the keywords does not matter. e.g. Hans Bo will match Bo Hans.
+* Only full words will be matched e.g. Han will not match Hans.
+* Clients matching at least one keyword will be returned (i.e. OR search). e.g. Hans Bo will return Hans Gruber, Bo Yang.
+* The search using phone will match if the number sequence entered (at least 3 digits long) is part of a client's phone number. e.g. 123 will return clients with phone number 91234567 and 98765123.
+* Refer to [Appointment Manager Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
 
 </div> 
 
@@ -655,7 +674,7 @@ Steps:
 Outcome:
 1. The *Result Display* will show a success message.
 1. Homerce will switch to the *Appointment Tab*.
-1. You can now see all your appointments made by the number `82341245`.
+1. You can now see all your appointments made by the number `87438807`.
 
 ![findapt](images/findapt.png) <br>
 *Figure 17 - GUI outcome for `findapt`*
@@ -672,7 +691,7 @@ Format : `editapt INDEX [dt/DATE] [t/TIME] [p/PHONE_NUMBER] [s/SERVICE_CODE]`
 
 **:information_source: Note:**<br>
  
-* Refer to [Appointment Tracker Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
+* Refer to [Appointment Manager Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
 
 </div> 
 
@@ -705,7 +724,7 @@ Format : `done INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Appointment Tracker Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
+* Refer to [Appointment Manager Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
 
 </div> 
 
@@ -740,7 +759,7 @@ Format : `undone INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Appointment Tracker Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
+* Refer to [Appointment Manager Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
 
 </div> 
 
@@ -749,7 +768,7 @@ Format : `undone INDEX`
 **:warning: Warning:**<br>
 
 * If the revenue tracker was cleared, Homerce will display a warning to say that the revenue associated
-with this appointment cannot be deleted. Nonetheless, the appointment will still be marked as not undone.
+with this appointment cannot be deleted. Nonetheless, the appointment will still be marked as undone.
 
  </div>
 
@@ -771,10 +790,10 @@ Outcome:
 ![undone](images/undoneapt.png) <br>
 *Figure 20 - GUI outcome for `undoneapt`*
 
-#### 4.3.8. Delete an existing appointment: `deleteapt`
+#### 4.3.8. Delete an appointment: `deleteapt`
 
 If a client informs you that he or she wants to cancel an appointment, you can
-use this command to delete that particular command from the appointment tracker.
+use this command to delete that particular command from the appointment manager.
 
 Format : `deleteapt INDEX`
 
@@ -782,7 +801,7 @@ Format : `deleteapt INDEX`
 
 **:information_source: Note:**<br>
  
-* Refer to [Appointment Tracker Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
+* Refer to [Appointment Manager Command Parameters](#431-appointment-tracker-command-parameters) for more details about each parameter.
 
 </div> 
 
@@ -837,7 +856,7 @@ Revenue will be automatically recorded when an appointment is indicated as done.
 
 #### 4.4.1. Revenue Tracker Command Parameters
 
-Before you dive into using the feature, you may want to have a look at the common parameter used in this feature.
+Before you dive into using the feature, you may want to have a look at the common parameters used in this feature.
 The table below shows a list of command parameters that will be used in this feature.
 
 | Parameter Name | Description | Example
@@ -1461,7 +1480,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**List**       | `listcli` |
 |**Clear**      | `clearcli`| 
 
-### 6.2. Service Management Commands
+### 6.2. Service Manager Commands
 
 |Action | Format | Examples
 |---------|---------|---------
@@ -1472,7 +1491,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 |**List** | `listsvc` | 
 |**Clear** | `clearsvc` | 
 
-### 6.3. Appointment Tracker Commands
+### 6.3. Appointment Manager Commands
 
 |Action | Format | Examples
 |---------|---------|---------

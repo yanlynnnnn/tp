@@ -118,6 +118,13 @@ public class NonUniqueList<T> implements Iterable<T> {
     public void sort(Comparator<T> comparator) {
         FXCollections.sort(internalList, comparator);
     }
+
+    /**
+     * Returns the Non Unique List as a {@code ObservableList}
+     */
+    public ObservableList<T> getInternalList() {
+        return this.internalList;
+    }
 }
 
 

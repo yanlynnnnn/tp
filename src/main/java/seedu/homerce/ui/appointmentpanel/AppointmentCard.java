@@ -53,7 +53,7 @@ public class AppointmentCard extends UiPart<Region> {
         date.setText(appointment.getAppointmentDate().toUiString());
         timeOfDay.setText("Time: " + appointment.getAppointmentStartTime().toUiString());
         service.setText("Service: " + appointment.getService().getTitle().value);
-        isDone.setText(appointment.getStatus().isDone() ? "done" : "upcoming");
+        isDone.setText(appointment.getStatus().isDone() ? "done" : "not done");
     }
 
     @Override

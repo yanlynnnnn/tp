@@ -154,7 +154,7 @@ Recall from the User Guide that the `edit` command has the format: `edit INDEX [
        ...
        Client clientToEdit = lastShownList.get(index.getZeroBased());
        Client editedClient = createEditedClient(clientToEdit, editClientDescriptor);
-       if (!clientToEdit.isSameClient(editedClient) && model.hasClient(editedClient)) {
+       if (!clientToEdit.isSame(editedClient) && model.hasClient(editedClient)) {
            throw new CommandException(MESSAGE_DUPLICATE_CLIENT);
        }
        model.setClient(clientToEdit, editedClient);

@@ -51,13 +51,13 @@ Included JUnit Tests for the Appointment Manager, with over 90% line coverage on
         * Command documentation and summary
 
 * **Contributions to the Developer Guide**:
-    1. Overall structure, product scope and non-functional requirements. (Pull request [#73](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/73))
-    1. Appointment Manager - Rationale, current implementation, design considerations as well as sequence and activity diagrams for the `done` command. (Pull request [#307](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/307))
-    1. Update UML diagrams for other managers to include the history manager as a parameter when `execute` is called. (Pull request [#307](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/307))
+    * Overall structure, product scope and non-functional requirements. (Pull request [#73](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/73))
+    * Appointment Manager - Rationale, current implementation, design considerations as well as sequence and activity diagrams for the `done` command. (Pull request [#307](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/307))
+    * Update UML diagrams for other managers to include the history manager as a parameter when `execute` is called. (Pull request [#307](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/307))
 
 * **Contributions to team-based tasks**:
-    1. Management of project milestones and maintenance of the issue tracker.
-    1. Changed the original AB3 icon to the current icon used by Homerce.
+    * Management of project milestones and maintenance of the issue tracker.
+    * Changed the original AB3 icon to the current icon used by Homerce.
 
 * **Community**:
     * Made several forum posts on the module repository to provide help to other students. (Issue [#214](https://github.com/nus-cs2103-AY2021S1/forum/issues/214))
@@ -117,13 +117,6 @@ Example:
 
 Let's say your client called to make an appointment.
 You can follow these instructions to add his/her appointment details into Homerce.
-
-| Appointment | |
-|---------|--------- |
-|`DATE`| 28-10-2020 |
-|`TIME`| 1300 |
-|`SERVICE_CODE`| SC001 |
-|`PHONE_NUMBER`| 83232656 |
 
 Steps:
 1. Type `addapt dt/28-10-2020 t/1300 s/SC001 p/83232656` in the *Command Box*.

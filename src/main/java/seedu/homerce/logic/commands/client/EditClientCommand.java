@@ -1,6 +1,8 @@
 package seedu.homerce.logic.commands.client;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX;
+import static seedu.homerce.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_PHONE;
@@ -12,7 +14,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.commons.util.CollectionUtil;
 import seedu.homerce.logic.commands.Command;
@@ -47,8 +48,7 @@ public class EditClientCommand extends Command {
             + PREFIX_EMAIL + "johndoe@example.com";
 
     public static final String MESSAGE_EDIT_CLIENT_SUCCESS = "Edited Client: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the Homerce.";
+    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in Homerce.";
 
     private final Index index;
     private final EditClientDescriptor editClientDescriptor;
@@ -71,13 +71,15 @@ public class EditClientCommand extends Command {
         List<Client> lastShownList = model.getFilteredClientList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
+            throw new CommandException(MESSAGE_INVALID_CLIENT_DISPLAYED_INDEX);
+        } else if (!editClientDescriptor.isAnyFieldEdited()) {
+            throw new CommandException(MESSAGE_NOT_EDITED);
         }
 
         Client clientToEdit = lastShownList.get(index.getZeroBased());
         Client editedClient = createEditedClient(clientToEdit, editClientDescriptor);
 
-        if (!clientToEdit.isSameClient(editedClient) && model.hasClient(editedClient)) {
+        if (!clientToEdit.isSame(editedClient) && model.hasClient(editedClient)) {
             throw new CommandException(MESSAGE_DUPLICATE_CLIENT);
         }
 

@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.homerce.model.expense.Expense;
 import seedu.homerce.model.expense.ExpenseComparator;
@@ -15,6 +16,7 @@ import seedu.homerce.model.util.nonuniquelist.NonUniqueList;
 
 public class ExpenseTracker implements ReadOnlyExpenseTracker {
     private final NonUniqueList<Expense> expenses;
+    private final ExpenseDefaultComparator expenseDefaultComparator = new ExpenseDefaultComparator();
 
     public ExpenseTracker() {
         this.expenses = new NonUniqueList<>();
@@ -52,6 +54,7 @@ public class ExpenseTracker implements ReadOnlyExpenseTracker {
      */
     public void addExpense(Expense e) {
         expenses.add(e);
+        FXCollections.sort(expenses.getInternalList(), expenseDefaultComparator);
     }
 
     /**
