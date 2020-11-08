@@ -1,6 +1,8 @@
 package seedu.homerce.logic.commands.service;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX;
+import static seedu.homerce.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_DURATION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_PRICE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
@@ -8,7 +10,6 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
 import java.util.List;
 import java.util.Optional;
 
-import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.commons.util.CollectionUtil;
 import seedu.homerce.logic.commands.Command;
@@ -43,8 +44,6 @@ public class EditServiceCommand extends Command {
         + PREFIX_SERVICE_PRICE + "45 ";
 
     public static final String MESSAGE_EDIT_SERVICE_SUCCESS = "Edited Service: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-
     private final Index index;
     private final EditServiceCommand.EditServiceDescriptor editServiceDescriptor;
 
@@ -66,7 +65,9 @@ public class EditServiceCommand extends Command {
         List<Service> lastShownList = model.getFilteredServiceList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX);
+            throw new CommandException(MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX);
+        } else if (!editServiceDescriptor.isAnyFieldEdited()) {
+            throw new CommandException(MESSAGE_NOT_EDITED);
         }
 
         Service serviceToEdit = lastShownList.get(index.getZeroBased());

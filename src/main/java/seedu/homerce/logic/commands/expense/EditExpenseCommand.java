@@ -1,6 +1,8 @@
 package seedu.homerce.logic.commands.expense;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_EXPENSE_DISPLAYED_INDEX;
+import static seedu.homerce.commons.core.Messages.MESSAGE_NOT_EDITED;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_AMOUNT;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DESCRIPTION;
@@ -10,7 +12,6 @@ import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TAG;
 import java.util.List;
 import java.util.Optional;
 
-import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.commons.util.CollectionUtil;
 import seedu.homerce.logic.commands.Command;
@@ -47,8 +48,6 @@ public class EditExpenseCommand extends Command {
             + PREFIX_AMOUNT + "20.00";
 
     public static final String MESSAGE_EDIT_EXPENSE_SUCCESS = "Edited Expense: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
-
     public final Index index;
     public final EditExpenseCommand.EditExpenseDescriptor editExpenseDescriptor;
 
@@ -70,16 +69,16 @@ public class EditExpenseCommand extends Command {
         List<Expense> lastShownList = model.getFilteredExpenseList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_EXPENSE_DISPLAYED_INDEX);
+            throw new CommandException(MESSAGE_INVALID_EXPENSE_DISPLAYED_INDEX);
+        } else if (!editExpenseDescriptor.isAnyFieldEdited()) {
+            throw new CommandException(MESSAGE_NOT_EDITED);
         }
 
         Expense expenseToEdit = lastShownList.get(index.getZeroBased());
         Expense editedExpense = createEditedExpense(expenseToEdit, editExpenseDescriptor);
-
         if (expenseToEdit.equals(editedExpense)) {
             throw new CommandException(MESSAGE_NOT_EDITED);
         }
-
         model.setExpense(expenseToEdit, editedExpense);
         return new CommandResult(
             String.format(MESSAGE_EDIT_EXPENSE_SUCCESS, editedExpense),
