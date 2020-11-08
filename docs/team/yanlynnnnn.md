@@ -136,12 +136,6 @@ Do you spend hours tabulating all your revenue and expenses just to get an idea 
 Fret not, our application, Homerce, will reduce the hassle of managing your business and save your valuable time. 
 Homerce is an all-in-one application that helps home-based beauty salon owners consolidate their business details - 
 such as their appointments, revenue and expenses - into a single application. 
-
-The application uses a Command Line Interface (CLI); this means that you operate the application by typing commands 
-into a Command Box. If you are fast at typing, you can operate the application faster than other Graphical User Interface 
-(GUI) applications; GUI applications allow users to interact with the application through graphical icons such as buttons.
-
-If you are interested, jump to [Section 2 - Quick Start](#2-quick-start) to learn how to start managing your business using Homerce.
 ```
 _Extract 1. Introduction_
 ```
