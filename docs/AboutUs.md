@@ -5,8 +5,6 @@ title: About Us
 
 We are a team based in the [School of Computing, National University of Singapore](http://www.comp.nus.edu.sg).
 
-You can reach us at the email `seer[at]comp.nus.edu.sg`
-
 ## Project team
 
 ### Galvin Leow Wen Yuan
@@ -15,9 +13,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/galvinleow)]
 [[portfolio](team/galvinleow.md)]
+You can reach me at the email `galvinleow@u.nus.edu`
 
 * Role: Team Lead
-* Responsibilities: UG, Scheduling
+* Responsibilities
+    * Revenue Tracker Feature
+        * Implementation
+        * User Guide
+        * Developer Guide
+        * Testing
+    * Use case for entire project
 
 ### Wei Kit Khoong
 

@@ -883,7 +883,7 @@ Steps :
 
 Outcome : 
 1. The *Result Display* will show a success message.
-1. Homerce will list out all the revenue for 22-10-2020 in the _Revenue_ tab.  
+1. Homerce will list out all the revenue for 22-10-2020 in the _Revenue Tab_.  
 1. You can now see all your revenues earned on `22-10-2020`.
 
 ![addrev](images/revenue/FindRevenue.png) <br>
@@ -913,7 +913,7 @@ Steps :
 
 Outcome : 
 1. The *Result Display* will show a success message.
-1. Homerce will list out all the revenue entries sorted from highest to lowest cost in the _Revenue_ tab.
+1. Homerce will list out all the revenue entries sorted from highest to lowest cost in the _Revenue Tab_.
 1. You can now see your revenues sort by descending order.
 
 ![sortrev](images/revenue/SortRevenue(Desc).png) <br>
@@ -936,7 +936,7 @@ Steps :
 
 Outcome : 
 1. The *Result Display* will show a success message.
-1. Homerce will list out all your revenue entries in the _Revenue_ tab.
+1. Homerce will list out all your revenue entries in the _Revenue Tab_.
 1. You can now see all your revenues sort by descending chronological order.
 
 ![listrev](images/revenue/ListRevenue.png) <br>
