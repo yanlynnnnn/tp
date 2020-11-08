@@ -260,7 +260,7 @@ Let's say a client repeatedly fails to turn up for his appointments and you wish
 You can follow the steps below to delete the client.
 
 Steps :
-1. Type `deletecli 3` in the _Command Box_.
+1. Type `deletecli 6` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
@@ -291,11 +291,11 @@ Format : `findcli [n/NAME]* [p/PHONE]*`
 
 Example :
 
-Let's say you have many clients in your client list and wish to find more information on the client named John. <br>
+Let's say you have many clients in your client list and wish to find more information on the client named David. <br>
 You can follow the steps below to get a list of clients named John
 
 Steps :
-1. Type `findcli n/John` in the _Command Box_.
+1. Type `findcli n/David` in the _Command Box_.
 2. Press `Enter` to execute.
 
 Outcome :
