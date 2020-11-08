@@ -57,10 +57,6 @@ public class EditExpenseCommandParser implements Parser<EditExpenseCommand> {
         if (argMultimap.getValue(PREFIX_TAG).isPresent()) {
             editExpenseDescriptor.setTag(ParserUtil.parseTag(argMultimap.getValue(PREFIX_TAG).get()));
         }
-        if (!editExpenseDescriptor.isAnyFieldEdited()) {
-            throw new ParseException(EditExpenseCommand.MESSAGE_NOT_EDITED);
-        }
-
         return new EditExpenseCommand(index, editExpenseDescriptor);
     }
 }

@@ -2,6 +2,7 @@ package seedu.homerce.logic.commands.appointment;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.homerce.testutil.appointment.TypicalAppointmentIndexes.INDEX_FIRST_APPOINTMENT;
 import static seedu.homerce.testutil.appointment.TypicalAppointmentIndexes.INDEX_SECOND_APPOINTMENT;
@@ -11,6 +12,7 @@ import static seedu.homerce.testutil.service.TypicalServices.getTypicalServiceMa
 
 import org.junit.jupiter.api.Test;
 
+import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.model.Model;
 import seedu.homerce.model.ModelManager;
@@ -86,5 +88,12 @@ public class EditAppointmentCommandTest {
 
         // different index -> returns false
         assertFalse(standardCommand.equals(new EditAppointmentCommand(INDEX_SECOND_APPOINTMENT, descriptor)));
+    }
+
+    @Test
+    public void execute_noFieldSpecifiedUnfilteredList_success() {
+        EditAppointmentCommand editAppointmentCommand = new EditAppointmentCommand(INDEX_FIRST_APPOINTMENT,
+            new EditAppointmentCommand.EditAppointmentDescriptor());
+        assertCommandFailure(editAppointmentCommand, model, Messages.MESSAGE_NOT_EDITED);
     }
 }

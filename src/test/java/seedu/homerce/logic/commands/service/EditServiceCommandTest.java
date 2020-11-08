@@ -82,15 +82,7 @@ public class EditServiceCommandTest {
     public void execute_noFieldSpecifiedUnfilteredList_success() {
         EditServiceCommand editServiceCommand = new EditServiceCommand(INDEX_FIRST_SERVICE,
             new EditServiceCommand.EditServiceDescriptor());
-        Service editedService = model.getFilteredServiceList().get(INDEX_FIRST_SERVICE.getZeroBased());
-
-        String expectedMessage = String.format(EditServiceCommand.MESSAGE_EDIT_SERVICE_SUCCESS, editedService);
-
-        Model expectedModel = new ModelManager(new UserPrefs(), new ClientManager(),
-            new ServiceManager(model.getServiceManager()), new RevenueTracker(),
-            new ExpenseTracker(), new AppointmentManager());
-
-        assertCommandFailure(editServiceCommand, model, EditServiceCommand.MESSAGE_NOT_EDITED);
+        assertCommandFailure(editServiceCommand, model, Messages.MESSAGE_NOT_EDITED);
     }
 
     @Test

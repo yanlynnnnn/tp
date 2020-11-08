@@ -2,6 +2,8 @@ package seedu.homerce.logic.commands.expense;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static seedu.homerce.commons.core.Messages.MESSAGE_NOT_EDITED;
+import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.homerce.logic.commands.expense.ExpenseCommandTestUtil.DESC_AIRCON;
 import static seedu.homerce.logic.commands.expense.ExpenseCommandTestUtil.DESC_CONDITIONER;
@@ -81,5 +83,12 @@ public class EditExpenseCommandTest {
 
         // different index -> returns false
         assertFalse(standardCommand.equals(new EditExpenseCommand(INDEX_SECOND_EXPENSE, DESC_AIRCON)));
+    }
+
+    @Test
+    public void execute_noFieldSpecifiedUnfilteredList_success() {
+        EditExpenseCommand editExpenseCommand = new EditExpenseCommand(INDEX_FIRST_EXPENSE,
+            new EditExpenseCommand.EditExpenseDescriptor());
+        assertCommandFailure(editExpenseCommand, model, MESSAGE_NOT_EDITED);
     }
 }
