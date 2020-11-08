@@ -11,12 +11,12 @@ The application uses a Command Line Interface (CLI).
 
 This portfolio aims to document the contributions that I have made to Homerce <br>
 Click [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=yanlynnnnn&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
-to view Yan Lyn's code contributions.
+to view my code contributions.
 
 **Enhancements Implemented:** <br>
 
 <u>Implementation of Expense Tracker</u> <br>
-The Expense Tracker was implemented to help users keep track of their expenses and manage their expenditure.
+The Expense Tracker was implemented to help users keep track of their expenses.
 
 1. Implementation of 5 basic commands (Pull Request [#68](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/68),
 Pull Request [#99](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/99))
@@ -79,7 +79,7 @@ Expense Tracker, and Revenue Tracker panels (Pull Request [#223](https://github.
 1. Appendix F: Manual Testing (Pull Request [#356](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/356))
 1. Appendix G: Effort (Pull Request [#356](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/356))
 
-**Contributions to documentation (Extracts)**
+**Contributions to documentation (Extracts)**<br>
 The contributions listed in this section will not be extensive, please refer to the respective documents for the full contributions.
 
 **Developer Guide**
