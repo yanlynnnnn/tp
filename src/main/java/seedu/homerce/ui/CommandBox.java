@@ -7,7 +7,6 @@ import javafx.scene.layout.Region;
 import seedu.homerce.logic.commands.CommandResult;
 import seedu.homerce.logic.commands.exceptions.CommandException;
 import seedu.homerce.logic.parser.exceptions.ParseException;
-import seedu.homerce.model.client.exceptions.DuplicateClientException;
 
 /**
  * The UI component that is responsible for receiving user command inputs.
@@ -40,7 +39,7 @@ public class CommandBox extends UiPart<Region> {
         try {
             commandExecutor.execute(commandTextField.getText());
             commandTextField.setText("");
-        } catch (CommandException | ParseException | DuplicateClientException e) {
+        } catch (CommandException | ParseException e) {
             setStyleToIndicateCommandFailure();
         }
     }
