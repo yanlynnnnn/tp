@@ -45,9 +45,16 @@ You can reach us at the email `seer[at]comp.nus.edu.sg`
 
 [[github](http://github.com/hansebastian)]
 [[portfolio](team/hansebastian.md)]
+You can reach me at the email `hans.sebastian@u.nus.edu`
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities:
+    * Service Manager Feature
+        * Implementation
+        * User Guide
+        * Developer Guide
+        * Testing
+    * UI
 
 ### Tan Yan Lyn
 

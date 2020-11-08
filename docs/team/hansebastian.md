@@ -17,10 +17,10 @@ will enhance a basic CLI Address Book 3 (AB3) and repurpose it to create our app
 Click [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=hansebastian&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
 to view Hans' code contributions.
 
-##### Enhancements Implemented: <br>
+**Enhancements Implemented:**
 Here is a summary of the enhancements that I have implemented.
 
-###### 1. Implementation of Service Manager <br>
+_1. Implementation of Service Manager_
 The service manager was implemented to help users keep manage all the services that their home-based beauty salon provides. These services are used to create appointments with clients.
 
 1. Implementation of 5 basic commands (Pull Request [#88](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/88), [#94](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/94), [#95](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/95),
@@ -40,25 +40,25 @@ The service manager was implemented to help users keep manage all the services t
     * For example, when the user adds the first service to the service manager, the first service will have a service code of "SCOOO" automatically
     generated and assigned to that service.
 
-###### 2. Implementation of undo Feature <br>
+_2. Implementation of undo Feature_
 The undo feature was implemented to allow the user to easily recover from command mistakes that they make, giving them a better user experience when using Homerce. (Pull Request [#151](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/151))
 
 All the above features include the implementation of components from __Logic__, __Storage__, and __Model__.
 
-###### 3. Enhancement of GUI
+_3. Enhancement of GUI_
 1. Created the Service Card and Service Panel for Service Manager GUI (Pull Request [#88](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/88))
 1. Created the GUI for `breakdownfinance` window (Pull Request [#189](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/189))
 
-###### 4. Testing 
+_4. Testing_
 1. Included JUnit Tests for the Service Manager, Service attributes with over 90% line coverage on average (Pull Request [#195](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/195))
 1. Included Integration Tests across logic, model and storage components for the Service Manager (Pull Request [#225](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/225))
 1. Included JUnit Tests for History Manager, and undo command (Pull Request [#222](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/222))
 1. Direct testing from GUI
 
-###### 5. Others
+_5. Others_
 1. Contributed to team-tasks such as setting up of GitHub team organization and repository and managing the releases of some versions of Homerce.
 
-**Contributions to User Guide:** <br>
+_Contributions to User Guide:_
 1. Service Manager (Pull Request [#62](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/62))
     * Command Parameter Summary Table
     * Commands Documentation, including command parameters, command format, command examples, and command outcomes with annotated screenshots (Pull Request [#324](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/324))
@@ -69,22 +69,14 @@ All the above features include the implementation of components from __Logic__, 
     * Command Summary 
 1. Undo Feature (Pull Request [#173](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/173))
 
-**Contributions to Developer Guide:** <br>
+_Contributions to Developer Guide:_
+Rationale, current implementation and design considerations for the following portions:
 1. List Manager and List Tracker (Pull Request [#171](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/171))
-    * Rationale
-    * Current implementation
-    * Design considerations
-    * Class Diagram for List Manager and List Tracker
+    * Also added Class Diagram for List Manager and List Tracker
 1. Service Manager (Pull Request [#219](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/219))
-    * Rationale
-    * Current implementation
-    * Design considerations
-    * Sequence and Activity diagrams for `addsvc` command
+    * Also added Sequence and Activity diagrams for `addsvc` command
 1. Finance Breakdown (Pull Request [#219](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/219))
-    * Rationale
-    * Current implementation
-    * Design considerations
-    * Sequence and Activity diagrams for `addsvc` command
+    * Also added Sequence and Activity diagrams for `addsvc` command
 
 ##### Contributions to documentation (Extracts)
 The contributions listed in this section will not be extensive, please refer to the respective documents for the full contributions.
@@ -120,25 +112,12 @@ The following steps will describe the execution of the `AddServiceCommand` in de
 
 _Extract 1. Description of Sequence Diagram for the `addsvc` command_
 
-```
-**Aspect: Identifying each service with a unique service code**
-
-|              | **Pros**   | **Cons** |
-| -------------|-------------| -----|
-| **Option 1** <br> Omit the use of service codes to identify a service. | Arguably more user-friendly to identify services by its title instead of a service code. | Unable to uniquely identify services, resulting in complications when executing commands which require services. <br> For example adding an appointment for a service "Manicure" when there are two "Manicure" services provided by Homerce but with different prices and durations. |
-| **Option 2 (current choice)** <br> Tag each service with a unique service code. | Allows users to easily identify services uniquely. | Limits the number of services that can be added to Homerce depending on the format of the service code |
-
-Reason for choosing option 2:
-* It is important for users to be able to uniquely identify services the user may want to have multiple services with the same title, but with different prices or durations.
-* The current format of a service code allows for 1000 unique services to be created since service codes are recycled when a service is deleted. This would be more than sufficient all home-based businesses to add all the services that they provide.
-```
-
-_Extract 2. Design Consideration for Having a Service Code for each Service_
-
 **User Guide**
 
 ```
-You can use this command to add a new service Homerce.
+#### 4.2.2. Add a new service: `addsvc`
+
+You can use this command to add a new service into the Service Manager.
 
 Format: `addsvc t/TITLE du/DURATION p/PRICE`
 
@@ -146,43 +125,21 @@ Format: `addsvc t/TITLE du/DURATION p/PRICE`
 
 **:information_source: Note:**<br>
  
-* Refer to [Service Management Command Parameters](#411-service-management-command-parameters) for more details about each parameter.
+* Refer to [Service Management Command Parameters](#421-service-management-command-parameters) for more details about each parameter.
 
 </div>
 
 Example:
-Let's say you have a service with the following information you want to add into Homerce. You can follow these instructions.
-
-| Service | |
-|---------|--------- |
-|`TITLE`| Lash Lift |
-|`DURATION`| 0.5 |
-|`PRICE`| 38 |
+Let's say you have a service with the following information you want to add into the Service Manager. You can follow these instructions.
 
 Adding the above service:
-1. Type `addsvc t/Lash Lift du/0.5 p/38` into the *Command Box*.
+1. Type `addsvc t/Microdermabrasion du/2.0 p/68` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
 1. The *Result Display* will show success message.
 2. Homerce will switch to the *Services Tab*.
-![addsvc](images/addsvc.png) <br>
-*Figure x - GUI outcome for `addsvc`*
-
 3. You can now see all your services including the newly added service.
-```
-_Extract 1. `addsvc` command description_
 
 ```
-### 6.1 Service Management Commands
-
-|Action | Format | Examples
-|---------|---------|---------
-|**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Lash Lift d/0.5 p/38`
-|**Edit** | `editsvc INDEX s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc 1 d/0.5`
-|**Delete** | `deletesvc INDEX s/SERVICE_CODE` | `deletesvc 1`
-|**Find** | `findsvc KEYWORD` | `findsvc t/lash`
-|**List** | `listsvc` | 
-|**Clear** | `clearsvc` | 
-```
-_Extract 2. Command Summary of Service Management_
+_Extract 2. `addsvc` command description_
