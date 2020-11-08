@@ -3,6 +3,7 @@ package seedu.homerce.logic.commands.service;
 import static java.util.Objects.requireNonNull;
 import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX;
 import static seedu.homerce.commons.core.Messages.MESSAGE_NOT_EDITED;
+import static seedu.homerce.commons.core.Messages.MESSAGE_SERVICE_DUPLICATE_TITLE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_DURATION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_PRICE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
@@ -22,6 +23,7 @@ import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
 import seedu.homerce.model.util.attributes.Amount;
 import seedu.homerce.model.util.attributes.Title;
+import seedu.homerce.model.util.uniquelist.exceptions.DuplicateItemException;
 import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
@@ -73,16 +75,19 @@ public class EditServiceCommand extends Command {
         Service serviceToEdit = lastShownList.get(index.getZeroBased());
         Service editedService = createEditedService(serviceToEdit, editServiceDescriptor);
 
-        // Used .isSame instead of .equals because .eqauls compares only ServiceCode
-        if (serviceToEdit.isSame(editedService)) {
+        if (serviceToEdit.isNotEdited(editedService)) {
             throw new CommandException(MESSAGE_NOT_EDITED);
         }
 
-        model.setService(serviceToEdit, editedService);
-        return new CommandResult(
-            String.format(MESSAGE_EDIT_SERVICE_SUCCESS, editedService),
-            ServiceListPanel.TAB_NAME
-        );
+        try {
+            model.setService(serviceToEdit, editedService);
+            return new CommandResult(
+                String.format(MESSAGE_EDIT_SERVICE_SUCCESS, editedService),
+                ServiceListPanel.TAB_NAME
+            );
+        } catch (DuplicateItemException e) {
+            throw new CommandException(MESSAGE_SERVICE_DUPLICATE_TITLE);
+        }
     }
 
     /**
