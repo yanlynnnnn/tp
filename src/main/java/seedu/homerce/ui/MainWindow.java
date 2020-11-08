@@ -119,7 +119,6 @@ public class MainWindow extends UiPart<Stage> {
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 
-    //@@author RuiFengg-reused
     /**
      * Switches tab to the specified tab name.
      */
