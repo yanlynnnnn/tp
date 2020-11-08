@@ -4,8 +4,8 @@
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":HomerceParser" as HomerceParser LOGIC_COLOR
-participant ":DeleteCommandParser" as DeleteCommandParser LOGIC_COLOR
-participant "d:DeleteCommand" as DeleteCommand LOGIC_COLOR
+participant ":DeleteExpenseCommandParser" as DeleteExpenseCommandParser LOGIC_COLOR
+participant "d:DeleteExpenseCommand" as DeleteExpenseCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
@@ -13,56 +13,56 @@ box Model MODEL_COLOR_T1
 participant ":Model" as Model MODEL_COLOR
 end box
 
-[-> LogicManager : execute("delete 1")
+[-> LogicManager : execute("deleteexp 1")
 activate LogicManager
 
-LogicManager -> HomerceParser : parseCommand("delete 1")
+LogicManager -> HomerceParser : parseCommand("deleteexp 1")
 activate HomerceParser
 
-create DeleteCommandParser
-HomerceParser -> DeleteCommandParser
-activate DeleteCommandParser
+create DeleteExpenseCommandParser
+HomerceParser -> DeleteExpenseCommandParser
+activate DeleteExpenseCommandParser
 
-DeleteCommandParser --> HomerceParser
-deactivate DeleteCommandParser
+DeleteExpenseCommandParser --> HomerceParser
+deactivate DeleteExpenseCommandParser
 
-HomerceParser -> DeleteCommandParser : parse("1")
-activate DeleteCommandParser
+HomerceParser -> DeleteExpenseCommandParser : parse("1")
+activate DeleteExpenseCommandParser
 
-create DeleteCommand
-DeleteCommandParser -> DeleteCommand
-activate DeleteCommand
+create DeleteExpenseCommand
+DeleteExpenseCommandParser -> DeleteExpenseCommand
+activate DeleteExpenseCommand
 
-DeleteCommand --> DeleteCommandParser : d
-deactivate DeleteCommand
+DeleteExpenseCommand --> DeleteExpenseCommandParser : d
+deactivate DeleteExpenseCommand
 
-DeleteCommandParser --> HomerceParser : d
-deactivate DeleteCommandParser
+DeleteExpenseCommandParser --> HomerceParser : d
+deactivate DeleteExpenseCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
-DeleteCommandParser -[hidden]-> HomerceParser
-destroy DeleteCommandParser
+DeleteExpenseCommandParser -[hidden]-> HomerceParser
+destroy DeleteExpenseCommandParser
 
 HomerceParser --> LogicManager : d
 deactivate HomerceParser
 
-LogicManager -> DeleteCommand : execute()
-activate DeleteCommand
+LogicManager -> DeleteExpenseCommand : execute()
+activate DeleteExpenseCommand
 
-DeleteCommand -> Model : deleteClient(1)
+DeleteExpenseCommand -> Model : deleteexp(1)
 activate Model
 
-Model --> DeleteCommand
+Model --> DeleteExpenseCommand
 deactivate Model
 
 create CommandResult
-DeleteCommand -> CommandResult
+DeleteExpenseCommand -> CommandResult
 activate CommandResult
 
-CommandResult --> DeleteCommand
+CommandResult --> DeleteExpenseCommand
 deactivate CommandResult
 
-DeleteCommand --> LogicManager : result
-deactivate DeleteCommand
+DeleteExpenseCommand --> LogicManager : result
+deactivate DeleteExpenseCommand
 
 [<--LogicManager
 deactivate LogicManager

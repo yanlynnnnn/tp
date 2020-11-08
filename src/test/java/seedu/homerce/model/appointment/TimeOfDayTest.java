@@ -35,28 +35,28 @@ public class TimeOfDayTest {
         assertFalse(TimeOfDay.isValidTime("13")); // input must have 4 digits
         assertFalse(TimeOfDay.isValidTime("915")); // input must have 4 digits
         assertFalse(TimeOfDay.isValidTime("12:34")); // invalid format
-
+        assertFalse(TimeOfDay.isValidTime("0910"));
+        assertFalse(TimeOfDay.isValidTime("2359"));
         // valid times of the day
         assertTrue(TimeOfDay.isValidTime("0000"));
-        assertTrue(TimeOfDay.isValidTime("0910"));
         assertTrue(TimeOfDay.isValidTime("1200"));
-        assertTrue(TimeOfDay.isValidTime("2359"));
+        assertTrue(TimeOfDay.isValidTime("1430"));
     }
 
     @Test
     public void toStringTest() {
-        TimeOfDay time1 = new TimeOfDay("1745");
+        TimeOfDay time1 = new TimeOfDay("1730");
         TimeOfDay time2 = new TimeOfDay("1030");
-        assertEquals("1745", time1.toString());
+        assertEquals("1730", time1.toString());
         assertEquals("1030", time2.toString());
     }
 
     @Test
     public void toUiStringTest() {
-        TimeOfDay time1 = new TimeOfDay("1234");
-        TimeOfDay time2 = new TimeOfDay("0001");
-        assertEquals("12:34 PM", time1.toUiString());
-        assertEquals("12:01 AM", time2.toUiString());
+        TimeOfDay time1 = new TimeOfDay("1230");
+        TimeOfDay time2 = new TimeOfDay("0000");
+        assertEquals("12:30 PM", time1.toUiString());
+        assertEquals("12:00 AM", time2.toUiString());
     }
 
     @Test

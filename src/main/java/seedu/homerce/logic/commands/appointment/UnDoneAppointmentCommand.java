@@ -13,6 +13,7 @@ import seedu.homerce.model.Model;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.revenue.Revenue;
+import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 
 public class UnDoneAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "undone";
@@ -23,9 +24,10 @@ public class UnDoneAppointmentCommand extends Command {
         + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_UNDONE_APPOINTMENT_SUCCESS = "Marked Appointment as undone: %1$s";
-    public static final String MESSAGE_DELETE_REVENUE_SUCCESS = "Deleted this ";
+    public static final String MESSAGE_DELETE_REVENUE_SUCCESS = "Deleted this %1$s";
     public static final String MESSAGE_FAILED_TO_DELETE_REVENUE =
-        "Failed to delete the revenue attached to this appointment. Check storage files for corruption.";
+        "Failed to delete the revenue attached to this appointment. Revenue tracker might have been cleared "
+        + "or storage files corrupted. ";
     private final Index targetIndex;
 
     public UnDoneAppointmentCommand(Index targetIndex) {
@@ -49,16 +51,18 @@ public class UnDoneAppointmentCommand extends Command {
             appointmentToMarkUnDone.getAppointmentDate()
         );
         String deletionOfRevenueResult;
-        if (model.getFilteredRevenueList().contains(revenueToRemove)) {
+        if (model.getRevenueTracker().getRevenueList().contains(revenueToRemove)) {
             model.deleteRevenue(revenueToRemove);
             deletionOfRevenueResult = String.format(MESSAGE_DELETE_REVENUE_SUCCESS, revenueToRemove);
         } else {
             deletionOfRevenueResult = MESSAGE_FAILED_TO_DELETE_REVENUE;
         }
         model.refreshSchedule();
+        model.setAppointment(appointmentToMarkUnDone, appointmentToMarkUnDone);
         return new CommandResult(
             String.format(MESSAGE_UNDONE_APPOINTMENT_SUCCESS, appointmentToMarkUnDone)
-            + "\n" + deletionOfRevenueResult
+            + "\n" + deletionOfRevenueResult,
+            AppointmentListPanel.TAB_NAME
         );
     }
 
