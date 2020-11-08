@@ -12,9 +12,4 @@ public interface ReadOnlyServiceManager {
      * This list will not contain any duplicate services.
      */
     ObservableList<Service> getServiceList();
-
-    /**
-     * Returns true if an existing service in the service list has the same title as the input service.
-     */
-    boolean containsServiceWithSameTitle(Service editedService);
 }

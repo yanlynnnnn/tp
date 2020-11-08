@@ -141,12 +141,4 @@ public class ServiceManager implements ReadOnlyServiceManager {
         serviceManagerCopy.setServices(internalListCopy);
         return serviceManagerCopy;
     }
-
-    /**
-     * Returns true if an existing service in the service list has the same title as the input service.
-     */
-    public boolean containsServiceWithSameTitle(Service editedService) {
-        requireNonNull(editedService);
-        return services.stream().anyMatch(x -> x.getTitle().equals(editedService.getTitle()));
-    }
 }
