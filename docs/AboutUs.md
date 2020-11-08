@@ -50,9 +50,16 @@ You can reach me at the email `galvinleow@u.nus.edu`
 
 [[github](http://github.com/hansebastian)]
 [[portfolio](team/hansebastian.md)]
+You can reach me at the email `hans.sebastian@u.nus.edu`
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities:
+    * Service Manager Feature
+        * Implementation
+        * User Guide
+        * Developer Guide
+        * Testing
+    * UI
 
 ### Tan Yan Lyn
 

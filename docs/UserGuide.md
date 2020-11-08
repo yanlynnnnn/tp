@@ -119,7 +119,7 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
     - In `deletesvc s/SERVICE_CODE`, `SERVICE_CODE` is a parameter and the command can be used as `deletesvc s/SC001`.
 
 2. Items in square brackets are optional.<br>
-    - `v/VALUE [t/TAG]` can be used as `v/15 t/equipment` or as `v/15`.
+    - `v/VALUE [t/TAG]` can be used as `v/15.00 t/equipment` or as `v/15.00`.
 
 3. Items with `…​` after them can be used multiple times, including zero times.<br>
     - `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/blacklist`, `t/VIP t/friend` etc.
@@ -128,7 +128,7 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
     - If the command specifies `d/DESCRIPTION dt/DATE`, `dt/DATE d/DESCRIPTION` is also acceptable.
     
 5. A series of parameters in square brackets with asterisks indicate that only exactly one parameter among them should be specified<br>
-    - If the command specifies `[t/TITLE]* [du/DURATION]* [p/PRICE]*`, `du/1.5` is acceptable, but not `du/1.5 p/38` or ` ` (i.e. no parameters).
+    - If the command specifies `[t/TITLE]* [s/SERVICE_CODE]*`, `t/nail` is acceptable, but not `t/nail s/sc000` or ` ` (i.e. no parameters).
     
 6. If the same parameter is entered multiple times within the same command, only the last entry will be used. (excludes items with `…​` after them in Point #3)
     - If `v/20.00 v/25.00` is entered, the value will be taken as 25.00.
@@ -367,9 +367,9 @@ The table below shows a list of command parameters that will be used in this fea
 
 | Parameter Name | Description | Example
 |---------|---------|---------
-|`TITLE`| The title of the service you are providing. It must be alphanumeric words not more than 50 characters long.|E.g `Lash Lift`
+|`TITLE`| The title of the service you are providing. It must be alphanumeric words not more than 50 characters long. You can not have two services with the same title. |E.g `Lash Lift`
 |`DURATION`| The duration of the service must be in half hour intervals.| E.g `1.5`
-|`PRICE`| The revenue received from the service. <br> <br> It must be in dollars.| E.g `5.50`
+|`PRICE`| The revenue received from the service. <br> <br> It must be a positive number above 0.00 and below 1,000,000.00 and must have two decimal places. | E.g `5.50`
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long.| E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`INDEX`| The index number of the service in the displayed service list.<br> <br> The first entry of the list has an index number of `1` and all entries are listed in increasing index numbers. | E.g `5`
 
@@ -391,7 +391,7 @@ Example:
 Let's say you have a service with the following information you want to add into the Service Manager. You can follow these instructions.
 
 Adding the above service:
-1. Type `addsvc t/Microdermabrasion du/2.0 p/68` into the *Command Box*.
+1. Type `addsvc t/Microdermabrasion du/2.0 p/68.00` into the *Command Box*.
 2. Press `Enter` to execute.
 
 Outcome:
@@ -407,7 +407,7 @@ Outcome:
 
 You can use this command to edit an existing service in the Service Manager.
 
-Format: `editsvc INDEX [t/TITLE]* [du/DURATION]* [p/PRICE]*`
+Format: `editsvc INDEX [t/TITLE] [du/DURATION] [p/PRICE]`
 
 <div markdown="block" class="alert alert-info">
 
@@ -997,7 +997,7 @@ The table below shows a list of command parameters that will be used.
 |---------|---------|---------
 |`DESCRIPTION`  | The description of the expense. <br><br> It must be one or more alphanumeric words, not more than 50 characters long in total. | E.g. Typing `Conditioner` as the description indicates that the expense was made on a bottle of Conditioner.
 |`IS_FIXED`| The indication of whether an expense is fixed. <br> <br> It must be in the format of `y` or `n`. <br><br> *Note: A fixed expense is an expense that recurs monthly. For example, the monthly air-conditioning bill is a fixed expense as it recurs every month, while a box of tissues is a one-time expense and should not be indicated as fixed.* | E.g. Typing `y` would mean the expense is fixed. <br>You only have to add a fixed expense to the tracker once, as Homerce will automatically record the same expense for you every month. <br> <br> E.g. Typing `n` would mean the expense is not fixed.
-|`VALUE` | The value refers to the monetary value of the expense. <br> <br> It must consist only of numeric characters and have up to two decimal places. | E.g. Typing `10.00` would mean the expense costs $10.00.
+|`VALUE` | The value refers to the monetary value of the expense. <br> <br> It must be a positive number above 0.00 and below 1,000,000.00 and must have two decimal places. | E.g. Typing `10.00` would mean the expense costs $10.00.
 |`DATE` | The date of the expense. <br> <br> It must be in the format of `dd-MM-yyyy`. | E.g. Typing `28-09-2020` would mean the expense was made on 28 September 2020.
 |`TAG` | The tag you want to attach to the expense. <br> <br> It must be a single alphanumeric word not more than 30 characters long. <br><br> *Note: Tags are used to categorize and organize your expenses. For example, an expense on eyelash glue can be tagged under 'lashsupplies'.<br> Tags are optional, and expenses without a tag specified will automatically be categorized under 'others'.*| E.g. Typing `equipment` would mean that the expense is tagged as an equipment.
 |`INDEX` | The index of the expense in the displayed list. <br> <br> It must be a valid index number. | E.g. Typing `2` would refer to the expense with the second index in the displayed list.
@@ -1484,7 +1484,7 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 
 |Action | Format | Examples
 |---------|---------|---------
-|**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Lash Lift d/0.5 p/38`
+|**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Lash Lift d/0.5 p/38.00`
 |**Edit** | `editsvc INDEX s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc 1 d/0.5`
 |**Delete** | `deletesvc INDEX s/SERVICE_CODE` | `deletesvc 1`
 |**Find** | `findsvc KEYWORD` | `findsvc t/lash`

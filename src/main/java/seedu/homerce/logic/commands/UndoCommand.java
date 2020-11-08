@@ -15,7 +15,9 @@ import seedu.homerce.logic.commands.expense.AddExpenseCommand;
 import seedu.homerce.logic.commands.expense.ClearExpenseCommand;
 import seedu.homerce.logic.commands.expense.DeleteExpenseCommand;
 import seedu.homerce.logic.commands.expense.EditExpenseCommand;
+import seedu.homerce.logic.commands.expense.SortExpenseCommand;
 import seedu.homerce.logic.commands.revenue.ClearRevenueCommand;
+import seedu.homerce.logic.commands.revenue.SortRevenueCommand;
 import seedu.homerce.logic.commands.service.AddServiceCommand;
 import seedu.homerce.logic.commands.service.ClearServiceCommand;
 import seedu.homerce.logic.commands.service.DeleteServiceCommand;
@@ -74,6 +76,7 @@ public class UndoCommand extends Command {
 
         } else if (isRevenueCommand(previousCommand)) {
             return RevenueListPanel.TAB_NAME;
+
         } else { // Unknown command, default switch to schedule view
             return SchedulePanel.TAB_NAME;
 
@@ -87,9 +90,14 @@ public class UndoCommand extends Command {
 
     }
 
+    private boolean isRevenueCommand(Command command) {
+        return (command instanceof SortRevenueCommand) || (command instanceof ClearRevenueCommand);
+    }
+
     private boolean isExpenseCommand(Command command) {
         return (command instanceof AddExpenseCommand) || (command instanceof DeleteExpenseCommand)
-            || (command instanceof EditExpenseCommand) || (command instanceof ClearExpenseCommand);
+            || (command instanceof EditExpenseCommand) || (command instanceof ClearExpenseCommand)
+            || (command instanceof SortExpenseCommand);
 
     }
 
@@ -102,9 +110,5 @@ public class UndoCommand extends Command {
     private boolean isClientCommand(Command command) {
         return (command instanceof AddClientCommand) || (command instanceof DeleteClientCommand)
             || (command instanceof EditClientCommand) || (command instanceof ClearClientCommand);
-    }
-
-    private boolean isRevenueCommand(Command command) {
-        return (command instanceof ClearRevenueCommand);
     }
 }

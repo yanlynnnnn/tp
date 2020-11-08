@@ -83,7 +83,6 @@ public class ServiceManager implements ReadOnlyServiceManager {
      */
     public void setService(Service target, Service editedService) {
         requireNonNull(editedService);
-
         services.setItem(target, editedService);
     }
 
