@@ -118,13 +118,6 @@ Example:
 Let's say your client called to make an appointment.
 You can follow these instructions to add his/her appointment details into Homerce.
 
-| Appointment | |
-|---------|--------- |
-|`DATE`| 28-10-2020 |
-|`TIME`| 1300 |
-|`SERVICE_CODE`| SC001 |
-|`PHONE_NUMBER`| 83232656 |
-
 Steps:
 1. Type `addapt dt/28-10-2020 t/1300 s/SC001 p/83232656` in the *Command Box*.
 1. Press `Enter` on your keyboard.

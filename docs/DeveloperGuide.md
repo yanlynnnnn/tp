@@ -36,9 +36,10 @@ The ***Architecture Diagram*** given below explains the high-level design of the
 
 <img src="images/ArchitectureDiagram.png" width="450" />
 
+*Figure 1. Architecture Diagram of Homerce`*
 <div markdown="span" class="alert alert-primary">
 
-:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
+:bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/AY2021S1-CS2103T-W13-3/tp/tree/master/docs/diagrams) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
 
 </div>
 
@@ -46,7 +47,7 @@ The table below gives an overview of each component in Homerce. More details abo
 
 | Component | Overview |
 |-----------|----------|
-|**`Main`**| Has two classes called [`Main`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java) and [`MainApp`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java). <br> It is responsible for: <br> 1. At app launch: Initializes the components in the correct sequence, and connects them up with each other. <br> 2. At shut down: Shuts down the components and invokes cleanup methods where necessary.|
+|**`Main`**| Has two classes called [`Main`](https://github.com/AY2021S1-CS2103T-W13-3/tp/blob/master/src/main/java/seedu/homerce/Main.java) and [`MainApp`](https://github.com/AY2021S1-CS2103T-W13-3/tp/blob/master/src/main/java/seedu/homerce/MainApp.java). <br> It is responsible for: <br> 1. At app launch: Initializes the components in the correct sequence, and connects them up with each other. <br> 2. At shut down: Shuts down the components and invokes cleanup methods where necessary.|
 |**`Commons`**|Represents a collection of classes used by multiple other components.|
 |**`UI`**|The UI of the App.|
 |**`Logic`**|The command executor.|
@@ -63,18 +64,22 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
 
+*Figure 2. Interactions between components for the `deleteexp 1` command*
+
+
 The sections below give more details of each component.
 
 ### 3.2 UI Component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
+*Figure 3. Structure of the `Ui` component*
 
 **API** :
-[`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
+[`Ui.java`](https://github.com/AY2021S1-CS2103T-W13-3/tp/blob/master/src/main/java/seedu/homerce/ui/Ui.java)
 
 The UI consists of a `MainWindow` that is made up of parts e.g.`CommandBox`, `ResultDisplay`, `StatusBarFooter` etc. All these, including the `MainWindow`, inherit from the abstract `UiPart` class.
 
-The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml)
+The `UI` component uses JavaFx UI framework. The layout of these UI parts are defined in matching `.fxml` files that are in the `src/main/resources/view` folder. For example, the layout of the [`MainWindow`](https://github.com/AY2021S1-CS2103T-W13-3/tp/blob/master/src/main/java/seedu/homerce/ui/MainWindow.java) is specified in [`MainWindow.fxml`](https://github.com/AY2021S1-CS2103T-W13-3/tp/blob/master/src/main/resources/view/MainWindow.fxml)
 
 The `UI` component,
 
@@ -84,9 +89,10 @@ The `UI` component,
 ### 3.3 Logic Component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
+*Figure 4. Structure of `Logic` component*
 
 **API** :
-[`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
+[`Logic.java`](https://github.com/AY2021S1-CS2103T-W13-3/tp/blob/master/src/main/java/seedu/homerce/logic/Logic.java)
 
 1. `Logic` uses the `HomerceParser` class to parse the user command.
 1. This results in a `Command` object which is executed by the `LogicManager`.
@@ -104,8 +110,9 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 ### 3.4 Model Component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
+*Figure 5. Structure of the `Model` component*
 
-**API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
+**API** : [`Model.java`](https://github.com/AY2021S1-CS2103T-W13-3/tp/blob/master/src/main/java/seedu/homerce/model/Model.java)
 
 The `Model`,
 
@@ -116,16 +123,18 @@ The `Model`,
 
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `Homerce`, which `Client` references. This allows `Homerce` to only require one `Tag` object per unique `Tag`, instead of each `Client` needing their own `Tag` object.<br>
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
 </div>
 
+![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
+*Figure 6. Alternative structure of the `Model` component*
 
 ### 3.5 Storage Component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
+*Figure 7. Structure of the `Storage` component*
 
-**API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
+**API** : [`Storage.java`](https://github.com/AY2021S1-CS2103T-W13-3/tp/blob/master/src/main/java/seedu/homerce/storage/Storage.java)
 
 The `Storage` component,
 * can save `UserPref` objects in json format and read it back.
@@ -186,7 +195,7 @@ The following class diagram models the structure of the `ListManager`.
 
 ![Class diagram for list manager](images/ListManagerClassDiagram.png) 
 
-*Figure 1. Structure of `ListManager`*
+*Figure 8. Structure of `ListManager`*
 
 #### 4.1.3 Design Consideration 
 
@@ -241,7 +250,7 @@ The following class diagram models the structure of the `ListTracker`.
 
 ![Class diagram for list tracker](images/ListTrackerClassDiagram.png)
 
-*Figure 2. Structure of `ListTracker`*
+*Figure 9. Structure of `ListTracker`*
 
 #### 4.2.3 Design Consideration 
 
@@ -286,7 +295,7 @@ In this section, we will use the following Activity Diagram to outline the delet
 
 ![Activity diagram for deleting of client](images/DeleteClientActivityDiagram.png)
 
-*Figure 3. Workflow of a `deletecli` command*
+*Figure 10. Workflow of a `deletecli` command*
 
 When the user enters the `deletecli` command to delete a client from the client list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `DeleteClientCommand`, Homerce will access the client manager
@@ -304,13 +313,13 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for cliennt manager delete client](images/DeleteClientSequenceDiagram.png)
 
-*Figure 4. Execution of an `deletecli` command*
+*Figure 11. Execution of an `deletecli` command*
 
 In this section, we will use the following Activity Diagram to outline the filtering of the list when the `findcli` command of the client manager is executed.
 
 ![Activity diagram for client manager find client](images/FindClientActivityDiagram.png)
 
-*Figure 5. Workflow of a `findcli` command*
+*Figure 12. Workflow of a `findcli` command*
 
 When the user enters the `findcli` command to find the client in the client list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `FindClientCommand`, Homerce will access the client manager
@@ -326,7 +335,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for findcli command](images/FindClientSequenceDiagram.png)
 
-*Figure 6. Execution of an `findcli` command*
+*Figure 13. Execution of an `findcli` command*
 
 #### 4.3.3 Design Consideration 
 **Aspect: DeleteClientCommand implementation**
@@ -370,7 +379,7 @@ In this section, we will use the following Activity Diagram to outline the gener
 
 ![Activity diagram for service manager addsvc command](images/service/AddServiceActivityDiagram.png)
 
-*Figure 7. Workflow of a `addsvc` command*
+*Figure 14. Workflow of a `addsvc` command*
 
 When the user enters the `addsvc` command to add a new service, the user input command undergoes the same command parsing as described in 
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `AddServiceCommand`, Homerce will check the existing service codes from the
@@ -392,7 +401,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for addsvc command](images/service/AddServiceSequenceDiagram.png)
 
-*Figure 8. Execution of an `addsvc` command*
+*Figure 15. Execution of an `addsvc` command*
 
 #### 4.4.3 Design Consideration
 
@@ -435,7 +444,7 @@ In this section, we will use the following Activity Diagram to outline what happ
 
 ![Activity diagram for appointment manager done command](images/DoneAppointmentActivityDiagram.png)
 
-*Figure 9. Workflow of a `done` command*
+*Figure 16. Workflow of a `done` command*
 
 When the user enters the `done` command to mark an appointment in the list as done, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `DoneAppointmentCommand`, Homerce will access the appointment manager to
@@ -457,7 +466,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for done command](images/DoneAppointmentSequenceDiagram.png)
 
-*Figure 10. Execution of an `done` command*
+*Figure 17. Execution of an `done` command*
 
 #### 4.5.3 Design Consideration
 **Aspect: Revenue entries are created and deleted via `DoneAppointmentCommand` and `UnDoneAppointmentCommand`**
@@ -502,7 +511,7 @@ In this section, we will use the following Activity Diagram to outline the sorti
 
 ![Activity diagram for revenue_tracker sortrev command](images/revenue/SortRevenueActivityDiagram.png)
 
-*Figure 11. Workflow of a `sortrev` command*
+*Figure 18. Workflow of a `sortrev` command*
 
 When the user enters the `sortrev` command to sort the revenue list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `SortRevenueCommand`, Homerce will access the revenue tracker
@@ -522,7 +531,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for sortrev command](images/revenue/SortRevenueSD.png)
 
-*Figure 12. Execution of an `sortrev` command*
+*Figure 19. Execution of an `sortrev` command*
 
 <br>
 
@@ -532,7 +541,7 @@ In this section, we will use the following Activity Diagram to outline the clear
 
 ![Activity diagram for revenue_tracker clearrev command](images/revenue/ClearRevenueActivityDiagram.png)
 
-*Figure 13. Workflow of a `clearrev` command*
+*Figure 20. Workflow of a `clearrev` command*
 
 When the user enters the `clearrev` command to sort the revenue list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `ClearRevenueCommand`, Homerce will access the revenue tracker
@@ -549,7 +558,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for clearrev command](images/revenue/ClearRevenueSD.png)
 
-*Figure 14. Execution of an `clearrev` command*
+*Figure 21. Execution of an `clearrev` command*
 
 #### 4.6.3 Design Consideration
 
@@ -565,19 +574,6 @@ The following Sequence Diagram summarises the aforementioned steps.
 Reason for choosing option 2:
 * The effort needed to implement option 1 is too great to justify the improvements in performance.
 * Use of well-tested libraries like `FXCollections` lowers the chance making mistakes during the implementation of this feature. 
-
-**Clear Revenue**
-
-**Aspect: Clear all revenue entries from revenue list when `clearrev` is called**
-
-|              | **Pros**   | **Cons** |
-| -------------|-------------| -----|
-| **Option 1** <br> Retrieve the revenue list and run build it arraylist clear method | Convenient usage of built-in Java method. | Performance might be slow when there is a huge data set. |
-| **Option 2 (current choice)** <br> Creates a new empty list to replace the current list | Convenient usage of`NonUniqueList` method. Implementation effort is minimum. | A totally new object have to be created. |
-
-Reason for choosing option 2:
-* The effort needed to implement option 1 is too great.
-* Performance will be improved when having big data set.
 
 ### 4.7 Expense Tracker
 
@@ -599,7 +595,7 @@ In this section, we will use the following Activity Diagram to outline the sorti
 
 ![Activity diagram for expense_tracker sortexp command](images/SortExpenseActivityDiagram.png)
 
-*Figure 15. Workflow of a `sortexp` command*
+*Figure 22. Workflow of a `sortexp` command*
 
 When the user enters the `sortexp` command to sort the expense list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `SortExpenseCommand`, Homerce will access the expense tracker
@@ -619,7 +615,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for sortexp command](images/SortExpenseSD.png)
 
-*Figure 16. Execution of an `sortexp` command*
+*Figure 23. Execution of an `sortexp` command*
 
 #### 4.7.3 Design Consideration 
 
@@ -668,7 +664,7 @@ In this section, we will outline the `breakdownfinance` command using the follow
 
 ![Activity diagram of BreakdownFinance](images/BreakdownFinanceActivityDiagram.png)
 
-*Figure 17. Workflow of a `breakdownfinance` command*
+*Figure 24. Workflow of a `breakdownfinance` command*
 
 When the user enters the `breakdownfinance` command to view the monthly breakdown, the user input command undergoes the same command parsing as described in 
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `breakdownfinance`, 
@@ -684,7 +680,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram breakdownfiance](images/BreakdownFinanceSequenceDiagram.png)
 
-*Figure 18. Execution of an `breakdownfinance` command*
+*Figure 25. Execution of an `breakdownfinance` command*
 
 #### 4.8.3 Design Consideration
 
@@ -727,7 +723,7 @@ causing the state initial state of the `Model` prior to the execution of `delete
 
 ![Undo State 0](images/UndoState0.png)
 
-*Figure 19. State HistoryManager after `deletesvc 5` command*
+*Figure 26. State HistoryManager after `deletesvc 5` command*
 
 Step 3: The user executes `deletecli 5` command to delete the 5th person in Homerce's client list. When the `LogicManager`
 executes the `CommandResult` from `DeleteClientCommand`, `LogicManager#execute()` will call `HistoryManager#addToHistory()`,
@@ -736,7 +732,7 @@ causing the state initial state of the `Model` prior to the execution of `delete
 
 ![Undo State 1](images/UndoState1.png)
 
-*Figure 20. State HistoryManager after `deletecli 5` command*
+*Figure 27. State HistoryManager after `deletecli 5` command*
 
 Step 4: The user now decides that deleting the client was a mistake, and decides to undo that action by executing the `undo`
 command. The `undo` command will call `HistoryManager#getPreviousHistory()`, which will return the `History` object which stores
@@ -745,7 +741,7 @@ The current state of Homerce's `Model` will be updated to the state of the `Mode
 
 ![Undo State 2](images/UndoState2.png)
 
-*Figure 21. State HistoryManager after `undo` command*
+*Figure 28. State HistoryManager after `undo` command*
 
 #### 4.8.3 Design Consideration
 
@@ -829,36 +825,67 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ## Appendix C: Use Cases
 
-(For all use cases below, the **System** is `Homerce` and the **Actor** is the `user`, unless specified otherwise)
-
-### Services Management
+### Client Management
 
 <pre>
-UC001: Add a Service
-Add a service provided by the business into Homerce.
+UC001: Edit a Client's Details
+Edit the details of an existing client.
 
 <b>System: Homerce</b>
 
 <b>Actor: User</b>
 
-<b>Preconditions: Appointment list must exist.</b>
+<b>Preconditions: Client exists in client list.</b>
 
-<b>Guarantees: A new service will be added to the service list upon successful command.</b>
+<b>Guarantees: Updated client list with new client details.</b>
 
 <b>MSS</b>
-1. User adds a service by providing details.
-2. Homerce adds the service to the service list.
-3. Homerce displays the updated list and a successful message.
+1. User requests to list all clients.
+2. Homerce shows a list of clients.
+3. User edits an existing client's details by providing the updated details.
+4. Homerce updates the details of the selected client.
+5. Homerce updates the client list.
+6. Homerce updates the client's details in the appointment manager.
+7. Homerce displays the updated list and a successful message.
 Use case ends.
 
 <b>Extensions</b>
-* 1a. Incomplete details provided.
-  * 1a1. Homerce displays an error message.
-  Use case resumes at step 1.
+3a. Invalid index provided.
+  3a1. Homerce displays an error message.
+  Use case ends.
+
+3b. Invalid details provided.
+  3b1. Homerce displays an error message.
+  Use case ends.
 </pre>
 <br>
 <pre>
-UC002: Edit a Service
+UC002: Clear Clients
+Clear all clients in the client list.
+
+<b>System: Homerce</b>
+
+<b>Actor: User</b>
+
+<b>Preconditions: Client list must exist.</b>
+
+<b>Guarantees: An empty client list.</b>
+
+<b>MSS</b>
+1. User requests to clear the list.
+2. Homerce displays an empty list and a successful message.
+Use case ends.
+
+<b>Extensions</b>
+1a. Service is in use by one or more upcoming appointment.
+    1a1. Homerce displays an error message.
+    Use case ends.
+</pre>
+
+### Services Management
+
+<pre>
+UC003: Edit a Service's Details
 Edit the details of an existing service.
 
 <b>System: Homerce</b>
@@ -872,24 +899,24 @@ Edit the details of an existing service.
 <b>MSS</b>
 1. User requests to list all services.
 2. Homerce shows a list of services.
-3. User edits an existing service by providing the details.
+3. User edits an existing service's details by providing the updated details.
 4. Homerce updates the details of the selected service.
 5. Homerce updates the service list.
 6. Homerce displays the updated list and a successful message.
 Use case ends.
 
 <b>Extensions</b>
-* 3a. Invalid index provided.
-  * 3a1. Homerce displays an error message.
-  Use case resumes at step 1.
+3a. Invalid index provided.
+  3a1. Homerce displays an error message.
+  Use case ends.
 
-* 3b. Invalid details provided.
-  * 3b1. Homerce displays an error message.
-  Use case resumes at step 1.
+3b. Invalid details provided.
+  3b1. Homerce displays an error message.
+  Use case ends.
 </pre>
 <br>
 <pre>
-UC003: Delete a Service
+UC004: Delete a Service
 Delete the selected service from the service list.
 
 <b>System: Homerce</b>
@@ -910,404 +937,19 @@ Delete the selected service from the service list.
 Use case ends.
 
 <b>Extensions</b>
-* 3a. Invalid index provided.
-  * 3a1. Homerce displays an error message.
-  Use case resumes at step 1.
+3a. Invalid index provided.
+  3a1. Homerce displays an error message.
+  Use case ends.
 
-* 3b. Service is in use by one or more upcoming appointment.
-    * 3b1. Homerce displays an error message.
-    Use case resumes at step 1.
-</pre>
-<br>
-<pre>
-UC004: Find a Service
-Find a service in the service list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Service exists in service list.</b>
-
-<b>Guarantees: Display all services in the service list that matches the search value.</b>
-
-<b>MSS</b>
-1. User requests to list all services that match the search value.
-2. Homerce searches for services that match search value.
-3. Homerce shows a list of all services that match the search value.
-4. Homerce displays a message stating the amount of services listed.
-Use case ends.
-
-<b>Extensions</b>
-* 2a. No service matches the search value.
-  * 2a1. Homerce displays an empty list.
-  Use case resumes at step 4.
-</pre>
-<br>
-<pre>
-UC005: List Services
-List all the services in the service list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Service exists in service list.</b>
-
-<b>Guarantees: All services in the service list will be displayed.</b>
-
-<b>MSS</b>
-1. User requests to list all services.
-2. Homerce displays all services in the service list.
-3. Homerce displays a successful listed message.
-Use case ends.
-
-<b>Extensions</b>
-* 1a. No service in service list.
-  * 1a1. Homerce displays an empty list.
-  Use case resumes at step 3.
-</pre>
-<br>
-<pre>
-UC006: Clear Services
-Clear all services in the service list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Service list must exist.</b>
-
-<b>Guarantees: An empty service list.</b>
-
-<b>MSS</b>
-1. User requests to clear the list.
-2. Homerce displays an empty list and a successful message.
-Use case ends.
-
-<b>Extensions</b>
-* 1a. Service is in use by one or more upcoming appointment.
-    * 1a1. Homerce displays an error message.
-    Use case resumes at step 1.
-</pre>
-
-### Client Management
-
-<pre>
-UC007: Add a Client
-Add a client into Homerce.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Client list must exist.</b>
-
-<b>Guarantees: A new client will be added to the client list upon successful command.</b>
-
-<b>MSS</b>
-1. User adds a client by providing details.
-2. Homerce adds the client to the client list.
-3. Homerce displays the updated list and a successful message.
-Use case ends.
-
-<b>Extensions</b>
-* 1a. Incomplete details provided.
-  * 1a1. Homerce displays an error message.
-  Use case resumes at step 1.
-</pre>
-<br>
-<pre>
-UC008: Edit a Client's Details
-Edit the details of an existing client.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Client exists in client list.</b>
-
-<b>Guarantees: Updated client list with new client details.</b>
-
-<b>MSS</b>
-1. User requests to list all clients.
-2. Homerce shows a list of clients.
-3. User edits an existing client's details by providing the updated details.
-4. Homerce updates the details of the selected client.
-5. Homerce updates the client list.
-6. Homerce displays the updated list and a successful message.
-Use case ends.
-
-<b>Extensions</b>
-* 3a. Invalid index provided.
-  * 3a1. Homerce displays an error message.
-  Use case resumes at step 1.
-
-* 3b. Invalid details provided.
-  * 3b1. Homerce displays an error message.
-  Use case resumes at step 1.
-</pre>
-<br>
-<pre>
-UC009: Delete a Client
-Delete the selected client from the client list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Client exists in client list.</b>
-
-<b>Guarantees: Updated client list with client specified by user deleted.</b>
-
-<b>MSS</b>
-1. User requests to list all clients.
-2. Homerce shows a list of clients.
-3. User requests to delete a specific clients.
-4. Homerce deletes a client.
-5. Homerce displays the updated list.
-6. Homerce displays a successful message.
-Use case ends.
-
-<b>Extensions</b>
-* 3a. Invalid index provided.
-  * 3a1. Homerce displays an error message.
-  Use case resumes at step 1.
-
-* 3b. Client is in use by one or more upcoming appointment.
-   * 3b1. Homerce displays an error message.
-   Use case resumes at step 1.
-</pre>
-<br>
-<pre>
-UC010: Find a Client
-Find a client in the client list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Client exists in client list.</b>
-
-<b>Guarantees: Display all clients in the client list that matches the search value.</b>
-
-<b>MSS</b>
-1. User requests to list all clients that match the search value.
-2. Homerce searches for clients that match search value.
-3. Homerce shows a list of all clients that match the search value.
-4. Homerce displays a message stating the amount of clients listed.
-Use case ends.
-
-<b>Extensions</b>
-* 2a. No client matches the search value.
-  * 2a1. Homerce displays an empty list.
-  Use case resumes at step 4.
-</pre>
-<br>
-<pre>
-UC011: List Clients
-List all the clients in the client list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Clients exists in client list.</b>
-
-<b>Guarantees: All clients in the client list will be displayed.</b>
-
-<b>MSS</b>
-1. User requests to list all clients.
-2. Homerce displays all clients in the client list.
-3. Homerce displays a successful listed message.
-Use case ends.
-
-<b>Extensions</b>
-* 1a. No client in client list.
-  * 1a1. Homerce displays an empty list.
-  Use case resumes at step 3.
-</pre>
-<br>
-<pre>
-UC012: Clear Clients
-Clear all clients in the client list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Client list must exist.</b>
-
-<b>Guarantees: An empty client list.</b>
-
-<b>MSS</b>
-1. User requests to clear the list.
-2. Homerce displays an empty list and a successful message.
-Use case ends.
-
-<b>Extensions</b>
-* 1a. Service is in use by one or more upcoming appointment.
-    * 1a1. Homerce displays an error message.
-    Use case resumes at step 1.
+3b. Service is in use by one or more upcoming appointment.
+    3b1. Homerce displays an error message.
+    Use case ends.
 </pre>
 
 ### Appointment Management
 
 <pre>
-UC013: Add an Appointment
-Schedule an appointment into Homerce.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Appointment list must exist.</b>
-
-<b>Guarantees: A new appointment will be added to the appointment list upon successful command.</b>
-
-<b>MSS</b>
-1. User adds an appointment by providing details.
-2. Homerce adds the appointment to the appointment list.
-3. Homerce displays the updated list and a successful message.
-Use case ends.
-
-<b>Extensions</b>
-* 1a. Incomplete details provided.
-  * 1a1. Homerce displays an error message.
-  Use case resumes at step 1.
-</pre>
-<br>
-<pre>
-UC014: Edit an Appointment Details
-Edit the details of an existing appointment.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Appointment exists in appointment list.</b>
-
-<b>Guarantees: Updated appointment list with new appointment details.</b>
-
-<b>MSS</b>
-1. User requests to list all appointments.
-2. Homerce shows a list of appointments.
-3. User edits an existing appointment details by providing the updated details.
-4. Homerce updates the details of the selected appointment.
-5. Homerce updates the appointment list.
-6. Homerce displays the updated list and a successful message.
-Use case ends.
-
-<b>Extensions</b>
-* 3a. Invalid index provided.
-  * 3a1. Homerce displays an error message.
-  Use case resumes at step 1.
-
-* 3b. Invalid details provided.
-  * 3b1. Homerce displays an error message.
-  Use case resumes at step 1.
-  
-* 3c. Appointment is marked as done.
-  * 3c1. Homerce displays an error message.
-  Use case resumes at step 1.
-</pre>
-<br>
-<pre>
-UC015: Delete an Appointment
-Delete the selected appointment from the appointment list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Appointment exists in appointment list.</b>
-
-<b>Guarantees: Updated appointment list with appointment specified by user deleted.</b>
-
-<b>MSS</b>
-1. User requests to list all appointments.
-2. Homerce shows a list of appointments.
-3. User requests to delete a specific appointments.
-4. Homerce deletes an appointment.
-5. Homerce displays the updated list.
-6. Homerce displays a successful message.
-Use case ends.
-
-<b>Extensions</b>
-* 3a. Invalid index provided.
-  * 3a1. Homerce displays an error message.
-  Use case resumes at step 1.
-</pre>
-<br>
-<pre>
-UC016: Find an Appointment
-Find an appointment in the appointment list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Appointment exists in appointment list.</b>
-
-<b>Guarantees: Display all appointments in the appointment list that matches the search value.</b>
-
-<b>MSS</b>
-1. User requests to list all appointments that match the search value.
-2. Homerce searches for appointments that match search value.
-3. Homerce shows a list of all appointments that match the search value.
-4. Homerce displays a message stating the amount of appointments listed.
-Use case ends.
-
-<b>Extensions</b>
-* 2a. No appointment matches the search value.
-  * 2a1. Homerce displays an empty list.
-  Use case resumes at step 4.
-</pre>
-<br>
-<pre>
-UC017: List Appointments
-List all the appointments in the appointment list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Appointments exists in appointment list.</b>
-
-<b>Guarantees: All appointments in the appointment list will be displayed.</b>
-
-<b>MSS</b>
-1. User requests to list all appointments.
-2. Homerce displays all appointments in the appointment list.
-3. Homerce displays a successful listed message.
-Use case ends.
-
-<b>Extensions</b>
-* 1a. No appointment in appointment list.
-  * 1a1. Homerce displays an empty list.
-  Use case resumes at step 3.
-</pre>
-<br>
-<pre>
-UC018: Clear Appointments
-Clear all appointments in the appointment list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Appointment list must exist.</b>
-
-<b>Guarantees: An empty appointment list.</b>
-
-<b>MSS</b>
-1. User requests to clear the list.
-2. Homerce displays an empty list and a successful message.
-Use case ends.
-</pre>
-<br>
-<pre>
-UC019: Appointment Done
+UC005: Appointment Done
 Indicate that the appointment have been done.
 
 <b>System: Homerce</b>
@@ -1328,13 +970,13 @@ Indicate that the appointment have been done.
 7. Homerce displays a successful listed message.
 
 <b>Extensions</b>
-* 3a. Invalid index provided.
-  * 3a1. Homerce displays an error message.
-  Use case resumes at step 1.
+3a. Invalid index provided.
+  3a1. Homerce displays an error message.
+  Use case ends.
 </pre>
 <br>
 <pre>  
-UC020: Appointment Undone
+UC006: Appointment Undone
 Indicate that the appointment has not been completed.
  
 <b>System: Homerce</b>
@@ -1355,170 +997,19 @@ Indicate that the appointment has not been completed.
 7. Homerce displays a successful listed message.
   
 <b>Extensions</b>
-* 3a. Invalid index provided.
-  * 3a1. Homerce displays an error message.
-  Use case resumes at step 1.
+3a. Invalid index provided.
+  3a1. Homerce displays an error message.
+  Use case ends.
   
-* 5a. No revenue matches found.
-  * 5a1. Homerce displays an error message.
+5a. No revenue matches found.
+  a1. Homerce displays an error message.
   Use case resumes at step 6.
-</pre>
-
-### Expense Tracker
-
-<pre>
-UC021: Add an Expense
-Add an expense incurred by the business into Homerce.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Expense list must exist.</b>
-
-<b>Guarantees: A new expense will be added to the expense list upon successful command.</b>
-
-<b>MSS</b>
-1. User adds an expense by providing details.
-2. Homerce adds the expense to the expense list.
-3. Homerce displays the updated list and a successful message.
-Use case ends.
-
-<b>Extensions</b>
-* 1a. Incomplete details provided.
-  * 1a1. Homerce displays an error message.
-  Use case resumes at step 1.
-</pre>
-<br>
-<pre>
-UC022: Edit an Expense
-Edit the details of an existing expense.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Expense exists in expense list.</b>
-
-<b>Guarantees: Updated expense list with new expense details.</b>
-
-<b>MSS</b>
-1. User requests to list all expenses.
-2. Homerce shows a list of expenses.
-3. User edits an existing expense by providing the details.
-4. Homerce updates the details of the selected expense.
-5. Homerce updates the expense list.
-6. Homerce displays the updated list and a successful message.
-Use case ends.
-
-<b>Extensions</b>
-* 3a. Invalid index provided.
-  * 3a1. Homerce displays an error message.
-  Use case resumes at step 1.
-
-* 3b. Invalid details provided.
-  * 3b1. Homerce displays an error message.
-  Use case resumes at step 1.
-</pre>
-<br>
-<pre>
-UC023: Delete an Expense
-Delete the selected expense from the expense list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Expense exists in expense list.</b>
-
-<b>Guarantees: Updated expense list with expense specified by user deleted.</b>
-
-<b>MSS</b>
-1. User requests to list all expenses.
-2. Homerce shows a list of expenses.
-3. User requests to delete a specific expenses.
-4. Homerce deletes a expense.
-5. Homerce displays the updated list.
-6. Homerce displays a successful message.
-Use case ends.
-
-<b>Extensions</b>
-* 3a. Invalid index provided.
-  * 3a1. Homerce displays an error message.
-  Use case resumes at step 1.
-</pre>
-<br>
-<pre>
-UC024: Find an Expense
-Find an expense in the expense list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Expense exists in expense list.</b>
-
-<b>Guarantees: Display all expenses in the expense list that matches the search value.</b>
-
-<b>MSS</b>
-1. User requests to list all expenses that match the search value.
-2. Homerce searches for expenses that match search value.
-3. Homerce shows a list of all expenses that match the search value.
-4. Homerce displays a message stating the amount of expenses listed.
-Use case ends.
-
-<b>Extensions</b>
-* 2a. No expense matches the search value.
-  * 2a1. Homerce displays an empty list.
-  Use case resumes at step 4.
-</pre>
-<br>
-<pre>
-UC025: List Expenses
-List all the expenses in the expense list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Expense exists in expense list.</b>
-
-<b>Guarantees: All expenses in the expense list will be displayed.</b>
-
-<b>MSS</b>
-1. User requests to list all expenses.
-2. Homerce displays all expenses in the expense list.
-3. Homerce displays a successful listed message.
-Use case ends.
-
-<b>Extensions</b>
-* 1a. No expense in revenue list.
-  * 1a1. Homerce displays an empty list.
-  Use case resumes at step 3.
-</pre>
-<br>
-<pre>
-UC026: Clear Expenses
-Clear all expenses in the expense list.
-
-<b>System: Homerce</b>
-
-<b>Actor: User</b>
-
-<b>Preconditions: Expense list must exist.</b>
-
-<b>Guarantees: An empty expense list.</b>
-
-<b>MSS</b>
-1. User requests to clear the list.
-2. Homerce displays an empty list and a successful message.
-Use case ends.
 </pre>
 
 ### Revenue Tracker
 
 <pre>
-UC027: Add a Revenue
+UC007: Add a Revenue
 Add a revenue earned by the business into Homerce.
 
 <b>System: Homerce</b>
@@ -1537,7 +1028,7 @@ Use case ends.
 </pre>
 <br>
 <pre>
-UC028: Delete an Revenue
+UC008: Delete an Revenue
 Delete the selected revenue from the revenue list.
 
 <b>System: Homerce</b>
@@ -1553,10 +1044,14 @@ Delete the selected revenue from the revenue list.
 2. Homerce remove the revenue generated from appointment to the revenue list.
 3. Homerce displays a successful message.
 Use case ends.
+
+<b>Extensions</b>
+2a. The revenue to be deleted does not exist.
+    2a1. No deletion will occur.
 </pre>
 <br>
 <pre>
-UC029: Find a Revenue
+UC009: Find a Revenue
 Find a revenue in the revenue list.
 
 <b>System: Homerce</b>
@@ -1575,56 +1070,89 @@ Find a revenue in the revenue list.
 Use case ends.
 
 <b>Extensions</b>
-* 2a. No revenue matches the search value.
-  * 2a1. Homerce displays an empty list.
+2a. No revenue matches the search value.
+  2a1. Homerce displays an empty list.
   Use case resumes at step 4.
 </pre>
-<br>
+
+### Expense Tracker
+
 <pre>
-UC030: List Revenues
-List all the revenues in the revenue list.
+UC010: Add an Expense
+Add an expense incurred by the business into Homerce.
 
 <b>System: Homerce</b>
 
 <b>Actor: User</b>
 
-<b>Preconditions: Revenue exists in revenue list.</b>
+<b>Preconditions: Expense list must exist.</b>
 
-<b>Guarantees: All revenues in the revenue list will be displayed.</b>
+<b>Guarantees: A new expense will be added to the expense list upon successful command.</b>
 
 <b>MSS</b>
-1. User requests to list all revenues.
-2. Homerce displays all revenues in the revenue list.
+1. User adds an expense by providing details.
+2. Homerce adds the expense to the expense list.
+3. Homerce displays the updated list and a successful message.
+Use case ends.
+
+<b>Extensions</b>
+1a. Incomplete details provided.
+  1a1. Homerce displays an error message.
+  Use case resumes at step 1.
+</pre>
+<br>
+<pre>
+UC011: List Expenses
+List all the expenses in the expense list.
+
+<b>System: Homerce</b>
+
+<b>Actor: User</b>
+
+<b>Preconditions: Expense exists in expense list.</b>
+
+<b>Guarantees: All expenses in the expense list will be displayed.</b>
+
+<b>MSS</b>
+1. User requests to list all expenses.
+2. Homerce displays all expenses in the expense list.
 3. Homerce displays a successful listed message.
 Use case ends.
 
 <b>Extensions</b>
-* 1a. No revenue in revenue list.
-  * 1a1. Homerce displays an empty list.
+1a. No expense in revenue list.
+  1a1. Homerce displays an empty list.
   Use case resumes at step 3.
 </pre>
 <br>
 <pre>
-UC031: Clear Revenues
-Clear all revenues in the revenue list.
+UC012: Sort Expenses
+List all the expenses sorted by value in the expense list.
 
 <b>System: Homerce</b>
 
 <b>Actor: User</b>
 
-<b>Preconditions: Revenue list must exist.</b>
+<b>Preconditions: Expense exists in expense list.</b>
 
-<b>Guarantees: An empty revenue list.</b>
+<b>Guarantees: All expenses in the expense list will be displayed.</b>
 
 <b>MSS</b>
-1. User requests to clear the list.
-2. Homerce displays an empty list and a successful message.
+1. User requests to sort all expenses by descending or ascending order.
+2. Homerce sorts the entries by value based on the order.
+3. Homerce displays all expenses in the expense list.
+4. Homerce displays a successful listed message.
 Use case ends.
+
+<b>Extensions</b>
+1a. No expense in revenue list.
+  1a1. Homerce displays an empty list.
+  Use case resumes at step 3.
 </pre>
 
 ### Others
 <pre>
-UC032: View appointment schedule
+UC013: View appointment schedule
 View the schedule of appointments for the current week.
 
 <b>System: Homerce</b>
@@ -1642,7 +1170,7 @@ Use case ends.
 </pre>
 <br>
 <pre>
-UC033: Breakdown finances
+UC014: Breakdown finances
 Creates a breakdown of revenues, expenses and profit for a given month of a year.
 
 <b>System: Homerce</b>
@@ -1700,46 +1228,232 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+   1. Download the jar file and copy it into an empty folder.
    
    1. If you are using Windows, ensure display settings is set to 100% to prevent GUI scaling issues.
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Double-click the jar file.
+        1. Expected: Shows the GUI with a set of sample appointments. The window size may not be optimum.
 
 1. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+   1. Re-launch the app by double-clicking the jar file.
+        1. Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+### Commands for List Managers and List Trackers
 
-### Deleting a client
+#### Add/Delete a Client
 
-1. Deleting a client while all clients are being shown
+1. Adding a new client to the Client Manager
 
-   1. Prerequisites: List all clients using the `list` command. Multiple clients in the list.
+    1. Prerequisites: Arguments are valid and compulsory parameters are provided. No duplicate client is allowed in the Client Manager.
+    
+    1. Test case: `addcli n/John p/91234567 e/john@gmail.com t/new`
+        1. Expected: Adds a new client with the name `John`, phone number `91234567`, email `john@gmail.com` and tag `new`. 
+        
+    1. Test case: `addcli n/John`
+        1. Expected: No client is added. Error message shown in result display.
+        
+    1. Other incorrect formats to try: `addcli p/91234567`, `addcli e/john@gmail.com`, `addcli t/new`.
+        1. Expected: Similar to previous.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+1. Deleting a client from the Client Manager
 
-   1. Test case: `delete 0`<br>
-      Expected: No client is deleted. Error details shown in the status message. Status bar remains the same.
+   1. Prerequisites: List all clients using the `list` command, such that there are multiple clients in the list.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+   1. Test case: `delete 1`
+        1. Expected: First contact is deleted from the list. Details of the deleted contact shown in the result display.
 
-1. _{ more test cases …​ }_
+   1. Test case: `delete 0`
+        1. Expected: No client is deleted. Error message shown in the result display.
 
-### Saving data
+   1. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size)
+        1. Expected: Similar to previous.
 
-1. Dealing with missing/corrupted data files
+#### Add a Service
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+1. Adding a new service to the Service Manager
 
-1. _{ more test cases …​ }_
+   1. Prerequisites: Arguments are valid and compulsory parameters are provided. No duplicate service is allowed in the Service Manager. The Service Manager must not have more than 1000 services.
+   
+   1. Test case: `addsvc t/Microdermabrasion du/2.0 p/68`
+        1. Expected: Adds a new service with title of `Microdermabrasion`, duration of `2.0` hours, and price of `68` dollars. A service code will be automatically generated for the service.
+        
+   1. Test case: `addsvc t/Microdermabrasion`
+        1. Expected: No service is added. Error message is shown in result display.
+        
+   1. Other incorrect formats to try: `addsvc t/Microdermabrasion du/1.3 p/68`, `addsvc t/Microdermabrasion du/1 p/68.125`, `addsvc t/Microdermabrasion`.
+        1. Expected: Similar to previous.
+    
+#### Mark an Appointment as done/undone
+
+1. Marking an appointment as done in the Appointment Tracker
+
+   1. Prerequisites: List all appointments using the `listapt` command, such that multiple appointments are in the list. The index provided is valid, and the specified appointment is currently marked as undone. 
+   
+   1. Test case: `done 1`
+        1. Expected: First appointment is marked as done. Details of the appointment shown in result display. Revenue is credited accordingly in the Revenue Tracker.
+        
+   1. Test case: `done 0`
+        1. Expected: No appointment is marked as done. Error message is shown in result display.
+        
+   1. Other incorrect formats to try: `done`, `done x` (where x is larger than the appointment list size, or x refers to an appointment that is already done)
+        1. Expected: Similar to previous.
+            
+1. Marking an appointment as undone in the Appointment Tracker
+
+   1. Prerequisites: List all appointments using the `listapt` command, such that multiple appointments are in the list. The index provided is valid, and the specified appointment is currently marked as done. 
+   
+   1. Test case: `undone 1`
+        1. Expected: First appointment is marked as undone. Details of the appointment shown in result display. Revenue is debited accordingly from the Revenue Tracker.
+        
+   1. Test case: `undone 0`
+        1. Expected: No appointment is undone. Error message is shown in result display.
+        
+   1. Other incorrect formats to try: `undone`, `undone x` (where x is larger than the appointment list size, or x refers to an appointment that is undone)
+        1. Expected: Similar to previous.
+        
+#### Sort/Find a Revenue 
+
+1. Sorting revenue in ascending order based on value in the Revenue Tracker
+
+   1. Prerequisites: List all revenues using the `listrev` command, such that multiple revenues are in the list.
+   
+   1. Test case: `sortrev asc`
+        1. Expected: Revenue list is sorted in ascending order based on value, from lowest to highest value. 
+        
+   1. Test case: `sortrev`
+        1. Expected: Revenue list is not sorted. Error message shown in result display.
+        
+1. Finding a revenue by date in the Revenue Tracker
+
+    1. Prerequisites: Arguments are valid and compulsory parameters are provided. Revenues made on the date specified exist.
+    
+    1. Test case: `findrev dt/22-10-2020`
+        1. Expected: Revenue entries made on 22 October 2020 are shown in the Revenue Tab.
+        
+    1. Test case: `findrev`
+        1. Expected: No revenue is found. Error message shown in result display.
+        
+    1. Other incorrect formats: `findrev dt/10-30-2020`, `findrev 22-10-2020`.
+        1. Expected: Similar to previous.
+        
+#### Edit an Expense
+
+1. Edit an expense in the Expense Tracker
+
+    1. Prerequisite: List all expenses using the `listexp` command, such that multiple expenses are in the list. The index provided is valid and the expense exists.
+    
+    1. Test case: `editexp 2 d/Eyelash Curler`
+        1. Expected: Edits the second expense in the list to have a description of `Eyelash Curler`.
+   
+    1. Test case: `editexp 0 d/Eyelash Curler`
+        1. Expected: No expense is edited. Error message shown in result display.
+        
+    1. Other incorrect formats: `editexp 2`, `editexp d/Eyelash Curler`, `editexp 2 Eyelash Curler`.
+        1. Expected: Similar to previous.
+        
+### Commands for Schedule Viewer and Finance Tracker
+
+#### View schedule
+
+1. View schedule for a particular week
+
+    1. Prerequisite: Compulsory parameters are provided and are valid.
+    
+    1. Test case: `schedule dt/27-11-2020`
+        1. Expected: Navigates to the weekly schedule for the week containing 27 November 2020.
+   
+    1. Test case: `schedule 27-11-2020`
+        1. Expected: No schedule is shown. Error message shown in result display.
+        
+    1. Another incorrect format: `schedule dt/20-20-2020`.
+        1. Expected: Similar to previous.
+        
+2. View schedule for the next week
+
+    1. Prerequisite: Weekly schedule currently contains 27 November 2020.
+    
+    1. Test case: `nextweek`
+        1. Expected: Navigates to the weekly schedule for the week after 27 November 2020.
+        
+#### Breakdown Finance
+
+1. Breakdown Finances for a particular month
+
+    1. Prerequisite: Compulsory parameters are provided and are valid. Expenses and Revenue exist for the month and year specified.
+    
+    1. Test case: `breakdownfinance m/10 y/2020`
+        1. Expected: Financial Breakdown Window opens and displays a breakdown of Revenue by Service, a breakdown of Expenses by Tag, and a Profit Tab.
+   
+    1. Test case: `breakdownfinance`
+        1. Expected: No window is opened. Error message shown in result display.
+        
+    1. Other incorrect formats: `breakdownfinance m/13 y/2020`, `breakdownfinance m/10`.
+        1. Expected: Similar to previous.
 
 ## Appendix G: Effort
 
-{to be added...}
+Creating **Homerce** was a challenging but fulfilling journey, and required much effort from all the team members equally. 
+This can be substantiated by our **26,000** lines of code combined, accumulated in less than 10 weeks, placing us at top 7
+in the cohort for total code contribution.
+In addition, despite the COVID-19 measures in place, we were able to maintain healthy and
+consistent communication with two meetings a week - an online meeting through Zoom on the weekends, and face-to-face meetings on weekdays.
+The hard work and commitment our team made to the project has definitely made this a memorable learning experience for all of us.
+
+### Major Enhancements
+
+**Homerce** has many major enhancements from **AB3**
+* **AB3** keeps track of Contacts in an Addressbook. Meanwhile, **Homerce** keeps track of Clients, Services, Appointments, Revenue and Expenses,
+in an all-in-one application that consolidates all the business details of a home-based salon owner. 
+* **AB3** provides basic functionality for the contact list. Meanwhile, **Homerce** has additional features for extra functionality, such as 
+the ability to sort revenue and expenses based on value, the ability to mark appointments as done or undone, the auto-generation of a service code
+upon the addition of a service, auto-duplication of fixed expenses, the auto-crediting of revenue upon the completion of an appointment, an undo feature, etc. These
+features were all designed with the user's needs in mind, which allowed us to design a platform that caters and integrates well with our user's business needs.
+* **AB3** has a basic UI, which displays the list of contacts in the Addressbook. Meanwhile,**Homerce** has a Schedule View for all its appointments
+for visualization of the user's appointment schedule, as well as a Financial Breakdown window for visualization of the user's business finances.
+In addition, the GUI of Homerce was customized aesthetically to enhance user experience.
+
+### Challenges
+We faced many challenges in the development of **Homerce**. The following points describe some of the challenges that we faced, and how we were able to solve them.
+
+**Challenge 1** <br>
+The first challenge we faced was the extensive amount of code needed to implement the features in Homerce.
+
+* While AB3 deals only with one (`Person`) object, Homerce deals with multiple objects (5 in total). Even though we were able to refactor
+some aspects of `Person` into `Client`, the other objects had to be created from scratch (components include Logic, Model, Storage, Tests).
+
+* While the UI of AB3 contains only one panel (`ListPanel`), Homerce has 5 panels in total, which is a big change to the UI. We also implemented a `Schedule View` for better visualization of the appointment schedule.
+
+* Homerce has multiple new windows, such as the `Help Window` and `Financial Breakdown Window`. In addition, the `Financial Breakdown Window` contains two `Piecharts` for revenue and expense visualization.
+
+* The large amount of code needed meant that a lot of time was needed to implement and refine the features
+
+**How we solved it** <br>
+To solve this challenge, our team dedicated a lot of time and effort to the project. We placed heavy emphasis on effective communication and
+the efficient division of tasks. Each member focused on one feature (Clients, Service, Appointments, Revenue and Expenses),
+and saw through the implementation of our feature-specific functionality, tests and documentation. On top of features, team-based
+tasks such as the GUI, UG and DG were also split fairly among the members. Overall, every member was able to contribute substantially to the project,
+whether in terms of code contribution, clear documentation, or idea generation. 
+
+**Challenge 2** <br>
+The second challenge we faced was in implementing the Schedule View feature.
+
+* We had to implement a schedule view in the UI from scratch, with appointments sorted by day and time.
+
+* We had to implement the logic for users to navigate to the previous or next week, and reflect the change in the schedule view.
+
+* Given that we did not have prior experience with the implementation of a schedule, it was a challenge for us to design the Schedule View. 
+
+**How we solved it** <br>
+To solve this challenge, our team performed extensive internet searches for inspiration to implement the feature. We also went through
+a long process of trial-and-error during our face-to-face team meetings, to come up with a Schedule View that was functional,
+intuitive, and aesthetically pleasing.
+
+### Conclusion
+Through hard work and dedication to the project, our team was able to create a functional, user-focused, and aesthetically-appealing application
+to cater to the business needs of home-based business owners, and allow them to manage their businesses with ease. Despite the challenges we faced,
+we were able to maintain a positive team spirit, and channel our passion for challenges and learning experiences to ultimately overcome any problems
+that we faced.

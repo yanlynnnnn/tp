@@ -9,16 +9,14 @@ such as their schedule, appointments, clients, and services - into a single appl
 revenue and expenses, and supports simple visualization of monthly finances.
 The application uses a Command Line Interface (CLI).
 
-This portfolio aims to document the contributions that I have made to Homerce
-
+This portfolio aims to document the contributions that I have made to Homerce <br>
 Click [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&tabAuthor=yanlynnnnn&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
-to view Yan Lyn's code contributions.
+to view my code contributions.
 
 **Enhancements Implemented:** <br>
-A summary of the enhancements implemented.
 
 <u>Implementation of Expense Tracker</u> <br>
-The Expense Tracker was implemented to help users keep track of their expenses and manage their expenditure.
+The Expense Tracker was implemented to help users keep track of their expenses.
 
 1. Implementation of 5 basic commands (Pull Request [#68](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/68),
 Pull Request [#99](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/99))
@@ -49,7 +47,6 @@ Expense Tracker, and Revenue Tracker panels (Pull Request [#223](https://github.
 <u>3. Testing</u>
 1. Included JUnit Tests for the Expense Tracker, with over 90% line coverage on average (Pull Request [#203](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/203), Pull Request [#212](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/212))
 1. Included Integration Tests across logic, model and storage components for the Expense Tracker (Pull Request [#203](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/203), Pull Request [#212](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/212))
-1. Direct testing from GUI
 
 <u>4. Others</u>
 1. Implemented the logic to generate revenue and expense lists filtered by month and year,
@@ -79,8 +76,10 @@ Expense Tracker, and Revenue Tracker panels (Pull Request [#223](https://github.
     * Sequence Diagram for `sortexp` command
     * Design considerations for Recurring Expenses
 1. Appendix B: User Stories (Pull Request [#52](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/52))
+1. Appendix F: Manual Testing (Pull Request [#356](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/356))
+1. Appendix G: Effort (Pull Request [#356](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/356))
 
-**Contributions to documentation (Extracts)**
+**Contributions to documentation (Extracts)**<br>
 The contributions listed in this section will not be extensive, please refer to the respective documents for the full contributions.
 
 **Developer Guide**

@@ -98,7 +98,7 @@ public class AppointmentManager implements ReadOnlyAppointmentManager {
      * Updates appointment information after a client's details in the appointment get edited.
      */
     public void replaceClientsInAppointments(Client target, Client editedClient) {
-        List<Appointment> editedList = appointments.stream().map(curr -> curr.getClient().isSameClient(target)
+        List<Appointment> editedList = appointments.stream().map(curr -> curr.getClient().isSame(target)
                 ? new Appointment(curr.getAppointmentDate(), curr.getAppointmentStartTime(), curr.getService(),
                     editedClient, curr.getStatus())
                 : curr

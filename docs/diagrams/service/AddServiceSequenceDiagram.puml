@@ -10,6 +10,7 @@ box Model MODEL_COLOR_T1
 participant "**m:ModelManager**" as ModelManager MODEL_COLOR
 participant "**:ServiceCodeGenerator**" as ServiceCodeGenerator MODEL_COLOR
 participant "**:ServiceManager**" as ServiceManager MODEL_COLOR
+participant "**:AppointmentManager**" as AppointmentManager MODEL_COLOR
 end box
 
 [-> AddServiceCommand : ""execute(m, h)""
@@ -21,15 +22,26 @@ which keeps track of the history of
 commands executed.
 end note
 
-AddServiceCommand -> ModelManager : ""getFilteredServiceList()""
+AddServiceCommand -> ModelManager : ""getServiceManager()""
 activate ModelManager
-AddServiceCommand <-- ModelManager: ""services""
+AddServiceCommand <-- ModelManager: ""sm""
 deactivate ModelManager
 
-AddServiceCommand -> ModelManager : ""getFilteredAppointmentList()""
+AddServiceCommand -> ServiceManager : ""getServiceList()""
+activate ServiceManager
+AddServiceCommand <-- ServiceManager : ""services""
+deactivate ServiceManager
+
+AddServiceCommand -> ModelManager : ""getAppointmentManager()""
 activate ModelManager
-AddServiceCommand <-- ModelManager: ""appointments""
+AddServiceCommand <-- ModelManager: ""am""
 deactivate ModelManager
+
+AddServiceCommand -> AppointmentManager : ""getAppointmentList()""
+activate AppointmentManager
+AddServiceCommand <-- AppointmentManager : ""appointments""
+deactivate AppointmentManager
+
 AddServiceCommand -> ServiceCodeGenerator: ""generateServiceCode(services, appointments)""
 
 activate ServiceCodeGenerator

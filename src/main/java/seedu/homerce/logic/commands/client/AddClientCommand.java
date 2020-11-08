@@ -35,7 +35,7 @@ public class AddClientCommand extends Command {
             + PREFIX_TAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New client added: %1$s";
-    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the homerce";
+    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in Homerce.";
 
     private final Client toAdd;
 
