@@ -51,13 +51,13 @@ Included JUnit Tests for the Appointment Manager, with over 90% line coverage on
         * Command documentation and summary
 
 * **Contributions to the Developer Guide**:
-    1. Overall structure, product scope and non-functional requirements. (Pull request [#73](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/73))
-    1. Appointment Manager - Rationale, current implementation, design considerations as well as sequence and activity diagrams for the `done` command. (Pull request [#307](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/307))
-    1. Update UML diagrams for other managers to include the history manager as a parameter when `execute` is called. (Pull request [#307](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/307))
+    * Overall structure, product scope and non-functional requirements. (Pull request [#73](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/73))
+    * Appointment Manager - Rationale, current implementation, design considerations as well as sequence and activity diagrams for the `done` command. (Pull request [#307](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/307))
+    * Update UML diagrams for other managers to include the history manager as a parameter when `execute` is called. (Pull request [#307](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/307))
 
 * **Contributions to team-based tasks**:
-    1. Management of project milestones and maintenance of the issue tracker.
-    1. Changed the original AB3 icon to the current icon used by Homerce.
+    * Management of project milestones and maintenance of the issue tracker.
+    * Changed the original AB3 icon to the current icon used by Homerce.
 
 * **Community**:
     * Made several forum posts on the module repository to provide help to other students. (Issue [#214](https://github.com/nus-cs2103-AY2021S1/forum/issues/214))
