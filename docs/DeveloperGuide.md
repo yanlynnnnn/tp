@@ -36,6 +36,7 @@ The ***Architecture Diagram*** given below explains the high-level design of the
 
 <img src="images/ArchitectureDiagram.png" width="450" />
 
+*Figure 1. Architecture Diagram of Homerce`*
 <div markdown="span" class="alert alert-primary">
 
 :bulb: **Tip:** The `.puml` files used to create diagrams in this document can be found in the [diagrams](https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/) folder. Refer to the [_PlantUML Tutorial_ at se-edu/guides](https://se-education.org/guides/tutorials/plantUml.html) to learn how to create and edit diagrams.
@@ -63,11 +64,15 @@ The *Sequence Diagram* below shows how the components interact with each other f
 
 <img src="images/ArchitectureSequenceDiagram.png" width="574" />
 
+*Figure 2. Interactions between components for the `deleteexp 1` command*
+
+
 The sections below give more details of each component.
 
 ### 3.2 UI Component
 
 ![Structure of the UI Component](images/UiClassDiagram.png)
+*Figure 3. Structure of the `Ui` component*
 
 **API** :
 [`Ui.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java)
@@ -84,6 +89,7 @@ The `UI` component,
 ### 3.3 Logic Component
 
 ![Structure of the Logic Component](images/LogicClassDiagram.png)
+*Figure 4. Structure of `Logic` component*
 
 **API** :
 [`Logic.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java)
@@ -104,6 +110,7 @@ Given below is the Sequence Diagram for interactions within the `Logic` componen
 ### 3.4 Model Component
 
 ![Structure of the Model Component](images/ModelClassDiagram.png)
+*Figure 5. Structure of the `Model` component*
 
 **API** : [`Model.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java)
 
@@ -116,14 +123,16 @@ The `Model`,
 
 
 <div markdown="span" class="alert alert-info">:information_source: **Note:** An alternative (arguably, a more OOP) model is given below. It has a `Tag` list in the `Homerce`, which `Client` references. This allows `Homerce` to only require one `Tag` object per unique `Tag`, instead of each `Client` needing their own `Tag` object.<br>
-![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
 
 </div>
 
+![BetterModelClassDiagram](images/BetterModelClassDiagram.png)
+*Figure 6. Alternative structure of the `Model` component*
 
 ### 3.5 Storage Component
 
 ![Structure of the Storage Component](images/StorageClassDiagram.png)
+*Figure 7. Structure of the `Storage` component*
 
 **API** : [`Storage.java`](https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java)
 
@@ -186,7 +195,7 @@ The following class diagram models the structure of the `ListManager`.
 
 ![Class diagram for list manager](images/ListManagerClassDiagram.png) 
 
-*Figure 1. Structure of `ListManager`*
+*Figure 8. Structure of `ListManager`*
 
 #### 4.1.3 Design Consideration 
 
@@ -241,7 +250,7 @@ The following class diagram models the structure of the `ListTracker`.
 
 ![Class diagram for list tracker](images/ListTrackerClassDiagram.png)
 
-*Figure 2. Structure of `ListTracker`*
+*Figure 9. Structure of `ListTracker`*
 
 #### 4.2.3 Design Consideration 
 
@@ -286,7 +295,7 @@ In this section, we will use the following Activity Diagram to outline the delet
 
 ![Activity diagram for deleting of client](images/DeleteClientActivityDiagram.png)
 
-*Figure 3. Workflow of a `deletecli` command*
+*Figure 10. Workflow of a `deletecli` command*
 
 When the user enters the `deletecli` command to delete a client from the client list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `DeleteClientCommand`, Homerce will access the client manager
@@ -304,13 +313,13 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for cliennt manager delete client](images/DeleteClientSequenceDiagram.png)
 
-*Figure 4. Execution of an `deletecli` command*
+*Figure 11. Execution of an `deletecli` command*
 
 In this section, we will use the following Activity Diagram to outline the filtering of the list when the `findcli` command of the client manager is executed.
 
 ![Activity diagram for client manager find client](images/FindClientActivityDiagram.png)
 
-*Figure 5. Workflow of a `findcli` command*
+*Figure 12. Workflow of a `findcli` command*
 
 When the user enters the `findcli` command to find the client in the client list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `FindClientCommand`, Homerce will access the client manager
@@ -326,7 +335,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for findcli command](images/FindClientSequenceDiagram.png)
 
-*Figure 6. Execution of an `findcli` command*
+*Figure 13. Execution of an `findcli` command*
 
 #### 4.3.3 Design Consideration 
 **Aspect: DeleteClientCommand implementation**
@@ -370,7 +379,7 @@ In this section, we will use the following Activity Diagram to outline the gener
 
 ![Activity diagram for service manager addsvc command](images/service/AddServiceActivityDiagram.png)
 
-*Figure 7. Workflow of a `addsvc` command*
+*Figure 14. Workflow of a `addsvc` command*
 
 When the user enters the `addsvc` command to add a new service, the user input command undergoes the same command parsing as described in 
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `AddServiceCommand`, Homerce will check the existing service codes from the
@@ -392,7 +401,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for addsvc command](images/service/AddServiceSequenceDiagram.png)
 
-*Figure 8. Execution of an `addsvc` command*
+*Figure 15. Execution of an `addsvc` command*
 
 #### 4.4.3 Design Consideration
 
@@ -435,7 +444,7 @@ In this section, we will use the following Activity Diagram to outline what happ
 
 ![Activity diagram for appointment manager done command](images/DoneAppointmentActivityDiagram.png)
 
-*Figure 9. Workflow of a `done` command*
+*Figure 16. Workflow of a `done` command*
 
 When the user enters the `done` command to mark an appointment in the list as done, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `DoneAppointmentCommand`, Homerce will access the appointment manager to
@@ -457,7 +466,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for done command](images/DoneAppointmentSequenceDiagram.png)
 
-*Figure 10. Execution of an `done` command*
+*Figure 17. Execution of an `done` command*
 
 #### 4.5.3 Design Consideration
 **Aspect: Revenue entries are created and deleted via `DoneAppointmentCommand` and `UnDoneAppointmentCommand`**
@@ -502,7 +511,7 @@ In this section, we will use the following Activity Diagram to outline the sorti
 
 ![Activity diagram for revenue_tracker sortrev command](images/revenue/SortRevenueActivityDiagram.png)
 
-*Figure 11. Workflow of a `sortrev` command*
+*Figure 18. Workflow of a `sortrev` command*
 
 When the user enters the `sortrev` command to sort the revenue list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `SortRevenueCommand`, Homerce will access the revenue tracker
@@ -522,7 +531,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for sortrev command](images/revenue/SortRevenueSD.png)
 
-*Figure 12. Execution of an `sortrev` command*
+*Figure 19. Execution of an `sortrev` command*
 
 <br>
 
@@ -532,7 +541,7 @@ In this section, we will use the following Activity Diagram to outline the clear
 
 ![Activity diagram for revenue_tracker clearrev command](images/revenue/ClearRevenueActivityDiagram.png)
 
-*Figure 13. Workflow of a `clearrev` command*
+*Figure 20. Workflow of a `clearrev` command*
 
 When the user enters the `clearrev` command to sort the revenue list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `ClearRevenueCommand`, Homerce will access the revenue tracker
@@ -549,7 +558,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for clearrev command](images/revenue/ClearRevenueSD.png)
 
-*Figure 14. Execution of an `clearrev` command*
+*Figure 21. Execution of an `clearrev` command*
 
 #### 4.6.3 Design Consideration
 
@@ -599,7 +608,7 @@ In this section, we will use the following Activity Diagram to outline the sorti
 
 ![Activity diagram for expense_tracker sortexp command](images/SortExpenseActivityDiagram.png)
 
-*Figure 15. Workflow of a `sortexp` command*
+*Figure 22. Workflow of a `sortexp` command*
 
 When the user enters the `sortexp` command to sort the expense list, the user input command undergoes the same command parsing as described in
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `SortExpenseCommand`, Homerce will access the expense tracker
@@ -619,7 +628,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram for sortexp command](images/SortExpenseSD.png)
 
-*Figure 16. Execution of an `sortexp` command*
+*Figure 23. Execution of an `sortexp` command*
 
 #### 4.7.3 Design Consideration 
 
@@ -668,7 +677,7 @@ In this section, we will outline the `breakdownfinance` command using the follow
 
 ![Activity diagram of BreakdownFinance](images/BreakdownFinanceActivityDiagram.png)
 
-*Figure 17. Workflow of a `breakdownfinance` command*
+*Figure 24. Workflow of a `breakdownfinance` command*
 
 When the user enters the `breakdownfinance` command to view the monthly breakdown, the user input command undergoes the same command parsing as described in 
 [Section 3.3 Logic Component](#33-logic-component). During the execution of `breakdownfinance`, 
@@ -684,7 +693,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 ![Sequence diagram breakdownfiance](images/BreakdownFinanceSequenceDiagram.png)
 
-*Figure 18. Execution of an `breakdownfinance` command*
+*Figure 25. Execution of an `breakdownfinance` command*
 
 #### 4.8.3 Design Consideration
 
@@ -727,7 +736,7 @@ causing the state initial state of the `Model` prior to the execution of `delete
 
 ![Undo State 0](images/UndoState0.png)
 
-*Figure 19. State HistoryManager after `deletesvc 5` command*
+*Figure 26. State HistoryManager after `deletesvc 5` command*
 
 Step 3: The user executes `deletecli 5` command to delete the 5th person in Homerce's client list. When the `LogicManager`
 executes the `CommandResult` from `DeleteClientCommand`, `LogicManager#execute()` will call `HistoryManager#addToHistory()`,
@@ -736,7 +745,7 @@ causing the state initial state of the `Model` prior to the execution of `delete
 
 ![Undo State 1](images/UndoState1.png)
 
-*Figure 20. State HistoryManager after `deletecli 5` command*
+*Figure 27. State HistoryManager after `deletecli 5` command*
 
 Step 4: The user now decides that deleting the client was a mistake, and decides to undo that action by executing the `undo`
 command. The `undo` command will call `HistoryManager#getPreviousHistory()`, which will return the `History` object which stores
@@ -745,7 +754,7 @@ The current state of Homerce's `Model` will be updated to the state of the `Mode
 
 ![Undo State 2](images/UndoState2.png)
 
-*Figure 21. State HistoryManager after `undo` command*
+*Figure 28. State HistoryManager after `undo` command*
 
 #### 4.8.3 Design Consideration
 
