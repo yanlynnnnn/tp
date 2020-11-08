@@ -868,8 +868,8 @@ Clear all clients in the client list.
 Use case ends.
 
 <b>Extensions</b>
-* 1a. Service is in use by one or more upcoming appointment.
-    * 1a1. Homerce displays an error message.
+1a. Service is in use by one or more upcoming appointment.
+    1a1. Homerce displays an error message.
     Use case ends.
 </pre>
 
@@ -1061,8 +1061,8 @@ Find a revenue in the revenue list.
 Use case ends.
 
 <b>Extensions</b>
-* 2a. No revenue matches the search value.
-  * 2a1. Homerce displays an empty list.
+2a. No revenue matches the search value.
+  2a1. Homerce displays an empty list.
   Use case resumes at step 4.
 </pre>
 
@@ -1087,8 +1087,8 @@ Add an expense incurred by the business into Homerce.
 Use case ends.
 
 <b>Extensions</b>
-* 1a. Incomplete details provided.
-  * 1a1. Homerce displays an error message.
+1a. Incomplete details provided.
+  1a1. Homerce displays an error message.
   Use case resumes at step 1.
 </pre>
 <br>
@@ -1111,8 +1111,8 @@ List all the expenses in the expense list.
 Use case ends.
 
 <b>Extensions</b>
-* 1a. No expense in revenue list.
-  * 1a1. Homerce displays an empty list.
+1a. No expense in revenue list.
+  1a1. Homerce displays an empty list.
   Use case resumes at step 3.
 </pre>
 <br>
