@@ -1,15 +1,18 @@
 package seedu.homerce.logic.commands.appointment;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.homerce.commons.core.Messages.MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX;
+import static seedu.homerce.commons.core.Messages.MESSAGE_NOT_EDITED;
+import static seedu.homerce.logic.commands.appointment.AddAppointmentCommand.MESSAGE_INVALID_TIME_AND_DURATION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_DATE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_SERVICE_CODE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_TIME_OF_DAY;
 
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
-import seedu.homerce.commons.core.Messages;
 import seedu.homerce.commons.core.index.Index;
 import seedu.homerce.commons.util.CollectionUtil;
 import seedu.homerce.logic.commands.Command;
@@ -44,7 +47,6 @@ public class EditAppointmentCommand extends Command {
         + PREFIX_PHONE + "91234567 "
         + PREFIX_SERVICE_SERVICE_CODE + "SC002";
     public static final String MESSAGE_EDIT_APPOINTMENT_SUCCESS = "Edited Appointment: %1$s";
-    public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_CLASHING_APPOINTMENT = "This appointment clashes with an existing appointment.";
     public static final String MESSAGE_INVALID_PHONE = "The phone number does not refer to an existing client.";
     public static final String MESSAGE_INVALID_SERVICE_CODE = "The service code specified does not exist in Homerce.";
@@ -63,7 +65,7 @@ public class EditAppointmentCommand extends Command {
 
         this.index = index;
         this.editAppointmentDescriptor =
-            new EditAppointmentCommand.EditAppointmentDescriptor(editAppointmentDescriptor);
+            new EditAppointmentDescriptor(editAppointmentDescriptor);
     }
 
     @Override
@@ -72,20 +74,23 @@ public class EditAppointmentCommand extends Command {
         List<Appointment> lastShownList = model.getFilteredAppointmentList();
 
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX);
+            throw new CommandException(MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX);
+        } else if (!editAppointmentDescriptor.isAnyFieldEdited()) {
+            throw new CommandException(MESSAGE_NOT_EDITED);
         }
         Appointment appointmentToEdit = lastShownList.get(index.getZeroBased());
         Appointment editedAppointment = createEditedAppointment(appointmentToEdit, editAppointmentDescriptor, model);
-
         if (appointmentToEdit.equals(editedAppointment)) {
             throw new CommandException(MESSAGE_NOT_EDITED);
+        } else if (!isValidTimeAndDuration(editedAppointment)) {
+            // Check if appointment runs past midnight.
+            throw new CommandException(MESSAGE_INVALID_TIME_AND_DURATION);
         }
         Model modelCopy = model.deepCopy();
         modelCopy.deleteAppointment(appointmentToEdit);
         if (modelCopy.hasAppointment(editedAppointment)) {
             throw new CommandException(MESSAGE_CLASHING_APPOINTMENT);
         }
-
         model.setAppointment(appointmentToEdit, editedAppointment);
         model.refreshSchedule();
         return new CommandResult(
@@ -136,6 +141,13 @@ public class EditAppointmentCommand extends Command {
         EditAppointmentCommand e = (EditAppointmentCommand) other;
         return index.equals(e.index)
             && editAppointmentDescriptor.equals(e.editAppointmentDescriptor);
+    }
+
+    private boolean isValidTimeAndDuration(Appointment appointmentToTest) {
+        /// Check if timeOfDay + duration overflows past midnight.
+        LocalTime startTime = appointmentToTest.getAppointmentStartTime().getLocalTime();
+        LocalTime endTime = appointmentToTest.getAppointmentEndTime().getLocalTime();
+        return endTime.compareTo(startTime) > 0; // End time must be after start time.
     }
 
     /**
