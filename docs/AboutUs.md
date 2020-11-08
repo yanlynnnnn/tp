@@ -42,7 +42,15 @@ You can reach me at the email `galvinleow@u.nus.edu`
 [[portfolio](team/ruifengg.md)]
 
 * Role: Developer
-* Responsibilities: Code quality
+* Responsibilities:
+    * Refactoring
+    * UI
+    * Client Manager Feature
+        * Implementation
+        * User Guide
+        * Developer Guide
+        * Testing
+            
 
 ### Hans Sebastian Tirtaputra
 
