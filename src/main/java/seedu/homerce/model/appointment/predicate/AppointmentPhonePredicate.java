@@ -14,7 +14,7 @@ public class AppointmentPhonePredicate implements Predicate<Appointment> {
 
     @Override
     public boolean test(Appointment appointment) {
-        return phoneOfAppointment.equals(appointment.getClient().getPhone());
+        return appointment.getClient().getPhone().value.contains(phoneOfAppointment.value);
     }
 
     @Override
