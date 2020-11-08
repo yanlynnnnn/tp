@@ -1705,14 +1705,14 @@ testers are expected to do more *exploratory* testing.
    1. If you are using Windows, ensure display settings is set to 100% to prevent GUI scaling issues.
 
    1. Double-click the jar file.
-        1. Expected: Shows the GUI with a set of sample appointments. The window size may not be optimum.)
+        1. Expected: Shows the GUI with a set of sample appointments. The window size may not be optimum.
 
 1. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-   1. Re-launch the app by double-clicking the jar file.<br>
-      Expected: The most recent window size and location is retained.
+   1. Re-launch the app by double-clicking the jar file.
+        1. Expected: The most recent window size and location is retained.
 
 ### Commands for List Managers and List Trackers
 
