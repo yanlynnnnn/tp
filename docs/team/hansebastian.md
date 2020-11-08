@@ -20,7 +20,7 @@ to view Hans' code contributions.
 **Enhancements Implemented:**
 Here is a summary of the enhancements that I have implemented.
 
-_1. Implementation of Service Manager_
+<u>1. Implementation of Service Manager</u>
 The service manager was implemented to help users keep manage all the services that their home-based beauty salon provides. These services are used to create appointments with clients.
 
 1. Implementation of 5 basic commands (Pull Request [#88](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/88), [#94](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/94), [#95](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/95),
@@ -40,43 +40,35 @@ The service manager was implemented to help users keep manage all the services t
     * For example, when the user adds the first service to the service manager, the first service will have a service code of "SCOOO" automatically
     generated and assigned to that service.
 
-_2. Implementation of undo Feature_
+<u>2. Implementation of undo Feature</u>
 The undo feature was implemented to allow the user to easily recover from command mistakes that they make, giving them a better user experience when using Homerce. (Pull Request [#151](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/151))
 
 All the above features include the implementation of components from __Logic__, __Storage__, and __Model__.
 
-_3. Enhancement of GUI_
+<u>3. Enhancement of GUI</u>
 1. Created the Service Card and Service Panel for Service Manager GUI (Pull Request [#88](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/88))
 1. Created the GUI for `breakdownfinance` window (Pull Request [#189](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/189))
 
-_4. Testing_
+<u>4. Testing</u>
 1. Included JUnit Tests for the Service Manager, Service attributes with over 90% line coverage on average (Pull Request [#195](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/195))
 1. Included Integration Tests across logic, model and storage components for the Service Manager (Pull Request [#225](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/225))
 1. Included JUnit Tests for History Manager, and undo command (Pull Request [#222](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/222))
 1. Direct testing from GUI
 
-_5. Others_
+<u>5. Others</u>
 1. Contributed to team-tasks such as setting up of GitHub team organization and repository and managing the releases of some versions of Homerce.
 
 _Contributions to User Guide:_
-1. Service Manager (Pull Request [#62](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/62))
-    * Command Parameter Summary Table
-    * Commands Documentation, including command parameters, command format, command examples, and command outcomes with annotated screenshots (Pull Request [#324](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/324))
-    * Command Summary 
+Command parameter summary table, commands documentation, including parameters, command format, examples, outcomes, and summary with annotated screenshots for:
+1. Service Manager (Pull Request [#62](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/62), [#324](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/324))
 1. Schedule Viewer and Financial Overview Feature (Pull Request [#211](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/211))
-    * Command Parameter Summary Table
-    * Commands Documentation, including command parameters, command format, command examples, and command outcomes with annotated screenshots
-    * Command Summary 
 1. Undo Feature (Pull Request [#173](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/173))
 
 _Contributions to Developer Guide:_
-Rationale, current implementation and design considerations for the following portions:
+Rationale, current implementation, design considerations and UML diagrams for the following portions:
 1. List Manager and List Tracker (Pull Request [#171](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/171))
-    * Also added Class Diagram for List Manager and List Tracker
 1. Service Manager (Pull Request [#219](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/219))
-    * Also added Sequence and Activity diagrams for `addsvc` command
 1. Finance Breakdown (Pull Request [#219](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/219))
-    * Also added Sequence and Activity diagrams for `addsvc` command
 
 ##### Contributions to documentation (Extracts)
 The contributions listed in this section will not be extensive, please refer to the respective documents for the full contributions.
