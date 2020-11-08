@@ -48,7 +48,7 @@ public class EditClientCommand extends Command {
             + PREFIX_EMAIL + "johndoe@example.com";
 
     public static final String MESSAGE_EDIT_CLIENT_SUCCESS = "Edited Client: %1$s";
-    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in the Homerce.";
+    public static final String MESSAGE_DUPLICATE_CLIENT = "This client already exists in Homerce.";
 
     private final Index index;
     private final EditClientDescriptor editClientDescriptor;
@@ -79,7 +79,7 @@ public class EditClientCommand extends Command {
         Client clientToEdit = lastShownList.get(index.getZeroBased());
         Client editedClient = createEditedClient(clientToEdit, editClientDescriptor);
 
-        if (!clientToEdit.isSameClient(editedClient) && model.hasClient(editedClient)) {
+        if (!clientToEdit.isSame(editedClient) && model.hasClient(editedClient)) {
             throw new CommandException(MESSAGE_DUPLICATE_CLIENT);
         }
 

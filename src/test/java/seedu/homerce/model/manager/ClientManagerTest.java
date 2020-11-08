@@ -18,8 +18,8 @@ import org.junit.jupiter.api.Test;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.homerce.model.client.Client;
-import seedu.homerce.model.client.exceptions.DuplicateClientException;
 import seedu.homerce.model.expense.Expense;
+import seedu.homerce.model.util.uniquelist.exceptions.DuplicateItemException;
 import seedu.homerce.testutil.client.ClientBuilder;
 
 public class ClientManagerTest {
@@ -44,14 +44,14 @@ public class ClientManagerTest {
     }
 
     @Test
-    public void resetData_withDuplicateClients_throwsDuplicateClientException() {
+    public void resetData_withDuplicateClients_throwsDuplicateItemException() {
         // Two clients with the same identity fields
         Client editedAlice = new ClientBuilder(ALICE).withTags(VALID_TAG_HUSBAND)
                 .build();
         List<Client> newClients = Arrays.asList(ALICE, editedAlice);
         ClientManagerStub newData = new ClientManagerStub(newClients, FXCollections.observableArrayList());
 
-        assertThrows(DuplicateClientException.class, () -> clientManager.resetData(newData));
+        assertThrows(DuplicateItemException.class, () -> clientManager.resetData(newData));
     }
 
     @Test

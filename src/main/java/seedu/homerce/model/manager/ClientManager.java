@@ -11,7 +11,7 @@ import seedu.homerce.model.client.UniqueClientList;
 
 /**
  * Wraps all data at the homerce-book level
- * Duplicates are not allowed (by .isSameClient comparison)
+ * Duplicates are not allowed (by .isSame comparison)
  */
 public class ClientManager implements ReadOnlyClientManager {
 
@@ -45,7 +45,7 @@ public class ClientManager implements ReadOnlyClientManager {
      * {@code clients} must not contain duplicate clients.
      */
     public void setClients(List<Client> clients) {
-        this.clients.setClients(clients);
+        this.clients.setItems(clients);
     }
 
     /**
@@ -90,7 +90,7 @@ public class ClientManager implements ReadOnlyClientManager {
     public void setClient(Client target, Client editedClient) {
         requireNonNull(editedClient);
 
-        clients.setClient(target, editedClient);
+        clients.setItem(target, editedClient);
     }
 
     public Client getClientByPhone(Phone phone) {
