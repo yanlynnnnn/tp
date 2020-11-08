@@ -11,6 +11,9 @@ import java.util.stream.Stream;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import seedu.homerce.model.expense.Expense;
+import seedu.homerce.model.expense.ExpenseDefaultComparator;
+import seedu.homerce.model.revenue.RevenueDefaultComparator;
 import seedu.homerce.model.util.nonuniquelist.exceptions.ItemNotFoundException;
 
 public class NonUniqueList<T> implements Iterable<T> {
@@ -117,6 +120,13 @@ public class NonUniqueList<T> implements Iterable<T> {
      */
     public void sort(Comparator<T> comparator) {
         FXCollections.sort(internalList, comparator);
+    }
+
+    /**
+     * Returns the Non Unique List as a {@code ObservableList}
+     */
+    public ObservableList<T> getInternalList() {
+        return this.internalList;
     }
 }
 

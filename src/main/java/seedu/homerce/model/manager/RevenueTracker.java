@@ -7,6 +7,7 @@ import java.util.Objects;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import seedu.homerce.model.revenue.Revenue;
 import seedu.homerce.model.revenue.RevenueComparator;
@@ -19,6 +20,7 @@ import seedu.homerce.model.util.nonuniquelist.NonUniqueList;
 public class RevenueTracker implements ReadOnlyRevenueTracker {
 
     private final NonUniqueList<Revenue> revenues;
+    private final RevenueDefaultComparator revenueDefaultComparator = new RevenueDefaultComparator();
     private final Logger logger;
 
     /**
@@ -89,6 +91,7 @@ public class RevenueTracker implements ReadOnlyRevenueTracker {
     public void addRevenue(Revenue r) {
         revenues.add(r);
         logger.info("Added revenue entry to Revenue List");
+        FXCollections.sort(revenues.getInternalList(), revenueDefaultComparator);
     }
 
 
