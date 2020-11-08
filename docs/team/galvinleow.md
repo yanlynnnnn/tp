@@ -12,10 +12,10 @@ This portfolio aims to document the contributions that I have made to Homerce.
 Click [here](https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&search=galvinleow&sort=groupTitle&sortWithin=title&since=2020-08-14&timeframe=commit&mergegroup=&groupSelect=groupByRepos&checkedFileTypes=docs~functional-code~test-code~other&tabOpen=true&tabType=authorship&zFR=false&tabAuthor=galvinleow&tabRepo=AY2021S1-CS2103T-W13-3%2Ftp%5Bmaster%5D&authorshipIsMergeGroup=false&authorshipFileTypes=docs~functional-code~test-code)
 to view Galvin Leow's code contributions.
 
-**Enhancement Implemented**
+**Enhancement Implemented**  
 A summary of the enhancements you implemented.
 
-_1. Implementation of Revenue Tracker_
+<u>1. Implementation of Revenue Tracker</u>  
 Revenue Tracker was implemented as it is an essential part of operating a business. Revenue tracking is bonded to the breakdown finance feature, 
 in which this feature gives useful insights to the user.
 
@@ -30,7 +30,7 @@ in which this feature gives useful insights to the user.
 
 All features built will include the implementation of the components from _Logic_, _Storage_ and _Model_.
 
-_2. Testing_
+<u>2. Testing</u>  
 1. Included JUnit Test for Revenue Tracker, with over 90% line of code coverage on average.  (Issue [#208](https://github.com/AY2021S1-CS2103T-W13-3/tp/issues/208), Pull Request [#209](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/209))
     1. Included Integration Tests across logic, model and storage components for the Revenue Tracker.
 1. Create test cases to be tested from the GUI.
@@ -39,7 +39,7 @@ _2. Testing_
 **Contributions to documentation**
 Section of which contributions were made in the documentation.
 
-_User Guide_
+<u>User Guide</u>  
 1. Structure of the documentation.  (Pull Request [#44](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/44))
 1. Terminology related to the GUI - the creation of the _AnnotatedUI_ image. (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
 1. General symbols and syntax - consolidating and documenting.
@@ -49,7 +49,7 @@ _User Guide_
     1. Screenshot images for commands' outcome. (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
 1. Command summary - the revenue tracker commands table.
 
-_Developer Guide_
+<u>Developer Guide</u>  
 1. Implementation - Revenue Tracker (Pull Request [#313](https://github.com/AY2021S1-CS2103T-W13-3/tp/pull/313))
     1. Rationale.
     1. Sort & Clear revenue command
