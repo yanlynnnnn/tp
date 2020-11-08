@@ -15,7 +15,7 @@ public class Messages {
     public static final String MESSAGE_EXPENSES_LISTED_OVERVIEW = "%1$d expenses listed!";
     public static final String MESSAGE_REVENUE_LISTED_OVERVIEW = "%1$d revenue listed!";
     public static final String MESSAGE_INVALID_APPOINTMENT_DISPLAYED_INDEX = "The appointment index provided is "
-            + "invalid";
+        + "invalid";
     public static final String MESSAGE_MULTIPLE_PARAMETERS = "Please only input one parameter";
     public static final String MESSAGE_APPOINTMENTS_LISTED_OVERVIEW = "%1$d appointments listed!";
     public static final String MESSAGE_APPOINTMENT_ALREADY_DONE = "This appointment is already marked as done!";
@@ -24,14 +24,15 @@ public class Messages {
     public static final String MESSAGE_INVALID_PHONE = "The phone number does not refer to an existing client.";
     public static final String MESSAGE_INVALID_SERVICE_CODE = "The service code specified does not exist in Homerce.";
     public static final String MESSAGE_CLIENT_INVALID_DELETION = "The client you want to delete is being scheduled"
-            + " today or at a future appointment, it cannot be deleted.";
+        + " today or at a future appointment, it cannot be deleted.";
 
     // ============== Service related messages ===========
     public static final String MESSAGE_SERVICES_LISTED_OVERVIEW = "%1$d services listed!";
     public static final String MESSAGE_INVALID_SERVICE_DISPLAYED_INDEX = "The service index provided is invalid";
     public static final String MESSAGE_SERVICES_INVALID_SERVICE_DISPLAYED_INDEX = "The service index "
-            + "provided is invalid";
+        + "provided is invalid";
     public static final String MESSAGES_SERVICES_INVALID_DELETION = "The service you want to delete is being scheduled"
-            + " today or at a future appointment, it cannot be deleted.";
-    public static final String MESSAGE_SERVICE_DUPLICATE_TITLE = "This service title is already used by one of the other services";
+        + " today or at a future appointment, it cannot be deleted.";
+    public static final String MESSAGE_SERVICE_DUPLICATE_TITLE = "This service title is already used by one of the"
+        + " other services";
 }

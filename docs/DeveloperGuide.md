@@ -482,6 +482,30 @@ Reason for choosing option 2:
 * The effort needed to implement option 1 is too great to justify the improvements in performance.
 * Use of well-tested libraries like `FXCollections` lowers the chance making mistakes during the implementation of this feature. 
 
+**Aspect: Updating of appointment state when a service is edited**
+
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1** <br> Editing a service will update the appointments with the service attached to it.| User does not have to perform both `editsvc` and `editapt` commands when he or she wants to edit the service details and the appointments which uses this service.| Increases coupling between service and appointment.|
+| **Option 2 (current choice)** Editing a service will not update the appointments with the service attached to it.| Reduces coupling between service and appointment. | The user has to perform a second edit for the appointment in order to reflect the change in service details.|
+
+Reason for choosing option 2:
+* Editing services could cause undesired side-effects to revenue and clients if the appointments with the service is updated as well. For example, a service might be edited to reflect a discount 2 months later, but upcoming appointments
+from now until 2 months later should keep the original service and its price.
+* If numerous clients are attached to a service which gets edited it would be hard to keep track of which clients to notify of the changes.
+* Users can still manually edit the services in the appointments list.
+
+**Aspect: Updating of appointment state when a client is edited**
+
+|              | **Pros**   | **Cons** |
+| -------------|-------------| -----|
+| **Option 1 (current choice)** <br> Editing a client will update the appointments with the client attached to it.| User does not have to perform both `editcli` and `editapt` commands when he or she wants to edit the client details and the appointments which this client is scheduled in.| Increases coupling between client and appointment. |
+| **Option 2** Editing a client will not update the appointments with the client attached to it.| Reduces coupling between client and appointment. | The user has to perform a second edit for the appointment in order to reflect the change in client details. |
+
+Reason for choosing option 1:
+* For the particular edited client, the appointment(s) are linked with him or her, thus changes in the client information should be reflected in the appointments which the client is scheduled in.
+* There are no side effects when recording revenues when a client edit affects the appointment.
+
 ### 4.6 Revenue Tracker
 
 Homerce allows the user to keep track of the revenues that his or her home-based business earned. The revenue tracker is one of the `ListTracker`s elaborated in [section 4.2](#42-list-trackers).

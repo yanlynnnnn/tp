@@ -60,8 +60,7 @@ public class AddServiceCommand extends Command {
         try {
             model.addService(toAdd);
             return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ServiceListPanel.TAB_NAME);
-        } catch (
-            DuplicateItemException e) {
+        } catch (DuplicateItemException e) {
             throw new CommandException(MESSAGE_SERVICE_DUPLICATE_TITLE);
         }
     }

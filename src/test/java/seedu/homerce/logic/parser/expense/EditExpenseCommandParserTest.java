@@ -91,7 +91,7 @@ public class EditExpenseCommandParserTest {
     @Test
     public void parse_oenFieldSpecified_success() throws ParseException {
         Index targetIndex = INDEX_SECOND_EXPENSE;
-        String userInput = "2 v/20";
+        String userInput = "2 v/20.00";
         EditExpenseCommand.EditExpenseDescriptor descriptor = new EditExpenseDescriptorBuilder()
                 .withAmount(20).build();
         EditExpenseCommand expectedCommand = new EditExpenseCommand(targetIndex, descriptor);
