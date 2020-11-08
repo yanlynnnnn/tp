@@ -32,7 +32,7 @@ public class AddServiceCommand extends Command {
             + " Example: " + COMMAND_WORD + " "
             + PREFIX_SERVICE_TITLE + "Lash Lift"
             + PREFIX_SERVICE_DURATION + "0.5 "
-            + PREFIX_SERVICE_PRICE + "38 ";
+            + PREFIX_SERVICE_PRICE + "38.00";
 
     public static final String MESSAGE_SUCCESS = "New Service added: %1$s";
     private final Service toAdd;

@@ -40,8 +40,8 @@ public class EditServiceCommand extends Command {
         + "[" + PREFIX_SERVICE_DURATION + " DURATION] "
         + "[" + PREFIX_SERVICE_PRICE + " PRICE] "
         + "Example: " + COMMAND_WORD + " 1 "
-        + PREFIX_SERVICE_DURATION + "1 "
-        + PREFIX_SERVICE_PRICE + "45 ";
+        + PREFIX_SERVICE_DURATION + "1.0 "
+        + PREFIX_SERVICE_PRICE + "45.00";
 
     public static final String MESSAGE_EDIT_SERVICE_SUCCESS = "Edited Service: %1$s";
     private final Index index;

@@ -128,7 +128,7 @@ More examples will be provided for each command in [Section 4 - Features](#4-fea
     - If the command specifies `d/DESCRIPTION dt/DATE`, `dt/DATE d/DESCRIPTION` is also acceptable.
     
 5. A series of parameters in square brackets with asterisks indicate that only exactly one parameter among them should be specified<br>
-    - If the command specifies `[t/TITLE]* [du/DURATION]* [p/PRICE]*`, `du/1.5` is acceptable, but not `du/1.5 p/38.00` or ` ` (i.e. no parameters).
+    - If the command specifies `[t/TITLE]* [s/SERVICE_CODE]*`, `t/nail` is acceptable, but not `t/nail s/sc000` or ` ` (i.e. no parameters).
     
 6. If the same parameter is entered multiple times within the same command, only the last entry will be used. (excludes items with `…​` after them in Point #3)
     - If `v/20.00 v/25.00` is entered, the value will be taken as 25.00.
@@ -408,7 +408,7 @@ Outcome:
 
 You can use this command to edit an existing service in the Service Manager.
 
-Format: `editsvc INDEX [t/TITLE]* [du/DURATION]* [p/PRICE]*`
+Format: `editsvc INDEX [t/TITLE] [du/DURATION] [p/PRICE]`
 
 <div markdown="block" class="alert alert-info">
 
