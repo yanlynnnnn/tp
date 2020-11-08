@@ -25,34 +25,34 @@ public class ClientTest {
     }
 
     @Test
-    public void isSameClient() {
+    public void isSame() {
         // same object -> returns true
-        assertTrue(ALICE.isSameClient(ALICE));
+        assertTrue(ALICE.isSame(ALICE));
 
         // null -> returns false
-        assertFalse(ALICE.isSameClient(null));
+        assertFalse(ALICE.isSame(null));
 
         // different phone and email -> returns false
         Client editedAlice = new ClientBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).build();
-        assertFalse(ALICE.isSameClient(editedAlice));
+        assertFalse(ALICE.isSame(editedAlice));
 
-        // different name -> returns false
+        // different name -> returns true as uniqueness is determined by phone number.
         editedAlice = new ClientBuilder(ALICE).withName(VALID_NAME_BOB).build();
-        assertFalse(ALICE.isSameClient(editedAlice));
+        assertTrue(ALICE.isSame(editedAlice));
 
-        // same name, same phone, different attributes -> returns true
+        // same name, same phone, different tags -> returns true
         editedAlice = new ClientBuilder(ALICE).withEmail(VALID_EMAIL_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSameClient(editedAlice));
+        assertTrue(ALICE.isSame(editedAlice));
 
-        // same name, same email, different attributes -> returns true
+        // same name, same email, different tags -> returns false as uniqueness is determined by phone number.
         editedAlice = new ClientBuilder(ALICE).withPhone(VALID_PHONE_BOB)
                 .withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSameClient(editedAlice));
+        assertFalse(ALICE.isSame(editedAlice));
 
-        // same name, same phone, same email, different attributes -> returns true
+        // same name, same phone, same email, different tags -> returns true
         editedAlice = new ClientBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
-        assertTrue(ALICE.isSameClient(editedAlice));
+        assertTrue(ALICE.isSame(editedAlice));
     }
 
     @Test

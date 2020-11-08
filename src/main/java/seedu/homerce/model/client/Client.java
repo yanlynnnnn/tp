@@ -8,12 +8,13 @@ import java.util.Objects;
 import java.util.Set;
 
 import seedu.homerce.model.util.attributes.Tag;
+import seedu.homerce.model.util.uniquelist.UniqueListItem;
 
 /**
  * Represents a Client in the homerce.
  * Guarantees: details are present and not null, field values are validated, immutable.
  */
-public class Client {
+public class Client implements UniqueListItem {
 
     // Identity fields
     private final Name name;
@@ -57,14 +58,18 @@ public class Client {
      * Returns true if both clients of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two clients.
      */
-    public boolean isSameClient(Client otherClient) {
-        if (otherClient == this) {
+    @Override
+    public boolean isSame(UniqueListItem other) {
+        if (other == this) {
             return true;
+        } else if (other == null) {
+            return false;
+        } else if (other instanceof Client) {
+            Client otherClient = (Client) other;
+            return otherClient.getPhone().equals(getPhone());
+        } else {
+            return false;
         }
-
-        return otherClient != null
-                && otherClient.getName().equals(getName())
-                && (otherClient.getPhone().equals(getPhone()) || otherClient.getEmail().equals(getEmail()));
     }
 
     /**
