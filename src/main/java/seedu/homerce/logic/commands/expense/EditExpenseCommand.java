@@ -24,6 +24,7 @@ import seedu.homerce.model.util.attributes.Amount;
 import seedu.homerce.model.util.attributes.Date;
 import seedu.homerce.model.util.attributes.Description;
 import seedu.homerce.model.util.attributes.Tag;
+import seedu.homerce.ui.expensepanel.ExpenseListPanel;
 
 /**
  * Edits the details of an existing expense in homerce.
@@ -80,7 +81,10 @@ public class EditExpenseCommand extends Command {
         }
 
         model.setExpense(expenseToEdit, editedExpense);
-        return new CommandResult(String.format(MESSAGE_EDIT_EXPENSE_SUCCESS, editedExpense));
+        return new CommandResult(
+            String.format(MESSAGE_EDIT_EXPENSE_SUCCESS, editedExpense),
+            ExpenseListPanel.TAB_NAME
+        );
     }
 
     /**

@@ -14,6 +14,7 @@ import seedu.homerce.model.Model;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.service.Service;
+import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
  * Deletes a service identified using it's displayed index from homerce's service list.
@@ -52,7 +53,10 @@ public class DeleteServiceCommand extends Command {
         }
 
         model.deleteService(serviceToDelete);
-        return new CommandResult(String.format(MESSAGE_DELETE_SERVICE_SUCCESS, serviceToDelete));
+        return new CommandResult(
+            String.format(MESSAGE_DELETE_SERVICE_SUCCESS, serviceToDelete),
+            ServiceListPanel.TAB_NAME
+        );
     }
 
     @Override

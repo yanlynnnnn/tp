@@ -7,20 +7,21 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.testutil.client.TypicalClients.ALICE;
 import static seedu.homerce.testutil.client.TypicalClients.BENSON;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 
-import seedu.homerce.model.client.Name;
 import seedu.homerce.testutil.appointment.AppointmentBuilder;
 
 public class AppointmentNamePredicateTest {
     @Test
     public void equals() {
-        Name firstName = new Name("Benson Tan");
-        Name secondName = new Name("Carlson Lim");
-        Name thirdName = new Name("Carlson Lim");
-        AppointmentNamePredicate firstPredicate = new AppointmentNamePredicate(firstName);
-        AppointmentNamePredicate secondPredicate = new AppointmentNamePredicate(secondName);
-        AppointmentNamePredicate thirdPredicate = new AppointmentNamePredicate(thirdName);
+        List<String> keywordsOne = Arrays.asList("Benson Tan".split("\\s+"));
+        List<String> keywordsTwo = Arrays.asList("Carlson Lim".split("\\s+"));
+        AppointmentNamePredicate firstPredicate = new AppointmentNamePredicate(keywordsOne);
+        AppointmentNamePredicate secondPredicate = new AppointmentNamePredicate(keywordsTwo);
+        AppointmentNamePredicate thirdPredicate = new AppointmentNamePredicate(keywordsTwo);
         // same object -> return true
         assertEquals(firstPredicate, firstPredicate);
         // same values -> return true
@@ -34,15 +35,15 @@ public class AppointmentNamePredicateTest {
 
     @Test
     public void test_appointmentContainsName_returnsTrue() {
-        Name name = new Name("Benson Meier");
-        AppointmentNamePredicate predicate = new AppointmentNamePredicate(name);
+        List<String> keywords = Arrays.asList("Benson".split("\\s+"));
+        AppointmentNamePredicate predicate = new AppointmentNamePredicate(keywords);
         assertTrue(predicate.test(new AppointmentBuilder().withClient(BENSON).build()));
     }
 
     @Test
     public void test_appointmentContainsName_returnsFalse() {
-        Name name = new Name("Benson Tan");
-        AppointmentNamePredicate predicate = new AppointmentNamePredicate(name);
+        List<String> keywords = Arrays.asList("Benson Meier".split("\\s+"));
+        AppointmentNamePredicate predicate = new AppointmentNamePredicate(keywords);
         assertFalse(predicate.test(new AppointmentBuilder().withClient(ALICE).build()));
     }
 }

@@ -4,8 +4,6 @@ title: Homerce
 ---
 [![CI Status](https://github.com/AY2021S1-CS2103T-W13-3/tp/workflows/Java%20CI/badge.svg)](https://github.com/AY2021S1-CS2103T-W13-3/tp/actions)
 
-# Homerce
-
 ![Ui](./images/Ui.png)
 
 - Homerce is an all-in-one application that helps home-based beauty salon owners consolidate their business details - 

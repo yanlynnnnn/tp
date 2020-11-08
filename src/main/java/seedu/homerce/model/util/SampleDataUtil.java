@@ -83,25 +83,177 @@ public class SampleDataUtil {
         Service[] sampleServices = getSampleServices();
         return new Appointment[]{
             new Appointment(
-                new Date("27-10-2020"), new TimeOfDay("1200"),
+                new Date("02-11-2020"), new TimeOfDay("1000"),
                 sampleClients[0], sampleServices[4]
             ),
             new Appointment(
-                new Date("28-10-2020"), new TimeOfDay("1230"),
+                new Date("02-11-2020"), new TimeOfDay("1330"),
                 sampleClients[1], sampleServices[3]
             ),
             new Appointment(
-                new Date("30-10-2020"), new TimeOfDay("1130"),
+                new Date("03-11-2020"), new TimeOfDay("1030"),
                 sampleClients[2], sampleServices[4]
             ),
             new Appointment(
-                new Date("1-11-2020"), new TimeOfDay("1030"),
+                new Date("03-11-2020"), new TimeOfDay("1330"),
                 sampleClients[3], sampleServices[1]
             ),
             new Appointment(
-                new Date("1-11-2020"), new TimeOfDay("1300"),
+                new Date("04-11-2020"), new TimeOfDay("0900"),
                 sampleClients[4], sampleServices[0]
-            )
+            ),
+            new Appointment(
+                new Date("05-11-2020"), new TimeOfDay("0900"),
+                sampleClients[0], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("05-11-2020"), new TimeOfDay("1330"),
+                sampleClients[1], sampleServices[3]
+            ),
+            new Appointment(
+                new Date("06-11-2020"), new TimeOfDay("1030"),
+                sampleClients[2], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("07-11-2020"), new TimeOfDay("0930"),
+                sampleClients[3], sampleServices[1]
+            ),
+            new Appointment(
+                new Date("08-11-2020"), new TimeOfDay("1230"),
+                sampleClients[4], sampleServices[0]
+            ),
+            new Appointment(
+                new Date("09-11-2020"), new TimeOfDay("0900"),
+                sampleClients[0], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("10-11-2020"), new TimeOfDay("1030"),
+                sampleClients[1], sampleServices[3]
+            ),
+            new Appointment(
+                new Date("10-11-2020"), new TimeOfDay("1400"),
+                sampleClients[2], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("11-11-2020"), new TimeOfDay("0930"),
+                sampleClients[3], sampleServices[1]
+            ),
+            new Appointment(
+                new Date("12-11-2020"), new TimeOfDay("1000"),
+                sampleClients[4], sampleServices[0]
+            ),
+            new Appointment(
+                new Date("12-11-2020"), new TimeOfDay("1230"),
+                sampleClients[0], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("13-11-2020"), new TimeOfDay("1000"),
+                sampleClients[1], sampleServices[3]
+            ),
+            new Appointment(
+                new Date("13-11-2020"), new TimeOfDay("1230"),
+                sampleClients[2], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("14-11-2020"), new TimeOfDay("0900"),
+                sampleClients[3], sampleServices[1]
+            ),
+            new Appointment(
+                new Date("14-11-2020"), new TimeOfDay("1130"),
+                sampleClients[4], sampleServices[0]
+            ),
+            new Appointment(
+                new Date("14-11-2020"), new TimeOfDay("1430"),
+                sampleClients[0], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("15-11-2020"), new TimeOfDay("0900"),
+                sampleClients[1], sampleServices[3]
+            ),
+            new Appointment(
+                new Date("15-11-2020"), new TimeOfDay("1330"),
+                sampleClients[2], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("17-11-2020"), new TimeOfDay("1030"),
+                sampleClients[3], sampleServices[1]
+            ),
+            new Appointment(
+                new Date("18-11-2020"), new TimeOfDay("1000"),
+                sampleClients[4], sampleServices[0]
+            ),
+            new Appointment(
+                new Date("18-11-2020"), new TimeOfDay("1200"),
+                sampleClients[0], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("18-11-2020"), new TimeOfDay("1430"),
+                sampleClients[1], sampleServices[3]
+            ),
+            new Appointment(
+                new Date("19-10-2020"), new TimeOfDay("0930"),
+                sampleClients[2], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("19-11-2020"), new TimeOfDay("1230"),
+                sampleClients[3], sampleServices[1]
+            ),
+            new Appointment(
+                new Date("20-11-2020"), new TimeOfDay("0930"),
+                sampleClients[4], sampleServices[0]
+            ),
+            new Appointment(
+                new Date("21-11-2020"), new TimeOfDay("1130"),
+                sampleClients[3], sampleServices[1]
+            ),
+            new Appointment(
+                new Date("21-11-2020"), new TimeOfDay("1530"),
+                sampleClients[4], sampleServices[0]
+            ),
+            new Appointment(
+                new Date("22-11-2020"), new TimeOfDay("1030"),
+                sampleClients[0], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("23-11-2020"), new TimeOfDay("1230"),
+                sampleClients[1], sampleServices[3]
+            ),
+            new Appointment(
+                new Date("24-10-2020"), new TimeOfDay("1130"),
+                sampleClients[2], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("25-11-2020"), new TimeOfDay("1030"),
+                sampleClients[3], sampleServices[1]
+            ),
+            new Appointment(
+                new Date("26-11-2020"), new TimeOfDay("0900"),
+                sampleClients[4], sampleServices[0]
+            ),
+            new Appointment(
+                new Date("26-11-2020"), new TimeOfDay("1130"),
+                sampleClients[4], sampleServices[0]
+            ),
+            new Appointment(
+                new Date("27-11-2020"), new TimeOfDay("0900"),
+                sampleClients[0], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("27-11-2020"), new TimeOfDay("1230"),
+                sampleClients[1], sampleServices[3]
+            ),
+            new Appointment(
+                new Date("28-10-2020"), new TimeOfDay("1030"),
+                sampleClients[2], sampleServices[4]
+            ),
+            new Appointment(
+                new Date("28-11-2020"), new TimeOfDay("1330"),
+                sampleClients[3], sampleServices[1]
+            ),
+            new Appointment(
+                new Date("28-11-2020"), new TimeOfDay("1300"),
+                sampleClients[4], sampleServices[0]
+            ),
         };
     }
 

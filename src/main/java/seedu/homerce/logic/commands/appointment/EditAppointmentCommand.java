@@ -24,6 +24,7 @@ import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCode;
 import seedu.homerce.model.util.attributes.Date;
+import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 
 /**
  * Edits the details of an existing appointment in Homerce.
@@ -87,7 +88,10 @@ public class EditAppointmentCommand extends Command {
 
         model.setAppointment(appointmentToEdit, editedAppointment);
         model.refreshSchedule();
-        return new CommandResult(String.format(MESSAGE_EDIT_APPOINTMENT_SUCCESS, editedAppointment));
+        return new CommandResult(
+            String.format(MESSAGE_EDIT_APPOINTMENT_SUCCESS, editedAppointment),
+            AppointmentListPanel.TAB_NAME
+        );
     }
 
     /**

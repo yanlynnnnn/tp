@@ -13,6 +13,7 @@ import seedu.homerce.model.Model;
 import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.revenue.Revenue;
+import seedu.homerce.ui.appointmentpanel.AppointmentListPanel;
 
 public class UnDoneAppointmentCommand extends Command {
     public static final String COMMAND_WORD = "undone";
@@ -60,7 +61,8 @@ public class UnDoneAppointmentCommand extends Command {
         model.setAppointment(appointmentToMarkUnDone, appointmentToMarkUnDone);
         return new CommandResult(
             String.format(MESSAGE_UNDONE_APPOINTMENT_SUCCESS, appointmentToMarkUnDone)
-            + "\n" + deletionOfRevenueResult
+            + "\n" + deletionOfRevenueResult,
+            AppointmentListPanel.TAB_NAME
         );
     }
 
