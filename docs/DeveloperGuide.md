@@ -1700,46 +1700,232 @@ testers are expected to do more *exploratory* testing.
 
 1. Initial launch
 
-   1. Download the jar file and copy into an empty folder
+   1. Download the jar file and copy it into an empty folder.
    
    1. If you are using Windows, ensure display settings is set to 100% to prevent GUI scaling issues.
 
-   1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+   1. Double-click the jar file.
+        1. Expected: Shows the GUI with a set of sample appointments. The window size may not be optimum.)
 
 1. Saving window preferences
 
    1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+      Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+### Commands for List Managers and List Trackers
 
-### Deleting a client
+#### Add/Delete a Client
 
-1. Deleting a client while all clients are being shown
+1. Adding a new client to the Client Manager
 
-   1. Prerequisites: List all clients using the `list` command. Multiple clients in the list.
+    1. Prerequisites: Arguments are valid and compulsory parameters are provided. No duplicate client is allowed in the Client Manager.
+    
+    1. Test case: `addcli n/John p/91234567 e/john@gmail.com t/new`
+        1. Expected: Adds a new client with the name `John`, phone number `91234567`, email `john@gmail.com` and tag `new`. 
+        
+    1. Test case: `addcli n/John`
+        1. Expected: No client is added. Error message shown in result display.
+        
+    1. Other incorrect formats to try: `addcli p/91234567`, `addcli e/john@gmail.com`, `addcli t/new`.
+        1. Expected: Similar to previous.
 
-   1. Test case: `delete 1`<br>
-      Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
+1. Deleting a client from the Client Manager
 
-   1. Test case: `delete 0`<br>
-      Expected: No client is deleted. Error details shown in the status message. Status bar remains the same.
+   1. Prerequisites: List all clients using the `list` command, such that there are multiple clients in the list.
 
-   1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-      Expected: Similar to previous.
+   1. Test case: `delete 1`
+        1. Expected: First contact is deleted from the list. Details of the deleted contact shown in the result display.
 
-1. _{ more test cases …​ }_
+   1. Test case: `delete 0`
+        1. Expected: No client is deleted. Error message shown in the result display.
 
-### Saving data
+   1. Other incorrect delete commands to try: `delete`, `delete x` (where x is larger than the list size)
+        1. Expected: Similar to previous.
 
-1. Dealing with missing/corrupted data files
+#### Add a Service
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+1. Adding a new service to the Service Manager
 
-1. _{ more test cases …​ }_
+   1. Prerequisites: Arguments are valid and compulsory parameters are provided. No duplicate service is allowed in the Service Manager. The Service Manager must not have more than 1000 services.
+   
+   1. Test case: `addsvc t/Microdermabrasion du/2.0 p/68`
+        1. Expected: Adds a new service with title of `Microdermabrasion`, duration of `2.0` hours, and price of `68` dollars. A service code will be automatically generated for the service.
+        
+   1. Test case: `addsvc t/Microdermabrasion`
+        1. Expected: No service is added. Error message is shown in result display.
+        
+   1. Other incorrect formats to try: `addsvc t/Microdermabrasion du/1.3 p/68`, `addsvc t/Microdermabrasion du/1 p/68.125`, `addsvc t/Microdermabrasion`.
+        1. Expected: Similar to previous.
+    
+#### Mark an Appointment as done/undone
+
+1. Marking an appointment as done in the Appointment Tracker
+
+   1. Prerequisites: List all appointments using the `listapt` command, such that multiple appointments are in the list. The index provided is valid, and the specified appointment is currently marked as undone. 
+   
+   1. Test case: `done 1`
+        1. Expected: First appointment is marked as done. Details of the appointment shown in result display. Revenue is credited accordingly in the Revenue Tracker.
+        
+   1. Test case: `done 0`
+        1. Expected: No appointment is marked as done. Error message is shown in result display.
+        
+   1. Other incorrect formats to try: `done`, `done x` (where x is larger than the appointment list size, or x refers to an appointment that is already done)
+        1. Expected: Similar to previous.
+            
+1. Marking an appointment as undone in the Appointment Tracker
+
+   1. Prerequisites: List all appointments using the `listapt` command, such that multiple appointments are in the list. The index provided is valid, and the specified appointment is currently marked as done. 
+   
+   1. Test case: `undone 1`
+        1. Expected: First appointment is marked as undone. Details of the appointment shown in result display. Revenue is debited accordingly from the Revenue Tracker.
+        
+   1. Test case: `undone 0`
+        1. Expected: No appointment is undone. Error message is shown in result display.
+        
+   1. Other incorrect formats to try: `undone`, `undone x` (where x is larger than the appointment list size, or x refers to an appointment that is undone)
+        1. Expected: Similar to previous.
+        
+#### Sort/Find a Revenue 
+
+1. Sorting revenue in ascending order based on value in the Revenue Tracker
+
+   1. Prerequisites: List all revenues using the `listrev` command, such that multiple revenues are in the list.
+   
+   1. Test case: `sortrev asc`
+        1. Expected: Revenue list is sorted in ascending order based on value, from lowest to highest value. 
+        
+   1. Test case: `sortrev`
+        1. Expected: Revenue list is not sorted. Error message shown in result display.
+        
+1. Finding a revenue by date in the Revenue Tracker
+
+    1. Prerequisites: Arguments are valid and compulsory parameters are provided. Revenues made on the date specified exist.
+    
+    1. Test case: `findrev dt/22-10-2020`
+        1. Expected: Revenue entries made on 22 October 2020 are shown in the Revenue Tab.
+        
+    1. Test case: `findrev`
+        1. Expected: No revenue is found. Error message shown in result display.
+        
+    1. Other incorrect formats: `findrev dt/10-30-2020`, `findrev 22-10-2020`.
+        1. Expected: Similar to previous.
+        
+#### Edit an Expense
+
+1. Edit an expense in the Expense Tracker
+
+    1. Prerequisite: List all expenses using the `listexp` command, such that multiple expenses are in the list. The index provided is valid and the expense exists.
+    
+    1. Test case: `editexp 2 d/Eyelash Curler`
+        1. Expected: Edits the second expense in the list to have a description of `Eyelash Curler`.
+   
+    1. Test case: `editexp 0 d/Eyelash Curler`
+        1. Expected: No expense is edited. Error message shown in result display.
+        
+    1. Other incorrect formats: `editexp 2`, `editexp d/Eyelash Curler`, `editexp 2 Eyelash Curler`.
+        1. Expected: Similar to previous.
+        
+### Commands for Schedule Viewer and Finance Tracker
+
+#### View schedule
+
+1. View schedule for a particular week
+
+    1. Prerequisite: Compulsory parameters are provided and are valid.
+    
+    1. Test case: `schedule dt/27-11-2020`
+        1. Expected: Navigates to the weekly schedule for the week containing 27 November 2020.
+   
+    1. Test case: `schedule 27-11-2020`
+        1. Expected: No schedule is shown. Error message shown in result display.
+        
+    1. Another incorrect format: `schedule dt/20-20-2020`.
+        1. Expected: Similar to previous.
+        
+2. View schedule for the next week
+
+    1. Prerequisite: Weekly schedule currently contains 27 November 2020.
+    
+    1. Test case: `nextweek`
+        1. Expected: Navigates to the weekly schedule for the week after 27 November 2020.
+        
+#### Breakdown Finance
+
+1. Breakdown Finances for a particular month
+
+    1. Prerequisite: Compulsory parameters are provided and are valid. Expenses and Revenue exist for the month and year specified.
+    
+    1. Test case: `breakdownfinance m/10 y/2020`
+        1. Expected: Financial Breakdown Window opens and displays a breakdown of Revenue by Service, a breakdown of Expenses by Tag, and a Profit Tab.
+   
+    1. Test case: `breakdownfinance`
+        1. Expected: No window is opened. Error message shown in result display.
+        
+    1. Other incorrect formats: `breakdownfinance m/13 y/2020`, `breakdownfinance m/10`.
+        1. Expected: Similar to previous.
 
 ## Appendix G: Effort
 
-{to be added...}
+Creating **Homerce** was a challenging but fulfilling journey, and required much effort from all the team members equally. 
+This can be substantiated by our **26,000** lines of code combined, accumulated in less than 10 weeks, placing us at top 7
+in the cohort for total code contribution.
+In addition, despite the COVID-19 measures in place, we were able to maintain healthy and
+consistent communication with two meetings a week - an online meeting through Zoom on the weekends, and face-to-face meetings on weekdays.
+The hard work and commitment our team made to the project has definitely made this a memorable learning experience for all of us.
+
+### Major Enhancements
+
+**Homerce** has many major enhancements from **AB3**
+* **AB3** keeps track of Contacts in an Addressbook. Meanwhile, **Homerce** keeps track of Clients, Services, Appointments, Revenue and Expenses,
+in an all-in-one application that consolidates all the business details of a home-based salon owner. 
+* **AB3** provides basic functionality for the contact list. Meanwhile, **Homerce** has additional features for extra functionality, such as 
+the ability to sort revenue and expenses based on value, the ability to mark appointments as done or undone, the auto-generation of a service code
+upon the addition of a service, auto-duplication of fixed expenses, the auto-crediting of revenue upon the completion of an appointment, an undo feature, etc. These
+features were all designed with the user's needs in mind, which allowed us to design a platform that caters and integrates well with our user's business needs.
+* **AB3** has a basic UI, which displays the list of contacts in the Addressbook. Meanwhile,**Homerce** has a Schedule View for all its appointments
+for visualization of the user's appointment schedule, as well as a Financial Breakdown window for visualization of the user's business finances.
+In addition, the GUI of Homerce was customized aesthetically to enhance user experience.
+
+### Challenges
+We faced many challenges in the development of **Homerce**. The following points describe some of the challenges that we faced, and how we were able to solve them.
+
+**Challenge 1** <br>
+The first challenge we faced was the extensive amount of code needed to implement the features in Homerce.
+
+* While AB3 deals only with one (`Person`) object, Homerce deals with multiple objects (5 in total). Even though we were able to refactor
+some aspects of `Person` into `Client`, the other objects had to be created from scratch (components include Logic, Model, Storage, Tests).
+
+* While the UI of AB3 contains only one panel (`ListPanel`), Homerce has 5 panels in total, which is a big change to the UI. We also implemented a `Schedule View` for better visualization of the appointment schedule.
+
+* Homerce has multiple new windows, such as the `Help Window` and `Financial Breakdown Window`. In addition, the `Financial Breakdown Window` contains two `Piecharts` for revenue and expense visualization.
+
+* The large amount of code needed meant that a lot of time was needed to implement and refine the features
+
+**How we solved it** <br>
+To solve this challenge, our team dedicated a lot of time and effort to the project. We placed heavy emphasis on effective communication and
+the efficient division of tasks. Each member focused on one feature (Clients, Service, Appointments, Revenue and Expenses),
+and saw through the implementation of our feature-specific functionality, tests and documentation. On top of features, team-based
+tasks such as the GUI, UG and DG were also split fairly among the members. Overall, every member was able to contribute substantially to the project,
+whether in terms of code contribution, clear documentation, or idea generation. 
+
+**Challenge 2** <br>
+The second challenge we faced was in implementing the Schedule View feature.
+
+* We had to implement a schedule view in the UI from scratch, with appointments sorted by day and time.
+
+* We had to implement the logic for users to navigate to the previous or next week, and reflect the change in the schedule view.
+
+* Given that we did not have prior experience with the implementation of a schedule, it was a challenge for us to design the Schedule View. 
+
+**How we solved it** <br>
+To solve this challenge, our team performed extensive internet searches for inspiration to implement the feature. We also went through
+a long process of trial-and-error during our face-to-face team meetings, to come up with a Schedule View that was functional,
+intuitive, and aesthetically pleasing.
+
+### Conclusion
+Through hard work and dedication to the project, our team was able to create a functional, user-focused, and aesthetically-appealing application
+to cater to the business needs of home-based business owners, and allow them to manage their businesses with ease. Despite the challenges we faced,
+we were able to maintain a positive team spirit, and channel our passion for challenges and learning experiences to ultimately overcome any problems
+that we faced.
