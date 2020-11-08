@@ -418,6 +418,7 @@ Format: `editsvc INDEX [t/TITLE]* [du/DURATION]* [p/PRICE]*`
 * Editing a service in the service manager will not change the details of any appointments associated with that service as they are
  kept as separate records and might result in unwanted side effects to the revenues and clients. Please edit the appointment after editing the service if you want the service's edited details to be reflected.
 
+
 </div>
 
 Example:
@@ -1251,7 +1252,7 @@ Steps :
 
 Outcome :
 1. The *Result Display* will show a success message.
-1. Homerce will switch to the *Schedule Tab*t pull.
+1. Homerce will switch to the *Schedule Tab*.
 1. You can now see all the appointments in your schedule for today's week.
 
 ![schedule](images/schedule.png) <br>
