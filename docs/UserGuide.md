@@ -1245,7 +1245,7 @@ Steps :
 
 Outcome :
 1. The *Result Display* will show a success message.
-1. Homerce will switch to the *Schedule Tab*t pull.
+1. Homerce will switch to the *Schedule Tab*.
 1. You can now see all the appointments in your schedule for today's week.
 
 ![schedule](images/schedule.png) <br>
