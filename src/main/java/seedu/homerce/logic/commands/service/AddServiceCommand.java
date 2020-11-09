@@ -1,6 +1,7 @@
 package seedu.homerce.logic.commands.service;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.homerce.commons.core.Messages.MESSAGE_SERVICE_DUPLICATE_TITLE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_DURATION;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_PRICE;
 import static seedu.homerce.logic.parser.CliSyntax.PREFIX_SERVICE_TITLE;
@@ -15,6 +16,7 @@ import seedu.homerce.model.appointment.Appointment;
 import seedu.homerce.model.manager.HistoryManager;
 import seedu.homerce.model.service.Service;
 import seedu.homerce.model.service.ServiceCodeGenerator;
+import seedu.homerce.model.util.uniquelist.exceptions.DuplicateItemException;
 import seedu.homerce.ui.servicepanel.ServiceListPanel;
 
 /**
@@ -32,7 +34,7 @@ public class AddServiceCommand extends Command {
             + " Example: " + COMMAND_WORD + " "
             + PREFIX_SERVICE_TITLE + "Lash Lift"
             + PREFIX_SERVICE_DURATION + "0.5 "
-            + PREFIX_SERVICE_PRICE + "38 ";
+            + PREFIX_SERVICE_PRICE + "38.00";
 
     public static final String MESSAGE_SUCCESS = "New Service added: %1$s";
     private final Service toAdd;
@@ -55,7 +57,11 @@ public class AddServiceCommand extends Command {
         String serviceCode = ServiceCodeGenerator.generateNewServiceCode(allServices, allAppointments);
         toAdd.addServiceCode(serviceCode);
 
-        model.addService(toAdd);
-        return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ServiceListPanel.TAB_NAME);
+        try {
+            model.addService(toAdd);
+            return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd), ServiceListPanel.TAB_NAME);
+        } catch (DuplicateItemException e) {
+            throw new CommandException(MESSAGE_SERVICE_DUPLICATE_TITLE);
+        }
     }
 }

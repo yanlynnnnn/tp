@@ -32,7 +32,13 @@ You can reach me at the email `galvinleow@u.nus.edu`
 [[portfolio](team/khoongwk.md)]
 
 * Role: Developer
-* Responsibilities: Code Quality
+* Responsibilities:
+    * Appointment Manager Feature
+        * Implementation
+        * User Guide
+        * Developer Guide
+        * Testing
+    * Documentation Master
 
 ### Chang Rui Feng
 
@@ -42,7 +48,14 @@ You can reach me at the email `galvinleow@u.nus.edu`
 [[portfolio](team/ruifengg.md)]
 
 * Role: Developer
-* Responsibilities: Code quality
+* Responsibilities:
+    * Client Manager Feature
+        * Implementation
+        * User Guide
+        * Developer Guide
+        * Testing
+    * UI
+            
 
 ### Hans Sebastian Tirtaputra
 
@@ -50,9 +63,16 @@ You can reach me at the email `galvinleow@u.nus.edu`
 
 [[github](http://github.com/hansebastian)]
 [[portfolio](team/hansebastian.md)]
+You can reach me at the email `hans.sebastian@u.nus.edu`
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities:
+    * Service Manager Feature
+        * Implementation
+        * User Guide
+        * Developer Guide
+        * Testing
+    * UI
 
 ### Tan Yan Lyn
 
@@ -62,7 +82,13 @@ You can reach me at the email `galvinleow@u.nus.edu`
 [[portfolio](team/yanlynnnnn.md)]
 
 * Role: Developer
-* Responsibilities: UI
+* Responsibilities:
+    * Expense Tracker Feature
+        * Implementation
+        * User Guide
+        * Developer Guide
+        * Testing
+    * UI
 
 
 

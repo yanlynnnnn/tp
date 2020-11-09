@@ -32,7 +32,7 @@ public class AddServiceCommandIntegrationTest {
     @Test
     public void execute_newService_success() {
         // Service code is SC003 as the typicalServiceManager has 3 existing services. New service will have code SC003
-        Service validService = new ServiceBuilder().withServiceCode("SC003").build();
+        Service validService = new ServiceBuilder().withServiceCode("SC003").withTitle("Test Title").build();
 
         Model expectedModel = new ModelManager(new UserPrefs(), new ClientManager(), model.getServiceManager(),
             new RevenueTracker(), new ExpenseTracker(), new AppointmentManager());
