@@ -368,7 +368,7 @@ The table below shows a list of command parameters that will be used in this fea
 | Parameter Name | Description | Example
 |---------|---------|---------
 |`TITLE`| The title of the service you are providing. It must be alphanumeric words not more than 50 characters long. You can not have two services with the same title. |E.g `Lash Lift`
-|`DURATION`| The duration of the service must be in half hour intervals.| E.g `1.5`
+|`DURATION`| The duration of the service must be in half hour intervals between 0.5 and 23.5.| E.g `1.5`
 |`PRICE`| The revenue received from the service. <br> <br> It must be a positive number above 0.00 and below 1,000,000.00 and must have two decimal places. | E.g `5.50`
 |`SERVICE_CODE`| The service code is the code that identifies a particular type of service provided. <br> <br> It must be an alphanumeric word of 5 characters long.| E.g. If you have added an eyelash extension service into Homerce and its service code is `SC001`. <br> <br> Typing `SC001` would refers to the eyelash extension service.
 |`INDEX`| The index number of the service in the displayed service list.<br> <br> The first entry of the list has an index number of `1` and all entries are listed in increasing index numbers. | E.g `5`
@@ -422,8 +422,8 @@ Format: `editsvc INDEX [t/TITLE] [du/DURATION] [p/PRICE]`
 </div>
 
 Example:
-Let's say you have entered the wrong duration for an added service and want to change it to 0.5 hours instead
-of 1 hour. You can follow these instructions.
+Let's say you have entered the wrong title for an added service and want to change it to "Microderm Abarasion" instead
+its current service title. You can follow these instructions.
 
 Editing an existing service:
 1. Type `editsvc 1 t/Microderm Abrasion` into the *Command Box*.
@@ -1484,10 +1484,10 @@ You can copy and transfer the data folder into the same directory as Homerce on 
 
 |Action | Format | Examples
 |---------|---------|---------
-|**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Lash Lift d/0.5 p/38.00`
-|**Edit** | `editsvc INDEX s/SERVICE_CODE [t/TITLE]* [d/DURATION]* [p/PRICE]*` | `editsvc 1 d/0.5`
-|**Delete** | `deletesvc INDEX s/SERVICE_CODE` | `deletesvc 1`
-|**Find** | `findsvc KEYWORD` | `findsvc t/lash`
+|**Add** | `addsvc t/TITLE d/DURATION p/PRICE` | `addsvc t/Microdermabrasion du/2.0 p/68.00`
+|**Edit** | `editsvc INDEX [t/TITLE] [d/DURATION] [p/PRICE]` | `editsvc 1 d/1.5`
+|**Delete** | `deletesvc INDEX` | `deletesvc 1`
+|**Find** | `findsvc [t/TITLE]* [s/SERVICE_CODE]*` | `findsvc t/lash`
 |**List** | `listsvc` | 
 |**Clear** | `clearsvc` | 
 

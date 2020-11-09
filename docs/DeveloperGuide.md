@@ -203,7 +203,7 @@ The following class diagram models the structure of the `ListManager`.
 
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
-| **Option 1 (current choice)** <br> Extract the common functionality of the <br> 3 `ListManager`s into one generic `UniqueList` class.<br> The `UniqueList` class is used as the base data structure <br> and all 3 `ListManager`s build additional functionality on top of it. | Makes use of the Don't Repeat Yourself (DRY) principle which guards against duplication of information and minimizes repeated code.| All `ListManager`s will have dependencies on `UniqueList`. Implementation of all `ListManager`s will require `UniqueList` to be finished implementing first.|
+| **Option 1 (current choice)** <br> Extract the common functionality of the 3 `ListManager`s into one generic `UniqueList` class. The `UniqueList` class is used as the base data structure and all 3 `ListManager`s build additional functionality on top of it. | Makes use of the Don't Repeat Yourself (DRY) principle which guards against duplication of information and minimizes repeated code.| All `ListManager`s will have dependencies on `UniqueList`. Implementation of all `ListManager`s will require `UniqueList` to be finished implementing first.|
 | **Option 2** <br> Do not extract any common functionalities.| Each member can begin working on their own implementation of `ListManager` immediately and independently as there are no dependencies on a common `UniqueList`. | Violates DRY principle and results in a lot of repeated code and functionality|
 
 Reason for choosing option 1:
@@ -269,7 +269,7 @@ Reason for choosing option 2:
 
 |              | **Pros**   | **Cons** |
 | -------------|-------------| -----|
-| **Option 1 (current choice)** <br> Extract the common functionality of the <br> 3 `ListTracker`s into one generic `NonUniqueList` class.<br> The `NonUniqueList` class is used as the base data structure <br> and both `ListTracker`s build additional functionality on top of it. | Makes use of the Don't Repeat Yourself (DRY) principle which guards against duplication of information and minimizes repeated code.| Both `ListTracker`s will have dependencies on `NonUniqueList`. Implementation of both `ListTracker`s will require `NonUniqueList` to be finished implementing first.|
+| **Option 1 (current choice)** <br> Extract the common functionality of the 3 `ListTracker`s into one generic `NonUniqueList` class. The `NonUniqueList` class is used as the base data structure and both `ListTracker`s build additional functionality on top of it. | Makes use of the Don't Repeat Yourself (DRY) principle which guards against duplication of information and minimizes repeated code.| Both `ListTracker`s will have dependencies on `NonUniqueList`. Implementation of both `ListTracker`s will require `NonUniqueList` to be finished implementing first.|
 | **Option 2** <br> Do not extract any common functionalities.| Each member can begin working on their own implementation of `ListTracker` immediately and independently as there are no dependencies on a common `NonUniqueList`. | Violates DRY principle and results in a lot of repeated code and functionality|
 
 Reason for choosing option 1:
@@ -712,7 +712,7 @@ The following Sequence Diagram summarises the aforementioned steps.
 
 |              |  **Pros**  | **Cons** |
 | -------------|------------|----------|
-| **Option 1 (current choice)** <br> Use revenue and expenses from `RevenueTracker` and `ExpenseTracker` <br> in the `BreakdownFinance` command. Do not create a new `FinanceTracker` class | Avoids duplication of code as the same list of expenses and services are used in `ExpenseTracker` and `RevenueTracker`| Increases coupling between `BreakdownFinanceCommand` code and `RevenueTracker` as well as `ExpenseTracker`|
+| **Option 1 (current choice)** <br> Use revenue and expenses from `RevenueTracker` and `ExpenseTracker` in the `BreakdownFinance` command. Do not create a new `FinanceTracker` class | Avoids duplication of code as the same list of expenses and services are used in `ExpenseTracker` and `RevenueTracker`| Increases coupling between `BreakdownFinanceCommand` code and `RevenueTracker` as well as `ExpenseTracker`|
 | **Option 2** <br> Place the revenue and expenses as fields in a new `FinanceTracker` class | Provides more freedom for manipulation of revenue and expense data as `FinanceTracker` maintains a separate state for the list of expenses and revenue. | Violates the Don't Repeat Yourself(DRY) principle as the information for `ExpenseTracker` and `RevenueTracker` is duplicated in a new `FinanceTracker` class|
 
 Reason for choosing option 1:
