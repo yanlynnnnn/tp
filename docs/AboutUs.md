@@ -80,6 +80,7 @@ You can reach me at the email `hans.sebastian@u.nus.edu`
 
 [[github](https://github.com/yanlynnnnn)]
 [[portfolio](team/yanlynnnnn.md)]
+You can reach me at the email `e0424594@u.nus.edu`
 
 * Role: Developer
 * Responsibilities:
