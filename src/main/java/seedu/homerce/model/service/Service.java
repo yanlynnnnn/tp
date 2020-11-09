@@ -94,11 +94,15 @@ public class Service implements UniqueListItem {
         return builder.toString();
     }
 
+    public boolean isSameTitle(Service other) {
+        return this.title.equals(other.title);
+    }
+
     /**
-     * Checks if both services being compared have the same attributes.
+     * Checks if both services being compared have the same Title.
      *
      * @param other the second service being compared.
-     * @return true if both services have the same attributes.
+     * @return true if both services have the same Title
      */
     @Override
     public boolean isSame(UniqueListItem other) {
@@ -111,10 +115,7 @@ public class Service implements UniqueListItem {
         }
 
         Service otherService = (Service) other;
-        return title.equals(otherService.title)
-                && duration.equals(otherService.duration)
-                && price.equals(otherService.price)
-                && serviceCode.equals(otherService.serviceCode);
+        return title.equals(otherService.title);
     }
 
     /**
@@ -125,5 +126,27 @@ public class Service implements UniqueListItem {
     public Service addServiceCode(String inputCode) {
         this.serviceCode = new ServiceCode(inputCode);
         return this;
+    }
+
+    /**
+     * Checks if both services being compared have the same attributes.
+     *
+     * @param other the second service being compared.
+     * @return true if both services have the same attributes.
+     */
+    public boolean isNotEdited(UniqueListItem other) {
+        if (other == this) {
+            return true;
+        }
+
+        if (!(other instanceof Service)) {
+            return false;
+        }
+
+        Service otherService = (Service) other;
+        return title.equals(otherService.title)
+            && duration.equals(otherService.duration)
+            && price.equals(otherService.price)
+            && serviceCode.equals(otherService.serviceCode);
     }
 }

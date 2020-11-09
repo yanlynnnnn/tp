@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static seedu.homerce.logic.commands.CommandTestUtil.DESC_LASH_LIFT;
 import static seedu.homerce.logic.commands.CommandTestUtil.DESC_MANICURE;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_DURATION_LASH_LIFT;
-import static seedu.homerce.logic.commands.CommandTestUtil.VALID_TITLE_LASH_LIFT;
 import static seedu.homerce.logic.commands.CommandTestUtil.VALID_TITLE_MANICURE;
 import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.homerce.logic.commands.CommandTestUtil.assertCommandSuccess;
@@ -38,7 +37,7 @@ public class EditServiceCommandTest {
 
     @Test
     public void execute_allFieldsSpecifiedUnfilteredList_success() {
-        Service editedService = new ServiceBuilder().build();
+        Service editedService = new ServiceBuilder().withTitle("Test Service Title").build();
         EditServiceCommand.EditServiceDescriptor descriptor = new EditServiceDescriptorBuilder(editedService).build();
         EditServiceCommand editServiceCommand = new EditServiceCommand(INDEX_FIRST_CLIENT, descriptor);
 
@@ -58,12 +57,12 @@ public class EditServiceCommandTest {
         Service lastService = model.getFilteredServiceList().get(indexLastService.getZeroBased());
 
         ServiceBuilder serviceInList = new ServiceBuilder(lastService);
-        Service editedService = serviceInList.withTitle(VALID_TITLE_LASH_LIFT)
+        Service editedService = serviceInList.withTitle("Test Service Title")
             .withDuration(VALID_DURATION_LASH_LIFT)
             .build();
 
         EditServiceCommand.EditServiceDescriptor descriptor = new EditServiceDescriptorBuilder()
-            .withTitle(VALID_TITLE_LASH_LIFT).withDuration(VALID_DURATION_LASH_LIFT)
+            .withTitle("Test Service Title").withDuration(VALID_DURATION_LASH_LIFT)
             .build();
 
         EditServiceCommand editServiceCommand = new EditServiceCommand(indexLastService, descriptor);
@@ -90,9 +89,9 @@ public class EditServiceCommandTest {
         showServiceAtIndex(model, INDEX_FIRST_SERVICE);
 
         Service serviceInFilteredList = model.getFilteredServiceList().get(INDEX_FIRST_SERVICE.getZeroBased());
-        Service editedService = new ServiceBuilder(serviceInFilteredList).withTitle(VALID_TITLE_MANICURE).build();
+        Service editedService = new ServiceBuilder(serviceInFilteredList).withTitle("Test Title").build();
         EditServiceCommand editServiceCommand = new EditServiceCommand(INDEX_FIRST_SERVICE,
-            new EditServiceDescriptorBuilder().withTitle(VALID_TITLE_MANICURE).build());
+            new EditServiceDescriptorBuilder().withTitle("Test Title").build());
 
         String expectedMessage = String.format(EditServiceCommand.MESSAGE_EDIT_SERVICE_SUCCESS, editedService);
 
