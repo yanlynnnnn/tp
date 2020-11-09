@@ -30,6 +30,7 @@ You can reach me at the email `galvinleow@u.nus.edu`
 
 [[github](http://github.com/khoongwk)] 
 [[portfolio](team/khoongwk.md)]
+You can reach me at the email `e0014763@u.nus.edu`
 
 * Role: Developer
 * Responsibilities:
@@ -46,6 +47,7 @@ You can reach me at the email `galvinleow@u.nus.edu`
 
 [[github](http://github.com/RuiFengg)]
 [[portfolio](team/ruifengg.md)]
+You can reach me at the email `ruifeng.chang@u.nus.edu`
 
 * Role: Developer
 * Responsibilities:
